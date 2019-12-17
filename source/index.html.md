@@ -43,12 +43,13 @@ curl "api_endpoint_here"
 
 ```javascript
 // With javascript, you can just pass the correct header with each request
+// Include jquery in order to use $.ajax or rewrite to vanila.js
 
 function bithompRequest(url, callback) {
   $.ajax({
      url: url,
      type: "GET",
-     contentType: "application/json"
+     contentType: "application/json",
      headers: {
         "x-bithomp-token": "abcd-abcd-0000-abcd-0123abcdabcd"
      },
