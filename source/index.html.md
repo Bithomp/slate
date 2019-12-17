@@ -22,6 +22,15 @@ Welcome to the Bithomp API! You can use our API to access Bithomp API endpoints,
 
 We have language bindings in Shell, JavaScript and PHP! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
+# Changelog
+
+## 17th December 2019
+
+Added two API endpoints:
+
+* Address: Get XRPL address info
+* Validator: Get Validator's XRP address
+
 # Authentication
 
 > To authorize, use this code:
@@ -34,20 +43,28 @@ curl "api_endpoint_here"
 
 ```javascript
 // With javascript, you can just pass the correct header with each request
-$.ajax({
-   url: "api_endpoint_here",
-   type: "GET",
-   contentType: "application/json"
-   headers: {
-      "x-bithomp-token": "abcd-abcd-0000-abcd-0123abcdabcd"
-   },
-   success: function (result) {
-       // callback(result);
-   },
-   error: function (error) {
 
-   }
-});
+function bithompRequest(url, callback) {
+  $.ajax({
+     url: url,
+     type: "GET",
+     contentType: "application/json"
+     headers: {
+        "x-bithomp-token": "abcd-abcd-0000-abcd-0123abcdabcd"
+     },
+     success: function(result) {
+        callback(result);
+     },
+     error: function(error) {
+        console.log(error);
+        callback({"error": "error occurred"});
+     }
+  });
+}
+
+bithompRequest("api_endpoint_here", callback);
+//replace callback with your function to process a received json
+
 ```
 
 ```php
@@ -68,7 +85,7 @@ print curl_bithomp("api_endpoint_here")
 
 > Make sure to replace `abcd-abcd-0000-abcd-0123abcdabcd` with your API key.
 
-Bithomp uses API keys to allow access to the API. You can register a new Bithomp API key at our [developer portal](https://bithomp.com/dev/register).
+In order to use our APIs you need to request an API key via [the following form](https://bithomp.com/dev/register).
 
 Bithomp expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
@@ -78,132 +95,124 @@ Bithomp expects for the API key to be included in all API requests to the server
 You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your personal API key.
 </aside>
 
-# Kittens
+# Address
 
-## Get All Kittens
+## Get XRPL address info
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
 ```javascript
-const kittn = require('kittn');
+function getAddressInfo(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true", getAddressInfo);
+```
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+```php
+$addressInfo = curl_bithomp("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true");
+print $addressInfo;
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
+{
+  "address":"rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY",
+  "xAddress":"XV5sbjUmgPpvXv4ixFWZ5ptAYZ6PD2gYsjNFQLKYW33DzBm",
+  "inception":1513126312,
+  "username":"xrptipbot",
+  "paymentId":"xrptipbot$bithomp.com",
+  "service":{
+    "name":"XRP Tip Bot",
+    "domain":"xrptipbot.com",
+    "accounts":{
+      "twitter":"xrptipbot"
+    }
   },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+  "parent":{
+    "address":"rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv",
+    "xAddress":"XV3oNHx95sqdCkTDCBCVsVeuBmvh2du1vBfJR24EqdgwHDW",
+    "inception":1481884572,
+    "service":{
+      "name":"Bitstamp",
+      "domain":"bitstamp.net",
+      "accounts":{
+        "gravatar":"5b33b93c7ffe384d53450fc666bb11fb",
+        "twitter":"Bitstamp",
+        "facebook":"Bitstamp"
+      }
+    }
   }
-]
+}
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves information for a requested account.
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET https://bithomp.com/api/v2/address/<address>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+address | The XRPL address, can be old r-address or a new X-address
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+service | false | If set to true, the result will also include Service details.
+username | false | If set to true, the result will also include a username (rippletrade or bithomp).
+paymentid | false | If set to true, the result will also include a paymentID.
+parent | false | If set to true, the result will include the same info for a parent account.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+<aside class="notice">
+Exclude unnecessary parameters to make your request faster.
 </aside>
 
-## Get a Specific Kitten
+# Validator
+
+## Get Validator's XRP address
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl "https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
 ```javascript
-const kittn = require('kittn');
+function getValidatorAddress(json) {
+  console.log(json.publicKey + " validator's XRPL address: ", json.address);
+}
+bithompRequest("https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA", getValidatorAddress);
+```
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+```php
+$validatorAddress = curl_bithomp("https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA");
+print $validatorAddress;
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "publicKey": "nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA",
+  "address": "rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe"
 }
 ```
 
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+This endpoint retrieves a XRPL address of a specific validator
+<a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a>
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET https://bithomp.com/api/v2/validator/<validatorPublicKey>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+validatorPublicKey | The public key of the validator to retrieve
