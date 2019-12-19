@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
-
+    <title>Bithomp API reference</title>
+    <link href="images/favicon.ico" rel="icon" type="image/ico" />
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -232,6 +232,23 @@
               </ul>
           </li>
           <li>
+            <a href="#direct-url-examples" class="toc-h1 toc-link" data-title="Direct URL examples">Direct URL examples</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#xrpl-explorer" class="toc-h2 toc-link" data-title="XRPL Explorer">XRPL Explorer</a>
+                  </li>
+                  <li>
+                    <a href="#validator-pages" class="toc-h2 toc-link" data-title="Validator pages">Validator pages</a>
+                  </li>
+                  <li>
+                    <a href="#username-registration" class="toc-h2 toc-link" data-title="Username registration">Username registration</a>
+                  </li>
+                  <li>
+                    <a href="#xrpl-account-activation" class="toc-h2 toc-link" data-title="XRPL account activation">XRPL account activation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
@@ -256,7 +273,7 @@
       </ul>
         <ul class="toc-footer">
             <li><a href='https://bithomp.com/dev/register'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/bithomp/slate'>This project on GitHub</a></li>
+            <li><a href='https://github.com/bithomp/slate'>Edit this project on GitHub</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -265,13 +282,37 @@
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the Bithomp API! You can use our API to access Bithomp API endpoints, which can get information on XRPL addresses, transaction hashes, validators, usernames and paymentIDs and more.</p>
 
-<p>We have language bindings in Shell, JavaScript and PHP! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 <h1 id='changelog'>Changelog</h1><h2 id='17th-december-2019'>17th December 2019</h2>
 <p>Added two API endpoints:</p>
 
 <ul>
 <li>Address: Get XRPL address info</li>
 <li>Validator: Get Validator&#39;s XRP address</li>
+</ul>
+<h1 id='direct-url-examples'>Direct URL examples</h1><h2 id='xrpl-explorer'>XRPL Explorer</h2>
+<ul>
+<li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a></li>
+<li><a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a></li>
+<li><a href="https://bithomp.com/explorer/bitstamp">https://bithomp.com/explorer/{username}</a></li>
+<li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112#comment">https://bithomp.com/explorer/{txid}#comment</a></li>
+<li><a href="https://bithomp.com/explorer/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z#comment">
+https://bithomp.com/explorer/{address}#comment</a></li>
+<li><a href="https://bithomp.com/explorer/Bithomp#comment">
+https://bithomp.com/explorer/{username}#comment</a></li>
+</ul>
+<h2 id='validator-pages'>Validator pages</h2>
+<ul>
+<li><a href="https://bithomp.com/validators/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA">https://bithomp.com/validators/{validor pub key}</a></li>
+</ul>
+<h2 id='username-registration'>Username registration</h2>
+<ul>
+<li><a href="https://bithomp.com/username/Bithomp">https://bithomp.com/username/{username}</a></li>
+<li><a href="https://bithomp.com/username/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://bithomp.com/username/{address}</a></li>
+</ul>
+<h2 id='xrpl-account-activation'>XRPL account activation</h2>
+<ul>
+<li><a href="https://bithomp.com/activation/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://bithomp.com/activation/{address}</a></li>
 </ul>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
@@ -281,12 +322,13 @@
 curl <span class="s2">"api_endpoint_here"</span>
   -H <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// With javascript, you can just pass the correct header with each request</span>
+<span class="c1">// Include jquery in order to use $.ajax or rewrite to vanila.js</span>
 
 <span class="kd">function</span> <span class="nx">bithompRequest</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
      <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
      <span class="na">type</span><span class="p">:</span> <span class="s2">"GET"</span><span class="p">,</span>
-     <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span>
+     <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
      <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">"x-bithomp-token"</span><span class="p">:</span> <span class="s2">"abcd-abcd-0000-abcd-0123abcdabcd"</span>
      <span class="p">},</span>
@@ -453,11 +495,7 @@ print $validatorAddress;
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
+<p>The Bithomp API uses the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -475,15 +513,15 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- The requested data not allowed for your API key.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The data not found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>Method Not Allowed -- You tried to access API endpoint with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
@@ -491,7 +529,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>Gone -- The data requested has been removed from our servers.</td>
 </tr>
 <tr>
 <td>418</td>
@@ -499,7 +537,7 @@ This error section is stored in a separate file in <code>includes/_errors.md</co
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re requesting too often! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
