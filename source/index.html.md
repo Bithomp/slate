@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: Bithomp API reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell: cURL
@@ -8,7 +8,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://bithomp.com/dev/register'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/bithomp/slate'>This project on GitHub</a>
+  - <a href='https://github.com/bithomp/slate'>Edit this project on GitHub</a>
 
 includes:
   - errors
@@ -20,7 +20,7 @@ search: true
 
 Welcome to the Bithomp API! You can use our API to access Bithomp API endpoints, which can get information on XRPL addresses, transaction hashes, validators, usernames and paymentIDs and more.
 
-We have language bindings in Shell, JavaScript and PHP! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
 # Changelog
 
@@ -30,6 +30,30 @@ Added two API endpoints:
 
 * Address: Get XRPL address info
 * Validator: Get Validator's XRP address
+
+# Direct URL examples
+
+## XRPL Explorer
+
+* <a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a>
+* <a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a>
+* <a href="https://bithomp.com/explorer/bitstamp">https://bithomp.com/explorer/{username}</a>
+* <a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112#comment">https://bithomp.com/explorer/{txid}#comment</a>
+* <a href="https://bithomp.com/explorer/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z#comment">
+https://bithomp.com/explorer/{address}#comment</a>
+* <a href="https://bithomp.com/explorer/Bithomp#comment">
+https://bithomp.com/explorer/{username}#comment</a>
+
+## Validator pages
+
+* <a href="https://bithomp.com/validators/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA">https://bithomp.com/validators/{validor pub key}</a>
+
+## Username registration
+* <a href="https://bithomp.com/username/Bithomp">https://bithomp.com/username/{username}</a>
+* <a href="https://bithomp.com/username/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://bithomp.com/username/{address}</a>
+
+## XRPL account activation
+* <a href="https://bithomp.com/activation/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://bithomp.com/activation/{address}</a>
 
 # Authentication
 
