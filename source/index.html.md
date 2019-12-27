@@ -8,6 +8,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://bithomp.com/dev/register'>Sign Up for a Developer Key</a>
+  - <a href='https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C'>XRPL domain verification</a>
   - <a href='https://github.com/bithomp/slate'>Edit this project on GitHub</a>
 
 includes:
@@ -28,8 +29,14 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 Added two API endpoints:
 
-* Address: Get XRPL address info
-* Validator: Get Validator's XRP address
+* <a href="#get-xrpl-address-info">**Address: Get XRPL address info**</a>
+* <a href="#get-xrpl-address-info">**Validator: Get Validator's XRP address**</a>
+
+## 27th December 2019
+
+* <a href="#get-xrpl-address-info">**Address: Get XRPL address info**</a>
+
+Three new query parameters added: verifiedDomain, blacklisted, hashicon.
 
 # Direct URL examples
 
@@ -125,7 +132,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 ## Get XRPL address info
 
 ```shell
-curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true"
+curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true&verifiedDomain=true&blacklisted=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -133,11 +140,11 @@ curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?serv
 function getAddressInfo(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true", getAddressInfo);
+bithompRequest("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true&verifiedDomain=true&blacklisted=true", getAddressInfo);
 ```
 
 ```php
-$addressInfo = curl_bithomp("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true");
+$addressInfo = curl_bithomp("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true&verifiedDomain=true&blacklisted=true");
 print $addressInfo;
 ```
 
@@ -145,31 +152,34 @@ print $addressInfo;
 
 ```json
 {
-  "address":"rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY",
-  "xAddress":"XV5sbjUmgPpvXv4ixFWZ5ptAYZ6PD2gYsjNFQLKYW33DzBm",
-  "inception":1513126312,
-  "username":"xrptipbot",
-  "paymentId":"xrptipbot$bithomp.com",
-  "service":{
-    "name":"XRP Tip Bot",
-    "domain":"xrptipbot.com",
-    "accounts":{
-      "twitter":"xrptipbot"
+  "address": "rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY",
+  "xAddress": "XV5sbjUmgPpvXv4ixFWZ5ptAYZ6PD2gYsjNFQLKYW33DzBm",
+  "inception": 1513126312,
+  "username": "xrptipbot",
+  "paymentId": "xrptipbot$bithomp.com",
+  "service": {
+    "name": "XRP Tip Bot",
+    "domain": "xrptipbot.com",
+    "accounts": {
+      "twitter": "xrptipbot"
     }
   },
-  "parent":{
-    "address":"rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv",
-    "xAddress":"XV3oNHx95sqdCkTDCBCVsVeuBmvh2du1vBfJR24EqdgwHDW",
-    "inception":1481884572,
-    "service":{
-      "name":"Bitstamp",
-      "domain":"bitstamp.net",
-      "accounts":{
-        "gravatar":"5b33b93c7ffe384d53450fc666bb11fb",
-        "twitter":"Bitstamp",
-        "facebook":"Bitstamp"
+  "blacklisted": false,
+  "verifiedDomain": "xrptipbot.com",
+  "parent": {
+    "address": "rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv",
+    "xAddress": "XV3oNHx95sqdCkTDCBCVsVeuBmvh2du1vBfJR24EqdgwHDW",
+    "inception": 1481884572,
+    "service": {
+      "name": "Bitstamp",
+      "domain": "bitstamp.net",
+      "accounts": {
+        "gravatar": "5b33b93c7ffe384d53450fc666bb11fb",
+        "twitter": "Bitstamp",
+        "facebook": "Bitstamp"
       }
-    }
+    },
+    "blacklisted": false
   }
 }
 ```
@@ -193,6 +203,9 @@ Parameter | Default | Description
 service | false | If set to true, the result will also include Service details.
 username | false | If set to true, the result will also include a username (rippletrade or bithomp).
 paymentid | false | If set to true, the result will also include a paymentID.
+verifiedDomain | false | If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C">verifiedDomain</a> if such exists.
+blacklisted | false | If set true, the result will include a blacklisted status (status 3 in <a href="https://xrpforensics.org/list/">the xrpforensics list</a>)
+hashicon | false | If set true, the result will include hashicon which can be used in img's src="" or in css, as background's url. (The icon is the same for x-address and r-address, such hashicons used in ToastWallet and Bithomp.)
 parent | false | If set to true, the result will include the same info for a parent account.
 
 <aside class="notice">
