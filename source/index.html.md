@@ -25,18 +25,18 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 # Changelog
 
+## 27th December 2019
+
+* <a href="#get-xrpl-address-info">**Address: Get XRPL address info**</a>
+
+Three new query parameters added: verifiedDomain, blacklisted, hashicon.
+
 ## 17th December 2019
 
 Added two API endpoints:
 
 * <a href="#get-xrpl-address-info">**Address: Get XRPL address info**</a>
 * <a href="#get-xrpl-address-info">**Validator: Get Validator's XRP address**</a>
-
-## 27th December 2019
-
-* <a href="#get-xrpl-address-info">**Address: Get XRPL address info**</a>
-
-Three new query parameters added: verifiedDomain, blacklisted, hashicon.
 
 # Direct URL examples
 
