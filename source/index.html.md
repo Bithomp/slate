@@ -25,9 +25,15 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 # Changelog
 
+## 11th January 2020
+
+Added a new API endpoint:
+
+* <a href="#genesis">**Historical data: Genesis**</a>
+
 ## 27th December 2019
 
-* <a href="#get-xrpl-address-info">**Address: Get XRPL address info**</a>
+* <a href="#address">**Get information for ONE: Address**</a>
 
 Three new query parameters added: verifiedDomain, blacklisted, hashicon.
 
@@ -35,8 +41,8 @@ Three new query parameters added: verifiedDomain, blacklisted, hashicon.
 
 Added two API endpoints:
 
-* <a href="#get-xrpl-address-info">**Address: Get XRPL address info**</a>
-* <a href="#get-xrpl-address-info">**Validator: Get Validator's XRP address**</a>
+* <a href="#address">**Get information for ONE: Address**</a>
+* <a href="#validator">**Get information for ONE: Validator**</a>
 
 # Direct URL examples
 
@@ -127,9 +133,9 @@ Bithomp expects for the API key to be included in all API requests to the server
 You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your personal API key.
 </aside>
 
-# Address
+# Get information for ONE
 
-## Get XRPL address info
+## Address
 
 ```shell
 curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true&verifiedDomain=true&blacklisted=true"
@@ -212,9 +218,7 @@ parent | false | If set to true, the result will include the same info for a par
 Exclude unnecessary parameters to make your request faster.
 </aside>
 
-# Validator
-
-## Get Validator's XRP address
+## Validator
 
 ```shell
 curl "https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"
@@ -254,3 +258,79 @@ This endpoint retrieves a XRPL address of a specific validator
 Parameter | Description
 --------- | -----------
 validatorPublicKey | The public key of the validator to retrieve
+
+# Historical data
+
+## Genesis
+
+```shell
+curl "https://bithomp.com/api/v2/genesis"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/genesis", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/genesis");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "count": 136,
+  "inception": 1357010470,
+  "ledger_index": 32570,
+  "genesis_balance_all": 99999999999.99632,
+  "balance_all": 483189349.682485,
+  "balance_update": 1578499794,
+  "genesis": [
+    {
+      "address": "rBKPS4oLSaV2KVVuHH8EpQqMGgGefGFQs7",
+      "genesis_balance": 370,
+      "genesis_index": 1,
+      "balance": 20.009958
+    },
+    {
+      "address": "rLs1MzkFWCxTbuAHgjeTZK4fcCDDnf2KRv",
+      "genesis_balance": 10000,
+      "genesis_index": 2,
+      "rippletrade": "leotreasure",
+      "balance": 4507.158497
+    },
+    {
+
+    }
+  ]
+}
+```
+
+This endpoint retrieves a list of addresses from the first available ledger in XRPL history.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/genesis`
+
+### Response Format
+
+Field | Value | Description
+----- | ----- | -----------
+count	| Integer	| The amount of returned addresses.
+inception	| Integer	| Inception UNIX timestamp.
+ledger_index | Integer | Ledger index (the first available in history).
+genesis_balance_all | Float | Sum of all balances in the ledger_index.
+balance_all | Float | Sum of balances of those addresses on the balance_update time.
+balance_update | Integer | UNIX timestamp of the last update of balances.
+genesis | Array | Array of addresses in ledger_index.
+genesis[].address | String | Address
+genesis[].genesis_balance | Float | XRP balance on that genesis[].address on the time of inception.
+genesis[].genesis_index | Integer | Index of the address in the ledger_index.
+genesis[].rippletrade | String | Username that genesis[].address used on rippletrade.com.
+genesis[].nickname | String | Username that genesis[].address used on bitcointalk.org or assign by Ripple (X.).
+genesis[].balance | Float | XRP balance on that genesis[].address on the time of balance_update.
