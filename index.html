@@ -227,6 +227,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#11th-january-2020" class="toc-h2 toc-link" data-title="11th January 2020">11th January 2020</a>
+                  </li>
+                  <li>
                     <a href="#27th-december-2019" class="toc-h2 toc-link" data-title="27th December 2019">27th December 2019</a>
                   </li>
                   <li>
@@ -255,18 +258,21 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
-            <a href="#address" class="toc-h1 toc-link" data-title="Address">Address</a>
+            <a href="#get-information-for-one" class="toc-h1 toc-link" data-title="Get information for ONE">Get information for ONE</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-xrpl-address-info" class="toc-h2 toc-link" data-title="Get XRPL address info">Get XRPL address info</a>
+                    <a href="#address" class="toc-h2 toc-link" data-title="Address">Address</a>
+                  </li>
+                  <li>
+                    <a href="#validator" class="toc-h2 toc-link" data-title="Validator">Validator</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#validator" class="toc-h1 toc-link" data-title="Validator">Validator</a>
+            <a href="#historical-data" class="toc-h1 toc-link" data-title="Historical data">Historical data</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-validator-39-s-xrp-address" class="toc-h2 toc-link" data-title="Get Validator's XRP address">Get Validator's XRP address</a>
+                    <a href="#genesis" class="toc-h2 toc-link" data-title="Genesis">Genesis</a>
                   </li>
               </ul>
           </li>
@@ -287,9 +293,15 @@
 <p>Welcome to the Bithomp API! You can use our API to access Bithomp API endpoints, which can get information on XRPL addresses, transaction hashes, validators, usernames and paymentIDs and more.</p>
 
 <p>We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='changelog'>Changelog</h1><h2 id='27th-december-2019'>27th December 2019</h2>
+<h1 id='changelog'>Changelog</h1><h2 id='11th-january-2020'>11th January 2020</h2>
+<p>Added a new API endpoint:</p>
+
 <ul>
-<li><a href="#get-xrpl-address-info"><strong>Address: Get XRPL address info</strong></a></li>
+<li><a href="#genesis"><strong>Historical data: Genesis</strong></a></li>
+</ul>
+<h2 id='27th-december-2019'>27th December 2019</h2>
+<ul>
+<li><a href="#address"><strong>Get information for ONE: Address</strong></a></li>
 </ul>
 
 <p>Three new query parameters added: verifiedDomain, blacklisted, hashicon.</p>
@@ -297,8 +309,8 @@
 <p>Added two API endpoints:</p>
 
 <ul>
-<li><a href="#get-xrpl-address-info"><strong>Address: Get XRPL address info</strong></a></li>
-<li><a href="#get-xrpl-address-info"><strong>Validator: Get Validator&#39;s XRP address</strong></a></li>
+<li><a href="#address"><strong>Get information for ONE: Address</strong></a></li>
+<li><a href="#validator"><strong>Get information for ONE: Validator</strong></a></li>
 </ul>
 <h1 id='direct-url-examples'>Direct URL examples</h1><h2 id='xrpl-explorer'>XRPL Explorer</h2>
 <ul>
@@ -382,7 +394,7 @@ print curl_bithomp("api_endpoint_here")
 <aside class="notice">
 You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your personal API key.
 </aside>
-<h1 id='address'>Address</h1><h2 id='get-xrpl-address-info'>Get XRPL address info</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&amp;username=true&amp;paymentid=true&amp;parent=true&amp;verifiedDomain=true&amp;blacklisted=true"</span>
+<h1 id='get-information-for-one'>Get information for ONE</h1><h2 id='address'>Address</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&amp;username=true&amp;paymentid=true&amp;parent=true&amp;verifiedDomain=true&amp;blacklisted=true"</span>
   -H <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getAddressInfo</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
@@ -489,7 +501,7 @@ print $addressInfo;
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
 </aside>
-<h1 id='validator'>Validator</h1><h2 id='get-validator-39-s-xrp-address'>Get Validator&#39;s XRP address</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
+<h2 id='validator'>Validator</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
   -H <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getValidatorAddress</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">publicKey</span> <span class="o">+</span> <span class="s2">" validator's XRPL address: "</span><span class="p">,</span> <span class="nx">json</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>
@@ -520,6 +532,122 @@ print $validatorAddress;
 <tr>
 <td>validatorPublicKey</td>
 <td>The public key of the validator to retrieve</td>
+</tr>
+</tbody></table>
+<h1 id='historical-data'>Historical data</h1><h2 id='genesis'>Genesis</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/genesis"</span>
+  -H <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/genesis"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre><pre class="highlight php tab-php"><code>$data = curl_bithomp("https://bithomp.com/api/v2/genesis");
+print $data;
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">136</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"inception"</span><span class="p">:</span><span class="w"> </span><span class="mi">1357010470</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">32570</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"genesis_balance_all"</span><span class="p">:</span><span class="w"> </span><span class="mf">99999999999.99632</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balance_all"</span><span class="p">:</span><span class="w"> </span><span class="mf">483189349.682485</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"balance_update"</span><span class="p">:</span><span class="w"> </span><span class="mi">1578499794</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"genesis"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBKPS4oLSaV2KVVuHH8EpQqMGgGefGFQs7"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"genesis_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">370</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"genesis_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.009958</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rLs1MzkFWCxTbuAHgjeTZK4fcCDDnf2KRv"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"genesis_balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"genesis_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rippletrade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leotreasure"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">4507.158497</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a list of addresses from the first available ledger in XRPL history.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/genesis</code></p>
+<h3 id='response-format'>Response Format</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>count</td>
+<td>Integer</td>
+<td>The amount of returned addresses.</td>
+</tr>
+<tr>
+<td>inception</td>
+<td>Integer</td>
+<td>Inception UNIX timestamp.</td>
+</tr>
+<tr>
+<td>ledger_index</td>
+<td>Integer</td>
+<td>Ledger index (the first available in history).</td>
+</tr>
+<tr>
+<td>genesis_balance_all</td>
+<td>Float</td>
+<td>Sum of all balances in the ledger_index.</td>
+</tr>
+<tr>
+<td>balance_all</td>
+<td>Float</td>
+<td>Sum of balances of those addresses on the balance_update time.</td>
+</tr>
+<tr>
+<td>balance_update</td>
+<td>Integer</td>
+<td>UNIX timestamp of the last update of balances.</td>
+</tr>
+<tr>
+<td>genesis</td>
+<td>Array</td>
+<td>Array of addresses in ledger_index.</td>
+</tr>
+<tr>
+<td>genesis[].address</td>
+<td>String</td>
+<td>Address</td>
+</tr>
+<tr>
+<td>genesis[].genesis_balance</td>
+<td>Float</td>
+<td>XRP balance on that genesis[].address on the time of inception.</td>
+</tr>
+<tr>
+<td>genesis[].genesis_index</td>
+<td>Integer</td>
+<td>Index of the address in the ledger_index.</td>
+</tr>
+<tr>
+<td>genesis[].rippletrade</td>
+<td>String</td>
+<td>Username that genesis[].address used on rippletrade.com.</td>
+</tr>
+<tr>
+<td>genesis[].nickname</td>
+<td>String</td>
+<td>Username that genesis[].address used on bitcointalk.org or assign by Ripple (X.).</td>
+</tr>
+<tr>
+<td>genesis[].balance</td>
+<td>Float</td>
+<td>XRP balance on that genesis[].address on the time of balance_update.</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
