@@ -274,6 +274,9 @@
                   <li>
                     <a href="#genesis" class="toc-h2 toc-link" data-title="Genesis">Genesis</a>
                   </li>
+                  <li>
+                    <a href="#history-of-xrp-price-alerts" class="toc-h2 toc-link" data-title="History of XRP price alerts">History of XRP price alerts</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -293,26 +296,27 @@
 <p>Welcome to the Bithomp API! You can use our API to access Bithomp API endpoints, which can get information on XRPL addresses, transaction hashes, validators, usernames and paymentIDs and more.</p>
 
 <p>We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='changelog'>Changelog</h1><h2 id='11th-january-2020'>11th January 2020</h2>
-<p>Added a new API endpoint:</p>
+<h1 id='changelog'>Changelog</h1><h3 id='11th-january-2020'>11th January 2020</h3>
+<p>Added two API endpoints:</p>
 
 <ul>
 <li><a href="#genesis"><strong>Historical data: Genesis</strong></a></li>
+<li><a href="#history-of-xrp-price-alerts"><strong>Historical data: History of xrp price alerts</strong></a></li>
 </ul>
-<h2 id='27th-december-2019'>27th December 2019</h2>
+<h3 id='27th-december-2019'>27th December 2019</h3>
 <ul>
 <li><a href="#address"><strong>Get information for ONE: Address</strong></a></li>
 </ul>
 
 <p>Three new query parameters added: verifiedDomain, blacklisted, hashicon.</p>
-<h2 id='17th-december-2019'>17th December 2019</h2>
+<h3 id='17th-december-2019'>17th December 2019</h3>
 <p>Added two API endpoints:</p>
 
 <ul>
 <li><a href="#address"><strong>Get information for ONE: Address</strong></a></li>
 <li><a href="#validator"><strong>Get information for ONE: Validator</strong></a></li>
 </ul>
-<h1 id='direct-url-examples'>Direct URL examples</h1><h2 id='xrpl-explorer'>XRPL Explorer</h2>
+<h1 id='direct-url-examples'>Direct URL examples</h1><h3 id='xrpl-explorer'>XRPL Explorer</h3>
 <ul>
 <li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a></li>
 <li><a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a></li>
@@ -323,16 +327,16 @@ https://bithomp.com/explorer/{address}#comment</a></li>
 <li><a href="https://bithomp.com/explorer/Bithomp#comment">
 https://bithomp.com/explorer/{username}#comment</a></li>
 </ul>
-<h2 id='validator-pages'>Validator pages</h2>
+<h3 id='validator-pages'>Validator pages</h3>
 <ul>
 <li><a href="https://bithomp.com/validators/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA">https://bithomp.com/validators/{validor pub key}</a></li>
 </ul>
-<h2 id='username-registration'>Username registration</h2>
+<h3 id='username-registration'>Username registration</h3>
 <ul>
 <li><a href="https://bithomp.com/username/Bithomp">https://bithomp.com/username/{username}</a></li>
 <li><a href="https://bithomp.com/username/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://bithomp.com/username/{address}</a></li>
 </ul>
-<h2 id='xrpl-account-activation'>XRPL account activation</h2>
+<h3 id='xrpl-account-activation'>XRPL account activation</h3>
 <ul>
 <li><a href="https://bithomp.com/activation/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://bithomp.com/activation/{address}</a></li>
 </ul>
@@ -573,7 +577,9 @@ print $data;
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>This endpoint retrieves a list of addresses from the first available ledger in XRPL history.</p>
+<p>This endpoint retrieves a list of addresses from the first available ledger in XRPL history.
+Page where it used on bithomp:
+<a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format'>Response Format</h3>
@@ -648,6 +654,104 @@ print $data;
 <td>genesis[].balance</td>
 <td>Float</td>
 <td>XRP balance on that genesis[].address on the time of balance_update.</td>
+</tr>
+</tbody></table>
+<h2 id='history-of-xrp-price-alerts'>History of XRP price alerts</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/price/xrp/alerts"</span>
+  -H <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/price/xrp/alerts"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre><pre class="highlight php tab-php"><code>$data = curl_bithomp("https://bithomp.com/api/v2/price/xrp/alerts");
+print $data;
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1578748266</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"alerts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-10.07%"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestamp_old"</span><span class="p">:</span><span class="w"> </span><span class="mi">1578344400</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestamp_new"</span><span class="p">:</span><span class="w"> </span><span class="mi">1578415200</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate_old"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00002959</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate_new"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00002661</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"btc"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"change"</span><span class="p">:</span><span class="w"> </span><span class="s2">"+10.02%"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestamp_old"</span><span class="p">:</span><span class="w"> </span><span class="mi">1578297600</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"timestamp_new"</span><span class="p">:</span><span class="w"> </span><span class="mi">1578327600</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate_old"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00002616</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rate_new"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.00002878</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a list of our XRP price alerts.
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
+<h3 id='response-format-2'>Response Format</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>count</td>
+<td>Integer The amount of returned alert records.</td>
+<td></td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>Integer</td>
+<td>UNIX timestamp for a request.</td>
+</tr>
+<tr>
+<td>alerts</td>
+<td>Array</td>
+<td>Array of alert records.</td>
+</tr>
+<tr>
+<td>genesis[].currency</td>
+<td>String</td>
+<td>Currency (in XRP/currency pair).</td>
+</tr>
+<tr>
+<td>genesis[].change</td>
+<td>String</td>
+<td>Price change percentage (ex.: +10.24%).</td>
+</tr>
+<tr>
+<td>genesis[].timestamp_old</td>
+<td>Integer</td>
+<td>Unix timestamp in seconds for the price: genesis[].rate_old.</td>
+</tr>
+<tr>
+<td>genesis[].timestamp_new</td>
+<td>Integer</td>
+<td>Unix timestamp in seconds for the price: genesis[].rate_new.</td>
+</tr>
+<tr>
+<td>genesis[].rate_old</td>
+<td>Float</td>
+<td>The price at genesis[].timestamp_old.</td>
+</tr>
+<tr>
+<td>genesis[].rate_new</td>
+<td>Float</td>
+<td>The price at genesis[].timestamp_new.</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
