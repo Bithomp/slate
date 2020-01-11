@@ -25,19 +25,20 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 # Changelog
 
-## 11th January 2020
+### 11th January 2020
 
-Added a new API endpoint:
+Added two API endpoints:
 
 * <a href="#genesis">**Historical data: Genesis**</a>
+* <a href="#history-of-xrp-price-alerts">**Historical data: History of xrp price alerts**</a>
 
-## 27th December 2019
+### 27th December 2019
 
 * <a href="#address">**Get information for ONE: Address**</a>
 
 Three new query parameters added: verifiedDomain, blacklisted, hashicon.
 
-## 17th December 2019
+### 17th December 2019
 
 Added two API endpoints:
 
@@ -46,7 +47,7 @@ Added two API endpoints:
 
 # Direct URL examples
 
-## XRPL Explorer
+### XRPL Explorer
 
 * <a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a>
 * <a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a>
@@ -57,15 +58,15 @@ https://bithomp.com/explorer/{address}#comment</a>
 * <a href="https://bithomp.com/explorer/Bithomp#comment">
 https://bithomp.com/explorer/{username}#comment</a>
 
-## Validator pages
+### Validator pages
 
 * <a href="https://bithomp.com/validators/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA">https://bithomp.com/validators/{validor pub key}</a>
 
-## Username registration
+### Username registration
 * <a href="https://bithomp.com/username/Bithomp">https://bithomp.com/username/{username}</a>
 * <a href="https://bithomp.com/username/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://bithomp.com/username/{address}</a>
 
-## XRPL account activation
+### XRPL account activation
 * <a href="https://bithomp.com/activation/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://bithomp.com/activation/{address}</a>
 
 # Authentication
@@ -312,6 +313,8 @@ print $data;
 ```
 
 This endpoint retrieves a list of addresses from the first available ledger in XRPL history.
+Page where it used on bithomp:
+<a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.
 
 ### HTTP Request
 
@@ -334,3 +337,75 @@ genesis[].genesis_index | Integer | Index of the address in the ledger_index.
 genesis[].rippletrade | String | Username that genesis[].address used on rippletrade.com.
 genesis[].nickname | String | Username that genesis[].address used on bitcointalk.org or assign by Ripple (X.).
 genesis[].balance | Float | XRP balance on that genesis[].address on the time of balance_update.
+
+## History of XRP price alerts
+
+```shell
+curl "https://bithomp.com/api/v2/price/xrp/alerts"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/price/xrp/alerts", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/price/xrp/alerts");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "count": 50,
+  "timestamp": 1578748266,
+  "alerts": [
+    {
+      "currency": "btc",
+      "change": "-10.07%",
+      "timestamp_old": 1578344400,
+      "timestamp_new": 1578415200,
+      "rate_old": 0.00002959,
+      "rate_new": 0.00002661
+    },
+    {
+      "currency": "btc",
+      "change": "+10.02%",
+      "timestamp_old": 1578297600,
+      "timestamp_new": 1578327600,
+      "rate_old": 0.00002616,
+      "rate_new": 0.00002878
+    },
+    {
+
+    }
+  ]
+}
+```
+
+This endpoint retrieves a list of our XRP price alerts.
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/price/xrp/alerts`
+
+### Response Format
+
+Field | Value | Description
+----- | ----- | -----------
+count | Integer	The amount of returned alert records.
+timestamp | Integer | UNIX timestamp for a request.
+alerts | Array | Array of alert records.
+genesis[].currency | String | Currency (in XRP/currency pair).
+genesis[].change | String | Price change percentage (ex.: +10.24%).
+genesis[].timestamp_old | Integer | Unix timestamp in seconds for the price: genesis[].rate_old.
+genesis[].timestamp_new | Integer | Unix timestamp in seconds for the price: genesis[].rate_new.
+genesis[].rate_old | Float | The price at genesis[].timestamp_old.
+genesis[].rate_new | Float | The price at genesis[].timestamp_new.
