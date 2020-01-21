@@ -25,6 +25,20 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 # Changelog
 
+### 20th January 2020
+
+Added three new API endpoints:
+
+* <a href="#services">**Get information of ALL: Services**</a>
+* <a href="#addresses-from-services">**Get information of ALL: Addresses from services**</a>
+* <a href="#last-update-services">**Get information of ALL: Last update (services/addresses)**</a>
+
+### 17th January 2020
+
+A new endpoint added:
+
+* <a href="#username">**Get information for ONE: Username**</a>
+
 ### 11th January 2020
 
 Added two API endpoints:
@@ -139,7 +153,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 ## Address
 
 ```shell
-curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true&verifiedDomain=true&blacklisted=true"
+curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&parent=true&verifiedDomain=true&blacklisted=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -147,11 +161,11 @@ curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?serv
 function getAddressInfo(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true&verifiedDomain=true&blacklisted=true", getAddressInfo);
+bithompRequest("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&parent=true&verifiedDomain=true&blacklisted=true", getAddressInfo);
 ```
 
 ```php
-$addressInfo = curl_bithomp("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&paymentid=true&parent=true&verifiedDomain=true&blacklisted=true");
+$addressInfo = curl_bithomp("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&parent=true&verifiedDomain=true&blacklisted=true");
 print $addressInfo;
 ```
 
@@ -163,11 +177,10 @@ print $addressInfo;
   "xAddress": "XV5sbjUmgPpvXv4ixFWZ5ptAYZ6PD2gYsjNFQLKYW33DzBm",
   "inception": 1513126312,
   "username": "xrptipbot",
-  "paymentId": "xrptipbot$bithomp.com",
   "service": {
     "name": "XRP Tip Bot",
     "domain": "xrptipbot.com",
-    "accounts": {
+    "socialAccounts": {
       "twitter": "xrptipbot"
     }
   },
@@ -180,8 +193,7 @@ print $addressInfo;
     "service": {
       "name": "Bitstamp",
       "domain": "bitstamp.net",
-      "accounts": {
-        "gravatar": "5b33b93c7ffe384d53450fc666bb11fb",
+      "socialAccounts": {
         "twitter": "Bitstamp",
         "facebook": "Bitstamp"
       }
@@ -191,7 +203,7 @@ print $addressInfo;
 }
 ```
 
-This endpoint retrieves information for a requested account.
+This endpoint retrieves information for a requested XRPL address.
 
 ### HTTP Request
 
@@ -209,7 +221,85 @@ Parameter | Default | Description
 --------- | ------- | -----------
 service | false | If set to true, the result will also include Service details.
 username | false | If set to true, the result will also include a username (rippletrade or bithomp).
-paymentid | false | If set to true, the result will also include a paymentID.
+verifiedDomain | false | If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C">verifiedDomain</a> if such exists.
+blacklisted | false | If set true, the result will include a blacklisted status (status 3 in <a href="https://xrpforensics.org/list/">the xrpforensics list</a>)
+hashicon | false | If set true, the result will include hashicon which can be used in img's src="" or in css, as background's url. (The icon is the same for x-address and r-address, such hashicons used in ToastWallet and Bithomp.)
+parent | false | If set to true, the result will include the same info for a parent account.
+
+<aside class="notice">
+Exclude unnecessary parameters to make your request faster.
+</aside>
+
+## Username
+
+```shell
+curl "https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true&blacklisted=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true&blacklisted=true", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true&blacklisted=true");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "address": "rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY",
+  "xAddress": "XV5sbjUmgPpvXv4ixFWZ5ptAYZ6PD2gYsjNFQLKYW33DzBm",
+  "inception": 1513126312,
+  "username": "xrptipbot",
+  "service": {
+    "name": "XRP Tip Bot",
+    "domain": "xrptipbot.com",
+    "socialAccounts": {
+      "twitter": "xrptipbot"
+    }
+  },
+  "blacklisted": false,
+  "verifiedDomain": "xrptipbot.com",
+  "parent": {
+    "address": "rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv",
+    "xAddress": "XV3oNHx95sqdCkTDCBCVsVeuBmvh2du1vBfJR24EqdgwHDW",
+    "inception": 1481884572,
+    "service": {
+      "name": "Bitstamp",
+      "domain": "bitstamp.net",
+      "socialAccounts": {
+        "twitter": "Bitstamp",
+        "facebook": "Bitstamp"
+      }
+    },
+    "blacklisted": false
+  }
+}
+```
+
+This endpoint retrieves information for a requested Username.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/username/<username>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+username | A bithomp or an old rippletrade username
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+service | false | If set to true, the result will also include Service details.
 verifiedDomain | false | If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C">verifiedDomain</a> if such exists.
 blacklisted | false | If set true, the result will include a blacklisted status (status 3 in <a href="https://xrpforensics.org/list/">the xrpforensics list</a>)
 hashicon | false | If set true, the result will include hashicon which can be used in img's src="" or in css, as background's url. (The icon is the same for x-address and r-address, such hashicons used in ToastWallet and Bithomp.)
@@ -259,6 +349,209 @@ This endpoint retrieves a XRPL address of a specific validator
 Parameter | Description
 --------- | -----------
 validatorPublicKey | The public key of the validator to retrieve
+
+# Get information of ALL
+
+## Services
+
+```shell
+curl "https://bithomp.com/api/v2/services"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/services", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/services");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "total": 467,
+  "lastUpdate": 1579417546,
+  "services": [
+    {
+      "name": "Bithomp",
+      "domain": "bithomp.com",
+      "socialAccounts": {
+        "twitter": "bithomp",
+        "youtube": "channel/UCTvrMnG-Tpqi5FN9zO7GcWw",
+        "instagram": "bithomp"
+      },
+      "addresses": [
+        {
+          "address": "rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z"
+        },
+        {
+          "address": "rnk3N5hHnLS6nWncNh2R4D2ATiuEicjxXo"
+        },
+        {
+          "address": "rhUYLd2aUiUVYkBZYwTc5RYgCAbNHAwkeZ",
+          "name": "Bithomp activation"
+        },
+        {
+          "address": "rBithomp3UNknnjo8HKNfyS5MN4kdPTZpW"
+        },
+        {
+          "address": "rBithomp4vj5E2kUebx7tVwipBueg55XxS",
+          "name": "Bithomp donations"
+        },
+        {
+          "address": "rBithompKtixswR4bknJqYaxnm7yRhGYFq",
+          "name": "Bithomp username"
+        },
+        {
+          "address": "rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe",
+          "name": "Bithomp validator"
+        }
+      ]
+    },
+    {
+
+    }
+  ]
+}
+```
+
+This endpoint retrieves a list of identified services.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/services`
+
+### Response Format
+
+Field | Value | Description
+----- | ----- | -----------
+total	| Integer	| The amount of identified services.
+lastUpdate | Integer | UNIX timestamp of the last data update.
+services | Array | Array of services.
+services[].name | String | A name of a service.
+services[].domain | String | A domain of a service.
+services[].socialAccounts | Object | An object with social account of a service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)
+services[].addresses | Array | An array of service's addresses. Each address can have it's own (more specific) name, domain, socialAccounts.
+
+<aside class="notice">
+Before downloading the whole list again you can check if it was updated here: <a href="#last-update-services">Last update (services)</a>
+</aside>
+
+## Addresses from Services
+
+```shell
+curl "https://bithomp.com/api/v2/services/addresses"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/services/addresses", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/services/addresses");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "total": 1824,
+  "lastUpdate": 1579417546,
+  "addresses": {
+    "rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY": {
+      "name": "XRP Tip Bot",
+      "domain": "xrptipbot.com",
+      "socialAccounts": {
+        "twitter": "xrptipbot"
+      }
+    },
+    "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV": {
+      "name": "Ripple",
+      "domain": "ripple.com",
+      "socialAccounts": {
+        "twitter": "Ripple",
+        "facebook": "ripplepay",
+        "linkedin": "ripple-labs"
+      }
+    },
+  }
+}
+```
+
+This endpoint retrieves a list of all identified service addresses.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/services/addresses`
+
+### Response Format
+
+Field | Value | Description
+----- | ----- | -----------
+total	| Integer	| The amount of identified addresses.
+lastUpdate | Integer | UNIX timestamp of the last data update.
+addresses | Object | Object with identified addresses.
+addresses.ADDRESS.name | String | A name of the ADDRESS's service.
+addresses.ADDRESS.domain | String | A domain of the ADDRESS's service.
+addresses.ADDRESS.socialAccounts | Object | An object with social account of the ADDRESS's service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)
+
+<aside class="notice">
+Before downloading the whole list again you can check if it was updated here: <a href="#last-update-services">Last update (services)</a>
+</aside>
+
+## Last update (services)
+
+```shell
+curl "https://bithomp.com/api/v2/services/lastUpdate"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/services/lastUpdate", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/services/lastUpdate");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "lastUpdate": 1579527766,
+  "totalServices": 475,
+  "totalAddresses": 1832
+}
+```
+
+This endpoint returns a timestamp of last DB update for services/addresses.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/services/lastUpdate`
+
+### Response Format
+
+Field | Value | Description
+----- | ----- | -----------
+lastUpdate | Integer	| UNIX timestamp of the last data update.
+totalServices | Integer | The amount of identified services.
+totalAddresses | Integer | The amount of identified addresses.
 
 # Historical data
 
