@@ -91,6 +91,18 @@ $phone-width: $tablet-width - $nav-width !default; // min width before reverting
 $nav-footer-border-color: #666 !default;
 $search-box-border-color: #666 !default;
 
+// CUSTOM STAFF
+////////////////////
+a,a:hover {
+  color: #147c8f;
+}
+.partner-logo {
+  max-width: 100px !important;
+  max-height: 32px;
+  display: inline-block;
+  margin: 10px;
+  vertical-align: middle;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // INTERNAL
