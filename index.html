@@ -319,7 +319,9 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Bithomp API! You can use our API to access Bithomp API endpoints, which can get information on XRPL addresses, transaction hashes, validators, usernames and paymentIDs and more.</p>
+<p>Welcome to the Bithomp API!</p>
+
+<p>Bithomp API endpoints will give you access to information on XRPL addresses, usernames, validators, services and more.</p>
 
 <p>We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 
@@ -539,7 +541,7 @@ print $addressInfo;
 <tr>
 <td>forensic</td>
 <td>false</td>
-<td>If set to true, the result will include forensic status: 1, 2 or 3 from (<a href="https://xrpforensics.org/list/">the xrpforensics list</a>), returns 0 if not found.</td>
+<td>If set to true, the result will include forensic status: 1, 2 or 3 from (<a href="https://xrpforensics.org/list/">the xrpforensics list</a>), returns 0 if not found, returns 3 if found in bithomp&#39;s blacklist.</td>
 </tr>
 <tr>
 <td>hashicon</td>
@@ -634,7 +636,7 @@ print $data;
 <tr>
 <td>forensic</td>
 <td>false</td>
-<td>If set to true, the result will include forensic status: 1, 2 or 3 from (<a href="https://xrpforensics.org/list/">the xrpforensics list</a>), returns 0 if not found.</td>
+<td>If set to true, the result will include forensic status: 1, 2 or 3 from (<a href="https://xrpforensics.org/list/">the xrpforensics list</a>), returns 0 if not found, returns 3 if found in bithomp&#39;s blacklist.</td>
 </tr>
 <tr>
 <td>hashicon</td>
