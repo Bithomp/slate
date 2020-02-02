@@ -227,6 +227,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#2nd-february-2020" class="toc-h2 toc-link" data-title="2nd February 2020">2nd February 2020</a>
+                  </li>
+                  <li>
                     <a href="#22th-january-2020" class="toc-h2 toc-link" data-title="22th January 2020">22th January 2020</a>
                   </li>
                   <li>
@@ -295,6 +298,20 @@
               </ul>
           </li>
           <li>
+            <a href="#transaction" class="toc-h1 toc-link" data-title="Transaction">Transaction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#tx-lookup" class="toc-h2 toc-link" data-title="Tx Lookup">Tx Lookup</a>
+                  </li>
+                  <li>
+                    <a href="#tx-decode" class="toc-h2 toc-link" data-title="Tx Decode">Tx Decode</a>
+                  </li>
+                  <li>
+                    <a href="#tx-submit" class="toc-h2 toc-link" data-title="Tx Submit">Tx Submit</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#historical-data" class="toc-h1 toc-link" data-title="Historical data">Historical data</a>
               <ul class="toc-list-h2">
                   <li>
@@ -335,7 +352,15 @@
 <img src="images/xrpforensics-b51ea5bf.jpg" class="partner-logo" alt="Xrpforensics" /></p>
 
 <p>If we&#39;re missing your logo here, <a href="https://bithomp.com/contact">contact us</a>.</p>
-<h1 id='changelog'>Changelog</h1><h3 id='22th-january-2020'>22th January 2020</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='2nd-february-2020'>2nd February 2020</h3>
+<p>Added three new API endpoints:</p>
+
+<ul>
+<li><a href="#tx-lookup"><strong>Transaction: Tx Lookup</strong></a></li>
+<li><a href="#tx-decode"><strong>Transaction: Tx Decode</strong></a></li>
+<li><a href="#tx-submit"><strong>Transaction: Tx Submit</strong></a></li>
+</ul>
+<h3 id='22th-january-2020'>22th January 2020</h3>
 <p>A query parameter <code>forensic</code> was added to the next API end-points:</p>
 
 <ul>
@@ -921,6 +946,212 @@ print $data;
 <td>The amount of identified addresses.</td>
 </tr>
 </tbody></table>
+<h1 id='transaction'>Transaction</h1><h2 id='tx-lookup'>Tx Lookup</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transaction/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3"</span>
+  -H <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/transaction/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre><pre class="highlight php tab-php"><code>$data = curl_bithomp("https://bithomp.com/api/v2/transaction/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3");
+print $data;
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payment"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBRVqcXrm1YAbanngTxDfH15LNb6TjNmxk"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">98302</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"specification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBRVqcXrm1YAbanngTxDfH15LNb6TjNmxk"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxAmount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617004677</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"destination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"outcome"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-24T06:37:00.000Z"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.020002"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"balanceChanges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"rBRVqcXrm1YAbanngTxDfH15LNb6TjNmxk"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-31.020002"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"orderbookChanges"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
+    </span><span class="s2">"ledgerVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">16658556</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"indexInLedger"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"deliveredAmount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves transaction details.
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/explorer/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3">
+  https://bithomp.com/explorer/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3
+</a>.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/transaction/&lt;id&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Transaction id (hash)</td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+  A fee to use this endpoint might be introduced in the feature to support a third party Full History Node operator.
+</aside>
+<h2 id='tx-decode'>Tx Decode</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1"</span>
+  -H <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre><pre class="highlight php tab-php"><code>$data = curl_bithomp("https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1");
+print $data;
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9B124C14528ED14C0BDA17075A39B90ABED598B77A22DFEEBD913CAC07A513BC"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"signedTransaction"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"TransactionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AccountSet"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">2147483648</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"EmailHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"833237B8665D2F4E00135E8DE646589F"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"SigningPubKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"TxnSignature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F9"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9onCSkYP2tYcukw2KUHMZ1Sn5YixQCgmN"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Memos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"Memo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"MemoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"636C69656E74"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"MemoData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"426974686F6D7020746F6F6C20762E20302E302E33"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"MemoFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"706C61696E2F74657874"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint decode a signed transaction.
+<br>
+Page on bithomp with the same decode function, but client-side:
+<a href="https://bithomp.com/submit/">
+  https://bithomp.com/submit/
+</a>.</p>
+<h3 id='http-request-8'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>blob</td>
+<td>A signed transaction blob to decode</td>
+</tr>
+</tbody></table>
+<h2 id='tx-submit'>Tx Submit</h2><pre class="highlight shell tab-shell"><code>curl -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+  --request POST
+  --data <span class="s1">'{"signedTransaction":"1200032280000000240000000368400000000000000C732103A71B44FD71C956C3CC0A540F2FBB577C4A300BC71244D86E4EB57220E58BFA26744730450221008D53E4188B39E8EF9953672B42C7ED3F7760F4B2FA51EC91A6EB0B693A6002B2022016384B9F552C75FD3BDE13C65E1CC3DA646AB10E3DD785EB2005620C6AF2C52B7710746573742E626974686F6D702E636F6D811485C536EFA7EAACCC51916E32FF720810A2226008F9EA7C06636C69656E747D16426974686F6D7020746F6F6C20762E20302E342E31317E0A706C61696E2F74657874E1F1","id":"BC35145B69F75FE5B41D6198D56203C2CFD2C1D968C09B09A37530CCB3AD2C6D"}'</span>
+  https://bithomp.com/api/v2/transaction/submit/
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+   <span class="na">url</span><span class="p">:</span> <span class="s2">"https://bithomp.com/api/v2/transaction/submit/"</span><span class="p">,</span>
+   <span class="na">type</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+   <span class="na">contentType</span><span class="p">:</span> <span class="s2">"application/json"</span><span class="p">,</span>
+   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">"x-bithomp-token"</span><span class="p">:</span> <span class="s2">"abcd-abcd-0000-abcd-0123abcdabcd"</span>
+   <span class="p">},</span>
+   <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+     <span class="s2">"signedTransaction"</span><span class="p">:</span> <span class="s2">"1200032280000000240000000368400000000000000C732103A71B44FD71C956C3CC0A540F2FBB577C4A300BC71244D86E4EB57220E58BFA26744730450221008D53E4188B39E8EF9953672B42C7ED3F7760F4B2FA51EC91A6EB0B693A6002B2022016384B9F552C75FD3BDE13C65E1CC3DA646AB10E3DD785EB2005620C6AF2C52B7710746573742E626974686F6D702E636F6D811485C536EFA7EAACCC51916E32FF720810A2226008F9EA7C06636C69656E747D16426974686F6D7020746F6F6C20762E20302E342E31317E0A706C61696E2F74657874E1F1"</span><span class="p">,</span>
+     <span class="s2">"id"</span><span class="p">:</span> <span class="s2">"BC35145B69F75FE5B41D6198D56203C2CFD2C1D968C09B09A37530CCB3AD2C6D"</span>
+   <span class="p">},</span>
+   <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+   <span class="p">},</span>
+   <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+   <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like one of those:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BC35145B69F75FE5B41D6198D56203C2CFD2C1D968C09B09A37530CCB3AD2C6D"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"terNO_ACCOUNT"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The source account does not exist."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BC35145B69F75FE5B41D6198D56203C2CFD2C1D968C09B09A37530CCB3AD2C6D"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="s2">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"terPRE_SEQ"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Missing/inapplicable prior transaction."</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BC35145B69F75FE5B41D6198D56203C2CFD2C1D968C09B09A37530CCB3AD2C6D"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint returns a final status of a submitted transaction.
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/explorer/?hwlogin">
+  https://bithomp.com/explorer/?hwlogin
+</a>.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
+<h3 id='post-parameters'>POST Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>(Optional) A calculated hash of the signed transaction</td>
+</tr>
+<tr>
+<td>signedTransaction</td>
+<td>A blob of signed transaction to submit</td>
+</tr>
+</tbody></table>
 <h1 id='historical-data'>Historical data</h1><h2 id='genesis'>Genesis</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/genesis"</span>
   -H <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -961,9 +1192,10 @@ print $data;
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>This endpoint retrieves a list of addresses from the first available ledger in XRPL history.
+<br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-4'>Response Format</h3>
 <table><thead>
@@ -1081,7 +1313,7 @@ print $data;
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-5'>Response Format</h3>
 <table><thead>
