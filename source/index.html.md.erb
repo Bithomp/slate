@@ -38,6 +38,14 @@ If we're missing your logo here, <a href="https://bithomp.com/contact">contact u
 
 # Changelog
 
+### 2nd February 2020
+
+Added three new API endpoints:
+
+* <a href="#tx-lookup">**Transaction: Tx Lookup**</a>
+* <a href="#tx-decode">**Transaction: Tx Decode**</a>
+* <a href="#tx-submit">**Transaction: Tx Submit**</a>
+
 ### 22th January 2020
 
 A query parameter `forensic` was added to the next API end-points:
@@ -573,6 +581,232 @@ lastUpdate | Integer	| UNIX timestamp of the last data update.
 totalServices | Integer | The amount of identified services.
 totalAddresses | Integer | The amount of identified addresses.
 
+# Transaction
+
+## Tx Lookup
+
+```shell
+curl "https://bithomp.com/api/v2/transaction/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/transaction/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/transaction/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "type": "payment",
+  "address": "rBRVqcXrm1YAbanngTxDfH15LNb6TjNmxk",
+  "sequence": 98302,
+  "id": "2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3",
+  "specification": {
+    "source": {
+      "address": "rBRVqcXrm1YAbanngTxDfH15LNb6TjNmxk",
+      "maxAmount": {
+        "currency": "XRP",
+        "value": "31"
+      },
+      "tag": 1617004677
+    },
+    "destination": {
+      "address": "rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z"
+    }
+  },
+  "outcome": {
+    "result": "tesSUCCESS",
+    "timestamp": "2015-10-24T06:37:00.000Z",
+    "fee": "0.020002",
+    "balanceChanges": {
+      "rBRVqcXrm1YAbanngTxDfH15LNb6TjNmxk": [
+        {
+          "currency": "XRP",
+          "value": "-31.020002"
+        }
+      ],
+      "rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z": [
+        {
+          "currency": "XRP",
+          "value": "31"
+        }
+      ]
+    },
+    "orderbookChanges": {},
+    "ledgerVersion": 16658556,
+    "indexInLedger": 4,
+    "deliveredAmount": {
+      "currency": "XRP",
+      "value": "31"
+    }
+  }
+}
+```
+
+This endpoint retrieves transaction details.
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/explorer/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3">
+  https://bithomp.com/explorer/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3
+</a>.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/transaction/<id>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+id | Transaction id (hash)
+
+<aside class="warning">
+  A fee to use this endpoint might be introduced in the feature to support a third party Full History Node operator.
+</aside>
+
+## Tx Decode
+
+```shell
+curl "https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": "9B124C14528ED14C0BDA17075A39B90ABED598B77A22DFEEBD913CAC07A513BC",
+  "signedTransaction": {
+    "TransactionType": "AccountSet",
+    "Flags": 2147483648,
+    "Sequence": 50,
+    "EmailHash": "833237B8665D2F4E00135E8DE646589F",
+    "Fee": "12",
+    "SigningPubKey": "03709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD",
+    "TxnSignature": "3045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F9",
+    "Account": "r9onCSkYP2tYcukw2KUHMZ1Sn5YixQCgmN",
+    "Memos": [
+      {
+        "Memo": {
+          "MemoType": "636C69656E74",
+          "MemoData": "426974686F6D7020746F6F6C20762E20302E302E33",
+          "MemoFormat": "706C61696E2F74657874"
+        }
+      }
+    ]
+  }
+}
+```
+
+This endpoint decode a signed transaction.
+<br>
+Page on bithomp with the same decode function, but client-side:
+<a href="https://bithomp.com/submit/">
+  https://bithomp.com/submit/
+</a>.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/transaction/decode/<blob>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+blob | A signed transaction blob to decode
+
+## Tx Submit
+
+```shell
+curl -H "Content-Type: application/json"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+  --request POST
+  --data '{"signedTransaction":"1200032280000000240000000368400000000000000C732103A71B44FD71C956C3CC0A540F2FBB577C4A300BC71244D86E4EB57220E58BFA26744730450221008D53E4188B39E8EF9953672B42C7ED3F7760F4B2FA51EC91A6EB0B693A6002B2022016384B9F552C75FD3BDE13C65E1CC3DA646AB10E3DD785EB2005620C6AF2C52B7710746573742E626974686F6D702E636F6D811485C536EFA7EAACCC51916E32FF720810A2226008F9EA7C06636C69656E747D16426974686F6D7020746F6F6C20762E20302E342E31317E0A706C61696E2F74657874E1F1","id":"BC35145B69F75FE5B41D6198D56203C2CFD2C1D968C09B09A37530CCB3AD2C6D"}'
+  https://bithomp.com/api/v2/transaction/submit/
+```
+
+```javascript
+$.ajax({
+   url: "https://bithomp.com/api/v2/transaction/submit/",
+   type: "POST",
+   contentType: "application/json",
+   headers: {
+      "x-bithomp-token": "abcd-abcd-0000-abcd-0123abcdabcd"
+   },
+   data: {
+     "signedTransaction": "1200032280000000240000000368400000000000000C732103A71B44FD71C956C3CC0A540F2FBB577C4A300BC71244D86E4EB57220E58BFA26744730450221008D53E4188B39E8EF9953672B42C7ED3F7760F4B2FA51EC91A6EB0B693A6002B2022016384B9F552C75FD3BDE13C65E1CC3DA646AB10E3DD785EB2005620C6AF2C52B7710746573742E626974686F6D702E636F6D811485C536EFA7EAACCC51916E32FF720810A2226008F9EA7C06636C69656E747D16426974686F6D7020746F6F6C20762E20302E342E31317E0A706C61696E2F74657874E1F1",
+     "id": "BC35145B69F75FE5B41D6198D56203C2CFD2C1D968C09B09A37530CCB3AD2C6D"
+   },
+   success: function(result) {
+      console.log(JSON.stringify(result, undefined, 2));
+   },
+   error: function(error) {
+      console.log(error);
+   }
+});
+```
+
+> The above command returns JSON structured like one of those:
+
+```json
+{
+  "result": "tesSUCCESS",
+  "id": "BC35145B69F75FE5B41D6198D56203C2CFD2C1D968C09B09A37530CCB3AD2C6D"
+}
+
+{
+  "result": "terNO_ACCOUNT",
+  "message": "The source account does not exist.",
+  "id": "BC35145B69F75FE5B41D6198D56203C2CFD2C1D968C09B09A37530CCB3AD2C6D"
+}
+
+{
+  "result": "terPRE_SEQ",
+  "message": "Missing/inapplicable prior transaction.",
+  "id": "BC35145B69F75FE5B41D6198D56203C2CFD2C1D968C09B09A37530CCB3AD2C6D"
+}
+
+```
+
+This endpoint returns a final status of a submitted transaction.
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/explorer/?hwlogin">
+  https://bithomp.com/explorer/?hwlogin
+</a>.
+
+### HTTP Request
+
+`POST https://bithomp.com/api/v2/transaction/submit`
+
+### POST Parameters
+
+Parameter | Description
+--------- | -----------
+id | (Optional) A calculated hash of the signed transaction
+signedTransaction | A blob of signed transaction to submit
+
 # Historical data
 
 ## Genesis
@@ -626,6 +860,7 @@ print $data;
 ```
 
 This endpoint retrieves a list of addresses from the first available ledger in XRPL history.
+<br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.
 
