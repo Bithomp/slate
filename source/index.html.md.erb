@@ -27,16 +27,27 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 Our services used by:
 
+<%= image_tag "images/binance.svg", class:"partner-logo" %>
 <%= image_tag "images/bitstamp.svg", class:"partner-logo" %>
-<%= image_tag "images/ledger-live.png", class:"partner-logo" %>
-<%= image_tag "images/xrptipbot.svg", class:"partner-logo" %>
+<%= image_tag "images/ledger-live.jpeg", class:"partner-logo" %>
+<%= image_tag "images/coinsph.svg", class:"partner-logo" %>
 <%= image_tag "images/edge.svg", class:"partner-logo" %>
+<%= image_tag "images/coinfield.png", class:"partner-logo" %>
 <%= image_tag "images/whale-alert.png", class:"partner-logo" %>
-<%= image_tag "images/xrpforensics.jpg", class:"partner-logo" %>
 
 If we're missing your logo here, <a href="https://bithomp.com/contact">contact us</a>.
 
 # Changelog
+
+### 15th June 2021
+
+A query parameter `forensic` was removed from the next API end-points:
+
+* <a href="#address">**Get information for ONE: Address**</a>
+* <a href="#username">**Get information for ONE: Username**</a>
+
+You can order "advisorylist" api here:
+<a href="https://xrpforensics.org/list/">https://xrpforensics.org/list/</a>.
 
 ### 2nd February 2020
 
@@ -181,7 +192,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 ## Address
 
 ```shell
-curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&parent=true&verifiedDomain=true&forensic=true"
+curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&parent=true&verifiedDomain=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -189,11 +200,11 @@ curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?serv
 function getAddressInfo(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&parent=true&verifiedDomain=true&forensic=true", getAddressInfo);
+bithompRequest("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&parent=true&verifiedDomain=true", getAddressInfo);
 ```
 
 ```php
-$addressInfo = curl_bithomp("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&parent=true&verifiedDomain=true&forensic=true");
+$addressInfo = curl_bithomp("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&parent=true&verifiedDomain=true");
 print $addressInfo;
 ```
 
@@ -212,7 +223,6 @@ print $addressInfo;
       "twitter": "xrptipbot"
     }
   },
-  "forensic": 0,
   "verifiedDomain": "xrptipbot.com",
   "parent": {
     "address": "rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv",
@@ -226,7 +236,6 @@ print $addressInfo;
         "facebook": "Bitstamp"
       }
     },
-    "forensic": 0
   }
 }
 ```
@@ -250,7 +259,6 @@ Parameter | Default | Description
 service | false | If set to true, the result will also include Service details.
 username | false | If set to true, the result will also include a username (rippletrade or bithomp).
 verifiedDomain | false | If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C">verifiedDomain</a> if such exists.
-forensic | false | If set to true, the result will include forensic status: 1, 2 or 3 from (<a href="https://xrpforensics.org/list/">the xrpforensics list</a>), returns 0 if not found, returns 3 if found in bithomp's blacklist.
 hashicon | false | If set true, the result will include hashicon which can be used in img's src="" or in css, as background's url. (The icon is the same for x-address and r-address, such hashicons used in ToastWallet and Bithomp.)
 parent | false | If set to true, the result will include the same info for a parent account.
 
@@ -261,7 +269,7 @@ Exclude unnecessary parameters to make your request faster.
 ## Username
 
 ```shell
-curl "https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true&forensic=true"
+curl "https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -269,11 +277,11 @@ curl "https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&ver
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true&forensic=true", getData);
+bithompRequest("https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true&forensic=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true");
 print $data;
 ```
 
@@ -292,7 +300,6 @@ print $data;
       "twitter": "xrptipbot"
     }
   },
-  "forensic": 0,
   "verifiedDomain": "xrptipbot.com",
   "parent": {
     "address": "rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv",
@@ -306,7 +313,6 @@ print $data;
         "facebook": "Bitstamp"
       }
     },
-    "forensic": 0
   }
 }
 ```
@@ -329,7 +335,6 @@ Parameter | Default | Description
 --------- | ------- | -----------
 service | false | If set to true, the result will also include Service details.
 verifiedDomain | false | If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C">verifiedDomain</a> if such exists.
-forensic | false | If set to true, the result will include forensic status: 1, 2 or 3 from (<a href="https://xrpforensics.org/list/">the xrpforensics list</a>), returns 0 if not found, returns 3 if found in bithomp's blacklist.
 hashicon | false | If set true, the result will include hashicon which can be used in img's src="" or in css, as background's url. (The icon is the same for x-address and r-address, such hashicons used in ToastWallet and Bithomp.)
 parent | false | If set to true, the result will include the same info for a parent account.
 
