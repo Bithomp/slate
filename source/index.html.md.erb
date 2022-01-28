@@ -25,17 +25,6 @@ Bithomp API endpoints will give you access to information on XRPL addresses, use
 
 We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
-Our services used by:
-
-<%= image_tag "images/binance.svg", class:"partner-logo" %>
-<%= image_tag "images/ledger-live.jpeg", class:"partner-logo" %>
-<%= image_tag "images/coinsph.svg", class:"partner-logo" %>
-<%= image_tag "images/edge.svg", class:"partner-logo" %>
-<%= image_tag "images/coinfield.png", class:"partner-logo" %>
-<%= image_tag "images/xumm.svg", class:"partner-logo" %>
-
-If we're missing your logo here, <a href="https://bithomp.com/contact">contact us</a>.
-
 # Changelog
 
 ### 15th June 2021
@@ -48,55 +37,6 @@ A query parameter `forensic` was removed from the next API end-points:
 You can order "advisorylist" api here:
 <a href="https://xrpforensics.org/list/">https://xrpforensics.org/list/</a>.
 
-### 2nd February 2020
-
-Added three new API endpoints:
-
-* <a href="#tx-lookup">**Transaction: Tx Lookup**</a>
-* <a href="#tx-decode">**Transaction: Tx Decode**</a>
-* <a href="#tx-submit">**Transaction: Tx Submit**</a>
-
-### 22th January 2020
-
-A query parameter `forensic` was added to the next API end-points:
-
-* <a href="#address">**Get information for ONE: Address**</a>
-* <a href="#username">**Get information for ONE: Username**</a>
-
-### 20th January 2020
-
-Added three new API endpoints:
-
-* <a href="#services">**Get information of ALL: Services**</a>
-* <a href="#addresses-from-services">**Get information of ALL: Addresses from services**</a>
-* <a href="#last-update-services">**Get information of ALL: Last update (services/addresses)**</a>
-
-### 17th January 2020
-
-A new endpoint added:
-
-* <a href="#username">**Get information for ONE: Username**</a>
-
-### 11th January 2020
-
-Added two API endpoints:
-
-* <a href="#genesis">**Historical data: Genesis**</a>
-* <a href="#history-of-xrp-price-alerts">**Historical data: History of xrp price alerts**</a>
-
-### 27th December 2019
-
-Query parameters: `verifiedDomain` and `hashicon` were added in the API endpoint:
-
-* <a href="#address">**Get information for ONE: Address**</a>
-
-### 17th December 2019
-
-Added two API endpoints:
-
-* <a href="#address">**Get information for ONE: Address**</a>
-* <a href="#validator">**Get information for ONE: Validator**</a>
-
 # Direct URL examples
 
 ### XRPL Explorer
@@ -104,11 +44,11 @@ Added two API endpoints:
 * <a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a>
 * <a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a>
 * <a href="https://bithomp.com/explorer/bitstamp">https://bithomp.com/explorer/{username}</a>
+* <a href="https://bithomp.com/explorer/02C7004B041A91880000526964776F726C643836">https://bithomp.com/explorer/{NFT-XLS14 || HEXcurrency}</a>
+* <a href="https://bithomp.com/explorer/rabbit$bithomp.com">https://bithomp.com/explorer/{payString}</a>
 * <a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112#comment">https://bithomp.com/explorer/{txid}#comment</a>
-* <a href="https://bithomp.com/explorer/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z#comment">
-https://bithomp.com/explorer/{address}#comment</a>
-* <a href="https://bithomp.com/explorer/Bithomp#comment">
-https://bithomp.com/explorer/{username}#comment</a>
+* <a href="https://bithomp.com/explorer/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z#comment">https://bithomp.com/explorer/{address}#comment</a>
+* <a href="https://bithomp.com/explorer/Bithomp#comment">https://bithomp.com/explorer/{username}#comment</a>
 
 ### Validator pages
 
@@ -185,6 +125,51 @@ Bithomp expects for the API key to be included in all API requests to the server
 <aside class="notice">
 You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your personal API key.
 </aside>
+
+# Get status
+
+## Services (Last update)
+
+```shell
+curl "https://bithomp.com/api/v2/services/lastUpdate"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/services/lastUpdate", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/services/lastUpdate");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "lastUpdate": 1579527766,
+  "totalServices": 475,
+  "totalAddresses": 1832
+}
+```
+
+This endpoint returns a timestamp of last DB update for services/addresses.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/services/lastUpdate`
+
+### Response Format
+
+Field | Value | Description
+----- | ----- | -----------
+lastUpdate | Integer	| UNIX timestamp of the last data update.
+totalServices | Integer | The amount of identified services.
+totalAddresses | Integer | The amount of identified addresses.
 
 # Get information for ONE
 
@@ -472,7 +457,7 @@ services[].socialAccounts | Object | An object with social account of a service.
 services[].addresses | Array | An array of service's addresses. Each address can have it's own (more specific) name, domain, socialAccounts.
 
 <aside class="notice">
-Before downloading the whole list again you can check if it was updated here: <a href="#last-update-services">Last update (services)</a>
+Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
 </aside>
 
 ## Addresses from Services
@@ -534,56 +519,13 @@ Field | Value | Description
 total	| Integer	| The amount of identified addresses.
 lastUpdate | Integer | UNIX timestamp of the last data update.
 addresses | Object | Object with identified addresses.
-addresses.ADDRESS.name | String | A name of the ADDRESS's service.
-addresses.ADDRESS.domain | String | A domain of the ADDRESS's service.
-addresses.ADDRESS.socialAccounts | Object | An object with social account of the ADDRESS's service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)
+addresses.ADDRESS.name | String | A name of the ADDRESS’s service.
+addresses.ADDRESS.domain | String | A domain of the ADDRESS’s service.
+addresses.ADDRESS.socialAccounts | Object | An object with social account of the ADDRESS’s service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)
 
 <aside class="notice">
-Before downloading the whole list again you can check if it was updated here: <a href="#last-update-services">Last update (services)</a>
+Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
 </aside>
-
-## Last update (services)
-
-```shell
-curl "https://bithomp.com/api/v2/services/lastUpdate"
-  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
-```
-
-```javascript
-function getData(json) {
-  console.log(json)
-}
-bithompRequest("https://bithomp.com/api/v2/services/lastUpdate", getData);
-```
-
-```php
-$data = curl_bithomp("https://bithomp.com/api/v2/services/lastUpdate");
-print $data;
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "lastUpdate": 1579527766,
-  "totalServices": 475,
-  "totalAddresses": 1832
-}
-```
-
-This endpoint returns a timestamp of last DB update for services/addresses.
-
-### HTTP Request
-
-`GET https://bithomp.com/api/v2/services/lastUpdate`
-
-### Response Format
-
-Field | Value | Description
------ | ----- | -----------
-lastUpdate | Integer	| UNIX timestamp of the last data update.
-totalServices | Integer | The amount of identified services.
-totalAddresses | Integer | The amount of identified addresses.
 
 # Transaction
 
