@@ -316,27 +316,6 @@
                   <li>
                     <a href="#15th-june-2021" class="toc-h2 toc-link" data-title="15th June 2021">15th June 2021</a>
                   </li>
-                  <li>
-                    <a href="#2nd-february-2020" class="toc-h2 toc-link" data-title="2nd February 2020">2nd February 2020</a>
-                  </li>
-                  <li>
-                    <a href="#22th-january-2020" class="toc-h2 toc-link" data-title="22th January 2020">22th January 2020</a>
-                  </li>
-                  <li>
-                    <a href="#20th-january-2020" class="toc-h2 toc-link" data-title="20th January 2020">20th January 2020</a>
-                  </li>
-                  <li>
-                    <a href="#17th-january-2020" class="toc-h2 toc-link" data-title="17th January 2020">17th January 2020</a>
-                  </li>
-                  <li>
-                    <a href="#11th-january-2020" class="toc-h2 toc-link" data-title="11th January 2020">11th January 2020</a>
-                  </li>
-                  <li>
-                    <a href="#27th-december-2019" class="toc-h2 toc-link" data-title="27th December 2019">27th December 2019</a>
-                  </li>
-                  <li>
-                    <a href="#17th-december-2019" class="toc-h2 toc-link" data-title="17th December 2019">17th December 2019</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -360,6 +339,14 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
+            <a href="#get-status" class="toc-h1 toc-link" data-title="Get status">Get status</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#services-last-update" class="toc-h2 toc-link" data-title="Services (Last update)">Services (Last update)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#get-information-for-one" class="toc-h1 toc-link" data-title="Get information for ONE">Get information for ONE</a>
               <ul class="toc-list-h2">
                   <li>
@@ -381,9 +368,6 @@
                   </li>
                   <li>
                     <a href="#addresses-from-services" class="toc-h2 toc-link" data-title="Addresses from Services">Addresses from Services</a>
-                  </li>
-                  <li>
-                    <a href="#last-update-services" class="toc-h2 toc-link" data-title="Last update (services)">Last update (services)</a>
                   </li>
               </ul>
           </li>
@@ -431,17 +415,6 @@
 <p>Bithomp API endpoints will give you access to information on XRPL addresses, usernames, validators, services and more.</p>
 
 <p>We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-
-<p>Our services used by:</p>
-
-<p><img src="images/binance-32562a7e.svg" class="partner-logo" alt="" />
-<img src="images/ledger-live-9b6134c3.jpeg" class="partner-logo" alt="" />
-<img src="images/coinsph-e6cab6a0.svg" class="partner-logo" alt="" />
-<img src="images/edge-081c79ab.svg" class="partner-logo" alt="" />
-<img src="images/coinfield-a4f5dd1e.png" class="partner-logo" alt="" />
-<img src="images/xumm-7c997d25.svg" class="partner-logo" alt="" /></p>
-
-<p>If we&#39;re missing your logo here, <a href="https://bithomp.com/contact">contact us</a>.</p>
 <h1 id='changelog'>Changelog</h1><h3 id='15th-june-2021'>15th June 2021</h3>
 <p>A query parameter <code>forensic</code> was removed from the next API end-points:</p>
 
@@ -452,65 +425,16 @@
 
 <p>You can order &quot;advisorylist&quot; api here:
 <a href="https://xrpforensics.org/list/">https://xrpforensics.org/list/</a>.</p>
-<h3 id='2nd-february-2020'>2nd February 2020</h3>
-<p>Added three new API endpoints:</p>
-
-<ul>
-<li><a href="#tx-lookup"><strong>Transaction: Tx Lookup</strong></a></li>
-<li><a href="#tx-decode"><strong>Transaction: Tx Decode</strong></a></li>
-<li><a href="#tx-submit"><strong>Transaction: Tx Submit</strong></a></li>
-</ul>
-<h3 id='22th-january-2020'>22th January 2020</h3>
-<p>A query parameter <code>forensic</code> was added to the next API end-points:</p>
-
-<ul>
-<li><a href="#address"><strong>Get information for ONE: Address</strong></a></li>
-<li><a href="#username"><strong>Get information for ONE: Username</strong></a></li>
-</ul>
-<h3 id='20th-january-2020'>20th January 2020</h3>
-<p>Added three new API endpoints:</p>
-
-<ul>
-<li><a href="#services"><strong>Get information of ALL: Services</strong></a></li>
-<li><a href="#addresses-from-services"><strong>Get information of ALL: Addresses from services</strong></a></li>
-<li><a href="#last-update-services"><strong>Get information of ALL: Last update (services/addresses)</strong></a></li>
-</ul>
-<h3 id='17th-january-2020'>17th January 2020</h3>
-<p>A new endpoint added:</p>
-
-<ul>
-<li><a href="#username"><strong>Get information for ONE: Username</strong></a></li>
-</ul>
-<h3 id='11th-january-2020'>11th January 2020</h3>
-<p>Added two API endpoints:</p>
-
-<ul>
-<li><a href="#genesis"><strong>Historical data: Genesis</strong></a></li>
-<li><a href="#history-of-xrp-price-alerts"><strong>Historical data: History of xrp price alerts</strong></a></li>
-</ul>
-<h3 id='27th-december-2019'>27th December 2019</h3>
-<p>Query parameters: <code>verifiedDomain</code> and <code>hashicon</code> were added in the API endpoint:</p>
-
-<ul>
-<li><a href="#address"><strong>Get information for ONE: Address</strong></a></li>
-</ul>
-<h3 id='17th-december-2019'>17th December 2019</h3>
-<p>Added two API endpoints:</p>
-
-<ul>
-<li><a href="#address"><strong>Get information for ONE: Address</strong></a></li>
-<li><a href="#validator"><strong>Get information for ONE: Validator</strong></a></li>
-</ul>
 <h1 id='direct-url-examples'>Direct URL examples</h1><h3 id='xrpl-explorer'>XRPL Explorer</h3>
 <ul>
 <li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a></li>
 <li><a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a></li>
 <li><a href="https://bithomp.com/explorer/bitstamp">https://bithomp.com/explorer/{username}</a></li>
+<li><a href="https://bithomp.com/explorer/02C7004B041A91880000526964776F726C643836">https://bithomp.com/explorer/{NFT-XLS14 || HEXcurrency}</a></li>
+<li><a href="https://bithomp.com/explorer/rabbit$bithomp.com">https://bithomp.com/explorer/{payString}</a></li>
 <li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112#comment">https://bithomp.com/explorer/{txid}#comment</a></li>
-<li><a href="https://bithomp.com/explorer/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z#comment">
-https://bithomp.com/explorer/{address}#comment</a></li>
-<li><a href="https://bithomp.com/explorer/Bithomp#comment">
-https://bithomp.com/explorer/{username}#comment</a></li>
+<li><a href="https://bithomp.com/explorer/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z#comment">https://bithomp.com/explorer/{address}#comment</a></li>
+<li><a href="https://bithomp.com/explorer/Bithomp#comment">https://bithomp.com/explorer/{username}#comment</a></li>
 </ul>
 <h3 id='validator-pages'>Validator pages</h3>
 <ul>
@@ -583,6 +507,51 @@ curl <span class="s2">"api_endpoint_here"</span>
 <aside class="notice">
 You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your personal API key.
 </aside>
+<h1 id='get-status'>Get status</h1><h2 id='services-last-update'>Services (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services/lastUpdate"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/services/lastUpdate</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/services/lastUpdate"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1579527766</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"totalServices"</span><span class="p">:</span><span class="w"> </span><span class="mi">475</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"totalAddresses"</span><span class="p">:</span><span class="w"> </span><span class="mi">1832</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns a timestamp of last DB update for services/addresses.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/services/lastUpdate</code></p>
+<h3 id='response-format'>Response Format</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>lastUpdate</td>
+<td>Integer</td>
+<td>UNIX timestamp of the last data update.</td>
+</tr>
+<tr>
+<td>totalServices</td>
+<td>Integer</td>
+<td>The amount of identified services.</td>
+</tr>
+<tr>
+<td>totalAddresses</td>
+<td>Integer</td>
+<td>The amount of identified addresses.</td>
+</tr>
+</tbody></table>
 <h1 id='get-information-for-one'>Get information for ONE</h1><h2 id='address'>Address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&amp;username=true&amp;parent=true&amp;verifiedDomain=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getAddressInfo</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -624,7 +593,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested XRPL address.</p>
-<h3 id='http-request'>HTTP Request</h3>
+<h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/address/&lt;address&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
@@ -717,7 +686,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested Username.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/username/&lt;username&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -783,7 +752,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves a XRPL address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
@@ -856,9 +825,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of identified services.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services</code></p>
-<h3 id='response-format'>Response Format</h3>
+<h3 id='response-format-2'>Response Format</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -904,7 +873,7 @@ Exclude unnecessary parameters to make your request faster.
 </tbody></table>
 
 <aside class="notice">
-Before downloading the whole list again you can check if it was updated here: <a href="#last-update-services">Last update (services)</a>
+Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
 </aside>
 <h2 id='addresses-from-services'>Addresses from Services</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services/addresses"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
@@ -942,9 +911,9 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of all identified service addresses.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/addresses</code></p>
-<h3 id='response-format-2'>Response Format</h3>
+<h3 id='response-format-3'>Response Format</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -970,68 +939,23 @@ Before downloading the whole list again you can check if it was updated here: <a
 <tr>
 <td>addresses.ADDRESS.name</td>
 <td>String</td>
-<td>A name of the ADDRESS&#39;s service.</td>
+<td>A name of the ADDRESS’s service.</td>
 </tr>
 <tr>
 <td>addresses.ADDRESS.domain</td>
 <td>String</td>
-<td>A domain of the ADDRESS&#39;s service.</td>
+<td>A domain of the ADDRESS’s service.</td>
 </tr>
 <tr>
 <td>addresses.ADDRESS.socialAccounts</td>
 <td>Object</td>
-<td>An object with social account of the ADDRESS&#39;s service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)</td>
+<td>An object with social account of the ADDRESS’s service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)</td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-Before downloading the whole list again you can check if it was updated here: <a href="#last-update-services">Last update (services)</a>
+Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
 </aside>
-<h2 id='last-update-services'>Last update (services)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services/lastUpdate"</span>
-  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/services/lastUpdate</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/services/lastUpdate"</span><span class="p">);</span>
-<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1579527766</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"totalServices"</span><span class="p">:</span><span class="w"> </span><span class="mi">475</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"totalAddresses"</span><span class="p">:</span><span class="w"> </span><span class="mi">1832</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint returns a timestamp of last DB update for services/addresses.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://bithomp.com/api/v2/services/lastUpdate</code></p>
-<h3 id='response-format-3'>Response Format</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>lastUpdate</td>
-<td>Integer</td>
-<td>UNIX timestamp of the last data update.</td>
-</tr>
-<tr>
-<td>totalServices</td>
-<td>Integer</td>
-<td>The amount of identified services.</td>
-</tr>
-<tr>
-<td>totalAddresses</td>
-<td>Integer</td>
-<td>The amount of identified addresses.</td>
-</tr>
-</tbody></table>
 <h1 id='transaction'>Transaction</h1><h2 id='tx-lookup'>Tx Lookup</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transaction/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
