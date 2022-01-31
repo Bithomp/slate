@@ -314,7 +314,7 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#15th-june-2021" class="toc-h2 toc-link" data-title="15th June 2021">15th June 2021</a>
+                    <a href="#31st-of-january-2022" class="toc-h2 toc-link" data-title="31st of January 2022">31st of January 2022</a>
                   </li>
               </ul>
           </li>
@@ -353,7 +353,18 @@
                     <a href="#username" class="toc-h2 toc-link" data-title="Username">Username</a>
                   </li>
                   <li>
+                    <a href="#currency-hex-or-xls-14-nft" class="toc-h2 toc-link" data-title="Currency (HEX or XLS-14 NFT)">Currency (HEX or XLS-14 NFT)</a>
+                  </li>
+                  <li>
                     <a href="#validator" class="toc-h2 toc-link" data-title="Validator">Validator</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#get-information-for-many" class="toc-h1 toc-link" data-title="Get information for MANY">Get information for MANY</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#currencies-hex-or-xls-14-nfts" class="toc-h2 toc-link" data-title="Currencies (HEX or XLS-14 NFTs)">Currencies (HEX or XLS-14 NFTs)</a>
                   </li>
               </ul>
           </li>
@@ -412,16 +423,13 @@
 <p>Bithomp API endpoints will give you access to information on XRPL addresses, usernames, validators, services and more.</p>
 
 <p>We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='changelog'>Changelog</h1><h3 id='15th-june-2021'>15th June 2021</h3>
-<p>A query parameter <code>forensic</code> was removed from the next API end-points:</p>
+<h1 id='changelog'>Changelog</h1><h3 id='31st-of-january-2022'>31st of January 2022</h3>
+<p>Two new endpoints were added:</p>
 
 <ul>
-<li><a href="#address"><strong>Get information for ONE: Address</strong></a></li>
-<li><a href="#username"><strong>Get information for ONE: Username</strong></a></li>
+<li><a href="#currency-hex-or-xls-14-nft"><strong>Get information for ONE: Currency (HEX or XLS-14 NFT)</strong></a></li>
+<li><a href="#currencies-hex-or-xls-14-nfts"><strong>Get information for MANY: Currencies (HEX or XLS-14 NFT)</strong></a></li>
 </ul>
-
-<p>You can order &quot;advisorylist&quot; api here:
-<a href="https://xrpforensics.org/list/">https://xrpforensics.org/list/</a>.</p>
 <h1 id='direct-url-examples'>Direct URL examples</h1><h3 id='xrpl-explorer'>XRPL Explorer</h3>
 <ul>
 <li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a></li>
@@ -726,6 +734,88 @@ Exclude unnecessary parameters to make your request faster.
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
 </aside>
+<h2 id='currency-hex-or-xls-14-nft'>Currency (HEX or XLS-14 NFT)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nft"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02C7004B041A91880000526964776F726C643836"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ridworld86"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"cti"</span><span class="p">:</span><span class="w"> </span><span class="mi">56013842556817800</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ctiLedger"</span><span class="p">:</span><span class="w"> </span><span class="mi">68850056</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ctiTxIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ctiValid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641544270</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ctiTx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79C0E05CB9FC2B74F0B9716C15A6E2F924DBC8658931FD96AC8B158308A9886C"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payment"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rGpmRmU3Q5gyhhyWLWugkPX6SA8FyqXyE5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"counterparty"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"memos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"Memo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"MemoData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"526964776F726C6438362E205261726974793A2052617265204C6567656E642E20416D6F756E74206D696E7465643A2035383920756E6974732E20526964776F726C64C2AE20436F6C6C65637469626C65204E465420436172642047616D652E20496C6C7573747261746F723A205765622041727469737469632E"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"MemoFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"746578742F706C61696E"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"MemoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4465736372697074696F6E"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"Memo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"MemoData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456E69676D61"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"MemoFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"746578742F706C61696E"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"MemoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"417574686F72"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"Memo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"MemoData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733A2F2F626166796265696779347869796C347A7062376C667474797832356E7A796E6F32647369766A777378657337376467336936356767796666637665"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"MemoFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"746578742F757269"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"MemoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5072696D617279557269"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"nft"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls14"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ridworld86. Rarity: Rare Legend. Amount minted: 589 units. Ridworld® Collectible NFT Card Game. Illustrator: Web Artistic."</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enigma"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"primaryUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://bafybeigy4xiyl4zpb7lfttyx25nzyno2dsivjwsxes77dg3i65ggyffcve"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"backupUri"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/currency/&lt;currency&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>A currency (HEX or XLS-14 NFT)</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+You can retrieve information for MANY currencies in one request:
+<a href="#currencies-hex-or-xls-14-nfts">Get information for MANY: Currencies (HEX or XLS-14 NFT)</a>
+</aside>
 <h2 id='validator'>Validator</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getValidatorAddress</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -745,9 +835,9 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves a XRPL address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -757,6 +847,108 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>validatorPublicKey</td>
 <td>The public key of the validator to retrieve</td>
+</tr>
+</tbody></table>
+<h1 id='get-information-for-many'>Get information for MANY</h1><h2 id='currencies-hex-or-xls-14-nfts'>Currencies (HEX or XLS-14 NFTs)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"02090001014A4E43454C53436F6E746573743031"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nft"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02090001014A4E43454C53436F6E746573743031"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ELSContest01"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cti"</span><span class="p">:</span><span class="w"> </span><span class="mi">2533279107010115</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctiLedger"</span><span class="p">:</span><span class="w"> </span><span class="mi">21646915</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctiTxIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctiValid"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1465177060</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctiTx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"orderCancellation"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4aqu2zbAdX2QQ9bdeuGwifUMhtEeqx3pY"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D06F5941FD8D1DFAD1A0E4B2BE227C19C0C49B6E6257B846A507E69F9AFB10AA"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"nft"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls14"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"02C7004B041A91880000526964776F726C643836"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nft"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02C7004B041A91880000526964776F726C643836"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ridworld86"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"cti"</span><span class="p">:</span><span class="w"> </span><span class="mi">56013842556817800</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctiLedger"</span><span class="p">:</span><span class="w"> </span><span class="mi">68850056</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctiTxIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctiValid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1641544270</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctiTx"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79C0E05CB9FC2B74F0B9716C15A6E2F924DBC8658931FD96AC8B158308A9886C"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payment"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rGpmRmU3Q5gyhhyWLWugkPX6SA8FyqXyE5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"counterparty"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"memos"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"Memo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"MemoData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"526964776F726C6438362E205261726974793A2052617265204C6567656E642E20416D6F756E74206D696E7465643A2035383920756E6974732E20526964776F726C64C2AE20436F6C6C65637469626C65204E465420436172642047616D652E20496C6C7573747261746F723A205765622041727469737469632E"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"MemoFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"746578742F706C61696E"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"MemoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4465736372697074696F6E"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"Memo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"MemoData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"456E69676D61"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"MemoFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"746578742F706C61696E"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"MemoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"417574686F72"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"Memo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"MemoData"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733A2F2F626166796265696779347869796C347A7062376C667474797832356E7A796E6F32647369766A777378657337376467336936356767796666637665"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"MemoFormat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"746578742F757269"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"MemoType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5072696D617279557269"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"nft"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls14"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ridworld86. Rarity: Rare Legend. Amount minted: 589 units. Ridworld® Collectible NFT Card Game. Illustrator: Web Artistic."</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enigma"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"primaryUri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://bafybeigy4xiyl4zpb7lfttyx25nzyno2dsivjwsxes77dg3i65ggyffcve"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"backupUri"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"534F4C4F00000000000000000000000000000000"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hex"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"534F4C4F00000000000000000000000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOLO"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/currencies</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currencyList</td>
+<td>A list of currencies separated by comma (HEX or XLS-14 NFT)</td>
 </tr>
 </tbody></table>
 <h1 id='get-information-of-all'>Get information of ALL</h1><h2 id='services'>Services</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services"</span>
@@ -818,7 +1010,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of identified services.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services</code></p>
 <h3 id='response-format-2'>Response Format</h3>
 <table><thead>
@@ -904,7 +1096,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of all identified service addresses.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/addresses</code></p>
 <h3 id='response-format-3'>Response Format</h3>
 <table><thead>
@@ -1013,9 +1205,9 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3">
   https://bithomp.com/explorer/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3
 </a>.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/&lt;id&gt;</code></p>
-<h3 id='url-parameters-4'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1072,9 +1264,9 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://bithomp.com/submit/">
   https://bithomp.com/submit/
 </a>.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1137,7 +1329,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/?hwlogin">
   https://bithomp.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -1198,7 +1390,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-4'>Response Format</h3>
 <table><thead>
@@ -1316,7 +1508,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-5'>Response Format</h3>
 <table><thead>
