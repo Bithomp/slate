@@ -27,15 +27,12 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 # Changelog
 
-### 15th June 2021
+### 31st of January 2022
 
-A query parameter `forensic` was removed from the next API end-points:
+Two new endpoints were added:
 
-* <a href="#address">**Get information for ONE: Address**</a>
-* <a href="#username">**Get information for ONE: Username**</a>
-
-You can order "advisorylist" api here:
-<a href="https://xrpforensics.org/list/">https://xrpforensics.org/list/</a>.
+* <a href="#currency-hex-or-xls-14-nft">**Get information for ONE: Currency (HEX or XLS-14 NFT)**</a>
+* <a href="#currencies-hex-or-xls-14-nfts">**Get information for MANY: Currencies (HEX or XLS-14 NFT)**</a>
 
 # Direct URL examples
 
@@ -323,6 +320,96 @@ parent | false | If set to true, the result will include the same info for a par
 Exclude unnecessary parameters to make your request faster.
 </aside>
 
+## Currency (HEX or XLS-14 NFT)
+
+```shell
+curl "https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "type": "nft",
+  "currencyCode": "02C7004B041A91880000526964776F726C643836",
+  "currency": "Ridworld86",
+  "cti": 56013842556817800,
+  "ctiLedger": 68850056,
+  "ctiTxIndex": 75,
+  "ctiValid": true,
+  "timestamp": 1641544270,
+  "ctiTx": {
+    "hash": "79C0E05CB9FC2B74F0B9716C15A6E2F924DBC8658931FD96AC8B158308A9886C",
+    "type": "payment",
+    "account": "rGpmRmU3Q5gyhhyWLWugkPX6SA8FyqXyE5",
+    "counterparty": null,
+    "destination": "r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd",
+    "memos": [
+      {
+        "Memo": {
+          "MemoData": "526964776F726C6438362E205261726974793A2052617265204C6567656E642E20416D6F756E74206D696E7465643A2035383920756E6974732E20526964776F726C64C2AE20436F6C6C65637469626C65204E465420436172642047616D652E20496C6C7573747261746F723A205765622041727469737469632E",
+          "MemoFormat": "746578742F706C61696E",
+          "MemoType": "4465736372697074696F6E"
+        }
+      },
+      {
+        "Memo": {
+          "MemoData": "456E69676D61",
+          "MemoFormat": "746578742F706C61696E",
+          "MemoType": "417574686F72"
+        }
+      },
+      {
+        "Memo": {
+          "MemoData": "697066733A2F2F626166796265696779347869796C347A7062376C667474797832356E7A796E6F32647369766A777378657337376467336936356767796666637665",
+          "MemoFormat": "746578742F757269",
+          "MemoType": "5072696D617279557269"
+        }
+      }
+    ]
+  },
+  "nft": {
+    "type": "xls14",
+    "description": "Ridworld86. Rarity: Rare Legend. Amount minted: 589 units. Ridworld® Collectible NFT Card Game. Illustrator: Web Artistic.",
+    "author": "Enigma",
+    "primaryUri": "ipfs://bafybeigy4xiyl4zpb7lfttyx25nzyno2dsivjwsxes77dg3i65ggyffcve",
+    "backupUri": null,
+    "image": null,
+    "data": null
+  }
+}
+```
+
+This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/currency/<currency>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+currency  | A currency (HEX or XLS-14 NFT)
+
+<aside class="notice">
+You can retrieve information for MANY currencies in one request:
+<a href="#currencies-hex-or-xls-14-nfts">Get information for MANY: Currencies (HEX or XLS-14 NFT)</a>
+</aside>
+
 ## Validator
 
 ```shell
@@ -363,6 +450,118 @@ This endpoint retrieves a XRPL address of a specific validator
 Parameter | Description
 --------- | -----------
 validatorPublicKey | The public key of the validator to retrieve
+
+# Get information for MANY
+
+## Currencies (HEX or XLS-14 NFTs)
+
+```shell
+curl "https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "02090001014A4E43454C53436F6E746573743031": {
+    "type": "nft",
+    "currencyCode": "02090001014A4E43454C53436F6E746573743031",
+    "currency": "ELSContest01",
+    "cti": 2533279107010115,
+    "ctiLedger": 21646915,
+    "ctiTxIndex": 1,
+    "ctiValid": false,
+    "timestamp": 1465177060,
+    "ctiTx": {
+      "type": "orderCancellation",
+      "account": "r4aqu2zbAdX2QQ9bdeuGwifUMhtEeqx3pY",
+      "hash": "D06F5941FD8D1DFAD1A0E4B2BE227C19C0C49B6E6257B846A507E69F9AFB10AA"
+    },
+    "nft": {
+      "type": "xls14"
+    }
+  },
+  "02C7004B041A91880000526964776F726C643836": {
+    "type": "nft",
+    "currencyCode": "02C7004B041A91880000526964776F726C643836",
+    "currency": "Ridworld86",
+    "cti": 56013842556817800,
+    "ctiLedger": 68850056,
+    "ctiTxIndex": 75,
+    "ctiValid": true,
+    "timestamp": 1641544270,
+    "ctiTx": {
+      "hash": "79C0E05CB9FC2B74F0B9716C15A6E2F924DBC8658931FD96AC8B158308A9886C",
+      "type": "payment",
+      "account": "rGpmRmU3Q5gyhhyWLWugkPX6SA8FyqXyE5",
+      "counterparty": null,
+      "destination": "r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd",
+      "memos": [
+        {
+          "Memo": {
+            "MemoData": "526964776F726C6438362E205261726974793A2052617265204C6567656E642E20416D6F756E74206D696E7465643A2035383920756E6974732E20526964776F726C64C2AE20436F6C6C65637469626C65204E465420436172642047616D652E20496C6C7573747261746F723A205765622041727469737469632E",
+            "MemoFormat": "746578742F706C61696E",
+            "MemoType": "4465736372697074696F6E"
+          }
+        },
+        {
+          "Memo": {
+            "MemoData": "456E69676D61",
+            "MemoFormat": "746578742F706C61696E",
+            "MemoType": "417574686F72"
+          }
+        },
+        {
+          "Memo": {
+            "MemoData": "697066733A2F2F626166796265696779347869796C347A7062376C667474797832356E7A796E6F32647369766A777378657337376467336936356767796666637665",
+            "MemoFormat": "746578742F757269",
+            "MemoType": "5072696D617279557269"
+          }
+        }
+      ]
+    },
+    "nft": {
+      "type": "xls14",
+      "description": "Ridworld86. Rarity: Rare Legend. Amount minted: 589 units. Ridworld® Collectible NFT Card Game. Illustrator: Web Artistic.",
+      "author": "Enigma",
+      "primaryUri": "ipfs://bafybeigy4xiyl4zpb7lfttyx25nzyno2dsivjwsxes77dg3i65ggyffcve",
+      "backupUri": null,
+      "image": null,
+      "data": null
+    }
+  },
+  "534F4C4F00000000000000000000000000000000": {
+    "type": "hex",
+    "currencyCode": "534F4C4F00000000000000000000000000000000",
+    "currency": "SOLO"
+  }
+}
+```
+
+This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/currencies`
+
+### Query Parameters
+
+Parameter     | Description
+------------- | -----------
+currencyList  | A list of currencies separated by comma (HEX or XLS-14 NFT)
 
 # Get information of ALL
 
