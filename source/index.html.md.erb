@@ -27,6 +27,12 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 # Changelog
 
+### 7th of February 2022
+
+The new query parameters: `payString`, `inception`, `flare`, `nickname` were added to the <a href="#address">**Address**</a> API end-point:
+
+* <a href="#address">**Get information for ONE: Address**</a>
+
 ### 31st of January 2022
 
 Two new endpoints were added:
@@ -235,10 +241,14 @@ address | The XRPL address, can be old r-address or a new X-address
 Parameter | Default | Description
 --------- | ------- | -----------
 service | false | If set to true, the result will also include Service details.
-username | false | If set to true, the result will also include a username (rippletrade or bithomp).
-verifiedDomain | false | If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C">verifiedDomain</a> if such exists.
-hashicon | false | If set true, the result will include hashicon which can be used in img's src="" or in css, as background's url. (The icon is the same for x-address and r-address, such hashicons used in ToastWallet and Bithomp.)
-parent | false | If set to true, the result will include the same info for a parent account.
+username | false | If set to true, the result will also include a `username` (rippletrade or bithomp).
+payString | false| If set to true, the result will also include a bithomp `payString` for that address.
+verifiedDomain | false | If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C">`verifiedDomain`</a> if such exists.
+hashicon | false | If set true, the result will include `hashicon` which can be used in img's src="" or in css, as background's url. (The icon is the same for x-address and r-address, such hashicons used in Xumm and Bithomp.)
+parent | false | If set to true, the result will include the same info for a parent account. Also it will add to the root object: `genesis`, `initialBalance`, `inception`
+nickname | false | If set to true, the result will include an old `nickname` from bitcointalk forum.
+flare | false | if set to true, the result will include `flare: {spark, songbird, address}`.
+inception | false | if set to true, the result will include: `genesis`, `initialBalance`, `inception`.
 
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
@@ -276,6 +286,14 @@ print $data;
     "domain": "xrptipbot.com",
     "socialAccounts": {
       "twitter": "xrptipbot"
+      "facebook": null,
+      "youtube": null,
+      "instagram": null,
+      "linkedin": null,
+      "reddit": null,
+      "medium": null,
+      "steemit": null,
+      "telegram": null
     }
   },
   "verifiedDomain": "xrptipbot.com",
@@ -288,7 +306,14 @@ print $data;
       "domain": "bitstamp.net",
       "socialAccounts": {
         "twitter": "Bitstamp",
-        "facebook": "Bitstamp"
+        "facebook": "Bitstamp",
+        "youtube": null,
+        "instagram": null,
+        "linkedin": null,
+        "reddit": null,
+        "medium": null,
+        "steemit": null,
+        "telegram": null
       }
     },
   }
