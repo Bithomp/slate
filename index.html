@@ -314,6 +314,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#7th-of-february-2022" class="toc-h2 toc-link" data-title="7th of February 2022">7th of February 2022</a>
+                  </li>
+                  <li>
                     <a href="#31st-of-january-2022" class="toc-h2 toc-link" data-title="31st of January 2022">31st of January 2022</a>
                   </li>
               </ul>
@@ -423,7 +426,13 @@
 <p>Bithomp API endpoints will give you access to information on XRPL addresses, usernames, validators, services and more.</p>
 
 <p>We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='changelog'>Changelog</h1><h3 id='31st-of-january-2022'>31st of January 2022</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='7th-of-february-2022'>7th of February 2022</h3>
+<p>The new query parameters: <code>payString</code>, <code>inception</code>, <code>flare</code>, <code>nickname</code> were added to the <a href="#address"><strong>Address</strong></a> API end-point:</p>
+
+<ul>
+<li><a href="#address"><strong>Get information for ONE: Address</strong></a></li>
+</ul>
+<h3 id='31st-of-january-2022'>31st of January 2022</h3>
 <p>Two new endpoints were added:</p>
 
 <ul>
@@ -624,22 +633,42 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>username</td>
 <td>false</td>
-<td>If set to true, the result will also include a username (rippletrade or bithomp).</td>
+<td>If set to true, the result will also include a <code>username</code> (rippletrade or bithomp).</td>
+</tr>
+<tr>
+<td>payString</td>
+<td>false</td>
+<td>If set to true, the result will also include a bithomp <code>payString</code> for that address.</td>
 </tr>
 <tr>
 <td>verifiedDomain</td>
 <td>false</td>
-<td>If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C">verifiedDomain</a> if such exists.</td>
+<td>If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C"><code>verifiedDomain</code></a> if such exists.</td>
 </tr>
 <tr>
 <td>hashicon</td>
 <td>false</td>
-<td>If set true, the result will include hashicon which can be used in img&#39;s src=&quot;&quot; or in css, as background&#39;s url. (The icon is the same for x-address and r-address, such hashicons used in ToastWallet and Bithomp.)</td>
+<td>If set true, the result will include <code>hashicon</code> which can be used in img&#39;s src=&quot;&quot; or in css, as background&#39;s url. (The icon is the same for x-address and r-address, such hashicons used in Xumm and Bithomp.)</td>
 </tr>
 <tr>
 <td>parent</td>
 <td>false</td>
-<td>If set to true, the result will include the same info for a parent account.</td>
+<td>If set to true, the result will include the same info for a parent account. Also it will add to the root object: <code>genesis</code>, <code>initialBalance</code>, <code>inception</code></td>
+</tr>
+<tr>
+<td>nickname</td>
+<td>false</td>
+<td>If set to true, the result will include an old <code>nickname</code> from bitcointalk forum.</td>
+</tr>
+<tr>
+<td>flare</td>
+<td>false</td>
+<td>if set to true, the result will include <code>flare: {spark, songbird, address}</code>.</td>
+</tr>
+<tr>
+<td>inception</td>
+<td>false</td>
+<td>if set to true, the result will include: <code>genesis</code>, <code>initialBalance</code>, <code>inception</code>.</td>
 </tr>
 </tbody></table>
 
@@ -668,6 +697,14 @@ Exclude unnecessary parameters to make your request faster.
     </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot.com"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot"</span><span class="w">
+      </span><span class="nl">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"instagram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reddit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"medium"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"steemit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"telegram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"verifiedDomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot.com"</span><span class="p">,</span><span class="w">
@@ -680,7 +717,14 @@ Exclude unnecessary parameters to make your request faster.
       </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitstamp.net"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="w">
+        </span><span class="nl">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instagram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reddit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"medium"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"steemit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"telegram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
   </span><span class="p">}</span><span class="w">
