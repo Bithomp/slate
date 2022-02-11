@@ -176,7 +176,7 @@ totalAddresses | Integer | The amount of identified addresses.
 ## Address
 
 ```shell
-curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&parent=true&verifiedDomain=true"
+curl "https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -184,11 +184,11 @@ curl "https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?serv
 function getAddressInfo(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&parent=true&verifiedDomain=true", getAddressInfo);
+bithompRequest("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true", getAddressInfo);
 ```
 
 ```php
-$addressInfo = curl_bithomp("https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&username=true&parent=true&verifiedDomain=true");
+$addressInfo = curl_bithomp("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true");
 print $addressInfo;
 ```
 
@@ -196,31 +196,60 @@ print $addressInfo;
 
 ```json
 {
-  "address": "rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY",
-  "xAddress": "XV5sbjUmgPpvXv4ixFWZ5ptAYZ6PD2gYsjNFQLKYW33DzBm",
-  "inception": 1513126312,
-  "username": "xrptipbot",
+  "address": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+  "xAddress": "X7WZKEeNVS2p9Tire9DtNFkzWBZbFtJHWxDjN9fCrBGqVA4",
+  "inception": 1361216760,
+  "initialBalance": 1500,
+  "genesis": false,
+  "ledgerInfo": {
+    "activated": true,
+    "error": null,
+    "ledger": 69617915,
+    "balance": "6511036080064",
+    "flags": {
+      "passwordSpent": false,
+      "requireDestTag": true,
+      "requireAuth": false,
+      "depositAuth": false,
+      "disallowXRP": true,
+      "disableMaster": false,
+      "noFreeze": false,
+      "globalFreeze": false,
+      "defaultRipple": true
+    },
+    "ownerCount": 387,
+    "previousTxnID": "2B0A02B899DC0D384AC14E0AB6DF8E32DBB9941D06696233A6BF03C0EB577027",
+    "previousTxnLgrSeq": 69617676,
+    "sequence": 4692,
+    "accountTxnID": null,
+    "mintedTokens": null,
+    "burnedTokens": null,
+    "regularKey": null,
+    "ticketCount": null,
+    "signerList": null,
+    "domain": "bitstamp.net",
+    "emailHash": "5b33b93c7ffe384d53450fc666bb11fb",
+    "messageKey": null,
+    "tickSize": null,
+    "transferRate": 1.002,
+    "blackholed": false
+  },
   "service": {
-    "name": "XRP Tip Bot",
-    "domain": "xrptipbot.com",
+    "name": "Bitstamp",
+    "domain": "bitstamp.net",
     "socialAccounts": {
-      "twitter": "xrptipbot"
+      "twitter": "Bitstamp",
+      "facebook": "Bitstamp",
+      "youtube": null,
+      "instagram": null,
+      "linkedin": null,
+      "reddit": null,
+      "medium": null,
+      "telegram": null
     }
   },
-  "verifiedDomain": "xrptipbot.com",
-  "parent": {
-    "address": "rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv",
-    "xAddress": "XV3oNHx95sqdCkTDCBCVsVeuBmvh2du1vBfJR24EqdgwHDW",
-    "inception": 1481884572,
-    "service": {
-      "name": "Bitstamp",
-      "domain": "bitstamp.net",
-      "socialAccounts": {
-        "twitter": "Bitstamp",
-        "facebook": "Bitstamp"
-      }
-    },
-  }
+  "username": "Bitstamp",
+  "verifiedDomain": null
 }
 ```
 
@@ -249,6 +278,7 @@ parent | false | If set to true, the result will include the same info for a par
 nickname | false | If set to true, the result will include an old `nickname` from bitcointalk forum.
 flare | false | if set to true, the result will include `flare: {spark, songbird, address}`.
 inception | false | if set to true, the result will include: `genesis`, `initialBalance`, `inception`.
+ledgerInfo | false | if set to true, the result will include `ledgerInfo` object. (Note: A fee to use this parameter might be introduced in the feature)
 
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
