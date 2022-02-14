@@ -27,6 +27,12 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 # Changelog
 
+### 15th of February 2022
+
+The new query parameters: `ledgerInfo`, `nfts` were added to the <a href="#address">**Address**</a> API end-point:
+
+* <a href="#address">**Get information for ONE: Address**</a>
+
 ### 7th of February 2022
 
 The new query parameters: `payString`, `inception`, `flare`, `nickname` were added to the <a href="#address">**Address**</a> API end-point:
@@ -222,11 +228,32 @@ print $addressInfo;
     "previousTxnLgrSeq": 69617676,
     "sequence": 4692,
     "accountTxnID": null,
-    "mintedTokens": null,
-    "burnedTokens": null,
+    "mintedTokens": 1,
+    "burnedTokens": 12,
     "regularKey": null,
-    "ticketCount": null,
-    "signerList": null,
+    "ticketCount": 5,
+    "signerList": {
+      "previousTxnID": "965730F660A808927B7A850F0408FF6532BA385641FC1DC67E2907F41A9E7B75",
+      "previousTxnLgrSeq": 62412856,
+      "signerQuorum": 2,
+      "flags": {
+        "oneOwnerCount": true
+      },
+      "signerEntries": [
+        {
+          "account": "re3LGjhrCvthtWWwrfKbVJjXN9PYDeQDJ",
+          "signerWeight": 1
+        },
+        {
+          "account": "rkPA5RwLVPnJgpcsrzYvHwx1HVfDb6zD3",
+          "signerWeight": 1
+        },
+        {
+          "account": "rpcL6T32dYb6FDgdm4CnC1DZQSoMvvkLRd",
+          "signerWeight": 1
+        }
+      ]
+    },
     "domain": "bitstamp.net",
     "emailHash": "5b33b93c7ffe384d53450fc666bb11fb",
     "messageKey": null,
@@ -249,7 +276,23 @@ print $addressInfo;
     }
   },
   "username": "Bitstamp",
-  "verifiedDomain": null
+  "verifiedDomain": null,
+  "nfts": [
+    {
+      "flags": {
+        "burnable": false,
+        "onlyXRP": false,
+        "trustLine": false,
+        "transferable": true
+      }, 
+      "issuer": "rGJn1uZxDX4ksxRPYuj2smP7ZshdwjeSTG",
+      "tokenID": "000861A8A7C507A12088BF6A6BB62BAFEE9CDAABA2961DB216E5DA9C00000001",
+      "tokenTaxon": 0,
+      "transferFee": 25000,
+      "uri": "68747470733A2F2F6578616D706C652E636F6D2F6D795F6E6674",
+      "nftSerial": 1
+    }
+  ]
 }
 ```
 
@@ -279,6 +322,7 @@ nickname | false | If set to true, the result will include an old `nickname` fro
 flare | false | if set to true, the result will include `flare: {spark, songbird, address}`.
 inception | false | if set to true, the result will include: `genesis`, `initialBalance`, `inception`.
 ledgerInfo | false | if set to true, the result will include `ledgerInfo` object. (Note: A fee to use this parameter might be introduced in the feature)
+nfts | false | if set to true, the result will include nfts `array`. (XLS-20 only, experemental, changes might occur)
 
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
