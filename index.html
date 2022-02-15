@@ -314,6 +314,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#15th-of-february-2022" class="toc-h2 toc-link" data-title="15th of February 2022">15th of February 2022</a>
+                  </li>
+                  <li>
                     <a href="#7th-of-february-2022" class="toc-h2 toc-link" data-title="7th of February 2022">7th of February 2022</a>
                   </li>
                   <li>
@@ -426,7 +429,13 @@
 <p>Bithomp API endpoints will give you access to information on XRPL addresses, usernames, validators, services and more.</p>
 
 <p>We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='changelog'>Changelog</h1><h3 id='7th-of-february-2022'>7th of February 2022</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='15th-of-february-2022'>15th of February 2022</h3>
+<p>The new query parameters: <code>ledgerInfo</code>, <code>nfts</code> were added to the <a href="#address"><strong>Address</strong></a> API end-point:</p>
+
+<ul>
+<li><a href="#address"><strong>Get information for ONE: Address</strong></a></li>
+</ul>
+<h3 id='7th-of-february-2022'>7th of February 2022</h3>
 <p>The new query parameters: <code>payString</code>, <code>inception</code>, <code>flare</code>, <code>nickname</code> were added to the <a href="#address"><strong>Address</strong></a> API end-point:</p>
 
 <ul>
@@ -562,44 +571,110 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>The amount of identified addresses.</td>
 </tr>
 </tbody></table>
-<h1 id='get-information-for-one'>Get information for ONE</h1><h2 id='address'>Address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&amp;username=true&amp;parent=true&amp;verifiedDomain=true"</span>
+<h1 id='get-information-for-one'>Get information for ONE</h1><h2 id='address'>Address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&amp;service=true&amp;verifiedDomain=true&amp;inception=true&amp;ledgerInfo=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getAddressInfo</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&amp;username=true&amp;parent=true&amp;verifiedDomain=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getAddressInfo</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$addressInfo</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/address/rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY?service=true&amp;username=true&amp;parent=true&amp;verifiedDomain=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&amp;service=true&amp;verifiedDomain=true&amp;inception=true&amp;ledgerInfo=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getAddressInfo</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$addressInfo</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&amp;service=true&amp;verifiedDomain=true&amp;inception=true&amp;ledgerInfo=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$addressInfo</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"xAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XV5sbjUmgPpvXv4ixFWZ5ptAYZ6PD2gYsjNFQLKYW33DzBm"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"inception"</span><span class="p">:</span><span class="w"> </span><span class="mi">1513126312</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"xAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X7WZKEeNVS2p9Tire9DtNFkzWBZbFtJHWxDjN9fCrBGqVA4"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"inception"</span><span class="p">:</span><span class="w"> </span><span class="mi">1361216760</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"initialBalance"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"genesis"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ledgerInfo"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"activated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ledger"</span><span class="p">:</span><span class="w"> </span><span class="mi">69617915</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6511036080064"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"passwordSpent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"requireDestTag"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"requireAuth"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"depositAuth"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"disallowXRP"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"disableMaster"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"noFreeze"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"globalFreeze"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"defaultRipple"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"ownerCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">387</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"previousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2B0A02B899DC0D384AC14E0AB6DF8E32DBB9941D06696233A6BF03C0EB577027"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"previousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">69617676</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">4692</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"accountTxnID"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mintedTokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"burnedTokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"regularKey"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ticketCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signerList"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"previousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"965730F660A808927B7A850F0408FF6532BA385641FC1DC67E2907F41A9E7B75"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"previousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">62412856</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"signerQuorum"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"oneOwnerCount"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"signerEntries"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"re3LGjhrCvthtWWwrfKbVJjXN9PYDeQDJ"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"signerWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rkPA5RwLVPnJgpcsrzYvHwx1HVfDb6zD3"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"signerWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpcL6T32dYb6FDgdm4CnC1DZQSoMvvkLRd"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"signerWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitstamp.net"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"emailHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5b33b93c7ffe384d53450fc666bb11fb"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"messageKey"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"tickSize"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transferRate"</span><span class="p">:</span><span class="w"> </span><span class="mf">1.002</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"blackholed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP Tip Bot"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitstamp.net"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot"</span><span class="w">
+      </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"instagram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reddit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"medium"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"telegram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"verifiedDomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"xAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XV3oNHx95sqdCkTDCBCVsVeuBmvh2du1vBfJR24EqdgwHDW"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"inception"</span><span class="p">:</span><span class="w"> </span><span class="mi">1481884572</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitstamp.net"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"verifiedDomain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nfts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"burnable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"onlyXRP"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"trustLine"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w"> 
+      </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rGJn1uZxDX4ksxRPYuj2smP7ZshdwjeSTG"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000861A8A7C507A12088BF6A6BB62BAFEE9CDAABA2961DB216E5DA9C00000001"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"tokenTaxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"transferFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68747470733A2F2F6578616D706C652E636F6D2F6D795F6E6674"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"nftSerial"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested XRPL address.</p>
@@ -669,6 +744,16 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>inception</td>
 <td>false</td>
 <td>if set to true, the result will include: <code>genesis</code>, <code>initialBalance</code>, <code>inception</code>.</td>
+</tr>
+<tr>
+<td>ledgerInfo</td>
+<td>false</td>
+<td>if set to true, the result will include <code>ledgerInfo</code> object. (Note: A fee to use this parameter might be introduced in the feature)</td>
+</tr>
+<tr>
+<td>nfts</td>
+<td>false</td>
+<td>if set to true, the result will include nfts <code>array</code>. (XLS-20 only, experemental, changes might occur)</td>
 </tr>
 </tbody></table>
 
