@@ -395,9 +395,6 @@
             <a href="#transaction" class="toc-h1 toc-link" data-title="Transaction">Transaction</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#tx-lookup" class="toc-h2 toc-link" data-title="Tx Lookup">Tx Lookup</a>
-                  </li>
-                  <li>
                     <a href="#tx-decode" class="toc-h2 toc-link" data-title="Tx Decode">Tx Decode</a>
                   </li>
                   <li>
@@ -1346,89 +1343,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 <aside class="notice">
 Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
 </aside>
-<h1 id='transaction'>Transaction</h1><h2 id='tx-lookup'>Tx Lookup</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transaction/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3"</span>
-  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
-<span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/transaction/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/transaction/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3"</span><span class="p">);</span>
-<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payment"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBRVqcXrm1YAbanngTxDfH15LNb6TjNmxk"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">98302</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"specification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBRVqcXrm1YAbanngTxDfH15LNb6TjNmxk"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"maxAmount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"tag"</span><span class="p">:</span><span class="w"> </span><span class="mi">1617004677</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"outcome"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2015-10-24T06:37:00.000Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.020002"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"balanceChanges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"rBRVqcXrm1YAbanngTxDfH15LNb6TjNmxk"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-31.020002"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"orderbookChanges"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w">
-    </span><span class="nl">"ledgerVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">16658556</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"indexInLedger"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"deliveredAmount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves transaction details.
-<br>
-Page where it used on bithomp:
-<a href="https://bithomp.com/explorer/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3">
-  https://bithomp.com/explorer/2D6894BCCA14919218576E8204E4715301989D98CAEDA304BB465949459972D3
-</a>.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
-<p><code>GET https://bithomp.com/api/v2/transaction/&lt;id&gt;</code></p>
-<h3 id='url-parameters-6'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>Transaction id (hash)</td>
-</tr>
-</tbody></table>
-
-<aside class="warning">
-  A fee to use this endpoint might be introduced in the feature to support a third party Full History Node operator.
-</aside>
-<h2 id='tx-decode'>Tx Decode</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1"</span>
+<h1 id='transaction'>Transaction</h1><h2 id='tx-decode'>Tx Decode</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
@@ -1469,9 +1384,9 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://bithomp.com/submit/">
   https://bithomp.com/submit/
 </a>.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1534,7 +1449,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/?hwlogin">
   https://bithomp.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -1595,7 +1510,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-4'>Response Format</h3>
 <table><thead>
@@ -1713,7 +1628,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-5'>Response Format</h3>
 <table><thead>
