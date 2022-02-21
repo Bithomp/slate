@@ -27,6 +27,12 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 # Changelog
 
+### 21st of February 2022
+
+A new endpoint was added:
+
+* <a href="#nft-xls-20">**Get information for ONE: NFT (XLS-20)**</a>
+
 ### 15th of February 2022
 
 The new query parameters: `ledgerInfo`, `nfts` were added to the <a href="#address">**Address**</a> API end-point:
@@ -508,6 +514,66 @@ currency  | A currency (HEX or XLS-14 NFT)
 You can retrieve information for MANY currencies in one request:
 <a href="#currencies-hex-or-xls-14-nfts">Get information for MANY: Currencies (HEX or XLS-14 NFT)</a>
 </aside>
+
+## NFT (XLS-20)
+
+```shell
+curl "https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "tokenID": "000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E",
+  "sellOffers": [
+    {
+      "amount": "850000000",
+      "index": "B54B49719DC80B40D66E229FC02CC5DABF7D4496B395F87C369FA6235AA6B37E",
+      "owner": "rGJn1uZxDX4ksxRPYuj2smP7ZshdwjeSTG"
+    }
+  ],
+  "buyOffers": [
+    {
+      "amount": "935000000",
+      "index": "3D47DA5CE9E4D9DB7D8D1FE78E9E1ECA19D8DE21A29C78FD95A856ADF2472674",
+      "owner": "rN5wU5VpqfxZ5q9duP3EhP8rw8y9xR1TNL"
+    }
+  ]
+}
+```
+
+This endpoint retrieves information for a requested NFT (XLS-20).
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/nft/<nftID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+nftID  | An NFT ID (XLS20)
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+sellOffers | false | If set true, the result will include `sellOffers`.
+buyOffers | false | If set to true, the result will include `buyOffers`.
 
 ## Validator
 
