@@ -217,6 +217,7 @@ print $addressInfo;
     "activated": true,
     "error": null,
     "ledger": 69617915,
+    "ledgerTimestamp": 1645995600,
     "balance": "6511036080064",
     "flags": {
       "passwordSpent": false,
@@ -328,6 +329,7 @@ nickname | false | If set to true, the result will include an old `nickname` fro
 flare | false | if set to true, the result will include `flare: {spark, songbird, address}`.
 inception | false | if set to true, the result will include: `genesis`, `initialBalance`, `inception`.
 ledgerInfo | false | if set to true, the result will include `ledgerInfo` object. (Note: A fee to use this parameter might be introduced in the feature)
+ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request will return `ledgerInfo` data for that timestamp)
 nfts | false | if set to true, the result will include `nfts` array. (XLS-20 only, experemental, changes might occur)
 
 <aside class="notice">
