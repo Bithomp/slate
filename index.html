@@ -314,6 +314,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#1st-of-november-2022" class="toc-h2 toc-link" data-title="1st of November 2022">1st of November 2022</a>
+                  </li>
+                  <li>
                     <a href="#21st-of-february-2022" class="toc-h2 toc-link" data-title="21st of February 2022">21st of February 2022</a>
                   </li>
                   <li>
@@ -432,7 +435,11 @@
 <p>Bithomp API endpoints will give you access to information on XRPL addresses, usernames, validators, services and more.</p>
 
 <p>We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='changelog'>Changelog</h1><h3 id='21st-of-february-2022'>21st of February 2022</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='1st-of-november-2022'>1st of November 2022</h3>
+<p>The new query parameters: <code>uri</code>, <code>history</code> were added to the <a href="#address"><strong>NFT (XLS-20)</strong></a> API end-point:</p>
+
+<p><a href="#nft-xls-20"><strong>Get information for ONE: NFT (XLS-20)</strong></a></p>
+<h3 id='21st-of-february-2022'>21st of February 2022</h3>
 <p>A new endpoint was added:</p>
 
 <ul>
@@ -960,13 +967,13 @@ Exclude unnecessary parameters to make your request faster.
 You can retrieve information for MANY currencies in one request:
 <a href="#currencies-hex-or-xls-14-nfts">Get information for MANY: Currencies (HEX or XLS-14 NFT)</a>
 </aside>
-<h2 id='nft-xls-20'>NFT (XLS-20)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true"</span>
+<h2 id='nft-xls-20'>NFT (XLS-20)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -979,11 +986,31 @@ You can retrieve information for MANY currencies in one request:
     </span><span class="nl">"trustLine"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
     </span><span class="nl">"transferable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJhSM8539zfoQwq7NomvEvt9xSbppf38Ng"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tokenTaxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"transferFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">25000</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">94</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rwzGnXc31zAeSQiKgGqFiJJcALhy8TUqb8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nftokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000813886D8D6DAC402E0D27297E9485F4D7E1125D656678258B866100000018"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nftokenTaxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">10194</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transferFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpL8hpPgdep5MrWCFfWx2qupiAhtPrMcJu"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68747470733A2F2F626166796265696734676876366263666B6E746B793234616564667A6B757276366C746A6476736763623575736E77336A736965736D68706769652E697066732E7733732E6C696E6B2F6D657461646174612E6A736F6E"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nftSerial"</span><span class="p">:</span><span class="w"> </span><span class="mi">24</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"issuedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666885020</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ownerChangedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666885052</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"deletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"history"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rXMART8usFd5kABXCayoP6ZfB35b4v43t"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"changedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666885020</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">6860081</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"453C088321BA9AFCB59B1B7B79790E5ECF53EF969B95845C494604E26C51E848"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpL8hpPgdep5MrWCFfWx2qupiAhtPrMcJu"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"changedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666885052</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">6860093</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103F0D35348C58D9E5301EED79906ED3CDBBD44EFFF65857BE8BFFD572F617A8"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"sellOffers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"850000000"</span><span class="p">,</span><span class="w">
@@ -1028,6 +1055,11 @@ You can retrieve information for MANY currencies in one request:
 </tr>
 </thead><tbody>
 <tr>
+<td>uri</td>
+<td>false</td>
+<td>If set to true, the result will include <code>uri</code>.</td>
+</tr>
+<tr>
 <td>sellOffers</td>
 <td>false</td>
 <td>If set true, the result will include <code>sellOffers</code>.</td>
@@ -1036,6 +1068,11 @@ You can retrieve information for MANY currencies in one request:
 <td>buyOffers</td>
 <td>false</td>
 <td>If set to true, the result will include <code>buyOffers</code>.</td>
+</tr>
+<tr>
+<td>history</td>
+<td>false</td>
+<td>If set to true, the result will include <code>history</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='validator'>Validator</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
