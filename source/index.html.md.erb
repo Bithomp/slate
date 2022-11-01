@@ -27,6 +27,12 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 # Changelog
 
+### 1st of November 2022
+
+The new query parameters: `uri`, `history` were added to the <a href="#address">**NFT (XLS-20)**</a> API end-point:
+
+<a href="#nft-xls-20">**Get information for ONE: NFT (XLS-20)**</a>
+
 ### 21st of February 2022
 
 A new endpoint was added:
@@ -520,7 +526,7 @@ You can retrieve information for MANY currencies in one request:
 ## NFT (XLS-20)
 
 ```shell
-curl "https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true"
+curl "https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -528,11 +534,11 @@ curl "https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true", getData);
+bithompRequest("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true");
 print $data;
 ```
 
@@ -546,11 +552,31 @@ print $data;
     "trustLine": false,
     "transferable": true
   },
-  "issuer": "rJhSM8539zfoQwq7NomvEvt9xSbppf38Ng",
-  "tokenID": "000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E",
-  "tokenTaxon": 0,
-  "transferFee": 25000,
-  "sequence": 94,
+  "issuer": "rwzGnXc31zAeSQiKgGqFiJJcALhy8TUqb8",
+  "nftokenID": "000813886D8D6DAC402E0D27297E9485F4D7E1125D656678258B866100000018",
+  "nftokenTaxon": 10194,
+  "transferFee": 5000,
+  "sequence": 24,
+  "owner": "rpL8hpPgdep5MrWCFfWx2qupiAhtPrMcJu",
+  "uri": "68747470733A2F2F626166796265696734676876366263666B6E746B793234616564667A6B757276366C746A6476736763623575736E77336A736965736D68706769652E697066732E7733732E6C696E6B2F6D657461646174612E6A736F6E",
+  "nftSerial": 24,
+  "issuedAt": 1666885020,
+  "ownerChangedAt": 1666885052,
+  "deletedAt": null,
+  "history": [
+    {
+      "owner": "rXMART8usFd5kABXCayoP6ZfB35b4v43t",
+      "changedAt": 1666885020,
+      "ledgerIndex": 6860081,
+      "txHash": "453C088321BA9AFCB59B1B7B79790E5ECF53EF969B95845C494604E26C51E848"
+    },
+    {
+      "owner": "rpL8hpPgdep5MrWCFfWx2qupiAhtPrMcJu",
+      "changedAt": 1666885052,
+      "ledgerIndex": 6860093,
+      "txHash": "103F0D35348C58D9E5301EED79906ED3CDBBD44EFFF65857BE8BFFD572F617A8"
+    }
+  ],
   "sellOffers": [
     {
       "amount": "850000000",
@@ -588,8 +614,10 @@ nftID  | An NFT ID (XLS20)
 
 Parameter | Default | Description
 --------- | ------- | -----------
+uri | false | If set to true, the result will include `uri`.
 sellOffers | false | If set true, the result will include `sellOffers`.
 buyOffers | false | If set to true, the result will include `buyOffers`.
+history | false | If set to true, the result will include `history`.
 
 ## Validator
 
