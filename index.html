@@ -602,6 +602,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
     </span><span class="nl">"activated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ledger"</span><span class="p">:</span><span class="w"> </span><span class="mi">69617915</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ledgerTimestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1645995600</span><span class="p">,</span><span class="w">
     </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6511036080064"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="nl">"passwordSpent"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
@@ -758,6 +759,11 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>ledgerInfo</td>
 <td>false</td>
 <td>if set to true, the result will include <code>ledgerInfo</code> object. (Note: A fee to use this parameter might be introduced in the feature)</td>
+</tr>
+<tr>
+<td>ledgerTimestamp</td>
+<td>null</td>
+<td>ISO timestamp or unix timestamp (if set the request will return <code>ledgerInfo</code> data for that timestamp)</td>
 </tr>
 <tr>
 <td>nfts</td>
@@ -983,10 +989,8 @@ You can retrieve information for MANY currencies in one request:
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"850000000"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B54B49719DC80B40D66E229FC02CC5DABF7D4496B395F87C369FA6235AA6B37E"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rGJn1uZxDX4ksxRPYuj2smP7ZshdwjeSTG"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ownerNode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"offerNode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rM3UEiJzg7nMorRhdED5savWDt1Gqb6TLw"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582437632</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"buyOffers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -994,10 +998,8 @@ You can retrieve information for MANY currencies in one request:
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"935000000"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3D47DA5CE9E4D9DB7D8D1FE78E9E1ECA19D8DE21A29C78FD95A856ADF2472674"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rN5wU5VpqfxZ5q9duP3EhP8rw8y9xR1TNL"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ownerNode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"offerNode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rM3UEiJzg7nMorRhdED5savWDt1Gqb6TLw"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1582437632</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
