@@ -27,6 +27,12 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 # Changelog
 
+### 14th of November 2022
+
+An example to retrive rippletrade&bithomp usernames:
+
+<a href="#get-username">**Get username**</a>
+
 ### 1st of November 2022
 
 The new query parameters: `uri`, `history` were added to the <a href="#address">**NFT (XLS-20)**</a> API end-point:
@@ -65,19 +71,17 @@ Two new endpoints were added:
 * <a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a>
 * <a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a>
 * <a href="https://bithomp.com/explorer/bitstamp">https://bithomp.com/explorer/{username}</a>
+* <a href="https://bithomp.com/explorer/00081388161A9F1B349F3D50596D02CCA65E97D9268A5AF529A955040000000D">https://bithomp.com/explorer/{NFTokenID}</a>
 * <a href="https://bithomp.com/explorer/02C7004B041A91880000526964776F726C643836">https://bithomp.com/explorer/{NFT-XLS14 || HEXcurrency}</a>
 * <a href="https://bithomp.com/explorer/rabbit$bithomp.com">https://bithomp.com/explorer/{payString}</a>
 * <a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112#comment">https://bithomp.com/explorer/{txid}#comment</a>
 * <a href="https://bithomp.com/explorer/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z#comment">https://bithomp.com/explorer/{address}#comment</a>
 * <a href="https://bithomp.com/explorer/Bithomp#comment">https://bithomp.com/explorer/{username}#comment</a>
 
-### Validator pages
-
-* <a href="https://bithomp.com/validators/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA">https://bithomp.com/validators/{validor pub key}</a>
-
 ### Username registration
-* <a href="https://bithomp.com/username/Bithomp">https://bithomp.com/username/{username}</a>
-* <a href="https://bithomp.com/username/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://bithomp.com/username/{address}</a>
+* <a href="https://bithomp.com/username?username=Bithomp">https://bithomp.com/username?username={username}</a>
+* <a href="https://bithomp.com/username?address=rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://bithomp.com/username?address={address}</a>
+* <a href="https://bithomp.com/username?address=rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z&username=Bithomp">https://bithomp.com/username?address={address}&username={username}</a>
 
 # Authentication
 
@@ -143,6 +147,53 @@ Bithomp expects for the API key to be included in all API requests to the server
 <aside class="notice">
 You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your personal API key.
 </aside>
+
+# Get username
+
+```shell
+curl "https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "address": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+  "xAddress": "X7WZKEeNVS2p9Tire9DtNFkzWBZbFtJHWxDjN9fCrBGqVA4",
+  "username": "Bitstamp"
+}
+```
+
+This endpoint retrieves a username for a requested XRPL address.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/address/<address>?username=true`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+address | The XRPL address, can be r-address or a X-address
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+username | false | If set to true, the result will also include a `username` (rippletrade or bithomp).
 
 # Get status
 
