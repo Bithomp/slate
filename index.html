@@ -314,6 +314,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#19th-of-november-2022" class="toc-h2 toc-link" data-title="19th of November 2022">19th of November 2022</a>
+                  </li>
+                  <li>
                     <a href="#14th-of-november-2022" class="toc-h2 toc-link" data-title="14th of November 2022">14th of November 2022</a>
                   </li>
                   <li>
@@ -449,7 +452,11 @@
 <p>Bithomp API endpoints will give you access to information on XRPL addresses, usernames, validators, services and more.</p>
 
 <p>We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='changelog'>Changelog</h1><h3 id='14th-of-november-2022'>14th of November 2022</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='19th-of-november-2022'>19th of November 2022</h3>
+<p>The new query parameter: <code>metadata</code> was added to the <a href="#address"><strong>NFT (XLS-20)</strong></a> API end-point:</p>
+
+<p><a href="#nft-xls-20"><strong>Get information for ONE: NFT (XLS-20)</strong></a></p>
+<h3 id='14th-of-november-2022'>14th of November 2022</h3>
 <p>An example to retrive rippletrade&amp;bithomp usernames:</p>
 
 <p><a href="#get-username"><strong>Get username</strong></a></p>
@@ -1120,7 +1127,7 @@ You can retrieve information for MANY currencies in one request:
 <tr>
 <td>uri</td>
 <td>false</td>
-<td>If set to true, the result will include <code>uri</code>.</td>
+<td>If set to true, the result will include <code>uri</code> and <code>url</code>.</td>
 </tr>
 <tr>
 <td>sellOffers</td>
@@ -1136,6 +1143,11 @@ You can retrieve information for MANY currencies in one request:
 <td>history</td>
 <td>false</td>
 <td>If set to true, the result will include <code>history</code>.</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>false</td>
+<td>If set to true, the result will include <code>metadata</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='validator'>Validator</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
