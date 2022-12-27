@@ -27,6 +27,15 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 # Changelog
 
+### 27th of December 2022
+
+A new endpoints were added:
+
+<a href="#nft-offer">**NFT Offer**</a>
+<a href="#nfts">**NFTS**</a>
+<a href="#nft-sales">**NFT Sales**</a>
+<a href="#nft-volumes">**NFT Volumes**</a>
+
 ### 19th of November 2022
 
 The new query parameter: `metadata` was added to the <a href="#address">**NFT (XLS-20)**</a> API end-point:
@@ -38,37 +47,6 @@ The new query parameter: `metadata` was added to the <a href="#address">**NFT (X
 An example to retrive rippletrade&bithomp usernames:
 
 <a href="#get-username">**Get username**</a>
-
-### 1st of November 2022
-
-The new query parameters: `uri`, `history` were added to the <a href="#address">**NFT (XLS-20)**</a> API end-point:
-
-<a href="#nft-xls-20">**Get information for ONE: NFT (XLS-20)**</a>
-
-### 21st of February 2022
-
-A new endpoint was added:
-
-* <a href="#nft-xls-20">**Get information for ONE: NFT (XLS-20)**</a>
-
-### 15th of February 2022
-
-The new query parameters: `ledgerInfo`, `nfts` were added to the <a href="#address">**Address**</a> API end-point:
-
-* <a href="#address">**Get information for ONE: Address**</a>
-
-### 7th of February 2022
-
-The new query parameters: `payString`, `inception`, `flare`, `nickname` were added to the <a href="#address">**Address**</a> API end-point:
-
-* <a href="#address">**Get information for ONE: Address**</a>
-
-### 31st of January 2022
-
-Two new endpoints were added:
-
-* <a href="#currency-hex-or-xls-14-nft">**Get information for ONE: Currency (HEX or XLS-14 NFT)**</a>
-* <a href="#currencies-hex-or-xls-14-nfts">**Get information for MANY: Currencies (HEX or XLS-14 NFT)**</a>
 
 # Direct URL examples
 
@@ -200,6 +178,634 @@ address | The XRPL address, can be r-address or a X-address
 Parameter | Default | Description
 --------- | ------- | -----------
 username | false | If set to true, the result will also include a `username` (rippletrade or bithomp).
+
+# NFT (XLS-20) endpoints
+
+## NFT
+
+```shell
+curl "https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "flags": {
+    "burnable": false,
+    "onlyXRP": false,
+    "trustLine": false,
+    "transferable": true
+  },
+  "issuer": "rwzGnXc31zAeSQiKgGqFiJJcALhy8TUqb8",
+  "nftokenID": "000813886D8D6DAC402E0D27297E9485F4D7E1125D656678258B866100000018",
+  "nftokenTaxon": 10194,
+  "transferFee": 5000,
+  "sequence": 24,
+  "owner": "rpL8hpPgdep5MrWCFfWx2qupiAhtPrMcJu",
+  "uri": "68747470733A2F2F626166796265696734676876366263666B6E746B793234616564667A6B757276366C746A6476736763623575736E77336A736965736D68706769652E697066732E7733732E6C696E6B2F6D657461646174612E6A736F6E",
+  "issuedAt": 1666885020,
+  "ownerChangedAt": 1666885052,
+  "deletedAt": null,
+  "history": [
+    {
+      "owner": "rXMART8usFd5kABXCayoP6ZfB35b4v43t",
+      "changedAt": 1666885020,
+      "ledgerIndex": 6860081,
+      "txHash": "453C088321BA9AFCB59B1B7B79790E5ECF53EF969B95845C494604E26C51E848"
+    },
+    {
+      "owner": "rpL8hpPgdep5MrWCFfWx2qupiAhtPrMcJu",
+      "changedAt": 1666885052,
+      "ledgerIndex": 6860093,
+      "txHash": "103F0D35348C58D9E5301EED79906ED3CDBBD44EFFF65857BE8BFFD572F617A8"
+    }
+  ],
+  "sellOffers": [
+    {
+      "amount": "850000000",
+      "index": "B54B49719DC80B40D66E229FC02CC5DABF7D4496B395F87C369FA6235AA6B37E",
+      "owner": "rGJn1uZxDX4ksxRPYuj2smP7ZshdwjeSTG",
+      "destination": "rM3UEiJzg7nMorRhdED5savWDt1Gqb6TLw",
+      "expiration": 1582437632,
+      "createdAt": 1582437132
+    }
+  ],
+  "buyOffers": [
+    {
+      "amount": "935000000",
+      "index": "3D47DA5CE9E4D9DB7D8D1FE78E9E1ECA19D8DE21A29C78FD95A856ADF2472674",
+      "owner": "rN5wU5VpqfxZ5q9duP3EhP8rw8y9xR1TNL",
+      "destination": "rM3UEiJzg7nMorRhdED5savWDt1Gqb6TLw",
+      "expiration": 1582437632,
+      "createdAt": 1582437132
+    }
+  ]
+}
+```
+
+This endpoint retrieves information for a requested NFT (XLS-20).
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/nft/<nftID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+nftID  | An NFT ID (XLS20)
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+uri | false | If set to true, the result will include `uri` and `url`.
+sellOffers | false | If set true, the result will include `sellOffers`.
+buyOffers | false | If set to true, the result will include `buyOffers`.
+history | false | If set to true, the result will include `history`.
+metadata | false | If set to true, the result will include `metadata`.
+
+## NFT Offer
+
+```shell
+curl "https://bithomp.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "nftokenID": "00081B581189F5687DBB7516339D6CCB5593D96622AD82DFE9E08966000018B7",
+  "offerIndex": "3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673",
+  "createdAt": 1671813891,
+  "createdLedgerIndex": 76627086,
+  "createdTxHash": "C78692F7CE2B6D207E12BAF28BBE7BAD4D5553FEFCAC81A49FA0D7F2B6295AFD",
+  "account": "rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX",
+  "owner": "rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX",
+  "destination": "rpZqTPC8GvrSvEfFsUuHkmPCg29GdQuXhC",
+  "expiration": 1672009200,
+  "amount": "1800000000",
+  "flags": {
+    "sellToken": false
+  },
+  "canceledAt": 1672062241,
+  "canceledLedgerIndex": 76690834,
+  "canceledTxHash": "BE00F6A40D399D66E15C5698A9F583A47FA79D47DB9E7D5B158679C97E95C202",
+  "nftoken": {
+    "flags": {
+      "burnable": false,
+      "onlyXRP": false,
+      "trustLine": false,
+      "transferable": true
+    },
+    "issuer": "rpbjkoncKiv1LkPWShzZksqYPzKXmUhTW7",
+    "nftokenID": "00081B581189F5687DBB7516339D6CCB5593D96622AD82DFE9E08966000018B7",
+    "nftokenTaxon": 52,
+    "transferFee": 7000,
+    "sequence": 6327,
+    "owner": "rhrvq8Bfn1NwQQDDProJY4F822DNbcQGj2",
+    "ownerDetails": {
+      "username": "XPUNKS",
+      "service": "XPUNKS"
+    }
+    "uri": null,
+    "issuedAt": 1671616340,
+    "ownerChangedAt": 1672061721,
+    "deletedAt": null,
+    "url": "https://marketplace-api.onxrp.com/api/metadata/00081B581189F5687DBB7516339D6CCB5593D96622AD82DFE9E08966000018B7",
+    "metadata": {
+      "dna": "81165c5b185d49e57302b8bf936ba66ded1a195476f35fc74d2d8c8d638d0c1f",
+      "name": "XPUNKS #5658",
+      "description": "The XPUNK collection consists of 10,000 uniquely generated characters on a 24-by 24-pixel canvas. They are distinguished by their colourful traits and trademark X-mouth that represents their love for the XRPL.",
+      "image": "ipfs://QmUdz7aunEkMKWjTKT71QiJeKRX3MQSDC1chDUcyhwuYQ1",
+      "imageHash": "1591d36c09c3340569582379574b8e899b550daa0d7bfecfe648fba469aaa2ee",
+      "edition": 2687,
+      "date": 1667163549733,
+      "attributes": [
+        {
+          "trait_type": "Face",
+          "value": "Male 3"
+        },
+        {
+          "trait_type": "Eye Characteristics",
+          "value": "Fresh"
+        },
+        {
+          "trait_type": "Eyes",
+          "value": "Black Right"
+        },
+        {
+          "trait_type": "Neck Wearable",
+          "value": "No Attribute"
+        },
+        {
+          "trait_type": "Hair & Hats",
+          "value": "Bandana"
+        },
+        {
+          "trait_type": "Facial Hair",
+          "value": "Thick Beard Blonde"
+        },
+        {
+          "trait_type": "Eye Wearables",
+          "value": "Sunglasses in Hair Black"
+        },
+        {
+          "trait_type": "Mouth Attribute",
+          "value": "Pipe Old School"
+        },
+        {
+          "trait_type": "Piercings",
+          "value": "No Attribute"
+        }
+      ],
+      "schema": "ipfs://QmNpi8rcXEkohca8iXu7zysKKSJYqCvBJn3xJwga8jXqWU",
+      "nftType": "art.v0",
+      "collection": {
+        "name": "XPUNKS",
+        "description": "The XPUNK collection consists of 10,000 uniquely generated characters on a 24-by-24-pixel canvas. They are distinguished by their colorful traits and trademark X-mouth that represents their love for the XRPL."
+      }
+    },
+    "issuerDetails": {
+      "username": "XPUNKS",
+      "service": "XPUNKS"
+    },
+    "ownerDetails": {
+      "username": null,
+      "service": null
+    }
+  },
+  "accountDetails": {
+    "username": null,
+    "service": null
+  },
+  "ownerDetails": {
+    "username": null,
+    "service": null
+  },
+  "destinationDetails": {
+    "username": null,
+    "service": null
+  },
+  "issuerDetails": {
+    "username": "XPUNKS",
+    "service": "XPUNKS"
+  }
+}
+```
+
+This endpoint retrieves NFT Sales Volumes for specified parameters
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/nft-offer/<nftOfferID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+nftOfferID  | An NFT Offer ID (XLS20)
+
+## NFTS
+
+```shell
+curl "https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "owner": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME",
+  "ownerDetails": {
+    "username": "Zerpmon",
+    "service": "Zerpmon"
+  },
+  "nfts": [
+    {
+      "flags": {
+        "burnable": false,
+        "onlyXRP": false,
+        "trustLine": false,
+        "transferable": true
+      },
+      "issuer": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME",
+      "nftokenID": "0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011",
+      "nftokenTaxon": 0,
+      "transferFee": 5000,
+      "uri": "697066733A2F2F516D627169774D736D6B4C6971794473465A664D534D566465464A674D4139514A626D735131636F4D32564343452F382E6A736F6E",
+      "url": "https://cloudflare-ipfs.com/ipfs/QmbqiwMsmkLiqyDsFZfMSMVdeFJgMA9QJbmsQ1coM2VCCE/8.json",
+      "sequence": 17,
+      "issuerDetails": {
+        "username": "Zerpmon",
+        "service": "Zerpmon"
+      },
+      "metadata": {
+        "name": "Purrf",
+        "description": "Zerpmon is an original collection of digital collectible creatures that live on the XRPL, with each one being a unique 1 of 1 art piece. The Zerpmon project is fueled by a passion for high-quality art and in-depth story telling. For more information on the vision of Zerpmon, visit www.zerpmon.world",
+        "image": "ipfs://Qmf52STemfXu79ovVAdjRneb7kKdtYJNvzYjoxWubbu4Vx/8.png",
+        "attributes": [
+          {
+            "trait_type": "Zerpdex Number",
+            "value": "Zerpmon Collab #8"
+          },
+          {
+            "trait_type": "Type",
+            "value": "Fairy"
+          },
+          {
+            "trait_type": "Evolution Stage",
+            "value": "Collab"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+This endpoint retrieves a List of NFTs for specified parameters
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/nfts`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+owner | null | The XRPL address of the Owner (optional, you should specify owner, issuer or both)
+issuer | null | The XRPL address of the Issuer (optional, you should specify owner, issuer or both)
+taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
+marker | null | The marker from the previous request, if you need a next page of NFTs
+
+## NFT Sales
+
+```shell
+curl "https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "list": "topSold",
+  "saleType": "all",
+  "period": "all",
+  "currency": "xrp",
+  "total": {
+    "primary": 41933,
+    "secondary": 25587
+  },
+  "sales": [
+    {
+      "nftokenID": "00081B581189F5687DBB7516339D6CCB5593D96622AD82DF9E1F20C900001562",
+      "acceptedAt": 1669378310,
+      "acceptedLedgerIndex": 75994952,
+      "acceptedTxHash": "A6B5CF576E03FD268C779DCD1A7E7383E3B525D37EC518EA137B7AB1A9C456CD",
+      "acceptedAccount": "rpZqTPC8GvrSvEfFsUuHkmPCg29GdQuXhC",
+      "seller": "rQUA5QBUAUzqa5gc2uCneHYyBhGUoSFxDx",
+      "buyer": "rwKovZHrMt8HncitGbnhHoThKp1NxKHM2c",
+      "amount": "108900000000",
+      "broker": true,
+      "saleType": "secondary",
+      "nftoken": {
+        "flags": {
+          "burnable": false,
+          "onlyXRP": false,
+          "trustLine": false,
+          "transferable": true
+        },
+        "issuer": "rpbjkoncKiv1LkPWShzZksqYPzKXmUhTW7",
+        "nftokenID": "00081B581189F5687DBB7516339D6CCB5593D96622AD82DF9E1F20C900001562",
+        "nftokenTaxon": 52,
+        "transferFee": 7000,
+        "sequence": 5474,
+        "owner": "rwKovZHrMt8HncitGbnhHoThKp1NxKHM2c",
+        "uri": null,
+        "nftSerial": null,
+        "issuedAt": 1669137581,
+        "ownerChangedAt": 1669378310,
+        "deletedAt": null,
+        "url": "https://marketplace-api.onxrp.com/api/metadata/00081B581189F5687DBB7516339D6CCB5593D96622AD82DF9E1F20C900001562",
+        "metadata": {
+          "dna": "ec478d802884f05dc6accd61f93f0485881b342b0be66fe9f60521ac196e8f46",
+          "name": "XPUNKS #8811",
+          "description": "The XPUNK collection consists of 10,000 uniquely generated characters on a 24-by 24-pixel canvas. They are distinguished by their colourful traits and trademark X-mouth that represents their love for the XRPL.",
+          "image": "ipfs://QmNssmD8ZSkywk1e9vN7HxX1q3dJanxyCAfnQ266Y7rYpL",
+          "imageHash": "8a79284c75f958f2d60c39c9b5eb873a4390ef78f407347ca9a624153aee9188",
+          "edition": 9865,
+          "date": 1667163805289,
+          "attributes": [
+            {
+              "trait_type": "Face",
+              "value": "Demi-god"
+            },
+            {
+              "trait_type": "Eye Characteristics",
+              "value": "Fresh"
+            },
+            {
+              "trait_type": "Eyes",
+              "value": "Blue Left"
+            },
+            {
+              "trait_type": "Neck Wearable",
+              "value": "No Attribute"
+            },
+            {
+              "trait_type": "Hair & Hats",
+              "value": "Over 9000 Hair"
+            },
+            {
+              "trait_type": "Facial Hair",
+              "value": "No Attribute"
+            },
+            {
+              "trait_type": "Eye Wearables",
+              "value": "Lasers"
+            },
+            {
+              "trait_type": "Mouth Attribute",
+              "value": "No Attribute"
+            },
+            {
+              "trait_type": "Piercings",
+              "value": "No Attribute"
+            }
+          ],
+          "schema": "ipfs://QmNpi8rcXEkohca8iXu7zysKKSJYqCvBJn3xJwga8jXqWU",
+          "nftType": "art.v0",
+          "collection": {
+            "name": "XPUNKS",
+            "description": "The XPUNK collection consists of 10,000 uniquely generated characters on a 24-by-24-pixel canvas. They are distinguished by their colorful traits and trademark X-mouth that represents their love for the XRPL."
+          }
+        },
+        "issuerDetails": {
+          "username": "XPUNKS",
+          "service": "XPUNKS"
+        },
+        "ownerDetails": {
+          "username": null,
+          "service": null
+        }
+      },
+      "sellerDetails": {
+        "username": null,
+        "service": null
+      },
+      "buyerDetails": {
+        "username": null,
+        "service": null
+      },
+      "acceptedAccountDetails": {
+        "username": null,
+        "service": null
+      }
+    }
+  ]
+}
+```
+
+This endpoint retrieves a List of NFT Sales for specified parameters
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/nft-sales`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+list | null | `topSold` or `lastSold` (for the list of NFTs sales of the highest price or the latest sell timestamp)
+currency | null | Must be specified for `topSold` for example as `xrp`
+currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
+saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
+issuer | null | The XRPL address of the NFT issuer (optional)
+taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
+period | `all` | A time period, all time `all`, last 24h `day`, last week `week`, last month `month`, last year `year`  
+marker | null | The marker from the previous request, if you need a next page of NFTs
+
+## NFT Volumes
+
+```shell
+curl "https://bithomp.com/api/v2/nft-volumes?list=issuers&currency=xrp"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/nft-volumes?list=issuers&currency=xrp", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-volumes?list=issuers&currency=xrp");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "list": "issuers",
+  "period": "all",
+  "saleType": "all",
+  "volumes": [
+    {
+      "amount": "2366237967421",
+      "sales": 915,
+      "issuer": "rpbjkoncKiv1LkPWShzZksqYPzKXmUhTW7",
+      "issuerDetails": {
+        "username": "XPUNKS",
+        "service": "XPUNKS"
+      }
+    },
+    {
+      "amount": "1503175103308",
+      "sales": 1338,
+      "issuer": "rEzbi191M5AjrucxXKZWbR5QeyfpbedBcV",
+      "issuerDetails": {
+        "username": null,
+        "service": "Bored Apes XRP Club"
+      }
+    },
+    {
+      "amount": "883359891589",
+      "sales": 3191,
+      "issuer": "rG5qYqxdmDmLkVnPrLcWKE6LYTMeFGhYy9",
+      "issuerDetails": {
+        "username": null,
+        "service": null
+      }
+    },
+    {
+      "amount": "555494000000",
+      "sales": 1075,
+      "issuer": "rRVLLRSgfcuuDBA4GT7gfAmTXvovsvZCH",
+      "issuerDetails": {
+        "username": "Revellers",
+        "service": "Revellers"
+      }
+    },
+    {
+      "amount": "498035471660",
+      "sales": 603,
+      "issuer": "ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW",
+      "issuerDetails": {
+        "username": "xSPECTAR",
+        "service": "xSPECTAR"
+      }
+    },
+    {
+      "amount": "488908521731",
+      "sales": 387,
+      "issuer": "r9ZW5tjbhKFLWxs4j1KqF61YSHAyDvo52D",
+      "issuerDetails": {
+        "username": "Anonymousnfts",
+        "service": "Anonymous Astronauts NFTs"
+      }
+    },
+    {
+      "amount": "479087000000",
+      "sales": 649,
+      "issuer": "rDxThQhDkAaas4Mv22DWxUsZUZE1MfvRDf",
+      "issuerDetails": {
+        "username": null,
+        "service": "X Walkers"
+      }
+    },
+    {
+      "amount": "224402534068",
+      "sales": 4516,
+      "issuer": "rMgcSs3HQjvy3ZM2FVsxqgUrudVPM7HP5m",
+      "issuerDetails": {
+        "username": "UNIXPUNKS",
+        "service": "UNIXPUNKS"
+      }
+    },
+    {
+      "amount": "184235000000",
+      "sales": 153,
+      "issuer": "rGGQVudQM1v1tqUESWZqrEbGDvLR8XKdiY",
+      "issuerDetails": {
+        "username": "xSTIK",
+        "service": "xSTIK"
+      }
+    }
+  ]
+}
+```
+
+This endpoint retrieves NFT Sales Volumes for specified parameters
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/nft-volumes`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+list | null | `issuers` or `currencies` (for the Volume list for top issuers or top currencies for the NFT sales)
+currency | null | Must be specified for `issuers` for example as `xrp`
+currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
+saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
+period | `all` | A time period, all time `all`, last 24h `day`, last week `week`, last month `month`, last year `year`
 
 # Get status
 
@@ -346,23 +952,7 @@ print $addressInfo;
     }
   },
   "username": "Bitstamp",
-  "verifiedDomain": null,
-  "nfts": [
-    {
-      "flags": {
-        "burnable": false,
-        "onlyXRP": false,
-        "trustLine": false,
-        "transferable": true
-      }, 
-      "issuer": "rGJn1uZxDX4ksxRPYuj2smP7ZshdwjeSTG",
-      "tokenID": "000861A8A7C507A12088BF6A6BB62BAFEE9CDAABA2961DB216E5DA9C00000001",
-      "tokenTaxon": 0,
-      "transferFee": 25000,
-      "uri": "68747470733A2F2F6578616D706C652E636F6D2F6D795F6E6674",
-      "nftSerial": 1
-    }
-  ]
+  "verifiedDomain": null
 }
 ```
 
@@ -393,7 +983,6 @@ flare | false | if set to true, the result will include `flare: {spark, songbird
 inception | false | if set to true, the result will include: `genesis`, `initialBalance`, `inception`.
 ledgerInfo | false | if set to true, the result will include `ledgerInfo` object. (Note: A fee to use this parameter might be introduced in the feature)
 ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request will return `ledgerInfo` data for that timestamp)
-nfts | false | if set to true, the result will include `nfts` array. (XLS-20 only, experemental, changes might occur)
 
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
@@ -579,104 +1168,6 @@ currency  | A currency (HEX or XLS-14 NFT)
 You can retrieve information for MANY currencies in one request:
 <a href="#currencies-hex-or-xls-14-nfts">Get information for MANY: Currencies (HEX or XLS-14 NFT)</a>
 </aside>
-
-## NFT (XLS-20)
-
-```shell
-curl "https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true"
-  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
-```
-
-```javascript
-function getData(json) {
-  console.log(json)
-}
-bithompRequest("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true", getData);
-```
-
-```php
-$data = curl_bithomp("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true");
-print $data;
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "flags": {
-    "burnable": false,
-    "onlyXRP": false,
-    "trustLine": false,
-    "transferable": true
-  },
-  "issuer": "rwzGnXc31zAeSQiKgGqFiJJcALhy8TUqb8",
-  "nftokenID": "000813886D8D6DAC402E0D27297E9485F4D7E1125D656678258B866100000018",
-  "nftokenTaxon": 10194,
-  "transferFee": 5000,
-  "sequence": 24,
-  "owner": "rpL8hpPgdep5MrWCFfWx2qupiAhtPrMcJu",
-  "uri": "68747470733A2F2F626166796265696734676876366263666B6E746B793234616564667A6B757276366C746A6476736763623575736E77336A736965736D68706769652E697066732E7733732E6C696E6B2F6D657461646174612E6A736F6E",
-  "issuedAt": 1666885020,
-  "ownerChangedAt": 1666885052,
-  "deletedAt": null,
-  "history": [
-    {
-      "owner": "rXMART8usFd5kABXCayoP6ZfB35b4v43t",
-      "changedAt": 1666885020,
-      "ledgerIndex": 6860081,
-      "txHash": "453C088321BA9AFCB59B1B7B79790E5ECF53EF969B95845C494604E26C51E848"
-    },
-    {
-      "owner": "rpL8hpPgdep5MrWCFfWx2qupiAhtPrMcJu",
-      "changedAt": 1666885052,
-      "ledgerIndex": 6860093,
-      "txHash": "103F0D35348C58D9E5301EED79906ED3CDBBD44EFFF65857BE8BFFD572F617A8"
-    }
-  ],
-  "sellOffers": [
-    {
-      "amount": "850000000",
-      "index": "B54B49719DC80B40D66E229FC02CC5DABF7D4496B395F87C369FA6235AA6B37E",
-      "owner": "rGJn1uZxDX4ksxRPYuj2smP7ZshdwjeSTG",
-      "destination": "rM3UEiJzg7nMorRhdED5savWDt1Gqb6TLw",
-      "expiration": 1582437632,
-      "createdAt": 1582437132
-    }
-  ],
-  "buyOffers": [
-    {
-      "amount": "935000000",
-      "index": "3D47DA5CE9E4D9DB7D8D1FE78E9E1ECA19D8DE21A29C78FD95A856ADF2472674",
-      "owner": "rN5wU5VpqfxZ5q9duP3EhP8rw8y9xR1TNL",
-      "destination": "rM3UEiJzg7nMorRhdED5savWDt1Gqb6TLw",
-      "expiration": 1582437632,
-      "createdAt": 1582437132
-    }
-  ]
-}
-```
-
-This endpoint retrieves information for a requested NFT (XLS-20).
-
-### HTTP Request
-
-`GET https://bithomp.com/api/v2/nft/<nftID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-nftID  | An NFT ID (XLS20)
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-uri | false | If set to true, the result will include `uri` and `url`.
-sellOffers | false | If set true, the result will include `sellOffers`.
-buyOffers | false | If set to true, the result will include `buyOffers`.
-history | false | If set to true, the result will include `history`.
-metadata | false | If set to true, the result will include `metadata`.
 
 ## Validator
 
