@@ -804,8 +804,8 @@ This endpoint retrieves NFT Sales Volumes for specified parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-list | null | `issuers` or `currencies` (for the Volume list for top issuers or top currencies for the NFT sales)
-currency | null | Must be specified for `issuers` for example as `xrp`
+list | null | `issuers`, `currencies` `brokers` or  (for the Volume list for top issuers/currencies/brokers for the NFT sales)
+currency | null | Must be specified for `issuers` and `brokers` for example as `xrp`
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
 period | `all` | A time period, all time `all`, last 24h `day`, last week `week`, last month `month`, last year `year`
