@@ -23,9 +23,29 @@ Welcome to the Bithomp API!
 
 Bithomp API endpoints will give you access to information on XRPL addresses, usernames, validators, services and more.
 
+This API is built to complement the <a href="https://xrpl.org/http-websocket-apis.html">rippled API</a>.
+
 We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
+# Price and Limits
+
+The default option is FREE, 10 requests per minute.
+
+| Tier       | Max requests / minute | Max request / 24h | Price / month |
+|------------|------:|-------|--------------------|
+| Free       | 10    | 2k    | 0                  |
+| Basic      | 100   | 30k   | 300 SEK / 30 EUR   |
+| Standard   | 400   | 120k  | 1000 SEK / 100 EUR |
+| Premium    | 1000  | 300k  | 2500 SEK / 250 EUR |
+| Enterprise | 2000+ | 600k+ | send request to support at bithomp.com |
+
+For the API & Price for `NFT Images previous` (700px x 700px) and `Video previous` (first 15 seconds) and `nft thumbnails` contact us by support at bithomp.com.
+
 # Changelog
+
+### 3rd of January 2022
+
+The price table for API is published.
 
 ### 27th of December 2022
 
@@ -58,12 +78,18 @@ An example to retrive rippletrade&bithomp usernames:
 * <a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a>
 * <a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a>
 * <a href="https://bithomp.com/explorer/bitstamp">https://bithomp.com/explorer/{username}</a>
-* <a href="https://bithomp.com/explorer/00081388161A9F1B349F3D50596D02CCA65E97D9268A5AF529A955040000000D">https://bithomp.com/explorer/{NFTokenID}</a>
 * <a href="https://bithomp.com/explorer/02C7004B041A91880000526964776F726C643836">https://bithomp.com/explorer/{NFT-XLS14 || HEXcurrency}</a>
 * <a href="https://bithomp.com/explorer/rabbit$bithomp.com">https://bithomp.com/explorer/{payString}</a>
-* <a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112#comment">https://bithomp.com/explorer/{txid}#comment</a>
-* <a href="https://bithomp.com/explorer/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z#comment">https://bithomp.com/explorer/{address}#comment</a>
-* <a href="https://bithomp.com/explorer/Bithomp#comment">https://bithomp.com/explorer/{username}#comment</a>
+
+### NFT explorer
+* <a href="https://bithomp.com/explorer/00081388161A9F1B349F3D50596D02CCA65E97D9268A5AF529A955040000000D">https://bithomp.com/explorer/{nftID}</a>
+* <a href="https://bithomp.com/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673">https://bithomp.com/nft-offer/{nftOfferID}</a>
+* <a href="https://bithomp.com/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX">https://bithomp.com/nft-offers/{address || username}</a>
+* <a href="https://bithomp.com/nft-explorer?issuer=xSPECTAR&taxon=2&owner=xSPECTAR">https://bithomp.com/nft-explorer?owner={address || username}&issuer={address || username}&taxon={taxon}</a>
+* <a href="https://bithomp.com/nfts/xSPECTAR">https://bithomp.com/nfts/{address || username}</a>
+* <a href="https://bithomp.com/nft-volumes?currency=534F4C4F00000000000000000000000000000000&currencyIssuer=rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz">https://bithomp.com/nft-volumes?currency={currencyCode}&currencyIssuer={address}&sale={"primary" || "secondary" || "all"}&period={"all" || "month" || "week" || "day"}&list={"issuers" || "currencies" || "brokers"}</a>
+* <a href="https://bithomp.com/top-nft-sales?period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://bithomp.com/top-nft-sales?period=month&sale=secondary&currency={currencyCode}&currencyIssuer={address}&issuer={address || username}</a>
+* <a href="https://bithomp.com/last-nft-sales?period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://bithomp.com/last-nft-sales?period=month&sale=secondary&currency={currencyCode}&currencyIssuer={address}&issuer={address || username}</a>
 
 ### Username registration
 * <a href="https://bithomp.com/username?username=Bithomp">https://bithomp.com/username?username={username}</a>
