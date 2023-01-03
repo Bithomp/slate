@@ -311,8 +311,14 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#price-and-limits" class="toc-h1 toc-link" data-title="Price and Limits">Price and Limits</a>
+          </li>
+          <li>
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#3rd-of-january-2022" class="toc-h2 toc-link" data-title="3rd of January 2022">3rd of January 2022</a>
+                  </li>
                   <li>
                     <a href="#27th-of-december-2022" class="toc-h2 toc-link" data-title="27th of December 2022">27th of December 2022</a>
                   </li>
@@ -329,6 +335,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#xrpl-explorer" class="toc-h2 toc-link" data-title="XRPL Explorer">XRPL Explorer</a>
+                  </li>
+                  <li>
+                    <a href="#nft-explorer" class="toc-h2 toc-link" data-title="NFT explorer">NFT explorer</a>
                   </li>
                   <li>
                     <a href="#username-registration" class="toc-h2 toc-link" data-title="Username registration">Username registration</a>
@@ -456,8 +465,56 @@
 
 <p>Bithomp API endpoints will give you access to information on XRPL addresses, usernames, validators, services and more.</p>
 
+<p>This API is built to complement the <a href="https://xrpl.org/http-websocket-apis.html">rippled API</a>.</p>
+
 <p>We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
-<h1 id='changelog'>Changelog</h1><h3 id='27th-of-december-2022'>27th of December 2022</h3>
+<h1 id='price-and-limits'>Price and Limits</h1>
+<p>The default option is FREE, 10 requests per minute.</p>
+
+<table><thead>
+<tr>
+<th>Tier</th>
+<th style="text-align: right">Max requests / minute</th>
+<th>Max request / 24h</th>
+<th>Price / month</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Free</td>
+<td style="text-align: right">10</td>
+<td>2k</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Basic</td>
+<td style="text-align: right">100</td>
+<td>30k</td>
+<td>300 SEK / 30 EUR</td>
+</tr>
+<tr>
+<td>Standard</td>
+<td style="text-align: right">400</td>
+<td>120k</td>
+<td>1000 SEK / 100 EUR</td>
+</tr>
+<tr>
+<td>Premium</td>
+<td style="text-align: right">1000</td>
+<td>300k</td>
+<td>2500 SEK / 250 EUR</td>
+</tr>
+<tr>
+<td>Enterprise</td>
+<td style="text-align: right">2000+</td>
+<td>600k+</td>
+<td>send request to support at bithomp.com</td>
+</tr>
+</tbody></table>
+
+<p>For the API &amp; Price for <code>NFT Images previous</code> (700px x 700px) and <code>Video previous</code> (first 15 seconds) and <code>nft thumbnails</code> contact us by support at bithomp.com.</p>
+<h1 id='changelog'>Changelog</h1><h3 id='3rd-of-january-2022'>3rd of January 2022</h3>
+<p>The price table for API is published.</p>
+<h3 id='27th-of-december-2022'>27th of December 2022</h3>
 <p>A new endpoints were added:</p>
 
 <p><a href="#nft-offer"><strong>NFT Offer</strong></a></p>
@@ -480,12 +537,19 @@
 <li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a></li>
 <li><a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a></li>
 <li><a href="https://bithomp.com/explorer/bitstamp">https://bithomp.com/explorer/{username}</a></li>
-<li><a href="https://bithomp.com/explorer/00081388161A9F1B349F3D50596D02CCA65E97D9268A5AF529A955040000000D">https://bithomp.com/explorer/{NFTokenID}</a></li>
 <li><a href="https://bithomp.com/explorer/02C7004B041A91880000526964776F726C643836">https://bithomp.com/explorer/{NFT-XLS14 || HEXcurrency}</a></li>
 <li><a href="https://bithomp.com/explorer/rabbit$bithomp.com">https://bithomp.com/explorer/{payString}</a></li>
-<li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112#comment">https://bithomp.com/explorer/{txid}#comment</a></li>
-<li><a href="https://bithomp.com/explorer/rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z#comment">https://bithomp.com/explorer/{address}#comment</a></li>
-<li><a href="https://bithomp.com/explorer/Bithomp#comment">https://bithomp.com/explorer/{username}#comment</a></li>
+</ul>
+<h3 id='nft-explorer'>NFT explorer</h3>
+<ul>
+<li><a href="https://bithomp.com/explorer/00081388161A9F1B349F3D50596D02CCA65E97D9268A5AF529A955040000000D">https://bithomp.com/explorer/{nftID}</a></li>
+<li><a href="https://bithomp.com/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673">https://bithomp.com/nft-offer/{nftOfferID}</a></li>
+<li><a href="https://bithomp.com/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX">https://bithomp.com/nft-offers/{address || username}</a></li>
+<li><a href="https://bithomp.com/nft-explorer?issuer=xSPECTAR&taxon=2&owner=xSPECTAR">https://bithomp.com/nft-explorer?owner={address || username}&amp;issuer={address || username}&amp;taxon={taxon}</a></li>
+<li><a href="https://bithomp.com/nfts/xSPECTAR">https://bithomp.com/nfts/{address || username}</a></li>
+<li><a href="https://bithomp.com/nft-volumes?currency=534F4C4F00000000000000000000000000000000&currencyIssuer=rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz">https://bithomp.com/nft-volumes?currency={currencyCode}&amp;currencyIssuer={address}&amp;sale={&quot;primary&quot; || &quot;secondary&quot; || &quot;all&quot;}&amp;period={&quot;all&quot; || &quot;month&quot; || &quot;week&quot; || &quot;day&quot;}&amp;list={&quot;issuers&quot; || &quot;currencies&quot; || &quot;brokers&quot;}</a></li>
+<li><a href="https://bithomp.com/top-nft-sales?period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://bithomp.com/top-nft-sales?period=month&amp;sale=secondary&amp;currency={currencyCode}&amp;currencyIssuer={address}&amp;issuer={address || username}</a></li>
+<li><a href="https://bithomp.com/last-nft-sales?period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://bithomp.com/last-nft-sales?period=month&amp;sale=secondary&amp;currency={currencyCode}&amp;currencyIssuer={address}&amp;issuer={address || username}</a></li>
 </ul>
 <h3 id='username-registration'>Username registration</h3>
 <ul>
