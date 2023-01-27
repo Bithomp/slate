@@ -719,7 +719,7 @@ print $data;
 }
 ```
 
-This endpoint retrieves NFT Offers created by an <address> OR NFT Offers for all NFTs owned by that <address>.
+This endpoint retrieves NFT Offers created by an <address> OR NFT Offers for all NFTs owned by that `address`.
 
 ### HTTP Request
 
@@ -735,7 +735,7 @@ address  | The XRPL address or a username.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-list | null | `counterOffers` (to list NFT Offers for all NFTs owned by the <address>)
+list | null | `counterOffers` (to list NFT Offers for all NFTs owned by the `address`)
 nftoken | false | If set to true, each offer will include `nftoken` data, including metadata.
 offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array. 
 
@@ -791,7 +791,7 @@ print $data;
 }
 ```
 
-This endpoint retrieves NFT Owners list for NFTs issued by a specific <address>.
+This endpoint retrieves NFT Owners list for NFTs issued by a specific `address`.
 
 ### HTTP Request
 
@@ -807,7 +807,7 @@ address  | The XRPL address or a username.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-list | null | `owners` (to list NFT Owners for NFTs issued by a specific <address>).
+list | null | `owners` (to list NFT Owners for NFTs issued by a specific `address`).
 
 ## NFT Sales
 
