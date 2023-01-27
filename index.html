@@ -1189,7 +1189,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves NFT Offers created by an <address> OR NFT Offers for all NFTs owned by that <address>.</p>
+<p>This endpoint retrieves NFT Offers created by an <address> OR NFT Offers for all NFTs owned by that <code>address</code>.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-offers/&lt;address&gt;</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
@@ -1215,7 +1215,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>list</td>
 <td>null</td>
-<td><code>counterOffers</code> (to list NFT Offers for all NFTs owned by the <address>)</td>
+<td><code>counterOffers</code> (to list NFT Offers for all NFTs owned by the <code>address</code>)</td>
 </tr>
 <tr>
 <td>nftoken</td>
@@ -1269,7 +1269,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves NFT Owners list for NFTs issued by a specific <address>.</p>
+<p>This endpoint retrieves NFT Owners list for NFTs issued by a specific <code>address</code>.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-count/&lt;address&gt;</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
@@ -1295,7 +1295,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>list</td>
 <td>null</td>
-<td><code>owners</code> (to list NFT Owners for NFTs issued by a specific <address>).</td>
+<td><code>owners</code> (to list NFT Owners for NFTs issued by a specific <code>address</code>).</td>
 </tr>
 </tbody></table>
 <h2 id='nft-sales'>NFT Sales</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-sales?list=topSold&amp;currency=xrp"</span>
