@@ -991,86 +991,58 @@ print $data;
   "list": "issuers",
   "period": "all",
   "saleType": "all",
+  "marker": "753DF10F00000001",
   "volumes": [
     {
-      "amount": "2366237967421",
-      "sales": 915,
+      "amount": "3183301846633",
+      "sales": 1388,
       "issuer": "rpbjkoncKiv1LkPWShzZksqYPzKXmUhTW7",
       "issuerDetails": {
         "username": "XPUNKS",
         "service": "XPUNKS"
+      },
+      "buyers": 419,
+      "tradedNfts": 1015,
+      "totalOwners": 1872,
+      "totalNfts": 6751,
+      "floorPrice": {
+        "open": {
+          "amount": "2400000000"
+        },
+        "private": {
+          "amount": "1150000000",
+          "destination": "rpZqTPC8GvrSvEfFsUuHkmPCg29GdQuXhC",
+          "destinationDetails": {
+            "username": null,
+            "service": "onXRP"
+          }
+        }
       }
     },
     {
-      "amount": "1503175103308",
-      "sales": 1338,
+      "amount": "1770531477817",
+      "sales": 1582,
       "issuer": "rEzbi191M5AjrucxXKZWbR5QeyfpbedBcV",
       "issuerDetails": {
-        "username": null,
+        "username": "BoredApesXRP",
         "service": "Bored Apes XRP Club"
-      }
-    },
-    {
-      "amount": "883359891589",
-      "sales": 3191,
-      "issuer": "rG5qYqxdmDmLkVnPrLcWKE6LYTMeFGhYy9",
-      "issuerDetails": {
-        "username": null,
-        "service": null
-      }
-    },
-    {
-      "amount": "555494000000",
-      "sales": 1075,
-      "issuer": "rRVLLRSgfcuuDBA4GT7gfAmTXvovsvZCH",
-      "issuerDetails": {
-        "username": "Revellers",
-        "service": "Revellers"
-      }
-    },
-    {
-      "amount": "498035471660",
-      "sales": 603,
-      "issuer": "ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW",
-      "issuerDetails": {
-        "username": "xSPECTAR",
-        "service": "xSPECTAR"
-      }
-    },
-    {
-      "amount": "488908521731",
-      "sales": 387,
-      "issuer": "r9ZW5tjbhKFLWxs4j1KqF61YSHAyDvo52D",
-      "issuerDetails": {
-        "username": "Anonymousnfts",
-        "service": "Anonymous Astronauts NFTs"
-      }
-    },
-    {
-      "amount": "479087000000",
-      "sales": 649,
-      "issuer": "rDxThQhDkAaas4Mv22DWxUsZUZE1MfvRDf",
-      "issuerDetails": {
-        "username": null,
-        "service": "X Walkers"
-      }
-    },
-    {
-      "amount": "224402534068",
-      "sales": 4516,
-      "issuer": "rMgcSs3HQjvy3ZM2FVsxqgUrudVPM7HP5m",
-      "issuerDetails": {
-        "username": "UNIXPUNKS",
-        "service": "UNIXPUNKS"
-      }
-    },
-    {
-      "amount": "184235000000",
-      "sales": 153,
-      "issuer": "rGGQVudQM1v1tqUESWZqrEbGDvLR8XKdiY",
-      "issuerDetails": {
-        "username": "xSTIK",
-        "service": "xSTIK"
+      },
+      "buyers": 368,
+      "tradedNfts": 1358,
+      "totalOwners": 1583,
+      "totalNfts": 10064,
+      "floorPrice": {
+        "open": {
+          "amount": "750000000"
+        },
+        "private": {
+          "amount": "500000000",
+          "destination": "rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC",
+          "destinationDetails": {
+            "username": null,
+            "service": "xrp.cafe"
+          }
+        }
       }
     }
   ]
@@ -1092,6 +1064,7 @@ currency | null | Must be specified for `issuers` and `brokers` for example as `
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
 period | `all` | A time period, all time `all`, last 24h `day`, last week `week`, last month `month`, last year `year`
+floorPrice | false | (Only available on paid API plans) Returns `floorPrice` for `issuers`. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.
 
 # Get status
 
