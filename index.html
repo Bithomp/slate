@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#1st-of-march-2023" class="toc-h2 toc-link" data-title="1st of March 2023">1st of March 2023</a>
+                  </li>
+                  <li>
                     <a href="#27th-of-january-2023" class="toc-h2 toc-link" data-title="27th of January 2023">27th of January 2023</a>
                   </li>
                   <li>
@@ -327,9 +330,6 @@
                   </li>
                   <li>
                     <a href="#19th-of-november-2022" class="toc-h2 toc-link" data-title="19th of November 2022">19th of November 2022</a>
-                  </li>
-                  <li>
-                    <a href="#14th-of-november-2022" class="toc-h2 toc-link" data-title="14th of November 2022">14th of November 2022</a>
                   </li>
               </ul>
           </li>
@@ -578,7 +578,15 @@
 <td>200 EUR</td>
 </tr>
 </tbody></table>
-<h1 id='changelog'>Changelog</h1><h3 id='27th-of-january-2023'>27th of January 2023</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='1st-of-march-2023'>1st of March 2023</h3>
+<p>New params were added to get the list of NFTs for Sale for any XRPL currency, sortered by price or offer creation time and filtered by sale direction (On Sale on the known MarketPlaces, Publicly, Publicly and on the known MarketPlaces, anywhere including private offers):</p>
+
+<p><a href="#nfts"><strong>NFTs</strong></a></p>
+
+<p>Now you can also get the list of offered NFT transfers (sell offers with 0 price) to any XRPL address, private Sell and Buy offers, offers for brokers.</p>
+
+<p><a href="#nft-offers"><strong>NFT Offers</strong></a></p>
+<h3 id='27th-of-january-2023'>27th of January 2023</h3>
 <p>A new endpoints were added:</p>
 
 <p><a href="#nft-offers"><strong>NFT Offers</strong></a></p>
@@ -600,10 +608,6 @@
 <p><a href="#nft-volumes"><strong>NFT Volumes</strong></a></p>
 <h3 id='19th-of-november-2022'>19th of November 2022</h3>
 <p>The new query parameter: <code>metadata</code> was added to the <a href="#nft"><strong>NFT</strong></a> API end-point.</p>
-<h3 id='14th-of-november-2022'>14th of November 2022</h3>
-<p>An example to retrive rippletrade&amp;bithomp usernames:</p>
-
-<p><a href="#get-username"><strong>Get username</strong></a></p>
 <h1 id='direct-url-examples'>Direct URL examples</h1><h3 id='xrpl-explorer'>XRPL Explorer</h3>
 <ul>
 <li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a></li>
@@ -1111,6 +1115,31 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>null</td>
 <td>The marker from the previous request, if you need a next page of NFTs</td>
 </tr>
+<tr>
+<td>list</td>
+<td><code>nfts</code></td>
+<td>(Only available on paid API plans) can be set to <code>onSale</code> to get the list of NFTs with active sell offers</td>
+</tr>
+<tr>
+<td>destination</td>
+<td><code>all</code></td>
+<td>(Only available on paid API plans) used to filter NFTs for sale <code>list=onSale</code>, can be <code>public</code>, <code>knownBrokers</code>, <code>publicAndKnownBrokers</code>, <code>all</code></td>
+</tr>
+<tr>
+<td>order</td>
+<td>null</td>
+<td>(Only available on paid API plans) used to order NFTs for sale <code>list=onSale</code>, can be <code>offerCreatedNew</code>, <code>offerCreatedOld</code>, <code>priceLow</code>, <code>priceHigh</code></td>
+</tr>
+<tr>
+<td>currency</td>
+<td>null</td>
+<td>(Only available on paid API plans) used to filter NFTs for sale <code>list=onSale</code>, can be <code>XRP</code> or any other currency code.</td>
+</tr>
+<tr>
+<td>currencyIssuer</td>
+<td>null</td>
+<td>(Only available on paid API plans) A currency issuer for the <code>currency</code> if it is not an XRP.</td>
+</tr>
 </tbody></table>
 <h2 id='nft-offers'>NFT Offers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
@@ -1268,7 +1297,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>list</td>
 <td>null</td>
-<td><code>counterOffers</code> (to list NFT Offers for all NFTs owned by the <code>address</code>)</td>
+<td>default - to list all owned NFT offers, <code>counterOffers</code> - to list NFT Offers for all NFTs owned by the <code>address</code>, <code>privatelyOfferedToAddress</code> - to list all NFT offers where the <code>address</code> is specified as destination (brokers, private offers, nft transfers).</td>
 </tr>
 <tr>
 <td>nftoken</td>
