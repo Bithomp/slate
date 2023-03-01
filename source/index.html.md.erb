@@ -58,7 +58,7 @@ NFT content plans:
 
 ### 1st of March 2023
 
-New params were added to get the list of NFTs for Sale for any XRPL currency, sortered by price or offer creation time and filtered by sale direction (On Sale on the known MarketPlaces, Publicly, Publicly and on the known MarketPlaces, anywhere including private offers):
+New params were added to get the list of NFTs for Sale for any XRPL currency, sorted by price or offer creation time and filtered by sale direction (On Sale on the specific marketplace (xrpl address can be specified), or on any known MarketPlaces, Publicly, Publicly and on the known MarketPlaces, anywhere including private offers):
 
 <a href="#nfts">**NFTs**</a>
 
@@ -591,7 +591,7 @@ issuer | null | The XRPL address of the Issuer (optional, you should specify own
 taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
 marker | null | The marker from the previous request, if you need a next page of NFTs
 list | `nfts` | (Only available on paid API plans) can be set to `onSale` to get the list of NFTs with active sell offers
-destination | `all` | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be `public`, `knownBrokers`, `publicAndKnownBrokers`, `all`
+destination | `all` | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be set as a XRPL address (to specify a particular MarketPlace), `public`, `knownBrokers`, `publicAndKnownBrokers`, `all`
 order | null | (Only available on paid API plans) used to order NFTs for sale `list=onSale`, can be `offerCreatedNew`, `offerCreatedOld`, `priceLow`, `priceHigh`
 currency | null | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be `XRP` or any other currency code.
 currencyIssuer | null | (Only available on paid API plans) A currency issuer for the `currency` if it is not an XRP.
