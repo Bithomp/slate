@@ -579,7 +579,7 @@
 </tr>
 </tbody></table>
 <h1 id='changelog'>Changelog</h1><h3 id='1st-of-march-2023'>1st of March 2023</h3>
-<p>New params were added to get the list of NFTs for Sale for any XRPL currency, sortered by price or offer creation time and filtered by sale direction (On Sale on the known MarketPlaces, Publicly, Publicly and on the known MarketPlaces, anywhere including private offers):</p>
+<p>New params were added to get the list of NFTs for Sale for any XRPL currency, sorted by price or offer creation time and filtered by sale direction (On Sale on the specific marketplace (xrpl address can be specified), or on any known MarketPlaces, Publicly, Publicly and on the known MarketPlaces, anywhere including private offers):</p>
 
 <p><a href="#nfts"><strong>NFTs</strong></a></p>
 
@@ -1123,7 +1123,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>destination</td>
 <td><code>all</code></td>
-<td>(Only available on paid API plans) used to filter NFTs for sale <code>list=onSale</code>, can be <code>public</code>, <code>knownBrokers</code>, <code>publicAndKnownBrokers</code>, <code>all</code></td>
+<td>(Only available on paid API plans) used to filter NFTs for sale <code>list=onSale</code>, can be set as a XRPL address (to specify a particular MarketPlace), <code>public</code>, <code>knownBrokers</code>, <code>publicAndKnownBrokers</code>, <code>all</code></td>
 </tr>
 <tr>
 <td>order</td>
