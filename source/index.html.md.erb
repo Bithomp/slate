@@ -56,6 +56,16 @@ NFT content plans:
 
 # Changelog
 
+### 1st of March 2023
+
+New params were added to get the list of NFTs for Sale for any XRPL currency, sortered by price or offer creation time and filtered by sale direction (On Sale on the known MarketPlaces, Publicly, Publicly and on the known MarketPlaces, anywhere including private offers):
+
+<a href="#nfts">**NFTs**</a>
+
+Now you can also get the list of offered NFT transfers (sell offers with 0 price) to any XRPL address, private Sell and Buy offers, offers for brokers.
+
+<a href="#nft-offers">**NFT Offers**</a>
+
 ### 27th of January 2023
 
 A new endpoints were added:
@@ -85,12 +95,6 @@ A new endpoints were added:
 ### 19th of November 2022
 
 The new query parameter: `metadata` was added to the <a href="#nft">**NFT**</a> API end-point.
-
-### 14th of November 2022
-
-An example to retrive rippletrade&bithomp usernames:
-
-<a href="#get-username">**Get username**</a>
 
 # Direct URL examples
 
@@ -586,6 +590,11 @@ owner | null | The XRPL address of the Owner (optional, you should specify owner
 issuer | null | The XRPL address of the Issuer (optional, you should specify owner, issuer or both)
 taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
 marker | null | The marker from the previous request, if you need a next page of NFTs
+list | `nfts` | (Only available on paid API plans) can be set to `onSale` to get the list of NFTs with active sell offers
+destination | `all` | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be `public`, `knownBrokers`, `publicAndKnownBrokers`, `all`
+order | null | (Only available on paid API plans) used to order NFTs for sale `list=onSale`, can be `offerCreatedNew`, `offerCreatedOld`, `priceLow`, `priceHigh`
+currency | null | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be `XRP` or any other currency code.
+currencyIssuer | null | (Only available on paid API plans) A currency issuer for the `currency` if it is not an XRP.
 
 ## NFT Offers
 
@@ -744,7 +753,7 @@ address  | The XRPL address or a username.
 
 Parameter | Default | Description
 --------- | ------- | -----------
-list | null | `counterOffers` (to list NFT Offers for all NFTs owned by the `address`)
+list | null | default - to list all owned NFT offers, `counterOffers` - to list NFT Offers for all NFTs owned by the `address`, `privatelyOfferedToAddress` - to list all NFT offers where the `address` is specified as destination (brokers, private offers, nft transfers).
 nftoken | false | If set to true, each offer will include `nftoken` data, including metadata.
 offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array. 
 
