@@ -21,7 +21,7 @@ search: true
 
 Welcome to the Bithomp API!
 
-Bithomp API endpoints will give you access to information on XRPL addresses, usernames, validators, services and more.
+Bithomp API endpoints will give you access to information on XRPL addresses, NFTs, usernames, validators, services and more.
 
 This API is built to complement the <a href="https://xrpl.org/http-websocket-apis.html">rippled API</a>.
 
@@ -31,15 +31,15 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 API plans:
 
-| Tier         | Max requests / minute | Max request / 24h | Price / month |
-|--------------|------:|-------|----------|
-| Free         | 10    | 2K    | 0        |
-| Basic        | 100   | 30K   | 30 EUR   |
-| Standard     | 400   | 120K  | 100 EUR  |
-| Premium      | 1000  | 300K  | 250 EUR  |
-| Enterprise 1 | 2000  | 600K  | 500 EUR  |
-| Enterprise 2 | 4000  | 1.2M  | 1000 EUR |
-| Enterprise 3 | 8000  | 2.4M  | 2000 EUR |
+| Tier                    | Max requests / minute | Max request / 24h | Price / month |
+|-------------------------|------:|-------|----------|
+| Free (non-comercial use)| 10    | 2K    | 0        |
+| Basic                   | 100   | 30K   | 30 EUR   |
+| Standard                | 400   | 120K  | 100 EUR  |
+| Premium                 | 1000  | 300K  | 250 EUR  |
+| Enterprise 1            | 2000  | 600K  | 500 EUR  |
+| Enterprise 2            | 4000  | 1.2M  | 1000 EUR |
+| Enterprise 3            | 8000  | 2.4M  | 2000 EUR |
 
 NFT content plans:
 
@@ -47,14 +47,26 @@ NFT content plans:
 - video previews (first 15 seconds)
 - thumbnails (64px x 64px)
 
-| Tier         | Max Images day / month | Max Videos day / month | Max Thumbnails day / month | Price / month |
-|--------------|------------|------------|------------|----------|
-| Free         | 1K / 20K   | 300 / 6K   | 5K / 50K   | 0        |
-| Basic        | 5K / 100K  | 1.5K / 30K | 25K / 250K | 60 EUR   |
-| Standard     | 10K / 200K | 3K / 60K   | 50K / 500K | 100 EUR  |
-| Premium      | 20K / 400K | 6K / 120K  | 100K / 1M  | 200 EUR  |
+| Tier                     | Max Images day / month | Max Videos day / month | Max Thumbnails day / month | Price / month |
+|--------------------------|------------|------------|------------|----------|
+| Free (non-comercial use) | 1K / 20K   | 300 / 6K   | 5K / 50K   | 0        |
+| Basic                    | 5K / 100K  | 1.5K / 30K | 25K / 250K | 60 EUR   |
+| Standard                 | 10K / 200K | 3K / 60K   | 50K / 500K | 100 EUR  |
+| Premium                  | 20K / 400K | 6K / 120K  | 100K / 1M  | 200 EUR  |
 
 # Changelog
+
+### 18th of April 2023
+
+New params were added to get all the NFT sales (inluding NFTs sold for IOU (tokens)) amount converted to XRP or Fiat currencies and sorted by the choosen currency.
+For example, all XRP sales and sales in IOU (tokens) can be converted to USD, and you can see top NFT sales in USD.
+NFT Sales now also inlude `marketplace`, the website where NFT was sold (if it is identified).
+
+<a href="#nfts">**NFTs**</a>
+
+Now you can also get the list of offered NFT transfers (sell offers with 0 price) to any XRPL address, private Sell and Buy offers, offers for brokers.
+
+<a href="#nft-offers">**NFT Offers**</a>
 
 ### 1st of March 2023
 
@@ -830,7 +842,7 @@ list | null | `owners` (to list NFT Owners for NFTs issued by a specific `addres
 ## NFT Sales
 
 ```shell
-curl "https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp"
+curl "https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp&convertCurrencies=usd,eur"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -838,11 +850,11 @@ curl "https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp"
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp&convertCurrencies=usd,eur", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp&convertCurrencies=usd,eur");
 print $data;
 ```
 
@@ -854,22 +866,28 @@ print $data;
   "saleType": "all",
   "period": "all",
   "currency": "xrp",
+  "convertCurrencies": ["eur", "usd"],
   "total": {
     "primary": 41933,
     "secondary": 25587
   },
   "sales": [
     {
-      "nftokenID": "00081B581189F5687DBB7516339D6CCB5593D96622AD82DF9E1F20C900001562",
-      "acceptedAt": 1669378310,
-      "acceptedLedgerIndex": 75994952,
-      "acceptedTxHash": "A6B5CF576E03FD268C779DCD1A7E7383E3B525D37EC518EA137B7AB1A9C456CD",
-      "acceptedAccount": "rpZqTPC8GvrSvEfFsUuHkmPCg29GdQuXhC",
-      "seller": "rQUA5QBUAUzqa5gc2uCneHYyBhGUoSFxDx",
-      "buyer": "rwKovZHrMt8HncitGbnhHoThKp1NxKHM2c",
-      "amount": "108900000000",
+      "nftokenID": "00081388A47691FB124F91B5FF0F5246AED2B5275385689F27ED727F000015E3",
+      "acceptedAt": "1673931131",
+      "acceptedLedgerIndex": "77169958",
+      "acceptedTxHash": "C6F7492A4E58BC2FB6190F7081BBC96231E10ED463EDAB301DBDD650C97DD5FB",
+      "acceptedAccount": "rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC",
+      "seller": "rnVp1xV43N7SgqtjHWCSM6EcSUYs7yWNku",
+      "buyer": "rJ1GJjNauEafyQWo1o5ZYDuciGPjx6yTGD",
+      "amount": "40000000000",
       "broker": true,
+      "marketplace": "xrp.cafe",
       "saleType": "secondary",
+      "amountInConvertCurrencies": {
+        "eur": "14213.6",
+        "usd": "15399.6"
+      },
       "nftoken": {
         "flags": {
           "burnable": false,
@@ -877,74 +895,58 @@ print $data;
           "trustLine": false,
           "transferable": true
         },
-        "issuer": "rpbjkoncKiv1LkPWShzZksqYPzKXmUhTW7",
-        "nftokenID": "00081B581189F5687DBB7516339D6CCB5593D96622AD82DF9E1F20C900001562",
-        "nftokenTaxon": 52,
-        "transferFee": 7000,
-        "sequence": 5474,
-        "owner": "rwKovZHrMt8HncitGbnhHoThKp1NxKHM2c",
-        "uri": null,
-        "nftSerial": null,
-        "issuedAt": 1669137581,
-        "ownerChangedAt": 1669378310,
+        "issuer": "rEzbi191M5AjrucxXKZWbR5QeyfpbedBcV",
+        "nftokenID": "00081388A47691FB124F91B5FF0F5246AED2B5275385689F27ED727F000015E3",
+        "nftokenTaxon": 1,
+        "transferFee": 5000,
+        "sequence": 5603,
+        "owner": "rJ1GJjNauEafyQWo1o5ZYDuciGPjx6yTGD",
+        "uri": "516D654834744E4D4C655233756F3774755453357768416E66734B4A737A4D4C6B676F7A44664C78676863385571",
+        "nftSerial": 5603,
+        "issuedAt": 1667651282,
+        "ownerChangedAt": 1673931131,
         "deletedAt": null,
-        "url": "https://marketplace-api.onxrp.com/api/metadata/00081B581189F5687DBB7516339D6CCB5593D96622AD82DF9E1F20C900001562",
+        "url": "https://cloudflare-ipfs.com/ipfs/QmeH4tNMLeR3uo7tuTS5whAnfsKJszMLkgozDfLxghc8Uq",
         "metadata": {
-          "dna": "ec478d802884f05dc6accd61f93f0485881b342b0be66fe9f60521ac196e8f46",
-          "name": "XPUNKS #8811",
-          "description": "The XPUNK collection consists of 10,000 uniquely generated characters on a 24-by 24-pixel canvas. They are distinguished by their colourful traits and trademark X-mouth that represents their love for the XRPL.",
-          "image": "ipfs://QmNssmD8ZSkywk1e9vN7HxX1q3dJanxyCAfnQ266Y7rYpL",
-          "imageHash": "8a79284c75f958f2d60c39c9b5eb873a4390ef78f407347ca9a624153aee9188",
-          "edition": 9865,
-          "date": 1667163805289,
+          "name": "Bored Apes XRP Club #5611",
+          "description": "The Bored Apes XRP Club is a collection of 10,000 unique Bored Ape NFTs living on the XRP ledger.",
+          "image": "QmdYwvVtjNFKRqHEWPChdkfM24Z1i34FmmC4uAjDdnJ7NF/5611.png",
+          "edition": "5611",
+          "date": 1667650922062,
+          "creator": "Bored Apes XRP Club",
+          "artist": "Bored Apes XRP Club",
           "attributes": [
             {
-              "trait_type": "Face",
-              "value": "Demi-god"
+              "trait_type": "Background",
+              "value": "Punk Blue"
             },
             {
-              "trait_type": "Eye Characteristics",
-              "value": "Fresh"
+              "trait_type": "Fur",
+              "value": "Grey"
+            },
+            {
+              "trait_type": "Clothes",
+              "value": "Cowboy"
+            },
+            {
+              "trait_type": "Mouth",
+              "value": "Rainbow"
             },
             {
               "trait_type": "Eyes",
-              "value": "Blue Left"
-            },
-            {
-              "trait_type": "Neck Wearable",
-              "value": "No Attribute"
-            },
-            {
-              "trait_type": "Hair & Hats",
-              "value": "Over 9000 Hair"
-            },
-            {
-              "trait_type": "Facial Hair",
-              "value": "No Attribute"
-            },
-            {
-              "trait_type": "Eye Wearables",
-              "value": "Lasers"
-            },
-            {
-              "trait_type": "Mouth Attribute",
-              "value": "No Attribute"
-            },
-            {
-              "trait_type": "Piercings",
-              "value": "No Attribute"
+              "value": "Blindfold"
             }
           ],
-          "schema": "ipfs://QmNpi8rcXEkohca8iXu7zysKKSJYqCvBJn3xJwga8jXqWU",
-          "nftType": "art.v0",
+          "external_link": "https://x-apes.com/",
+          "category": "Collectables",
           "collection": {
-            "name": "XPUNKS",
-            "description": "The XPUNK collection consists of 10,000 uniquely generated characters on a 24-by-24-pixel canvas. They are distinguished by their colorful traits and trademark X-mouth that represents their love for the XRPL."
+            "name": "Bored Apes XRP Club",
+            "family": "art"
           }
         },
         "issuerDetails": {
-          "username": "XPUNKS",
-          "service": "XPUNKS"
+          "username": "BoredApesXRP",
+          "service": "Bored Apes XRP Club"
         },
         "ownerDetails": {
           "username": null,
@@ -961,10 +963,14 @@ print $data;
       },
       "acceptedAccountDetails": {
         "username": null,
-        "service": null
+        "service": "xrp.cafe"
       }
     }
-  ]
+  ],
+  "total": {
+    "primary": 78600,
+    "secondary": 54396
+  }
 }
 ```
 
@@ -979,7 +985,9 @@ This endpoint retrieves a List of NFT Sales for specified parameters
 Parameter | Default | Description
 --------- | ------- | -----------
 list | null | `topSold` or `lastSold` (for the list of NFTs sales of the highest price or the latest sell timestamp)
-currency | null | Must be specified for `topSold` for example as `xrp`
+convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the response will have an array `amountInConvertCurrencies`
+sortCurrency | null | (Only available on paid API plans) one of the currencies from the `convertCurrencies` to sort the list by, for example: `usd` or `xrp`, should be specified if there are no `usd`
+currency | null | specify a currency to filter sales in a specific currency, for example `xrp` (should be specified if there are no `convertCurrencies` and `sortCurrency`)
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
 issuer | null | The XRPL address of the NFT issuer (optional)
