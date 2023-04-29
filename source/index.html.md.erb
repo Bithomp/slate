@@ -56,6 +56,14 @@ NFT content plans:
 
 # Changelog
 
+### 29th of April 2023
+
+The new query parameter: `convertCurrencies` was added to the <a href="#nft">**NFT**</a> API end-point.
+The endpoint now also returns the `marketplace` in the `history` of Sales.
+
+The new query parameter: `taxon` was added to the <a href="#nft-distribution">**NFT Distribution**</a>
+Now you can get the nft distrubition for collections identified by issuer and taxon.
+
 ### 18th of April 2023
 
 New params were added to get all the NFT sales (inluding NFTs sold for IOU (tokens)) amounts converted to XRP or Fiat currencies and sorted by a choosen currency.
@@ -287,13 +295,15 @@ print $data;
       "owner": "rXMART8usFd5kABXCayoP6ZfB35b4v43t",
       "changedAt": 1666885020,
       "ledgerIndex": 6860081,
-      "txHash": "453C088321BA9AFCB59B1B7B79790E5ECF53EF969B95845C494604E26C51E848"
+      "txHash": "453C088321BA9AFCB59B1B7B79790E5ECF53EF969B95845C494604E26C51E848",
+      "marketplace": "onxrp.com"
     },
     {
       "owner": "rpL8hpPgdep5MrWCFfWx2qupiAhtPrMcJu",
       "changedAt": 1666885052,
       "ledgerIndex": 6860093,
-      "txHash": "103F0D35348C58D9E5301EED79906ED3CDBBD44EFFF65857BE8BFFD572F617A8"
+      "txHash": "103F0D35348C58D9E5301EED79906ED3CDBBD44EFFF65857BE8BFFD572F617A8",
+      "marketplace": "xrpcafe.com"
     }
   ],
   "sellOffers": [
@@ -358,6 +368,7 @@ history | false | If set to true, the result will include `history`.
 metadata | false | If set to true, the result will include `metadata`.
 offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array. 
 offersHistory | false | (Only available on paid API plans) If set to true, each offers will include historical offers which are already accepted or canceled.
+convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the for `history` response  will have an array `amountInConvertCurrencies`
 
 ## NFT Offer
 
@@ -834,6 +845,8 @@ address  | The XRPL address or a username.
 Parameter | Default | Description
 --------- | ------- | -----------
 list | null | `owners` (to list NFT Owners for NFTs issued by a specific `address`).
+taxon | null | taxon for the `address` issuer, to see the nft distribution of a collection identified by issuer and taxon.
+
 
 ## NFT Sales
 
