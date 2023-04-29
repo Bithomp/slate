@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#29th-of-april-2023" class="toc-h2 toc-link" data-title="29th of April 2023">29th of April 2023</a>
+                  </li>
+                  <li>
                     <a href="#18th-of-april-2023" class="toc-h2 toc-link" data-title="18th of April 2023">18th of April 2023</a>
                   </li>
                   <li>
@@ -581,7 +584,13 @@
 <td>200 EUR</td>
 </tr>
 </tbody></table>
-<h1 id='changelog'>Changelog</h1><h3 id='18th-of-april-2023'>18th of April 2023</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='29th-of-april-2023'>29th of April 2023</h3>
+<p>The new query parameter: <code>convertCurrencies</code> was added to the <a href="#nft"><strong>NFT</strong></a> API end-point.
+The endpoint now also returns the <code>marketplace</code> in the <code>history</code> of Sales.</p>
+
+<p>The new query parameter: <code>taxon</code> was added to the <a href="#nft-distribution"><strong>NFT Distribution</strong></a>
+Now you can get the nft distrubition for collections identified by issuer and taxon.</p>
+<h3 id='18th-of-april-2023'>18th of April 2023</h3>
 <p>New params were added to get all the NFT sales (inluding NFTs sold for IOU (tokens)) amounts converted to XRP or Fiat currencies and sorted by a choosen currency.
 For example, all sales in (XRP and IOU (tokens)) can be converted to USD, and you can see the Top NFT sales in USD, sorted by USD value.
 NFT Sales now also inlude <code>marketplace</code>, the website where NFT was sold (if it is identified).</p>
@@ -781,13 +790,15 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
       </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rXMART8usFd5kABXCayoP6ZfB35b4v43t"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"changedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666885020</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">6860081</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"453C088321BA9AFCB59B1B7B79790E5ECF53EF969B95845C494604E26C51E848"</span><span class="w">
+      </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"453C088321BA9AFCB59B1B7B79790E5ECF53EF969B95845C494604E26C51E848"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onxrp.com"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpL8hpPgdep5MrWCFfWx2qupiAhtPrMcJu"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"changedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1666885052</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">6860093</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103F0D35348C58D9E5301EED79906ED3CDBBD44EFFF65857BE8BFFD572F617A8"</span><span class="w">
+      </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103F0D35348C58D9E5301EED79906ED3CDBBD44EFFF65857BE8BFFD572F617A8"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrpcafe.com"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"sellOffers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -885,6 +896,11 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>offersHistory</td>
 <td>false</td>
 <td>(Only available on paid API plans) If set to true, each offers will include historical offers which are already accepted or canceled.</td>
+</tr>
+<tr>
+<td>convertCurrencies</td>
+<td>null</td>
+<td>(Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example <code>xrp,usd</code> (40 fiat currencies available), the for <code>history</code> response  will have an array <code>amountInConvertCurrencies</code></td>
 </tr>
 </tbody></table>
 <h2 id='nft-offer'>NFT Offer</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673"</span>
@@ -1387,6 +1403,11 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>list</td>
 <td>null</td>
 <td><code>owners</code> (to list NFT Owners for NFTs issued by a specific <code>address</code>).</td>
+</tr>
+<tr>
+<td>taxon</td>
+<td>null</td>
+<td>taxon for the <code>address</code> issuer, to see the nft distribution of a collection identified by issuer and taxon.</td>
 </tr>
 </tbody></table>
 <h2 id='nft-sales'>NFT Sales</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-sales?list=topSold&amp;currency=xrp&amp;convertCurrencies=usd,eur"</span>
