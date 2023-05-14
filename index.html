@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#14th-of-may-2023" class="toc-h2 toc-link" data-title="14th of May 2023">14th of May 2023</a>
+                  </li>
+                  <li>
                     <a href="#29th-of-april-2023" class="toc-h2 toc-link" data-title="29th of April 2023">29th of April 2023</a>
                   </li>
                   <li>
@@ -393,6 +396,9 @@
                   </li>
                   <li>
                     <a href="#nft-volumes" class="toc-h2 toc-link" data-title="NFT Volumes">NFT Volumes</a>
+                  </li>
+                  <li>
+                    <a href="#nft-volumes-extended" class="toc-h2 toc-link" data-title="NFT Volumes Extended">NFT Volumes Extended</a>
                   </li>
               </ul>
           </li>
@@ -584,7 +590,18 @@
 <td>200 EUR</td>
 </tr>
 </tbody></table>
-<h1 id='changelog'>Changelog</h1><h3 id='29th-of-april-2023'>29th of April 2023</h3>
+
+<ul>
+<li><p><a href="https://bithomp.com/developer">Request an API key</a></p></li>
+<li><p>To get your payment details please reply to the email with your API key.</p></li>
+</ul>
+<h1 id='changelog'>Changelog</h1><h3 id='14th-of-may-2023'>14th of May 2023</h3>
+<p>The new query parameter: <code>marketplace</code> was added to the <a href="#nft-sales"><strong>NFT Sales</strong></a> API end-point.
+Now you are able to filter sales by a marketplace, or to get TOP or Latest Sales for any marketplace. </p>
+
+<p>The new endpoint added: <a href="#nft-volumes-extended"><strong>NFT Volumes Extended</strong></a>
+Here you can get all the volumes for Marketplaces, Issuers, Taxons, Currencies, Brokers (including all tokens [IOU]) with converted volumes to FIAT and/or XRP, BTC.</p>
+<h3 id='29th-of-april-2023'>29th of April 2023</h3>
 <p>The new query parameter: <code>convertCurrencies</code> was added to the <a href="#nft"><strong>NFT</strong></a> API end-point.
 The endpoint now also returns the <code>marketplace</code> in the <code>history</code> of Sales.</p>
 
@@ -1558,7 +1575,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>sortCurrency</td>
 <td>null</td>
-<td>(Only available on paid API plans) one of the currencies from the <code>convertCurrencies</code> to sort the list by, for example: <code>usd</code> or <code>xrp</code>, should be specified if there are no <code>usd</code></td>
+<td>(Only available on paid API plans) one of the currencies from the <code>convertCurrencies</code> to sort the list by, for example: <code>usd</code> or <code>xrp</code>, should be specified if there are no <code>currency</code></td>
 </tr>
 <tr>
 <td>currency</td>
@@ -1588,7 +1605,12 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>period</td>
 <td><code>all</code></td>
-<td>A time period, all time <code>all</code>, last 24h <code>day</code>, last week <code>week</code>, last month <code>month</code>, last year <code>year</code> or a time period as timestamps from..to <code>1671490800000..1671663600000</code> or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code></td>
+<td>A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code> or a time period as timestamps from..to <code>1671490800000..1671663600000</code> or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code></td>
+</tr>
+<tr>
+<td>marketplace</td>
+<td>null</td>
+<td>You can specify a marketplace, to filter sales by a specific marketplace, for example <code>xrp.cafe</code>, the list of all marketplaces is <a href="https://bithomp.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)</td>
 </tr>
 <tr>
 <td>marker</td>
@@ -1683,12 +1705,12 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>list</td>
 <td>null</td>
-<td><code>issuers</code>, <code>currencies</code> <code>brokers</code> or  (for the Volume list for top issuers/currencies/brokers for the NFT sales)</td>
+<td><code>issuers</code>, <code>currencies</code>, <code>brokers</code> or <code>marketplaces</code></td>
 </tr>
 <tr>
 <td>currency</td>
 <td>null</td>
-<td>Must be specified for <code>issuers</code> and <code>brokers</code> for example as <code>xrp</code></td>
+<td>Must be specified for <code>issuers</code>, <code>brokers</code> and <code>marketplaces</code>, for example as <code>xrp</code></td>
 </tr>
 <tr>
 <td>currencyIssuer</td>
@@ -1703,12 +1725,285 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>period</td>
 <td><code>all</code></td>
-<td>A time period, all time <code>all</code>, last 24h <code>day</code>, last week <code>week</code>, last month <code>month</code>, last year <code>year</code></td>
+<td>A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code></td>
 </tr>
 <tr>
 <td>floorPrice</td>
 <td>false</td>
 <td>(Only available on paid API plans) Returns <code>floorPrice</code> for <code>issuers</code>. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.</td>
+</tr>
+</tbody></table>
+<h2 id='nft-volumes-extended'>NFT Volumes Extended</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-volumes-extended?list=issuers&amp;convertCurrencies=usd,xrp&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-volumes-extended?list=issuers&amp;convertCurrencies=usd,xrp&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-volumes-extended?list=issuers&amp;convertCurrencies=usd,xrp&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issuers"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"week"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"convertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"xrp"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"sortCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"saleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secondary"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"floorPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7285A19600000001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"all"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4uq8urnYrT6LnZaadPyusyKCS68HVJtRn"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9426"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"177880.1873508458857959814"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"418260.834306"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"225636390121"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">4416</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96928.28649692584"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"225636.390121"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7853504543544152000000000000000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rh5jzTCdMRCVjQ7LT6zucjezC47KATkuvv"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"115.914190640895224906992042"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"277.20719990648146575868"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"currencyDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hex"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7853504543544152000000000000000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xSPECTAR"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">4730</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"volumesInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"276669.4085438152983"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"648231.929829"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"issuers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEzbi191M5AjrucxXKZWbR5QeyfpbedBcV"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BoredApesXRP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bored Apes XRP Club"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"floorPrices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"450000000"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"369000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"destinationDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrp.cafe"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAY"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4uq8urnYrT6LnZaadPyusyKCS68HVJtRn"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"buyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tradedNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owners"</span><span class="p">:</span><span class="w"> </span><span class="mi">1646</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">9998</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"volumesInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"184004.5165186555057"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"432359.982164"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAY"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4uq8urnYrT6LnZaadPyusyKCS68HVJtRn"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9426"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"177880.1873508458857"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"418260.834306"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14099147858"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6124.32916780962"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14099.147858"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDPUNKX2Rf5joEyVnmXFnnWL5MYa92wLPN"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DoodlepunkX"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">2357</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"floorPrices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25000000"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"destinationDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrp.cafe"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OXP"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrno7Nj4RkFJLzC4nRaZiLF5aHwcTVon3d"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"buyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">230</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tradedNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">2240</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owners"</span><span class="p">:</span><span class="w"> </span><span class="mi">1188</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"volumesInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26185.3828300196"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61573.861964"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61289463829"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">2340</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26065.17558483161"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61289.463829"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OXP"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrno7Nj4RkFJLzC4nRaZiLF5aHwcTVon3d"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13406"</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120.207245188022"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"284.398135"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves Extended NFT Sales Volumes for specified parameters (Only available on paid API plans)</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/nft-volumes-extended</code></p>
+<h3 id='query-parameters-8'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>list</td>
+<td>null</td>
+<td><code>issuers</code>, <code>taxons</code>, <code>currencies</code>, <code>brokers</code> or <code>marketplaces</code></td>
+</tr>
+<tr>
+<td>issuer</td>
+<td>null</td>
+<td>An XRPL address or username of the NFT issuer, must be specified for list <code>taxons</code>, to receive separate volumes for each taxon of the issuer</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>null</td>
+<td>By default returns for all currencies, you can set any XRPL currency for example <code>xrp</code> (optional)</td>
+</tr>
+<tr>
+<td>currencyIssuer</td>
+<td>null</td>
+<td>if currency is specified and it is not &#39;xrp&#39;, then you must specify the currency issuer XRPL address (optional)</td>
+</tr>
+<tr>
+<td>convertCurrencies</td>
+<td>null</td>
+<td>the list of currencies to convert amounts and volumes to, splitted by comma, for example <code>xrp,usd</code> (40 fiat currencies available), the response will have <code>amountInConvertCurrencies</code> and <code>volumesInConvertCurrencies</code></td>
+</tr>
+<tr>
+<td>sortCurrency</td>
+<td>null</td>
+<td>one of the currencies from the <code>convertCurrencies</code> to sort the list by, for example: <code>usd</code> or <code>xrp</code>, should be specified if there are no <code>currency</code></td>
+</tr>
+<tr>
+<td>saleType</td>
+<td><code>all</code></td>
+<td>can be <code>primary</code> or <code>secondary</code> (optional, <code>primary</code> - the sales from the issuer address)</td>
+</tr>
+<tr>
+<td>period</td>
+<td><code>all</code></td>
+<td>A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code></td>
+</tr>
+<tr>
+<td>floorPrice</td>
+<td>false</td>
+<td>Returns <code>floorPrice</code> for <code>issuers</code>. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.</td>
+</tr>
+<tr>
+<td>statistics</td>
+<td>false</td>
+<td>Returns <code>statistics</code> for <code>issuers</code> and <code>taxons</code>. Which includes: <code>buyers</code> - current buyers count, <code>tradedNfts</code> - current count of traded NFTS, <code>owners</code> - current count of owners, <code>nfts</code> - current count of NFTs</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>null</td>
+<td>The marker from the previous request, if you need a next page</td>
 </tr>
 </tbody></table>
 <h1 id='get-status'>Get status</h1><h2 id='services-last-update'>Services (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services/lastUpdate"</span>
@@ -1730,7 +2025,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a timestamp of last DB update for services/addresses.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/lastUpdate</code></p>
 <h3 id='response-format'>Response Format</h3>
 <table><thead>
@@ -1848,7 +2143,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested XRPL address.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/address/&lt;address&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -1862,7 +2157,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>The XRPL address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-8'>Query Parameters</h3>
+<h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1986,7 +2281,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested Username.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/username/&lt;username&gt;</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
@@ -2000,7 +2295,7 @@ Exclude unnecessary parameters to make your request faster.
 <td>A bithomp or an old rippletrade username</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-9'>Query Parameters</h3>
+<h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2096,7 +2391,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currency/&lt;currency&gt;</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
@@ -2134,7 +2429,7 @@ You can retrieve information for MANY currencies in one request:
 </span></code></pre></div>
 <p>This endpoint retrieves a XRPL address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
 <h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
@@ -2236,9 +2531,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currencies</code></p>
-<h3 id='query-parameters-10'>Query Parameters</h3>
+<h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2309,7 +2604,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of identified services.</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services</code></p>
 <h3 id='response-format-2'>Response Format</h3>
 <table><thead>
@@ -2395,7 +2690,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of all identified service addresses.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/addresses</code></p>
 <h3 id='response-format-3'>Response Format</h3>
 <table><thead>
@@ -2481,7 +2776,7 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://bithomp.com/submit/">
   https://bithomp.com/submit/
 </a>.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
@@ -2546,7 +2841,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/?hwlogin">
   https://bithomp.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -2607,7 +2902,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-4'>Response Format</h3>
 <table><thead>
@@ -2725,7 +3020,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-5'>Response Format</h3>
 <table><thead>
