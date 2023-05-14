@@ -1007,7 +1007,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 list | null | `topSold` or `lastSold` (for the list of NFTs sales of the highest price or the latest sell timestamp)
 convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the response will have an array `amountInConvertCurrencies`
-sortCurrency | null | (Only available on paid API plans) one of the currencies from the `convertCurrencies` to sort the list by, for example: `usd` or `xrp`, should be specified if there are no `currency`
+sortCurrency | `xrp` | (Only available on paid API plans) one of the currencies from the `convertCurrencies` or `xrp` to sort the list by, for example: `usd` (optional)
 currency | null | specify a currency to filter sales in a specific currency, for example `xrp` (should be specified if there are no `convertCurrencies` and `sortCurrency`)
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
@@ -1350,7 +1350,7 @@ issuer | null | An XRPL address or username of the NFT issuer, must be specified
 currency | null | By default returns for all currencies, you can set any XRPL currency for example `xrp` (optional)
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
 convertCurrencies | null | the list of currencies to convert amounts and volumes to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the response will have `amountInConvertCurrencies` and `volumesInConvertCurrencies`
-sortCurrency | null | one of the currencies from the `convertCurrencies` to sort the list by, for example: `usd` or `xrp`, should be specified if there are no `currency`
+sortCurrency | `xrp` | one of the currencies from the `convertCurrencies` or `xrp` to sort the list by, for example: `usd` (optional)
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
 period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year`
 floorPrice | false | Returns `floorPrice` for `issuers`. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.
