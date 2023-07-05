@@ -31,21 +31,24 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 API plans:
 
-| Tier                    | Max requests / minute | Max request / 24h | Price / month |
-|-------------------------|------:|-------|----------|
-| Free (non-comercial use)| 10    | 2K    | 0        |
-| Basic                   | 100   | 30K   | 30 EUR   |
-| Standard                | 400   | 120K  | 100 EUR  |
-| Premium                 | 1000  | 300K  | 250 EUR  |
-| Enterprise 1            | 2000  | 600K  | 500 EUR  |
-| Enterprise 2            | 4000  | 1.2M  | 1000 EUR |
-| Enterprise 3            | 8000  | 2.4M  | 2000 EUR |
+| Tier                    | Max requests / minute | Max request / 24h | NFT content plan | Price / month |
+|-------------------------|------:|-------|-------|----------|
+| Free (non-comercial use)| 10    | 2K    | Free  | 0        |
+| Basic                   | 100   | 30K   | Free  | 30 EUR   |
+| Standard*               | 400   | 120K  | Basic | 100 EUR  |
+| Premium*                | 1000  | 300K  | Basic | 250 EUR  |
+| Enterprise 1*           | 2000  | 600K  | Basic | 500 EUR  |
+| Enterprise 2*           | 4000  | 1.2M  | Basic | 1000 EUR |
+| Enterprise 3*           | 8000  | 2.4M  | Basic | 2000 EUR |
 
-NFT content plans:
+* On that plan the <a href="#nft">**NFT**</a> endpoint returns `assets` with direct URLs to resized images and videos.
 
-- image previews (700px x 700px)
-- video previews (first 15 seconds)
-- thumbnails (64px x 64px)
+NFT content plans (Direct access to fast [resized and cached] images and videos):
+
+- images (700px x 700px)
+- videos (first 15 seconds)
+- preview (image, otherwise a frame from a video, 360px x 360px)
+- thumbnails (image, otherwise a frame from a video, 64px x 64px)
 
 | Tier                     | Max Images day / month | Max Videos day / month | Max Thumbnails day / month | Price / month |
 |--------------------------|------------|------------|------------|----------|
@@ -59,6 +62,11 @@ NFT content plans:
 - To get your payment details please reply to the email with your API key.
 
 # Changelog
+
+### 5th of July 2023
+
+The new query parameter: `assets` was added to the <a href="#nft">**NFT**</a> API end-point.
+Now you can URLs for cached NFT image 700px x 700px, 15 second video, thumbnail 64px x 64px and a preview 360px x 360px (resized image otherwise a frame from a video)
 
 ### 14th of May 2023
 
@@ -266,7 +274,7 @@ username | false | If set to true, the result will also include a `username` (ri
 ## NFT
 
 ```shell
-curl "https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true"
+curl "https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -274,11 +282,11 @@ curl "https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true", getData);
+bithompRequest("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true");
 print $data;
 ```
 
@@ -293,15 +301,29 @@ print $data;
     "transferable": true
   },
   "issuer": "rwzGnXc31zAeSQiKgGqFiJJcALhy8TUqb8",
+  "issuerDetails": { 
+    "username": "3DAPES", 
+    "service": "3DAPES" 
+  },
   "nftokenID": "000813886D8D6DAC402E0D27297E9485F4D7E1125D656678258B866100000018",
   "nftokenTaxon": 10194,
   "transferFee": 5000,
   "sequence": 24,
   "owner": "rpL8hpPgdep5MrWCFfWx2qupiAhtPrMcJu",
+  "ownerDetails": {
+    "username": null,
+    "service": null
+  },
   "uri": "68747470733A2F2F626166796265696734676876366263666B6E746B793234616564667A6B757276366C746A6476736763623575736E77336A736965736D68706769652E697066732E7733732E6C696E6B2F6D657461646174612E6A736F6E",
   "issuedAt": 1666885020,
   "ownerChangedAt": 1666885052,
   "deletedAt": null,
+  "assets": {
+    "image": "https://cdn.bithomp.com/image/image_hash.png", 
+    "preview": "https://cdn.bithomp.com/preview/preview_hash.png", 
+    "thumbnail": "https://cdn.bithomp.com/thumbnail/thumbail_hash.png",
+    "video": "https://cdn.bithomp.com/video/video_hash"
+  },
   "history": [
     {
       "owner": "rXMART8usFd5kABXCayoP6ZfB35b4v43t",
@@ -374,6 +396,7 @@ nftID  | An NFT ID (XLS20)
 Parameter | Default | Description
 --------- | ------- | -----------
 uri | false | If set to true, the result will include `uri` and `url`.
+assets | false | (Only available on the Standart API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 sellOffers | false | If set true, the result will include `sellOffers`.
 buyOffers | false | If set to true, the result will include `buyOffers`.
 history | false | If set to true, the result will include `history`.
