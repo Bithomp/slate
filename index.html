@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#23rd-of-july-2023" class="toc-h2 toc-link" data-title="23rd of July 2023">23rd of July 2023</a>
+                  </li>
+                  <li>
                     <a href="#5th-of-july-2023" class="toc-h2 toc-link" data-title="5th of July 2023">5th of July 2023</a>
                   </li>
                   <li>
@@ -611,7 +614,10 @@
 <li><p><a href="https://bithomp.com/developer">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='5th-of-july-2023'>5th of July 2023</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='23rd-of-july-2023'>23rd of July 2023</h3>
+<p>Two new query parameters: <code>issuedAt</code> and <code>deletedAt</code> were added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
+You can search for NFTs in a collection (or through all NFTs) which were minted during a specific period and/or deleted during another specific period in time.</p>
+<h3 id='5th-of-july-2023'>5th of July 2023</h3>
 <p>The new query parameter: <code>assets</code> was added to the <a href="#nft"><strong>NFT</strong></a> API end-point.
 Now you can get URLs for cached NFT image 700px x 700px, 15 second video, thumbnail 64px x 64px (resized image otherwise a frame from a video) and a preview 360px x 360px (resized image otherwise a frame from a video)</p>
 <h3 id='14th-of-may-2023'>14th of May 2023</h3>
@@ -1219,6 +1225,16 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>currencyIssuer</td>
 <td>null</td>
 <td>(Only available on paid API plans) A currency issuer for the <code>currency</code> if it is not an XRP.</td>
+</tr>
+<tr>
+<td>issuedAt</td>
+<td>null</td>
+<td>(Only available on paid API plans) It can be used to show NFTs which were minted during some period in time. For example: <code>1671490800000..1671663600000</code> - period or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code>, to show from specific date till now: <code>1671490800000..</code> or <code>2022-12-20T00:00:00.000Z..</code></td>
+</tr>
+<tr>
+<td>deletedAt</td>
+<td>null</td>
+<td>(Only available on paid API plans) It can be used to show NFTs which were burned during some period in time. For example: <code>1671490800000..1671663600000</code> - period or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code>, to show from specific date till now: <code>1671490800000..</code> or <code>2022-12-20T00:00:00.000Z..</code></td>
 </tr>
 </tbody></table>
 <h2 id='nft-offers'>NFT Offers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true"</span>
