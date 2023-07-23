@@ -63,6 +63,11 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 23rd of July 2023
+
+Two new query parameters: `issuedAt` and `deletedAt` were added to the <a href="#nfts">**NFTs**</a> API end-point.
+You can search for NFTs in a collection (or through all NFTs) which were minted during a specific period and/or deleted during another specific period in time.
+
 ### 5th of July 2023
 
 The new query parameter: `assets` was added to the <a href="#nft">**NFT**</a> API end-point.
@@ -649,6 +654,8 @@ destination | `all` | (Only available on paid API plans) used to filter NFTs for
 order | null | (Only available on paid API plans) used to order NFTs for sale `list=onSale`, can be `offerCreatedNew`, `offerCreatedOld`, `priceLow`, `priceHigh`
 currency | null | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be `XRP` or any other currency code.
 currencyIssuer | null | (Only available on paid API plans) A currency issuer for the `currency` if it is not an XRP.
+issuedAt | null | (Only available on paid API plans) It can be used to show NFTs which were minted during some period in time. For example: `1671490800000..1671663600000` - period or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`, to show from specific date till now: `1671490800000..` or `2022-12-20T00:00:00.000Z..`
+deletedAt | null | (Only available on paid API plans) It can be used to show NFTs which were burned during some period in time. For example: `1671490800000..1671663600000` - period or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`, to show from specific date till now: `1671490800000..` or `2022-12-20T00:00:00.000Z..`
 
 ## NFT Offers
 
