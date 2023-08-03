@@ -63,6 +63,11 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 3rd of August 2023
+
+An update for query parameter: `period` <a href="#nft-volumes-extended">**NFT Volumes Extended**</a>
+Now you can define start and end of range for the period.
+
 ### 23rd of July 2023
 
 Two new query parameters: `issuedAt` and `deletedAt` were added to the <a href="#nfts">**NFTs**</a> API end-point.
@@ -1382,7 +1387,7 @@ currencyIssuer | null | if currency is specified and it is not 'xrp', then you m
 convertCurrencies | null | the list of currencies to convert amounts and volumes to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the response will have `amountInConvertCurrencies` and `volumesInConvertCurrencies`
 sortCurrency | `xrp` | one of the currencies from the `convertCurrencies` or `xrp` to sort the list by, for example: `usd` (optional)
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
-period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year`
+period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or as timestamps from..to, examples: `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
 floorPrice | false | Returns `floorPrice` for `issuers`. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.
 statistics | false | Returns `statistics` for `issuers` and `taxons`. Which includes: `buyers` - current buyers count, `tradedNfts` - current count of traded NFTS, `owners` - current count of owners, `nfts` - current count of NFTs
 marker | null | The marker from the previous request, if you need a next page
