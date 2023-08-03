@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#3rd-of-august-2023" class="toc-h2 toc-link" data-title="3rd of August 2023">3rd of August 2023</a>
+                  </li>
+                  <li>
                     <a href="#23rd-of-july-2023" class="toc-h2 toc-link" data-title="23rd of July 2023">23rd of July 2023</a>
                   </li>
                   <li>
@@ -614,7 +617,10 @@
 <li><p><a href="https://bithomp.com/developer">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='23rd-of-july-2023'>23rd of July 2023</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='3rd-of-august-2023'>3rd of August 2023</h3>
+<p>An update for query parameter: <code>period</code> <a href="#nft-volumes-extended"><strong>NFT Volumes Extended</strong></a>
+Now you can define start and end of range for the period.</p>
+<h3 id='23rd-of-july-2023'>23rd of July 2023</h3>
 <p>Two new query parameters: <code>issuedAt</code> and <code>deletedAt</code> were added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
 You can search for NFTs in a collection (or through all NFTs) which were minted during a specific period and/or deleted during another specific period of time.</p>
 <h3 id='5th-of-july-2023'>5th of July 2023</h3>
@@ -2042,7 +2048,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>period</td>
 <td><code>all</code></td>
-<td>A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code></td>
+<td>A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code> or as timestamps from..to, examples: <code>1671490800000..1671663600000</code> or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code></td>
 </tr>
 <tr>
 <td>floorPrice</td>
