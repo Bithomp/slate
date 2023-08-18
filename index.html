@@ -412,6 +412,9 @@
                   <li>
                     <a href="#nft-volumes-extended" class="toc-h2 toc-link" data-title="NFT Volumes Extended">NFT Volumes Extended</a>
                   </li>
+                  <li>
+                    <a href="#nft-minters" class="toc-h2 toc-link" data-title="NFT Minters">NFT Minters</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -621,6 +624,10 @@
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
 <h1 id='changelog'>Changelog</h1><h3 id='18th-of-august-2023'>18th of August 2023</h3>
+<p>A new endpoint was added:</p>
+
+<p><a href="#nft-minters"><strong>NFT minters</strong></a></p>
+
 <p>A new query parameter <code>includeDeleted</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
 Now the search results can include already burned NFTs.</p>
 <h3 id='3rd-of-august-2023'>3rd of August 2023</h3>
@@ -2077,6 +2084,84 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>The marker from the previous request, if you need a next page</td>
 </tr>
 </tbody></table>
+<h2 id='nft-minters'>NFT Minters</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-marketplaces?period=week"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-marketplaces?period=week</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-marketplaces?period=week"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"minted"</span><span class="p">:</span><span class="w"> </span><span class="mi">1873080</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mintedAndBurned"</span><span class="p">:</span><span class="w"> </span><span class="mi">306224</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"burned"</span><span class="p">:</span><span class="w"> </span><span class="mi">306224</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"marketplaces"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minted"</span><span class="p">:</span><span class="w"> </span><span class="mi">616658</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mintedAndBurned"</span><span class="p">:</span><span class="w"> </span><span class="mi">186176</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"burned"</span><span class="p">:</span><span class="w"> </span><span class="mi">186176</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onxrp.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minted"</span><span class="p">:</span><span class="w"> </span><span class="mi">299713</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mintedAndBurned"</span><span class="p">:</span><span class="w"> </span><span class="mi">22778</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"burned"</span><span class="p">:</span><span class="w"> </span><span class="mi">22778</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xmart.art"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minted"</span><span class="p">:</span><span class="w"> </span><span class="mi">261204</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mintedAndBurned"</span><span class="p">:</span><span class="w"> </span><span class="mi">16843</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"burned"</span><span class="p">:</span><span class="w"> </span><span class="mi">16843</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrp.cafe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minted"</span><span class="p">:</span><span class="w"> </span><span class="mi">186707</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mintedAndBurned"</span><span class="p">:</span><span class="w"> </span><span class="mi">3785</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"burned"</span><span class="p">:</span><span class="w"> </span><span class="mi">3785</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrpnft.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minted"</span><span class="p">:</span><span class="w"> </span><span class="mi">153240</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mintedAndBurned"</span><span class="p">:</span><span class="w"> </span><span class="mi">49818</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"burned"</span><span class="p">:</span><span class="w"> </span><span class="mi">49818</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sologenic.org"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"minted"</span><span class="p">:</span><span class="w"> </span><span class="mi">98900</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mintedAndBurned"</span><span class="p">:</span><span class="w"> </span><span class="mi">6210</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"burned"</span><span class="p">:</span><span class="w"> </span><span class="mi">6210</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves NFT minters on XRPL for a specified period of time</p>
+<h3 id='http-request-10'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/nft-marketplaces</code></p>
+<h3 id='query-parameters-9'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>period</td>
+<td><code>all</code></td>
+<td>A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code>.</td>
+</tr>
+</tbody></table>
 <h1 id='get-status'>Get status</h1><h2 id='services-last-update'>Services (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services/lastUpdate"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -2096,7 +2181,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a timestamp of last DB update for services/addresses.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/lastUpdate</code></p>
 <h3 id='response-format'>Response Format</h3>
 <table><thead>
@@ -2214,7 +2299,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested XRPL address.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/address/&lt;address&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -2228,7 +2313,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>The XRPL address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-9'>Query Parameters</h3>
+<h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2352,7 +2437,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested Username.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/username/&lt;username&gt;</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
@@ -2366,7 +2451,7 @@ Exclude unnecessary parameters to make your request faster.
 <td>A bithomp or an old rippletrade username</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-10'>Query Parameters</h3>
+<h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2462,7 +2547,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currency/&lt;currency&gt;</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
@@ -2500,7 +2585,7 @@ You can retrieve information for MANY currencies in one request:
 </span></code></pre></div>
 <p>This endpoint retrieves a XRPL address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
 <h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
@@ -2602,9 +2687,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currencies</code></p>
-<h3 id='query-parameters-11'>Query Parameters</h3>
+<h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2675,7 +2760,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of identified services.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services</code></p>
 <h3 id='response-format-2'>Response Format</h3>
 <table><thead>
@@ -2761,7 +2846,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of all identified service addresses.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/addresses</code></p>
 <h3 id='response-format-3'>Response Format</h3>
 <table><thead>
@@ -2847,7 +2932,7 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://bithomp.com/submit/">
   https://bithomp.com/submit/
 </a>.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
@@ -2912,7 +2997,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/?hwlogin">
   https://bithomp.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -2973,7 +3058,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-4'>Response Format</h3>
 <table><thead>
@@ -3091,7 +3176,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-5'>Response Format</h3>
 <table><thead>
