@@ -628,7 +628,7 @@
 
 <p><a href="#nft-minters"><strong>NFT minters</strong></a></p>
 
-<p>A new query parameter <code>includeDeleted</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
+<p>A new query parameter <code>includeDeleted</code> and two new values <code>mintedNew</code> and <code>mintedOld</code> for parameter <code>order</code> were added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
 Now the search results can include already burned NFTs.</p>
 <h3 id='3rd-of-august-2023'>3rd of August 2023</h3>
 <p>An update for query parameter: <code>period</code> <a href="#nft-volumes-extended"><strong>NFT Volumes Extended</strong></a>
@@ -1203,12 +1203,12 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>owner</td>
 <td>null</td>
-<td>The XRPL address of the Owner (optional, you should specify owner, issuer or both)</td>
+<td>The XRPL address of the Owner</td>
 </tr>
 <tr>
 <td>issuer</td>
 <td>null</td>
-<td>The XRPL address of the Issuer (optional, you should specify owner, issuer or both)</td>
+<td>The XRPL address of the Issuer</td>
 </tr>
 <tr>
 <td>taxon</td>
@@ -1238,7 +1238,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>order</td>
 <td>null</td>
-<td>(Only available on paid API plans) used to order NFTs for sale <code>list=onSale</code>, can be <code>offerCreatedNew</code>, <code>offerCreatedOld</code>, <code>priceLow</code>, <code>priceHigh</code></td>
+<td>(Only available on paid API plans) used to order NFTs: 1. for <code>list=nfts</code>, can be <code>mintedNew</code> and <code>mintedOld</code>, 2. for <code>list=onSale</code>, can be <code>offerCreatedNew</code>, <code>offerCreatedOld</code>, <code>priceLow</code>, <code>priceHigh</code></td>
 </tr>
 <tr>
 <td>currency</td>
