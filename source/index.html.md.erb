@@ -69,7 +69,7 @@ A new endpoint was added:
 
 <a href="#nft-minters">**NFT minters**</a>
 
-A new query parameter `includeDeleted` was added to the <a href="#nfts">**NFTs**</a> API end-point.
+A new query parameter `includeDeleted` and two new values `mintedNew` and `mintedOld` for parameter `order` were added to the <a href="#nfts">**NFTs**</a> API end-point.
 Now the search results can include already burned NFTs.
 
 ### 3rd of August 2023
@@ -666,7 +666,7 @@ includeDeleted | false | set to `true`, if you want result to include deleeted N
 marker | null | The marker from the previous request, if you need a next page of NFTs
 list | `nfts` | (Only available on paid API plans) can be set to `onSale` to get the list of NFTs with active sell offers
 destination | `all` | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be set as a XRPL address (to specify a particular MarketPlace), `public`, `knownBrokers`, `publicAndKnownBrokers`, `all`
-order | null | (Only available on paid API plans) used to order NFTs for sale `list=onSale`, can be `offerCreatedNew`, `offerCreatedOld`, `priceLow`, `priceHigh`
+order | null | (Only available on paid API plans) used to order NFTs: 1. for `list=nfts`, can be `mintedNew` and `mintedOld`, 2. for `list=onSale`, can be `offerCreatedNew`, `offerCreatedOld`, `priceLow`, `priceHigh`
 currency | null | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be `XRP` or any other currency code.
 currencyIssuer | null | (Only available on paid API plans) A currency issuer for the `currency` if it is not an XRP.
 issuedAt | null | (Only available on paid API plans) It can be used to show NFTs which were minted during some period of time. For example: `1671490800000..1671663600000` - period or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`, to show from specific date till now: `1671490800000..` or `2022-12-20T00:00:00.000Z..`
