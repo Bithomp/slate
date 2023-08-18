@@ -628,7 +628,7 @@
 
 <p><a href="#nft-minters"><strong>NFT minters</strong></a></p>
 
-<p>A new query parameter <code>includeDeleted</code> and two new values <code>mintedNew</code> and <code>mintedOld</code> for parameter <code>order</code> were added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
+<p>New query parameters: <code>mintedByMarketplace</code>, <code>includeDeleted</code>, two new values <code>mintedNew</code> and <code>mintedOld</code> for parameter <code>order</code> and new period formats were added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
 Now the search results can include already burned NFTs.</p>
 <h3 id='3rd-of-august-2023'>3rd of August 2023</h3>
 <p>An update for query parameter: <code>period</code> <a href="#nft-volumes-extended"><strong>NFT Volumes Extended</strong></a>
@@ -1221,6 +1221,11 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>set to <code>true</code>, if you want result to include deleeted NFTs</td>
 </tr>
 <tr>
+<td>mintedByMarketplace</td>
+<td>null</td>
+<td>Here you can specify a minter from https://bithomp.com/nft-minters?period=all to filter your search by minter project.</td>
+</tr>
+<tr>
 <td>marker</td>
 <td>null</td>
 <td>The marker from the previous request, if you need a next page of NFTs</td>
@@ -1253,12 +1258,12 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>issuedAt</td>
 <td>null</td>
-<td>(Only available on paid API plans) It can be used to show NFTs which were minted during some period of time. For example: <code>1671490800000..1671663600000</code> - period or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code>, to show from specific date till now: <code>1671490800000..</code> or <code>2022-12-20T00:00:00.000Z..</code></td>
+<td>(Only available on paid API plans) It can be used to show NFTs which were minted during some period of time. A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code>, or <code>1671490800000..1671663600000</code> - period or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code>, to show from specific date till now: <code>1671490800000..</code> or <code>2022-12-20T00:00:00.000Z..</code></td>
 </tr>
 <tr>
 <td>deletedAt</td>
 <td>null</td>
-<td>(Only available on paid API plans) It can be used to show NFTs which were burned during some period of time. For example: <code>1671490800000..1671663600000</code> - period or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code>, to show from specific date till now: <code>1671490800000..</code> or <code>2022-12-20T00:00:00.000Z..</code></td>
+<td>(Only available on paid API plans) It can be used to show NFTs which were burned during some period of time. A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code>. or <code>1671490800000..1671663600000</code> - period or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code>, to show from specific date till now: <code>1671490800000..</code> or <code>2022-12-20T00:00:00.000Z..</code></td>
 </tr>
 </tbody></table>
 <h2 id='nft-offers'>NFT Offers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true"</span>
