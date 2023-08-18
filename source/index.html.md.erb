@@ -63,6 +63,11 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 18th of August 2023
+
+A new query parameter `includeDeleted` was added to the <a href="#nfts">**NFTs**</a> API end-point.
+Now the search results can include already burned NFTs.
+
 ### 3rd of August 2023
 
 An update for query parameter: `period` <a href="#nft-volumes-extended">**NFT Volumes Extended**</a>
@@ -653,6 +658,7 @@ Parameter | Default | Description
 owner | null | The XRPL address of the Owner (optional, you should specify owner, issuer or both)
 issuer | null | The XRPL address of the Issuer (optional, you should specify owner, issuer or both)
 taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
+includeDeleted | false | set to `true`, if you want result to include deleeted NFTs
 marker | null | The marker from the previous request, if you need a next page of NFTs
 list | `nfts` | (Only available on paid API plans) can be set to `onSale` to get the list of NFTs with active sell offers
 destination | `all` | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be set as a XRPL address (to specify a particular MarketPlace), `public`, `knownBrokers`, `publicAndKnownBrokers`, `all`
