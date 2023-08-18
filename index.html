@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#18th-of-august-2023" class="toc-h2 toc-link" data-title="18th of August 2023">18th of August 2023</a>
+                  </li>
+                  <li>
                     <a href="#3rd-of-august-2023" class="toc-h2 toc-link" data-title="3rd of August 2023">3rd of August 2023</a>
                   </li>
                   <li>
@@ -617,7 +620,10 @@
 <li><p><a href="https://bithomp.com/developer">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='3rd-of-august-2023'>3rd of August 2023</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='18th-of-august-2023'>18th of August 2023</h3>
+<p>A new query parameter <code>includeDeleted</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
+Now the search results can include already burned NFTs.</p>
+<h3 id='3rd-of-august-2023'>3rd of August 2023</h3>
 <p>An update for query parameter: <code>period</code> <a href="#nft-volumes-extended"><strong>NFT Volumes Extended</strong></a>
 Now you can define start and end of range for the period.</p>
 <h3 id='23rd-of-july-2023'>23rd of July 2023</h3>
@@ -1201,6 +1207,11 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>taxon</td>
 <td>null</td>
 <td>Taxon for that Issuer (optional, will be ignored without an Issuer)</td>
+</tr>
+<tr>
+<td>includeDeleted</td>
+<td>false</td>
+<td>set to <code>true</code>, if you want result to include deleeted NFTs</td>
 </tr>
 <tr>
 <td>marker</td>
