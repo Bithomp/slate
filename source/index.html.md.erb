@@ -65,6 +65,10 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 ### 18th of August 2023
 
+A new endpoint was added:
+
+<a href="#nft-minters">**NFT minters**</a>
+
 A new query parameter `includeDeleted` was added to the <a href="#nfts">**NFTs**</a> API end-point.
 Now the search results can include already burned NFTs.
 
@@ -1397,6 +1401,90 @@ period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `wee
 floorPrice | false | Returns `floorPrice` for `issuers`. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.
 statistics | false | Returns `statistics` for `issuers` and `taxons`. Which includes: `buyers` - current buyers count, `tradedNfts` - current count of traded NFTS, `owners` - current count of owners, `nfts` - current count of NFTs
 marker | null | The marker from the previous request, if you need a next page
+
+## NFT Minters
+
+```shell
+curl "https://bithomp.com/api/v2/nft-marketplaces?period=week"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/nft-marketplaces?period=week", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-marketplaces?period=week");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  {
+    "period": "all",
+    "summary": {
+      "minted": 1873080,
+      "mintedAndBurned": 306224,
+      "burned": 306224
+    },
+    "marketplaces": [
+      {
+        "marketplace": "unknown",
+        "minted": 616658,
+        "mintedAndBurned": 186176,
+        "burned": 186176
+      },
+      {
+        "marketplace": "onxrp.com",
+        "minted": 299713,
+        "mintedAndBurned": 22778,
+        "burned": 22778
+      },
+      {
+        "marketplace": "xmart.art",
+        "minted": 261204,
+        "mintedAndBurned": 16843,
+        "burned": 16843
+      },
+      {
+        "marketplace": "xrp.cafe",
+        "minted": 186707,
+        "mintedAndBurned": 3785,
+        "burned": 3785
+      },
+      {
+        "marketplace": "xrpnft.com",
+        "minted": 153240,
+        "mintedAndBurned": 49818,
+        "burned": 49818
+      },
+      {
+        "marketplace": "sologenic.org",
+        "minted": 98900,
+        "mintedAndBurned": 6210,
+        "burned": 6210
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves NFT minters on XRPL for a specified period of time
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/nft-marketplaces`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year`.
 
 # Get status
 
