@@ -1532,6 +1532,47 @@ lastUpdate | Integer	| UNIX timestamp of the last data update.
 totalServices | Integer | The amount of identified services.
 totalAddresses | Integer | The amount of identified addresses.
 
+## NFT Crawler (Last update)
+
+```shell
+curl "https://bithomp.com/api/v2/statistics/nftokens/crawler"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/statistics/nftokens/crawler", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/statistics/nftokens/crawler");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "ledgerIndex": 82078753,
+  "ledgerTime": 1692949961
+}
+```
+
+This endpoint returns the last ledger which was crawled by our NFT crawler.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/statistics/nftokens/crawler`
+
+### Response Format
+
+Field | Value | Description
+----- | ----- | -----------
+ledgerIndex | Integer | The last crawled ledger index.
+ledgerTime | Integer	| UNIX timestamp of the last crawled ledger.
+
 # Get information for ONE
 
 ## Address
