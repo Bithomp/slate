@@ -63,6 +63,11 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 16th of February 2024
+
+Two new query parameters: `buyer` and `seller` were added to the <a href="#nft-sales">**NFT Sales**</a> API end-point.
+You can search for sales by a specific buyer and/or seller.
+
 ### 18th of August 2023
 
 A new endpoint was added:
@@ -120,36 +125,6 @@ New params were added to get the list of NFTs for Sale for any XRPL currency, so
 Now you can also get the list of offered NFT transfers (sell offers with 0 price) to any XRPL address, private Sell and Buy offers, offers for brokers.
 
 <a href="#nft-offers">**NFT Offers**</a>
-
-### 27th of January 2023
-
-A new endpoints were added:
-
-<a href="#nft-offers">**NFT Offers**</a>
-
-<a href="#nft-distribution">**NFT Distribution**</a>
-
-The new query parameters: `offersValidate` and `nftoken` were added to the <a href="#nft">**NFT**</a>.
-
-### 3rd of January 2023
-
-The price table for API is published.
-
-### 27th of December 2022
-
-A new endpoints were added:
-
-<a href="#nft-offer">**NFT Offer**</a>
-
-<a href="#nfts">**NFTS**</a>
-
-<a href="#nft-sales">**NFT Sales**</a>
-
-<a href="#nft-volumes">**NFT Volumes**</a>
-
-### 19th of November 2022
-
-The new query parameter: `metadata` was added to the <a href="#nft">**NFT**</a> API end-point.
 
 # Direct URL examples
 
@@ -1059,7 +1034,9 @@ sortCurrency | `xrp` | (Only available on paid API plans) one of the currencies 
 currency | null | specify a currency to filter sales in a specific currency, for example `xrp` (should be specified if there are no `convertCurrencies` and `sortCurrency`)
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
-issuer | null | The XRPL address of the NFT issuer (optional)
+issuer | null | The address of the NFT issuer (optional)
+buyer | null | (Only available on paid API plans) The address of the Buyer (optional)
+seller | null | (Only available on paid API plans) The address of the Seller (optional)
 taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
 period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or a time period as timestamps from..to `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
 marketplace | null | You can specify a marketplace, to filter sales by a specific marketplace, for example `xrp.cafe`, the list of all marketplaces is <a href="https://bithomp.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)
