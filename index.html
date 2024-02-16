@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#16th-of-february-2024" class="toc-h2 toc-link" data-title="16th of February 2024">16th of February 2024</a>
+                  </li>
+                  <li>
                     <a href="#18th-of-august-2023" class="toc-h2 toc-link" data-title="18th of August 2023">18th of August 2023</a>
                   </li>
                   <li>
@@ -339,18 +342,6 @@
                   </li>
                   <li>
                     <a href="#1st-of-march-2023" class="toc-h2 toc-link" data-title="1st of March 2023">1st of March 2023</a>
-                  </li>
-                  <li>
-                    <a href="#27th-of-january-2023" class="toc-h2 toc-link" data-title="27th of January 2023">27th of January 2023</a>
-                  </li>
-                  <li>
-                    <a href="#3rd-of-january-2023" class="toc-h2 toc-link" data-title="3rd of January 2023">3rd of January 2023</a>
-                  </li>
-                  <li>
-                    <a href="#27th-of-december-2022" class="toc-h2 toc-link" data-title="27th of December 2022">27th of December 2022</a>
-                  </li>
-                  <li>
-                    <a href="#19th-of-november-2022" class="toc-h2 toc-link" data-title="19th of November 2022">19th of November 2022</a>
                   </li>
               </ul>
           </li>
@@ -626,7 +617,10 @@
 <li><p><a href="https://bithomp.com/admin">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='18th-of-august-2023'>18th of August 2023</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='16th-of-february-2024'>16th of February 2024</h3>
+<p>Two new query parameters: <code>buyer</code> and <code>seller</code> were added to the <a href="#nft-sales"><strong>NFT Sales</strong></a> API end-point.
+You can search for sales by a specific buyer and/or seller.</p>
+<h3 id='18th-of-august-2023'>18th of August 2023</h3>
 <p>A new endpoint was added:</p>
 
 <p><a href="#nft-minters"><strong>NFT minters</strong></a></p>
@@ -668,28 +662,6 @@ NFT Sales now also inlude <code>marketplace</code>, the website where NFT was so
 <p>Now you can also get the list of offered NFT transfers (sell offers with 0 price) to any XRPL address, private Sell and Buy offers, offers for brokers.</p>
 
 <p><a href="#nft-offers"><strong>NFT Offers</strong></a></p>
-<h3 id='27th-of-january-2023'>27th of January 2023</h3>
-<p>A new endpoints were added:</p>
-
-<p><a href="#nft-offers"><strong>NFT Offers</strong></a></p>
-
-<p><a href="#nft-distribution"><strong>NFT Distribution</strong></a></p>
-
-<p>The new query parameters: <code>offersValidate</code> and <code>nftoken</code> were added to the <a href="#nft"><strong>NFT</strong></a>.</p>
-<h3 id='3rd-of-january-2023'>3rd of January 2023</h3>
-<p>The price table for API is published.</p>
-<h3 id='27th-of-december-2022'>27th of December 2022</h3>
-<p>A new endpoints were added:</p>
-
-<p><a href="#nft-offer"><strong>NFT Offer</strong></a></p>
-
-<p><a href="#nfts"><strong>NFTS</strong></a></p>
-
-<p><a href="#nft-sales"><strong>NFT Sales</strong></a></p>
-
-<p><a href="#nft-volumes"><strong>NFT Volumes</strong></a></p>
-<h3 id='19th-of-november-2022'>19th of November 2022</h3>
-<p>The new query parameter: <code>metadata</code> was added to the <a href="#nft"><strong>NFT</strong></a> API end-point.</p>
 <h1 id='direct-url-examples'>Direct URL examples</h1><h3 id='xrpl-explorer'>XRPL Explorer</h3>
 <ul>
 <li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a></li>
@@ -1691,7 +1663,17 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>issuer</td>
 <td>null</td>
-<td>The XRPL address of the NFT issuer (optional)</td>
+<td>The address of the NFT issuer (optional)</td>
+</tr>
+<tr>
+<td>buyer</td>
+<td>null</td>
+<td>(Only available on paid API plans) The address of the Buyer (optional)</td>
+</tr>
+<tr>
+<td>seller</td>
+<td>null</td>
+<td>(Only available on paid API plans) The address of the Seller (optional)</td>
 </tr>
 <tr>
 <td>taxon</td>
