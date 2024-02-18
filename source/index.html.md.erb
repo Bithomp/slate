@@ -263,7 +263,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 username | false | If set to true, the result will also include a `username` (rippletrade or bithomp).
 
-# NFT (XLS-20)
+# NFT (XLS-20 / XLS-35)
 
 ## NFT
 
@@ -373,7 +373,7 @@ print $data;
 }
 ```
 
-This endpoint retrieves information for a requested NFT (XLS-20).
+This endpoint retrieves information for a requested NFT (XLS-20 or XLS-35).
 
 ### HTTP Request
 
@@ -383,7 +383,7 @@ This endpoint retrieves information for a requested NFT (XLS-20).
 
 Parameter | Description
 --------- | -----------
-nftID  | An NFT ID (XLS20)
+nftID  | An NFT ID (XLS-20 or XLS-35)
 
 ### Query Parameters
 
@@ -551,7 +551,7 @@ This endpoint retrieves NFT Sales Volumes for specified parameters
 
 Parameter | Description
 --------- | -----------
-nftOfferID  | An NFT Offer ID (XLS20)
+nftOfferID  | An NFT Offer ID (XLS-20)
 
 ## NFTS
 
@@ -624,7 +624,7 @@ print $data;
 }
 ```
 
-This endpoint retrieves a List of NFTs for specified parameters
+This endpoint retrieves a List of NFTs (XLS-20 / XLS-35) for specified parameters
 
 ### HTTP Request
 
@@ -1465,6 +1465,58 @@ This endpoint retrieves NFT minters on XRPL for a specified period of time
 Parameter | Default | Description
 --------- | ------- | -----------
 period | `all` | A time period, all time all, last 24h day, last 7 days week, last 30 days month, last 365 days year or as timestamps from..to, examples: 1671490800000..1671663600000 or 2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z
+
+## NFT Mint Chart
+
+```shell
+curl "https://bithomp.com/api/v2/nft-chart?span=day&period=month"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/nft-chart?span=day&period=month", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-chart?span=day&period=month");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "span": "day",
+  "period": "month",
+  "chart": [
+    {
+      "time": "2024-01-19T23:59:59.999Z",
+      "issues": 11969
+    },
+    {
+      "time": "2024-01-20T23:59:59.999Z",
+      "issues": 2173
+    }
+  ]
+}
+```
+
+This endpoint retrieves NFT mints count for a specified period of time, with a specified span (available only on paid API plans)
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/nft-chart`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+period | `all` | A time period, all time `all`, last hour `hour`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or as timestamps from..to, examples: 1671490800000..1671663600000 or 2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z
+span | null | A time span for the chart, can be `minute`, `hour`, `day`, `month`, `year`, not all spans are available for large periods, for a period `hour` you can have `minute`, for periods up to 60 hours, you can have `hour`, `day`, `month`, for up to 60 days - `day`, `month`.
+
 
 # Get status
 
