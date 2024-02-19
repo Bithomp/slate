@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#19th-of-february-2024" class="toc-h2 toc-link" data-title="19th of February 2024">19th of February 2024</a>
+                  </li>
+                  <li>
                     <a href="#16th-of-february-2024" class="toc-h2 toc-link" data-title="16th of February 2024">16th of February 2024</a>
                   </li>
                   <li>
@@ -408,6 +411,9 @@
                   </li>
                   <li>
                     <a href="#nft-mint-chart" class="toc-h2 toc-link" data-title="NFT Mint Chart">NFT Mint Chart</a>
+                  </li>
+                  <li>
+                    <a href="#nft-sales-chart" class="toc-h2 toc-link" data-title="NFT Sales Chart">NFT Sales Chart</a>
                   </li>
               </ul>
           </li>
@@ -620,7 +626,13 @@
 <li><p><a href="https://bithomp.com/admin">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='16th-of-february-2024'>16th of February 2024</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='19th-of-february-2024'>19th of February 2024</h3>
+<p>Two new endpoints were added:</p>
+
+<p><a href="#nft-chart"><strong>NFT Mint Chart</strong></a></p>
+
+<p><a href="#nft-sales-chart"><strong>NFT Sales Chart</strong></a></p>
+<h3 id='16th-of-february-2024'>16th of February 2024</h3>
 <p>Two new query parameters: <code>buyer</code> and <code>seller</code> were added to the <a href="#nft-sales"><strong>NFT Sales</strong></a> API end-point.
 You can search for sales by a specific buyer and/or seller.</p>
 <h3 id='18th-of-august-2023'>18th of August 2023</h3>
@@ -2214,6 +2226,97 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>A time span for the chart, can be <code>minute</code>, <code>hour</code>, <code>day</code>, <code>month</code>, <code>year</code>, not all spans are available for large periods, for a period <code>hour</code> you can have <code>minute</code>, for periods up to 60 hours, you can have <code>hour</code>, <code>day</code>, <code>month</code>, for up to 60 days - <code>day</code>, <code>month</code>.</td>
 </tr>
 </tbody></table>
+<h2 id='nft-sales-chart'>NFT Sales Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-sales-chart?span=day&amp;period=month&amp;convertCurrencies=usd&amp;saleType=secondary"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-sales-chart?span=day&amp;period=month&amp;convertCurrencies=usd&amp;saleType=secondary</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-sales-chart?span=day&amp;period=month&amp;convertCurrencies=usd&amp;saleType=secondary"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"span"</span><span class="p">:</span><span class="w"> </span><span class="s2">"day"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"saleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secondary"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"month"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"convertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"usd"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"chart"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-20T23:59:59.999Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">251</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountInNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12595.349685"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6896.94474652027"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2024-01-21T23:59:59.999Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">405</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountInNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19519.066439"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10764.85431987046"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves NFT Sales Volumes Chart data for a specified period of time, with a specified span (available only on paid API plans)</p>
+<h3 id='http-request-12'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/nft-sales-chart</code></p>
+<h3 id='query-parameters-11'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>period</td>
+<td><code>all</code></td>
+<td>A time period, all time <code>all</code>, last hour <code>hour</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code> or as timestamps from..to, examples: <code>1671490800000..1671663600000</code> or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code></td>
+</tr>
+<tr>
+<td>span</td>
+<td>null</td>
+<td>A time span for the chart, can be <code>minute</code>, <code>hour</code>, <code>day</code>, <code>month</code>, <code>year</code>, not all spans are available for large periods, for a period <code>hour</code> you can have <code>minute</code>, for periods up to 60 hours, you can have <code>hour</code>, <code>day</code>, <code>month</code>, for up to 60 days - <code>day</code>, <code>month</code>.</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td>null</td>
+<td>An address or username of the NFT issuer (optional, if you want to get data for a specific issuer)</td>
+</tr>
+<tr>
+<td>taxon</td>
+<td>null</td>
+<td>Taxon for that <code>issuer</code> (optional, will be ignored without an <code>issuer</code>)</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>null</td>
+<td>By default returns for all currencies, you can set any currency for example <code>xrp</code> (optional)</td>
+</tr>
+<tr>
+<td>currencyIssuer</td>
+<td>null</td>
+<td>if currency is specified and it is not &#39;xrp&#39;, then you must specify the currency issuer address (optional)</td>
+</tr>
+<tr>
+<td>convertCurrencies</td>
+<td>null</td>
+<td>the list of currencies to convert amounts and volumes to, splitted by comma, for example <code>xrp,usd</code> (40 fiat currencies available), the response will have <code>amountInConvertCurrencies</code></td>
+</tr>
+<tr>
+<td>saleType</td>
+<td><code>all</code></td>
+<td>can be <code>primary</code> or <code>secondary</code> (optional, <code>primary</code> - the sales from the issuer address)</td>
+</tr>
+</tbody></table>
 <h1 id='get-status'>Get status</h1><h2 id='services-last-update'>Services (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services/lastUpdate"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -2233,7 +2336,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a timestamp of last DB update for services/addresses.</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/lastUpdate</code></p>
 <h3 id='response-format'>Response Format</h3>
 <table><thead>
@@ -2277,7 +2380,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the last ledger which was crawled by our NFT crawler.</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/statistics/nftokens/crawler</code></p>
 <h3 id='response-format-2'>Response Format</h3>
 <table><thead>
@@ -2390,7 +2493,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested XRPL address.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/address/&lt;address&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -2404,7 +2507,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>The XRPL address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-11'>Query Parameters</h3>
+<h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2528,7 +2631,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested Username.</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/username/&lt;username&gt;</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
@@ -2542,7 +2645,7 @@ Exclude unnecessary parameters to make your request faster.
 <td>A bithomp or an old rippletrade username</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-12'>Query Parameters</h3>
+<h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2638,7 +2741,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currency/&lt;currency&gt;</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
@@ -2676,7 +2779,7 @@ You can retrieve information for MANY currencies in one request:
 </span></code></pre></div>
 <p>This endpoint retrieves a XRPL address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
 <h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
@@ -2778,9 +2881,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currencies</code></p>
-<h3 id='query-parameters-13'>Query Parameters</h3>
+<h3 id='query-parameters-14'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2851,7 +2954,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of identified services.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services</code></p>
 <h3 id='response-format-3'>Response Format</h3>
 <table><thead>
@@ -2937,7 +3040,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of all identified service addresses.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/addresses</code></p>
 <h3 id='response-format-4'>Response Format</h3>
 <table><thead>
@@ -3023,7 +3126,7 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://bithomp.com/submit/">
   https://bithomp.com/submit/
 </a>.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
@@ -3088,7 +3191,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/?hwlogin">
   https://bithomp.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -3149,7 +3252,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-5'>Response Format</h3>
 <table><thead>
@@ -3267,7 +3370,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
