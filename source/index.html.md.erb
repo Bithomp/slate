@@ -63,6 +63,14 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 19th of February 2024
+
+Two new endpoints were added:
+
+<a href="#nft-chart">**NFT Mint Chart**</a>
+
+<a href="#nft-sales-chart">**NFT Sales Chart**</a>
+
 ### 16th of February 2024
 
 Two new query parameters: `buyer` and `seller` were added to the <a href="#nft-sales">**NFT Sales**</a> API end-point.
@@ -1517,6 +1525,74 @@ Parameter | Default | Description
 period | `all` | A time period, all time `all`, last hour `hour`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or as timestamps from..to, examples: 1671490800000..1671663600000 or 2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z
 span | null | A time span for the chart, can be `minute`, `hour`, `day`, `month`, `year`, not all spans are available for large periods, for a period `hour` you can have `minute`, for periods up to 60 hours, you can have `hour`, `day`, `month`, for up to 60 days - `day`, `month`.
 
+## NFT Sales Chart
+
+```shell
+curl "https://bithomp.com/api/v2/nft-sales-chart?span=day&period=month&convertCurrencies=usd&saleType=secondary"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/nft-sales-chart?span=day&period=month&convertCurrencies=usd&saleType=secondary", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-sales-chart?span=day&period=month&convertCurrencies=usd&saleType=secondary");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "span": "day",
+  "saleType": "secondary",
+  "period": "month",
+  "convertCurrencies": [
+    "usd"
+  ],
+  "chart": [
+    {
+      "time": "2024-01-20T23:59:59.999Z",
+      "sales": 251,
+      "amountInNativeCurrency": "12595.349685",
+      "amountInConvertCurrencies": {
+        "usd": "6896.94474652027"
+      }
+    },
+    {
+      "time": "2024-01-21T23:59:59.999Z",
+      "sales": 405,
+      "amountInNativeCurrency": "19519.066439",
+      "amountInConvertCurrencies": {
+        "usd": "10764.85431987046"
+      }
+    }
+  ]
+}
+```
+
+This endpoint retrieves NFT Sales Volumes Chart data for a specified period of time, with a specified span (available only on paid API plans)
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/nft-sales-chart`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+period | `all` | A time period, all time `all`, last hour `hour`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or as timestamps from..to, examples: `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
+span | null | A time span for the chart, can be `minute`, `hour`, `day`, `month`, `year`, not all spans are available for large periods, for a period `hour` you can have `minute`, for periods up to 60 hours, you can have `hour`, `day`, `month`, for up to 60 days - `day`, `month`.
+issuer | null | An address or username of the NFT issuer (optional, if you want to get data for a specific issuer)
+taxon | null | Taxon for that `issuer` (optional, will be ignored without an `issuer`)
+currency | null | By default returns for all currencies, you can set any currency for example `xrp` (optional)
+currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer address (optional)
+convertCurrencies | null | the list of currencies to convert amounts and volumes to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the response will have `amountInConvertCurrencies`
+saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
 
 # Get status
 
