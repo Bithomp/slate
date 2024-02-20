@@ -63,6 +63,12 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 20th of February 2024
+
+A new endpoint was added:
+
+<a href="#account-activations">**Account Activations**</a>
+
 ### 19th of February 2024
 
 Two new endpoints were added:
@@ -2447,6 +2453,64 @@ id | (Optional) A calculated hash of the signed transaction
 signedTransaction | A blob of signed transaction to submit
 
 # Historical data
+
+## Account Activations
+
+```shell
+curl "https://bithomp.com/api/v2/account-chart?span=month&period=year"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/account-chart?span=month&period=year", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/account-chart?span=month&period=year");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "span": "month",
+  "period": "year",
+  "chart": [
+    {
+      "time": "2023-10-31T23:59:59.999Z",
+      "activations": 100
+    },
+    {
+      "time": "2023-11-30T23:59:59.999Z",
+      "activations": 78
+    },
+    {
+      "time": "2023-12-31T23:59:59.999Z",
+      "activations": 33834
+    }
+  ]
+}
+```
+
+This endpoint returns data to draw a chart of account activations.
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/account-chart`
+
+### Response Format
+
+Field | Value | Description
+----- | ----- | -----------
+period | `all` | A time period, all time `all`, last hour `hour`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or as timestamps from..to, examples: `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
+span | null | A time span for the chart, can be `minute`, `hour`, `day`, `month`, `year`, not all spans are available for large periods, for a period `hour` you can have `minute`, for periods up to 60 hours, you can have `hour`, `day`, `month`, for up to 60 days - `day`, `month`.
 
 ## Genesis
 
