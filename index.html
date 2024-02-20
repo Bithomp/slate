@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#20th-of-february-2024" class="toc-h2 toc-link" data-title="20th of February 2024">20th of February 2024</a>
+                  </li>
+                  <li>
                     <a href="#19th-of-february-2024" class="toc-h2 toc-link" data-title="19th of February 2024">19th of February 2024</a>
                   </li>
                   <li>
@@ -479,6 +482,9 @@
             <a href="#historical-data" class="toc-h1 toc-link" data-title="Historical data">Historical data</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#account-activations" class="toc-h2 toc-link" data-title="Account Activations">Account Activations</a>
+                  </li>
+                  <li>
                     <a href="#genesis" class="toc-h2 toc-link" data-title="Genesis">Genesis</a>
                   </li>
                   <li>
@@ -626,7 +632,11 @@
 <li><p><a href="https://bithomp.com/admin">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='19th-of-february-2024'>19th of February 2024</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='20th-of-february-2024'>20th of February 2024</h3>
+<p>A new endpoint was added:</p>
+
+<p><a href="#account-activations"><strong>Account Activations</strong></a></p>
+<h3 id='19th-of-february-2024'>19th of February 2024</h3>
 <p>Two new endpoints were added:</p>
 
 <p><a href="#nft-mint-chart"><strong>NFT Mint Chart</strong></a></p>
@@ -3209,7 +3219,63 @@ Page where it used on bithomp:
 <td>A blob of signed transaction to submit</td>
 </tr>
 </tbody></table>
-<h1 id='historical-data'>Historical data</h1><h2 id='genesis'>Genesis</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/genesis"</span>
+<h1 id='historical-data'>Historical data</h1><h2 id='account-activations'>Account Activations</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/account-chart?span=month&amp;period=year"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/account-chart?span=month&amp;period=year</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/account-chart?span=month&amp;period=year"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"span"</span><span class="p">:</span><span class="w"> </span><span class="s2">"month"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"year"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"chart"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-10-31T23:59:59.999Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activations"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-11-30T23:59:59.999Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activations"</span><span class="p">:</span><span class="w"> </span><span class="mi">78</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-12-31T23:59:59.999Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activations"</span><span class="p">:</span><span class="w"> </span><span class="mi">33834</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns data to draw a chart of account activations.
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.</p>
+<h3 id='http-request-24'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/account-chart</code></p>
+<h3 id='response-format-5'>Response Format</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>period</td>
+<td><code>all</code></td>
+<td>A time period, all time <code>all</code>, last hour <code>hour</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code> or as timestamps from..to, examples: <code>1671490800000..1671663600000</code> or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code></td>
+</tr>
+<tr>
+<td>span</td>
+<td>null</td>
+<td>A time span for the chart, can be <code>minute</code>, <code>hour</code>, <code>day</code>, <code>month</code>, <code>year</code>, not all spans are available for large periods, for a period <code>hour</code> you can have <code>minute</code>, for periods up to 60 hours, you can have <code>hour</code>, <code>day</code>, <code>month</code>, for up to 60 days - <code>day</code>, <code>month</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='genesis'>Genesis</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/genesis"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
@@ -3252,9 +3318,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
-<h3 id='response-format-5'>Response Format</h3>
+<h3 id='response-format-6'>Response Format</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -3370,9 +3436,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
-<h3 id='response-format-6'>Response Format</h3>
+<h3 id='response-format-7'>Response Format</h3>
 <table><thead>
 <tr>
 <th>Field</th>
