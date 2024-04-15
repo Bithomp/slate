@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#15th-of-april-2024" class="toc-h2 toc-link" data-title="15th of April 2024">15th of April 2024</a>
+                  </li>
+                  <li>
                     <a href="#20th-of-february-2024" class="toc-h2 toc-link" data-title="20th of February 2024">20th of February 2024</a>
                   </li>
                   <li>
@@ -345,9 +348,6 @@
                   </li>
                   <li>
                     <a href="#18th-of-april-2023" class="toc-h2 toc-link" data-title="18th of April 2023">18th of April 2023</a>
-                  </li>
-                  <li>
-                    <a href="#1st-of-march-2023" class="toc-h2 toc-link" data-title="1st of March 2023">1st of March 2023</a>
                   </li>
               </ul>
           </li>
@@ -632,7 +632,10 @@
 <li><p><a href="https://bithomp.com/admin">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='20th-of-february-2024'>20th of February 2024</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='15th-of-april-2024'>15th of April 2024</h3>
+<p>The new query parameter: <code>order</code> was added to the <a href="#nft-distribution"><strong>NFT Distribution</strong></a>
+Now you can order NFT owners by count of total, self-issued or non-self-issued NFTs.</p>
+<h3 id='20th-of-february-2024'>20th of February 2024</h3>
 <p>A new endpoint was added:</p>
 
 <p><a href="#account-activations"><strong>Account Activations</strong></a></p>
@@ -679,14 +682,6 @@ For example, all sales in (XRP and IOU (tokens)) can be converted to USD, and yo
 NFT Sales now also inlude <code>marketplace</code>, the website where NFT was sold (if it is identified).</p>
 
 <p><a href="#nft-sales"><strong>NFT Sales</strong></a></p>
-<h3 id='1st-of-march-2023'>1st of March 2023</h3>
-<p>New params were added to get the list of NFTs for Sale for any XRPL currency, sorted by price or offer creation time and filtered by sale direction (On Sale on the specific marketplace (xrpl address can be specified), or on any known MarketPlaces, Publicly, Publicly and on the known MarketPlaces, anywhere including private offers):</p>
-
-<p><a href="#nfts"><strong>NFTs</strong></a></p>
-
-<p>Now you can also get the list of offered NFT transfers (sell offers with 0 price) to any XRPL address, private Sell and Buy offers, offers for brokers.</p>
-
-<p><a href="#nft-offers"><strong>NFT Offers</strong></a></p>
 <h1 id='direct-url-examples'>Direct URL examples</h1><h3 id='xrpl-explorer'>XRPL Explorer</h3>
 <ul>
 <li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a></li>
@@ -1445,62 +1440,57 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>(Only available on paid API plans) If set to true, each offer will include <code>valid</code> as <code>true</code> or <code>false</code>, if <code>false</code> then it also include <code>validationErrors</code> array.</td>
 </tr>
 </tbody></table>
-<h2 id='nft-distribution'>NFT Distribution</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-count/xpunks?list=owners"</span>
+<h2 id='nft-distribution'>NFT Distribution</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&amp;issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&amp;taxon=0"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-count/xpunks?list=owners</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-count/xpunks?list=owners"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&amp;issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&amp;taxon=0</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&amp;issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&amp;taxon=0"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpbjkoncKiv1LkPWShzZksqYPzKXmUhTW7"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XPUNKS"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XPUNKS"</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="s2">"owners"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"totalNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">6726</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"totalOwners"</span><span class="p">:</span><span class="w"> </span><span class="mi">1863</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"taxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nonSelfIssued"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalOwners"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+  </span><span class="p">},</span><span class="w">
   </span><span class="nl">"owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpbjkoncKiv1LkPWShzZksqYPzKXmUhTW7"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ownerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XPUNKS"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XPUNKS"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rQUA5QBUAUzqa5gc2uCneHYyBhGUoSFxDx"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ownerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rfakxbdmroQpQzZBL9caDP9RYxmSKuNZj5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"selfIssued"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"nonSelfIssued"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4iCcnDXzCZCDkrbWyebk5aNwg55R8PyB9"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"selfIssued"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"nonSelfIssued"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves NFT Owners list for NFTs issued by a specific <code>address</code>.</p>
+<p>This endpoint retrieves NFT Owners list sorted by NFT count.</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://bithomp.com/api/v2/nft-count/&lt;address&gt;</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>address</td>
-<td>The XRPL address or a username.</td>
-</tr>
-</tbody></table>
+<p><code>GET https://bithomp.com/api/v2/nft-owners</code></p>
 <h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1510,14 +1500,24 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </tr>
 </thead><tbody>
 <tr>
-<td>list</td>
+<td>order</td>
+<td><code>total</code></td>
+<td><code>nonSelfIssued</code>, <code>selfIssued</code>, <code>total</code> (order list by count of total owned NFTS, or only by self-issued NFTs, or only owned NFTs that issued by another address).</td>
+</tr>
+<tr>
+<td>issuer</td>
 <td>null</td>
-<td><code>owners</code> (to list NFT Owners for NFTs issued by a specific <code>address</code>).</td>
+<td>(optional) NFT issuer <code>address</code>, to see the NFT distribution for a specific issuer.</td>
 </tr>
 <tr>
 <td>taxon</td>
 <td>null</td>
-<td>taxon for the <code>address</code> issuer, to see the nft distribution of a collection identified by issuer and taxon.</td>
+<td>taxon for the <code>address</code> issuer, to see the NFT distribution of a collection identified by issuer and taxon.</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>null</td>
+<td>The marker from the previous request, if you need a next page of NFT owners.</td>
 </tr>
 </tbody></table>
 <h2 id='nft-sales'>NFT Sales</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-sales?list=topSold&amp;currency=xrp&amp;convertCurrencies=usd,eur"</span>
@@ -2505,7 +2505,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <p>This endpoint retrieves information for a requested XRPL address.</p>
 <h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/address/&lt;address&gt;</code></p>
-<h3 id='url-parameters-6'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2643,7 +2643,7 @@ Exclude unnecessary parameters to make your request faster.
 <p>This endpoint retrieves information for a requested Username.</p>
 <h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/username/&lt;username&gt;</code></p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2753,7 +2753,7 @@ Exclude unnecessary parameters to make your request faster.
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
 <h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currency/&lt;currency&gt;</code></p>
-<h3 id='url-parameters-8'>URL Parameters</h3>
+<h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2791,7 +2791,7 @@ You can retrieve information for MANY currencies in one request:
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
 <h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
-<h3 id='url-parameters-9'>URL Parameters</h3>
+<h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3138,7 +3138,7 @@ Page on bithomp with the same decode function, but client-side:
 </a>.</p>
 <h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
-<h3 id='url-parameters-10'>URL Parameters</h3>
+<h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
