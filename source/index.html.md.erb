@@ -63,6 +63,11 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 15th of April 2024
+
+The new query parameter: `order` was added to the <a href="#nft-distribution">**NFT Distribution**</a>
+Now you can order NFT owners by count of total, self-issued or non-self-issued NFTs.
+
 ### 20th of February 2024
 
 A new endpoint was added:
@@ -129,16 +134,6 @@ For example, all sales in (XRP and IOU (tokens)) can be converted to USD, and yo
 NFT Sales now also inlude `marketplace`, the website where NFT was sold (if it is identified).
 
 <a href="#nft-sales">**NFT Sales**</a>
-
-### 1st of March 2023
-
-New params were added to get the list of NFTs for Sale for any XRPL currency, sorted by price or offer creation time and filtered by sale direction (On Sale on the specific marketplace (xrpl address can be specified), or on any known MarketPlaces, Publicly, Publicly and on the known MarketPlaces, anywhere including private offers):
-
-<a href="#nfts">**NFTs**</a>
-
-Now you can also get the list of offered NFT transfers (sell offers with 0 price) to any XRPL address, private Sell and Buy offers, offers for brokers.
-
-<a href="#nft-offers">**NFT Offers**</a>
 
 # Direct URL examples
 
@@ -828,7 +823,7 @@ offersValidate | false | (Only available on paid API plans) If set to true, each
 ## NFT Distribution
 
 ```shell
-curl "https://bithomp.com/api/v2/nft-count/xpunks?list=owners"
+curl "https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&taxon=0"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -836,11 +831,11 @@ curl "https://bithomp.com/api/v2/nft-count/xpunks?list=owners"
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/nft-count/xpunks?list=owners", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&taxon=0", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/nft-count/xpunks?list=owners");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&taxon=0");
 print $data;
 ```
 
@@ -848,54 +843,56 @@ print $data;
 
 ```json
 {
-  "issuer": "rpbjkoncKiv1LkPWShzZksqYPzKXmUhTW7",
+  "issuer": "rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n",
   "issuerDetails": {
-    "username": "XPUNKS",
-    "service": "XPUNKS"
+    "username": null,
+    "service": null
   },
-  "list": "owners",
-  "totalNfts": 6726,
-  "totalOwners": 1863,
+  "taxon": 0,
+  "order": "nonSelfIssued",
+  "summary": {
+    "totalNfts": 6,
+    "totalOwners": 5
+  },
   "owners": [
     {
-      "owner": "rpbjkoncKiv1LkPWShzZksqYPzKXmUhTW7",
-      "ownerDetails": {
-        "username": "XPUNKS",
-        "service": "XPUNKS"
-      },
-      "count": 500
-    },
-    {
-      "owner": "rQUA5QBUAUzqa5gc2uCneHYyBhGUoSFxDx",
-      "ownerDetails": {
+      "address": "rfakxbdmroQpQzZBL9caDP9RYxmSKuNZj5",
+      "addressDetails": {
         "username": null,
         "service": null
       },
-      "count": 120
+      "total": 2,
+      "selfIssued": 0,
+      "nonSelfIssued": 2
+    },
+    {
+      "address": "r4iCcnDXzCZCDkrbWyebk5aNwg55R8PyB9",
+      "addressDetails": {
+        "username": null,
+        "service": null
+      },
+      "total": 1,
+      "selfIssued": 0,
+      "nonSelfIssued": 1
     }
   ]
 }
 ```
 
-This endpoint retrieves NFT Owners list for NFTs issued by a specific `address`.
+This endpoint retrieves NFT Owners list sorted by NFT count.
 
 ### HTTP Request
 
-`GET https://bithomp.com/api/v2/nft-count/<address>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-address  | The XRPL address or a username.
+`GET https://bithomp.com/api/v2/nft-owners`
 
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-list | null | `owners` (to list NFT Owners for NFTs issued by a specific `address`).
-taxon | null | taxon for the `address` issuer, to see the nft distribution of a collection identified by issuer and taxon.
-
+order | `total` | `nonSelfIssued`, `selfIssued`, `total` (order list by count of total owned NFTS, or only by self-issued NFTs, or only owned NFTs that issued by another address).
+issuer | null | (optional) NFT issuer `address`, to see the NFT distribution for a specific issuer.
+taxon | null | taxon for the `address` issuer, to see the NFT distribution of a collection identified by issuer and taxon.
+marker | null | The marker from the previous request, if you need a next page of NFT owners.
 
 ## NFT Sales
 
