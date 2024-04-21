@@ -37,9 +37,7 @@ API plans:
 | Basic                   | 100   | 30K   | Free  | 30 EUR   |
 | Standard*               | 400   | 120K  | Basic | 100 EUR  |
 | Premium*                | 1000  | 300K  | Basic | 250 EUR  |
-| Enterprise 1*           | 2000  | 600K  | Basic | 500 EUR  |
-| Enterprise 2*           | 4000  | 1.2M  | Basic | 1000 EUR |
-| Enterprise 3*           | 8000  | 2.4M  | Basic | 2000 EUR |
+| Enterprise*             | 2000  | 600K  | Basic | 500 EUR  |
 
 * On that plan the <a href="#nft">**NFT**</a> endpoint returns `assets` with direct URLs to resized images and videos.
 
@@ -62,6 +60,12 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 - To get your payment details please reply to the email with your API key.
 
 # Changelog
+
+### 21st of April 2024
+
+A new endpoint was added:
+
+<a href="#amm-pool">**AMM Pool**</a>
 
 ### 15th of April 2024
 
@@ -127,14 +131,6 @@ The endpoint now also returns the `marketplace` in the `history` of Sales.
 The new query parameter: `taxon` was added to the <a href="#nft-distribution">**NFT Distribution**</a>
 Now you can get the nft distrubition for collections identified by issuer and taxon.
 
-### 18th of April 2023
-
-New params were added to get all the NFT sales (inluding NFTs sold for IOU (tokens)) amounts converted to XRP or Fiat currencies and sorted by a choosen currency.
-For example, all sales in (XRP and IOU (tokens)) can be converted to USD, and you can see the Top NFT sales in USD, sorted by USD value.
-NFT Sales now also inlude `marketplace`, the website where NFT was sold (if it is identified).
-
-<a href="#nft-sales">**NFT Sales**</a>
-
 # Direct URL examples
 
 ### XRPL Explorer
@@ -146,7 +142,7 @@ NFT Sales now also inlude `marketplace`, the website where NFT was sold (if it i
 * <a href="https://bithomp.com/explorer/rabbit$bithomp.com">https://bithomp.com/explorer/{payString}</a>
 
 ### NFT explorer
-* <a href="https://bithomp.com/explorer/00081388161A9F1B349F3D50596D02CCA65E97D9268A5AF529A955040000000D">https://bithomp.com/explorer/{nftID}</a>
+* <a href="https://bithomp.com/nft/00081388161A9F1B349F3D50596D02CCA65E97D9268A5AF529A955040000000D">https://bithomp.com/nft/{nftID}</a>
 * <a href="https://bithomp.com/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673">https://bithomp.com/nft-offer/{nftOfferID}</a>
 * <a href="https://bithomp.com/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX">https://bithomp.com/nft-offers/{address || username}</a>
 * <a href="https://bithomp.com/nft-explorer?issuer=xSPECTAR&taxon=2&owner=xSPECTAR">https://bithomp.com/nft-explorer?owner={address || username}&issuer={address || username}&taxon={taxon}</a>
@@ -154,6 +150,11 @@ NFT Sales now also inlude `marketplace`, the website where NFT was sold (if it i
 * <a href="https://bithomp.com/nft-volumes?currency=534F4C4F00000000000000000000000000000000&currencyIssuer=rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz">https://bithomp.com/nft-volumes?currency={currencyCode}&currencyIssuer={address}&sale={"primary" || "secondary" || "all"}&period={"all" || "month" || "week" || "day"}&list={"issuers" || "currencies" || "brokers"}</a>
 * <a href="https://bithomp.com/nft-sales?list=top&period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://bithomp.com/nft-sales?list=top&period=month&sale=secondary&currency={currencyCode}&currencyIssuer={address}&issuer={address || username}</a>
 * <a href="https://bithomp.com/nft-sales?list=last&period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://bithomp.com/nft-sales?list=last&period=month&sale=secondary&currency={currencyCode}&currencyIssuer={address}&issuer={address || username}</a>
+
+### AMM explorer
+* <a href="https://bithomp.com/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5">https://bithomp.com/amm/{ammID}</a>
+* <a href="https://bithomp.com/amm/rUGqgPbzKFVsSkTYUk4hdRoPwTaLv1iSDS">https://bithomp.com/amm/{address}</a>
+* <a href="https://bithomp.com/amm/03DD35D1879DBE4FE3290B911A14875DE6534DFD">https://bithomp.com/amm/{LPtoken}</a>
 
 ### Username registration
 * <a href="https://bithomp.com/username?username=Bithomp">https://bithomp.com/username?username={username}</a>
@@ -271,6 +272,191 @@ address | The XRPL address, can be r-address or a X-address
 Parameter | Default | Description
 --------- | ------- | -----------
 username | false | If set to true, the result will also include a `username` (rippletrade or bithomp).
+
+# AMM
+
+## AMM Pool
+
+```shell
+curl "https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "ammID": "C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5",
+  "createdAt": 1711139081,
+  "createdLedgerIndex": 86795469,
+  "createdTxHash": "A23BEB55D660AD02755CFCDAB1D34A3DAD6B84519A77C10932CC158626F4EDA3",
+  "updatedAt": 1713700900,
+  "updatedLedgerIndex": 87461194,
+  "updatedTxHash": "622E376CDE8DC6B80DCDF2C7C8590A0281FC01885F617EDAADE223B39BE17B00",
+  "account": "rUGqgPbzKFVsSkTYUk4hdRoPwTaLv1iSDS",
+  "accountDetails": {
+    "username": null,
+    "service": null
+  },
+  "ownerNode": "0",
+  "amount": "13820630640",
+  "amount2": {
+    "currency": "7853504543544152000000000000000000000000",
+    "issuer": "rh5jzTCdMRCVjQ7LT6zucjezC47KATkuvv",
+    "value": "173068.8207730273",
+    "issuerDetails": {
+      "username": null,
+      "service": null
+    }
+  },
+  "tradingFee": 290,
+  "auctionSlot": {
+    "account": "rpGhdshAMiVYPei3FtusVTPndijbpdATna",
+    "accountDetails": {
+      "username": null,
+      "service": null
+    },
+    "discountedFee": 29,
+    "expiration": 1713301051,
+    "price": {
+      "currency": "03DD35D1879DBE4FE3290B911A14875DE6534DFD",
+      "issuer": "rUGqgPbzKFVsSkTYUk4hdRoPwTaLv1iSDS",
+      "value": "5000",
+      "issuerDetails": {
+        "username": null,
+        "service": null
+      }
+    }
+  },
+  "lpTokenBalance": {
+    "currency": "03DD35D1879DBE4FE3290B911A14875DE6534DFD",
+    "issuer": "rUGqgPbzKFVsSkTYUk4hdRoPwTaLv1iSDS",
+    "value": "6591411.572091643",
+    "issuerDetails": {
+      "username": null,
+      "service": null
+    }
+  },
+  "voteSlots": [
+    {
+      "createdAt": 1712859131,
+      "createdLedgerIndex": 87242106,
+      "createdTxHash": "D4D6ED2059242EC15B8E3FEE95BD0BBD803C7446D4A45FD3D3DC2ACF2845155A",
+      "updatedAt": 1713675981,
+      "updatedLedgerIndex": 87454715,
+      "updatedTxHash": "6F50879E1FE149F54833110E21100888897FF53274226DEE5027DFE0F3E75BE3",
+      "account": "rpSw2Z5Rj7envE1reaD3K1As1pcjND4n7J",
+      "accountDetails": {
+        "username": null,
+        "service": null
+      },
+      "tradingFee": 300,
+      "voteWeight": 17649
+    },
+    {
+      "createdAt": 1713042481,
+      "createdLedgerIndex": 87289771,
+      "createdTxHash": "FEBCDB280FC220AFF5E113EA7C2A73955DAD79F01F603F2E60BA00A247D17CB5",
+      "updatedAt": 1713398941,
+      "updatedLedgerIndex": 87382534,
+      "updatedTxHash": "7EFE2737FD5B939A66AAEF15AB3D6D5EFB0EBC8F9F0601E6A2209B7610B633FC",
+      "account": "rsQUooXEaA6KXAZdwuNJ934MyMQmTEDnpt",
+      "accountDetails": {
+        "username": null,
+        "service": null
+      },
+      "tradingFee": 470,
+      "voteWeight": 0
+    },
+    {
+      "createdAt": 1712853831,
+      "createdLedgerIndex": 87240726,
+      "createdTxHash": "77E804B23F474B43EB799CBDC86399A6747FDE5087445AE27C32735540E73410",
+      "updatedAt": 1713675981,
+      "updatedLedgerIndex": 87454715,
+      "updatedTxHash": "6F50879E1FE149F54833110E21100888897FF53274226DEE5027DFE0F3E75BE3",
+      "account": "rpNmRsusXxqJoaDny4B3nVTqwkE1xDEDGt",
+      "accountDetails": {
+        "username": null,
+        "service": null
+      },
+      "tradingFee": 90,
+      "voteWeight": 913
+    },
+    {
+      "createdAt": 1713398941,
+      "createdLedgerIndex": 87382534,
+      "createdTxHash": "7EFE2737FD5B939A66AAEF15AB3D6D5EFB0EBC8F9F0601E6A2209B7610B633FC",
+      "updatedAt": 1713675981,
+      "updatedLedgerIndex": 87454715,
+      "updatedTxHash": "6F50879E1FE149F54833110E21100888897FF53274226DEE5027DFE0F3E75BE3",
+      "account": "rDqtfMeAZJsJYDjn1J267qwY28rdC6arUp",
+      "accountDetails": {
+        "username": null,
+        "service": null
+      },
+      "tradingFee": 470,
+      "voteWeight": 6
+    },
+    {
+      "createdAt": 1712875191,
+      "createdLedgerIndex": 87246288,
+      "createdTxHash": "391E10042E943BAD87BE96684C60FC69402A440184CD9975A0F64A2248280136",
+      "updatedAt": 1712904090,
+      "updatedLedgerIndex": 87253816,
+      "updatedTxHash": "D8596802B8026AC6A84AE5D416B41C874EF16CD815BFB693470C27EF54A0E816",
+      "account": "rupNhB3cLLzuc5V3kqVwkquBDKVUYftbX",
+      "accountDetails": {
+        "username": null,
+        "service": null
+      },
+      "tradingFee": 750,
+      "voteWeight": 0
+    },
+    {
+      "createdAt": 1713675981,
+      "createdLedgerIndex": 87454715,
+      "createdTxHash": "6F50879E1FE149F54833110E21100888897FF53274226DEE5027DFE0F3E75BE3",
+      "updatedAt": 1713675981,
+      "updatedLedgerIndex": 87454715,
+      "updatedTxHash": "6F50879E1FE149F54833110E21100888897FF53274226DEE5027DFE0F3E75BE3",
+      "account": "rwDX9EJd9p5UNCaPpYoczd4opRpqEhSW4G",
+      "accountDetails": {
+        "username": null,
+        "service": null
+      },
+      "tradingFee": 500,
+      "voteWeight": 5
+    }
+  ]
+}
+```
+
+This endpoint retrieves information for a requested NFT (XLS-20 or XLS-35).
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/amm/<ammID || LPtoken || address>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ammID | AMM ID 
+LPtoken | LP token currency code
+address | AMM account address
 
 # NFT (XLS-20 / XLS-35)
 
