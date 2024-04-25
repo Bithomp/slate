@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#25st-of-april-2024" class="toc-h2 toc-link" data-title="25st of April 2024">25st of April 2024</a>
+                  </li>
+                  <li>
                     <a href="#21st-of-april-2024" class="toc-h2 toc-link" data-title="21st of April 2024">21st of April 2024</a>
                   </li>
                   <li>
@@ -388,6 +391,9 @@
           <li>
             <a href="#amm" class="toc-h1 toc-link" data-title="AMM">AMM</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#amms" class="toc-h2 toc-link" data-title="AMMs">AMMs</a>
+                  </li>
                   <li>
                     <a href="#amm-pool" class="toc-h2 toc-link" data-title="AMM Pool">AMM Pool</a>
                   </li>
@@ -629,7 +635,15 @@
 <li><p><a href="https://bithomp.com/admin">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='21st-of-april-2024'>21st of April 2024</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='25st-of-april-2024'>25st of April 2024</h3>
+<p>A new endpoint was added:</p>
+
+<p><a href="#amms"><strong>AMMs</strong></a>
+Get the ordered list of AMMs.</p>
+
+<p>Two new query parameters: <code>ledgerIndex</code> and <code>ledgerTimestamp</code> were added to the <a href="#amm-pool"><strong>AMM Pool</strong></a> API end-point.
+Now you can get AMM data for a specific ledger index or timestamp.</p>
+<h3 id='21st-of-april-2024'>21st of April 2024</h3>
 <p>A new endpoint was added:</p>
 
 <p><a href="#amm-pool"><strong>AMM Pool</strong></a></p>
@@ -813,7 +827,118 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>If set to true, the result will also include a <code>username</code> (rippletrade or bithomp).</td>
 </tr>
 </tbody></table>
-<h1 id='amm'>AMM</h1><h2 id='amm-pool'>AMM Pool</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5"</span>
+<h1 id='amm'>AMM</h1><h2 id='amms'>AMMs</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amms"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/amms</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/amms"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"createdOld"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16E5DAA100000001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ammID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51DFB0A87FF1606C4413D1E7581FF969C41D53A1B142B5A9FD91A1AE478F92F2"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1711138371</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdLedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">86795283</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdTxHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BDCC35ED3EEA1F6E4AC76C21395F98239BACF9D59708CF3A4560830FF734AEF7"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1711138371</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updatedLedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">86795283</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updatedTxHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BDCC35ED3EEA1F6E4AC76C21395F98239BACF9D59708CF3A4560830FF734AEF7"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4Xt6n57NW1qEgm3RhZrYE7uTdzkCy8eqL"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"ownerNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"236219041"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XSG"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rXSGuKAkUGkPL6iUMJWX1Fi5bogsVYPMs"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12.70007695950302"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XSGCoin"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XSGCoin"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"tradingFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"auctionSlot"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rXSGjb9nTn46LZh8PEgeRXKd239AYuZHa"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"accountDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"discountedFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1711224770</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"price"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03880B1D8FC30AA9E81656479E7C98A18A912373"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4Xt6n57NW1qEgm3RhZrYE7uTdzkCy8eqL"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"lpTokenBalance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"03880B1D8FC30AA9E81656479E7C98A18A912373"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4Xt6n57NW1qEgm3RhZrYE7uTdzkCy8eqL"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54772.2557505166"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"voteSlots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1711138371</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"createdLedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">86795283</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"createdTxHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BDCC35ED3EEA1F6E4AC76C21395F98239BACF9D59708CF3A4560830FF734AEF7"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1711138371</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updatedLedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">86795283</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"updatedTxHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BDCC35ED3EEA1F6E4AC76C21395F98239BACF9D59708CF3A4560830FF734AEF7"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rXSGjb9nTn46LZh8PEgeRXKd239AYuZHa"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"accountDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="nl">"tradingFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"voteWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns a list of AMM pools.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/amms</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order</td>
+<td><code>createdOld</code></td>
+<td>in which order the AMMs should be returned (<code>createdOld</code>, <code>createdNew</code>, <code>updatedOld</code>, <code>updatedNew</code>), <code>currencyHigh</code> - if you need to sort it by Asset1 or Asset2 balances, then specify also the <code>sortCurrency</code> parameter</td>
+</tr>
+<tr>
+<td>sortCurrency</td>
+<td>null</td>
+<td>If you want to sort by Asset1 or Asset2 balances, make sure <code>order</code> is set to <code>currencyHigh</code> and <code>sortCurrency</code> is set as for example <code>XRP</code></td>
+</tr>
+</tbody></table>
+<h2 id='amm-pool'>AMM Pool</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
@@ -971,8 +1096,8 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves information for a requested NFT (XLS-20 or XLS-35).</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<p>This endpoint retrieves information for a requested AMM pool.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/amm/&lt;ammID || LPtoken || address&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
@@ -992,6 +1117,25 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <tr>
 <td>address</td>
 <td>AMM account address</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ledgerIndex</td>
+<td>null</td>
+<td>ledger index (if set the request will return data for that ledger index)</td>
+</tr>
+<tr>
+<td>ledgerTimestamp</td>
+<td>null</td>
+<td>ISO timestamp or unix timestamp (if set the request will return data for that timestamp)</td>
 </tr>
 </tbody></table>
 <h1 id='nft-xls-20-xls-35'>NFT (XLS-20 / XLS-35)</h1><h2 id='nft'>NFT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true&amp;assets=true"</span>
@@ -1092,7 +1236,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested NFT (XLS-20 or XLS-35).</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft/&lt;nftID&gt;</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
@@ -1106,7 +1250,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>An NFT ID (XLS-20 or XLS-35)</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1292,7 +1436,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes for specified parameters</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-offer/&lt;nftOfferID&gt;</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
@@ -1367,9 +1511,9 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a List of NFTs (XLS-20 / XLS-35) for specified parameters</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nfts</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1584,7 +1728,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Offers created by an <code>address</code> or NFT Offers for all NFTs owned by that <code>address</code>.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-offers/&lt;address&gt;</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
@@ -1598,7 +1742,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>The XRPL address or a username.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1671,9 +1815,9 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Owners list sorted by NFT count.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-owners</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1827,9 +1971,9 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a List of NFT Sales for specified parameters</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-sales</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1977,9 +2121,9 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes for specified parameters</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-volumes</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2225,9 +2369,9 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves Extended NFT Sales Volumes for specified parameters (Only available on paid API plans)</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-volumes-extended</code></p>
-<h3 id='query-parameters-8'>Query Parameters</h3>
+<h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2353,9 +2497,9 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT minters on XRPL for a specified period of time</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-marketplaces</code></p>
-<h3 id='query-parameters-9'>Query Parameters</h3>
+<h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2397,9 +2541,9 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT mints count for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-chart</code></p>
-<h3 id='query-parameters-10'>Query Parameters</h3>
+<h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2458,9 +2602,9 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes Chart data for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-sales-chart</code></p>
-<h3 id='query-parameters-11'>Query Parameters</h3>
+<h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2528,7 +2672,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a timestamp of last DB update for services/addresses.</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/lastUpdate</code></p>
 <h3 id='response-format'>Response Format</h3>
 <table><thead>
@@ -2572,7 +2716,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the last ledger which was crawled by our NFT crawler.</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/statistics/nftokens/crawler</code></p>
 <h3 id='response-format-2'>Response Format</h3>
 <table><thead>
@@ -2685,7 +2829,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested XRPL address.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/address/&lt;address&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -2699,7 +2843,7 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 <td>The XRPL address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-12'>Query Parameters</h3>
+<h3 id='query-parameters-14'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2823,7 +2967,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested Username.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/username/&lt;username&gt;</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
@@ -2837,7 +2981,7 @@ Exclude unnecessary parameters to make your request faster.
 <td>A bithomp or an old rippletrade username</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-13'>Query Parameters</h3>
+<h3 id='query-parameters-15'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2933,7 +3077,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currency/&lt;currency&gt;</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
@@ -2971,7 +3115,7 @@ You can retrieve information for MANY currencies in one request:
 </span></code></pre></div>
 <p>This endpoint retrieves a XRPL address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
 <h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
@@ -3073,9 +3217,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currencies</code></p>
-<h3 id='query-parameters-14'>Query Parameters</h3>
+<h3 id='query-parameters-16'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3146,7 +3290,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of identified services.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services</code></p>
 <h3 id='response-format-3'>Response Format</h3>
 <table><thead>
@@ -3232,7 +3376,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of all identified service addresses.</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/addresses</code></p>
 <h3 id='response-format-4'>Response Format</h3>
 <table><thead>
@@ -3318,7 +3462,7 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://bithomp.com/submit/">
   https://bithomp.com/submit/
 </a>.</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
@@ -3383,7 +3527,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/?hwlogin">
   https://bithomp.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -3436,7 +3580,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/account-chart</code></p>
 <h3 id='response-format-5'>Response Format</h3>
 <table><thead>
@@ -3500,7 +3644,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
@@ -3618,7 +3762,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-7'>Response Format</h3>
 <table><thead>
