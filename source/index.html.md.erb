@@ -397,6 +397,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 order | `createdOld` | in which order the AMMs should be returned (`createdOld`, `createdNew`, `updatedOld`, `updatedNew`), `currencyHigh` - if you need to sort it by Asset1 or Asset2 balances, then specify also the `sortCurrency` parameter
 sortCurrency | null | If you want to sort by Asset1 or Asset2 balances, make sure `order` is set to `currencyHigh` and `sortCurrency` is set as for example `XRP`
+sortCurrencyIssuer | null | currency issuer for `sortCurrency` in case of an IOU
 
 ## AMM Pool
 
