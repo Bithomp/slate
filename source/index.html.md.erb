@@ -61,6 +61,16 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 25st of April 2024
+
+A new endpoint was added:
+
+<a href="#amms">**AMMs**</a>
+Get the ordered list of AMMs.
+
+Two new query parameters: `ledgerIndex` and `ledgerTimestamp` were added to the <a href="#amm-pool">**AMM Pool**</a> API end-point.
+Now you can get AMM data for a specific ledger index or timestamp.
+
 ### 21st of April 2024
 
 A new endpoint was added:
@@ -275,6 +285,119 @@ username | false | If set to true, the result will also include a `username` (ri
 
 # AMM
 
+## AMMs
+
+```shell
+curl "https://bithomp.com/api/v2/amms"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/amms", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/amms");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "order": "createdOld",
+  "marker": "16E5DAA100000001",
+  "amms": [
+    {
+      "ammID": "51DFB0A87FF1606C4413D1E7581FF969C41D53A1B142B5A9FD91A1AE478F92F2",
+      "createdAt": 1711138371,
+      "createdLedgerIndex": 86795283,
+      "createdTxHash": "BDCC35ED3EEA1F6E4AC76C21395F98239BACF9D59708CF3A4560830FF734AEF7",
+      "updatedAt": 1711138371,
+      "updatedLedgerIndex": 86795283,
+      "updatedTxHash": "BDCC35ED3EEA1F6E4AC76C21395F98239BACF9D59708CF3A4560830FF734AEF7",
+      "account": "r4Xt6n57NW1qEgm3RhZrYE7uTdzkCy8eqL",
+      "accountDetails": {
+        "username": null,
+        "service": null
+      },
+      "ownerNode": "0",
+      "amount": "236219041",
+      "amount2": {
+        "currency": "XSG",
+        "issuer": "rXSGuKAkUGkPL6iUMJWX1Fi5bogsVYPMs",
+        "value": "12.70007695950302",
+        "issuerDetails": {
+          "username": "XSGCoin",
+          "service": "XSGCoin"
+        }
+      },
+      "tradingFee": null,
+      "auctionSlot": {
+        "account": "rXSGjb9nTn46LZh8PEgeRXKd239AYuZHa",
+        "accountDetails": {
+          "username": null,
+          "service": null
+        },
+        "discountedFee": null,
+        "expiration": 1711224770,
+        "price": {
+          "currency": "03880B1D8FC30AA9E81656479E7C98A18A912373",
+          "issuer": "r4Xt6n57NW1qEgm3RhZrYE7uTdzkCy8eqL",
+          "value": "0",
+          "issuerDetails": {
+            "username": null,
+            "service": null
+          }
+        }
+      },
+      "lpTokenBalance": {
+        "currency": "03880B1D8FC30AA9E81656479E7C98A18A912373",
+        "issuer": "r4Xt6n57NW1qEgm3RhZrYE7uTdzkCy8eqL",
+        "value": "54772.2557505166",
+        "issuerDetails": {
+          "username": null,
+          "service": null
+        }
+      },
+      "voteSlots": [
+        {
+          "createdAt": 1711138371,
+          "createdLedgerIndex": 86795283,
+          "createdTxHash": "BDCC35ED3EEA1F6E4AC76C21395F98239BACF9D59708CF3A4560830FF734AEF7",
+          "updatedAt": 1711138371,
+          "updatedLedgerIndex": 86795283,
+          "updatedTxHash": "BDCC35ED3EEA1F6E4AC76C21395F98239BACF9D59708CF3A4560830FF734AEF7",
+          "account": "rXSGjb9nTn46LZh8PEgeRXKd239AYuZHa",
+          "accountDetails": {
+            "username": null,
+            "service": null
+          },
+          "tradingFee": null,
+          "voteWeight": 100000
+        }
+      ]
+    }
+  ]
+}
+```
+
+This endpoint returns a list of AMM pools.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/amms`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+order | `createdOld` | in which order the AMMs should be returned (`createdOld`, `createdNew`, `updatedOld`, `updatedNew`), `currencyHigh` - if you need to sort it by Asset1 or Asset2 balances, then specify also the `sortCurrency` parameter
+sortCurrency | null | If you want to sort by Asset1 or Asset2 balances, make sure `order` is set to `currencyHigh` and `sortCurrency` is set as for example `XRP`
+
 ## AMM Pool
 
 ```shell
@@ -444,7 +567,7 @@ print $data;
 }
 ```
 
-This endpoint retrieves information for a requested NFT (XLS-20 or XLS-35).
+This endpoint retrieves information for a requested AMM pool.
 
 ### HTTP Request
 
@@ -457,6 +580,13 @@ Parameter | Description
 ammID | AMM ID 
 LPtoken | LP token currency code
 address | AMM account address
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+ledgerIndex | null | ledger index (if set the request will return data for that ledger index)
+ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request will return data for that timestamp)
 
 # NFT (XLS-20 / XLS-35)
 
