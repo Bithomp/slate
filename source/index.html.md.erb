@@ -38,6 +38,7 @@ API plans:
 | Standard*               | 400   | 120K  | Basic | 100 EUR  |
 | Premium*                | 1000  | 300K  | Basic | 250 EUR  |
 | Enterprise*             | 2000  | 600K  | Basic | 500 EUR  |
+| <a href="#on-demand">On-demand</a> | N/A   | N/A   | N/A   | 0.005 XRP / request |
 
 * On that plan the <a href="#nft">**NFT**</a> endpoint returns `assets` with direct URLs to resized images and videos.
 
@@ -54,6 +55,7 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 | Basic                    | 5K / 100K  | 1.5K / 30K | 25K / 250K | 60 EUR   |
 | Standard                 | 10K / 200K | 3K / 60K   | 50K / 500K | 100 EUR  |
 | Premium                  | 20K / 400K | 6K / 120K  | 100K / 1M  | 200 EUR  |
+| <a href="#on-demand">On-demand</a> | N/A   | N/A   | N/A   | 0.005 XRP / request |
 
 - <a href="https://bithomp.com/admin">Request an API key</a>
 
@@ -226,7 +228,7 @@ print curl_bithomp("api_endpoint_here")
 
 > Make sure to replace `abcd-abcd-0000-abcd-0123abcdabcd` with your API key.
 
-In order to use our APIs you need to request an API key via [the partner portal](https://bithomp.com/admin).
+Unless you are using our <a href="#on-demand">on-demand</a> option, in order to use our APIs you need to request an API key via [the partner portal](https://bithomp.com/admin).
 
 Bithomp expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
@@ -235,6 +237,100 @@ Bithomp expects for the API key to be included in all API requests to the server
 <aside class="notice">
 You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your personal API key.
 </aside>
+
+## On-demand
+
+To use our on-demand option, no API key is required. All requests should be made using `https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9` as the base URL. All subsequent paths, query strings, etc, remain the same. 
+In addition, you should create a payment claim with enough value using the following button.
+After retrieving your payment claim (a json), you must embed it into request headers using the header key: `Payment-Claim`. 
+<div class="dhali-button-container"><button  class="dhali-button" onclick="openDhaliPaymentDialog()">Create payment claim</button></div>
+
+<script>
+  function openDhaliPaymentDialog() {
+    var myWindow = window.open("https://pay.dhali.io/?exampleGetUrl=https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners", "MsgWindow", "width=500,height=700");
+    myWindow.focus();
+}
+</script>
+<style>
+    .dhali-button {
+        background-color: #0000ff;
+        color: white;
+        padding: 8px 10px;
+        border: none;
+        border-radius: 4px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 0px 30px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .dhali-button:hover {
+        background-color: #6f6ffd;
+        color: rgb(255, 255, 255);
+    }
+    
+    .dhali-button-container {
+      text-align: left;
+    }
+</style>
+
+> After preparing your payment claim:
+
+```shell
+# Define a payment claim and submit it as part of your API request
+PAYMENT_CLAIM='{"account":"my-classic-address","destination_account":"rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR","authorized_to_claim":"94875","signature":"a-signature","channel_id":"a-channel-id"}'
+curl -H "Payment-Claim: $PAYMENT_CLAIM" https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners
+```
+
+```javascript
+
+const PAYMENT_CLAIM = JSON.stringify({
+    account: "my-classic-address",
+    destination_account: "rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR",
+    authorized_to_claim: "94875",
+    signature: "a-signature",
+    channel_id: "a-channel-id"
+});
+
+fetch('https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners', {
+    method: 'GET',
+    headers: {
+        'Payment-Claim': PAYMENT_CLAIM
+    }
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+
+```
+
+```php
+$paymentClaim = json_encode([
+    "account" => "my-classic-address",
+    "destination_account" => "rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR",
+    "authorized_to_claim" => "94875",
+    "signature" => "a-signature",
+    "channel_id" => "a-channel-id"
+]);
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    "Payment-Claim: $paymentClaim"
+]);
+
+$response = curl_exec($ch);
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+} else {
+    echo $response;
+}
+curl_close($ch);
+```
 
 # Get username
 
