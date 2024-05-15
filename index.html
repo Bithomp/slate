@@ -282,9 +282,9 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-b78ebe5d.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print-db2b5c43.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-b12a2749.js"></script>
+    <link href="stylesheets/screen-44b042d0.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-d78201b4.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-024da600.js"></script>
 
   </head>
 
@@ -373,6 +373,11 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#on-demand" class="toc-h2 toc-link" data-title="On-demand">On-demand</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#get-username" class="toc-h1 toc-link" data-title="Get username">Get username</a>
@@ -577,6 +582,13 @@
 <td>Basic</td>
 <td>500 EUR</td>
 </tr>
+<tr>
+<td><a href="#on-demand">On-demand</a></td>
+<td style="text-align: right">N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>0.005 XRP / request</td>
+</tr>
 </tbody></table>
 
 <ul>
@@ -628,6 +640,13 @@
 <td>6K / 120K</td>
 <td>100K / 1M</td>
 <td>200 EUR</td>
+</tr>
+<tr>
+<td><a href="#on-demand">On-demand</a></td>
+<td>N/A</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>0.005 XRP / request</td>
 </tr>
 </tbody></table>
 
@@ -771,7 +790,7 @@ curl <span class="s2">"api_endpoint_here"</span>
 <p>Make sure to replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your API key.</p>
 </blockquote>
 
-<p>In order to use our APIs you need to request an API key via <a href="https://bithomp.com/admin">the partner portal</a>.</p>
+<p>Unless you are using our <a href="#on-demand">on-demand</a> option, in order to use our APIs you need to request an API key via <a href="https://bithomp.com/admin">the partner portal</a>.</p>
 
 <p>Bithomp expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
@@ -780,7 +799,94 @@ curl <span class="s2">"api_endpoint_here"</span>
 <aside class="notice">
 You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your personal API key.
 </aside>
-<h1 id='get-username'>Get username</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true"</span>
+<h2 id='on-demand'>On-demand</h2>
+<p>To use our on-demand option, no API key is required. All requests should be made using <code>https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9</code> as the base URL. All subsequent paths, query strings, etc, remain the same. 
+In addition, you should create a payment claim with enough value using the following button.
+After retrieving your payment claim (a json), you must embed it into request headers using the header key: <code>Payment-Claim</code>. 
+<div class="dhali-button-container"><button  class="dhali-button" onclick="openDhaliPaymentDialog()">Create payment claim</button></div></p>
+
+<script>
+  function openDhaliPaymentDialog() {
+    var myWindow = window.open("https://pay.dhali.io/?exampleGetUrl=https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners", "MsgWindow", "width=500,height=700");
+    myWindow.focus();
+}
+</script>
+
+<style>
+    .dhali-button {
+        background-color: #0000ff;
+        color: white;
+        padding: 8px 10px;
+        border: none;
+        border-radius: 4px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 0px 30px;
+        -webkit-transition-duration: 0.4s;
+                transition-duration: 0.4s;
+        cursor: pointer;
+    }
+
+    .dhali-button:hover {
+        background-color: #6f6ffd;
+        color: rgb(255, 255, 255);
+    }
+    
+    .dhali-button-container {
+      text-align: left;
+    }
+</style>
+
+<blockquote>
+<p>After preparing your payment claim:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># Define a payment claim and submit it as part of your API request</span>
+<span class="nv">PAYMENT_CLAIM</span><span class="o">=</span><span class="s1">'{"account":"my-classic-address","destination_account":"rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR","authorized_to_claim":"94875","signature":"a-signature","channel_id":"a-channel-id"}'</span>
+curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span class="nv">$PAYMENT_CLAIM</span><span class="s2">"</span> https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list<span class="o">=</span>owners
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">PAYMENT_CLAIM</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+    <span class="na">account</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-classic-address</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">destination_account</span><span class="p">:</span> <span class="dl">"</span><span class="s2">rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">authorized_to_claim</span><span class="p">:</span> <span class="dl">"</span><span class="s2">94875</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">signature</span><span class="p">:</span> <span class="dl">"</span><span class="s2">a-signature</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">channel_id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">a-channel-id</span><span class="dl">"</span>
+<span class="p">});</span>
+
+<span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+        <span class="dl">'</span><span class="s1">Payment-Claim</span><span class="dl">'</span><span class="p">:</span> <span class="nx">PAYMENT_CLAIM</span>
+    <span class="p">}</span>
+<span class="p">})</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
+<span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
+
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$paymentClaim</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">([</span>
+    <span class="s2">"account"</span> <span class="o">=&gt;</span> <span class="s2">"my-classic-address"</span><span class="p">,</span>
+    <span class="s2">"destination_account"</span> <span class="o">=&gt;</span> <span class="s2">"rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR"</span><span class="p">,</span>
+    <span class="s2">"authorized_to_claim"</span> <span class="o">=&gt;</span> <span class="s2">"94875"</span><span class="p">,</span>
+    <span class="s2">"signature"</span> <span class="o">=&gt;</span> <span class="s2">"a-signature"</span><span class="p">,</span>
+    <span class="s2">"channel_id"</span> <span class="o">=&gt;</span> <span class="s2">"a-channel-id"</span>
+<span class="p">]);</span>
+
+<span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s2">"https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners"</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s2">"Payment-Claim: </span><span class="nv">$paymentClaim</span><span class="s2">"</span>
+<span class="p">]);</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="s1">'Error:'</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+</code></pre></div><h1 id='get-username'>Get username</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
