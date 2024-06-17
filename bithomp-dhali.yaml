@@ -1,0 +1,553 @@
+openapi: 3.1.0
+info:
+  title: Bithomp Dhali API
+  description: API for interacting with Bithomp's XRPL data and services.
+  version: 1.0.0
+servers:
+  - url: https://run.api.dhali.io
+    description: Main API server
+paths:
+  /d995db530-7e57-46d1-ac8a-76324794e0c9/address/{address}:
+    get:
+      summary: Get username and address information
+      description: Retrieves a username and other details for a requested XRPL address.
+      operationId: getAccount
+      parameters:
+        - name: address
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The XRPL address, can be r-address or X-address
+        - name: username
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: If set to true, the result will include a username.
+        - name: service
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: If set to true, the result will include service details.
+        - name: verifiedDomain
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: If set true, the result will include a verified domain if such exists.
+        - name: inception
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: If set to true, the result will include inception details.
+        - name: ledgerInfo
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: If set to true, the result will include ledger info.
+      responses:
+        "200":
+          description: Successfully retrieved address information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  address:
+                    type: string
+                  xAddress:
+                    type: string
+                  username:
+                    type: string
+                  service:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      domain:
+                        type: string
+                      socialAccounts:
+                        type: object
+                        additionalProperties:
+                          type: string
+                  verifiedDomain:
+                    type: string
+                  inception:
+                    type: integer
+                  initialBalance:
+                    type: integer
+                  genesis:
+                    type: boolean
+                  ledgerInfo:
+                    type: object
+                    properties:
+                      activated:
+                        type: boolean
+                      error:
+                        type: string
+                      ledger:
+                        type: integer
+                      ledgerTimestamp:
+                        type: integer
+                      balance:
+                        type: string
+                      flags:
+                        type: object
+                        additionalProperties:
+                          type: boolean
+                      ownerCount:
+                        type: integer
+                      previousTxnID:
+                        type: string
+                      previousTxnLgrSeq:
+                        type: integer
+                      sequence:
+                        type: integer
+                      accountTxnID:
+                        type: string
+                      mintedTokens:
+                        type: integer
+                      burnedTokens:
+                        type: integer
+                      regularKey:
+                        type: string
+                      ticketCount:
+                        type: integer
+                      signerList:
+                        type: object
+                        properties:
+                          previousTxnID:
+                            type: string
+                          previousTxnLgrSeq:
+                            type: integer
+                          signerQuorum:
+                            type: integer
+                          flags:
+                            type: object
+                            additionalProperties:
+                              type: boolean
+                          signerEntries:
+                            type: array
+                            items:
+                              type: object
+                              properties:
+                                account:
+                                  type: string
+                                signerWeight:
+                                  type: integer
+                      domain:
+                        type: string
+                      emailHash:
+                        type: string
+                      messageKey:
+                        type: string
+                      tickSize:
+                        type: integer
+                      transferRate:
+                        type: number
+                      blackholed:
+                        type: boolean
+  /d995db530-7e57-46d1-ac8a-76324794e0c9/amms:
+    get:
+      summary: Get AMMs
+      description: Returns a list of AMM pools.
+      operationId: getAMMs
+      parameters:
+        - name: order
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Order of returned AMMs (createdOld, createdNew, updatedOld, updatedNew)
+        - name: sortCurrency
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Currency to sort by (when order is currencyHigh)
+        - name: sortCurrencyIssuer
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Currency issuer for sortCurrency
+      responses:
+        "200":
+          description: Successfully retrieved AMM pools
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order:
+                    type: string
+                  marker:
+                    type: string
+                  amms:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        ammID:
+                          type: string
+                        createdAt:
+                          type: integer
+                        createdLedgerIndex:
+                          type: integer
+                        createdTxHash:
+                          type: string
+                        updatedAt:
+                          type: integer
+                        updatedLedgerIndex:
+                          type: integer
+                        updatedTxHash:
+                          type: string
+                        account:
+                          type: string
+                        accountDetails:
+                          type: object
+                          properties:
+                            username:
+                              type: string
+                            service:
+                              type: string
+                        ownerNode:
+                          type: string
+                        amount:
+                          type: string
+                        amount2:
+                          type: object
+                          properties:
+                            currency:
+                              type: string
+                            issuer:
+                              type: string
+                            value:
+                              type: string
+                            issuerDetails:
+                              type: object
+                              properties:
+                                username:
+                                  type: string
+                                service:
+                                  type: string
+                        tradingFee:
+                          type: integer
+                        auctionSlot:
+                          type: object
+                          properties:
+                            account:
+                              type: string
+                            accountDetails:
+                              type: object
+                              properties:
+                                username:
+                                  type: string
+                                service:
+                                  type: string
+                            discountedFee:
+                              type: integer
+                            expiration:
+                              type: integer
+                            price:
+                              type: object
+                              properties:
+                                currency:
+                                  type: string
+                                issuer:
+                                  type: string
+                                value:
+                                  type: string
+                                issuerDetails:
+                                  type: object
+                                  properties:
+                                    username:
+                                      type: string
+                                    service:
+                                      type: string
+                        lpTokenBalance:
+                          type: object
+                          properties:
+                            currency:
+                              type: string
+                            issuer:
+                              type: string
+                            value:
+                              type: string
+                            issuerDetails:
+                              type: object
+                              properties:
+                                username:
+                                  type: string
+                                service:
+                                  type: string
+                        voteSlots:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              createdAt:
+                                type: integer
+                              createdLedgerIndex:
+                                type: integer
+                              createdTxHash:
+                                type: string
+                              updatedAt:
+                                type: integer
+                              updatedLedgerIndex:
+                                type: integer
+                              updatedTxHash:
+                                type: string
+                              account:
+                                type: string
+                              accountDetails:
+                                type: object
+                                properties:
+                                  username:
+                                    type: string
+                                  service:
+                                    type: string
+                              tradingFee:
+                                type: integer
+                              voteWeight:
+                                type: integer
+  /d995db530-7e57-46d1-ac8a-76324794e0c9/amm/{id}:
+    get:
+      summary: Get AMM Pool
+      description: Retrieves information for a requested AMM pool.
+      operationId: getPools
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: AMM ID, LP token currency code or AMM account address
+        - name: ledgerIndex
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Ledger index
+        - name: ledgerTimestamp
+          in: query
+          required: false
+          schema:
+            type: integer
+          description: Ledger timestamp
+      responses:
+        "200":
+          description: Successfully retrieved AMM pool information
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ammID:
+                    type: string
+                  createdAt:
+                    type: integer
+                  createdLedgerIndex:
+                    type: integer
+                  createdTxHash:
+                    type: string
+                  updatedAt:
+                    type: integer
+                  updatedLedgerIndex:
+                    type: integer
+                  updatedTxHash:
+                    type: string
+                  account:
+                    type: string
+                  accountDetails:
+                    type: object
+                    properties:
+                      username:
+                        type: string
+                      service:
+                        type: string
+                  ownerNode:
+                    type: string
+                  amount:
+                    type: string
+                  amount2:
+                    type: object
+                    properties:
+                      currency:
+                        type: string
+                      issuer:
+                        type: string
+                      value:
+                        type: string
+                      issuerDetails:
+                        type: object
+                        properties:
+                          username:
+                            type: string
+                          service:
+                            type: string
+                  tradingFee:
+                    type: integer
+                  auctionSlot:
+                    type: object
+                    properties:
+                      account:
+                        type: string
+                      accountDetails:
+                        type: object
+                        properties:
+                          username:
+                            type: string
+                          service:
+                            type: string
+                      discountedFee:
+                        type: integer
+                      expiration:
+                        type: integer
+                      price:
+                        type: object
+                        properties:
+                          currency:
+                            type: string
+                          issuer:
+                            type: string
+                          value:
+                            type: string
+                          issuerDetails:
+                            type: object
+                            properties:
+                              username:
+                                type: string
+                              service:
+                                type: string
+                  lpTokenBalance:
+                    type: object
+                    properties:
+                      currency:
+                        type: string
+                      issuer:
+                        type: string
+                      value:
+                        type: string
+                      issuerDetails:
+                        type: object
+                        properties:
+                          username:
+                            type: string
+                          service:
+                            type: string
+                  voteSlots:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        createdAt:
+                          type: integer
+                        createdLedgerIndex:
+                          type: integer
+                        createdTxHash:
+                          type: string
+                        updatedAt:
+                          type: integer
+                        updatedLedgerIndex:
+                          type: integer
+                        updatedTxHash:
+                          type: string
+                        account:
+                          type: string
+                        accountDetails:
+                          type: object
+                          properties:
+                            username:
+                              type: string
+                            service:
+                              type: string
+                        tradingFee:
+                          type: integer
+                        voteWeight:
+                          type: integer
+  /d995db530-7e57-46d1-ac8a-76324794e0c9/search/{value}:
+    get:
+      summary: Search for a value
+      description: Search for a given value (could be address, tx hash, username, etc.).
+      operationId: getSearch
+      parameters:
+        - name: value
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Search value
+        - name: type
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Type of value to search for (address, username, service, etc.)
+      responses:
+        "200":
+          description: Successfully performed search
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: string
+                  type:
+                    type: string
+                  result:
+                    type: object
+                    properties:
+                      address:
+                        type: string
+                      transaction:
+                        type: string
+                      username:
+                        type: string
+                      service:
+                        type: object
+                        properties:
+                          name:
+                            type: string
+                          domain:
+                            type: string
+                          socialAccounts:
+                            type: object
+                            additionalProperties:
+                              type: string
+  /d995db530-7e57-46d1-ac8a-76324794e0c9/username/{username}:
+    get:
+      summary: Get username details
+      description: Retrieves the account associated with a requested username.
+      operationId: getUsername
+      parameters:
+        - name: username
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The username to look up
+      responses:
+        "200":
+          description: Successfully retrieved username details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    type: string
+                  service:
+                    type: string
+                  domain:
+                    type: string
+                  domain_verified:
+                    type: boolean
+                  created:
+                    type: integer
+
