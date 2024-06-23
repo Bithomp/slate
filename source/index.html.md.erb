@@ -21,13 +21,22 @@ search: true
 
 Welcome to the Bithomp API!
 
-Bithomp API endpoints will give you access to information on XRPL addresses, NFTs, usernames, validators, services and more.
+Bithomp API endpoints will give you access to information on addresses, NFTs, usernames, validators, services and more.
 
 This API is built to complement the <a href="https://xrpl.org/http-websocket-apis.html">rippled API</a>.
 
 We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
 # Price and Limits
+
+Bithomp API is free on the test networks:
+TESTNET: `https://test.bithomp.com/api/v2/`, get your api key [here](https://test.bithomp.com/admin)
+DEVNET: `https://dev.bithomp.com/api/v2/`, get your api key [here](https://dev.bithomp.com/admin)
+XAHAU TESTNET: `https://test.xahauexplorer.com/api/v2/`, get your api key [here](https://test.xahauexplorer.com/admin)
+
+For the mainnets we have the following plans:
+MAINNET: `https://bithomp.com/api/v2/`, get your api key [here](https://bithomp.com/admin)
+XAHAU: `https://xahauexplorer.com/api/v2/`, get your api key [here](https://xahauexplorer.com/admin)
 
 API plans:
 
@@ -61,6 +70,13 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 - To get your payment details please reply to the email with your API key.
 
 # Changelog
+
+### 23rd of June 2024
+
+A new endpoint was added:
+
+<a href="#tx-details">**Tx Details**</a>
+Get transaction details.
 
 ### 25st of April 2024
 
@@ -125,22 +141,6 @@ You can search for NFTs in a collection (or through all NFTs) which were minted 
 
 The new query parameter: `assets` was added to the <a href="#nft">**NFT**</a> API end-point.
 Now you can get URLs for cached NFT image 700px x 700px, 15 second video, thumbnail 64px x 64px (resized image otherwise a frame from a video) and a preview 360px x 360px (resized image otherwise a frame from a video)
-
-### 14th of May 2023
-
-The new query parameter: `marketplace` was added to the <a href="#nft-sales">**NFT Sales**</a> API end-point.
-Now you are able to filter sales by a marketplace, or to get TOP or Latest Sales for any marketplace. 
-
-The new endpoint added: <a href="#nft-volumes-extended">**NFT Volumes Extended**</a>
-Here you can get all the volumes for Marketplaces, Issuers, Taxons, Currencies, Brokers (including all tokens [IOU]) with converted volumes to FIAT and/or XRP, BTC.
-
-### 29th of April 2023
-
-The new query parameter: `convertCurrencies` was added to the <a href="#nft">**NFT**</a> API end-point.
-The endpoint now also returns the `marketplace` in the `history` of Sales.
-
-The new query parameter: `taxon` was added to the <a href="#nft-distribution">**NFT Distribution**</a>
-Now you can get the nft distrubition for collections identified by issuer and taxon.
 
 # Direct URL examples
 
@@ -2726,6 +2726,201 @@ Before downloading the whole list again you can check if it was updated here: <a
 </aside>
 
 # Transaction
+
+## Tx Details
+
+```shell
+curl "https://bithomp.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/transaction/decode/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "type": "ammWithdraw",
+  "address": "raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J",
+  "sequence": 86780513,
+  "id": "277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F",
+  "ctid": "C547FB7700000000",
+  "specification": {
+    "source": {
+      "address": "raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J",
+      "tag": 24546893
+    },
+    "asset": {
+      "currency": "4252414400000000000000000000000000000000",
+      "counterparty": "rBRAD8ntFu3yFhpoo7uLjj4EbVi2UQ1EMR"
+    },
+    "asset2": {
+      "currency": "XRP"
+    },
+    "flags": {
+      "lpToken": false,
+      "withdrawAll": true,
+      "oneAssetWithdrawAll": false,
+      "singleAsset": false,
+      "twoAsset": false,
+      "oneAssetLPToken": false,
+      "limitLPToken": false
+    }
+  },
+  "outcome": {
+    "result": "tesSUCCESS",
+    "timestamp": "2024-06-10T23:26:32.000Z",
+    "fee": "0.000012",
+    "balanceChanges": {
+      "rNkJATb3PcVggEUcntMwt6b3662M1p44u3": [
+        {
+          "currency": "XRP",
+          "value": "-6.405052"
+        },
+        {
+          "counterparty": "raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J",
+          "currency": "0369BC054184BA4C655E4197B570C2AA25AFA8E4",
+          "value": "3975740.88133"
+        },
+        {
+          "counterparty": "rBRAD8ntFu3yFhpoo7uLjj4EbVi2UQ1EMR",
+          "currency": "4252414400000000000000000000000000000000",
+          "value": "-6537178.8337"
+        }
+      ],
+      "raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J": [
+        {
+          "counterparty": "rNkJATb3PcVggEUcntMwt6b3662M1p44u3",
+          "currency": "0369BC054184BA4C655E4197B570C2AA25AFA8E4",
+          "value": "-3975740.88133"
+        },
+        {
+          "counterparty": "rBRAD8ntFu3yFhpoo7uLjj4EbVi2UQ1EMR",
+          "currency": "4252414400000000000000000000000000000000",
+          "value": "6537178.833695069"
+        },
+        {
+          "currency": "XRP",
+          "value": "6.40504"
+        }
+      ],
+      "rBRAD8ntFu3yFhpoo7uLjj4EbVi2UQ1EMR": [
+        {
+          "counterparty": "raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J",
+          "currency": "4252414400000000000000000000000000000000",
+          "value": "-6537178.833695069"
+        },
+        {
+          "counterparty": "rNkJATb3PcVggEUcntMwt6b3662M1p44u3",
+          "currency": "4252414400000000000000000000000000000000",
+          "value": "6537178.8337"
+        }
+      ]
+    },
+    "ammChanges": {
+      "status": "modified",
+      "ammID": "A513513E3A227FE3A7920740EC8A336C68A166881930E455E16F28EED794D867",
+      "account": "rNkJATb3PcVggEUcntMwt6b3662M1p44u3",
+      "asset": {
+        "currency": "XRP"
+      },
+      "asset2": {
+        "currency": "4252414400000000000000000000000000000000",
+        "counterparty": "rBRAD8ntFu3yFhpoo7uLjj4EbVi2UQ1EMR"
+      },
+      "auctionSlot": {
+        "account": "rEPR5XZjXDUMy65K5qUMgGFVqqo8CiA8AU",
+        "discountedFee": 39,
+        "expiration": 1712919252,
+        "price": {
+          "currency": "0369BC054184BA4C655E4197B570C2AA25AFA8E4",
+          "issuer": "rNkJATb3PcVggEUcntMwt6b3662M1p44u3",
+          "value": "10000000"
+        }
+      },
+      "lpTokenBalance": {
+        "currency": "0369BC054184BA4C655E4197B570C2AA25AFA8E4",
+        "value": "27151566861.22734",
+        "counterparty": "rNkJATb3PcVggEUcntMwt6b3662M1p44u3"
+      },
+      "tradingFee": 392,
+      "ownerNode": "0",
+      "voteSlots": [
+        {
+          "account": "rs4HULUYNcbwCmH4KokAk7pus6wRpgtfmg",
+          "tradingFee": 750,
+          "voteWeight": 6411
+        },
+        {
+          "account": "r9eVykdjG58vsFk99GQozRbE7LTovFG6Py",
+          "tradingFee": 1000,
+          "voteWeight": 636
+        },
+        {
+          "account": "rH9ZRJDe1dbrJY78gXpZWbhkqz94byf2Ab",
+          "tradingFee": 8,
+          "voteWeight": 9129
+        },
+        {
+          "account": "rwQbT25TA3NEvTAHFxmfEZkMUfQ7tYJ7T6",
+          "tradingFee": 330,
+          "voteWeight": 0
+        },
+        {
+          "account": "rpNmRsusXxqJoaDny4B3nVTqwkE1xDEDGt",
+          "tradingFee": 1000,
+          "voteWeight": 531
+        },
+        {
+          "account": "r9dRhoGsmBStn3qdTq3mYychrFYneR6wn5",
+          "tradingFee": 850,
+          "voteWeight": 1099
+        },
+        {
+          "account": "rp6Ak4Z5X6HcQZpuEWHJ7esuXHcwraFFAU",
+          "tradingFee": 375,
+          "voteWeight": 365
+        }
+      ],
+      "lpTokenBalanceChange": {
+        "currency": "0369BC054184BA4C655E4197B570C2AA25AFA8E4",
+        "counterparty": "rNkJATb3PcVggEUcntMwt6b3662M1p44u3",
+        "value": "-3975740.88133"
+      }
+    },
+    "ledgerVersion": 88603511,
+    "indexInLedger": 0
+  },
+  "rawTransaction": "{\"Account\":\"raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J\",\"Asset\":{\"currency\":\"4252414400000000000000000000000000000000\",\"issuer\":\"rBRAD8ntFu3yFhpoo7uLjj4EbVi2UQ1EMR\"},\"Asset2\":{\"currency\":\"XRP\"},\"Fee\":\"12\",\"Flags\":131072,\"LastLedgerSequence\":88603519,\"Sequence\":86780513,\"SigningPubKey\":\"03C351BAA176A52F2533C78F32FFE9C0F8C2797465752B1814BC80C0CA5C478262\",\"SourceTag\":24546893,\"TransactionType\":\"AMMWithdraw\",\"TxnSignature\":\"304402207CA0A9B2C82298727D8B988592B5CBBB8F7FD9F59A7F085E08A6BD7C8F6821D50220750024405B3BA37A810FEDE5F97667F20E2042D5705869D23CFEC9DBA3F54D51\",\"hash\":\"277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F\",\"ctid\":\"C547FB7700000000\",\"meta\":{\"AffectedNodes\":[{\"ModifiedNode\":{\"FinalFields\":{\"AMMID\":\"A513513E3A227FE3A7920740EC8A336C68A166881930E455E16F28EED794D867\",\"Account\":\"rNkJATb3PcVggEUcntMwt6b3662M1p44u3\",\"Balance\":\"43742087143\",\"Flags\":26214400,\"OwnerCount\":1,\"Sequence\":86795583},\"LedgerEntryType\":\"AccountRoot\",\"LedgerIndex\":\"38C2F23C15911AEB239A8FD27DC1022F6CFEAC5B58AAE825EF738CBB1A1A244D\",\"PreviousFields\":{\"Balance\":\"43748492195\"},\"PreviousTxnID\":\"1DF6D18DC3BE6C63ABAF2236A9B68E807A7E13C0EEF4F82886C8912B72815EB4\",\"PreviousTxnLgrSeq\":88602916}},{\"ModifiedNode\":{\"FinalFields\":{\"Balance\":{\"currency\":\"0369BC054184BA4C655E4197B570C2AA25AFA8E4\",\"issuer\":\"rrrrrrrrrrrrrrrrrrrrBZbvji\",\"value\":\"0\"},\"Flags\":1114112,\"HighLimit\":{\"currency\":\"0369BC054184BA4C655E4197B570C2AA25AFA8E4\",\"issuer\":\"rNkJATb3PcVggEUcntMwt6b3662M1p44u3\",\"value\":\"0\"},\"HighNode\":\"6\",\"LowLimit\":{\"currency\":\"0369BC054184BA4C655E4197B570C2AA25AFA8E4\",\"issuer\":\"raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J\",\"value\":\"1000000000\"},\"LowNode\":\"0\"},\"LedgerEntryType\":\"RippleState\",\"LedgerIndex\":\"8DAFD598632DB249B645EA43E94B5339966B2FB5CEDA9158276498F86141645E\",\"PreviousFields\":{\"Balance\":{\"currency\":\"0369BC054184BA4C655E4197B570C2AA25AFA8E4\",\"issuer\":\"rrrrrrrrrrrrrrrrrrrrBZbvji\",\"value\":\"3975740.88133\"}},\"PreviousTxnID\":\"634B26D4349919AF97BEF1215AA131AB07DA3B697F6F843C51A3FFD4ADF5EBB4\",\"PreviousTxnLgrSeq\":88533296}},{\"ModifiedNode\":{\"FinalFields\":{\"Balance\":{\"currency\":\"4252414400000000000000000000000000000000\",\"issuer\":\"rrrrrrrrrrrrrrrrrrrrBZbvji\",\"value\":\"6537179.10522535\"},\"Flags\":1114112,\"HighLimit\":{\"currency\":\"4252414400000000000000000000000000000000\",\"issuer\":\"rBRAD8ntFu3yFhpoo7uLjj4EbVi2UQ1EMR\",\"value\":\"0\"},\"HighNode\":\"194\",\"LowLimit\":{\"currency\":\"4252414400000000000000000000000000000000\",\"issuer\":\"raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J\",\"value\":\"5890000000000345e-4\"},\"LowNode\":\"0\"},\"LedgerEntryType\":\"RippleState\",\"LedgerIndex\":\"9439F82DAA1AD223BBF596F6625A503BF5868C8F1FB8867CC532B032A7383240\",\"PreviousFields\":{\"Balance\":{\"currency\":\"4252414400000000000000000000000000000000\",\"issuer\":\"rrrrrrrrrrrrrrrrrrrrBZbvji\",\"value\":\"0.271530281\"}},\"PreviousTxnID\":\"8E90DE5C53B201A0A1F4D2ED34D4DA26A30044DFDF1D885E2B53F6F4504FC5E1\",\"PreviousTxnLgrSeq\":88533275}},{\"ModifiedNode\":{\"FinalFields\":{\"Account\":\"rNkJATb3PcVggEUcntMwt6b3662M1p44u3\",\"Asset\":{\"currency\":\"XRP\"},\"Asset2\":{\"currency\":\"4252414400000000000000000000000000000000\",\"issuer\":\"rBRAD8ntFu3yFhpoo7uLjj4EbVi2UQ1EMR\"},\"AuctionSlot\":{\"Account\":\"rEPR5XZjXDUMy65K5qUMgGFVqqo8CiA8AU\",\"DiscountedFee\":39,\"Expiration\":766234452,\"Price\":{\"currency\":\"0369BC054184BA4C655E4197B570C2AA25AFA8E4\",\"issuer\":\"rNkJATb3PcVggEUcntMwt6b3662M1p44u3\",\"value\":\"10000000\"}},\"Flags\":0,\"LPTokenBalance\":{\"currency\":\"0369BC054184BA4C655E4197B570C2AA25AFA8E4\",\"issuer\":\"rNkJATb3PcVggEUcntMwt6b3662M1p44u3\",\"value\":\"27151566861.22734\"},\"OwnerNode\":\"0\",\"TradingFee\":392,\"VoteSlots\":[{\"VoteEntry\":{\"Account\":\"rs4HULUYNcbwCmH4KokAk7pus6wRpgtfmg\",\"TradingFee\":750,\"VoteWeight\":6411}},{\"VoteEntry\":{\"Account\":\"r9eVykdjG58vsFk99GQozRbE7LTovFG6Py\",\"TradingFee\":1000,\"VoteWeight\":636}},{\"VoteEntry\":{\"Account\":\"rH9ZRJDe1dbrJY78gXpZWbhkqz94byf2Ab\",\"TradingFee\":8,\"VoteWeight\":9129}},{\"VoteEntry\":{\"Account\":\"rwQbT25TA3NEvTAHFxmfEZkMUfQ7tYJ7T6\",\"TradingFee\":330,\"VoteWeight\":0}},{\"VoteEntry\":{\"Account\":\"rpNmRsusXxqJoaDny4B3nVTqwkE1xDEDGt\",\"TradingFee\":1000,\"VoteWeight\":531}},{\"VoteEntry\":{\"Account\":\"r9dRhoGsmBStn3qdTq3mYychrFYneR6wn5\",\"TradingFee\":850,\"VoteWeight\":1099}},{\"VoteEntry\":{\"Account\":\"rp6Ak4Z5X6HcQZpuEWHJ7esuXHcwraFFAU\",\"TradingFee\":375,\"VoteWeight\":365}}]},\"LedgerEntryType\":\"AMM\",\"LedgerIndex\":\"A513513E3A227FE3A7920740EC8A336C68A166881930E455E16F28EED794D867\",\"PreviousFields\":{\"LPTokenBalance\":{\"currency\":\"0369BC054184BA4C655E4197B570C2AA25AFA8E4\",\"issuer\":\"rNkJATb3PcVggEUcntMwt6b3662M1p44u3\",\"value\":\"27155542602.10867\"}}}},{\"ModifiedNode\":{\"FinalFields\":{\"Balance\":{\"currency\":\"4252414400000000000000000000000000000000\",\"issuer\":\"rrrrrrrrrrrrrrrrrrrrBZbvji\",\"value\":\"-44644420621.16854\"},\"Flags\":16908288,\"HighLimit\":{\"currency\":\"4252414400000000000000000000000000000000\",\"issuer\":\"rNkJATb3PcVggEUcntMwt6b3662M1p44u3\",\"value\":\"0\"},\"HighNode\":\"0\",\"LowLimit\":{\"currency\":\"4252414400000000000000000000000000000000\",\"issuer\":\"rBRAD8ntFu3yFhpoo7uLjj4EbVi2UQ1EMR\",\"value\":\"0\"},\"LowNode\":\"180\"},\"LedgerEntryType\":\"RippleState\",\"LedgerIndex\":\"E8EE4E6C9AB9CF46887E15F9766C7B2734D7502BE6BB545350FA7C352A0BD961\",\"PreviousFields\":{\"Balance\":{\"currency\":\"4252414400000000000000000000000000000000\",\"issuer\":\"rrrrrrrrrrrrrrrrrrrrBZbvji\",\"value\":\"-44650957800.00224\"}},\"PreviousTxnID\":\"1DF6D18DC3BE6C63ABAF2236A9B68E807A7E13C0EEF4F82886C8912B72815EB4\",\"PreviousTxnLgrSeq\":88602916}},{\"ModifiedNode\":{\"FinalFields\":{\"Account\":\"raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J\",\"Balance\":\"344487372\",\"Flags\":0,\"OwnerCount\":7,\"Sequence\":86780514},\"LedgerEntryType\":\"AccountRoot\",\"LedgerIndex\":\"EB47A23F99C99D6B3ACEFE6882C87B415C838CB4ECF8B09BF23DA1DEAB58F4AC\",\"PreviousFields\":{\"Balance\":\"338082332\",\"Sequence\":86780513},\"PreviousTxnID\":\"BEBF4F42EA9072F73146A4D27D98E1CE75E2BFD49BE88BFB3A6924EF9133267C\",\"PreviousTxnLgrSeq\":88603407}}],\"TransactionIndex\":0,\"TransactionResult\":\"tesSUCCESS\"},\"validated\":true,\"date\":771377192,\"ledger_index\":88603511,\"inLedger\":88603511}"
+}
+```
+
+This endpoint returns transaction details, including specification, outcome and rawTransaction data (Only available on paid API plans).
+<br>
+Page on bithomp that displays it:
+<a href="https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F">
+  https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
+</a>.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/transaction/<hash>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+hash | Transaction hash
 
 ## Tx Decode
 
