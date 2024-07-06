@@ -454,24 +454,29 @@
               </ul>
           </li>
           <li>
-            <a href="#get-information-for-one" class="toc-h1 toc-link" data-title="Get information for ONE">Get information for ONE</a>
+            <a href="#address" class="toc-h1 toc-link" data-title="Address">Address</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#address" class="toc-h2 toc-link" data-title="Address">Address</a>
-                  </li>
-                  <li>
-                    <a href="#validator" class="toc-h2 toc-link" data-title="Validator">Validator</a>
+                    <a href="#get-information-for-an-address" class="toc-h2 toc-link" data-title="Get information for an address">Get information for an address</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#currency" class="toc-h1 toc-link" data-title="Currency">Currency</a>
+            <a href="#validator" class="toc-h1 toc-link" data-title="Validator">Validator</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#currency-hex-or-xls-14-nft" class="toc-h2 toc-link" data-title="Currency (HEX or XLS-14 NFT)">Currency (HEX or XLS-14 NFT)</a>
+                    <a href="#get-wallet" class="toc-h2 toc-link" data-title="Get wallet">Get wallet</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#currency-hex-xls-14-nft" class="toc-h1 toc-link" data-title="Currency (HEX / XLS-14 NFT)">Currency (HEX / XLS-14 NFT)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#currency" class="toc-h2 toc-link" data-title="Currency">Currency</a>
                   </li>
                   <li>
-                    <a href="#currencies-hex-or-xls-14-nfts" class="toc-h2 toc-link" data-title="Currencies (HEX or XLS-14 NFTs)">Currencies (HEX or XLS-14 NFTs)</a>
+                    <a href="#currencies" class="toc-h2 toc-link" data-title="Currencies">Currencies</a>
                   </li>
               </ul>
           </li>
@@ -3130,7 +3135,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 <td>The amount of identified addresses.</td>
 </tr>
 </tbody></table>
-<h1 id='get-information-for-one'>Get information for ONE</h1><h2 id='address'>Address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&amp;service=true&amp;verifiedDomain=true&amp;inception=true&amp;ledgerInfo=true"</span>
+<h1 id='address'>Address</h1><h2 id='get-information-for-an-address'>Get information for an address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&amp;service=true&amp;verifiedDomain=true&amp;inception=true&amp;ledgerInfo=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getAddressInfo</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
@@ -3304,7 +3309,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
 </aside>
-<h2 id='validator'>Validator</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
+<h1 id='validator'>Validator</h1><h2 id='get-wallet'>Get wallet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getValidatorAddress</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">publicKey</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> validator's XRPL address: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">json</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>
@@ -3321,7 +3326,7 @@ Exclude unnecessary parameters to make your request faster.
   </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves a XRPL address of a specific validator
+<p>This endpoint retrieves an address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
 <h3 id='http-request-21'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
@@ -3337,7 +3342,7 @@ Exclude unnecessary parameters to make your request faster.
 <td>The public key of the validator to retrieve</td>
 </tr>
 </tbody></table>
-<h1 id='currency'>Currency</h1><h2 id='currency-hex-or-xls-14-nft'>Currency (HEX or XLS-14 NFT)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"</span>
+<h1 id='currency-hex-xls-14-nft'>Currency (HEX / XLS-14 NFT)</h1><h2 id='currency'>Currency</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
@@ -3419,7 +3424,7 @@ Exclude unnecessary parameters to make your request faster.
 You can retrieve information for MANY currencies in one request:
 <a href="#currencies-hex-or-xls-14-nfts">Currencies (HEX or XLS-14 NFT)</a>
 </aside>
-<h2 id='currencies-hex-or-xls-14-nfts'>Currencies (HEX or XLS-14 NFTs)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"</span>
+<h2 id='currencies'>Currencies</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
