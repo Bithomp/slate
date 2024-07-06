@@ -377,16 +377,13 @@
               </ul>
           </li>
           <li>
-            <a href="#get-username" class="toc-h1 toc-link" data-title="Get username">Get username</a>
+            <a href="#username" class="toc-h1 toc-link" data-title="Username">Username</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#http-request" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
+                    <a href="#get-username-for-an-address" class="toc-h2 toc-link" data-title="Get username for an address">Get username for an address</a>
                   </li>
                   <li>
-                    <a href="#url-parameters" class="toc-h2 toc-link" data-title="URL Parameters">URL Parameters</a>
-                  </li>
-                  <li>
-                    <a href="#query-parameters" class="toc-h2 toc-link" data-title="Query Parameters">Query Parameters</a>
+                    <a href="#get-address-information-by-a-username" class="toc-h2 toc-link" data-title="Get address information by a username">Get address information by a username</a>
                   </li>
               </ul>
           </li>
@@ -461,9 +458,6 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#address" class="toc-h2 toc-link" data-title="Address">Address</a>
-                  </li>
-                  <li>
-                    <a href="#username" class="toc-h2 toc-link" data-title="Username">Username</a>
                   </li>
                   <li>
                     <a href="#validator" class="toc-h2 toc-link" data-title="Validator">Validator</a>
@@ -881,7 +875,7 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
     <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-</code></pre></div><h1 id='get-username'>Get username</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true"</span>
+</code></pre></div><h1 id='username'>Username</h1><h2 id='get-username-for-an-address'>Get username for an address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
@@ -928,6 +922,109 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 <td>If set to true, the result will also include a <code>username</code> (rippletrade or bithomp).</td>
 </tr>
 </tbody></table>
+<h2 id='get-address-information-by-a-username'>Get address information by a username</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/username/xrptipbot?service=true&amp;parent=true&amp;verifiedDomain=true"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/username/xrptipbot?service=true&amp;parent=true&amp;verifiedDomain=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/username/xrptipbot?service=true&amp;parent=true&amp;verifiedDomain=true"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"xAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XV5sbjUmgPpvXv4ixFWZ5ptAYZ6PD2gYsjNFQLKYW33DzBm"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"inception"</span><span class="p">:</span><span class="w"> </span><span class="mi">1513126312</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP Tip Bot"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot"</span><span class="w">
+      </span><span class="nl">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"instagram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"reddit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"medium"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"steemit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"telegram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"verifiedDomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"xAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XV3oNHx95sqdCkTDCBCVsVeuBmvh2du1vBfJR24EqdgwHDW"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"inception"</span><span class="p">:</span><span class="w"> </span><span class="mi">1481884572</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitstamp.net"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instagram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"reddit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"medium"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"steemit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"telegram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves information for a requested Username.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/username/&lt;username&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>A bithomp or an old rippletrade username</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>service</td>
+<td>false</td>
+<td>If set to true, the result will also include Service details.</td>
+</tr>
+<tr>
+<td>verifiedDomain</td>
+<td>false</td>
+<td>If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C">verifiedDomain</a> if such exists.</td>
+</tr>
+<tr>
+<td>hashicon</td>
+<td>false</td>
+<td>If set true, the result will include hashicon which can be used in img&#39;s src=&quot;&quot; or in css, as background&#39;s url. (The icon is the same for x-address and r-address, such hashicons used in ToastWallet and Bithomp.)</td>
+</tr>
+<tr>
+<td>parent</td>
+<td>false</td>
+<td>If set to true, the result will include the same info for a parent account.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Exclude unnecessary parameters to make your request faster.
+</aside>
 <h1 id='amm'>AMM</h1><h2 id='amms'>AMMs</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amms"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -1018,9 +1115,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a list of AMM pools.</p>
-<h3 id='http-request-2'>HTTP Request</h3>
+<h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/amms</code></p>
-<h3 id='query-parameters-2'>Query Parameters</h3>
+<h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1203,9 +1300,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested AMM pool.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/amm/&lt;ammID || LPtoken || address&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1225,7 +1322,7 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 <td>AMM account address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-4'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1342,9 +1439,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested NFT (XLS-20 or XLS-35).</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft/&lt;nftID&gt;</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1356,7 +1453,7 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 <td>An NFT ID (XLS-20 or XLS-35)</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-4'>Query Parameters</h3>
+<h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1542,9 +1639,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes for specified parameters</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-offer/&lt;nftOfferID&gt;</code></p>
-<h3 id='url-parameters-4'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1617,9 +1714,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a List of NFTs (XLS-20 / XLS-35) for specified parameters</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nfts</code></p>
-<h3 id='query-parameters-5'>Query Parameters</h3>
+<h3 id='query-parameters-6'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1834,9 +1931,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Offers created by an <code>address</code> or NFT Offers for all NFTs owned by that <code>address</code>.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-offers/&lt;address&gt;</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1848,7 +1945,7 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 <td>The XRPL address or a username.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1921,9 +2018,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Owners list sorted by NFT count.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-owners</code></p>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2077,9 +2174,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a List of NFT Sales for specified parameters</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-sales</code></p>
-<h3 id='query-parameters-8'>Query Parameters</h3>
+<h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2227,9 +2324,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes for specified parameters</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-volumes</code></p>
-<h3 id='query-parameters-9'>Query Parameters</h3>
+<h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2475,9 +2572,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves Extended NFT Sales Volumes for specified parameters (Only available on paid API plans)</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-volumes-extended</code></p>
-<h3 id='query-parameters-10'>Query Parameters</h3>
+<h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2603,9 +2700,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT minters on XRPL for a specified period of time</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-marketplaces</code></p>
-<h3 id='query-parameters-11'>Query Parameters</h3>
+<h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2647,9 +2744,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT mints count for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-chart</code></p>
-<h3 id='query-parameters-12'>Query Parameters</h3>
+<h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2708,9 +2805,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes Chart data for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-sales-chart</code></p>
-<h3 id='query-parameters-13'>Query Parameters</h3>
+<h3 id='query-parameters-14'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2777,7 +2874,7 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the last ledger which was crawled by our NFT crawler.</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/statistics/nftokens/crawler</code></p>
 <h3 id='response-format'>Response Format</h3>
 <table><thead>
@@ -2857,7 +2954,7 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of identified services.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services</code></p>
 <h3 id='response-format-2'>Response Format</h3>
 <table><thead>
@@ -2943,7 +3040,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of all identified service addresses.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/addresses</code></p>
 <h3 id='response-format-3'>Response Format</h3>
 <table><thead>
@@ -3007,7 +3104,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a timestamp of last DB update for services/addresses.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/lastUpdate</code></p>
 <h3 id='response-format-4'>Response Format</h3>
 <table><thead>
@@ -3125,9 +3222,9 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested XRPL address.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/address/&lt;address&gt;</code></p>
-<h3 id='url-parameters-6'>URL Parameters</h3>
+<h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3139,7 +3236,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 <td>The XRPL address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-14'>Query Parameters</h3>
+<h3 id='query-parameters-15'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3201,109 +3298,6 @@ Before downloading the whole list again you can check if it was updated here: <a
 <td>ledgerTimestamp</td>
 <td>null</td>
 <td>ISO timestamp or unix timestamp (if set the request will return <code>ledgerInfo</code> data for that timestamp)</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-Exclude unnecessary parameters to make your request faster.
-</aside>
-<h2 id='username'>Username</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/username/xrptipbot?service=true&amp;parent=true&amp;verifiedDomain=true"</span>
-  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/username/xrptipbot?service=true&amp;parent=true&amp;verifiedDomain=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/username/xrptipbot?service=true&amp;parent=true&amp;verifiedDomain=true"</span><span class="p">);</span>
-<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"xAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XV5sbjUmgPpvXv4ixFWZ5ptAYZ6PD2gYsjNFQLKYW33DzBm"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"inception"</span><span class="p">:</span><span class="w"> </span><span class="mi">1513126312</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP Tip Bot"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot"</span><span class="w">
-      </span><span class="nl">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"instagram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"reddit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"medium"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"steemit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"telegram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"verifiedDomain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"parent"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"xAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XV3oNHx95sqdCkTDCBCVsVeuBmvh2du1vBfJR24EqdgwHDW"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"inception"</span><span class="p">:</span><span class="w"> </span><span class="mi">1481884572</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitstamp.net"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"instagram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"reddit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"medium"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"steemit"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"telegram"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves information for a requested Username.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
-<p><code>GET https://bithomp.com/api/v2/username/&lt;username&gt;</code></p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>username</td>
-<td>A bithomp or an old rippletrade username</td>
-</tr>
-</tbody></table>
-<h3 id='query-parameters-15'>Query Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>service</td>
-<td>false</td>
-<td>If set to true, the result will also include Service details.</td>
-</tr>
-<tr>
-<td>verifiedDomain</td>
-<td>false</td>
-<td>If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C">verifiedDomain</a> if such exists.</td>
-</tr>
-<tr>
-<td>hashicon</td>
-<td>false</td>
-<td>If set true, the result will include hashicon which can be used in img&#39;s src=&quot;&quot; or in css, as background&#39;s url. (The icon is the same for x-address and r-address, such hashicons used in ToastWallet and Bithomp.)</td>
-</tr>
-<tr>
-<td>parent</td>
-<td>false</td>
-<td>If set to true, the result will include the same info for a parent account.</td>
 </tr>
 </tbody></table>
 
