@@ -2351,9 +2351,9 @@ lastUpdate | Integer	| UNIX timestamp of the last data update.
 totalServices | Integer | The amount of identified services.
 totalAddresses | Integer | The amount of identified addresses.
 
-# Get information for ONE
+# Address
 
-## Address
+## Get information for an address
 
 ```shell
 curl "https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true"
@@ -2487,7 +2487,9 @@ ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request wil
 Exclude unnecessary parameters to make your request faster.
 </aside>
 
-## Validator
+# Validator
+
+## Get wallet
 
 ```shell
 curl "https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"
@@ -2515,7 +2517,7 @@ print $validatorAddress;
 }
 ```
 
-This endpoint retrieves a XRPL address of a specific validator
+This endpoint retrieves an address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a>
 
 ### HTTP Request
