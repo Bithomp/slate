@@ -2014,9 +2014,208 @@ currencyIssuer | null | if currency is specified and it is not 'xrp', then you m
 convertCurrencies | null | the list of currencies to convert amounts and volumes to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the response will have `amountInConvertCurrencies`
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
 
-# Get status
+## NFT Crawler (Last update)
 
-## Services (Last update)
+```shell
+curl "https://bithomp.com/api/v2/statistics/nftokens/crawler"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/statistics/nftokens/crawler", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/statistics/nftokens/crawler");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "ledgerIndex": 82078753,
+  "ledgerTime": 1692949961
+}
+```
+
+This endpoint returns the last ledger which was crawled by our NFT crawler.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/statistics/nftokens/crawler`
+
+### Response Format
+
+Field | Value | Description
+----- | ----- | -----------
+ledgerIndex | Integer | The last crawled ledger index.
+ledgerTime | Integer	| UNIX timestamp of the last crawled ledger.
+
+# Services
+
+## Get services
+
+```shell
+curl "https://bithomp.com/api/v2/services"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/services", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/services");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "total": 467,
+  "lastUpdate": 1579417546,
+  "services": [
+    {
+      "name": "Bithomp",
+      "domain": "bithomp.com",
+      "socialAccounts": {
+        "twitter": "bithomp",
+        "youtube": "channel/UCTvrMnG-Tpqi5FN9zO7GcWw",
+        "instagram": "bithomp"
+      },
+      "addresses": [
+        {
+          "address": "rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z"
+        },
+        {
+          "address": "rnk3N5hHnLS6nWncNh2R4D2ATiuEicjxXo"
+        },
+        {
+          "address": "rhUYLd2aUiUVYkBZYwTc5RYgCAbNHAwkeZ",
+          "name": "Bithomp activation"
+        },
+        {
+          "address": "rBithomp3UNknnjo8HKNfyS5MN4kdPTZpW"
+        },
+        {
+          "address": "rBithomp4vj5E2kUebx7tVwipBueg55XxS",
+          "name": "Bithomp donations"
+        },
+        {
+          "address": "rBithompKtixswR4bknJqYaxnm7yRhGYFq",
+          "name": "Bithomp username"
+        },
+        {
+          "address": "rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe",
+          "name": "Bithomp validator"
+        }
+      ]
+    },
+    {
+
+    }
+  ]
+}
+```
+
+This endpoint retrieves a list of identified services.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/services`
+
+### Response Format
+
+Field | Value | Description
+----- | ----- | -----------
+total	| Integer	| The amount of identified services.
+lastUpdate | Integer | UNIX timestamp of the last data update.
+services | Array | Array of services.
+services[].name | String | A name of a service.
+services[].domain | String | A domain of a service.
+services[].socialAccounts | Object | An object with social account of a service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)
+services[].addresses | Array | An array of service's addresses. Each address can have it's own (more specific) name, domain, socialAccounts.
+
+<aside class="notice">
+Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
+</aside>
+
+## Addresses from Services
+
+```shell
+curl "https://bithomp.com/api/v2/services/addresses"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/services/addresses", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/services/addresses");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "total": 1824,
+  "lastUpdate": 1579417546,
+  "addresses": {
+    "rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY": {
+      "name": "XRP Tip Bot",
+      "domain": "xrptipbot.com",
+      "socialAccounts": {
+        "twitter": "xrptipbot"
+      }
+    },
+    "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV": {
+      "name": "Ripple",
+      "domain": "ripple.com",
+      "socialAccounts": {
+        "twitter": "Ripple",
+        "facebook": "ripplepay",
+        "linkedin": "ripple-labs"
+      }
+    },
+  }
+}
+```
+
+This endpoint retrieves a list of all identified service addresses.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/services/addresses`
+
+### Response Format
+
+Field | Value | Description
+----- | ----- | -----------
+total	| Integer	| The amount of identified addresses.
+lastUpdate | Integer | UNIX timestamp of the last data update.
+addresses | Object | Object with identified addresses.
+addresses.ADDRESS.name | String | A name of the ADDRESS’s service.
+addresses.ADDRESS.domain | String | A domain of the ADDRESS’s service.
+addresses.ADDRESS.socialAccounts | Object | An object with social account of the ADDRESS’s service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)
+
+<aside class="notice">
+Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
+</aside>
+
+## Status (Last update)
 
 ```shell
 curl "https://bithomp.com/api/v2/services/lastUpdate"
@@ -2058,47 +2257,6 @@ Field | Value | Description
 lastUpdate | Integer	| UNIX timestamp of the last data update.
 totalServices | Integer | The amount of identified services.
 totalAddresses | Integer | The amount of identified addresses.
-
-## NFT Crawler (Last update)
-
-```shell
-curl "https://bithomp.com/api/v2/statistics/nftokens/crawler"
-  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
-```
-
-```javascript
-function getData(json) {
-  console.log(json)
-}
-bithompRequest("https://bithomp.com/api/v2/statistics/nftokens/crawler", getData);
-```
-
-```php
-$data = curl_bithomp("https://bithomp.com/api/v2/statistics/nftokens/crawler");
-print $data;
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "ledgerIndex": 82078753,
-  "ledgerTime": 1692949961
-}
-```
-
-This endpoint returns the last ledger which was crawled by our NFT crawler.
-
-### HTTP Request
-
-`GET https://bithomp.com/api/v2/statistics/nftokens/crawler`
-
-### Response Format
-
-Field | Value | Description
------ | ----- | -----------
-ledgerIndex | Integer | The last crawled ledger index.
-ledgerTime | Integer	| UNIX timestamp of the last crawled ledger.
 
 # Get information for ONE
 
@@ -2327,6 +2485,49 @@ parent | false | If set to true, the result will include the same info for a par
 Exclude unnecessary parameters to make your request faster.
 </aside>
 
+## Validator
+
+```shell
+curl "https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getValidatorAddress(json) {
+  console.log(json.publicKey + " validator's XRPL address: ", json.address);
+}
+bithompRequest("https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA", getValidatorAddress);
+```
+
+```php
+$validatorAddress = curl_bithomp("https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA");
+print $validatorAddress;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "publicKey": "nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA",
+  "address": "rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe"
+}
+```
+
+This endpoint retrieves a XRPL address of a specific validator
+<a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a>
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/validator/<validatorPublicKey>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+validatorPublicKey | The public key of the validator to retrieve
+
+# Currency
+
 ## Currency (HEX or XLS-14 NFT)
 
 ```shell
@@ -2414,51 +2615,8 @@ currency  | A currency (HEX or XLS-14 NFT)
 
 <aside class="notice">
 You can retrieve information for MANY currencies in one request:
-<a href="#currencies-hex-or-xls-14-nfts">Get information for MANY: Currencies (HEX or XLS-14 NFT)</a>
+<a href="#currencies-hex-or-xls-14-nfts">Currencies (HEX or XLS-14 NFT)</a>
 </aside>
-
-## Validator
-
-```shell
-curl "https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"
-  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
-```
-
-```javascript
-function getValidatorAddress(json) {
-  console.log(json.publicKey + " validator's XRPL address: ", json.address);
-}
-bithompRequest("https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA", getValidatorAddress);
-```
-
-```php
-$validatorAddress = curl_bithomp("https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA");
-print $validatorAddress;
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "publicKey": "nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA",
-  "address": "rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe"
-}
-```
-
-This endpoint retrieves a XRPL address of a specific validator
-<a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a>
-
-### HTTP Request
-
-`GET https://bithomp.com/api/v2/validator/<validatorPublicKey>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-validatorPublicKey | The public key of the validator to retrieve
-
-# Get information for MANY
 
 ## Currencies (HEX or XLS-14 NFTs)
 
@@ -2569,166 +2727,6 @@ This endpoint retrieves information for a requested currencies (HEX or XLS-14 NF
 Parameter     | Description
 ------------- | -----------
 currencyList  | A list of currencies separated by comma (HEX or XLS-14 NFT)
-
-# Get information of ALL
-
-## Services
-
-```shell
-curl "https://bithomp.com/api/v2/services"
-  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
-```
-
-```javascript
-function getData(json) {
-  console.log(json)
-}
-bithompRequest("https://bithomp.com/api/v2/services", getData);
-```
-
-```php
-$data = curl_bithomp("https://bithomp.com/api/v2/services");
-print $data;
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "total": 467,
-  "lastUpdate": 1579417546,
-  "services": [
-    {
-      "name": "Bithomp",
-      "domain": "bithomp.com",
-      "socialAccounts": {
-        "twitter": "bithomp",
-        "youtube": "channel/UCTvrMnG-Tpqi5FN9zO7GcWw",
-        "instagram": "bithomp"
-      },
-      "addresses": [
-        {
-          "address": "rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z"
-        },
-        {
-          "address": "rnk3N5hHnLS6nWncNh2R4D2ATiuEicjxXo"
-        },
-        {
-          "address": "rhUYLd2aUiUVYkBZYwTc5RYgCAbNHAwkeZ",
-          "name": "Bithomp activation"
-        },
-        {
-          "address": "rBithomp3UNknnjo8HKNfyS5MN4kdPTZpW"
-        },
-        {
-          "address": "rBithomp4vj5E2kUebx7tVwipBueg55XxS",
-          "name": "Bithomp donations"
-        },
-        {
-          "address": "rBithompKtixswR4bknJqYaxnm7yRhGYFq",
-          "name": "Bithomp username"
-        },
-        {
-          "address": "rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe",
-          "name": "Bithomp validator"
-        }
-      ]
-    },
-    {
-
-    }
-  ]
-}
-```
-
-This endpoint retrieves a list of identified services.
-
-### HTTP Request
-
-`GET https://bithomp.com/api/v2/services`
-
-### Response Format
-
-Field | Value | Description
------ | ----- | -----------
-total	| Integer	| The amount of identified services.
-lastUpdate | Integer | UNIX timestamp of the last data update.
-services | Array | Array of services.
-services[].name | String | A name of a service.
-services[].domain | String | A domain of a service.
-services[].socialAccounts | Object | An object with social account of a service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)
-services[].addresses | Array | An array of service's addresses. Each address can have it's own (more specific) name, domain, socialAccounts.
-
-<aside class="notice">
-Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
-</aside>
-
-## Addresses from Services
-
-```shell
-curl "https://bithomp.com/api/v2/services/addresses"
-  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
-```
-
-```javascript
-function getData(json) {
-  console.log(json)
-}
-bithompRequest("https://bithomp.com/api/v2/services/addresses", getData);
-```
-
-```php
-$data = curl_bithomp("https://bithomp.com/api/v2/services/addresses");
-print $data;
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "total": 1824,
-  "lastUpdate": 1579417546,
-  "addresses": {
-    "rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY": {
-      "name": "XRP Tip Bot",
-      "domain": "xrptipbot.com",
-      "socialAccounts": {
-        "twitter": "xrptipbot"
-      }
-    },
-    "r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV": {
-      "name": "Ripple",
-      "domain": "ripple.com",
-      "socialAccounts": {
-        "twitter": "Ripple",
-        "facebook": "ripplepay",
-        "linkedin": "ripple-labs"
-      }
-    },
-  }
-}
-```
-
-This endpoint retrieves a list of all identified service addresses.
-
-### HTTP Request
-
-`GET https://bithomp.com/api/v2/services/addresses`
-
-### Response Format
-
-Field | Value | Description
------ | ----- | -----------
-total	| Integer	| The amount of identified addresses.
-lastUpdate | Integer | UNIX timestamp of the last data update.
-addresses | Object | Object with identified addresses.
-addresses.ADDRESS.name | String | A name of the ADDRESS’s service.
-addresses.ADDRESS.domain | String | A domain of the ADDRESS’s service.
-addresses.ADDRESS.socialAccounts | Object | An object with social account of the ADDRESS’s service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)
-
-<aside class="notice">
-Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
-</aside>
 
 # Transaction
 
