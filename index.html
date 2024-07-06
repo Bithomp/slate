@@ -437,16 +437,22 @@
                   <li>
                     <a href="#nft-sales-chart" class="toc-h2 toc-link" data-title="NFT Sales Chart">NFT Sales Chart</a>
                   </li>
+                  <li>
+                    <a href="#nft-crawler-last-update" class="toc-h2 toc-link" data-title="NFT Crawler (Last update)">NFT Crawler (Last update)</a>
+                  </li>
               </ul>
           </li>
           <li>
-            <a href="#get-status" class="toc-h1 toc-link" data-title="Get status">Get status</a>
+            <a href="#services" class="toc-h1 toc-link" data-title="Services">Services</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#services-last-update" class="toc-h2 toc-link" data-title="Services (Last update)">Services (Last update)</a>
+                    <a href="#get-services" class="toc-h2 toc-link" data-title="Get services">Get services</a>
                   </li>
                   <li>
-                    <a href="#nft-crawler-last-update" class="toc-h2 toc-link" data-title="NFT Crawler (Last update)">NFT Crawler (Last update)</a>
+                    <a href="#addresses-from-services" class="toc-h2 toc-link" data-title="Addresses from Services">Addresses from Services</a>
+                  </li>
+                  <li>
+                    <a href="#status-last-update" class="toc-h2 toc-link" data-title="Status (Last update)">Status (Last update)</a>
                   </li>
               </ul>
           </li>
@@ -460,29 +466,18 @@
                     <a href="#username" class="toc-h2 toc-link" data-title="Username">Username</a>
                   </li>
                   <li>
-                    <a href="#currency-hex-or-xls-14-nft" class="toc-h2 toc-link" data-title="Currency (HEX or XLS-14 NFT)">Currency (HEX or XLS-14 NFT)</a>
-                  </li>
-                  <li>
                     <a href="#validator" class="toc-h2 toc-link" data-title="Validator">Validator</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#get-information-for-many" class="toc-h1 toc-link" data-title="Get information for MANY">Get information for MANY</a>
+            <a href="#currency" class="toc-h1 toc-link" data-title="Currency">Currency</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#currency-hex-or-xls-14-nft" class="toc-h2 toc-link" data-title="Currency (HEX or XLS-14 NFT)">Currency (HEX or XLS-14 NFT)</a>
+                  </li>
                   <li>
                     <a href="#currencies-hex-or-xls-14-nfts" class="toc-h2 toc-link" data-title="Currencies (HEX or XLS-14 NFTs)">Currencies (HEX or XLS-14 NFTs)</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#get-information-of-all" class="toc-h1 toc-link" data-title="Get information of ALL">Get information of ALL</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#services" class="toc-h2 toc-link" data-title="Services">Services</a>
-                  </li>
-                  <li>
-                    <a href="#addresses-from-services" class="toc-h2 toc-link" data-title="Addresses from Services">Addresses from Services</a>
                   </li>
               </ul>
           </li>
@@ -2764,7 +2759,236 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 <td>can be <code>primary</code> or <code>secondary</code> (optional, <code>primary</code> - the sales from the issuer address)</td>
 </tr>
 </tbody></table>
-<h1 id='get-status'>Get status</h1><h2 id='services-last-update'>Services (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services/lastUpdate"</span>
+<h2 id='nft-crawler-last-update'>NFT Crawler (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/statistics/nftokens/crawler"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/statistics/nftokens/crawler</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/statistics/nftokens/crawler"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">82078753</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ledgerTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1692949961</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns the last ledger which was crawled by our NFT crawler.</p>
+<h3 id='http-request-15'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/statistics/nftokens/crawler</code></p>
+<h3 id='response-format'>Response Format</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ledgerIndex</td>
+<td>Integer</td>
+<td>The last crawled ledger index.</td>
+</tr>
+<tr>
+<td>ledgerTime</td>
+<td>Integer</td>
+<td>UNIX timestamp of the last crawled ledger.</td>
+</tr>
+</tbody></table>
+<h1 id='services'>Services</h1><h2 id='get-services'>Get services</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/services</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/services"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">467</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1579417546</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bithomp"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bithomp.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bithomp"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="s2">"channel/UCTvrMnG-Tpqi5FN9zO7GcWw"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"instagram"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bithomp"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnk3N5hHnLS6nWncNh2R4D2ATiuEicjxXo"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhUYLd2aUiUVYkBZYwTc5RYgCAbNHAwkeZ"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bithomp activation"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBithomp3UNknnjo8HKNfyS5MN4kdPTZpW"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBithomp4vj5E2kUebx7tVwipBueg55XxS"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bithomp donations"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBithompKtixswR4bknJqYaxnm7yRhGYFq"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bithomp username"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bithomp validator"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a list of identified services.</p>
+<h3 id='http-request-16'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/services</code></p>
+<h3 id='response-format-2'>Response Format</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total</td>
+<td>Integer</td>
+<td>The amount of identified services.</td>
+</tr>
+<tr>
+<td>lastUpdate</td>
+<td>Integer</td>
+<td>UNIX timestamp of the last data update.</td>
+</tr>
+<tr>
+<td>services</td>
+<td>Array</td>
+<td>Array of services.</td>
+</tr>
+<tr>
+<td>services[].name</td>
+<td>String</td>
+<td>A name of a service.</td>
+</tr>
+<tr>
+<td>services[].domain</td>
+<td>String</td>
+<td>A domain of a service.</td>
+</tr>
+<tr>
+<td>services[].socialAccounts</td>
+<td>Object</td>
+<td>An object with social account of a service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)</td>
+</tr>
+<tr>
+<td>services[].addresses</td>
+<td>Array</td>
+<td>An array of service&#39;s addresses. Each address can have it&#39;s own (more specific) name, domain, socialAccounts.</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
+</aside>
+<h2 id='addresses-from-services'>Addresses from Services</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services/addresses"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/services/addresses</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/services/addresses"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1824</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1579417546</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP Tip Bot"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ripple"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ripple.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ripple"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ripplepay"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ripple-labs"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a list of all identified service addresses.</p>
+<h3 id='http-request-17'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/services/addresses</code></p>
+<h3 id='response-format-3'>Response Format</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>total</td>
+<td>Integer</td>
+<td>The amount of identified addresses.</td>
+</tr>
+<tr>
+<td>lastUpdate</td>
+<td>Integer</td>
+<td>UNIX timestamp of the last data update.</td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>Object</td>
+<td>Object with identified addresses.</td>
+</tr>
+<tr>
+<td>addresses.ADDRESS.name</td>
+<td>String</td>
+<td>A name of the ADDRESS’s service.</td>
+</tr>
+<tr>
+<td>addresses.ADDRESS.domain</td>
+<td>String</td>
+<td>A domain of the ADDRESS’s service.</td>
+</tr>
+<tr>
+<td>addresses.ADDRESS.socialAccounts</td>
+<td>Object</td>
+<td>An object with social account of the ADDRESS’s service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
+</aside>
+<h2 id='status-last-update'>Status (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services/lastUpdate"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
@@ -2783,9 +3007,9 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a timestamp of last DB update for services/addresses.</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/lastUpdate</code></p>
-<h3 id='response-format'>Response Format</h3>
+<h3 id='response-format-4'>Response Format</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -2807,45 +3031,6 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 <td>totalAddresses</td>
 <td>Integer</td>
 <td>The amount of identified addresses.</td>
-</tr>
-</tbody></table>
-<h2 id='nft-crawler-last-update'>NFT Crawler (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/statistics/nftokens/crawler"</span>
-  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/statistics/nftokens/crawler</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/statistics/nftokens/crawler"</span><span class="p">);</span>
-<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">82078753</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"ledgerTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1692949961</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint returns the last ledger which was crawled by our NFT crawler.</p>
-<h3 id='http-request-16'>HTTP Request</h3>
-<p><code>GET https://bithomp.com/api/v2/statistics/nftokens/crawler</code></p>
-<h3 id='response-format-2'>Response Format</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ledgerIndex</td>
-<td>Integer</td>
-<td>The last crawled ledger index.</td>
-</tr>
-<tr>
-<td>ledgerTime</td>
-<td>Integer</td>
-<td>UNIX timestamp of the last crawled ledger.</td>
 </tr>
 </tbody></table>
 <h1 id='get-information-for-one'>Get information for ONE</h1><h2 id='address'>Address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&amp;service=true&amp;verifiedDomain=true&amp;inception=true&amp;ledgerInfo=true"</span>
@@ -2940,7 +3125,7 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested XRPL address.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/address/&lt;address&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -3078,7 +3263,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested Username.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/username/&lt;username&gt;</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
@@ -3125,7 +3310,40 @@ Exclude unnecessary parameters to make your request faster.
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
 </aside>
-<h2 id='currency-hex-or-xls-14-nft'>Currency (HEX or XLS-14 NFT)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"</span>
+<h2 id='validator'>Validator</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getValidatorAddress</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">publicKey</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> validator's XRPL address: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">json</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getValidatorAddress</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$validatorAddress</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$validatorAddress</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a XRPL address of a specific validator
+<a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>validatorPublicKey</td>
+<td>The public key of the validator to retrieve</td>
+</tr>
+</tbody></table>
+<h1 id='currency'>Currency</h1><h2 id='currency-hex-or-xls-14-nft'>Currency (HEX or XLS-14 NFT)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
@@ -3188,9 +3406,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currency/&lt;currency&gt;</code></p>
-<h3 id='url-parameters-8'>URL Parameters</h3>
+<h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3205,42 +3423,9 @@ Exclude unnecessary parameters to make your request faster.
 
 <aside class="notice">
 You can retrieve information for MANY currencies in one request:
-<a href="#currencies-hex-or-xls-14-nfts">Get information for MANY: Currencies (HEX or XLS-14 NFT)</a>
+<a href="#currencies-hex-or-xls-14-nfts">Currencies (HEX or XLS-14 NFT)</a>
 </aside>
-<h2 id='validator'>Validator</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
-  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getValidatorAddress</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">publicKey</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> validator's XRPL address: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">json</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getValidatorAddress</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$validatorAddress</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span><span class="p">);</span>
-<span class="k">print</span> <span class="nv">$validatorAddress</span><span class="p">;</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a XRPL address of a specific validator
-<a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
-<h3 id='http-request-20'>HTTP Request</h3>
-<p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
-<h3 id='url-parameters-9'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>validatorPublicKey</td>
-<td>The public key of the validator to retrieve</td>
-</tr>
-</tbody></table>
-<h1 id='get-information-for-many'>Get information for MANY</h1><h2 id='currencies-hex-or-xls-14-nfts'>Currencies (HEX or XLS-14 NFTs)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"</span>
+<h2 id='currencies-hex-or-xls-14-nfts'>Currencies (HEX or XLS-14 NFTs)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
@@ -3328,7 +3513,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currencies</code></p>
 <h3 id='query-parameters-16'>Query Parameters</h3>
 <table><thead>
@@ -3342,196 +3527,6 @@ You can retrieve information for MANY currencies in one request:
 <td>A list of currencies separated by comma (HEX or XLS-14 NFT)</td>
 </tr>
 </tbody></table>
-<h1 id='get-information-of-all'>Get information of ALL</h1><h2 id='services'>Services</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services"</span>
-  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/services</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/services"</span><span class="p">);</span>
-<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">467</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1579417546</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"services"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bithomp"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bithomp.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bithomp"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"youtube"</span><span class="p">:</span><span class="w"> </span><span class="s2">"channel/UCTvrMnG-Tpqi5FN9zO7GcWw"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"instagram"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bithomp"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnk3N5hHnLS6nWncNh2R4D2ATiuEicjxXo"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rhUYLd2aUiUVYkBZYwTc5RYgCAbNHAwkeZ"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bithomp activation"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBithomp3UNknnjo8HKNfyS5MN4kdPTZpW"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBithomp4vj5E2kUebx7tVwipBueg55XxS"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bithomp donations"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBithompKtixswR4bknJqYaxnm7yRhGYFq"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bithomp username"</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bithomp validator"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a list of identified services.</p>
-<h3 id='http-request-22'>HTTP Request</h3>
-<p><code>GET https://bithomp.com/api/v2/services</code></p>
-<h3 id='response-format-3'>Response Format</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>total</td>
-<td>Integer</td>
-<td>The amount of identified services.</td>
-</tr>
-<tr>
-<td>lastUpdate</td>
-<td>Integer</td>
-<td>UNIX timestamp of the last data update.</td>
-</tr>
-<tr>
-<td>services</td>
-<td>Array</td>
-<td>Array of services.</td>
-</tr>
-<tr>
-<td>services[].name</td>
-<td>String</td>
-<td>A name of a service.</td>
-</tr>
-<tr>
-<td>services[].domain</td>
-<td>String</td>
-<td>A domain of a service.</td>
-</tr>
-<tr>
-<td>services[].socialAccounts</td>
-<td>Object</td>
-<td>An object with social account of a service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)</td>
-</tr>
-<tr>
-<td>services[].addresses</td>
-<td>Array</td>
-<td>An array of service&#39;s addresses. Each address can have it&#39;s own (more specific) name, domain, socialAccounts.</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
-</aside>
-<h2 id='addresses-from-services'>Addresses from Services</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services/addresses"</span>
-  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/services/addresses</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/services/addresses"</span><span class="p">);</span>
-<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1824</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"lastUpdate"</span><span class="p">:</span><span class="w"> </span><span class="mi">1579417546</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP Tip Bot"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrptipbot"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"r3kmLJN5D28dHuH8vZNUZpMC43pEHpaocV"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ripple"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ripple.com"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"socialAccounts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"twitter"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ripple"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"facebook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ripplepay"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"linkedin"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ripple-labs"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a list of all identified service addresses.</p>
-<h3 id='http-request-23'>HTTP Request</h3>
-<p><code>GET https://bithomp.com/api/v2/services/addresses</code></p>
-<h3 id='response-format-4'>Response Format</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Value</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>total</td>
-<td>Integer</td>
-<td>The amount of identified addresses.</td>
-</tr>
-<tr>
-<td>lastUpdate</td>
-<td>Integer</td>
-<td>UNIX timestamp of the last data update.</td>
-</tr>
-<tr>
-<td>addresses</td>
-<td>Object</td>
-<td>Object with identified addresses.</td>
-</tr>
-<tr>
-<td>addresses.ADDRESS.name</td>
-<td>String</td>
-<td>A name of the ADDRESS’s service.</td>
-</tr>
-<tr>
-<td>addresses.ADDRESS.domain</td>
-<td>String</td>
-<td>A domain of the ADDRESS’s service.</td>
-</tr>
-<tr>
-<td>addresses.ADDRESS.socialAccounts</td>
-<td>Object</td>
-<td>An object with social account of the ADDRESS’s service. (twitter, youtube, instagram, facebook, medium, telegram, linkedin, reddit)</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
-</aside>
 <h1 id='transaction'>Transaction</h1><h2 id='tx-details'>Tx Details</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
