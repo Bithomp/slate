@@ -76,6 +76,11 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 10th of August 2024
+
+Five new query parameters: `sellOffers`, `buyOffers`, `history`, `offersValidate`,  and `offersHistory` were added to the <a href="#nfts">**NFTs**</a> API end-point.
+You can get an extensive data for the list of NFTs in one request. (Available for the Premium plan and higher).
+
 ### 23rd of June 2024
 
 A new endpoint was added:
@@ -131,16 +136,6 @@ A new endpoint was added:
 
 New query parameters: `mintedByMarketplace`, `includeDeleted`, two new values `mintedNew` and `mintedOld` for parameter `order` and new period formats were added to the <a href="#nfts">**NFTs**</a> API end-point.
 Now the search results can include already burned NFTs.
-
-### 3rd of August 2023
-
-An update for query parameter: `period` <a href="#nft-volumes-extended">**NFT Volumes Extended**</a>
-Now you can define start and end of range for the period.
-
-### 23rd of July 2023
-
-Two new query parameters: `issuedAt` and `deletedAt` were added to the <a href="#nfts">**NFTs**</a> API end-point.
-You can search for NFTs in a collection (or through all NFTs) which were minted during a specific period and/or deleted during another specific period of time.
 
 # Direct URL examples
 
@@ -910,7 +905,7 @@ buyOffers | false | If set to true, the result will include `buyOffers`.
 history | false | If set to true, the result will include `history`.
 metadata | false | If set to true, the result will include `metadata`.
 offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array. 
-offersHistory | false | (Only available on paid API plans) If set to true, each offers will include historical offers which are already accepted or canceled.
+offersHistory | false | (Only available on paid API plans) If set to true, each result will include historical offers which are already accepted or canceled.
 convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the for `history` response  will have an array `amountInConvertCurrencies`
 
 ## NFT Offer
@@ -1163,6 +1158,11 @@ currency | null | (Only available on paid API plans) used to filter NFTs for sal
 currencyIssuer | null | (Only available on paid API plans) A currency issuer for the `currency` if it is not an XRP.
 issuedAt | null | (Only available on paid API plans) It can be used to show NFTs which were minted during some period of time. A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year`, or `1671490800000..1671663600000` - period or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`, to show from specific date till now: `1671490800000..` or `2022-12-20T00:00:00.000Z..`
 deletedAt | null | (Only available on paid API plans) It can be used to show NFTs which were burned during some period of time. A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year`. or `1671490800000..1671663600000` - period or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`, to show from specific date till now: `1671490800000..` or `2022-12-20T00:00:00.000Z..`
+sellOffers | false | (Available for the Premium plan and higher) If set true, the NFTs will include `sellOffers`.
+buyOffers | false | (Available for the Premium plan and higher) If set to true, the NFTs will include `buyOffers`.
+history | false | (Available for the Premium plan and higher) If set to true, the NFTs will include `history`.
+offersValidate | false | (Available for the Premium plan and higher) If set to true, each NFT offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array. 
+offersHistory | false | (Available for the Premium plan and higher) If set to true, each NFT will include historical offers which are already accepted or canceled.
 
 ## NFT Offers
 
