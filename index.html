@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#15th-of-august-2024" class="toc-h2 toc-link" data-title="15th of August 2024">15th of August 2024</a>
+                  </li>
+                  <li>
                     <a href="#10th-of-august-2024" class="toc-h2 toc-link" data-title="10th of August 2024">10th of August 2024</a>
                   </li>
                   <li>
@@ -594,7 +597,7 @@
 </tbody></table>
 
 <ul>
-<li>On that plan the <a href="#nft"><strong>NFT</strong></a> endpoint returns <code>assets</code> with direct URLs to resized images and videos.</li>
+<li>On that plan the <a href="#nft"><strong>NFT</strong></a>, <a href="#nfts"><strong>NFTs</strong></a>, <a href="#nft-offers"><strong>NFT offers</strong></a> endpoints returns <code>assets</code> with direct URLs to cached and resized images and videos.</li>
 </ul>
 
 <p>NFT content plans (Direct access to fast [resized and cached] images and videos):</p>
@@ -649,7 +652,13 @@
 <li><p><a href="https://bithomp.com/admin">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='10th-of-august-2024'>10th of August 2024</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='15th-of-august-2024'>15th of August 2024</h3>
+<p>The new query parameter: <code>limit</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
+Now you can limit the number of NFTs returned and even return more than 100 NFTs in one request if you have a Standart plan or higher.</p>
+
+<p>The new query parameter: <code>assets</code> was added to the <a href="#nft-offer"><strong>NFT Offer</strong></a>, <a href="#nft-offers"><strong>NFT Offers</strong></a> and <a href="#nfts"><strong>NFTs</strong></a> API end-points.
+Now you can get the direct URLs to cached and resized images and videos inside NFT offers and NFT lists.</p>
+<h3 id='10th-of-august-2024'>10th of August 2024</h3>
 <p>Five new query parameters: <code>sellOffers</code>, <code>buyOffers</code>, <code>history</code>, <code>offersValidate</code>,  and <code>offersHistory</code> were added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
 You can get an extensive data for the list of NFTs in one request. (Available for the Premium plan and higher).</p>
 <h3 id='23rd-of-june-2024'>23rd of June 2024</h3>
@@ -1646,13 +1655,27 @@ Exclude unnecessary parameters to make your request faster.
 <td>An NFT Offer ID (XLS-20)</td>
 </tr>
 </tbody></table>
-<h2 id='nfts'>NFTS</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"</span>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>assets</td>
+<td>false</td>
+<td>(Only available on the Standart API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+</tr>
+</tbody></table>
+<h2 id='nfts'>NFTS</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -1683,6 +1706,12 @@ Exclude unnecessary parameters to make your request faster.
         </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zerpmon"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zerpmon"</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/image/image_hash.png"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/preview/preview_hash.png"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nl">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/thumbnail/thumbail_hash.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"video"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/video/video_hash"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
       </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Purrf"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zerpmon is an original collection of digital collectible creatures that live on the XRPL, with each one being a unique 1 of 1 art piece. The Zerpmon project is fueled by a passion for high-quality art and in-depth story telling. For more information on the vision of Zerpmon, visit www.zerpmon.world"</span><span class="p">,</span><span class="w">
@@ -1709,7 +1738,7 @@ Exclude unnecessary parameters to make your request faster.
 <p>This endpoint retrieves a List of NFTs (XLS-20 / XLS-35) for specified parameters</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nfts</code></p>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1731,6 +1760,11 @@ Exclude unnecessary parameters to make your request faster.
 <td>taxon</td>
 <td>null</td>
 <td>Taxon for that Issuer (optional, will be ignored without an Issuer)</td>
+</tr>
+<tr>
+<td>assets</td>
+<td>false</td>
+<td>(Only available on the Standart API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
 </tr>
 <tr>
 <td>hasMetadata</td>
@@ -1816,6 +1850,11 @@ Exclude unnecessary parameters to make your request faster.
 <td>offersHistory</td>
 <td>false</td>
 <td>(Available for the Premium plan and higher) If set to true, each NFT will include historical offers which are already accepted or canceled.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The number of NFTs to return. (More than 100 is available for the Standart plan and higher).</td>
 </tr>
 </tbody></table>
 <h2 id='nft-offers'>NFT Offers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true"</span>
@@ -1963,7 +2002,7 @@ Exclude unnecessary parameters to make your request faster.
 <td>The XRPL address or a username.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1985,6 +2024,11 @@ Exclude unnecessary parameters to make your request faster.
 <td>offersValidate</td>
 <td>false</td>
 <td>(Only available on paid API plans) If set to true, each offer will include <code>valid</code> as <code>true</code> or <code>false</code>, if <code>false</code> then it also include <code>validationErrors</code> array.</td>
+</tr>
+<tr>
+<td>assets</td>
+<td>false</td>
+<td>(Only available on the Standart API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
 </tr>
 </tbody></table>
 <h2 id='nft-distribution'>NFT Distribution</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&amp;issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&amp;taxon=0"</span>
@@ -2038,7 +2082,7 @@ Exclude unnecessary parameters to make your request faster.
 <p>This endpoint retrieves NFT Owners list sorted by NFT count.</p>
 <h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-owners</code></p>
-<h3 id='query-parameters-8'>Query Parameters</h3>
+<h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2194,7 +2238,7 @@ Exclude unnecessary parameters to make your request faster.
 <p>This endpoint retrieves a List of NFT Sales for specified parameters</p>
 <h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-sales</code></p>
-<h3 id='query-parameters-9'>Query Parameters</h3>
+<h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2344,7 +2388,7 @@ Exclude unnecessary parameters to make your request faster.
 <p>This endpoint retrieves NFT Sales Volumes for specified parameters</p>
 <h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-volumes</code></p>
-<h3 id='query-parameters-10'>Query Parameters</h3>
+<h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2592,7 +2636,7 @@ Exclude unnecessary parameters to make your request faster.
 <p>This endpoint retrieves Extended NFT Sales Volumes for specified parameters (Only available on paid API plans)</p>
 <h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-volumes-extended</code></p>
-<h3 id='query-parameters-11'>Query Parameters</h3>
+<h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2720,7 +2764,7 @@ Exclude unnecessary parameters to make your request faster.
 <p>This endpoint retrieves NFT minters on XRPL for a specified period of time</p>
 <h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-marketplaces</code></p>
-<h3 id='query-parameters-12'>Query Parameters</h3>
+<h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2764,7 +2808,7 @@ Exclude unnecessary parameters to make your request faster.
 <p>This endpoint retrieves NFT mints count for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
 <h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-chart</code></p>
-<h3 id='query-parameters-13'>Query Parameters</h3>
+<h3 id='query-parameters-14'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2825,7 +2869,7 @@ Exclude unnecessary parameters to make your request faster.
 <p>This endpoint retrieves NFT Sales Volumes Chart data for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
 <h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-sales-chart</code></p>
-<h3 id='query-parameters-14'>Query Parameters</h3>
+<h3 id='query-parameters-15'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3254,7 +3298,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 <td>The XRPL address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-15'>Query Parameters</h3>
+<h3 id='query-parameters-16'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3527,7 +3571,7 @@ You can retrieve information for MANY currencies in one request:
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
 <h3 id='http-request-23'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currencies</code></p>
-<h3 id='query-parameters-16'>Query Parameters</h3>
+<h3 id='query-parameters-17'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
