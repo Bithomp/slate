@@ -54,7 +54,7 @@ API plans:
 | Enterprise*             | 2000  | 600K  | Basic | 500 EUR  |
 | <a href="#on-demand">On-demand*</a> | N/A   | N/A   | Free   | 0.0005 XRP / request |
 
-* On that plan the <a href="#nft">**NFT**</a> endpoint returns `assets` with direct URLs to resized images and videos.
+* On that plan the <a href="#nft">**NFT**</a>, <a href="#nfts">**NFTs**</a>, <a href="#nft-offers">**NFT offers**</a> endpoints returns `assets` with direct URLs to cached and resized images and videos.
 
 NFT content plans (Direct access to fast [resized and cached] images and videos):
 
@@ -75,6 +75,14 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 - To get your payment details please reply to the email with your API key.
 
 # Changelog
+
+### 15th of August 2024
+
+The new query parameter: `limit` was added to the <a href="#nfts">**NFTs**</a> API end-point.
+Now you can limit the number of NFTs returned and even return more than 100 NFTs in one request if you have a Standart plan or higher.
+
+The new query parameter: `assets` was added to the <a href="#nft-offer">**NFT Offer**</a>, <a href="#nft-offers">**NFT Offers**</a> and <a href="#nfts">**NFTs**</a> API end-points.
+Now you can get the direct URLs to cached and resized images and videos inside NFT offers and NFT lists.
 
 ### 10th of August 2024
 
@@ -1062,10 +1070,16 @@ Parameter | Description
 --------- | -----------
 nftOfferID  | An NFT Offer ID (XLS-20)
 
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+assets | false | (Only available on the Standart API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+
 ## NFTS
 
 ```shell
-curl "https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"
+curl "https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1073,11 +1087,11 @@ curl "https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME", getData);
+bithompRequest("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME");
+$data = curl_bithomp("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true");
 print $data;
 ```
 
@@ -1108,6 +1122,12 @@ print $data;
       "issuerDetails": {
         "username": "Zerpmon",
         "service": "Zerpmon"
+      },
+      "assets": {
+        "image": "https://cdn.bithomp.com/image/image_hash.png", 
+        "preview": "https://cdn.bithomp.com/preview/preview_hash.png", 
+        "thumbnail": "https://cdn.bithomp.com/thumbnail/thumbail_hash.png",
+        "video": "https://cdn.bithomp.com/video/video_hash"
       },
       "metadata": {
         "name": "Purrf",
@@ -1146,6 +1166,7 @@ Parameter | Default | Description
 owner | null | The XRPL address of the Owner
 issuer | null | The XRPL address of the Issuer
 taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
+assets | false | (Only available on the Standart API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 hasMetadata | false | set to `true`, to list NFTs only with available metadata
 hasImage | false | set to `true`, to list NFTs only with available media data (preview images can be generated from images, videos, pdf files and 3d models)
 includeDeleted | false | set to `true`, if you want result to include deleeted NFTs
@@ -1163,6 +1184,7 @@ buyOffers | false | (Available for the Premium plan and higher) If set to true, 
 history | false | (Available for the Premium plan and higher) If set to true, the NFTs will include `history`.
 offersValidate | false | (Available for the Premium plan and higher) If set to true, each NFT offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array. 
 offersHistory | false | (Available for the Premium plan and higher) If set to true, each NFT will include historical offers which are already accepted or canceled.
+limit | 100 | The number of NFTs to return. (More than 100 is available for the Standart plan and higher).
 
 ## NFT Offers
 
@@ -1323,7 +1345,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 list | null | default - to list all owned NFT offers, `counterOffers` - to list NFT Offers for all NFTs owned by the `address`, `privatelyOfferedToAddress` - to list all NFT offers where the `address` is specified as destination (brokers, private offers, nft transfers).
 nftoken | false | If set to true, each offer will include `nftoken` data, including metadata.
-offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array. 
+offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array.
+assets | false | (Only available on the Standart API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 
 ## NFT Distribution
 
