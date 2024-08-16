@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#16th-of-august-2024" class="toc-h2 toc-link" data-title="16th of August 2024">16th of August 2024</a>
+                  </li>
+                  <li>
                     <a href="#15th-of-august-2024" class="toc-h2 toc-link" data-title="15th of August 2024">15th of August 2024</a>
                   </li>
                   <li>
@@ -652,7 +655,10 @@
 <li><p><a href="https://bithomp.com/admin">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='15th-of-august-2024'>15th of August 2024</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='16th-of-august-2024'>16th of August 2024</h3>
+<p>The new query parameter: <code>ids</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
+Now you can get a list of NFTs by their IDs. (Available for the Standard plan and higher).</p>
+<h3 id='15th-of-august-2024'>15th of August 2024</h3>
 <p>The new query parameter: <code>limit</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
 Now you can limit the number of NFTs returned and even return more than 100 NFTs in one request if you have a Standart plan or higher.</p>
 
@@ -1855,6 +1861,11 @@ Exclude unnecessary parameters to make your request faster.
 <td>limit</td>
 <td>100</td>
 <td>The number of NFTs to return. (More than 100 is available for the Standart plan and higher).</td>
+</tr>
+<tr>
+<td>ids</td>
+<td>null</td>
+<td>(Available for the Standard plan and higher) A list of NFT IDs separated by commas (max 100), to get information about specific NFTs. Formats: <code>ids=abc,def</code>, <code>ids[]=abc&amp;ids[]=def</code> or <code>ids=abc&amp;ids=def</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='nft-offers'>NFT Offers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true"</span>
