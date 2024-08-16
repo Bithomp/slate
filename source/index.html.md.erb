@@ -76,6 +76,11 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 16th of August 2024
+
+The new query parameter: `ids` was added to the <a href="#nfts">**NFTs**</a> API end-point.
+Now you can get a list of NFTs by their IDs. (Available for the Standard plan and higher).
+
 ### 15th of August 2024
 
 The new query parameter: `limit` was added to the <a href="#nfts">**NFTs**</a> API end-point.
@@ -1185,6 +1190,7 @@ history | false | (Available for the Premium plan and higher) If set to true, th
 offersValidate | false | (Available for the Premium plan and higher) If set to true, each NFT offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array. 
 offersHistory | false | (Available for the Premium plan and higher) If set to true, each NFT will include historical offers which are already accepted or canceled.
 limit | 100 | The number of NFTs to return. (More than 100 is available for the Standart plan and higher).
+ids | null | (Available for the Standard plan and higher) A list of NFT IDs separated by commas (max 100), to get information about specific NFTs. Formats: `ids=abc,def`, `ids[]=abc&ids[]=def` or `ids=abc&ids=def`.
 
 ## NFT Offers
 
