@@ -317,6 +317,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#26th-of-august-2024" class="toc-h2 toc-link" data-title="26th of August 2024">26th of August 2024</a>
+                  </li>
+                  <li>
                     <a href="#16th-of-august-2024" class="toc-h2 toc-link" data-title="16th of August 2024">16th of August 2024</a>
                   </li>
                   <li>
@@ -345,9 +348,6 @@
                   </li>
                   <li>
                     <a href="#16th-of-february-2024" class="toc-h2 toc-link" data-title="16th of February 2024">16th of February 2024</a>
-                  </li>
-                  <li>
-                    <a href="#18th-of-august-2023" class="toc-h2 toc-link" data-title="18th of August 2023">18th of August 2023</a>
                   </li>
               </ul>
           </li>
@@ -655,7 +655,10 @@
 <li><p><a href="https://bithomp.com/admin">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='16th-of-august-2024'>16th of August 2024</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='26th-of-august-2024'>26th of August 2024</h3>
+<p>The new list option: <code>collections</code> was added to the <a href="#nft-volumes-extended"><strong>NFTs</strong></a> API end-point.
+Now you can get a list of NFT collections with their extended data like <code>floorPrice</code> and <code>assets</code> (collection preview images).</p>
+<h3 id='16th-of-august-2024'>16th of August 2024</h3>
 <p>The new query parameter: <code>ids</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
 Now you can get a list of NFTs by their IDs. (Available for the Standard plan and higher).</p>
 <h3 id='15th-of-august-2024'>15th of August 2024</h3>
@@ -700,13 +703,6 @@ Now you can order NFT owners by count of total, self-issued or non-self-issued N
 <h3 id='16th-of-february-2024'>16th of February 2024</h3>
 <p>Two new query parameters: <code>buyer</code> and <code>seller</code> were added to the <a href="#nft-sales"><strong>NFT Sales</strong></a> API end-point.
 You can search for sales by a specific buyer and/or seller.</p>
-<h3 id='18th-of-august-2023'>18th of August 2023</h3>
-<p>A new endpoint was added:</p>
-
-<p><a href="#nft-minters"><strong>NFT minters</strong></a></p>
-
-<p>New query parameters: <code>mintedByMarketplace</code>, <code>includeDeleted</code>, two new values <code>mintedNew</code> and <code>mintedOld</code> for parameter <code>order</code> and new period formats were added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
-Now the search results can include already burned NFTs.</p>
 <h1 id='direct-url-examples'>Direct URL examples</h1><h3 id='xrpl-explorer'>XRPL Explorer</h3>
 <ul>
 <li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a></li>
@@ -2410,7 +2406,7 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>list</td>
 <td>null</td>
-<td><code>issuers</code>, <code>currencies</code>, <code>brokers</code> or <code>marketplaces</code></td>
+<td><code>issuers</code>, <code>currencies</code>, <code>brokers</code> or <code>marketplaces</code> (If you are looking for <code>collections</code>, use <a href="#nft-volumes-extended"><strong>NFT Volumes Extended</strong></a> endpoint)</td>
 </tr>
 <tr>
 <td>currency</td>
@@ -2438,208 +2434,173 @@ Exclude unnecessary parameters to make your request faster.
 <td>(Only available on paid API plans) Returns <code>floorPrice</code> for <code>issuers</code>. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.</td>
 </tr>
 </tbody></table>
-<h2 id='nft-volumes-extended'>NFT Volumes Extended</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-volumes-extended?list=issuers&amp;convertCurrencies=usd,xrp&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary"</span>
+<h2 id='nft-volumes-extended'>NFT Volumes Extended</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-volumes-extended?list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-volumes-extended?list=issuers&amp;convertCurrencies=usd,xrp&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-volumes-extended?list=issuers&amp;convertCurrencies=usd,xrp&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-volumes-extended??list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-volumes-extended??list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="s2">"issuers"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="s2">"collections"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"week"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"convertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"xrp"</span><span class="w">
+    </span><span class="s2">"usd"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"sortCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"saleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"secondary"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"floorPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7285A19600000001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7029546C00000001"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"all"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4uq8urnYrT6LnZaadPyusyKCS68HVJtRn"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9426"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"177880.1873508458857959814"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"418260.834306"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"225636390121"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">4416</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"96928.28649692584"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"225636.390121"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7853504543544152000000000000000000000000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rh5jzTCdMRCVjQ7LT6zucjezC47KATkuvv"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"115.914190640895224906992042"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"277.20719990648146575868"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"currencyDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hex"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7853504543544152000000000000000000000000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xSPECTAR"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"234369189287"</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">1440</span><span class="p">,</span><span class="w">
+              </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"140788.52012833307"</span><span class="w">
+              </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7853504543544152000000000000000000000000"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rh5jzTCdMRCVjQ7LT6zucjezC47KATkuvv"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14000"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"109.55480896211189029074672379403895104112"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"currencyDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hex"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7853504543544152000000000000000000000000"</span><span class="p">,</span><span class="w">
+                  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xSPECTAR"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">1448</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"volumesInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"140913.35322087784071852423843308170024169712"</span><span class="w">
         </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">4730</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"volumesInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"276669.4085438152983"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"648231.929829"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"issuers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"lastAcceptedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1724681821</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"collections"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEzbi191M5AjrucxXKZWbR5QeyfpbedBcV"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BoredApesXRP"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bored Apes XRP Club"</span><span class="w">
+      </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPeRQQ8kaMej5b1E7tjkwFPm2xMFQofkdG:0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"collectionDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPeRQQ8kaMej5b1E7tjkwFPm2xMFQofkdG:0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Cryptoland Cryptopians"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avatars"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/image/image_hash.png"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/preview/preview_hash.png"</span><span class="p">,</span><span class="w"> 
+          </span><span class="nl">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/thumbnail/thumbail_hash.png"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://community-cryptoland-2.nyc3.cdn.digitaloceanspaces.com/upload/land/image/cryptoland01.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPeRQQ8kaMej5b1E7tjkwFPm2xMFQofkdG"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPeRQQ8kaMej5b1E7tjkwFPm2xMFQofkdG"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CryptoLand"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"taxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
       </span><span class="nl">"floorPrices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
           </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"450000000"</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"860000000"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"369000000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"469000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpZqTPC8GvrSvEfFsUuHkmPCg29GdQuXhC"</span><span class="p">,</span><span class="w">
             </span><span class="nl">"destinationDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
               </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrp.cafe"</span><span class="w">
+              </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onXRP"</span><span class="w">
             </span><span class="p">}</span><span class="w">
           </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAY"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4uq8urnYrT6LnZaadPyusyKCS68HVJtRn"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"buyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tradedNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"owners"</span><span class="p">:</span><span class="w"> </span><span class="mi">1646</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"nfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">9998</span><span class="w">
+        </span><span class="nl">"buyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tradedNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">165</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"owners"</span><span class="p">:</span><span class="w"> </span><span class="mi">3715</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">29852</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"volumesInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"184004.5165186555057"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"432359.982164"</span><span class="w">
+        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"102166.04935985"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BAY"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4uq8urnYrT6LnZaadPyusyKCS68HVJtRn"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9426"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"170175665000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w">
           </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"177880.1873508458857"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"418260.834306"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14099147858"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6124.32916780962"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14099.147858"</span><span class="w">
+            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"102166.04935985"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDPUNKX2Rf5joEyVnmXFnnWL5MYa92wLPN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DoodlepunkX"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">2357</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"floorPrices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25000000"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"22000000"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"destinationDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrp.cafe"</span><span class="w">
-            </span><span class="p">}</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+        </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME:0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"collectionDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME:0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"family"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QmTA3YRvEndxzENJC1GuNuSEZFCtGUkw2Lq91iQdA86yLj/1.png"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zerpmon"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zerpmon"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+              </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/image/image_hash.png"</span><span class="p">,</span><span class="w"> 
+              </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/preview/preview_hash.png"</span><span class="p">,</span><span class="w"> 
+              </span><span class="nl">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/thumbnail/thumbail_hash.png"</span><span class="p">,</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"taxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-              </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OXP"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrno7Nj4RkFJLzC4nRaZiLF5aHwcTVon3d"</span><span class="p">,</span><span class="w">
-              </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15000"</span><span class="w">
+        </span><span class="nl">"floorPrices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"325000000"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"destinationDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrpcafe"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrp.cafe"</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">}</span><span class="w">
             </span><span class="p">}</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"buyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">230</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"tradedNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">2240</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"owners"</span><span class="p">:</span><span class="w"> </span><span class="mi">1188</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"nfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"volumesInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26185.3828300196"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61573.861964"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61289463829"</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">2340</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26065.17558483161"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61289.463829"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"buyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"tradedNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"owners"</span><span class="p">:</span><span class="w"> </span><span class="mi">243</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"nfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1807</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OXP"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrno7Nj4RkFJLzC4nRaZiLF5aHwcTVon3d"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13406"</span><span class="w">
-          </span><span class="p">},</span><span class="w">
-          </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
-          </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"120.207245188022"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"284.398135"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">]</span><span class="w">
+        </span><span class="nl">"volumesInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5329.7998368721"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"volumes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8769239310"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5329.7998368721"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2658,7 +2619,7 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>list</td>
 <td>null</td>
-<td><code>issuers</code>, <code>taxons</code>, <code>currencies</code>, <code>brokers</code> or <code>marketplaces</code></td>
+<td><code>collections</code>, <code>marketplaces</code>, <code>issuers</code>, <code>taxons</code>, <code>currencies</code> or <code>brokers</code></td>
 </tr>
 <tr>
 <td>issuer</td>
@@ -2698,17 +2659,22 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>floorPrice</td>
 <td>false</td>
-<td>Returns <code>floorPrice</code> for <code>issuers</code>. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.</td>
+<td>Returns <code>floorPrice</code> for <code>collections</code> and <code>issuers</code>. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.</td>
 </tr>
 <tr>
 <td>statistics</td>
 <td>false</td>
-<td>Returns <code>statistics</code> for <code>issuers</code> and <code>taxons</code>. Which includes: <code>buyers</code> - current buyers count, <code>tradedNfts</code> - current count of traded NFTS, <code>owners</code> - current count of owners, <code>nfts</code> - current count of NFTs</td>
+<td>Returns <code>statistics</code> for <code>collections</code> and <code>issuers</code> and <code>taxons</code>. Which includes: <code>buyers</code> - current buyers count, <code>tradedNfts</code> - current count of traded NFTS, <code>owners</code> - current count of owners, <code>nfts</code> - current count of NFTs</td>
 </tr>
 <tr>
 <td>marker</td>
 <td>null</td>
 <td>The marker from the previous request, if you need a next page</td>
+</tr>
+<tr>
+<td>assets</td>
+<td>false</td>
+<td>(For Standard plan and hire) For list <code>collections</code> returns collection previews, <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px.</td>
 </tr>
 </tbody></table>
 <h2 id='nft-minters'>NFT Minters</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-marketplaces?period=week"</span>
