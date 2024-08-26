@@ -76,6 +76,11 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 26th of August 2024
+
+The new list option: `collections` was added to the <a href="#nft-volumes-extended">**NFTs**</a> API end-point.
+Now you can get a list of NFT collections with their extended data like `floorPrice` and `assets` (collection preview images).
+
 ### 16th of August 2024
 
 The new query parameter: `ids` was added to the <a href="#nfts">**NFTs**</a> API end-point.
@@ -140,15 +145,6 @@ Two new endpoints were added:
 
 Two new query parameters: `buyer` and `seller` were added to the <a href="#nft-sales">**NFT Sales**</a> API end-point.
 You can search for sales by a specific buyer and/or seller.
-
-### 18th of August 2023
-
-A new endpoint was added:
-
-<a href="#nft-minters">**NFT minters**</a>
-
-New query parameters: `mintedByMarketplace`, `includeDeleted`, two new values `mintedNew` and `mintedOld` for parameter `order` and new period formats were added to the <a href="#nfts">**NFTs**</a> API end-point.
-Now the search results can include already burned NFTs.
 
 # Direct URL examples
 
@@ -1681,7 +1677,7 @@ This endpoint retrieves NFT Sales Volumes for specified parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
-list | null | `issuers`, `currencies`, `brokers` or `marketplaces`
+list | null | `issuers`, `currencies`, `brokers` or `marketplaces` (If you are looking for `collections`, use <a href="#nft-volumes-extended">**NFT Volumes Extended**</a> endpoint)
 currency | null | Must be specified for `issuers`, `brokers` and `marketplaces`, for example as `xrp`
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
@@ -1691,7 +1687,7 @@ floorPrice | false | (Only available on paid API plans) Returns `floorPrice` for
 ## NFT Volumes Extended
 
 ```shell
-curl "https://bithomp.com/api/v2/nft-volumes-extended?list=issuers&convertCurrencies=usd,xrp&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary"
+curl "https://bithomp.com/api/v2/nft-volumes-extended?list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1699,11 +1695,11 @@ curl "https://bithomp.com/api/v2/nft-volumes-extended?list=issuers&convertCurren
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/nft-volumes-extended?list=issuers&convertCurrencies=usd,xrp&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-volumes-extended??list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/nft-volumes-extended?list=issuers&convertCurrencies=usd,xrp&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-volumes-extended??list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true");
 print $data;
 ```
 
@@ -1711,195 +1707,160 @@ print $data;
 
 ```json
 {
-  "list": "issuers",
+  "list": "collections",
   "period": "week",
   "convertCurrencies": [
-    "usd",
-    "xrp"
+    "usd"
   ],
   "sortCurrency": "usd",
   "statistics": true,
   "saleType": "secondary",
   "floorPrice": true,
-  "marker": "7285A19600000001",
+  "marker": "7029546C00000001",
   "summary": {
     "all": {
-      "volumes": [
-        {
-          "amount": {
-            "currency": "BAY",
-            "issuer": "r4uq8urnYrT6LnZaadPyusyKCS68HVJtRn",
-            "value": "9426"
-          },
-          "sales": 19,
-          "amountInConvertCurrencies": {
-            "usd": "177880.1873508458857959814",
-            "xrp": "418260.834306"
-          }
-        },
-        {
-          "amount": "225636390121",
-          "sales": 4416,
-          "amountInConvertCurrencies": {
-            "usd": "96928.28649692584",
-            "xrp": "225636.390121"
-          }
-        },
-        {
-          "amount": {
-            "currency": "7853504543544152000000000000000000000000",
-            "issuer": "rh5jzTCdMRCVjQ7LT6zucjezC47KATkuvv",
-            "value": "2000"
-          },
-          "sales": 1,
-          "amountInConvertCurrencies": {
-            "usd": "115.914190640895224906992042",
-            "xrp": "277.20719990648146575868"
-          },
-          "currencyDetails": {
-            "type": "hex",
-            "currencyCode": "7853504543544152000000000000000000000000",
-            "currency": "xSPECTAR"
-          }
+        "volumes": [
+            {
+              "amount": "234369189287",
+              "sales": 1440,
+              "amountInConvertCurrencies": {
+                "usd": "140788.52012833307"
+              }
+            },
+            {
+                "amount": {
+                  "currency": "7853504543544152000000000000000000000000",
+                  "issuer": "rh5jzTCdMRCVjQ7LT6zucjezC47KATkuvv",
+                  "value": "14000"
+                },
+                "sales": 2,
+                "amountInConvertCurrencies": {
+                  "usd": "109.55480896211189029074672379403895104112"
+                },
+                "currencyDetails": {
+                  "type": "hex",
+                  "currencyCode": "7853504543544152000000000000000000000000",
+                  "currency": "xSPECTAR"
+                }
+            }
+        ],
+        "sales": 1448,
+        "volumesInConvertCurrencies": {
+          "usd": "140913.35322087784071852423843308170024169712"
         }
-      ],
-      "sales": 4730,
-      "volumesInConvertCurrencies": {
-        "usd": "276669.4085438152983",
-        "xrp": "648231.929829"
-      }
     }
   },
-  "issuers": [
+  "lastAcceptedAt": 1724681821,
+  "collections": [
     {
-      "issuer": "rEzbi191M5AjrucxXKZWbR5QeyfpbedBcV",
-      "issuerDetails": {
-        "username": "BoredApesXRP",
-        "service": "Bored Apes XRP Club"
+      "collection": "rPeRQQ8kaMej5b1E7tjkwFPm2xMFQofkdG:0",
+      "sales": 170,
+      "collectionDetails": {
+        "collection": "rPeRQQ8kaMej5b1E7tjkwFPm2xMFQofkdG:0",
+        "name": "Cryptoland Cryptopians",
+        "family": "Avatars",
+        "description": null,
+        "assets": {
+          "image": "https://cdn.bithomp.com/image/image_hash.png", 
+          "preview": "https://cdn.bithomp.com/preview/preview_hash.png", 
+          "thumbnail": "https://cdn.bithomp.com/thumbnail/thumbail_hash.png"
+        },
+        "image": "https://community-cryptoland-2.nyc3.cdn.digitaloceanspaces.com/upload/land/image/cryptoland01.jpg",
+        "issuer": "rPeRQQ8kaMej5b1E7tjkwFPm2xMFQofkdG",
+        "issuerDetails": {
+          "address": "rPeRQQ8kaMej5b1E7tjkwFPm2xMFQofkdG",
+          "username": null,
+          "service": "CryptoLand"
+        },
+        "taxon": 0
       },
-      "sales": 51,
       "floorPrices": [
         {
           "open": {
-            "amount": "450000000"
+            "amount": "860000000"
           },
           "private": {
-            "amount": "369000000",
-            "destination": "rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC",
+            "amount": "469000000",
+            "destination": "rpZqTPC8GvrSvEfFsUuHkmPCg29GdQuXhC",
             "destinationDetails": {
               "username": null,
-              "service": "xrp.cafe"
+              "service": "onXRP"
             }
           }
-        },
-        {
-          "open": {
-            "amount": {
-              "currency": "BAY",
-              "issuer": "r4uq8urnYrT6LnZaadPyusyKCS68HVJtRn",
-              "value": "1"
-            }
-          },
-          "private": null
         }
       ],
       "statistics": {
-        "buyers": 25,
-        "tradedNfts": 51,
-        "owners": 1646,
-        "nfts": 9998
+        "buyers": 32,
+        "tradedNfts": 165,
+        "owners": 3715,
+        "nfts": 29852
       },
       "volumesInConvertCurrencies": {
-        "usd": "184004.5165186555057",
-        "xrp": "432359.982164"
+        "usd": "102166.04935985"
       },
       "volumes": [
         {
-          "amount": {
-            "currency": "BAY",
-            "issuer": "r4uq8urnYrT6LnZaadPyusyKCS68HVJtRn",
-            "value": "9426"
-          },
-          "sales": 19,
+          "amount": "170175665000",
+          "sales": 170,
           "amountInConvertCurrencies": {
-            "usd": "177880.1873508458857",
-            "xrp": "418260.834306"
-          }
-        },
-        {
-          "amount": "14099147858",
-          "sales": 32,
-          "amountInConvertCurrencies": {
-            "usd": "6124.32916780962",
-            "xrp": "14099.147858"
+            "usd": "102166.04935985"
           }
         }
       ]
     },
     {
-      "issuer": "rDPUNKX2Rf5joEyVnmXFnnWL5MYa92wLPN",
-      "issuerDetails": {
-        "username": null,
-        "service": "DoodlepunkX"
-      },
-      "sales": 2357,
-      "floorPrices": [
-        {
-          "open": {
-            "amount": "25000000"
-          },
-          "private": {
-            "amount": "22000000",
-            "destination": "rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC",
-            "destinationDetails": {
-              "username": null,
-              "service": "xrp.cafe"
-            }
-          }
+        "collection": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME:0",
+        "sales": 13,
+        "collectionDetails": {
+            "collection": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME:0",
+            "name": null,
+            "family": null,
+            "description": null,
+            "image": "QmTA3YRvEndxzENJC1GuNuSEZFCtGUkw2Lq91iQdA86yLj/1.png",
+            "issuer": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME",
+            "issuerDetails": {
+                "address": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME",
+                "username": "Zerpmon",
+                "service": "Zerpmon"
+            },
+            "assets": {
+              "image": "https://cdn.bithomp.com/image/image_hash.png", 
+              "preview": "https://cdn.bithomp.com/preview/preview_hash.png", 
+              "thumbnail": "https://cdn.bithomp.com/thumbnail/thumbail_hash.png",
+            },
+            "taxon": 0
         },
-        {
-          "open": {
-            "amount": {
-              "currency": "OXP",
-              "issuer": "rrno7Nj4RkFJLzC4nRaZiLF5aHwcTVon3d",
-              "value": "15000"
+        "floorPrices": [
+            {
+                "open": null,
+                "private": {
+                    "amount": "325000000",
+                    "destination": "rpx9JThQ2y37FaGeeJP7PXDUVEXY3PHZSC",
+                    "destinationDetails": {
+                        "username": "xrpcafe",
+                        "service": "xrp.cafe"
+                    }
+                }
             }
-          },
-          "private": null
-        }
-      ],
-      "statistics": {
-        "buyers": 230,
-        "tradedNfts": 2240,
-        "owners": 1188,
-        "nfts": 10000
-      },
-      "volumesInConvertCurrencies": {
-        "usd": "26185.3828300196",
-        "xrp": "61573.861964"
-      },
-      "volumes": [
-        {
-          "amount": "61289463829",
-          "sales": 2340,
-          "amountInConvertCurrencies": {
-            "usd": "26065.17558483161",
-            "xrp": "61289.463829"
-          }
+        ],
+        "statistics": {
+            "buyers": 8,
+            "tradedNfts": 13,
+            "owners": 243,
+            "nfts": 1807
         },
-        {
-          "amount": {
-            "currency": "OXP",
-            "issuer": "rrno7Nj4RkFJLzC4nRaZiLF5aHwcTVon3d",
-            "value": "13406"
-          },
-          "sales": 17,
-          "amountInConvertCurrencies": {
-            "usd": "120.207245188022",
-            "xrp": "284.398135"
-          }
-        }
-      ]
+        "volumesInConvertCurrencies": {
+            "usd": "5329.7998368721"
+        },
+        "volumes": [
+            {
+                "amount": "8769239310",
+                "sales": 13,
+                "amountInConvertCurrencies": {
+                    "usd": "5329.7998368721"
+                }
+            }
+        ]
     }
   ]
 }
@@ -1915,7 +1876,7 @@ This endpoint retrieves Extended NFT Sales Volumes for specified parameters (Onl
 
 Parameter | Default | Description
 --------- | ------- | -----------
-list | null | `issuers`, `taxons`, `currencies`, `brokers` or `marketplaces`
+list | null | `collections`, `marketplaces`, `issuers`, `taxons`, `currencies` or `brokers`
 issuer | null | An XRPL address or username of the NFT issuer, must be specified for list `taxons`, to receive separate volumes for each taxon of the issuer
 currency | null | By default returns for all currencies, you can set any XRPL currency for example `xrp` (optional)
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
@@ -1923,9 +1884,10 @@ convertCurrencies | null | the list of currencies to convert amounts and volumes
 sortCurrency | `xrp` | one of the currencies from the `convertCurrencies` or `xrp` to sort the list by, for example: `usd` (optional)
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
 period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or as timestamps from..to, examples: `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
-floorPrice | false | Returns `floorPrice` for `issuers`. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.
-statistics | false | Returns `statistics` for `issuers` and `taxons`. Which includes: `buyers` - current buyers count, `tradedNfts` - current count of traded NFTS, `owners` - current count of owners, `nfts` - current count of NFTs
+floorPrice | false | Returns `floorPrice` for `collections` and `issuers`. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.
+statistics | false | Returns `statistics` for `collections` and `issuers` and `taxons`. Which includes: `buyers` - current buyers count, `tradedNfts` - current count of traded NFTS, `owners` - current count of owners, `nfts` - current count of NFTs
 marker | null | The marker from the previous request, if you need a next page
+assets | false | (For Standard plan and hire) For list `collections` returns collection previews, `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px.
 
 ## NFT Minters
 
