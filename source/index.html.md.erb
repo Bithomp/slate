@@ -81,6 +81,7 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 A new endpoint was added:
 
 <a href="#nft-collections">**NFT Collections**</a>
+
 Search for a specific collection by name, description, issuer or get an ordered list of NFT collections.
 
 ### 26th of August 2024
@@ -1466,9 +1467,10 @@ Parameter | Default | Description
 order | `createdNew` | (optional) `createdNew`, `createdOld`, `updatedNew`, `updatedOld` (order list by the date when the first or last NFT was issued).
 search | null | (optional) search by NFT Collection Name and Description.
 assets | false | (Only available on the Standart API plan or greater) If set to true, returns `assets` with direct urls for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
-limit | 100 | The number of NFTs to return. (More than 100 is available for the Standart plan and higher).
 floorPrice | false | (Only available on paid API plans) If set to true, returns `floorPrices` with the lowest price for the NFT collection.
 issuer | null | (optional) The address of the NFT Collection issuer (also works for Sologenic issuers).
+marker | null | The marker from the previous request, if you need a next page of NFT collections
+limit | 100 | The number of NFTs to return. (More than 100 is available for the Standart plan and higher).
 
 ## NFT Distribution
 
