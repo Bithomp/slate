@@ -666,8 +666,13 @@
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
 <h1 id='changelog'>Changelog</h1><h3 id='23rd-of-september-2024'>23rd of September 2024</h3>
-<p>A new query parameter: <code>collection</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> and <a href="#nft-sales"><strong>NFT Sales</strong></a> API end-points.
-You can search for NFTs and NFT Sales by a specific collection (including Sologenic collections).</p>
+<p>A new query parameter: <code>collectionDetails</code> was added to the <a href="#nft"><strong>NFT</strong></a> and <a href="#nfts"><strong>NFTs</strong></a> API end-points.</p>
+
+<p>You can get detailed information about the collection of the NFT (including the <code>assets</code>).</p>
+
+<p>A new query parameter: <code>collection</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> and <a href="#nft-sales"><strong>NFT Sales</strong></a> API end-points.</p>
+
+<p>You can search for NFTs and NFT Sales by a specific collection (including Sologenic collections).</p>
 <h3 id='20th-of-september-2024'>20th of September 2024</h3>
 <p>A new endpoint was added:</p>
 
@@ -1529,6 +1534,11 @@ Exclude unnecessary parameters to make your request faster.
 <td>null</td>
 <td>(Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example <code>xrp,usd</code> (40 fiat currencies available), the for <code>history</code> response  will have an array <code>amountInConvertCurrencies</code></td>
 </tr>
+<tr>
+<td>collectionDetails</td>
+<td>false</td>
+<td>(Only available on paid API plans) If set to true, each nft will include <code>collectionDetails</code> with the collection details. if parameter <code>assets</code> is set as <code>true</code>, you will also get assets in the <code>collectionDetails</code>.</td>
+</tr>
 </tbody></table>
 <h2 id='nft-offer'>NFT Offer</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
@@ -1775,12 +1785,12 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>collection</td>
 <td>null</td>
-<td>The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using <code>issuer</code> &amp; <code>taxon</code>, in the format: <code>issuer:taxon</code></td>
+<td>The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using <code>issuer</code> and <code>taxon</code>, in the format: <code>issuer:taxon</code>, if specified you will get also <code>collectionDetails</code> in the root with the collection details.</td>
 </tr>
 <tr>
 <td>issuer</td>
 <td>null</td>
-<td>The address of the Issuer (optional)</td>
+<td>The address of the Issuer</td>
 </tr>
 <tr>
 <td>taxon</td>
@@ -1825,7 +1835,7 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>destination</td>
 <td><code>all</code></td>
-<td>(Only available on paid API plans) used to filter NFTs for sale <code>list=onSale</code>, can be set as a XRPL address (to specify a particular MarketPlace), <code>public</code>, <code>knownBrokers</code>, <code>publicAndKnownBrokers</code>, <code>all</code></td>
+<td>(Only available on paid API plans) used to filter NFTs for sale <code>list=onSale</code>, can be set as an address (to specify a particular MarketPlace), <code>public</code>, <code>knownBrokers</code>, <code>publicAndKnownBrokers</code>, <code>all</code></td>
 </tr>
 <tr>
 <td>order</td>
@@ -1886,6 +1896,11 @@ Exclude unnecessary parameters to make your request faster.
 <td>ids</td>
 <td>null</td>
 <td>(Available for the Standard plan and higher) A list of NFT IDs separated by commas (max 100), to get information about specific NFTs. Formats: <code>ids=abc,def</code>, <code>ids[]=abc&amp;ids[]=def</code> or <code>ids=abc&amp;ids=def</code>.</td>
+</tr>
+<tr>
+<td>collectionDetails</td>
+<td>false</td>
+<td>(Available for the Paid plans) If set to true, each nft will include <code>collectionDetails</code> with the collection details. if parameter <code>assets</code> is set as <code>true</code>, you will also get assets in the <code>collectionDetails</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='nft-offers'>NFT Offers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true"</span>
@@ -2421,7 +2436,7 @@ Exclude unnecessary parameters to make your request faster.
 </tr>
 <tr>
 <td>sortCurrency</td>
-<td><code>xrp</code></td>
+<td><code>xrp</code> / &#39;xah&#39;</td>
 <td>(Only available on paid API plans) one of the currencies from the <code>convertCurrencies</code> or <code>xrp</code> to sort the list by, for example: <code>usd</code> (optional)</td>
 </tr>
 <tr>
@@ -2442,7 +2457,7 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>collection</td>
 <td>null</td>
-<td>The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using <code>issuer</code> &amp; <code>taxon</code>, in the format: <code>issuer:taxon</code></td>
+<td>The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using <code>issuer</code> and <code>taxon</code>, in the format: <code>issuer:taxon</code></td>
 </tr>
 <tr>
 <td>issuer</td>
@@ -2785,17 +2800,17 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>issuer</td>
 <td>null</td>
-<td>An address or username of the NFT issuer, must be specified for list <code>taxons</code>, to receive separate volumes for each taxon of the issuer</td>
+<td>An XRPL address or username of the NFT issuer, must be specified for list <code>taxons</code>, to receive separate volumes for each taxon of the issuer</td>
 </tr>
 <tr>
 <td>currency</td>
 <td>null</td>
-<td>By default returns for all currencies, you can set any currency for example <code>xrp</code> (optional)</td>
+<td>By default returns for all currencies, you can set any XRPL currency for example <code>xrp</code> (optional)</td>
 </tr>
 <tr>
 <td>currencyIssuer</td>
 <td>null</td>
-<td>if currency is specified and it is not &#39;xrp&#39;, then you must specify the currency issuer address (optional)</td>
+<td>if currency is specified and it is not &#39;xrp&#39;, then you must specify the currency issuer XRPL address (optional)</td>
 </tr>
 <tr>
 <td>convertCurrencies</td>
@@ -2804,7 +2819,7 @@ Exclude unnecessary parameters to make your request faster.
 </tr>
 <tr>
 <td>sortCurrency</td>
-<td><code>xrp</code> / <code>xah</code></td>
+<td><code>xrp</code></td>
 <td>one of the currencies from the <code>convertCurrencies</code> or <code>xrp</code> to sort the list by, for example: <code>usd</code> (optional)</td>
 </tr>
 <tr>
