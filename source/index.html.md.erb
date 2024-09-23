@@ -76,6 +76,16 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 23rd of September 2024
+
+A new query parameter: `collectionDetails` was added to the <a href="#nft">**NFT**</a> and <a href="#nfts">**NFTs**</a> API end-points.
+
+You can get detailed information about the collection of the NFT (including the `assets`).
+
+A new query parameter: `collection` was added to the <a href="#nfts">**NFTs**</a> and <a href="#nft-sales">**NFT Sales**</a> API end-points.
+
+You can search for NFTs and NFT Sales by a specific collection (including Sologenic collections).
+
 ### 20th of September 2024
 
 A new endpoint was added:
@@ -924,6 +934,7 @@ metadata | false | If set to true, the result will include `metadata`.
 offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array. 
 offersHistory | false | (Only available on paid API plans) If set to true, each result will include historical offers which are already accepted or canceled.
 convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the for `history` response  will have an array `amountInConvertCurrencies`
+collectionDetails | false | (Only available on paid API plans) If set to true, each nft will include `collectionDetails` with the collection details. if parameter `assets` is set as `true`, you will also get assets in the `collectionDetails`.
 
 ## NFT Offer
 
@@ -1172,8 +1183,9 @@ This endpoint retrieves a List of NFTs (XLS-20 / XLS-35) for specified parameter
 
 Parameter | Default | Description
 --------- | ------- | -----------
-owner | null | The XRPL address of the Owner
-issuer | null | The XRPL address of the Issuer
+owner | null | The address of the Owner
+collection | null | The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using `issuer` and `taxon`, in the format: `issuer:taxon`, if specified you will get also `collectionDetails` in the root with the collection details.
+issuer | null | The address of the Issuer
 taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
 assets | false | (Only available on the Standart API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 hasMetadata | false | set to `true`, to list NFTs only with available metadata
@@ -1182,7 +1194,7 @@ includeDeleted | false | set to `true`, if you want result to include deleeted N
 mintedByMarketplace | null | Here you can specify a minter from https://xrplexplorer.com/nft-minters?period=all to filter your search by minter project.
 marker | null | The marker from the previous request, if you need a next page of NFTs
 list | `nfts` | (Only available on paid API plans) can be set to `onSale` to get the list of NFTs with active sell offers
-destination | `all` | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be set as a XRPL address (to specify a particular MarketPlace), `public`, `knownBrokers`, `publicAndKnownBrokers`, `all`
+destination | `all` | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be set as an address (to specify a particular MarketPlace), `public`, `knownBrokers`, `publicAndKnownBrokers`, `all`
 order | null | (Only available on paid API plans) used to order NFTs: 1. for `list=nfts`, can be `mintedNew` and `mintedOld`, 2. for `list=onSale`, can be `offerCreatedNew`, `offerCreatedOld`, `priceLow`, `priceHigh`
 currency | null | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be `XRP` or any other currency code.
 currencyIssuer | null | (Only available on paid API plans) A currency issuer for the `currency` if it is not an XRP.
@@ -1195,6 +1207,7 @@ offersValidate | false | (Available for the Premium plan and higher) If set to t
 offersHistory | false | (Available for the Premium plan and higher) If set to true, each NFT will include historical offers which are already accepted or canceled.
 limit | 100 | The number of NFTs to return. (More than 100 is available for the Standart plan and higher).
 ids | null | (Available for the Standard plan and higher) A list of NFT IDs separated by commas (max 100), to get information about specific NFTs. Formats: `ids=abc,def`, `ids[]=abc&ids[]=def` or `ids=abc&ids=def`.
+collectionDetails | false | (Available for the Paid plans) If set to true, each nft will include `collectionDetails` with the collection details. if parameter `assets` is set as `true`, you will also get assets in the `collectionDetails`.
 
 ## NFT Offers
 
@@ -1693,14 +1706,15 @@ Parameter | Default | Description
 --------- | ------- | -----------
 list | null | `topSold` or `lastSold` (for the list of NFTs sales of the highest price or the latest sell timestamp)
 convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the response will have an array `amountInConvertCurrencies`
-sortCurrency | `xrp` | (Only available on paid API plans) one of the currencies from the `convertCurrencies` or `xrp` to sort the list by, for example: `usd` (optional)
+sortCurrency | `xrp` / 'xah' | (Only available on paid API plans) one of the currencies from the `convertCurrencies` or `xrp` to sort the list by, for example: `usd` (optional)
 currency | null | specify a currency to filter sales in a specific currency, for example `xrp` (should be specified if there are no `convertCurrencies` and `sortCurrency`)
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
+collection | null | The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using `issuer` and `taxon`, in the format: `issuer:taxon`
 issuer | null | The address of the NFT issuer (optional)
+taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
 buyer | null | (Only available on paid API plans) The address of the Buyer (optional)
 seller | null | (Only available on paid API plans) The address of the Seller (optional)
-taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
 period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or a time period as timestamps from..to `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
 marketplace | null | You can specify a marketplace, to filter sales by a specific marketplace, for example `xrp.cafe`, the list of all marketplaces is <a href="https://xrplexplorer.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)
 marker | null | The marker from the previous request, if you need a next page of NFTs
