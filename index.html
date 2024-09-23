@@ -320,6 +320,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#23rd-of-september-2024" class="toc-h2 toc-link" data-title="23rd of September 2024">23rd of September 2024</a>
+                  </li>
+                  <li>
                     <a href="#20th-of-september-2024" class="toc-h2 toc-link" data-title="20th of September 2024">20th of September 2024</a>
                   </li>
                   <li>
@@ -662,7 +665,10 @@
 <li><p><a href="https://xrplexplorer.com/admin">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='20th-of-september-2024'>20th of September 2024</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='23rd-of-september-2024'>23rd of September 2024</h3>
+<p>A new query parameter: <code>collection</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> and <a href="#nft-sales"><strong>NFT Sales</strong></a> API end-points.
+You can search for NFTs and NFT Sales by a specific collection (including Sologenic collections).</p>
+<h3 id='20th-of-september-2024'>20th of September 2024</h3>
 <p>A new endpoint was added:</p>
 
 <p><a href="#nft-collections"><strong>NFT Collections</strong></a></p>
@@ -1764,12 +1770,17 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>owner</td>
 <td>null</td>
-<td>The XRPL address of the Owner</td>
+<td>The address of the Owner</td>
+</tr>
+<tr>
+<td>collection</td>
+<td>null</td>
+<td>The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using <code>issuer</code> &amp; <code>taxon</code>, in the format: <code>issuer:taxon</code></td>
 </tr>
 <tr>
 <td>issuer</td>
 <td>null</td>
-<td>The XRPL address of the Issuer</td>
+<td>The address of the Issuer (optional)</td>
 </tr>
 <tr>
 <td>taxon</td>
@@ -2429,9 +2440,19 @@ Exclude unnecessary parameters to make your request faster.
 <td>can be <code>primary</code> or <code>secondary</code> (optional, <code>primary</code> - the sales from the issuer address)</td>
 </tr>
 <tr>
+<td>collection</td>
+<td>null</td>
+<td>The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using <code>issuer</code> &amp; <code>taxon</code>, in the format: <code>issuer:taxon</code></td>
+</tr>
+<tr>
 <td>issuer</td>
 <td>null</td>
 <td>The address of the NFT issuer (optional)</td>
+</tr>
+<tr>
+<td>taxon</td>
+<td>null</td>
+<td>Taxon for that Issuer (optional, will be ignored without an Issuer)</td>
 </tr>
 <tr>
 <td>buyer</td>
@@ -2442,11 +2463,6 @@ Exclude unnecessary parameters to make your request faster.
 <td>seller</td>
 <td>null</td>
 <td>(Only available on paid API plans) The address of the Seller (optional)</td>
-</tr>
-<tr>
-<td>taxon</td>
-<td>null</td>
-<td>Taxon for that Issuer (optional, will be ignored without an Issuer)</td>
 </tr>
 <tr>
 <td>period</td>
@@ -2769,17 +2785,17 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>issuer</td>
 <td>null</td>
-<td>An XRPL address or username of the NFT issuer, must be specified for list <code>taxons</code>, to receive separate volumes for each taxon of the issuer</td>
+<td>An address or username of the NFT issuer, must be specified for list <code>taxons</code>, to receive separate volumes for each taxon of the issuer</td>
 </tr>
 <tr>
 <td>currency</td>
 <td>null</td>
-<td>By default returns for all currencies, you can set any XRPL currency for example <code>xrp</code> (optional)</td>
+<td>By default returns for all currencies, you can set any currency for example <code>xrp</code> (optional)</td>
 </tr>
 <tr>
 <td>currencyIssuer</td>
 <td>null</td>
-<td>if currency is specified and it is not &#39;xrp&#39;, then you must specify the currency issuer XRPL address (optional)</td>
+<td>if currency is specified and it is not &#39;xrp&#39;, then you must specify the currency issuer address (optional)</td>
 </tr>
 <tr>
 <td>convertCurrencies</td>
@@ -2788,7 +2804,7 @@ Exclude unnecessary parameters to make your request faster.
 </tr>
 <tr>
 <td>sortCurrency</td>
-<td><code>xrp</code></td>
+<td><code>xrp</code> / <code>xah</code></td>
 <td>one of the currencies from the <code>convertCurrencies</code> or <code>xrp</code> to sort the list by, for example: <code>usd</code> (optional)</td>
 </tr>
 <tr>
