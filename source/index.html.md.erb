@@ -107,7 +107,7 @@ Now you can get a list of NFTs by their IDs. (Available for the Standard plan an
 ### 15th of August 2024
 
 The new query parameter: `limit` was added to the <a href="#nfts">**NFTs**</a> API end-point.
-Now you can limit the number of NFTs returned and even return more than 100 NFTs in one request if you have a Standart plan or higher.
+Now you can limit the number of NFTs returned and even return more than 100 NFTs in one request if you have a Standard plan or higher.
 
 The new query parameter: `assets` was added to the <a href="#nft-offer">**NFT Offer**</a>, <a href="#nft-offers">**NFT Offers**</a> and <a href="#nfts">**NFTs**</a> API end-points.
 Now you can get the direct URLs to cached and resized images and videos inside NFT offers and NFT lists.
@@ -926,7 +926,7 @@ nftID  | An NFT ID (XLS-20 or XLS-35)
 Parameter | Default | Description
 --------- | ------- | -----------
 uri | false | If set to true, the result will include `uri` and `url`.
-assets | false | (Only available on the Standart API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 sellOffers | false | If set true, the result will include `sellOffers`.
 buyOffers | false | If set to true, the result will include `buyOffers`.
 history | false | If set to true, the result will include `history`.
@@ -1094,7 +1094,7 @@ nftOfferID  | An NFT Offer ID (XLS-20)
 
 Parameter | Default | Description
 --------- | ------- | -----------
-assets | false | (Only available on the Standart API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 
 ## NFTS
 
@@ -1187,7 +1187,7 @@ owner | null | The address of the Owner
 collection | null | The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using `issuer` and `taxon`, in the format: `issuer:taxon`, if specified you will get also `collectionDetails` in the root with the collection details.
 issuer | null | The address of the Issuer
 taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
-assets | false | (Only available on the Standart API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 hasMetadata | false | set to `true`, to list NFTs only with available metadata
 hasImage | false | set to `true`, to list NFTs only with available media data (preview images can be generated from images, videos, pdf files and 3d models)
 includeDeleted | false | set to `true`, if you want result to include deleeted NFTs
@@ -1205,7 +1205,7 @@ buyOffers | false | (Available for the Premium plan and higher) If set to true, 
 history | false | (Available for the Premium plan and higher) If set to true, the NFTs will include `history`.
 offersValidate | false | (Available for the Premium plan and higher) If set to true, each NFT offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array. 
 offersHistory | false | (Available for the Premium plan and higher) If set to true, each NFT will include historical offers which are already accepted or canceled.
-limit | 100 | The number of NFTs to return. (More than 100 is available for the Standart plan and higher).
+limit | 100 | The number of NFTs to return. (More than 100 is available for the Standard plan and higher).
 ids | null | (Available for the Standard plan and higher) A list of NFT IDs separated by commas (max 100), to get information about specific NFTs. Formats: `ids=abc,def`, `ids[]=abc&ids[]=def` or `ids=abc&ids=def`.
 collectionDetails | false | (Available for the Paid plans) If set to true, each nft will include `collectionDetails` with the collection details. if parameter `assets` is set as `true`, you will also get assets in the `collectionDetails`.
 
@@ -1369,7 +1369,7 @@ Parameter | Default | Description
 list | null | default - to list all owned NFT offers, `counterOffers` - to list NFT Offers for all NFTs owned by the `address`, `privatelyOfferedToAddress` - to list all NFT offers where the `address` is specified as destination (brokers, private offers, nft transfers).
 nftoken | false | If set to true, each offer will include `nftoken` data, including metadata.
 offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array.
-assets | false | (Only available on the Standart API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 
 ## NFT Collections
 
@@ -1479,11 +1479,11 @@ Parameter | Default | Description
 --------- | ------- | -----------
 order | `createdNew` | (optional) `createdNew`, `createdOld`, `updatedNew`, `updatedOld` (order list by the date when the first or last NFT was issued).
 search | null | (optional) search by NFT Collection Name and Description.
-assets | false | (Only available on the Standart API plan or greater) If set to true, returns `assets` with direct urls for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 floorPrice | false | (Only available on paid API plans) If set to true, returns `floorPrices` with the lowest price for the NFT collection.
 issuer | null | (optional) The address of the NFT Collection issuer (also works for Sologenic issuers).
 marker | null | The marker from the previous request, if you need a next page of NFT collections
-limit | 100 | The number of NFTs to return. (More than 100 is available for the Standart plan and higher).
+limit | 100 | The number of NFTs to return. (More than 100 is available for the Standard plan and higher).
 
 ## NFT Distribution
 
