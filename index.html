@@ -582,7 +582,7 @@
 <td>Basic</td>
 <td style="text-align: right">100</td>
 <td>30K</td>
-<td>Free</td>
+<td>Start</td>
 <td>30 EUR</td>
 </tr>
 <tr>
@@ -610,7 +610,7 @@
 <td><a href="#on-demand">On-demand*</a></td>
 <td style="text-align: right">N/A</td>
 <td>N/A</td>
-<td>Free</td>
+<td>Start</td>
 <td>0.0005 XRP / request</td>
 </tr>
 </tbody></table>
@@ -639,6 +639,13 @@
 </thead><tbody>
 <tr>
 <td>Free (non-comercial use)</td>
+<td>500 / 10K</td>
+<td>100 / 2K</td>
+<td>2K / 20K</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Start</td>
 <td>1K / 20K</td>
 <td>300 / 6K</td>
 <td>5K / 50K</td>
@@ -782,19 +789,19 @@ curl <span class="s2">"api_endpoint_here"</span>
 
 <span class="kd">function</span> <span class="nx">bithompRequest</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-     <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
-     <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
-     <span class="na">contentType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
-     <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-        <span class="dl">"</span><span class="s2">x-bithomp-token</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">abcd-abcd-0000-abcd-0123abcdabcd</span><span class="dl">"</span>
-     <span class="p">},</span>
-     <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">callback</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
-     <span class="p">},</span>
-     <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
-        <span class="nx">callback</span><span class="p">({</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">error occurred</span><span class="dl">"</span><span class="p">});</span>
-     <span class="p">}</span>
+    <span class="na">url</span><span class="p">:</span> <span class="nx">url</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">GET</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">x-bithomp-token</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">abcd-abcd-0000-abcd-0123abcdabcd</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">callback</span><span class="p">(</span><span class="nx">result</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+      <span class="nx">callback</span><span class="p">({</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">error occurred</span><span class="dl">"</span><span class="p">});</span>
+    <span class="p">}</span>
   <span class="p">});</span>
 <span class="p">}</span>
 
@@ -802,15 +809,15 @@ curl <span class="s2">"api_endpoint_here"</span>
 <span class="c1">//replace callback with your function to process a received json</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="k">function</span> <span class="n">curl_bithomp</span><span class="p">(</span><span class="nv">$url</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
-    <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
-    <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
-    <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
-        <span class="k">array</span><span class="p">(</span><span class="s1">'x-bithomp-token:abcd-abcd-0000-abcd-0123abcdabcd'</span><span class="p">)</span>
-    <span class="p">);</span>
-    <span class="nv">$output</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-    <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-    <span class="k">return</span> <span class="nv">$output</span><span class="p">;</span>
+  <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="nv">$url</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span><span class="s1">'x-bithomp-token:abcd-abcd-0000-abcd-0123abcdabcd'</span><span class="p">)</span>
+  <span class="p">);</span>
+  <span class="nv">$output</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nv">$output</span><span class="p">;</span>
 <span class="p">}</span>
 
 <span class="k">print</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"api_endpoint_here"</span><span class="p">)</span>
@@ -838,34 +845,34 @@ After retrieving your payment claim (a json), you must embed it into request hea
   function openDhaliPaymentDialog() {
     var myWindow = window.open("https://pay.dhali.io/?exampleGetUrl=https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners", "MsgWindow", "width=500,height=700");
     myWindow.focus();
-}
+  }
 </script>
 
 <style>
-    .dhali-button {
-        background-color: #0000ff;
-        color: white;
-        padding: 8px 10px;
-        border: none;
-        border-radius: 4px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 0px 30px;
-        -webkit-transition-duration: 0.4s;
-                transition-duration: 0.4s;
-        cursor: pointer;
-    }
+  .dhali-button {
+    background-color: #0000ff;
+    color: white;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 30px;
+    -webkit-transition-duration: 0.4s;
+            transition-duration: 0.4s;
+    cursor: pointer;
+  }
 
-    .dhali-button:hover {
-        background-color: #6f6ffd;
-        color: rgb(255, 255, 255);
-    }
-    
-    .dhali-button-container {
-      text-align: left;
-    }
+  .dhali-button:hover {
+    background-color: #6f6ffd;
+    color: rgb(255, 255, 255);
+  }
+  
+  .dhali-button-container {
+    text-align: left;
+  }
 </style>
 
 <blockquote>
@@ -876,43 +883,43 @@ After retrieving your payment claim (a json), you must embed it into request hea
 curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span class="nv">$PAYMENT_CLAIM</span><span class="s2">"</span> https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list<span class="o">=</span>owners
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
 <span class="kd">const</span> <span class="nx">PAYMENT_CLAIM</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
-    <span class="na">account</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-classic-address</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">destination_account</span><span class="p">:</span> <span class="dl">"</span><span class="s2">rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">authorized_to_claim</span><span class="p">:</span> <span class="dl">"</span><span class="s2">94875</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">signature</span><span class="p">:</span> <span class="dl">"</span><span class="s2">a-signature</span><span class="dl">"</span><span class="p">,</span>
-    <span class="na">channel_id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">a-channel-id</span><span class="dl">"</span>
+  <span class="na">account</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-classic-address</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">destination_account</span><span class="p">:</span> <span class="dl">"</span><span class="s2">rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">authorized_to_claim</span><span class="p">:</span> <span class="dl">"</span><span class="s2">94875</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">signature</span><span class="p">:</span> <span class="dl">"</span><span class="s2">a-signature</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">channel_id</span><span class="p">:</span> <span class="dl">"</span><span class="s2">a-channel-id</span><span class="dl">"</span>
 <span class="p">});</span>
 
 <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
-    <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
-    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
-        <span class="dl">'</span><span class="s1">Payment-Claim</span><span class="dl">'</span><span class="p">:</span> <span class="nx">PAYMENT_CLAIM</span>
-    <span class="p">}</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">GET</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Payment-Claim</span><span class="dl">'</span><span class="p">:</span> <span class="nx">PAYMENT_CLAIM</span>
+  <span class="p">}</span>
 <span class="p">})</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">data</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span>
 <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Error:</span><span class="dl">'</span><span class="p">,</span> <span class="nx">error</span><span class="p">));</span>
 
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$paymentClaim</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">([</span>
-    <span class="s2">"account"</span> <span class="o">=&gt;</span> <span class="s2">"my-classic-address"</span><span class="p">,</span>
-    <span class="s2">"destination_account"</span> <span class="o">=&gt;</span> <span class="s2">"rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR"</span><span class="p">,</span>
-    <span class="s2">"authorized_to_claim"</span> <span class="o">=&gt;</span> <span class="s2">"94875"</span><span class="p">,</span>
-    <span class="s2">"signature"</span> <span class="o">=&gt;</span> <span class="s2">"a-signature"</span><span class="p">,</span>
-    <span class="s2">"channel_id"</span> <span class="o">=&gt;</span> <span class="s2">"a-channel-id"</span>
+  <span class="s2">"account"</span> <span class="o">=&gt;</span> <span class="s2">"my-classic-address"</span><span class="p">,</span>
+  <span class="s2">"destination_account"</span> <span class="o">=&gt;</span> <span class="s2">"rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR"</span><span class="p">,</span>
+  <span class="s2">"authorized_to_claim"</span> <span class="o">=&gt;</span> <span class="s2">"94875"</span><span class="p">,</span>
+  <span class="s2">"signature"</span> <span class="o">=&gt;</span> <span class="s2">"a-signature"</span><span class="p">,</span>
+  <span class="s2">"channel_id"</span> <span class="o">=&gt;</span> <span class="s2">"a-channel-id"</span>
 <span class="p">]);</span>
 
 <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s2">"https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners"</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="p">[</span>
-    <span class="s2">"Payment-Claim: </span><span class="nv">$paymentClaim</span><span class="s2">"</span>
+  <span class="s2">"Payment-Claim: </span><span class="nv">$paymentClaim</span><span class="s2">"</span>
 <span class="p">]);</span>
 
 <span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 <span class="k">if</span> <span class="p">(</span><span class="nb">curl_errno</span><span class="p">(</span><span class="nv">$ch</span><span class="p">))</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="s1">'Error:'</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+  <span class="k">echo</span> <span class="s1">'Error:'</span> <span class="mf">.</span> <span class="nb">curl_error</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+  <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
 </code></pre></div><h1 id='username'>Username</h1><h2 id='get-username-for-an-address'>Get username for an address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true"</span>
