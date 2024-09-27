@@ -320,6 +320,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#27th-of-september-2024" class="toc-h2 toc-link" data-title="27th of September 2024">27th of September 2024</a>
+                  </li>
+                  <li>
                     <a href="#23rd-of-september-2024" class="toc-h2 toc-link" data-title="23rd of September 2024">23rd of September 2024</a>
                   </li>
                   <li>
@@ -421,6 +424,9 @@
                   </li>
                   <li>
                     <a href="#nft-offers" class="toc-h2 toc-link" data-title="NFT Offers">NFT Offers</a>
+                  </li>
+                  <li>
+                    <a href="#nft-collection" class="toc-h2 toc-link" data-title="NFT Collection">NFT Collection</a>
                   </li>
                   <li>
                     <a href="#nft-collections" class="toc-h2 toc-link" data-title="NFT Collections">NFT Collections</a>
@@ -665,7 +671,13 @@
 <li><p><a href="https://xrplexplorer.com/admin">Request an API key</a></p></li>
 <li><p>To get your payment details please reply to the email with your API key.</p></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='23rd-of-september-2024'>23rd of September 2024</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='27th-of-september-2024'>27th of September 2024</h3>
+<p>A new endpoint was added:</p>
+
+<p><a href="#nft-collection"><strong>NFT Collection</strong></a></p>
+
+<p>Get the latest information for a specific NFT collection, name, descriptions, when it was created and updated, get the floorPrice on the open market and NFT marketplaces in all available tokens. Get the statistics for the collection, like the current number of NFTs, owners, and count of buyers and traded NFTs for the last 24 hours, week, month, or year.</p>
+<h3 id='23rd-of-september-2024'>23rd of September 2024</h3>
 <p>A new query parameter: <code>collectionDetails</code> was added to the <a href="#nft"><strong>NFT</strong></a> and <a href="#nfts"><strong>NFTs</strong></a> API end-points.</p>
 
 <p>You can get detailed information about the collection of the NFT (including the <code>assets</code>).</p>
@@ -2077,6 +2089,134 @@ Exclude unnecessary parameters to make your request faster.
 <td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
 </tr>
 </tbody></table>
+<h2 id='nft-collection'>NFT Collection</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&amp;statistics=true&amp;assets=true"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&amp;statistics=true&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&amp;statistics=true&amp;assets=true"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls20"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"floorPrice"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"assets"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xSPECTAR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8888"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QmWyX21PY7DDLpEPNqAyEcLKASEJznVKiB9VrUCwvEmZBc"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1670361970</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1671008552</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xSPECTAR"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xSPECTAR"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"taxon"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"floorPrices"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"139000000"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49250000"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rpZqTPC8GvrSvEfFsUuHkmPCg29GdQuXhC"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"destinationDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bidds"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"open"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7853504543544152000000000000000000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rh5jzTCdMRCVjQ7LT6zucjezC47KATkuvv"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/image/hash"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"preview"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/preview/hash"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"thumbnail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/thumbnail/hash"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"owners"</span><span class="p">:</span><span class="w"> </span><span class="mi">1622</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"nfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">8887</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"all"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"buyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">900</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tradedNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">3167</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"day"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"buyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tradedNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"week"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"buyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tradedNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">52</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"month"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"buyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">74</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tradedNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">272</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"buyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">316</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"tradedNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1086</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves NFT Collection details, including floor price, sale statistics, owner count etc.</p>
+<h3 id='http-request-9'>HTTP Request</h3>
+<p><code>GET https://xrplexplorer.com/api/v2/nft-collection/&lt;collectionId&gt;</code></p>
+<h3 id='url-parameters-7'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>collectionId</td>
+<td>The collectionId in the format <code>issuer:taxon</code> for Standard collections or <code>issuer</code> for Sologenic collections. (you can find collection ids in the NFT Collections endpoint)</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-9'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>statistics</td>
+<td>false</td>
+<td>(Only available on paid API plans) If set to true, returns <code>statistics</code> with owner count and NFT count for the present time, it also includes count of buyers and traded NFTs for the last 24 hours, 7 days, 30 days, or 365 days.</td>
+</tr>
+<tr>
+<td>floorPrice</td>
+<td>false</td>
+<td>(Only available on paid API plans) If set to true, returns <code>floorPrices</code> with the lowest price for the NFT collection.</td>
+</tr>
+<tr>
+<td>assets</td>
+<td>false</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+</tr>
+</tbody></table>
 <h2 id='nft-collections'>NFT Collections</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-collections?search=zerpmon&amp;assets=true&amp;floorPrice=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -2163,9 +2303,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Collection list for your search creterias.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/nft-collections</code></p>
-<h3 id='query-parameters-9'>Query Parameters</h3>
+<h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2258,9 +2398,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Owners list sorted by NFT count.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/nft-owners</code></p>
-<h3 id='query-parameters-10'>Query Parameters</h3>
+<h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2414,9 +2554,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a List of NFT Sales for specified parameters</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/nft-sales</code></p>
-<h3 id='query-parameters-11'>Query Parameters</h3>
+<h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2569,9 +2709,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes for specified parameters</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/nft-volumes</code></p>
-<h3 id='query-parameters-12'>Query Parameters</h3>
+<h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2782,9 +2922,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves Extended NFT Sales Volumes for specified parameters (Only available on paid API plans)</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/nft-volumes-extended</code></p>
-<h3 id='query-parameters-13'>Query Parameters</h3>
+<h3 id='query-parameters-14'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2915,9 +3055,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT minters on XRPL for a specified period of time</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/nft-marketplaces</code></p>
-<h3 id='query-parameters-14'>Query Parameters</h3>
+<h3 id='query-parameters-15'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2959,9 +3099,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT mints count for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/nft-chart</code></p>
-<h3 id='query-parameters-15'>Query Parameters</h3>
+<h3 id='query-parameters-16'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3020,9 +3160,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes Chart data for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/nft-sales-chart</code></p>
-<h3 id='query-parameters-16'>Query Parameters</h3>
+<h3 id='query-parameters-17'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3089,7 +3229,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the last ledger which was crawled by our NFT crawler.</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/statistics/nftokens/crawler</code></p>
 <h3 id='response-format'>Response Format</h3>
 <table><thead>
@@ -3169,7 +3309,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of identified services.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/services</code></p>
 <h3 id='response-format-2'>Response Format</h3>
 <table><thead>
@@ -3255,7 +3395,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of all identified service addresses.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/services/addresses</code></p>
 <h3 id='response-format-3'>Response Format</h3>
 <table><thead>
@@ -3319,7 +3459,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a timestamp of last DB update for services/addresses.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-21'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/services/lastUpdate</code></p>
 <h3 id='response-format-4'>Response Format</h3>
 <table><thead>
@@ -3437,9 +3577,9 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested XRPL address.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/address/&lt;address&gt;</code></p>
-<h3 id='url-parameters-7'>URL Parameters</h3>
+<h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3451,7 +3591,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 <td>The XRPL address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-17'>Query Parameters</h3>
+<h3 id='query-parameters-18'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3538,9 +3678,9 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves an address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
-<h3 id='url-parameters-8'>URL Parameters</h3>
+<h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3615,9 +3755,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/currency/&lt;currency&gt;</code></p>
-<h3 id='url-parameters-9'>URL Parameters</h3>
+<h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3722,9 +3862,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/currencies</code></p>
-<h3 id='query-parameters-18'>Query Parameters</h3>
+<h3 id='query-parameters-19'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3909,9 +4049,9 @@ Page on bithomp that displays it:
 <a href="https://xrplexplorer.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
   https://xrplexplorer.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
 </a>.</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/transaction/&lt;hash&gt;</code></p>
-<h3 id='url-parameters-10'>URL Parameters</h3>
+<h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3964,9 +4104,9 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://xrplexplorer.com/submit/">
   https://xrplexplorer.com/submit/
 </a>.</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
-<h3 id='url-parameters-11'>URL Parameters</h3>
+<h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4029,7 +4169,7 @@ Page where it used on bithomp:
 <a href="https://xrplexplorer.com/explorer/?hwlogin">
   https://xrplexplorer.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>POST https://xrplexplorer.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -4082,7 +4222,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://xrplexplorer.com/activations">https://xrplexplorer.com/activations</a>.</p>
-<h3 id='http-request-28'>HTTP Request</h3>
+<h3 id='http-request-29'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/account-chart</code></p>
 <h3 id='response-format-5'>Response Format</h3>
 <table><thead>
@@ -4146,7 +4286,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://xrplexplorer.com/genesis">https://xrplexplorer.com/genesis</a>.</p>
-<h3 id='http-request-29'>HTTP Request</h3>
+<h3 id='http-request-30'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/genesis</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
@@ -4264,7 +4404,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://xrplexplorer.com/alerts">https://xrplexplorer.com/alerts</a>.</p>
-<h3 id='http-request-30'>HTTP Request</h3>
+<h3 id='http-request-31'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-7'>Response Format</h3>
 <table><thead>
