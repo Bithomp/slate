@@ -268,9 +268,11 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 
 ## On-demand
 
-To use our on-demand option, no API key is required. 
-* For the XRPL Mainnet API, make requests using `https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/` as the base URL. 
-* For the Xahau Mainnet API, make requests using `https://run.api.dhali.io/56d61c4b-654f-4abc-8e5e-7fcb89ba13dd/` as the base URL. 
+To use our on-demand option, no API key is required:
+
+- For the XRPL Mainnet API, make requests using `https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/` as the base URL. 
+- For the Xahau Mainnet API, make requests using `https://run.api.dhali.io/56d61c4b-654f-4abc-8e5e-7fcb89ba13dd/` as the base URL.
+
 All subsequent paths, query strings, etc, remain the same.
 In addition, add a payment claim with enough value using the following button. The XRPL API only supports XRP payments. The Xahau API only supports XAH payments.
 After retrieving your payment claim (a json), embed it into request headers using the header key: `Payment-Claim`. 
