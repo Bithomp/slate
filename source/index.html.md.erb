@@ -52,7 +52,7 @@ For the mainnets we have the following API plans:
 | Standard*               | 400   | 120K  | Basic | 100 EUR  |
 | Premium*                | 1000  | 300K  | Basic | 250 EUR  |
 | Enterprise*             | 2000  | 600K  | Basic | 500 EUR  |
-| <a href="#on-demand">On-demand*</a> | N/A   | N/A   | Start   | 0.0005 XRP / request |
+| <a href="#on-demand">On-demand*</a> | N/A   | N/A   | Start   | 0.0005 XRP / request or 0.005 XAH / request |
 
 * On that plan the <a href="#nft">**NFT**</a>, <a href="#nfts">**NFTs**</a>, <a href="#nft-offers">**NFT offers**</a> endpoints returns `assets` with direct URLs to cached and resized images and videos.
 
@@ -270,14 +270,17 @@ You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your persona
 
 ## On-demand
 
-To use our on-demand option, no API key is required. All requests should be made using `https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9` as the base URL. All subsequent paths, query strings, etc, remain the same. 
-In addition, you should create a payment claim with enough value using the following button.
-After retrieving your payment claim (a json), you must embed it into request headers using the header key: `Payment-Claim`. 
+To use our on-demand option, no API key is required. 
+* For the XRPL Mainnet API, make requests using `https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/` as the base URL. 
+* For the Xahau Mainnet API, make requests using `https://run.api.dhali.io/56d61c4b-654f-4abc-8e5e-7fcb89ba13dd/` as the base URL. 
+All subsequent paths, query strings, etc, remain the same.
+In addition, add a payment claim with enough value using the following button. The XRPL API only supports XRP payments. The Xahau API only supports XAH payments.
+After retrieving your payment claim (a json), embed it into request headers using the header key: `Payment-Claim`. 
 <div class="dhali-button-container"><button  class="dhali-button" onclick="openDhaliPaymentDialog()">Create payment claim</button></div>
 
 <script>
   function openDhaliPaymentDialog() {
-    var myWindow = window.open("https://pay.dhali.io/?exampleGetUrl=https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners", "MsgWindow", "width=500,height=700");
+    var myWindow = window.open("https://pay.dhali.io/?uuids=d995db530-7e57-46d1-ac8a-76324794e0c9,56d61c4b-654f-4abc-8e5e-7fcb89ba13dd&exampleGetUrl=https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners", "MsgWindow", "width=500,height=700");
     myWindow.focus();
   }
 </script>
