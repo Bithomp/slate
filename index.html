@@ -835,10 +835,14 @@ curl <span class="s2">"api_endpoint_here"</span>
 You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your personal API key.
 </aside>
 <h2 id='on-demand'>On-demand</h2>
-<p>To use our on-demand option, no API key is required. 
-* For the XRPL Mainnet API, make requests using <code>https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/</code> as the base URL. 
-* For the Xahau Mainnet API, make requests using <code>https://run.api.dhali.io/56d61c4b-654f-4abc-8e5e-7fcb89ba13dd/</code> as the base URL. 
-All subsequent paths, query strings, etc, remain the same.
+<p>To use our on-demand option, no API key is required:</p>
+
+<ul>
+<li>For the XRPL Mainnet API, make requests using <code>https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/</code> as the base URL. </li>
+<li>For the Xahau Mainnet API, make requests using <code>https://run.api.dhali.io/56d61c4b-654f-4abc-8e5e-7fcb89ba13dd/</code> as the base URL.</li>
+</ul>
+
+<p>All subsequent paths, query strings, etc, remain the same.
 In addition, add a payment claim with enough value using the following button. The XRPL API only supports XRP payments. The Xahau API only supports XAH payments.
 After retrieving your payment claim (a json), embed it into request headers using the header key: <code>Payment-Claim</code>. 
 <div class="dhali-button-container"><button  class="dhali-button" onclick="openDhaliPaymentDialog()">Create payment claim</button></div></p>
