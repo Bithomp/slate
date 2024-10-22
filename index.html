@@ -320,6 +320,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#22nd-of-october-2024" class="toc-h2 toc-link" data-title="22nd of October 2024">22nd of October 2024</a>
+                  </li>
+                  <li>
                     <a href="#27th-of-september-2024" class="toc-h2 toc-link" data-title="27th of September 2024">27th of September 2024</a>
                   </li>
                   <li>
@@ -495,6 +498,14 @@
                   </li>
                   <li>
                     <a href="#currencies" class="toc-h2 toc-link" data-title="Currencies">Currencies</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#tokens" class="toc-h1 toc-link" data-title="Tokens">Tokens</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#token-balances" class="toc-h2 toc-link" data-title="Token Balances">Token Balances</a>
                   </li>
               </ul>
           </li>
@@ -689,7 +700,13 @@
 <ul>
 <li><a href="https://xrplexplorer.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='27th-of-september-2024'>27th of September 2024</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='22nd-of-october-2024'>22nd of October 2024</h3>
+<p>A new endpoint was added:</p>
+
+<p><a href="#token-balances"><strong>Token Balances</strong></a></p>
+
+<p>Get the list of token balances for a specific address. For Xahau it also includes locked balances (Token escrowed balances).</p>
+<h3 id='27th-of-september-2024'>27th of September 2024</h3>
 <p>A new endpoint was added:</p>
 
 <p><a href="#nft-collection"><strong>NFT Collection</strong></a></p>
@@ -3601,7 +3618,7 @@ Before downloading the whole list again you can check if it was updated here: <a
   </span><span class="nl">"verifiedDomain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves information for a requested XRPL address.</p>
+<p>This endpoint retrieves information for a requested address.</p>
 <h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/address/&lt;address&gt;</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
@@ -3613,7 +3630,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </thead><tbody>
 <tr>
 <td>address</td>
-<td>The XRPL address, can be old r-address or a new X-address</td>
+<td>The address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
 <h3 id='query-parameters-18'>Query Parameters</h3>
@@ -3901,6 +3918,65 @@ You can retrieve information for MANY currencies in one request:
 <td>A list of currencies separated by comma (HEX or XLS-14 NFT)</td>
 </tr>
 </tbody></table>
+<h1 id='tokens'>Tokens</h1><h2 id='token-balances'>Token Balances</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"counterparty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7999.889334554484"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ripplingDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"peer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ripplingDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"counterparty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEvernodee8dJLaFsujS6q1EiXvZYmHXr8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000003153"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ripplingDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"peer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ripplingDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"lock"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1974"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns trustlines (IOU/token balances), for XAHAU it is also returns the locked amounts for IOUs (in escrows) (Only available on paid API plans).</p>
+<h3 id='http-request-26'>HTTP Request</h3>
+<p><code>GET https://xrplexplorer.com/api/v2/trustlines/&lt;address&gt;</code></p>
+<h3 id='url-parameters-11'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>The address you want to get token balances for</td>
+</tr>
+</tbody></table>
 <h1 id='transaction'>Transaction</h1><h2 id='tx-details'>Tx Details</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -4074,9 +4150,9 @@ Page on bithomp that displays it:
 <a href="https://xrplexplorer.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
   https://xrplexplorer.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
 </a>.</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/transaction/&lt;hash&gt;</code></p>
-<h3 id='url-parameters-11'>URL Parameters</h3>
+<h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4129,9 +4205,9 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://xrplexplorer.com/submit/">
   https://xrplexplorer.com/submit/
 </a>.</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
-<h3 id='url-parameters-12'>URL Parameters</h3>
+<h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4194,7 +4270,7 @@ Page where it used on bithomp:
 <a href="https://xrplexplorer.com/explorer/?hwlogin">
   https://xrplexplorer.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-28'>HTTP Request</h3>
+<h3 id='http-request-29'>HTTP Request</h3>
 <p><code>POST https://xrplexplorer.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -4247,7 +4323,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://xrplexplorer.com/activations">https://xrplexplorer.com/activations</a>.</p>
-<h3 id='http-request-29'>HTTP Request</h3>
+<h3 id='http-request-30'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/account-chart</code></p>
 <h3 id='response-format-5'>Response Format</h3>
 <table><thead>
@@ -4311,7 +4387,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://xrplexplorer.com/genesis">https://xrplexplorer.com/genesis</a>.</p>
-<h3 id='http-request-30'>HTTP Request</h3>
+<h3 id='http-request-31'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/genesis</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
@@ -4429,7 +4505,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://xrplexplorer.com/alerts">https://xrplexplorer.com/alerts</a>.</p>
-<h3 id='http-request-31'>HTTP Request</h3>
+<h3 id='http-request-32'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-7'>Response Format</h3>
 <table><thead>
