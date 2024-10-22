@@ -77,6 +77,14 @@ NFT content plans (Direct access to fast [resized and cached] images and videos)
 
 # Changelog
 
+### 22nd of October 2024
+
+A new endpoint was added:
+
+<a href="#token-balances">**Token Balances**</a>
+
+Get the list of token balances for a specific address. For Xahau it also includes locked balances (Token escrowed balances).
+
 ### 27th of September 2024
 
 A new endpoint was added:
@@ -2711,7 +2719,7 @@ print $addressInfo;
 }
 ```
 
-This endpoint retrieves information for a requested XRPL address.
+This endpoint retrieves information for a requested address.
 
 ### HTTP Request
 
@@ -2721,7 +2729,7 @@ This endpoint retrieves information for a requested XRPL address.
 
 Parameter | Description
 --------- | -----------
-address | The XRPL address, can be old r-address or a new X-address
+address | The address, can be old r-address or a new X-address
 
 ### Query Parameters
 
@@ -2987,6 +2995,75 @@ This endpoint retrieves information for a requested currencies (HEX or XLS-14 NF
 Parameter     | Description
 ------------- | -----------
 currencyList  | A list of currencies separated by comma (HEX or XLS-14 NFT)
+
+# Tokens
+
+## Token Balances
+
+```shell
+curl "https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J", printData);
+```
+
+```php
+$data = curl_bithomp("https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "counterparty": "r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd",
+    "balance": "7999.889334554484",
+    "currency": "GBP",
+    "limit": "1000000",
+    "ripplingDisabled": true,
+    "peer": {
+      "limit": "0",
+      "ripplingDisabled": true
+    }
+  }
+]
+
+[
+  {
+    "counterparty": "rEvernodee8dJLaFsujS6q1EiXvZYmHXr8",
+    "balance": "0.000000003153",
+    "currency": "EVR",
+    "limit": "1000000000",
+    "ripplingDisabled": true,
+    "peer": {
+      "limit": "0",
+      "ripplingDisabled": false
+    },
+    "lock": {
+      "balance": "1974",
+      "count": 1
+    }
+  }
+]
+```
+
+This endpoint returns trustlines (IOU/token balances), for XAHAU it is also returns the locked amounts for IOUs (in escrows) (Only available on paid API plans).
+
+### HTTP Request
+
+`GET https://xrplexplorer.com/api/v2/trustlines/<address>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+address | The address you want to get token balances for
 
 # Transaction
 
