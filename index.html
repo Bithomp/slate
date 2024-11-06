@@ -417,7 +417,7 @@
               </ul>
           </li>
           <li>
-            <a href="#nft-xls-20-xls-35" class="toc-h1 toc-link" data-title="NFT (XLS-20 / XLS-35)">NFT (XLS-20 / XLS-35)</a>
+            <a href="#nft-xls-20" class="toc-h1 toc-link" data-title="NFT (XLS-20)">NFT (XLS-20)</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#nft" class="toc-h2 toc-link" data-title="NFT">NFT</a>
@@ -460,6 +460,29 @@
                   </li>
                   <li>
                     <a href="#nft-crawler-last-update" class="toc-h2 toc-link" data-title="NFT Crawler (Last update)">NFT Crawler (Last update)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#uri-tokens-nft-xls-35" class="toc-h1 toc-link" data-title="URI-TOKENS (NFT, XLS-35)">URI-TOKENS (NFT, XLS-35)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#nft-2" class="toc-h2 toc-link" data-title="NFT">NFT</a>
+                  </li>
+                  <li>
+                    <a href="#nfts-2" class="toc-h2 toc-link" data-title="NFTS">NFTS</a>
+                  </li>
+                  <li>
+                    <a href="#nft-offers-2" class="toc-h2 toc-link" data-title="NFT Offers">NFT Offers</a>
+                  </li>
+                  <li>
+                    <a href="#nft-distribution-2" class="toc-h2 toc-link" data-title="NFT Distribution">NFT Distribution</a>
+                  </li>
+                  <li>
+                    <a href="#nft-sales-2" class="toc-h2 toc-link" data-title="NFT Sales">NFT Sales</a>
+                  </li>
+                  <li>
+                    <a href="#nft-crawler-last-update-2" class="toc-h2 toc-link" data-title="NFT Crawler (Last update)">NFT Crawler (Last update)</a>
                   </li>
               </ul>
           </li>
@@ -1225,6 +1248,16 @@ Exclude unnecessary parameters to make your request faster.
 <td>null</td>
 <td>currency issuer for <code>sortCurrency</code> in case of an IOU</td>
 </tr>
+<tr>
+<td>voteSlots</td>
+<td>true</td>
+<td>change to false if you do not need voteSlots to reduce the response size</td>
+</tr>
+<tr>
+<td>auctionSlot</td>
+<td>true</td>
+<td>change to false if you do not need auctionSlot to reduce the response size</td>
+</tr>
 </tbody></table>
 <h2 id='amm-pool'>AMM Pool</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
@@ -1426,7 +1459,7 @@ Exclude unnecessary parameters to make your request faster.
 <td>ISO timestamp or unix timestamp (if set the request will return data for that timestamp)</td>
 </tr>
 </tbody></table>
-<h1 id='nft-xls-20-xls-35'>NFT (XLS-20 / XLS-35)</h1><h2 id='nft'>NFT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true&amp;assets=true"</span>
+<h1 id='nft-xls-20'>NFT (XLS-20)</h1><h2 id='nft'>NFT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true&amp;assets=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
@@ -1523,7 +1556,7 @@ Exclude unnecessary parameters to make your request faster.
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves information for a requested NFT (XLS-20 or XLS-35).</p>
+<p>This endpoint retrieves information for a requested NFT.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/nft/&lt;nftID&gt;</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
@@ -1535,7 +1568,7 @@ Exclude unnecessary parameters to make your request faster.
 </thead><tbody>
 <tr>
 <td>nftID</td>
-<td>An NFT ID (XLS-20 or XLS-35)</td>
+<td>An NFT ID</td>
 </tr>
 </tbody></table>
 <h3 id='query-parameters-5'>Query Parameters</h3>
@@ -1740,7 +1773,7 @@ Exclude unnecessary parameters to make your request faster.
 </thead><tbody>
 <tr>
 <td>nftOfferID</td>
-<td>An NFT Offer ID (XLS-20)</td>
+<td>An NFT Offer ID</td>
 </tr>
 </tbody></table>
 <h3 id='query-parameters-6'>Query Parameters</h3>
@@ -1823,7 +1856,7 @@ Exclude unnecessary parameters to make your request faster.
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves a List of NFTs (XLS-20 / XLS-35) for specified parameters</p>
+<p>This endpoint retrieves a List of NFTs for specified parameters</p>
 <h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/nfts</code></p>
 <h3 id='query-parameters-7'>Query Parameters</h3>
@@ -3295,6 +3328,967 @@ Exclude unnecessary parameters to make your request faster.
 <td>UNIX timestamp of the last crawled ledger.</td>
 </tr>
 </tbody></table>
+<h1 id='uri-tokens-nft-xls-35'>URI-TOKENS (NFT, XLS-35)</h1><h2 id='nft-2'>NFT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&amp;metadata=true&amp;history=true&amp;sellOffers=true&amp;offersValidate=true&amp;offersHistory=true&amp;convertCurrencies=usd"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&amp;metadata=true&amp;history=true&amp;sellOffers=true&amp;offersValidate=true&amp;offersHistory=true&amp;convertCurrencies=usd</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&amp;metadata=true&amp;history=true&amp;sellOffers=true&amp;offersValidate=true&amp;offersHistory=true&amp;convertCurrencies=usd"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls35"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"nftokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uritokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"burnable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r47eK7FT1jXBF1WnwF1uWKGpL1A9zXzs4A"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68747470733A2F2F6170692E767072612E6170702F76312F6D657461646174613F6163636F756E743D72555969544C59704E384D34784C687452443948515A4677715A3457614B4A633839266E616D6573706163653D33424531443432324134363038354531374634413139443345443730374338363639323741364433353441353632433435413738463146303344374334313138266B65793D43303843413845314442414241333933464336424342424135454239453130444235433542384333333041364531394236314332443145444145413444394241"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"digest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C08CA8E1DBABA393FC6BCBBA5EB9E10DB5C5B8C330A6E19B61C2D1EDAEA4D9BA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1730873082</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ownerChangedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1730873082</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"deletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"mintedByMarketplace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.vpra.app/v1/metadata?account=rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89&amp;namespace=3BE1D422A46085E17F4A19D3ED707C866927A6D354A562C45A78F1F03D7C4118&amp;key=C08CA8E1DBABA393FC6BCBBA5EB9E10DB5C5B8C330A6E19B61C2D1EDAEA4D9BA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">166</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fatty"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gender"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"age"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"breed"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"size"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hooves"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"speed"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stamina"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temperament"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"training"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"health"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lifespan"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"affinity"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"morale"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"is_breedable"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"breed_price"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token_id"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wins"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"total"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VPRA"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Virtual Pet Racing Adventure"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"taxon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"An AI-enhanced robotic rabbit, designed for rapid leaps and agile sprints."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"external_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vpra.app"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1D18E734AF2AB1082D69937494D98016165E9B4E40E242EE245D60B325E91327"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://QmR54jrMjyiq547znh4xBGnhJDDyZvySvGSHPFMst2ciXU"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fatty #166"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"nftType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpra.v1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"jsonMeta"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"history"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r47eK7FT1jXBF1WnwF1uWKGpL1A9zXzs4A"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"changedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1730873082</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">9690402</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"815CBB6A13A6C94CACC1333FFAA825EE565E4BE1AB2B4DC32355E0B4E98198A9"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ownerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MillionHeadsUP"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"changedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1730873082</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">9690402</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"815CBB6A13A6C94CACC1333FFAA825EE565E4BE1AB2B4DC32355E0B4E98198A9"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ownerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"sellOffers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"ownerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MillionHeadsUP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves information for a requested NFT.</p>
+<h3 id='http-request-19'>HTTP Request</h3>
+<p><code>GET https://xahauexplorer.com/api/v2/nft/&lt;uritokenID&gt;</code></p>
+<h3 id='url-parameters-8'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uritokenID</td>
+<td>An URI Token ID</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-18'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uri</td>
+<td>false</td>
+<td>If set to true, the result will include <code>uri</code> and <code>url</code>.</td>
+</tr>
+<tr>
+<td>assets</td>
+<td>false</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+</tr>
+<tr>
+<td>sellOffers</td>
+<td>false</td>
+<td>If set true, the result will include <code>sellOffers</code>.</td>
+</tr>
+<tr>
+<td>history</td>
+<td>false</td>
+<td>If set to true, the result will include <code>history</code>.</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>false</td>
+<td>If set to true, the result will include <code>metadata</code>.</td>
+</tr>
+<tr>
+<td>offersValidate</td>
+<td>false</td>
+<td>(Only available on paid API plans) If set to true, each offer will include <code>valid</code> as <code>true</code> or <code>false</code>, if <code>false</code> then it also include <code>validationErrors</code> array.</td>
+</tr>
+<tr>
+<td>offersHistory</td>
+<td>false</td>
+<td>(Only available on paid API plans) If set to true, each result will include historical offers which are already accepted or canceled.</td>
+</tr>
+<tr>
+<td>convertCurrencies</td>
+<td>null</td>
+<td>(Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example <code>xrp,usd</code> (40 fiat currencies available), the for <code>history</code> response  will have an array <code>amountInConvertCurrencies</code></td>
+</tr>
+<tr>
+<td>collectionDetails</td>
+<td>false</td>
+<td>(Only available on paid API plans) If set to true, each nft will include <code>collectionDetails</code> with the collection details. if parameter <code>assets</code> is set as <code>true</code>, you will also get assets in the <code>collectionDetails</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='nfts-2'>NFTS</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/uritokens?list=uritokens&amp;issuedAt=all&amp;order=mintedNew&amp;hasImage=true"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xahauexplorer.com/api/v2/uritokens?list=uritokens&amp;issuedAt=all&amp;order=mintedNew&amp;hasImage=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xahauexplorer.com/api/v2/uritokens?list=uritokens&amp;issuedAt=all&amp;order=mintedNew&amp;hasImage=true"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls35"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uritokens"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mintedNew"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hasMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hasImage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"issuedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"uritokens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls35"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"nftokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FA21DE7E29087E30F546828F06C33D2CE926B1E433D7368F31F8382EA84BCDC2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uritokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FA21DE7E29087E30F546828F06C33D2CE926B1E433D7368F31F8382EA84BCDC2"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"burnable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r47eK7FT1jXBF1WnwF1uWKGpL1A9zXzs4A"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68747470733A2F2F6170692E767072612E6170702F76312F6D657461646174613F6163636F756E743D72555969544C59704E384D34784C687452443948515A4677715A3457614B4A633839266E616D6573706163653D33424531443432324134363038354531374634413139443345443730374338363639323741364433353441353632433435413738463146303344374334313138266B65793D46463645393442363835324638314345333442373933354341444138334139424637423632333233363646443138384339414236394632323736434233313237"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"digest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FF6E94B6852F81CE34B7935CADA83A9BF7B6232366FD188C9AB69F2276CB3127"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"issuedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1730896291</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"ownerChangedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1730896291</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"deletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"mintedByMarketplace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.vpra.app/v1/metadata?account=rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89&amp;namespace=3BE1D422A46085E17F4A19D3ED707C866927A6D354A562C45A78F1F03D7C4118&amp;key=FF6E94B6852F81CE34B7935CADA83A9BF7B6232366FD188C9AB69F2276CB3127"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"id"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">168</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trump"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gender"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"age"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"breed"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"size"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"body"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hooves"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"speed"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"stamina"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"temperament"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"training"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"health"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lifespan"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"affinity"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"morale"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"is_breedable"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"breed_price"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"token_id"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FA21DE7E29087E30F546828F06C33D2CE926B1E433D7368F31F8382EA84BCDC2"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wins"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"total"</span><span class="p">,</span><span class="w">
+                        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+                    </span><span class="p">}</span><span class="w">
+                </span><span class="p">],</span><span class="w">
+                </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"family"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VPRA"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Virtual Pet Racing Adventure"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"taxon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A sleek AI robotic cat, engineered for speed and reflexive racing precision."</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"external_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vpra.app"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9AD902D77753AF68735E9B4A6314AF28533E61D0EAE1D40E516D6E5CAC1A2C5B"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://QmZAgJvC6oZVMogoNLUeFFbQ1TJbSgbZsXdQjtDNGbTP19"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Trump #168"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"nftType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vpra.v1"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"jsonMeta"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"ownerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MillionHeadsUP"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a List of NFTs for specified parameters</p>
+<h3 id='http-request-20'>HTTP Request</h3>
+<p><code>GET https://xahauexplorer.com/api/v2/uritokens</code></p>
+<h3 id='query-parameters-19'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>owner</td>
+<td>null</td>
+<td>The address of the Owner</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td>null</td>
+<td>The address of the Issuer</td>
+</tr>
+<tr>
+<td>assets</td>
+<td>false</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+</tr>
+<tr>
+<td>hasMetadata</td>
+<td>false</td>
+<td>set to <code>true</code>, to list NFTs only with available metadata</td>
+</tr>
+<tr>
+<td>hasImage</td>
+<td>false</td>
+<td>set to <code>true</code>, to list NFTs only with available media data (preview images can be generated from images, videos, pdf files and 3d models)</td>
+</tr>
+<tr>
+<td>includeDeleted</td>
+<td>false</td>
+<td>set to <code>true</code>, if you want result to include deleeted NFTs</td>
+</tr>
+<tr>
+<td>mintedByMarketplace</td>
+<td>null</td>
+<td>Here you can specify a minter from https://xrplexplorer.com/nft-minters?period=all to filter your search by minter project.</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>null</td>
+<td>The marker from the previous request, if you need a next page of NFTs</td>
+</tr>
+<tr>
+<td>list</td>
+<td><code>uritokens</code></td>
+<td>(Only available on paid API plans) can be set to <code>onSale</code> to get the list of NFTs with active sell offers</td>
+</tr>
+<tr>
+<td>destination</td>
+<td><code>all</code></td>
+<td>(Only available on paid API plans) used to filter NFTs for sale <code>list=onSale</code>, can be set as an address (to specify a particular MarketPlace), <code>public</code>, <code>knownBrokers</code>, <code>publicAndKnownBrokers</code>, <code>all</code></td>
+</tr>
+<tr>
+<td>order</td>
+<td>null</td>
+<td>(Only available on paid API plans) used to order NFTs: 1. for <code>list=nfts</code>, can be <code>mintedNew</code> and <code>mintedOld</code>, 2. for <code>list=onSale</code>, can be <code>offerCreatedNew</code>, <code>offerCreatedOld</code>, <code>priceLow</code>, <code>priceHigh</code></td>
+</tr>
+<tr>
+<td>currency</td>
+<td>null</td>
+<td>(Only available on paid API plans) used to filter NFTs for sale <code>list=onSale</code>, can be <code>XRP</code> or any other currency code.</td>
+</tr>
+<tr>
+<td>currencyIssuer</td>
+<td>null</td>
+<td>(Only available on paid API plans) A currency issuer for the <code>currency</code> if it is not an XRP.</td>
+</tr>
+<tr>
+<td>issuedAt</td>
+<td>null</td>
+<td>(Only available on paid API plans) It can be used to show NFTs which were minted during some period of time. A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code>, or <code>1671490800000..1671663600000</code> - period or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code>, to show from specific date till now: <code>1671490800000..</code> or <code>2022-12-20T00:00:00.000Z..</code></td>
+</tr>
+<tr>
+<td>deletedAt</td>
+<td>null</td>
+<td>(Only available on paid API plans) It can be used to show NFTs which were burned during some period of time. A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code>. or <code>1671490800000..1671663600000</code> - period or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code>, to show from specific date till now: <code>1671490800000..</code> or <code>2022-12-20T00:00:00.000Z..</code></td>
+</tr>
+<tr>
+<td>sellOffers</td>
+<td>false</td>
+<td>(Available for the Premium plan and higher) If set true, the NFTs will include <code>sellOffers</code>.</td>
+</tr>
+<tr>
+<td>history</td>
+<td>false</td>
+<td>(Available for the Premium plan and higher) If set to true, the NFTs will include <code>history</code>.</td>
+</tr>
+<tr>
+<td>offersValidate</td>
+<td>false</td>
+<td>(Available for the Premium plan and higher) If set to true, each NFT offer will include <code>valid</code> as <code>true</code> or <code>false</code>, if <code>false</code> then it also include <code>validationErrors</code> array.</td>
+</tr>
+<tr>
+<td>offersHistory</td>
+<td>false</td>
+<td>(Available for the Premium plan and higher) If set to true, each NFT will include historical offers which are already accepted or canceled.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The number of NFTs to return. (More than 100 is available for the Standard plan and higher).</td>
+</tr>
+<tr>
+<td>ids</td>
+<td>null</td>
+<td>(Available for the Standard plan and higher) A list of NFT IDs separated by commas (max 100), to get information about specific NFTs. Formats: <code>ids=abc,def</code>, <code>ids[]=abc&amp;ids[]=def</code> or <code>ids=abc&amp;ids=def</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='nft-offers-2'>NFT Offers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/uritoken-offers/ekiserrepe?nftoken=true&amp;offersValidate=true"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xahauexplorer.com/api/v2/uritoken-offers/ekiserrepe?nftoken=true&amp;offersValidate=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xahauexplorer.com/api/v2/uritoken-offers/ekiserrepe?nftoken=true&amp;offersValidate=true"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this: </p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1NrYAsv92UPDd8nyCG4A3bez7dhYE61r"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="s2">"offers"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ownerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ekiserrepe"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ekiserrepe"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"nftOffers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls35"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"nftokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BEA3986C0F23A26B541F514FC393EAC579DE20DF99C1EAD6EE2CABF4084879C8"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uritokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BEA3986C0F23A26B541F514FC393EAC579DE20DF99C1EAD6EE2CABF4084879C8"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1715879272</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"createdLedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">5446597</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"createdTxHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7FA83536947E4A5A95466228791EAEC8B45E31A545642D49F4DDB4E668E49A8B"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1NrYAsv92UPDd8nyCG4A3bez7dhYE61r"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1NrYAsv92UPDd8nyCG4A3bez7dhYE61r"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"nftoken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls35"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"nftokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BEA3986C0F23A26B541F514FC393EAC579DE20DF99C1EAD6EE2CABF4084879C8"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"uritokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BEA3986C0F23A26B541F514FC393EAC579DE20DF99C1EAD6EE2CABF4084879C8"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"burnable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1NrYAsv92UPDd8nyCG4A3bez7dhYE61r"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rf1NrYAsv92UPDd8nyCG4A3bez7dhYE61r"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"68747470733A2F2F636F736D696378616861752E636F6D2F6E66742F726E39784E314D557458436451444D57687845516A47565274583639624B693651472F30323335366233362D343061342D343165382D393037392D643632393765643565363631"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"digest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4F6FCD290EC2BE89F8A31826F19EF3BF281C910D0A80161549357432C29A514C"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000000"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"issuedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1715879120</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ownerChangedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1715879122</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"deletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"mintedByMarketplace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cosmicxahau.com/nft/rn9xN1MUtXCdQDMWhxEQjGVRtX69bKi6QG/02356b36-40a4-41e8-9079-d6297ed5e661"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Winnie #783"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Winnie on Xahau!"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cosmicxahau.com/nft/rn9xN1MUtXCdQDMWhxEQjGVRtX69bKi6QG/787e551e-ae63-40c5-99fa-d564f82fdce5"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1715834342655</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Background"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enchanted"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Winnie"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Winnie"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Clothes"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pajama"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mouth"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Normal"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Eyes"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Heart"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hat"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fisherman Hat"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hand"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"None"</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">]</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"jsonMeta"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ekiserrepe"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ekiserrepe"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"ownerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ekiserrepe"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ekiserrepe"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"accountDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ekiserrepe"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ekiserrepe"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"ownerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ekiserrepe"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ekiserrepe"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"valid"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves NFT Offers created by an <code>address</code> or NFT Offers for all NFTs owned by that <code>address</code>.</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>GET https://xahauexplorer.com/api/v2/uritoken-offers/&lt;address&gt;</code></p>
+<h3 id='url-parameters-9'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>An address or a username.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-20'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>list</td>
+<td>null</td>
+<td>default - to list all owned NFT offers, <code>privatelyOfferedToAddress</code> - to list all NFT offers where the <code>address</code> is specified as destination (brokers, private offers, nft transfers).</td>
+</tr>
+<tr>
+<td>nftoken</td>
+<td>false</td>
+<td>If set to true, each offer will include <code>nftoken</code> data, including metadata.</td>
+</tr>
+<tr>
+<td>offersValidate</td>
+<td>false</td>
+<td>(Only available on paid API plans) If set to true, each offer will include <code>valid</code> as <code>true</code> or <code>false</code>, if <code>false</code> then it also include <code>validationErrors</code> array.</td>
+</tr>
+<tr>
+<td>assets</td>
+<td>false</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+</tr>
+</tbody></table>
+<h2 id='nft-distribution-2'>NFT Distribution</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/uritoken-owners?order=nonSelfIssued"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xahauexplorer.com/api/v2/uritoken-owners?order=nonSelfIssued</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xahauexplorer.com/api/v2/uritoken-owners?order=nonSelfIssued"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls35"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nonSelfIssued"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"totalNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">56303</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"totalOwners"</span><span class="p">:</span><span class="w"> </span><span class="mi">17256</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"owners"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rGKT2MUjPUuoC8WYgZcvVPxfXe9jHz3D6R"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">410</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"selfIssued"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"nonSelfIssued"</span><span class="p">:</span><span class="w"> </span><span class="mi">410</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEbdxu89jAKmyEETmLW1CWXgMPmXgTLZbh"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">407</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"selfIssued"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"nonSelfIssued"</span><span class="p">:</span><span class="w"> </span><span class="mi">407</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves NFT Owners list sorted by NFT count.</p>
+<h3 id='http-request-22'>HTTP Request</h3>
+<p><code>GET https://xahauexplorer.com/api/v2/uritoken-owners</code></p>
+<h3 id='query-parameters-21'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order</td>
+<td><code>total</code></td>
+<td><code>nonSelfIssued</code>, <code>selfIssued</code>, <code>total</code> (order list by count of total owned NFTS, or only by self-issued NFTs, or only owned NFTs that issued by another address).</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td>null</td>
+<td>(optional) NFT issuer <code>address</code>, to see the NFT distribution for a specific issuer.</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>null</td>
+<td>(available on paid plans only) The marker from the previous request, if you need a next page of NFT owners.</td>
+</tr>
+</tbody></table>
+<h2 id='nft-sales-2'>NFT Sales</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/uritoken-sales?order=priceHigh&amp;saleType=primaryAndSecondary&amp;period=year&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;hasImage=true"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xahauexplorer.com/api/v2/uritoken-sales?order=priceHigh&amp;saleType=primaryAndSecondary&amp;period=year&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;hasImage=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xahauexplorer.com/api/v2/uritoken-sales?order=priceHigh&amp;saleType=primaryAndSecondary&amp;period=year&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;hasImage=true"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"list"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lastSold"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"priceHigh"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls35"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"saleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"period"</span><span class="p">:</span><span class="w"> </span><span class="s2">"year"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"convertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"usd"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"sortCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usd"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hasImage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"primary"</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"secondary"</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"marker"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16E5DA4D00000001"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sales"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls35"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"nftokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C1012398445F1894412F03C177C89B23D4675B2CE466CCA486791FA0A20B990A"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"uritokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C1012398445F1894412F03C177C89B23D4675B2CE466CCA486791FA0A20B990A"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"acceptedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1707617282"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"acceptedLedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2918626"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"acceptedTxHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9FA2CC666EA86AE1B8602593358831D6C0E09290ECEBFAB18C8222D97386FBC9"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"acceptedAccount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rwb7YRNzwvzeMNkGhhuGESSp4ME4V2Ee9q"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"seller"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"buyer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rwb7YRNzwvzeMNkGhhuGESSp4ME4V2Ee9q"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"marketplace"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xahauexplorer.com"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"saleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"primary"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"amountInConvertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"113.032"</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"nftoken"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls35"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"nftokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C1012398445F1894412F03C177C89B23D4675B2CE466CCA486791FA0A20B990A"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"uritokenID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C1012398445F1894412F03C177C89B23D4675B2CE466CCA486791FA0A20B990A"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"burnable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"owner"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rwb7YRNzwvzeMNkGhhuGESSp4ME4V2Ee9q"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"697066733A2F2F6261666B726569627064706A6B6B786767366D6261376F357071666A796963636F3432736B36706D626E6576736173756F7A7A637076366B693369"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"digest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CE446DDF3C759986F00D33D1C94DEBFF6ADFE1BB7E5DE5081214C172C6943D69"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"issuedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1707609120</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"ownerChangedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1707617282</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"deletedAt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"mintedByMarketplace"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://ipfs.io/ipfs/bafkreibpdpjkkxgg6mba7o5pqfjyicco42sk6pmbnevsasuozzcpv6ki3i"</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"X cracked 1"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Serial number: 1. Second Edition Ridworld NFT Card. Rare Legend (rl)"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://bafybeidyaycpuwmhhn7ji4acysaoaa7ohbgf3owxqga5qtfff7a2q3cpfi"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"maxAmountMinted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"589"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Card Type"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crypto"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Uploading Cost"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Empty set"</span><span class="w">
+                        </span><span class="p">},</span><span class="w">
+                        </span><span class="p">{</span><span class="w">
+                            </span><span class="nl">"trait_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Box Text"</span><span class="p">,</span><span class="w">
+                            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Add X"</span><span class="w">
+                        </span><span class="p">}</span><span class="w">
+                    </span><span class="p">],</span><span class="w">
+                    </span><span class="nl">"game"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ridworld Collectible NFT Card Game"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xahau Second Edition"</span><span class="w">
+                    </span><span class="p">},</span><span class="w">
+                    </span><span class="nl">"collectionUnits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"82 units"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Enigma"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"external_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.ridworld.com"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"boxIllustrationLicense"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EnigmaRidworld, created using Midjourney on Discord"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"jobID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5e78e4e9-3afc-444e-b3c6-d600a3f357ca"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"seed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1891785364"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"cardTemplateCreatorCredit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GenevensiS"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"imageCIDv1NFT.Storage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bafybeidyaycpuwmhhn7ji4acysaoaa7ohbgf3owxqga5qtfff7a2q3cpfi"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"folderCIDv1NFT.Storage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bafybeic2ii5qcpvb7fhzgp34w47dskhi7fd5dkeeswywbjxaj2repwlz3m"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"imageCIDv0IPFSdesktop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Qmbquu4kCqTbotPTSvwQnVzhERidaKFDxd9X7ngc45Y34d"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"imageCIDv1IPFSdesktop"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bafybeigiu3zjy3btwk3wk4chfeckeoaxr2qwuleowc4lxfa2zcs7qizqki"</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"blockchain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XAHAU"</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"jsonMeta"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                </span><span class="p">},</span><span class="w">
+                </span><span class="nl">"ownerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                    </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"sellerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"buyerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">},</span><span class="w">
+            </span><span class="nl">"acceptedAccountDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+                </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a List of NFT Sales for specified parameters</p>
+<h3 id='http-request-23'>HTTP Request</h3>
+<p><code>GET https://xahauexplorer.com/api/v2/uritoken-sales</code></p>
+<h3 id='query-parameters-22'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>list</td>
+<td>null</td>
+<td><code>topSold</code> or <code>lastSold</code> (for the list of NFTs sales of the highest price or the latest sell timestamp)</td>
+</tr>
+<tr>
+<td>convertCurrencies</td>
+<td>null</td>
+<td>(Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example <code>xrp,usd</code> (40 fiat currencies available), the response will have an array <code>amountInConvertCurrencies</code></td>
+</tr>
+<tr>
+<td>sortCurrency</td>
+<td><code>xrp</code> / &#39;xah&#39;</td>
+<td>(Only available on paid API plans) one of the currencies from the <code>convertCurrencies</code> or <code>xrp</code> to sort the list by, for example: <code>usd</code> (optional)</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>null</td>
+<td>specify a currency to filter sales in a specific currency, for example <code>xrp</code> (should be specified if there are no <code>convertCurrencies</code> and <code>sortCurrency</code>)</td>
+</tr>
+<tr>
+<td>currencyIssuer</td>
+<td>null</td>
+<td>if currency is specified and it is not &#39;xrp&#39;, then you must specify the currency issuer XRPL address (optional)</td>
+</tr>
+<tr>
+<td>saleType</td>
+<td><code>all</code></td>
+<td>can be <code>primary</code> or <code>secondary</code> (optional, <code>primary</code> - the sales from the issuer address)</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td>null</td>
+<td>The address of the NFT issuer (optional)</td>
+</tr>
+<tr>
+<td>buyer</td>
+<td>null</td>
+<td>(Only available on paid API plans) The address of the Buyer (optional)</td>
+</tr>
+<tr>
+<td>seller</td>
+<td>null</td>
+<td>(Only available on paid API plans) The address of the Seller (optional)</td>
+</tr>
+<tr>
+<td>period</td>
+<td><code>all</code></td>
+<td>A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code> or a time period as timestamps from..to <code>1671490800000..1671663600000</code> or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code></td>
+</tr>
+<tr>
+<td>marketplace</td>
+<td>null</td>
+<td>You can specify a marketplace, to filter sales by a specific marketplace, for example <code>xrp.cafe</code>, the list of all marketplaces is <a href="https://xrplexplorer.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>null</td>
+<td>The marker from the previous request, if you need a next page of NFTs</td>
+</tr>
+</tbody></table>
+<h2 id='nft-crawler-last-update-2'>NFT Crawler (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/statistics/uritokens/crawler"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/statistics/uritokens/crawler</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/statistics/uritokens/crawler"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">82078753</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ledgerTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1692949961</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns the last ledger which was crawled by our NFT crawler.</p>
+<h3 id='http-request-24'>HTTP Request</h3>
+<p><code>GET https://xrplexplorer.com/api/v2/statistics/uritokens/crawler</code></p>
+<h3 id='response-format-2'>Response Format</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ledgerIndex</td>
+<td>Integer</td>
+<td>The last crawled ledger index.</td>
+</tr>
+<tr>
+<td>ledgerTime</td>
+<td>Integer</td>
+<td>UNIX timestamp of the last crawled ledger.</td>
+</tr>
+</tbody></table>
 <h1 id='services'>Services</h1><h2 id='get-services'>Get services</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/services"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -3354,9 +4348,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of identified services.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/services</code></p>
-<h3 id='response-format-2'>Response Format</h3>
+<h3 id='response-format-3'>Response Format</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -3440,9 +4434,9 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of all identified service addresses.</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/services/addresses</code></p>
-<h3 id='response-format-3'>Response Format</h3>
+<h3 id='response-format-4'>Response Format</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -3504,9 +4498,9 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a timestamp of last DB update for services/addresses.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/services/lastUpdate</code></p>
-<h3 id='response-format-4'>Response Format</h3>
+<h3 id='response-format-5'>Response Format</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -3622,9 +4616,9 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested address.</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/address/&lt;address&gt;</code></p>
-<h3 id='url-parameters-8'>URL Parameters</h3>
+<h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3636,7 +4630,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 <td>The address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-18'>Query Parameters</h3>
+<h3 id='query-parameters-23'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3723,9 +4717,9 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves an address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-29'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
-<h3 id='url-parameters-9'>URL Parameters</h3>
+<h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3800,9 +4794,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-30'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/currency/&lt;currency&gt;</code></p>
-<h3 id='url-parameters-10'>URL Parameters</h3>
+<h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3907,9 +4901,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-31'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/currencies</code></p>
-<h3 id='query-parameters-19'>Query Parameters</h3>
+<h3 id='query-parameters-24'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3966,9 +4960,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns trustlines (IOU/token balances), for XAHAU it is also returns the locked amounts for IOUs (in escrows) (Only available on paid API plans).</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-32'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/trustlines/&lt;address&gt;</code></p>
-<h3 id='url-parameters-11'>URL Parameters</h3>
+<h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4153,9 +5147,9 @@ Page on bithomp that displays it:
 <a href="https://xrplexplorer.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
   https://xrplexplorer.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
 </a>.</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-33'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/transaction/&lt;hash&gt;</code></p>
-<h3 id='url-parameters-12'>URL Parameters</h3>
+<h3 id='url-parameters-14'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4208,9 +5202,9 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://xrplexplorer.com/submit/">
   https://xrplexplorer.com/submit/
 </a>.</p>
-<h3 id='http-request-28'>HTTP Request</h3>
+<h3 id='http-request-34'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
-<h3 id='url-parameters-13'>URL Parameters</h3>
+<h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4273,7 +5267,7 @@ Page where it used on bithomp:
 <a href="https://xrplexplorer.com/explorer/?hwlogin">
   https://xrplexplorer.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-29'>HTTP Request</h3>
+<h3 id='http-request-35'>HTTP Request</h3>
 <p><code>POST https://xrplexplorer.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -4326,9 +5320,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://xrplexplorer.com/activations">https://xrplexplorer.com/activations</a>.</p>
-<h3 id='http-request-30'>HTTP Request</h3>
+<h3 id='http-request-36'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/account-chart</code></p>
-<h3 id='response-format-5'>Response Format</h3>
+<h3 id='response-format-6'>Response Format</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -4390,9 +5384,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://xrplexplorer.com/genesis">https://xrplexplorer.com/genesis</a>.</p>
-<h3 id='http-request-31'>HTTP Request</h3>
+<h3 id='http-request-37'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/genesis</code></p>
-<h3 id='response-format-6'>Response Format</h3>
+<h3 id='response-format-7'>Response Format</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -4508,9 +5502,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://xrplexplorer.com/alerts">https://xrplexplorer.com/alerts</a>.</p>
-<h3 id='http-request-32'>HTTP Request</h3>
+<h3 id='http-request-38'>HTTP Request</h3>
 <p><code>GET https://xrplexplorer.com/api/v2/price/xrp/alerts</code></p>
-<h3 id='response-format-7'>Response Format</h3>
+<h3 id='response-format-8'>Response Format</h3>
 <table><thead>
 <tr>
 <th>Field</th>
