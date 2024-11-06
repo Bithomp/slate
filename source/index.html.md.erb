@@ -825,7 +825,7 @@ Parameter | Default | Description
 ledgerIndex | null | ledger index (if set the request will return data for that ledger index)
 ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request will return data for that timestamp)
 
-# NFT (XLS-20 / XLS-35)
+# NFT (XLS-20)
 
 ## NFT
 
@@ -935,7 +935,7 @@ print $data;
 }
 ```
 
-This endpoint retrieves information for a requested NFT (XLS-20 or XLS-35).
+This endpoint retrieves information for a requested NFT.
 
 ### HTTP Request
 
@@ -945,7 +945,7 @@ This endpoint retrieves information for a requested NFT (XLS-20 or XLS-35).
 
 Parameter | Description
 --------- | -----------
-nftID  | An NFT ID (XLS-20 or XLS-35)
+nftID  | An NFT ID
 
 ### Query Parameters
 
@@ -1114,7 +1114,7 @@ This endpoint retrieves NFT Sales Volumes for specified parameters
 
 Parameter | Description
 --------- | -----------
-nftOfferID  | An NFT Offer ID (XLS-20)
+nftOfferID  | An NFT Offer ID
 
 ### Query Parameters
 
@@ -1199,7 +1199,7 @@ print $data;
 }
 ```
 
-This endpoint retrieves a List of NFTs (XLS-20 / XLS-35) for specified parameters
+This endpoint retrieves a List of NFTs for specified parameters
 
 ### HTTP Request
 
@@ -2408,6 +2408,813 @@ This endpoint returns the last ledger which was crawled by our NFT crawler.
 ### HTTP Request
 
 `GET https://xrplexplorer.com/api/v2/statistics/nftokens/crawler`
+
+### Response Format
+
+Field | Value | Description
+----- | ----- | -----------
+ledgerIndex | Integer | The last crawled ledger index.
+ledgerTime | Integer	| UNIX timestamp of the last crawled ledger.
+
+# URI-TOKENS (NFT, XLS-35)
+
+## NFT
+
+```shell
+curl "https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&metadata=true&history=true&sellOffers=true&offersValidate=true&offersHistory=true&convertCurrencies=usd"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&metadata=true&history=true&sellOffers=true&offersValidate=true&offersHistory=true&convertCurrencies=usd", getData);
+```
+
+```php
+$data = curl_bithomp("https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&metadata=true&history=true&sellOffers=true&offersValidate=true&offersHistory=true&convertCurrencies=usd");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "type": "xls35",
+    "nftokenID": "850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D",
+    "uritokenID": "850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D",
+    "flags": {
+        "burnable": false
+    },
+    "owner": "r47eK7FT1jXBF1WnwF1uWKGpL1A9zXzs4A",
+    "issuer": "rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89",
+    "uri": "68747470733A2F2F6170692E767072612E6170702F76312F6D657461646174613F6163636F756E743D72555969544C59704E384D34784C687452443948515A4677715A3457614B4A633839266E616D6573706163653D33424531443432324134363038354531374634413139443345443730374338363639323741364433353441353632433435413738463146303344374334313138266B65793D43303843413845314442414241333933464336424342424135454239453130444235433542384333333041364531394236314332443145444145413444394241",
+    "digest": "C08CA8E1DBABA393FC6BCBBA5EB9E10DB5C5B8C330A6E19B61C2D1EDAEA4D9BA",
+    "amount": null,
+    "destination": null,
+    "issuedAt": 1730873082,
+    "ownerChangedAt": 1730873082,
+    "deletedAt": null,
+    "mintedByMarketplace": null,
+    "collection": null,
+    "url": "https://api.vpra.app/v1/metadata?account=rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89&namespace=3BE1D422A46085E17F4A19D3ED707C866927A6D354A562C45A78F1F03D7C4118&key=C08CA8E1DBABA393FC6BCBBA5EB9E10DB5C5B8C330A6E19B61C2D1EDAEA4D9BA",
+    "metadata": {
+        "attributes": [
+            {
+                "trait_type": "id",
+                "value": 166
+            },
+            {
+                "trait_type": "name",
+                "value": "Fatty"
+            },
+            {
+                "trait_type": "gender",
+                "value": 1
+            },
+            {
+                "trait_type": "age",
+                "value": 0
+            },
+            {
+                "trait_type": "breed",
+                "value": 3
+            },
+            {
+                "trait_type": "size",
+                "value": 3
+            },
+            {
+                "trait_type": "body",
+                "value": 7
+            },
+            {
+                "trait_type": "hooves",
+                "value": 9
+            },
+            {
+                "trait_type": "speed",
+                "value": 75
+            },
+            {
+                "trait_type": "stamina",
+                "value": 8
+            },
+            {
+                "trait_type": "temperament",
+                "value": 6
+            },
+            {
+                "trait_type": "training",
+                "value": 6
+            },
+            {
+                "trait_type": "health",
+                "value": 6
+            },
+            {
+                "trait_type": "lifespan",
+                "value": 50
+            },
+            {
+                "trait_type": "affinity",
+                "value": 14
+            },
+            {
+                "trait_type": "morale",
+                "value": 0
+            },
+            {
+                "trait_type": "is_breedable",
+                "value": 0
+            },
+            {
+                "trait_type": "breed_price",
+                "value": 0
+            },
+            {
+                "trait_type": "token_id",
+                "value": "850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D"
+            },
+            {
+                "trait_type": "wins",
+                "value": 0
+            },
+            {
+                "trait_type": "total",
+                "value": 0
+            }
+        ],
+        "collection": {
+            "family": "VPRA",
+            "issuer": "rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89",
+            "name": "Virtual Pet Racing Adventure",
+            "taxon": "0"
+        },
+        "description": "An AI-enhanced robotic rabbit, designed for rapid leaps and agile sprints.",
+        "external_url": "https://vpra.app",
+        "hash": "1D18E734AF2AB1082D69937494D98016165E9B4E40E242EE245D60B325E91327",
+        "image": "ipfs://QmR54jrMjyiq547znh4xBGnhJDDyZvySvGSHPFMst2ciXU",
+        "name": "Fatty #166",
+        "nftType": "vpra.v1"
+    },
+    "jsonMeta": true,
+    "history": [
+        {
+            "owner": "r47eK7FT1jXBF1WnwF1uWKGpL1A9zXzs4A",
+            "changedAt": 1730873082,
+            "ledgerIndex": 9690402,
+            "txHash": "815CBB6A13A6C94CACC1333FFAA825EE565E4BE1AB2B4DC32355E0B4E98198A9",
+            "marketplace": null,
+            "amount": "0",
+            "ownerDetails": {
+                "username": "MillionHeadsUP",
+                "service": null
+            }
+        },
+        {
+            "owner": "rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89",
+            "changedAt": 1730873082,
+            "ledgerIndex": 9690402,
+            "txHash": "815CBB6A13A6C94CACC1333FFAA825EE565E4BE1AB2B4DC32355E0B4E98198A9",
+            "marketplace": null,
+            "ownerDetails": {
+                "username": null,
+                "service": null
+            }
+        }
+    ],
+    "sellOffers": null,
+    "issuerDetails": {
+        "username": null,
+        "service": null
+    },
+    "ownerDetails": {
+        "username": "MillionHeadsUP",
+        "service": null
+    }
+}
+```
+
+This endpoint retrieves information for a requested NFT.
+
+### HTTP Request
+
+`GET https://xahauexplorer.com/api/v2/nft/<uritokenID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+uritokenID  | An URI Token ID
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+uri | false | If set to true, the result will include `uri` and `url`.
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+sellOffers | false | If set true, the result will include `sellOffers`.
+history | false | If set to true, the result will include `history`.
+metadata | false | If set to true, the result will include `metadata`.
+offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array. 
+offersHistory | false | (Only available on paid API plans) If set to true, each result will include historical offers which are already accepted or canceled.
+convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the for `history` response  will have an array `amountInConvertCurrencies`
+collectionDetails | false | (Only available on paid API plans) If set to true, each nft will include `collectionDetails` with the collection details. if parameter `assets` is set as `true`, you will also get assets in the `collectionDetails`.
+
+## NFTS
+
+```shell
+curl "https://xahauexplorer.com/api/v2/uritokens?list=uritokens&issuedAt=all&order=mintedNew&hasImage=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://xahauexplorer.com/api/v2/uritokens?list=uritokens&issuedAt=all&order=mintedNew&hasImage=true", getData);
+```
+
+```php
+$data = curl_bithomp("https://xahauexplorer.com/api/v2/uritokens?list=uritokens&issuedAt=all&order=mintedNew&hasImage=true");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "type": "xls35",
+    "list": "uritokens",
+    "order": "mintedNew",
+    "hasMetadata": true,
+    "hasImage": true,
+    "issuedAt": "all",
+    "uritokens": [
+        {
+            "type": "xls35",
+            "nftokenID": "FA21DE7E29087E30F546828F06C33D2CE926B1E433D7368F31F8382EA84BCDC2",
+            "uritokenID": "FA21DE7E29087E30F546828F06C33D2CE926B1E433D7368F31F8382EA84BCDC2",
+            "flags": {
+                "burnable": false
+            },
+            "owner": "r47eK7FT1jXBF1WnwF1uWKGpL1A9zXzs4A",
+            "issuer": "rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89",
+            "uri": "68747470733A2F2F6170692E767072612E6170702F76312F6D657461646174613F6163636F756E743D72555969544C59704E384D34784C687452443948515A4677715A3457614B4A633839266E616D6573706163653D33424531443432324134363038354531374634413139443345443730374338363639323741364433353441353632433435413738463146303344374334313138266B65793D46463645393442363835324638314345333442373933354341444138334139424637423632333233363646443138384339414236394632323736434233313237",
+            "digest": "FF6E94B6852F81CE34B7935CADA83A9BF7B6232366FD188C9AB69F2276CB3127",
+            "amount": null,
+            "destination": null,
+            "issuedAt": 1730896291,
+            "ownerChangedAt": 1730896291,
+            "deletedAt": null,
+            "mintedByMarketplace": null,
+            "collection": null,
+            "url": "https://api.vpra.app/v1/metadata?account=rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89&namespace=3BE1D422A46085E17F4A19D3ED707C866927A6D354A562C45A78F1F03D7C4118&key=FF6E94B6852F81CE34B7935CADA83A9BF7B6232366FD188C9AB69F2276CB3127",
+            "metadata": {
+                "attributes": [
+                    {
+                        "trait_type": "id",
+                        "value": 168
+                    },
+                    {
+                        "trait_type": "name",
+                        "value": "Trump"
+                    },
+                    {
+                        "trait_type": "gender",
+                        "value": 1
+                    },
+                    {
+                        "trait_type": "age",
+                        "value": 0
+                    },
+                    {
+                        "trait_type": "breed",
+                        "value": 2
+                    },
+                    {
+                        "trait_type": "size",
+                        "value": 4
+                    },
+                    {
+                        "trait_type": "body",
+                        "value": 3
+                    },
+                    {
+                        "trait_type": "hooves",
+                        "value": 4
+                    },
+                    {
+                        "trait_type": "speed",
+                        "value": 55
+                    },
+                    {
+                        "trait_type": "stamina",
+                        "value": 2
+                    },
+                    {
+                        "trait_type": "temperament",
+                        "value": 2
+                    },
+                    {
+                        "trait_type": "training",
+                        "value": 2
+                    },
+                    {
+                        "trait_type": "health",
+                        "value": 2
+                    },
+                    {
+                        "trait_type": "lifespan",
+                        "value": 50
+                    },
+                    {
+                        "trait_type": "affinity",
+                        "value": 46
+                    },
+                    {
+                        "trait_type": "morale",
+                        "value": 0
+                    },
+                    {
+                        "trait_type": "is_breedable",
+                        "value": 0
+                    },
+                    {
+                        "trait_type": "breed_price",
+                        "value": 0
+                    },
+                    {
+                        "trait_type": "token_id",
+                        "value": "FA21DE7E29087E30F546828F06C33D2CE926B1E433D7368F31F8382EA84BCDC2"
+                    },
+                    {
+                        "trait_type": "wins",
+                        "value": 0
+                    },
+                    {
+                        "trait_type": "total",
+                        "value": 0
+                    }
+                ],
+                "collection": {
+                    "family": "VPRA",
+                    "issuer": "rUYiTLYpN8M4xLhtRD9HQZFwqZ4WaKJc89",
+                    "name": "Virtual Pet Racing Adventure",
+                    "taxon": "0"
+                },
+                "description": "A sleek AI robotic cat, engineered for speed and reflexive racing precision.",
+                "external_url": "https://vpra.app",
+                "hash": "9AD902D77753AF68735E9B4A6314AF28533E61D0EAE1D40E516D6E5CAC1A2C5B",
+                "image": "ipfs://QmZAgJvC6oZVMogoNLUeFFbQ1TJbSgbZsXdQjtDNGbTP19",
+                "name": "Trump #168",
+                "nftType": "vpra.v1"
+            },
+            "jsonMeta": true,
+            "issuerDetails": {
+                "username": null,
+                "service": null
+            },
+            "ownerDetails": {
+                "username": "MillionHeadsUP",
+                "service": null
+            }
+        },
+```
+
+This endpoint retrieves a List of NFTs for specified parameters
+
+### HTTP Request
+
+`GET https://xahauexplorer.com/api/v2/uritokens`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+owner | null | The address of the Owner
+issuer | null | The address of the Issuer
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+hasMetadata | false | set to `true`, to list NFTs only with available metadata
+hasImage | false | set to `true`, to list NFTs only with available media data (preview images can be generated from images, videos, pdf files and 3d models)
+includeDeleted | false | set to `true`, if you want result to include deleeted NFTs
+mintedByMarketplace | null | Here you can specify a minter from https://xrplexplorer.com/nft-minters?period=all to filter your search by minter project.
+marker | null | The marker from the previous request, if you need a next page of NFTs
+list | `uritokens` | (Only available on paid API plans) can be set to `onSale` to get the list of NFTs with active sell offers
+destination | `all` | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be set as an address (to specify a particular MarketPlace), `public`, `knownBrokers`, `publicAndKnownBrokers`, `all`
+order | null | (Only available on paid API plans) used to order NFTs: 1. for `list=nfts`, can be `mintedNew` and `mintedOld`, 2. for `list=onSale`, can be `offerCreatedNew`, `offerCreatedOld`, `priceLow`, `priceHigh`
+currency | null | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be `XRP` or any other currency code.
+currencyIssuer | null | (Only available on paid API plans) A currency issuer for the `currency` if it is not an XRP.
+issuedAt | null | (Only available on paid API plans) It can be used to show NFTs which were minted during some period of time. A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year`, or `1671490800000..1671663600000` - period or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`, to show from specific date till now: `1671490800000..` or `2022-12-20T00:00:00.000Z..`
+deletedAt | null | (Only available on paid API plans) It can be used to show NFTs which were burned during some period of time. A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year`. or `1671490800000..1671663600000` - period or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`, to show from specific date till now: `1671490800000..` or `2022-12-20T00:00:00.000Z..`
+sellOffers | false | (Available for the Premium plan and higher) If set true, the NFTs will include `sellOffers`.
+history | false | (Available for the Premium plan and higher) If set to true, the NFTs will include `history`.
+offersValidate | false | (Available for the Premium plan and higher) If set to true, each NFT offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array. 
+offersHistory | false | (Available for the Premium plan and higher) If set to true, each NFT will include historical offers which are already accepted or canceled.
+limit | 100 | The number of NFTs to return. (More than 100 is available for the Standard plan and higher).
+ids | null | (Available for the Standard plan and higher) A list of NFT IDs separated by commas (max 100), to get information about specific NFTs. Formats: `ids=abc,def`, `ids[]=abc&ids[]=def` or `ids=abc&ids=def`.
+
+## NFT Offers
+
+```shell
+curl "https://xahauexplorer.com/api/v2/uritoken-offers/ekiserrepe?nftoken=true&offersValidate=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://xahauexplorer.com/api/v2/uritoken-offers/ekiserrepe?nftoken=true&offersValidate=true", getData);
+```
+
+```php
+$data = curl_bithomp("https://xahauexplorer.com/api/v2/uritoken-offers/ekiserrepe?nftoken=true&offersValidate=true");
+print $data;
+```
+
+> The above command returns JSON structured like this: 
+
+```json
+{
+    "owner": "rf1NrYAsv92UPDd8nyCG4A3bez7dhYE61r",
+    "list": "offers",
+    "ownerDetails": {
+        "username": "ekiserrepe",
+        "service": "Ekiserrepe"
+    },
+    "nftOffers": [
+        {
+            "type": "xls35",
+            "nftokenID": "BEA3986C0F23A26B541F514FC393EAC579DE20DF99C1EAD6EE2CABF4084879C8",
+            "uritokenID": "BEA3986C0F23A26B541F514FC393EAC579DE20DF99C1EAD6EE2CABF4084879C8",
+            "createdAt": 1715879272,
+            "createdLedgerIndex": 5446597,
+            "createdTxHash": "7FA83536947E4A5A95466228791EAEC8B45E31A545642D49F4DDB4E668E49A8B",
+            "account": "rf1NrYAsv92UPDd8nyCG4A3bez7dhYE61r",
+            "owner": "rf1NrYAsv92UPDd8nyCG4A3bez7dhYE61r",
+            "destination": null,
+            "amount": "200000000",
+            "nftoken": {
+                "type": "xls35",
+                "nftokenID": "BEA3986C0F23A26B541F514FC393EAC579DE20DF99C1EAD6EE2CABF4084879C8",
+                "uritokenID": "BEA3986C0F23A26B541F514FC393EAC579DE20DF99C1EAD6EE2CABF4084879C8",
+                "flags": {
+                    "burnable": false
+                },
+                "owner": "rf1NrYAsv92UPDd8nyCG4A3bez7dhYE61r",
+                "issuer": "rf1NrYAsv92UPDd8nyCG4A3bez7dhYE61r",
+                "uri": "68747470733A2F2F636F736D696378616861752E636F6D2F6E66742F726E39784E314D557458436451444D57687845516A47565274583639624B693651472F30323335366233362D343061342D343165382D393037392D643632393765643565363631",
+                "digest": "4F6FCD290EC2BE89F8A31826F19EF3BF281C910D0A80161549357432C29A514C",
+                "amount": "200000000",
+                "destination": null,
+                "issuedAt": 1715879120,
+                "ownerChangedAt": 1715879122,
+                "deletedAt": null,
+                "mintedByMarketplace": null,
+                "collection": null,
+                "url": "https://cosmicxahau.com/nft/rn9xN1MUtXCdQDMWhxEQjGVRtX69bKi6QG/02356b36-40a4-41e8-9079-d6297ed5e661",
+                "metadata": {
+                    "name": "Winnie #783",
+                    "description": "Winnie on Xahau!",
+                    "image": "https://cosmicxahau.com/nft/rn9xN1MUtXCdQDMWhxEQjGVRtX69bKi6QG/787e551e-ae63-40c5-99fa-d564f82fdce5",
+                    "date": 1715834342655,
+                    "attributes": [
+                        {
+                            "name": "Background",
+                            "value": "Enchanted"
+                        },
+                        {
+                            "name": "Winnie",
+                            "value": "Winnie"
+                        },
+                        {
+                            "name": "Clothes",
+                            "value": "Pajama"
+                        },
+                        {
+                            "name": "Mouth",
+                            "value": "Normal"
+                        },
+                        {
+                            "name": "Eyes",
+                            "value": "Heart"
+                        },
+                        {
+                            "name": "Hat",
+                            "value": "Fisherman Hat"
+                        },
+                        {
+                            "name": "Hand",
+                            "value": "None"
+                        }
+                    ]
+                },
+                "jsonMeta": true,
+                "issuerDetails": {
+                    "username": "ekiserrepe",
+                    "service": "Ekiserrepe"
+                },
+                "ownerDetails": {
+                    "username": "ekiserrepe",
+                    "service": "Ekiserrepe"
+                }
+            },
+            "accountDetails": {
+                "username": "ekiserrepe",
+                "service": "Ekiserrepe"
+            },
+            "ownerDetails": {
+                "username": "ekiserrepe",
+                "service": "Ekiserrepe"
+            },
+            "valid": true
+        }
+    ]
+}
+```
+
+This endpoint retrieves NFT Offers created by an `address` or NFT Offers for all NFTs owned by that `address`.
+
+### HTTP Request
+
+`GET https://xahauexplorer.com/api/v2/uritoken-offers/<address>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+address  | An address or a username.
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+list | null | default - to list all owned NFT offers, `privatelyOfferedToAddress` - to list all NFT offers where the `address` is specified as destination (brokers, private offers, nft transfers).
+nftoken | false | If set to true, each offer will include `nftoken` data, including metadata.
+offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array.
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+
+## NFT Distribution
+
+```shell
+curl "https://xahauexplorer.com/api/v2/uritoken-owners?order=nonSelfIssued"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://xahauexplorer.com/api/v2/uritoken-owners?order=nonSelfIssued", getData);
+```
+
+```php
+$data = curl_bithomp("https://xahauexplorer.com/api/v2/uritoken-owners?order=nonSelfIssued");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "type": "xls35",
+    "order": "nonSelfIssued",
+    "summary": {
+        "totalNfts": 56303,
+        "totalOwners": 17256
+    },
+    "owners": [
+        {
+            "address": "rGKT2MUjPUuoC8WYgZcvVPxfXe9jHz3D6R",
+            "addressDetails": {
+                "username": null,
+                "service": null
+            },
+            "total": 410,
+            "selfIssued": 0,
+            "nonSelfIssued": 410
+        },
+        {
+            "address": "rEbdxu89jAKmyEETmLW1CWXgMPmXgTLZbh",
+            "addressDetails": {
+                "username": null,
+                "service": null
+            },
+            "total": 407,
+            "selfIssued": 0,
+            "nonSelfIssued": 407
+        },
+```
+
+This endpoint retrieves NFT Owners list sorted by NFT count.
+
+### HTTP Request
+
+`GET https://xahauexplorer.com/api/v2/uritoken-owners`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+order | `total` | `nonSelfIssued`, `selfIssued`, `total` (order list by count of total owned NFTS, or only by self-issued NFTs, or only owned NFTs that issued by another address).
+issuer | null | (optional) NFT issuer `address`, to see the NFT distribution for a specific issuer.
+marker | null | (available on paid plans only) The marker from the previous request, if you need a next page of NFT owners.
+
+## NFT Sales
+
+```shell
+curl "https://xahauexplorer.com/api/v2/uritoken-sales?order=priceHigh&saleType=primaryAndSecondary&period=year&convertCurrencies=usd&sortCurrency=usd&hasImage=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://xahauexplorer.com/api/v2/uritoken-sales?order=priceHigh&saleType=primaryAndSecondary&period=year&convertCurrencies=usd&sortCurrency=usd&hasImage=true", getData);
+```
+
+```php
+$data = curl_bithomp("https://xahauexplorer.com/api/v2/uritoken-sales?order=priceHigh&saleType=primaryAndSecondary&period=year&convertCurrencies=usd&sortCurrency=usd&hasImage=true");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "list": "lastSold",
+    "order": "priceHigh",
+    "type": "xls35",
+    "saleType": "all",
+    "period": "year",
+    "convertCurrencies": [
+        "usd"
+    ],
+    "sortCurrency": "usd",
+    "hasImage": true,
+    "total": {
+        "primary": 256,
+        "secondary": 39
+    },
+    "marker": "16E5DA4D00000001",
+    "sales": [
+        {
+            "type": "xls35",
+            "nftokenID": "C1012398445F1894412F03C177C89B23D4675B2CE466CCA486791FA0A20B990A",
+            "uritokenID": "C1012398445F1894412F03C177C89B23D4675B2CE466CCA486791FA0A20B990A",
+            "acceptedAt": "1707617282",
+            "acceptedLedgerIndex": "2918626",
+            "acceptedTxHash": "9FA2CC666EA86AE1B8602593358831D6C0E09290ECEBFAB18C8222D97386FBC9",
+            "acceptedAccount": "rwb7YRNzwvzeMNkGhhuGESSp4ME4V2Ee9q",
+            "seller": "r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd",
+            "buyer": "rwb7YRNzwvzeMNkGhhuGESSp4ME4V2Ee9q",
+            "amount": "1000000000",
+            "marketplace": "xahauexplorer.com",
+            "saleType": "primary",
+            "amountInConvertCurrencies": {
+                "usd": "113.032"
+            },
+            "nftoken": {
+                "type": "xls35",
+                "nftokenID": "C1012398445F1894412F03C177C89B23D4675B2CE466CCA486791FA0A20B990A",
+                "uritokenID": "C1012398445F1894412F03C177C89B23D4675B2CE466CCA486791FA0A20B990A",
+                "flags": {
+                    "burnable": false
+                },
+                "owner": "rwb7YRNzwvzeMNkGhhuGESSp4ME4V2Ee9q",
+                "issuer": "r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd",
+                "uri": "697066733A2F2F6261666B726569627064706A6B6B786767366D6261376F357071666A796963636F3432736B36706D626E6576736173756F7A7A637076366B693369",
+                "digest": "CE446DDF3C759986F00D33D1C94DEBFF6ADFE1BB7E5DE5081214C172C6943D69",
+                "amount": null,
+                "destination": null,
+                "issuedAt": 1707609120,
+                "ownerChangedAt": 1707617282,
+                "deletedAt": null,
+                "mintedByMarketplace": null,
+                "collection": null,
+                "url": "https://ipfs.io/ipfs/bafkreibpdpjkkxgg6mba7o5pqfjyicco42sk6pmbnevsasuozzcpv6ki3i",
+                "metadata": {
+                    "name": "X cracked 1",
+                    "description": "Serial number: 1. Second Edition Ridworld NFT Card. Rare Legend (rl)",
+                    "image": "ipfs://bafybeidyaycpuwmhhn7ji4acysaoaa7ohbgf3owxqga5qtfff7a2q3cpfi",
+                    "maxAmountMinted": "589",
+                    "attributes": [
+                        {
+                            "trait_type": "Card Type",
+                            "value": "Crypto"
+                        },
+                        {
+                            "trait_type": "Uploading Cost",
+                            "value": "Empty set"
+                        },
+                        {
+                            "trait_type": "Box Text",
+                            "value": "Add X"
+                        }
+                    ],
+                    "game": "Ridworld Collectible NFT Card Game",
+                    "collection": {
+                        "name": "Xahau Second Edition"
+                    },
+                    "collectionUnits": "82 units",
+                    "author": "Enigma",
+                    "external_url": "https://www.ridworld.com",
+                    "boxIllustrationLicense": "EnigmaRidworld, created using Midjourney on Discord",
+                    "jobID": "5e78e4e9-3afc-444e-b3c6-d600a3f357ca",
+                    "seed": "1891785364",
+                    "cardTemplateCreatorCredit": "GenevensiS",
+                    "issuer": "r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd",
+                    "imageCIDv1NFT.Storage": "bafybeidyaycpuwmhhn7ji4acysaoaa7ohbgf3owxqga5qtfff7a2q3cpfi",
+                    "folderCIDv1NFT.Storage": "bafybeic2ii5qcpvb7fhzgp34w47dskhi7fd5dkeeswywbjxaj2repwlz3m",
+                    "imageCIDv0IPFSdesktop": "Qmbquu4kCqTbotPTSvwQnVzhERidaKFDxd9X7ngc45Y34d",
+                    "imageCIDv1IPFSdesktop": "bafybeigiu3zjy3btwk3wk4chfeckeoaxr2qwuleowc4lxfa2zcs7qizqki",
+                    "blockchain": "XAHAU"
+                },
+                "jsonMeta": true,
+                "issuerDetails": {
+                    "username": null,
+                    "service": null
+                },
+                "ownerDetails": {
+                    "username": null,
+                    "service": null
+                }
+            },
+            "sellerDetails": {
+                "username": null,
+                "service": null
+            },
+            "buyerDetails": {
+                "username": null,
+                "service": null
+            },
+            "acceptedAccountDetails": {
+                "username": null,
+                "service": null
+            }
+        },
+```
+
+This endpoint retrieves a List of NFT Sales for specified parameters
+
+### HTTP Request
+
+`GET https://xahauexplorer.com/api/v2/uritoken-sales`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+list | null | `topSold` or `lastSold` (for the list of NFTs sales of the highest price or the latest sell timestamp)
+convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the response will have an array `amountInConvertCurrencies`
+sortCurrency | `xrp` / 'xah' | (Only available on paid API plans) one of the currencies from the `convertCurrencies` or `xrp` to sort the list by, for example: `usd` (optional)
+currency | null | specify a currency to filter sales in a specific currency, for example `xrp` (should be specified if there are no `convertCurrencies` and `sortCurrency`)
+currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
+saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
+issuer | null | The address of the NFT issuer (optional)
+buyer | null | (Only available on paid API plans) The address of the Buyer (optional)
+seller | null | (Only available on paid API plans) The address of the Seller (optional)
+period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or a time period as timestamps from..to `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
+marketplace | null | You can specify a marketplace, to filter sales by a specific marketplace, for example `xrp.cafe`, the list of all marketplaces is <a href="https://xrplexplorer.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)
+marker | null | The marker from the previous request, if you need a next page of NFTs
+
+## NFT Crawler (Last update)
+
+```shell
+curl "https://xrplexplorer.com/api/v2/statistics/uritokens/crawler"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://xrplexplorer.com/api/v2/statistics/uritokens/crawler", getData);
+```
+
+```php
+$data = curl_bithomp("https://xrplexplorer.com/api/v2/statistics/uritokens/crawler");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "ledgerIndex": 82078753,
+  "ledgerTime": 1692949961
+}
+```
+
+This endpoint returns the last ledger which was crawled by our NFT crawler.
+
+### HTTP Request
+
+`GET https://xrplexplorer.com/api/v2/statistics/uritokens/crawler`
 
 ### Response Format
 
