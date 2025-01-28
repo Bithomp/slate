@@ -79,6 +79,12 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 28th of January 2025
+
+A new query parameter: `bithomp` was added to the <a href="#address">**Address**</a> API end-point.
+
+That will return avatar link for an address and a status of Bithomp Pro. 
+
 ### 22nd of October 2024
 
 A new endpoint was added:
@@ -3433,7 +3439,7 @@ totalAddresses | Integer | The amount of identified addresses.
 ## Get information for an address
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true"
+curl "https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3441,11 +3447,11 @@ curl "https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?
 function getAddressInfo(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true", getAddressInfo);
+bithompRequest("https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true", getAddressInfo);
 ```
 
 ```php
-$addressInfo = curl_bithomp("https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true");
+$addressInfo = curl_bithomp("https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true");
 print $addressInfo;
 ```
 
@@ -3458,6 +3464,10 @@ print $addressInfo;
   "inception": 1361216760,
   "initialBalance": 1500,
   "genesis": false,
+  "bithomp": {
+    "avatar": "https://cdn.bithomp.com/avatar/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+    "bithompPro": false
+  },
   "ledgerInfo": {
     "activated": true,
     "error": null,
@@ -3548,6 +3558,7 @@ address | The address, can be old r-address or a new X-address
 
 Parameter | Default | Description
 --------- | ------- | -----------
+bithomp | false | If set to true, the result will also include avatar image link and bithompPro status.
 service | false | If set to true, the result will also include Service details.
 username | false | If set to true, the result will also include a `username` (rippletrade or bithomp).
 payString | false| If set to true, the result will also include a bithomp `payString` for that address.
