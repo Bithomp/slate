@@ -1259,14 +1259,14 @@ Exclude unnecessary parameters to make your request faster.
 <td>change to false if you do not need auctionSlot to reduce the response size</td>
 </tr>
 <tr>
-<td>marker</td>
-<td>null</td>
-<td>The marker from the previous request, if you need a next page of AMMs</td>
-</tr>
-<tr>
 <td>limit</td>
 <td>100</td>
 <td>The number of NFTs to return. (More than 100 is available for the Standard plan and higher).</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>null</td>
+<td>(available on paid plans only) The marker from the previous request, if you need a next page of AMMs</td>
 </tr>
 </tbody></table>
 <h2 id='amm-pool'>AMM Pool</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5"</span>
