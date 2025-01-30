@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#30th-of-january-2025" class="toc-h2 toc-link" data-title="30th of January 2025">30th of January 2025</a>
+                  </li>
+                  <li>
                     <a href="#28th-of-january-2025" class="toc-h2 toc-link" data-title="28th of January 2025">28th of January 2025</a>
                   </li>
                   <li>
@@ -729,7 +732,10 @@
 <ul>
 <li><a href="https://xrplexplorer.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='28th-of-january-2025'>28th of January 2025</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='30th-of-january-2025'>30th of January 2025</h3>
+<p>The new query parameter: <code>ids</code> was added to the <a href="#amms"><strong>AMMs</strong></a> API end-point.
+Now you can get a list of AMMs by their IDs. (Available for the Standard plan and higher).</p>
+<h3 id='28th-of-january-2025'>28th of January 2025</h3>
 <p>A new query parameter: <code>bithomp</code> was added to the <a href="#address"><strong>Address</strong></a> API end-point.</p>
 
 <p>That will return avatar link for an address and a status of Bithomp Pro. </p>
@@ -1274,6 +1280,11 @@ Exclude unnecessary parameters to make your request faster.
 <td>marker</td>
 <td>null</td>
 <td>(available on paid plans only) The marker from the previous request, if you need a next page of AMMs</td>
+</tr>
+<tr>
+<td>ids</td>
+<td>null</td>
+<td>(Available for the Standard plan and higher) A list of NFT IDs separated by commas (max 100), to get information about specific NFTs. Formats: <code>ids=abc,def</code>, <code>ids[]=abc&amp;ids[]=def</code> or <code>ids=abc&amp;ids=def</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='amm-pool'>AMM Pool</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5"</span>
