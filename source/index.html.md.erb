@@ -79,6 +79,11 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 30th of January 2025
+
+The new query parameter: `ids` was added to the <a href="#amms">**AMMs**</a> API end-point.
+Now you can get a list of AMMs by their IDs. (Available for the Standard plan and higher).
+
 ### 28th of January 2025
 
 A new query parameter: `bithomp` was added to the <a href="#address">**Address**</a> API end-point.
@@ -642,6 +647,7 @@ voteSlots | true | change to false if you do not need voteSlots to reduce the re
 auctionSlot | true | change to false if you do not need auctionSlot to reduce the response size
 limit | 100 | The number of NFTs to return. (More than 100 is available for the Standard plan and higher).
 marker | null | (available on paid plans only) The marker from the previous request, if you need a next page of AMMs
+ids | null | (Available for the Standard plan and higher) A list of NFT IDs separated by commas (max 100), to get information about specific NFTs. Formats: `ids=abc,def`, `ids[]=abc&ids[]=def` or `ids=abc&ids=def`.
 
 ## AMM Pool
 
