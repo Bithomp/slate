@@ -320,6 +320,9 @@
             <a href="#nft-content-plans" class="toc-h1 toc-link" data-title="NFT Content Plans">NFT Content Plans</a>
           </li>
           <li>
+            <a href="#free-address-profile-images" class="toc-h1 toc-link" data-title="FREE Address profile images">FREE Address profile images</a>
+          </li>
+          <li>
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
@@ -574,7 +577,7 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://xrplexplorer.com/admin'>Request an API Key</a></li>
+            <li><a href='https://bithomp.com/admin'>Request an API Key</a></li>
             <li><a href='https://write.as/bithomp/xrp-ledger-domain-verification'>XRPL domain verification</a></li>
             <li><a href='https://github.com/bithomp/slate'>Edit this documentation on GitHub</a></li>
         </ul>
@@ -591,7 +594,7 @@
 
 <p>We have language bindings in Shell, JavaScript and PHP. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
 <h1 id='supported-networks'>Supported networks</h1>
-<p>XRPL MAINNET: <code>https://xrplexplorer.com/api/v2/</code>, get your api key <a href="https://xrplexplorer.com/admin">here</a></p>
+<p>XRPL MAINNET: <code>https://bithomp.com/api/v2/</code>, get your api key <a href="https://bithomp.com/admin">here</a></p>
 
 <p>XAHAU MAINNET: <code>https://xahauexplorer.com/api/v2/</code>, get your api key <a href="https://xahauexplorer.com/admin">here</a></p>
 
@@ -730,8 +733,30 @@
 </tbody></table>
 
 <ul>
-<li><a href="https://xrplexplorer.com/admin">Request an API key</a></li>
+<li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
+<h1 id='free-address-profile-images'>FREE Address profile images</h1>
+<p>You can show images for XRPL &amp; XAHAU addresses which includes:</p>
+
+<ul>
+<li>Bithomp avatars (anyone can set a gravatar on their page with warious different software and hardware XRPL and XAHAU wallets, just go to <a href="https://bithomp.com/account">https://bithomp.com/account</a> enter your address and press the button &quot;Set avatar&quot;</li>
+<li>X images (we keep them updated for the registered services)</li>
+<li>Xaman pro users profile pictures OR curated assets images</li>
+<li>GRAVATAR images </li>
+<li>hashicons (address unique icons)</li>
+</ul>
+
+<p>It is easy to use, no registartion needed, just use the following code to show address images:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>&lt;img src="https://cdn.bithomp.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" /&gt;
+</code></pre></div>
+<ul>
+<li>for 10 EUR a month you can get images from your own domain (for example: pfp.mydomain.com), you will jsut need to add a DNS record.
+Then your links could be like this:</li>
+</ul>
+<div class="highlight"><pre class="highlight plaintext"><code>CNAME    pfp     cdn.bithomp.com
+</code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>&lt;img src="https://pfp.mydomain.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" /&gt;
+</code></pre></div>
+<p>Contact our support if you intersted to have it on your domain.</p>
 <h1 id='changelog'>Changelog</h1><h3 id='30th-of-january-2025'>30th of January 2025</h3>
 <p>The new query parameter: <code>ids</code> was added to the <a href="#amms"><strong>AMMs</strong></a> API end-point.
 Now you can get a list of AMMs by their IDs. (Available for the Standard plan and higher).</p>
@@ -815,34 +840,34 @@ Now you can order NFT owners by count of total, self-issued or non-self-issued N
 You can search for sales by a specific buyer and/or seller.</p>
 <h1 id='direct-url-examples'>Direct URL examples</h1><h3 id='xrpl-explorer'>XRPL Explorer</h3>
 <ul>
-<li><a href="https://xrplexplorer.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://xrplexplorer.com/explorer/{txid}</a></li>
-<li><a href="https://xrplexplorer.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://xrplexplorer.com/explorer/{address}</a></li>
-<li><a href="https://xrplexplorer.com/explorer/bitstamp">https://xrplexplorer.com/explorer/{username}</a></li>
-<li><a href="https://xrplexplorer.com/explorer/02C7004B041A91880000526964776F726C643836">https://xrplexplorer.com/explorer/{NFT-XLS14 || HEXcurrency}</a></li>
-<li><a href="https://xrplexplorer.com/explorer/rabbit$bithomp.com">https://xrplexplorer.com/explorer/{payString}</a></li>
+<li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a></li>
+<li><a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a></li>
+<li><a href="https://bithomp.com/explorer/bitstamp">https://bithomp.com/explorer/{username}</a></li>
+<li><a href="https://bithomp.com/explorer/02C7004B041A91880000526964776F726C643836">https://bithomp.com/explorer/{NFT-XLS14 || HEXcurrency}</a></li>
+<li><a href="https://bithomp.com/explorer/rabbit$bithomp.com">https://bithomp.com/explorer/{payString}</a></li>
 </ul>
 <h3 id='nft-explorer'>NFT explorer</h3>
 <ul>
-<li><a href="https://xrplexplorer.com/nft/00081388161A9F1B349F3D50596D02CCA65E97D9268A5AF529A955040000000D">https://xrplexplorer.com/nft/{nftID}</a></li>
-<li><a href="https://xrplexplorer.com/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673">https://xrplexplorer.com/nft-offer/{nftOfferID}</a></li>
-<li><a href="https://xrplexplorer.com/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX">https://xrplexplorer.com/nft-offers/{address || username}</a></li>
-<li><a href="https://xrplexplorer.com/nft-explorer?issuer=xSPECTAR&taxon=2&owner=xSPECTAR">https://xrplexplorer.com/nft-explorer?owner={address || username}&amp;issuer={address || username}&amp;taxon={taxon}</a></li>
-<li><a href="https://xrplexplorer.com/nfts/xSPECTAR">https://xrplexplorer.com/nfts/{address || username}</a></li>
-<li><a href="https://xrplexplorer.com/nft-volumes?currency=534F4C4F00000000000000000000000000000000&currencyIssuer=rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz">https://xrplexplorer.com/nft-volumes?currency={currencyCode}&amp;currencyIssuer={address}&amp;sale={&quot;primary&quot; || &quot;secondary&quot; || &quot;all&quot;}&amp;period={&quot;all&quot; || &quot;month&quot; || &quot;week&quot; || &quot;day&quot;}&amp;list={&quot;issuers&quot; || &quot;currencies&quot; || &quot;brokers&quot;}</a></li>
-<li><a href="https://xrplexplorer.com/nft-sales?list=top&period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://xrplexplorer.com/nft-sales?list=top&amp;period=month&amp;sale=secondary&amp;currency={currencyCode}&amp;currencyIssuer={address}&amp;issuer={address || username}</a></li>
-<li><a href="https://xrplexplorer.com/nft-sales?list=last&period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://xrplexplorer.com/nft-sales?list=last&amp;period=month&amp;sale=secondary&amp;currency={currencyCode}&amp;currencyIssuer={address}&amp;issuer={address || username}</a></li>
+<li><a href="https://bithomp.com/nft/00081388161A9F1B349F3D50596D02CCA65E97D9268A5AF529A955040000000D">https://bithomp.com/nft/{nftID}</a></li>
+<li><a href="https://bithomp.com/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673">https://bithomp.com/nft-offer/{nftOfferID}</a></li>
+<li><a href="https://bithomp.com/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX">https://bithomp.com/nft-offers/{address || username}</a></li>
+<li><a href="https://bithomp.com/nft-explorer?issuer=xSPECTAR&taxon=2&owner=xSPECTAR">https://bithomp.com/nft-explorer?owner={address || username}&amp;issuer={address || username}&amp;taxon={taxon}</a></li>
+<li><a href="https://bithomp.com/nfts/xSPECTAR">https://bithomp.com/nfts/{address || username}</a></li>
+<li><a href="https://bithomp.com/nft-volumes?currency=534F4C4F00000000000000000000000000000000&currencyIssuer=rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz">https://bithomp.com/nft-volumes?currency={currencyCode}&amp;currencyIssuer={address}&amp;sale={&quot;primary&quot; || &quot;secondary&quot; || &quot;all&quot;}&amp;period={&quot;all&quot; || &quot;month&quot; || &quot;week&quot; || &quot;day&quot;}&amp;list={&quot;issuers&quot; || &quot;currencies&quot; || &quot;brokers&quot;}</a></li>
+<li><a href="https://bithomp.com/nft-sales?list=top&period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://bithomp.com/nft-sales?list=top&amp;period=month&amp;sale=secondary&amp;currency={currencyCode}&amp;currencyIssuer={address}&amp;issuer={address || username}</a></li>
+<li><a href="https://bithomp.com/nft-sales?list=last&period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://bithomp.com/nft-sales?list=last&amp;period=month&amp;sale=secondary&amp;currency={currencyCode}&amp;currencyIssuer={address}&amp;issuer={address || username}</a></li>
 </ul>
 <h3 id='amm-explorer'>AMM explorer</h3>
 <ul>
-<li><a href="https://xrplexplorer.com/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5">https://xrplexplorer.com/amm/{ammID}</a></li>
-<li><a href="https://xrplexplorer.com/amm/rUGqgPbzKFVsSkTYUk4hdRoPwTaLv1iSDS">https://xrplexplorer.com/amm/{address}</a></li>
-<li><a href="https://xrplexplorer.com/amm/03DD35D1879DBE4FE3290B911A14875DE6534DFD">https://xrplexplorer.com/amm/{LPtoken}</a></li>
+<li><a href="https://bithomp.com/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5">https://bithomp.com/amm/{ammID}</a></li>
+<li><a href="https://bithomp.com/amm/rUGqgPbzKFVsSkTYUk4hdRoPwTaLv1iSDS">https://bithomp.com/amm/{address}</a></li>
+<li><a href="https://bithomp.com/amm/03DD35D1879DBE4FE3290B911A14875DE6534DFD">https://bithomp.com/amm/{LPtoken}</a></li>
 </ul>
 <h3 id='username-registration'>Username registration</h3>
 <ul>
-<li><a href="https://xrplexplorer.com/username?username=Bithomp">https://xrplexplorer.com/username?username={username}</a></li>
-<li><a href="https://xrplexplorer.com/username?address=rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://xrplexplorer.com/username?address={address}</a></li>
-<li><a href="https://xrplexplorer.com/username?address=rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z&username=Bithomp">https://xrplexplorer.com/username?address={address}&amp;username={username}</a></li>
+<li><a href="https://bithomp.com/username?username=Bithomp">https://bithomp.com/username?username={username}</a></li>
+<li><a href="https://bithomp.com/username?address=rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://bithomp.com/username?address={address}</a></li>
+<li><a href="https://bithomp.com/username?address=rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z&username=Bithomp">https://bithomp.com/username?address={address}&amp;username={username}</a></li>
 </ul>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
@@ -893,7 +918,7 @@ curl <span class="s2">"api_endpoint_here"</span>
 <p>Make sure to replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your API key.</p>
 </blockquote>
 
-<p>Unless you are using our <a href="#on-demand">on-demand</a> option, in order to use our APIs you need to request an API key via <a href="https://xrplexplorer.com/admin">the partner portal</a>.</p>
+<p>Unless you are using our <a href="#on-demand">on-demand</a> option, in order to use our APIs you need to request an API key via <a href="https://bithomp.com/admin">the partner portal</a>.</p>
 
 <p>Bithomp expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
@@ -996,13 +1021,13 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
   <span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
 <span class="p">}</span>
 <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
-</code></pre></div><h1 id='username'>Username</h1><h2 id='get-username-for-an-address'>Get username for an address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true"</span>
+</code></pre></div><h1 id='username'>Username</h1><h2 id='get-username-for-an-address'>Get username for an address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -1016,7 +1041,7 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span></code></pre></div>
 <p>This endpoint retrieves a username for a requested XRPL address.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/address/&lt;address&gt;?username=true</code></p>
+<p><code>GET https://bithomp.com/api/v2/address/&lt;address&gt;?username=true</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1043,13 +1068,13 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 <td>If set to true, the result will also include a <code>username</code> (rippletrade or bithomp).</td>
 </tr>
 </tbody></table>
-<h2 id='get-address-information-by-a-username'>Get address information by a username</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/username/xrptipbot?service=true&amp;parent=true&amp;verifiedDomain=true"</span>
+<h2 id='get-address-information-by-a-username'>Get address information by a username</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/username/xrptipbot?service=true&amp;parent=true&amp;verifiedDomain=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/username/xrptipbot?service=true&amp;parent=true&amp;verifiedDomain=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/username/xrptipbot?service=true&amp;parent=true&amp;verifiedDomain=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/username/xrptipbot?service=true&amp;parent=true&amp;verifiedDomain=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/username/xrptipbot?service=true&amp;parent=true&amp;verifiedDomain=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -1100,7 +1125,7 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested Username.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/username/&lt;username&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/username/&lt;username&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1146,13 +1171,13 @@ curl <span class="nt">-H</span> <span class="s2">"Payment-Claim: </span><span cl
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
 </aside>
-<h1 id='amm'>AMM</h1><h2 id='amms'>AMMs</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/amms"</span>
+<h1 id='amm'>AMM</h1><h2 id='amms'>AMMs</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amms"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/amms</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/amms"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/amms</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/amms"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -1237,7 +1262,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint returns a list of AMM pools.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/amms</code></p>
+<p><code>GET https://bithomp.com/api/v2/amms</code></p>
 <h3 id='query-parameters-3'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1287,13 +1312,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>(Available for the Standard plan and higher) A list of AMM IDs separated by commas (max 100), to get information about specific NFTs. Formats: <code>ids=abc,def</code>, <code>ids[]=abc&amp;ids[]=def</code> or <code>ids=abc&amp;ids=def</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='amm-pool'>AMM Pool</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5"</span>
+<h2 id='amm-pool'>AMM Pool</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -1447,7 +1472,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested AMM pool.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/amm/&lt;ammID || LPtoken || address&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/amm/&lt;ammID || LPtoken || address&gt;</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1487,13 +1512,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>ISO timestamp or unix timestamp (if set the request will return data for that timestamp)</td>
 </tr>
 </tbody></table>
-<h1 id='nft-xls-20'>NFT (XLS-20)</h1><h2 id='nft'>NFT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true&amp;assets=true"</span>
+<h1 id='nft-xls-20'>NFT (XLS-20)</h1><h2 id='nft'>NFT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true&amp;assets=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true&amp;assets=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true&amp;assets=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -1586,7 +1611,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested NFT.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nft/&lt;nftID&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/nft/&lt;nftID&gt;</code></p>
 <h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1658,13 +1683,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>(Only available on paid API plans) If set to true, each nft will include <code>collectionDetails</code> with the collection details. if parameter <code>assets</code> is set as <code>true</code>, you will also get assets in the <code>collectionDetails</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='nft-offer'>NFT Offer</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673"</span>
+<h2 id='nft-offer'>NFT Offer</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -1791,7 +1816,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes for specified parameters</p>
 <h3 id='http-request-6'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nft-offer/&lt;nftOfferID&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/nft-offer/&lt;nftOfferID&gt;</code></p>
 <h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -1818,13 +1843,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
 </tr>
 </tbody></table>
-<h2 id='nfts'>NFTS</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true"</span>
+<h2 id='nfts'>NFTS</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -1886,7 +1911,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves a List of NFTs for specified parameters</p>
 <h3 id='http-request-7'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nfts</code></p>
+<p><code>GET https://bithomp.com/api/v2/nfts</code></p>
 <h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1938,7 +1963,7 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>mintedByMarketplace</td>
 <td>null</td>
-<td>Here you can specify a minter from https://xrplexplorer.com/nft-minters?period=all to filter your search by minter project.</td>
+<td>Here you can specify a minter from https://bithomp.com/nft-minters?period=all to filter your search by minter project.</td>
 </tr>
 <tr>
 <td>marker</td>
@@ -2021,13 +2046,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>(Available for the Paid plans) If set to true, each nft will include <code>collectionDetails</code> with the collection details. if parameter <code>assets</code> is set as <code>true</code>, you will also get assets in the <code>collectionDetails</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='nft-offers'>NFT Offers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true"</span>
+<h2 id='nft-offers'>NFT Offers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -2153,7 +2178,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Offers created by an <code>address</code> or NFT Offers for all NFTs owned by that <code>address</code>.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nft-offers/&lt;address&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/nft-offers/&lt;address&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2195,13 +2220,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
 </tr>
 </tbody></table>
-<h2 id='nft-collection'>NFT Collection</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&amp;statistics=true&amp;assets=true"</span>
+<h2 id='nft-collection'>NFT Collection</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&amp;statistics=true&amp;assets=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&amp;statistics=true&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&amp;statistics=true&amp;assets=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&amp;statistics=true&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&amp;statistics=true&amp;assets=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -2286,7 +2311,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Collection details, including floor price, sale statistics, owner count etc.</p>
 <h3 id='http-request-9'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nft-collection/&lt;collectionId&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/nft-collection/&lt;collectionId&gt;</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2323,13 +2348,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
 </tr>
 </tbody></table>
-<h2 id='nft-collections'>NFT Collections</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-collections?search=zerpmon&amp;assets=true&amp;floorPrice=true"</span>
+<h2 id='nft-collections'>NFT Collections</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-collections?search=zerpmon&amp;assets=true&amp;floorPrice=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft-collections?search=zerpmon&amp;assets=true&amp;floorPrice=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft-collections?search=zerpmon&amp;assets=true&amp;floorPrice=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-collections?search=zerpmon&amp;assets=true&amp;floorPrice=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-collections?search=zerpmon&amp;assets=true&amp;floorPrice=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -2410,7 +2435,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Collection list for your search creterias.</p>
 <h3 id='http-request-10'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nft-collections</code></p>
+<p><code>GET https://bithomp.com/api/v2/nft-collections</code></p>
 <h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2455,13 +2480,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>The number of NFTs to return. (More than 100 is available for the Standard plan and higher).</td>
 </tr>
 </tbody></table>
-<h2 id='nft-distribution'>NFT Distribution</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-owners?order=nonSelfIssued&amp;issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&amp;taxon=0"</span>
+<h2 id='nft-distribution'>NFT Distribution</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&amp;issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&amp;taxon=0"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft-owners?order=nonSelfIssued&amp;issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&amp;taxon=0</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft-owners?order=nonSelfIssued&amp;issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&amp;taxon=0"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&amp;issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&amp;taxon=0</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&amp;issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&amp;taxon=0"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -2505,7 +2530,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Owners list sorted by NFT count.</p>
 <h3 id='http-request-11'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nft-owners</code></p>
+<p><code>GET https://bithomp.com/api/v2/nft-owners</code></p>
 <h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2535,13 +2560,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>(available on paid plans only) The marker from the previous request, if you need a next page of NFT owners.</td>
 </tr>
 </tbody></table>
-<h2 id='nft-sales'>NFT Sales</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-sales?list=topSold&amp;currency=xrp&amp;convertCurrencies=usd,eur"</span>
+<h2 id='nft-sales'>NFT Sales</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-sales?list=topSold&amp;currency=xrp&amp;convertCurrencies=usd,eur"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft-sales?list=topSold&amp;currency=xrp&amp;convertCurrencies=usd,eur</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft-sales?list=topSold&amp;currency=xrp&amp;convertCurrencies=usd,eur"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-sales?list=topSold&amp;currency=xrp&amp;convertCurrencies=usd,eur</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-sales?list=topSold&amp;currency=xrp&amp;convertCurrencies=usd,eur"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -2661,7 +2686,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves a List of NFT Sales for specified parameters</p>
 <h3 id='http-request-12'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nft-sales</code></p>
+<p><code>GET https://bithomp.com/api/v2/nft-sales</code></p>
 <h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2733,7 +2758,7 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>marketplace</td>
 <td>null</td>
-<td>You can specify a marketplace, to filter sales by a specific marketplace, for example <code>xrp.cafe</code>, the list of all marketplaces is <a href="https://xrplexplorer.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)</td>
+<td>You can specify a marketplace, to filter sales by a specific marketplace, for example <code>xrp.cafe</code>, the list of all marketplaces is <a href="https://bithomp.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)</td>
 </tr>
 <tr>
 <td>marker</td>
@@ -2741,13 +2766,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>The marker from the previous request, if you need a next page of NFTs</td>
 </tr>
 </tbody></table>
-<h2 id='nft-volumes'>NFT Volumes</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-volumes?list=issuers&amp;currency=xrp"</span>
+<h2 id='nft-volumes'>NFT Volumes</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-volumes?list=issuers&amp;currency=xrp"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft-volumes?list=issuers&amp;currency=xrp</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft-volumes?list=issuers&amp;currency=xrp"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-volumes?list=issuers&amp;currency=xrp</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-volumes?list=issuers&amp;currency=xrp"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -2816,7 +2841,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes for specified parameters</p>
 <h3 id='http-request-13'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nft-volumes</code></p>
+<p><code>GET https://bithomp.com/api/v2/nft-volumes</code></p>
 <h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -2856,13 +2881,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>(Only available on paid API plans) Returns <code>floorPrice</code> for <code>issuers</code>. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.</td>
 </tr>
 </tbody></table>
-<h2 id='nft-volumes-extended'>NFT Volumes Extended</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-volumes-extended?list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true"</span>
+<h2 id='nft-volumes-extended'>NFT Volumes Extended</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-volumes-extended?list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft-volumes-extended??list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft-volumes-extended??list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-volumes-extended??list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-volumes-extended??list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -3029,7 +3054,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves Extended NFT Sales Volumes for specified parameters (Only available on paid API plans)</p>
 <h3 id='http-request-14'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nft-volumes-extended</code></p>
+<p><code>GET https://bithomp.com/api/v2/nft-volumes-extended</code></p>
 <h3 id='query-parameters-14'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -3099,13 +3124,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>(For Standard plan and hire) For list <code>collections</code> returns collection previews, <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px.</td>
 </tr>
 </tbody></table>
-<h2 id='nft-minters'>NFT Minters</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-marketplaces?period=week"</span>
+<h2 id='nft-minters'>NFT Minters</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-marketplaces?period=week"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft-marketplaces?period=week</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft-marketplaces?period=week"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-marketplaces?period=week</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-marketplaces?period=week"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -3162,7 +3187,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves NFT minters on XRPL for a specified period of time</p>
 <h3 id='http-request-15'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nft-marketplaces</code></p>
+<p><code>GET https://bithomp.com/api/v2/nft-marketplaces</code></p>
 <h3 id='query-parameters-15'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -3177,13 +3202,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>A time period, all time all, last 24h day, last 7 days week, last 30 days month, last 365 days year or as timestamps from..to, examples: <code>1671490800000..1671663600000</code> or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code></td>
 </tr>
 </tbody></table>
-<h2 id='nft-mint-chart'>NFT Mint Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-chart?span=day&amp;period=month"</span>
+<h2 id='nft-mint-chart'>NFT Mint Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-chart?span=day&amp;period=month"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft-chart?span=day&amp;period=month</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft-chart?span=day&amp;period=month"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-chart?span=day&amp;period=month</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-chart?span=day&amp;period=month"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -3206,7 +3231,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves NFT mints count for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
 <h3 id='http-request-16'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nft-chart</code></p>
+<p><code>GET https://bithomp.com/api/v2/nft-chart</code></p>
 <h3 id='query-parameters-16'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -3226,13 +3251,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>A time span for the chart, can be <code>minute</code>, <code>hour</code>, <code>day</code>, <code>month</code>, <code>year</code>, not all spans are available for large periods, for a period <code>hour</code> you can have <code>minute</code>, for periods up to 60 hours, you can have <code>hour</code>, <code>day</code>, <code>month</code>, for up to 60 days - <code>day</code>, <code>month</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='nft-sales-chart'>NFT Sales Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/nft-sales-chart?span=day&amp;period=month&amp;convertCurrencies=usd&amp;saleType=secondary"</span>
+<h2 id='nft-sales-chart'>NFT Sales Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-sales-chart?span=day&amp;period=month&amp;convertCurrencies=usd&amp;saleType=secondary"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/nft-sales-chart?span=day&amp;period=month&amp;convertCurrencies=usd&amp;saleType=secondary</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/nft-sales-chart?span=day&amp;period=month&amp;convertCurrencies=usd&amp;saleType=secondary"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-sales-chart?span=day&amp;period=month&amp;convertCurrencies=usd&amp;saleType=secondary</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-sales-chart?span=day&amp;period=month&amp;convertCurrencies=usd&amp;saleType=secondary"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -3267,7 +3292,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes Chart data for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
 <h3 id='http-request-17'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/nft-sales-chart</code></p>
+<p><code>GET https://bithomp.com/api/v2/nft-sales-chart</code></p>
 <h3 id='query-parameters-17'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -3317,13 +3342,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>can be <code>primary</code> or <code>secondary</code> (optional, <code>primary</code> - the sales from the issuer address)</td>
 </tr>
 </tbody></table>
-<h2 id='nft-crawler-last-update'>NFT Crawler (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/statistics/nftokens/crawler"</span>
+<h2 id='nft-crawler-last-update'>NFT Crawler (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/statistics/nftokens/crawler"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/statistics/nftokens/crawler</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/statistics/nftokens/crawler"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/statistics/nftokens/crawler</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/statistics/nftokens/crawler"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -3336,7 +3361,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint returns the last ledger which was crawled by our NFT crawler.</p>
 <h3 id='http-request-18'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/statistics/nftokens/crawler</code></p>
+<p><code>GET https://bithomp.com/api/v2/statistics/nftokens/crawler</code></p>
 <h3 id='response-format'>Response Format</h3>
 <table><thead>
 <tr>
@@ -3787,7 +3812,7 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>mintedByMarketplace</td>
 <td>null</td>
-<td>Here you can specify a minter from https://xrplexplorer.com/nft-minters?period=all to filter your search by minter project.</td>
+<td>Here you can specify a minter from https://bithomp.com/nft-minters?period=all to filter your search by minter project.</td>
 </tr>
 <tr>
 <td>marker</td>
@@ -4270,7 +4295,7 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>marketplace</td>
 <td>null</td>
-<td>You can specify a marketplace, to filter sales by a specific marketplace, for example <code>xrp.cafe</code>, the list of all marketplaces is <a href="https://xrplexplorer.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)</td>
+<td>You can specify a marketplace, to filter sales by a specific marketplace, for example <code>xrp.cafe</code>, the list of all marketplaces is <a href="https://bithomp.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)</td>
 </tr>
 <tr>
 <td>marker</td>
@@ -4278,13 +4303,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>The marker from the previous request, if you need a next page of NFTs</td>
 </tr>
 </tbody></table>
-<h2 id='nft-crawler-last-update-2'>NFT Crawler (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/statistics/uritokens/crawler"</span>
+<h2 id='nft-crawler-last-update-2'>NFT Crawler (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/statistics/uritokens/crawler"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/statistics/uritokens/crawler</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/statistics/uritokens/crawler"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/statistics/uritokens/crawler</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/statistics/uritokens/crawler"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -4297,7 +4322,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint returns the last ledger which was crawled by our NFT crawler.</p>
 <h3 id='http-request-24'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/statistics/uritokens/crawler</code></p>
+<p><code>GET https://bithomp.com/api/v2/statistics/uritokens/crawler</code></p>
 <h3 id='response-format-2'>Response Format</h3>
 <table><thead>
 <tr>
@@ -4317,13 +4342,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>UNIX timestamp of the last crawled ledger.</td>
 </tr>
 </tbody></table>
-<h1 id='services'>Services</h1><h2 id='get-services'>Get services</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/services"</span>
+<h1 id='services'>Services</h1><h2 id='get-services'>Get services</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/services</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/services"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/services</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/services"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -4377,7 +4402,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves a list of identified services.</p>
 <h3 id='http-request-25'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/services</code></p>
+<p><code>GET https://bithomp.com/api/v2/services</code></p>
 <h3 id='response-format-3'>Response Format</h3>
 <table><thead>
 <tr>
@@ -4426,13 +4451,13 @@ Exclude unnecessary parameters to make your request faster.
 <aside class="notice">
 Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
 </aside>
-<h2 id='addresses-from-services'>Addresses from Services</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/services/addresses"</span>
+<h2 id='addresses-from-services'>Addresses from Services</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services/addresses"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/services/addresses</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/services/addresses"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/services/addresses</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/services/addresses"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -4463,7 +4488,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span></code></pre></div>
 <p>This endpoint retrieves a list of all identified service addresses.</p>
 <h3 id='http-request-26'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/services/addresses</code></p>
+<p><code>GET https://bithomp.com/api/v2/services/addresses</code></p>
 <h3 id='response-format-4'>Response Format</h3>
 <table><thead>
 <tr>
@@ -4507,13 +4532,13 @@ Before downloading the whole list again you can check if it was updated here: <a
 <aside class="notice">
 Before downloading the whole list again you can check if it was updated here: <a href="#services-last-update">Get status: Services</a>
 </aside>
-<h2 id='status-last-update'>Status (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/services/lastUpdate"</span>
+<h2 id='status-last-update'>Status (Last update)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/services/lastUpdate"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/services/lastUpdate</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/services/lastUpdate"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/services/lastUpdate</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/services/lastUpdate"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -4527,7 +4552,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span></code></pre></div>
 <p>This endpoint returns a timestamp of last DB update for services/addresses.</p>
 <h3 id='http-request-27'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/services/lastUpdate</code></p>
+<p><code>GET https://bithomp.com/api/v2/services/lastUpdate</code></p>
 <h3 id='response-format-5'>Response Format</h3>
 <table><thead>
 <tr>
@@ -4552,13 +4577,13 @@ Before downloading the whole list again you can check if it was updated here: <a
 <td>The amount of identified addresses.</td>
 </tr>
 </tbody></table>
-<h1 id='address'>Address</h1><h2 id='get-information-for-an-address'>Get information for an address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&amp;service=true&amp;verifiedDomain=true&amp;inception=true&amp;ledgerInfo=true&amp;bithomp=true"</span>
+<h1 id='address'>Address</h1><h2 id='get-information-for-an-address'>Get information for an address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&amp;service=true&amp;verifiedDomain=true&amp;inception=true&amp;ledgerInfo=true&amp;bithomp=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getAddressInfo</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&amp;service=true&amp;verifiedDomain=true&amp;inception=true&amp;ledgerInfo=true&amp;bithomp=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getAddressInfo</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$addressInfo</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&amp;service=true&amp;verifiedDomain=true&amp;inception=true&amp;ledgerInfo=true&amp;bithomp=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&amp;service=true&amp;verifiedDomain=true&amp;inception=true&amp;ledgerInfo=true&amp;bithomp=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getAddressInfo</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$addressInfo</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&amp;service=true&amp;verifiedDomain=true&amp;inception=true&amp;ledgerInfo=true&amp;bithomp=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$addressInfo</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -4649,7 +4674,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested address.</p>
 <h3 id='http-request-28'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/address/&lt;address&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/address/&lt;address&gt;</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4735,13 +4760,13 @@ Before downloading the whole list again you can check if it was updated here: <a
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
 </aside>
-<h1 id='validator'>Validator</h1><h2 id='get-wallet'>Get wallet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
+<h1 id='validator'>Validator</h1><h2 id='get-wallet'>Get wallet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getValidatorAddress</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">publicKey</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> validator's XRPL address: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">json</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getValidatorAddress</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$validatorAddress</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getValidatorAddress</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$validatorAddress</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$validatorAddress</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -4755,7 +4780,7 @@ Exclude unnecessary parameters to make your request faster.
 <p>This endpoint retrieves an address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
 <h3 id='http-request-29'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
 <h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4768,13 +4793,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>The public key of the validator to retrieve</td>
 </tr>
 </tbody></table>
-<h1 id='currency-hex-xls-14-nft'>Currency (HEX / XLS-14 NFT)</h1><h2 id='currency'>Currency</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"</span>
+<h1 id='currency-hex-xls-14-nft'>Currency (HEX / XLS-14 NFT)</h1><h2 id='currency'>Currency</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/currency/02C7004B041A91880000526964776F726C643836</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -4832,7 +4857,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
 <h3 id='http-request-30'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/currency/&lt;currency&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/currency/&lt;currency&gt;</code></p>
 <h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -4850,13 +4875,13 @@ Exclude unnecessary parameters to make your request faster.
 You can retrieve information for MANY currencies in one request:
 <a href="#currencies-hex-or-xls-14-nfts">Currencies (HEX or XLS-14 NFT)</a>
 </aside>
-<h2 id='currencies'>Currencies</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"</span>
+<h2 id='currencies'>Currencies</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -4939,7 +4964,7 @@ You can retrieve information for MANY currencies in one request:
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
 <h3 id='http-request-31'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/currencies</code></p>
+<p><code>GET https://bithomp.com/api/v2/currencies</code></p>
 <h3 id='query-parameters-24'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -4952,13 +4977,13 @@ You can retrieve information for MANY currencies in one request:
 <td>A list of currencies separated by comma (HEX or XLS-14 NFT)</td>
 </tr>
 </tbody></table>
-<h1 id='tokens'>Tokens</h1><h2 id='token-balances'>Token Balances</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"</span>
+<h1 id='tokens'>Tokens</h1><h2 id='token-balances'>Token Balances</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -4998,7 +5023,7 @@ You can retrieve information for MANY currencies in one request:
 </span></code></pre></div>
 <p>This endpoint returns trustlines (IOU/token balances), for XAHAU it is also returns the locked amounts for IOUs (in escrows) (Only available on paid API plans).</p>
 <h3 id='http-request-32'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/trustlines/&lt;address&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/trustlines/&lt;address&gt;</code></p>
 <h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -5011,13 +5036,13 @@ You can retrieve information for MANY currencies in one request:
 <td>The address you want to get token balances for</td>
 </tr>
 </tbody></table>
-<h1 id='transaction'>Transaction</h1><h2 id='tx-details'>Tx Details</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F"</span>
+<h1 id='transaction'>Transaction</h1><h2 id='tx-details'>Tx Details</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -5181,11 +5206,11 @@ You can retrieve information for MANY currencies in one request:
 <p>This endpoint returns transaction details, including specification, outcome and rawTransaction data (Only available on paid API plans).
 <br>
 Page on bithomp that displays it:
-<a href="https://xrplexplorer.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
-  https://xrplexplorer.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
+<a href="https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
+  https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
 </a>.</p>
 <h3 id='http-request-33'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/transaction/&lt;hash&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/transaction/&lt;hash&gt;</code></p>
 <h3 id='url-parameters-14'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -5198,13 +5223,13 @@ Page on bithomp that displays it:
 <td>Transaction hash</td>
 </tr>
 </tbody></table>
-<h2 id='tx-decode'>Tx Decode</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1"</span>
+<h2 id='tx-decode'>Tx Decode</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -5236,11 +5261,11 @@ Page on bithomp that displays it:
 <p>This endpoint decode a signed transaction.
 <br>
 Page on bithomp with the same decode function, but client-side:
-<a href="https://xrplexplorer.com/submit/">
-  https://xrplexplorer.com/submit/
+<a href="https://bithomp.com/submit/">
+  https://bithomp.com/submit/
 </a>.</p>
 <h3 id='http-request-34'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
 <h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -5257,9 +5282,9 @@ Page on bithomp with the same decode function, but client-side:
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
   <span class="nt">--request</span> POST
   <span class="nt">--data</span> <span class="s1">'{"signedTransaction":"1200032280000000240000000368400000000000000C732103A71B44FD71C956C3CC0A540F2FBB577C4A300BC71244D86E4EB57220E58BFA26744730450221008D53E4188B39E8EF9953672B42C7ED3F7760F4B2FA51EC91A6EB0B693A6002B2022016384B9F552C75FD3BDE13C65E1CC3DA646AB10E3DD785EB2005620C6AF2C52B7710746573742E626974686F6D702E636F6D811485C536EFA7EAACCC51916E32FF720810A2226008F9EA7C06636C69656E747D16426974686F6D7020746F6F6C20762E20302E342E31317E0A706C61696E2F74657874E1F1","id":"BC35145B69F75FE5B41D6198D56203C2CFD2C1D968C09B09A37530CCB3AD2C6D"}'</span>
-  https://xrplexplorer.com/api/v2/transaction/submit/
+  https://bithomp.com/api/v2/transaction/submit/
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-   <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/transaction/submit/</span><span class="dl">"</span><span class="p">,</span>
+   <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/transaction/submit/</span><span class="dl">"</span><span class="p">,</span>
    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
    <span class="na">contentType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
@@ -5301,11 +5326,11 @@ Page on bithomp with the same decode function, but client-side:
 <p>This endpoint returns a final status of a submitted transaction.
 <br>
 Page where it used on bithomp:
-<a href="https://xrplexplorer.com/explorer/?hwlogin">
-  https://xrplexplorer.com/explorer/?hwlogin
+<a href="https://bithomp.com/explorer/?hwlogin">
+  https://bithomp.com/explorer/?hwlogin
 </a>.</p>
 <h3 id='http-request-35'>HTTP Request</h3>
-<p><code>POST https://xrplexplorer.com/api/v2/transaction/submit</code></p>
+<p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
 <tr>
@@ -5322,13 +5347,13 @@ Page where it used on bithomp:
 <td>A blob of signed transaction to submit</td>
 </tr>
 </tbody></table>
-<h1 id='historical-data'>Historical data</h1><h2 id='account-activations'>Account Activations</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/account-chart?span=month&amp;period=year"</span>
+<h1 id='historical-data'>Historical data</h1><h2 id='account-activations'>Account Activations</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/account-chart?span=month&amp;period=year"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/account-chart?span=month&amp;period=year</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/account-chart?span=month&amp;period=year"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/account-chart?span=month&amp;period=year</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/account-chart?span=month&amp;period=year"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -5356,9 +5381,9 @@ Page where it used on bithomp:
 <p>This endpoint returns data to draw a chart of account activations (available only on the Standard plan and higher).
 <br>
 Page where it used on bithomp:
-<a href="https://xrplexplorer.com/activations">https://xrplexplorer.com/activations</a>.</p>
+<a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.</p>
 <h3 id='http-request-36'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/account-chart</code></p>
+<p><code>GET https://bithomp.com/api/v2/account-chart</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
 <tr>
@@ -5378,13 +5403,13 @@ Page where it used on bithomp:
 <td>A time span for the chart, can be <code>minute</code>, <code>hour</code>, <code>day</code>, <code>month</code>, <code>year</code>, not all spans are available for large periods, for a period <code>hour</code> you can have <code>minute</code>, for periods up to 60 hours, you can have <code>hour</code>, <code>day</code>, <code>month</code>, for up to 60 days - <code>day</code>, <code>month</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='genesis'>Genesis</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/genesis"</span>
+<h2 id='genesis'>Genesis</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/genesis"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/genesis</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/genesis"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/genesis</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/genesis"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -5420,9 +5445,9 @@ Page where it used on bithomp:
 <p>This endpoint retrieves a list of addresses from the first available ledger in XRPL history.
 <br>
 Page where it used on bithomp:
-<a href="https://xrplexplorer.com/genesis">https://xrplexplorer.com/genesis</a>.</p>
+<a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
 <h3 id='http-request-37'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/genesis</code></p>
+<p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-7'>Response Format</h3>
 <table><thead>
 <tr>
@@ -5497,13 +5522,13 @@ Page where it used on bithomp:
 <td>XRP balance on that genesis[].address on the time of balance_update.</td>
 </tr>
 </tbody></table>
-<h2 id='history-of-xrp-price-alerts'>History of XRP price alerts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xrplexplorer.com/api/v2/price/xrp/alerts"</span>
+<h2 id='history-of-xrp-price-alerts'>History of XRP price alerts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/price/xrp/alerts"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xrplexplorer.com/api/v2/price/xrp/alerts</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xrplexplorer.com/api/v2/price/xrp/alerts"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/price/xrp/alerts</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/price/xrp/alerts"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -5538,9 +5563,9 @@ Page where it used on bithomp:
 <p>This endpoint retrieves a list of our XRP price alerts.
 <br>
 Page where it used on bithomp:
-<a href="https://xrplexplorer.com/alerts">https://xrplexplorer.com/alerts</a>.</p>
+<a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
 <h3 id='http-request-38'>HTTP Request</h3>
-<p><code>GET https://xrplexplorer.com/api/v2/price/xrp/alerts</code></p>
+<p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-8'>Response Format</h3>
 <table><thead>
 <tr>
