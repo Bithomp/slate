@@ -7,7 +7,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - php: PHP
 
 toc_footers:
-  - <a href='https://xrplexplorer.com/admin'>Request an API Key</a>
+  - <a href='https://bithomp.com/admin'>Request an API Key</a>
   - <a href='https://write.as/bithomp/xrp-ledger-domain-verification'>XRPL domain verification</a>
   - <a href='https://github.com/bithomp/slate'>Edit this documentation on GitHub</a>
 
@@ -29,7 +29,7 @@ We have language bindings in Shell, JavaScript and PHP. You can view code exampl
 
 # Supported networks
 
-XRPL MAINNET: `https://xrplexplorer.com/api/v2/`, get your api key [here](https://xrplexplorer.com/admin)
+XRPL MAINNET: `https://bithomp.com/api/v2/`, get your api key [here](https://bithomp.com/admin)
 
 XAHAU MAINNET: `https://xahauexplorer.com/api/v2/`, get your api key [here](https://xahauexplorer.com/admin)
 
@@ -75,7 +75,36 @@ Direct access to fast [resized and cached] images and videos:
 | Standard                 | 10K / 200K | 3K / 60K   | 50K / 500K | 100 EUR  |
 | Premium                  | 20K / 400K | 6K / 120K  | 100K / 1M  | 200 EUR  |
 
-- <a href="https://xrplexplorer.com/admin">Request an API key</a>
+- <a href="https://bithomp.com/admin">Request an API key</a>
+
+# FREE Address profile images 
+
+You can show images for XRPL & XAHAU addresses which includes:
+
+- Bithomp avatars (anyone can set a gravatar on their page with warious different software and hardware XRPL and XAHAU wallets, just go to <a href="https://bithomp.com/account">https://bithomp.com/account</a> enter your address and press the button "Set avatar"
+- X images (we keep them updated for the registered services)
+- Xaman pro users profile pictures OR curated assets images
+- GRAVATAR images 
+- hashicons (address unique icons)
+
+It is easy to use, no registartion needed, just use the following code to show address images:
+
+```
+<img src="https://cdn.bithomp.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" />
+```
+
+* for 10 EUR a month you can get images from your own domain (for example: pfp.mydomain.com), you will jsut need to add a DNS record.
+Then your links could be like this:
+
+```
+CNAME    pfp     cdn.bithomp.com
+```
+
+```
+<img src="https://pfp.mydomain.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" />
+```
+
+Contact our support if you intersted to have it on your domain.
 
 # Changelog
 
@@ -198,31 +227,31 @@ You can search for sales by a specific buyer and/or seller.
 
 ### XRPL Explorer
 
-* <a href="https://xrplexplorer.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://xrplexplorer.com/explorer/{txid}</a>
-* <a href="https://xrplexplorer.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://xrplexplorer.com/explorer/{address}</a>
-* <a href="https://xrplexplorer.com/explorer/bitstamp">https://xrplexplorer.com/explorer/{username}</a>
-* <a href="https://xrplexplorer.com/explorer/02C7004B041A91880000526964776F726C643836">https://xrplexplorer.com/explorer/{NFT-XLS14 || HEXcurrency}</a>
-* <a href="https://xrplexplorer.com/explorer/rabbit$bithomp.com">https://xrplexplorer.com/explorer/{payString}</a>
+* <a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a>
+* <a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a>
+* <a href="https://bithomp.com/explorer/bitstamp">https://bithomp.com/explorer/{username}</a>
+* <a href="https://bithomp.com/explorer/02C7004B041A91880000526964776F726C643836">https://bithomp.com/explorer/{NFT-XLS14 || HEXcurrency}</a>
+* <a href="https://bithomp.com/explorer/rabbit$bithomp.com">https://bithomp.com/explorer/{payString}</a>
 
 ### NFT explorer
-* <a href="https://xrplexplorer.com/nft/00081388161A9F1B349F3D50596D02CCA65E97D9268A5AF529A955040000000D">https://xrplexplorer.com/nft/{nftID}</a>
-* <a href="https://xrplexplorer.com/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673">https://xrplexplorer.com/nft-offer/{nftOfferID}</a>
-* <a href="https://xrplexplorer.com/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX">https://xrplexplorer.com/nft-offers/{address || username}</a>
-* <a href="https://xrplexplorer.com/nft-explorer?issuer=xSPECTAR&taxon=2&owner=xSPECTAR">https://xrplexplorer.com/nft-explorer?owner={address || username}&issuer={address || username}&taxon={taxon}</a>
-* <a href="https://xrplexplorer.com/nfts/xSPECTAR">https://xrplexplorer.com/nfts/{address || username}</a>
-* <a href="https://xrplexplorer.com/nft-volumes?currency=534F4C4F00000000000000000000000000000000&currencyIssuer=rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz">https://xrplexplorer.com/nft-volumes?currency={currencyCode}&currencyIssuer={address}&sale={"primary" || "secondary" || "all"}&period={"all" || "month" || "week" || "day"}&list={"issuers" || "currencies" || "brokers"}</a>
-* <a href="https://xrplexplorer.com/nft-sales?list=top&period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://xrplexplorer.com/nft-sales?list=top&period=month&sale=secondary&currency={currencyCode}&currencyIssuer={address}&issuer={address || username}</a>
-* <a href="https://xrplexplorer.com/nft-sales?list=last&period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://xrplexplorer.com/nft-sales?list=last&period=month&sale=secondary&currency={currencyCode}&currencyIssuer={address}&issuer={address || username}</a>
+* <a href="https://bithomp.com/nft/00081388161A9F1B349F3D50596D02CCA65E97D9268A5AF529A955040000000D">https://bithomp.com/nft/{nftID}</a>
+* <a href="https://bithomp.com/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673">https://bithomp.com/nft-offer/{nftOfferID}</a>
+* <a href="https://bithomp.com/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX">https://bithomp.com/nft-offers/{address || username}</a>
+* <a href="https://bithomp.com/nft-explorer?issuer=xSPECTAR&taxon=2&owner=xSPECTAR">https://bithomp.com/nft-explorer?owner={address || username}&issuer={address || username}&taxon={taxon}</a>
+* <a href="https://bithomp.com/nfts/xSPECTAR">https://bithomp.com/nfts/{address || username}</a>
+* <a href="https://bithomp.com/nft-volumes?currency=534F4C4F00000000000000000000000000000000&currencyIssuer=rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz">https://bithomp.com/nft-volumes?currency={currencyCode}&currencyIssuer={address}&sale={"primary" || "secondary" || "all"}&period={"all" || "month" || "week" || "day"}&list={"issuers" || "currencies" || "brokers"}</a>
+* <a href="https://bithomp.com/nft-sales?list=top&period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://bithomp.com/nft-sales?list=top&period=month&sale=secondary&currency={currencyCode}&currencyIssuer={address}&issuer={address || username}</a>
+* <a href="https://bithomp.com/nft-sales?list=last&period=month&sale=secondary&currency=58706F7373756D00000000000000000000000000&currencyIssuer=rfQr7LLaNvG93A3e2h6tjub3pi2oNTbvMA&issuer=rwvQWhjpUncjEbhsD2V9tv4YpKXjfH5RDj">https://bithomp.com/nft-sales?list=last&period=month&sale=secondary&currency={currencyCode}&currencyIssuer={address}&issuer={address || username}</a>
 
 ### AMM explorer
-* <a href="https://xrplexplorer.com/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5">https://xrplexplorer.com/amm/{ammID}</a>
-* <a href="https://xrplexplorer.com/amm/rUGqgPbzKFVsSkTYUk4hdRoPwTaLv1iSDS">https://xrplexplorer.com/amm/{address}</a>
-* <a href="https://xrplexplorer.com/amm/03DD35D1879DBE4FE3290B911A14875DE6534DFD">https://xrplexplorer.com/amm/{LPtoken}</a>
+* <a href="https://bithomp.com/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5">https://bithomp.com/amm/{ammID}</a>
+* <a href="https://bithomp.com/amm/rUGqgPbzKFVsSkTYUk4hdRoPwTaLv1iSDS">https://bithomp.com/amm/{address}</a>
+* <a href="https://bithomp.com/amm/03DD35D1879DBE4FE3290B911A14875DE6534DFD">https://bithomp.com/amm/{LPtoken}</a>
 
 ### Username registration
-* <a href="https://xrplexplorer.com/username?username=Bithomp">https://xrplexplorer.com/username?username={username}</a>
-* <a href="https://xrplexplorer.com/username?address=rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://xrplexplorer.com/username?address={address}</a>
-* <a href="https://xrplexplorer.com/username?address=rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z&username=Bithomp">https://xrplexplorer.com/username?address={address}&username={username}</a>
+* <a href="https://bithomp.com/username?username=Bithomp">https://bithomp.com/username?username={username}</a>
+* <a href="https://bithomp.com/username?address=rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z">https://bithomp.com/username?address={address}</a>
+* <a href="https://bithomp.com/username?address=rsuUjfWxrACCAwGQDsNeZUhpzXf1n1NK5Z&username=Bithomp">https://bithomp.com/username?address={address}&username={username}</a>
 
 # Authentication
 
@@ -279,7 +308,7 @@ print curl_bithomp("api_endpoint_here")
 
 > Make sure to replace `abcd-abcd-0000-abcd-0123abcdabcd` with your API key.
 
-Unless you are using our <a href="#on-demand">on-demand</a> option, in order to use our APIs you need to request an API key via [the partner portal](https://xrplexplorer.com/admin).
+Unless you are using our <a href="#on-demand">on-demand</a> option, in order to use our APIs you need to request an API key via [the partner portal](https://bithomp.com/admin).
 
 Bithomp expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
@@ -393,7 +422,7 @@ curl_close($ch);
 ## Get username for an address
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true"
+curl "https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -401,11 +430,11 @@ curl "https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true", getData);
+bithompRequest("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true");
 print $data;
 ```
 
@@ -423,7 +452,7 @@ This endpoint retrieves a username for a requested XRPL address.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/address/<address>?username=true`
+`GET https://bithomp.com/api/v2/address/<address>?username=true`
 
 ### URL Parameters
 
@@ -440,7 +469,7 @@ username | false | If set to true, the result will also include a `username` (ri
 ## Get address information by a username
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true"
+curl "https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -448,11 +477,11 @@ curl "https://xrplexplorer.com/api/v2/username/xrptipbot?service=true&parent=tru
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true", getData);
+bithompRequest("https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/username/xrptipbot?service=true&parent=true&verifiedDomain=true");
 print $data;
 ```
 
@@ -507,7 +536,7 @@ This endpoint retrieves information for a requested Username.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/username/<username>`
+`GET https://bithomp.com/api/v2/username/<username>`
 
 ### URL Parameters
 
@@ -533,7 +562,7 @@ Exclude unnecessary parameters to make your request faster.
 ## AMMs
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/amms"
+curl "https://bithomp.com/api/v2/amms"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -541,11 +570,11 @@ curl "https://xrplexplorer.com/api/v2/amms"
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/amms", getData);
+bithompRequest("https://bithomp.com/api/v2/amms", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/amms");
+$data = curl_bithomp("https://bithomp.com/api/v2/amms");
 print $data;
 ```
 
@@ -634,7 +663,7 @@ This endpoint returns a list of AMM pools.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/amms`
+`GET https://bithomp.com/api/v2/amms`
 
 ### Query Parameters
 
@@ -652,7 +681,7 @@ ids | null | (Available for the Standard plan and higher) A list of AMM IDs sepa
 ## AMM Pool
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5"
+curl "https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -660,11 +689,11 @@ curl "https://xrplexplorer.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C3
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5", getData);
+bithompRequest("https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5");
+$data = curl_bithomp("https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5");
 print $data;
 ```
 
@@ -822,7 +851,7 @@ This endpoint retrieves information for a requested AMM pool.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/amm/<ammID || LPtoken || address>`
+`GET https://bithomp.com/api/v2/amm/<ammID || LPtoken || address>`
 
 ### URL Parameters
 
@@ -844,7 +873,7 @@ ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request wil
 ## NFT
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true"
+curl "https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -852,11 +881,11 @@ curl "https://xrplexplorer.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true", getData);
+bithompRequest("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true");
 print $data;
 ```
 
@@ -953,7 +982,7 @@ This endpoint retrieves information for a requested NFT.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nft/<nftID>`
+`GET https://bithomp.com/api/v2/nft/<nftID>`
 
 ### URL Parameters
 
@@ -979,7 +1008,7 @@ collectionDetails | false | (Only available on paid API plans) If set to true, e
 ## NFT Offer
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673"
+curl "https://bithomp.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -987,11 +1016,11 @@ curl "https://xrplexplorer.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-offer/3E8E975E0CFDF2EDE76E0925EB4393A1899061047DE1F46F0DEEA783F5F1A673");
 print $data;
 ```
 
@@ -1122,7 +1151,7 @@ This endpoint retrieves NFT Sales Volumes for specified parameters
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nft-offer/<nftOfferID>`
+`GET https://bithomp.com/api/v2/nft-offer/<nftOfferID>`
 
 ### URL Parameters
 
@@ -1139,7 +1168,7 @@ assets | false | (Only available on the Standard API plan or greater) If set to 
 ## NFTS
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true"
+curl "https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1147,11 +1176,11 @@ curl "https://xrplexplorer.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true", getData);
+bithompRequest("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true");
 print $data;
 ```
 
@@ -1217,7 +1246,7 @@ This endpoint retrieves a List of NFTs for specified parameters
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nfts`
+`GET https://bithomp.com/api/v2/nfts`
 
 ### Query Parameters
 
@@ -1231,7 +1260,7 @@ assets | false | (Only available on the Standard API plan or greater) If set to 
 hasMetadata | false | set to `true`, to list NFTs only with available metadata
 hasImage | false | set to `true`, to list NFTs only with available media data (preview images can be generated from images, videos, pdf files and 3d models)
 includeDeleted | false | set to `true`, if you want result to include deleeted NFTs
-mintedByMarketplace | null | Here you can specify a minter from https://xrplexplorer.com/nft-minters?period=all to filter your search by minter project.
+mintedByMarketplace | null | Here you can specify a minter from https://bithomp.com/nft-minters?period=all to filter your search by minter project.
 marker | null | The marker from the previous request, if you need a next page of NFTs
 list | `nfts` | (Only available on paid API plans) can be set to `onSale` to get the list of NFTs with active sell offers
 destination | `all` | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be set as an address (to specify a particular MarketPlace), `public`, `knownBrokers`, `publicAndKnownBrokers`, `all`
@@ -1252,7 +1281,7 @@ collectionDetails | false | (Available for the Paid plans) If set to true, each 
 ## NFT Offers
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&offersValidate=true&nftoken=true"
+curl "https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&offersValidate=true&nftoken=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1260,11 +1289,11 @@ curl "https://xrplexplorer.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM6
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&offersValidate=true&nftoken=true", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&offersValidate=true&nftoken=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&offersValidate=true&nftoken=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&offersValidate=true&nftoken=true");
 print $data;
 ```
 
@@ -1394,7 +1423,7 @@ This endpoint retrieves NFT Offers created by an `address` or NFT Offers for all
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nft-offers/<address>`
+`GET https://bithomp.com/api/v2/nft-offers/<address>`
 
 ### URL Parameters
 
@@ -1414,7 +1443,7 @@ assets | false | (Only available on the Standard API plan or greater) If set to 
 ## NFT Collection
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&statistics=true&assets=true"
+curl "https://bithomp.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&statistics=true&assets=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1422,11 +1451,11 @@ curl "https://xrplexplorer.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYK
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&statistics=true&assets=true", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&statistics=true&assets=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&statistics=true&assets=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&statistics=true&assets=true");
 print $data;
 ```
 
@@ -1515,7 +1544,7 @@ This endpoint retrieves NFT Collection details, including floor price, sale stat
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nft-collection/<collectionId>`
+`GET https://bithomp.com/api/v2/nft-collection/<collectionId>`
 
 ### URL Parameters
 
@@ -1534,7 +1563,7 @@ assets | false | (Only available on the Standard API plan or greater) If set to 
 ## NFT Collections
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nft-collections?search=zerpmon&assets=true&floorPrice=true"
+curl "https://bithomp.com/api/v2/nft-collections?search=zerpmon&assets=true&floorPrice=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1542,11 +1571,11 @@ curl "https://xrplexplorer.com/api/v2/nft-collections?search=zerpmon&assets=true
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nft-collections?search=zerpmon&assets=true&floorPrice=true", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-collections?search=zerpmon&assets=true&floorPrice=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nft-collections?search=zerpmon&assets=true&floorPrice=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-collections?search=zerpmon&assets=true&floorPrice=true");
 print $data;
 ```
 
@@ -1631,7 +1660,7 @@ This endpoint retrieves NFT Collection list for your search creterias.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nft-collections`
+`GET https://bithomp.com/api/v2/nft-collections`
 
 ### Query Parameters
 
@@ -1648,7 +1677,7 @@ limit | 100 | The number of NFTs to return. (More than 100 is available for the 
 ## NFT Distribution
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nft-owners?order=nonSelfIssued&issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&taxon=0"
+curl "https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&taxon=0"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1656,11 +1685,11 @@ curl "https://xrplexplorer.com/api/v2/nft-owners?order=nonSelfIssued&issuer=rMCf
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nft-owners?order=nonSelfIssued&issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&taxon=0", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&taxon=0", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nft-owners?order=nonSelfIssued&issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&taxon=0");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-owners?order=nonSelfIssued&issuer=rMCfTcW9k2Z21cm4zWj2mgHaTrxxrHtL7n&taxon=0");
 print $data;
 ```
 
@@ -1708,7 +1737,7 @@ This endpoint retrieves NFT Owners list sorted by NFT count.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nft-owners`
+`GET https://bithomp.com/api/v2/nft-owners`
 
 ### Query Parameters
 
@@ -1722,7 +1751,7 @@ marker | null | (available on paid plans only) The marker from the previous requ
 ## NFT Sales
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nft-sales?list=topSold&currency=xrp&convertCurrencies=usd,eur"
+curl "https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp&convertCurrencies=usd,eur"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1730,11 +1759,11 @@ curl "https://xrplexplorer.com/api/v2/nft-sales?list=topSold&currency=xrp&conver
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nft-sales?list=topSold&currency=xrp&convertCurrencies=usd,eur", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp&convertCurrencies=usd,eur", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nft-sales?list=topSold&currency=xrp&convertCurrencies=usd,eur");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-sales?list=topSold&currency=xrp&convertCurrencies=usd,eur");
 print $data;
 ```
 
@@ -1858,7 +1887,7 @@ This endpoint retrieves a List of NFT Sales for specified parameters
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nft-sales`
+`GET https://bithomp.com/api/v2/nft-sales`
 
 ### Query Parameters
 
@@ -1876,13 +1905,13 @@ taxon | null | Taxon for that Issuer (optional, will be ignored without an Issue
 buyer | null | (Only available on paid API plans) The address of the Buyer (optional)
 seller | null | (Only available on paid API plans) The address of the Seller (optional)
 period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or a time period as timestamps from..to `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
-marketplace | null | You can specify a marketplace, to filter sales by a specific marketplace, for example `xrp.cafe`, the list of all marketplaces is <a href="https://xrplexplorer.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)
+marketplace | null | You can specify a marketplace, to filter sales by a specific marketplace, for example `xrp.cafe`, the list of all marketplaces is <a href="https://bithomp.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)
 marker | null | The marker from the previous request, if you need a next page of NFTs
 
 ## NFT Volumes
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nft-volumes?list=issuers&currency=xrp"
+curl "https://bithomp.com/api/v2/nft-volumes?list=issuers&currency=xrp"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1890,11 +1919,11 @@ curl "https://xrplexplorer.com/api/v2/nft-volumes?list=issuers&currency=xrp"
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nft-volumes?list=issuers&currency=xrp", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-volumes?list=issuers&currency=xrp", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nft-volumes?list=issuers&currency=xrp");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-volumes?list=issuers&currency=xrp");
 print $data;
 ```
 
@@ -1967,7 +1996,7 @@ This endpoint retrieves NFT Sales Volumes for specified parameters
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nft-volumes`
+`GET https://bithomp.com/api/v2/nft-volumes`
 
 ### Query Parameters
 
@@ -1983,7 +2012,7 @@ floorPrice | false | (Only available on paid API plans) Returns `floorPrice` for
 ## NFT Volumes Extended
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nft-volumes-extended?list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true"
+curl "https://bithomp.com/api/v2/nft-volumes-extended?list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1991,11 +2020,11 @@ curl "https://xrplexplorer.com/api/v2/nft-volumes-extended?list=collections&conv
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nft-volumes-extended??list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-volumes-extended??list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nft-volumes-extended??list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-volumes-extended??list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true");
 print $data;
 ```
 
@@ -2166,7 +2195,7 @@ This endpoint retrieves Extended NFT Sales Volumes for specified parameters (Onl
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nft-volumes-extended`
+`GET https://bithomp.com/api/v2/nft-volumes-extended`
 
 ### Query Parameters
 
@@ -2188,7 +2217,7 @@ assets | false | (For Standard plan and hire) For list `collections` returns col
 ## NFT Minters
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nft-marketplaces?period=week"
+curl "https://bithomp.com/api/v2/nft-marketplaces?period=week"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -2196,11 +2225,11 @@ curl "https://xrplexplorer.com/api/v2/nft-marketplaces?period=week"
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nft-marketplaces?period=week", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-marketplaces?period=week", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nft-marketplaces?period=week");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-marketplaces?period=week");
 print $data;
 ```
 
@@ -2261,7 +2290,7 @@ This endpoint retrieves NFT minters on XRPL for a specified period of time
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nft-marketplaces`
+`GET https://bithomp.com/api/v2/nft-marketplaces`
 
 ### Query Parameters
 
@@ -2272,7 +2301,7 @@ period | `all` | A time period, all time all, last 24h day, last 7 days week, la
 ## NFT Mint Chart
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nft-chart?span=day&period=month"
+curl "https://bithomp.com/api/v2/nft-chart?span=day&period=month"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -2280,11 +2309,11 @@ curl "https://xrplexplorer.com/api/v2/nft-chart?span=day&period=month"
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nft-chart?span=day&period=month", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-chart?span=day&period=month", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nft-chart?span=day&period=month");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-chart?span=day&period=month");
 print $data;
 ```
 
@@ -2311,7 +2340,7 @@ This endpoint retrieves NFT mints count for a specified period of time, with a s
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nft-chart`
+`GET https://bithomp.com/api/v2/nft-chart`
 
 ### Query Parameters
 
@@ -2323,7 +2352,7 @@ span | null | A time span for the chart, can be `minute`, `hour`, `day`, `month`
 ## NFT Sales Chart
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/nft-sales-chart?span=day&period=month&convertCurrencies=usd&saleType=secondary"
+curl "https://bithomp.com/api/v2/nft-sales-chart?span=day&period=month&convertCurrencies=usd&saleType=secondary"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -2331,11 +2360,11 @@ curl "https://xrplexplorer.com/api/v2/nft-sales-chart?span=day&period=month&conv
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/nft-sales-chart?span=day&period=month&convertCurrencies=usd&saleType=secondary", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-sales-chart?span=day&period=month&convertCurrencies=usd&saleType=secondary", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/nft-sales-chart?span=day&period=month&convertCurrencies=usd&saleType=secondary");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-sales-chart?span=day&period=month&convertCurrencies=usd&saleType=secondary");
 print $data;
 ```
 
@@ -2374,7 +2403,7 @@ This endpoint retrieves NFT Sales Volumes Chart data for a specified period of t
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/nft-sales-chart`
+`GET https://bithomp.com/api/v2/nft-sales-chart`
 
 ### Query Parameters
 
@@ -2392,7 +2421,7 @@ saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sa
 ## NFT Crawler (Last update)
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/statistics/nftokens/crawler"
+curl "https://bithomp.com/api/v2/statistics/nftokens/crawler"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -2400,11 +2429,11 @@ curl "https://xrplexplorer.com/api/v2/statistics/nftokens/crawler"
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/statistics/nftokens/crawler", getData);
+bithompRequest("https://bithomp.com/api/v2/statistics/nftokens/crawler", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/statistics/nftokens/crawler");
+$data = curl_bithomp("https://bithomp.com/api/v2/statistics/nftokens/crawler");
 print $data;
 ```
 
@@ -2421,7 +2450,7 @@ This endpoint returns the last ledger which was crawled by our NFT crawler.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/statistics/nftokens/crawler`
+`GET https://bithomp.com/api/v2/statistics/nftokens/crawler`
 
 ### Response Format
 
@@ -2814,7 +2843,7 @@ assets | false | (Only available on the Standard API plan or greater) If set to 
 hasMetadata | false | set to `true`, to list NFTs only with available metadata
 hasImage | false | set to `true`, to list NFTs only with available media data (preview images can be generated from images, videos, pdf files and 3d models)
 includeDeleted | false | set to `true`, if you want result to include deleeted NFTs
-mintedByMarketplace | null | Here you can specify a minter from https://xrplexplorer.com/nft-minters?period=all to filter your search by minter project.
+mintedByMarketplace | null | Here you can specify a minter from https://bithomp.com/nft-minters?period=all to filter your search by minter project.
 marker | null | The marker from the previous request, if you need a next page of NFTs
 list | `uritokens` | (Only available on paid API plans) can be set to `onSale` to get the list of NFTs with active sell offers
 destination | `all` | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be set as an address (to specify a particular MarketPlace), `public`, `knownBrokers`, `publicAndKnownBrokers`, `all`
@@ -3193,13 +3222,13 @@ issuer | null | The address of the NFT issuer (optional)
 buyer | null | (Only available on paid API plans) The address of the Buyer (optional)
 seller | null | (Only available on paid API plans) The address of the Seller (optional)
 period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or a time period as timestamps from..to `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
-marketplace | null | You can specify a marketplace, to filter sales by a specific marketplace, for example `xrp.cafe`, the list of all marketplaces is <a href="https://xrplexplorer.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)
+marketplace | null | You can specify a marketplace, to filter sales by a specific marketplace, for example `xrp.cafe`, the list of all marketplaces is <a href="https://bithomp.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)
 marker | null | The marker from the previous request, if you need a next page of NFTs
 
 ## NFT Crawler (Last update)
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/statistics/uritokens/crawler"
+curl "https://bithomp.com/api/v2/statistics/uritokens/crawler"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3207,11 +3236,11 @@ curl "https://xrplexplorer.com/api/v2/statistics/uritokens/crawler"
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/statistics/uritokens/crawler", getData);
+bithompRequest("https://bithomp.com/api/v2/statistics/uritokens/crawler", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/statistics/uritokens/crawler");
+$data = curl_bithomp("https://bithomp.com/api/v2/statistics/uritokens/crawler");
 print $data;
 ```
 
@@ -3228,7 +3257,7 @@ This endpoint returns the last ledger which was crawled by our NFT crawler.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/statistics/uritokens/crawler`
+`GET https://bithomp.com/api/v2/statistics/uritokens/crawler`
 
 ### Response Format
 
@@ -3242,7 +3271,7 @@ ledgerTime | Integer	| UNIX timestamp of the last crawled ledger.
 ## Get services
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/services"
+curl "https://bithomp.com/api/v2/services"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3250,11 +3279,11 @@ curl "https://xrplexplorer.com/api/v2/services"
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/services", getData);
+bithompRequest("https://bithomp.com/api/v2/services", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/services");
+$data = curl_bithomp("https://bithomp.com/api/v2/services");
 print $data;
 ```
 
@@ -3312,7 +3341,7 @@ This endpoint retrieves a list of identified services.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/services`
+`GET https://bithomp.com/api/v2/services`
 
 ### Response Format
 
@@ -3333,7 +3362,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 ## Addresses from Services
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/services/addresses"
+curl "https://bithomp.com/api/v2/services/addresses"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3341,11 +3370,11 @@ curl "https://xrplexplorer.com/api/v2/services/addresses"
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/services/addresses", getData);
+bithompRequest("https://bithomp.com/api/v2/services/addresses", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/services/addresses");
+$data = curl_bithomp("https://bithomp.com/api/v2/services/addresses");
 print $data;
 ```
 
@@ -3380,7 +3409,7 @@ This endpoint retrieves a list of all identified service addresses.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/services/addresses`
+`GET https://bithomp.com/api/v2/services/addresses`
 
 ### Response Format
 
@@ -3400,7 +3429,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 ## Status (Last update)
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/services/lastUpdate"
+curl "https://bithomp.com/api/v2/services/lastUpdate"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3408,11 +3437,11 @@ curl "https://xrplexplorer.com/api/v2/services/lastUpdate"
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/services/lastUpdate", getData);
+bithompRequest("https://bithomp.com/api/v2/services/lastUpdate", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/services/lastUpdate");
+$data = curl_bithomp("https://bithomp.com/api/v2/services/lastUpdate");
 print $data;
 ```
 
@@ -3430,7 +3459,7 @@ This endpoint returns a timestamp of last DB update for services/addresses.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/services/lastUpdate`
+`GET https://bithomp.com/api/v2/services/lastUpdate`
 
 ### Response Format
 
@@ -3445,7 +3474,7 @@ totalAddresses | Integer | The amount of identified addresses.
 ## Get information for an address
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true"
+curl "https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3453,11 +3482,11 @@ curl "https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?
 function getAddressInfo(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true", getAddressInfo);
+bithompRequest("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true", getAddressInfo);
 ```
 
 ```php
-$addressInfo = curl_bithomp("https://xrplexplorer.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true");
+$addressInfo = curl_bithomp("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true");
 print $addressInfo;
 ```
 
@@ -3552,7 +3581,7 @@ This endpoint retrieves information for a requested address.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/address/<address>`
+`GET https://bithomp.com/api/v2/address/<address>`
 
 ### URL Parameters
 
@@ -3586,7 +3615,7 @@ Exclude unnecessary parameters to make your request faster.
 ## Get wallet
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"
+curl "https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3594,11 +3623,11 @@ curl "https://xrplexplorer.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3Qu
 function getValidatorAddress(json) {
   console.log(json.publicKey + " validator's XRPL address: ", json.address);
 }
-bithompRequest("https://xrplexplorer.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA", getValidatorAddress);
+bithompRequest("https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA", getValidatorAddress);
 ```
 
 ```php
-$validatorAddress = curl_bithomp("https://xrplexplorer.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA");
+$validatorAddress = curl_bithomp("https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA");
 print $validatorAddress;
 ```
 
@@ -3616,7 +3645,7 @@ This endpoint retrieves an address of a specific validator
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/validator/<validatorPublicKey>`
+`GET https://bithomp.com/api/v2/validator/<validatorPublicKey>`
 
 ### URL Parameters
 
@@ -3629,7 +3658,7 @@ validatorPublicKey | The public key of the validator to retrieve
 ## Currency
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"
+curl "https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3637,11 +3666,11 @@ curl "https://xrplexplorer.com/api/v2/currency/02C7004B041A91880000526964776F726
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/currency/02C7004B041A91880000526964776F726C643836", getData);
+bithompRequest("https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/currency/02C7004B041A91880000526964776F726C643836");
+$data = curl_bithomp("https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836");
 print $data;
 ```
 
@@ -3703,7 +3732,7 @@ This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT)
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/currency/<currency>`
+`GET https://bithomp.com/api/v2/currency/<currency>`
 
 ### URL Parameters
 
@@ -3719,7 +3748,7 @@ You can retrieve information for MANY currencies in one request:
 ## Currencies
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"
+curl "https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3727,11 +3756,11 @@ curl "https://xrplexplorer.com/api/v2/currencies/?currencyList=02090001014A4E434
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xrplexplorer.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000", getData);
+bithompRequest("https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000");
+$data = curl_bithomp("https://bithomp.com/api/v2/currencies/?currencyList=02090001014A4E43454C53436F6E746573743031,02C7004B041A91880000526964776F726C643836,534F4C4F00000000000000000000000000000000");
 print $data;
 ```
 
@@ -3818,7 +3847,7 @@ This endpoint retrieves information for a requested currencies (HEX or XLS-14 NF
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/currencies`
+`GET https://bithomp.com/api/v2/currencies`
 
 ### Query Parameters
 
@@ -3831,7 +3860,7 @@ currencyList  | A list of currencies separated by comma (HEX or XLS-14 NFT)
 ## Token Balances
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"
+curl "https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3839,11 +3868,11 @@ curl "https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQ
 function printData(json) {
   console.log(JSON.stringify(json, undefined, 2));
 }
-bithompRequest("https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J", printData);
+bithompRequest("https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J", printData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J");
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J");
 print $data;
 ```
 
@@ -3887,7 +3916,7 @@ This endpoint returns trustlines (IOU/token balances), for XAHAU it is also retu
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/trustlines/<address>`
+`GET https://bithomp.com/api/v2/trustlines/<address>`
 
 ### URL Parameters
 
@@ -3900,7 +3929,7 @@ address | The address you want to get token balances for
 ## Tx Details
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F"
+curl "https://bithomp.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3908,11 +3937,11 @@ curl "https://xrplexplorer.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D20
 function printData(json) {
   console.log(JSON.stringify(json, undefined, 2));
 }
-bithompRequest("https://xrplexplorer.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F", printData);
+bithompRequest("https://bithomp.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F", printData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F");
+$data = curl_bithomp("https://bithomp.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F");
 print $data;
 ```
 
@@ -4078,13 +4107,13 @@ print $data;
 This endpoint returns transaction details, including specification, outcome and rawTransaction data (Only available on paid API plans).
 <br>
 Page on bithomp that displays it:
-<a href="https://xrplexplorer.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
-  https://xrplexplorer.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
+<a href="https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
+  https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
 </a>.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/transaction/<hash>`
+`GET https://bithomp.com/api/v2/transaction/<hash>`
 
 ### URL Parameters
 
@@ -4095,7 +4124,7 @@ hash | Transaction hash
 ## Tx Decode
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1"
+curl "https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -4103,11 +4132,11 @@ curl "https://xrplexplorer.com/api/v2/transaction/decode/12000322800000002400000
 function printData(json) {
   console.log(JSON.stringify(json, undefined, 2));
 }
-bithompRequest("https://xrplexplorer.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1", printData);
+bithompRequest("https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1", printData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1");
+$data = curl_bithomp("https://bithomp.com/api/v2/transaction/decode/1200032280000000240000003241833237B8665D2F4E00135E8DE646589F68400000000000000C732103709723A5967EAAED571B71DB511D87FA44CC7CDDF827A37F457A25E14D862BCD74473045022100C6A6999BD33153C6A236D78438D1BFEEEC810CFE05D0E41339B577560C9143CA022074F07881F559F56593FF680049C12FC3BCBB0B73CE02338651522891D95886F981146078086881F39B191D63B528D914FEA7F8CA2293F9EA7C06636C69656E747D15426974686F6D7020746F6F6C20762E20302E302E337E0A706C61696E2F74657874E1F1");
 print $data;
 ```
 
@@ -4141,13 +4170,13 @@ print $data;
 This endpoint decode a signed transaction.
 <br>
 Page on bithomp with the same decode function, but client-side:
-<a href="https://xrplexplorer.com/submit/">
-  https://xrplexplorer.com/submit/
+<a href="https://bithomp.com/submit/">
+  https://bithomp.com/submit/
 </a>.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/transaction/decode/<blob>`
+`GET https://bithomp.com/api/v2/transaction/decode/<blob>`
 
 ### URL Parameters
 
@@ -4162,12 +4191,12 @@ curl -H "Content-Type: application/json"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
   --request POST
   --data '{"signedTransaction":"1200032280000000240000000368400000000000000C732103A71B44FD71C956C3CC0A540F2FBB577C4A300BC71244D86E4EB57220E58BFA26744730450221008D53E4188B39E8EF9953672B42C7ED3F7760F4B2FA51EC91A6EB0B693A6002B2022016384B9F552C75FD3BDE13C65E1CC3DA646AB10E3DD785EB2005620C6AF2C52B7710746573742E626974686F6D702E636F6D811485C536EFA7EAACCC51916E32FF720810A2226008F9EA7C06636C69656E747D16426974686F6D7020746F6F6C20762E20302E342E31317E0A706C61696E2F74657874E1F1","id":"BC35145B69F75FE5B41D6198D56203C2CFD2C1D968C09B09A37530CCB3AD2C6D"}'
-  https://xrplexplorer.com/api/v2/transaction/submit/
+  https://bithomp.com/api/v2/transaction/submit/
 ```
 
 ```javascript
 $.ajax({
-   url: "https://xrplexplorer.com/api/v2/transaction/submit/",
+   url: "https://bithomp.com/api/v2/transaction/submit/",
    type: "POST",
    contentType: "application/json",
    headers: {
@@ -4211,13 +4240,13 @@ $.ajax({
 This endpoint returns a final status of a submitted transaction.
 <br>
 Page where it used on bithomp:
-<a href="https://xrplexplorer.com/explorer/?hwlogin">
-  https://xrplexplorer.com/explorer/?hwlogin
+<a href="https://bithomp.com/explorer/?hwlogin">
+  https://bithomp.com/explorer/?hwlogin
 </a>.
 
 ### HTTP Request
 
-`POST https://xrplexplorer.com/api/v2/transaction/submit`
+`POST https://bithomp.com/api/v2/transaction/submit`
 
 ### POST Parameters
 
@@ -4231,7 +4260,7 @@ signedTransaction | A blob of signed transaction to submit
 ## Account Activations
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/account-chart?span=month&period=year"
+curl "https://bithomp.com/api/v2/account-chart?span=month&period=year"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -4239,11 +4268,11 @@ curl "https://xrplexplorer.com/api/v2/account-chart?span=month&period=year"
 function printData(json) {
   console.log(JSON.stringify(json, undefined, 2));
 }
-bithompRequest("https://xrplexplorer.com/api/v2/account-chart?span=month&period=year", printData);
+bithompRequest("https://bithomp.com/api/v2/account-chart?span=month&period=year", printData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/account-chart?span=month&period=year");
+$data = curl_bithomp("https://bithomp.com/api/v2/account-chart?span=month&period=year");
 print $data;
 ```
 
@@ -4273,11 +4302,11 @@ print $data;
 This endpoint returns data to draw a chart of account activations (available only on the Standard plan and higher).
 <br>
 Page where it used on bithomp:
-<a href="https://xrplexplorer.com/activations">https://xrplexplorer.com/activations</a>.
+<a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/account-chart`
+`GET https://bithomp.com/api/v2/account-chart`
 
 ### Response Format
 
@@ -4289,7 +4318,7 @@ span | null | A time span for the chart, can be `minute`, `hour`, `day`, `month`
 ## Genesis
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/genesis"
+curl "https://bithomp.com/api/v2/genesis"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -4297,11 +4326,11 @@ curl "https://xrplexplorer.com/api/v2/genesis"
 function printData(json) {
   console.log(JSON.stringify(json, undefined, 2));
 }
-bithompRequest("https://xrplexplorer.com/api/v2/genesis", printData);
+bithompRequest("https://bithomp.com/api/v2/genesis", printData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/genesis");
+$data = curl_bithomp("https://bithomp.com/api/v2/genesis");
 print $data;
 ```
 
@@ -4339,11 +4368,11 @@ print $data;
 This endpoint retrieves a list of addresses from the first available ledger in XRPL history.
 <br>
 Page where it used on bithomp:
-<a href="https://xrplexplorer.com/genesis">https://xrplexplorer.com/genesis</a>.
+<a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/genesis`
+`GET https://bithomp.com/api/v2/genesis`
 
 ### Response Format
 
@@ -4366,7 +4395,7 @@ genesis[].balance | Float | XRP balance on that genesis[].address on the time of
 ## History of XRP price alerts
 
 ```shell
-curl "https://xrplexplorer.com/api/v2/price/xrp/alerts"
+curl "https://bithomp.com/api/v2/price/xrp/alerts"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -4374,11 +4403,11 @@ curl "https://xrplexplorer.com/api/v2/price/xrp/alerts"
 function printData(json) {
   console.log(JSON.stringify(json, undefined, 2));
 }
-bithompRequest("https://xrplexplorer.com/api/v2/price/xrp/alerts", printData);
+bithompRequest("https://bithomp.com/api/v2/price/xrp/alerts", printData);
 ```
 
 ```php
-$data = curl_bithomp("https://xrplexplorer.com/api/v2/price/xrp/alerts");
+$data = curl_bithomp("https://bithomp.com/api/v2/price/xrp/alerts");
 print $data;
 ```
 
@@ -4415,11 +4444,11 @@ print $data;
 This endpoint retrieves a list of our XRP price alerts.
 <br>
 Page where it used on bithomp:
-<a href="https://xrplexplorer.com/alerts">https://xrplexplorer.com/alerts</a>.
+<a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.
 
 ### HTTP Request
 
-`GET https://xrplexplorer.com/api/v2/price/xrp/alerts`
+`GET https://bithomp.com/api/v2/price/xrp/alerts`
 
 ### Response Format
 
