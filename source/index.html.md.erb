@@ -77,49 +77,6 @@ Direct access to fast [resized and cached] images and videos:
 
 - <a href="https://bithomp.com/admin">Request an API key</a>
 
-# Free Address Profile Images
-
-You can easily display profile images for XRPL and Xahau addresses using the Bithomp avatar service. No registration is required.
-
-Supported Image Types:
-
-- Bithomp Avatars
-Anyone can set a profile image via <a href="https://bithomp.com/account">https://bithomp.com/account</a>. Simply enter your address, open your account page and click “Set avatar”. Various hardware and software wallets are supported. 
-- X Images
-Automatically updated profile images for <a href="https://bithomp.com/en/submit-account-information">registered projects</a>.
-- Xaman Pro Profiles pictures AND Curated assets images
-Display the user’s profile images or issued token images
-- Gravatar
-If an email hash (which is set on the address) is linked to a Gravatar image, it will be displayed.
-- Hashicons
-Unique generated icons based on the address hash.
-
-## How to Use
-
-Simply embed the following image tag in your website or app:
-
-`
-<img src="https://cdn.bithomp.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" />
-`
-
-## Custom Domain Option
-
-For just €10/month, you can serve profile images from your own domain (e.g., pfp.mydomain.com).
-
-Set up with a DNS record:
-
-`
-CNAME    pfp    cdn.bithomp.com
-`
-
-Then use the avatar links like this:
-
-`
-<img src="https://pfp.mydomain.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" />
-`
-
-Contact our support team if you’d like to enable image hosting on your custom domain.
-
 # Changelog
 
 ### 30th of January 2025
@@ -218,24 +175,57 @@ A new endpoint was added:
 The new query parameter: `order` was added to the <a href="#nft-distribution">**NFT Distribution**</a>
 Now you can order NFT owners by count of total, self-issued or non-self-issued NFTs.
 
-### 20th of February 2024
+# Free Address Profile Images
 
-A new endpoint was added:
+You can easily display profile images for XRPL and Xahau addresses using the Bithomp avatar service. No registration is required.
 
-<a href="#account-activations">**Account Activations**</a>
+Supported Image Types:
 
-### 19th of February 2024
+- **Bithomp Avatars**
 
-Two new endpoints were added:
+Anyone can set a profile image via <a href="https://bithomp.com/account">https://bithomp.com/account</a>. Simply enter your address, open your account page and click “Set avatar”. Various hardware and software wallets are supported. 
 
-<a href="#nft-mint-chart">**NFT Mint Chart**</a>
+- **X Images**
 
-<a href="#nft-sales-chart">**NFT Sales Chart**</a>
+Automatically updated profile images for <a href="https://bithomp.com/en/submit-account-information">registered projects</a>.
 
-### 16th of February 2024
+- **Xaman Pro Profiles pictures** and **Curated assets images**
 
-Two new query parameters: `buyer` and `seller` were added to the <a href="#nft-sales">**NFT Sales**</a> API end-point.
-You can search for sales by a specific buyer and/or seller.
+Display the user’s profile images or issued token images
+
+- **Gravatar**
+
+If an email hash (which is set on the address) is linked to a Gravatar image, it will be displayed.
+
+- **Hashicons**
+
+Unique generated icons based on the address hash.
+
+## How to Use
+
+Simply embed the following image tag in your website or app:
+
+`
+<img src="https://cdn.bithomp.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" />
+`
+
+## Custom Domain Option
+
+For just €10/month, you can serve profile images from your own domain (e.g., pfp.mydomain.com).
+
+Set up with a DNS record:
+
+`
+CNAME    pfp    cdn.bithomp.com
+`
+
+Then use the avatar links like this:
+
+`
+<img src="https://pfp.mydomain.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" />
+`
+
+Contact our support team if you’d like to enable image hosting on your custom domain.
 
 # Direct URL examples
 
