@@ -320,17 +320,6 @@
             <a href="#nft-content-plans" class="toc-h1 toc-link" data-title="NFT Content Plans">NFT Content Plans</a>
           </li>
           <li>
-            <a href="#free-address-profile-images" class="toc-h1 toc-link" data-title="Free Address Profile Images">Free Address Profile Images</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#how-to-use" class="toc-h2 toc-link" data-title="How to Use">How to Use</a>
-                  </li>
-                  <li>
-                    <a href="#custom-domain-option" class="toc-h2 toc-link" data-title="Custom Domain Option">Custom Domain Option</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
@@ -375,14 +364,16 @@
                   <li>
                     <a href="#15th-of-april-2024" class="toc-h2 toc-link" data-title="15th of April 2024">15th of April 2024</a>
                   </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#free-address-profile-images" class="toc-h1 toc-link" data-title="Free Address Profile Images">Free Address Profile Images</a>
+              <ul class="toc-list-h2">
                   <li>
-                    <a href="#20th-of-february-2024" class="toc-h2 toc-link" data-title="20th of February 2024">20th of February 2024</a>
+                    <a href="#how-to-use" class="toc-h2 toc-link" data-title="How to Use">How to Use</a>
                   </li>
                   <li>
-                    <a href="#19th-of-february-2024" class="toc-h2 toc-link" data-title="19th of February 2024">19th of February 2024</a>
-                  </li>
-                  <li>
-                    <a href="#16th-of-february-2024" class="toc-h2 toc-link" data-title="16th of February 2024">16th of February 2024</a>
+                    <a href="#custom-domain-option" class="toc-h2 toc-link" data-title="Custom Domain Option">Custom Domain Option</a>
                   </li>
               </ul>
           </li>
@@ -743,45 +734,6 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='free-address-profile-images'>Free Address Profile Images</h1>
-<p>You can easily display profile images for XRPL and Xahau addresses using the Bithomp avatar service. No registration is required.</p>
-
-<p>Supported Image Types:</p>
-
-<ul>
-<li>Bithomp Avatars
-Anyone can set a profile image via <a href="https://bithomp.com/account">https://bithomp.com/account</a>. Simply enter your address, open your account page and click “Set avatar”. Various hardware and software wallets are supported. </li>
-<li>X Images
-Automatically updated profile images for <a href="https://bithomp.com/en/submit-account-information">registered projects</a>.</li>
-<li>Xaman Pro Profiles pictures AND Curated assets images
-Display the user’s profile images or issued token images</li>
-<li>Gravatar
-If an email hash (which is set on the address) is linked to a Gravatar image, it will be displayed.</li>
-<li>Hashicons
-Unique generated icons based on the address hash.</li>
-</ul>
-<h2 id='how-to-use'>How to Use</h2>
-<p>Simply embed the following image tag in your website or app:</p>
-
-<p><code>
-&lt;img src=&quot;https://cdn.bithomp.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh&quot; alt=&quot;avatar&quot; /&gt;
-</code></p>
-<h2 id='custom-domain-option'>Custom Domain Option</h2>
-<p>For just €10/month, you can serve profile images from your own domain (e.g., pfp.mydomain.com).</p>
-
-<p>Set up with a DNS record:</p>
-
-<p><code>
-CNAME    pfp    cdn.bithomp.com
-</code></p>
-
-<p>Then use the avatar links like this:</p>
-
-<p><code>
-&lt;img src=&quot;https://pfp.mydomain.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh&quot; alt=&quot;avatar&quot; /&gt;
-</code></p>
-
-<p>Contact our support team if you’d like to enable image hosting on your custom domain.</p>
 <h1 id='changelog'>Changelog</h1><h3 id='30th-of-january-2025'>30th of January 2025</h3>
 <p>The new query parameter: <code>ids</code> was added to the <a href="#amms"><strong>AMMs</strong></a> API end-point.
 Now you can get a list of AMMs by their IDs. (Available for the Standard plan and higher).</p>
@@ -850,19 +802,62 @@ Now you can get AMM data for a specific ledger index or timestamp.</p>
 <h3 id='15th-of-april-2024'>15th of April 2024</h3>
 <p>The new query parameter: <code>order</code> was added to the <a href="#nft-distribution"><strong>NFT Distribution</strong></a>
 Now you can order NFT owners by count of total, self-issued or non-self-issued NFTs.</p>
-<h3 id='20th-of-february-2024'>20th of February 2024</h3>
-<p>A new endpoint was added:</p>
+<h1 id='free-address-profile-images'>Free Address Profile Images</h1>
+<p>You can easily display profile images for XRPL and Xahau addresses using the Bithomp avatar service. No registration is required.</p>
 
-<p><a href="#account-activations"><strong>Account Activations</strong></a></p>
-<h3 id='19th-of-february-2024'>19th of February 2024</h3>
-<p>Two new endpoints were added:</p>
+<p>Supported Image Types:</p>
 
-<p><a href="#nft-mint-chart"><strong>NFT Mint Chart</strong></a></p>
+<ul>
+<li><strong>Bithomp Avatars</strong></li>
+</ul>
 
-<p><a href="#nft-sales-chart"><strong>NFT Sales Chart</strong></a></p>
-<h3 id='16th-of-february-2024'>16th of February 2024</h3>
-<p>Two new query parameters: <code>buyer</code> and <code>seller</code> were added to the <a href="#nft-sales"><strong>NFT Sales</strong></a> API end-point.
-You can search for sales by a specific buyer and/or seller.</p>
+<p>Anyone can set a profile image via <a href="https://bithomp.com/account">https://bithomp.com/account</a>. Simply enter your address, open your account page and click “Set avatar”. Various hardware and software wallets are supported. </p>
+
+<ul>
+<li><strong>X Images</strong></li>
+</ul>
+
+<p>Automatically updated profile images for <a href="https://bithomp.com/en/submit-account-information">registered projects</a>.</p>
+
+<ul>
+<li><strong>Xaman Pro Profiles pictures</strong> and <strong>Curated assets images</strong></li>
+</ul>
+
+<p>Display the user’s profile images or issued token images</p>
+
+<ul>
+<li><strong>Gravatar</strong></li>
+</ul>
+
+<p>If an email hash (which is set on the address) is linked to a Gravatar image, it will be displayed.</p>
+
+<ul>
+<li><strong>Hashicons</strong></li>
+</ul>
+
+<p>Unique generated icons based on the address hash.</p>
+<h2 id='how-to-use'>How to Use</h2>
+<p>Simply embed the following image tag in your website or app:</p>
+
+<p><code>
+&lt;img src=&quot;https://cdn.bithomp.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh&quot; alt=&quot;avatar&quot; /&gt;
+</code></p>
+<h2 id='custom-domain-option'>Custom Domain Option</h2>
+<p>For just €10/month, you can serve profile images from your own domain (e.g., pfp.mydomain.com).</p>
+
+<p>Set up with a DNS record:</p>
+
+<p><code>
+CNAME    pfp    cdn.bithomp.com
+</code></p>
+
+<p>Then use the avatar links like this:</p>
+
+<p><code>
+&lt;img src=&quot;https://pfp.mydomain.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh&quot; alt=&quot;avatar&quot; /&gt;
+</code></p>
+
+<p>Contact our support team if you’d like to enable image hosting on your custom domain.</p>
 <h1 id='direct-url-examples'>Direct URL examples</h1><h3 id='xrpl-explorer'>XRPL Explorer</h3>
 <ul>
 <li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a></li>
