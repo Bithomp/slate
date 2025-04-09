@@ -79,6 +79,11 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 9th of April 2025
+
+The new query parameter: `obligations` was added to the <a href="#address">**Address**</a> API end-point.
+Now you can get obligations for an address. This includes the number of holders, tokens, and trustlines associated with the address. This feature is available only on paid API plans.
+
 ### 30th of January 2025
 
 The new query parameter: `ids` was added to the <a href="#amms">**AMMs**</a> API end-point.
@@ -553,7 +558,7 @@ username | A bithomp or an old rippletrade username
 Parameter | Default | Description
 --------- | ------- | -----------
 service | false | If set to true, the result will also include Service details.
-verifiedDomain | false | If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C">verifiedDomain</a> if such exists.
+verifiedDomain | false | If set true, the result will include a <a href="https://bithomp.com/en/verified-domains">verifiedDomain</a> if such exists.
 hashicon | false | If set true, the result will include hashicon which can be used in img's src="" or in css, as background's url. (The icon is the same for x-address and r-address, such hashicons used in ToastWallet and Bithomp.)
 parent | false | If set to true, the result will include the same info for a parent account.
 
@@ -3478,7 +3483,7 @@ totalAddresses | Integer | The amount of identified addresses.
 ## Get information for an address
 
 ```shell
-curl "https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true"
+curl "https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true&obligations=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3486,11 +3491,11 @@ curl "https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?usern
 function getAddressInfo(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true", getAddressInfo);
+bithompRequest("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true&obligations=true", getAddressInfo);
 ```
 
 ```php
-$addressInfo = curl_bithomp("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true");
+$addressInfo = curl_bithomp("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?username=true&service=true&verifiedDomain=true&inception=true&ledgerInfo=true&bithomp=true&obligations=true");
 print $addressInfo;
 ```
 
@@ -3506,6 +3511,11 @@ print $addressInfo;
   "bithomp": {
     "avatar": "https://cdn.bithomp.com/avatar/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
     "bithompPro": false
+  },
+  obligations: {
+    "holders": 12187,
+    "tokens": 7,
+    "trustlines": 44939
   },
   "ledgerInfo": {
     "activated": true,
@@ -3601,7 +3611,7 @@ bithomp | false | If set to true, the result will also include avatar image link
 service | false | If set to true, the result will also include Service details.
 username | false | If set to true, the result will also include a `username` (rippletrade or bithomp).
 payString | false| If set to true, the result will also include a bithomp `payString` for that address.
-verifiedDomain | false | If set true, the result will include a <a href="https://coil.com/p/ihomp/XRP-Ledger-domain-verification/uJKPWh_4C">`verifiedDomain`</a> if such exists.
+verifiedDomain | false | If set true, the result will include a <a href="https://bithomp.com/en/verified-domains">`verifiedDomain`</a> if such exists.
 hashicon | false | If set true, the result will include `hashicon` which can be used in img's src="" or in css, as background's url. (The icon is the same for x-address and r-address, such hashicons used in Xumm and Bithomp.)
 parent | false | If set to true, the result will include the same info for a parent account. Also it will add to the root object: `genesis`, `initialBalance`, `inception`
 nickname | false | If set to true, the result will include an old `nickname` from bitcointalk forum.
@@ -3609,6 +3619,7 @@ flare | false | if set to true, the result will include `flare: {spark, songbird
 inception | false | if set to true, the result will include: `genesis`, `initialBalance`, `inception`.
 ledgerInfo | false | if set to true, the result will include `ledgerInfo` object. (Note: A fee to use this parameter might be introduced in the feature)
 ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request will return `ledgerInfo` data for that timestamp)
+obligations | false | Available only on paid API plans. if set to true, the result will include `obligations` object with `holders`, `tokens`, `trustlines` counts. (Not available historically with `ledgerTimestamp`)
 
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
