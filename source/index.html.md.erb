@@ -77,34 +77,47 @@ Direct access to fast [resized and cached] images and videos:
 
 - <a href="https://bithomp.com/admin">Request an API key</a>
 
-# FREE Address profile images 
+# Free Address Profile Images
 
-You can show images for XRPL & XAHAU addresses which includes:
+You can easily display profile images for XRPL and Xahau addresses using the Bithomp avatar service. No registration is required.
 
-- Bithomp avatars (anyone can set a gravatar on their page with warious different software and hardware XRPL and XAHAU wallets, just go to <a href="https://bithomp.com/account">https://bithomp.com/account</a> enter your address and press the button "Set avatar"
-- X images (we keep them updated for the registered services)
-- Xaman pro users profile pictures OR curated assets images
-- GRAVATAR images 
-- hashicons (address unique icons)
+Supported Image Types:
+	•	Bithomp Avatars
+Anyone can set a profile image via <a href="https://bithomp.com/account">https://bithomp.com/account</a>. Simply enter your address, open your account page and click “Set avatar”. Various hardware and software wallets are supported. 
+	•	X Images
+Automatically updated profile images for <a href="https://bithomp.com/en/submit-account-information">registered projects</a>.
+	•	Xaman Pro Profiles pictures AND Curated assets images
+Display the user’s profile images or issued token images
+	•	Gravatar
+If an email hash (which is set on the address) is linked to a Gravatar image, it will be displayed.
+	•	Hashicons
+Unique generated icons based on the address hash.
 
-It is easy to use, no registartion needed, just use the following code to show address images:
+## How to Use
 
-```
+Simply embed the following image tag in your website or app:
+
+`
 <img src="https://cdn.bithomp.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" />
-```
+`
 
-* for 10 EUR a month you can get images from your own domain (for example: pfp.mydomain.com), you will jsut need to add a DNS record.
-Then your links could be like this:
+## Custom Domain Option
 
-```
-CNAME    pfp     cdn.bithomp.com
-```
+For just €10/month, you can serve profile images from your own domain (e.g., pfp.mydomain.com).
 
-```
+Set up with a DNS record:
+
+`
+CNAME    pfp    cdn.bithomp.com
+`
+
+Then use the avatar links like this:
+
+`
 <img src="https://pfp.mydomain.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" />
-```
+`
 
-Contact our support if you intersted to have it on your domain.
+Contact our support team if you’d like to enable image hosting on your custom domain.
 
 # Changelog
 
