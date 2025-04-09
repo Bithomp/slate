@@ -320,7 +320,15 @@
             <a href="#nft-content-plans" class="toc-h1 toc-link" data-title="NFT Content Plans">NFT Content Plans</a>
           </li>
           <li>
-            <a href="#free-address-profile-images" class="toc-h1 toc-link" data-title="FREE Address profile images">FREE Address profile images</a>
+            <a href="#free-address-profile-images" class="toc-h1 toc-link" data-title="Free Address Profile Images">Free Address Profile Images</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#how-to-use" class="toc-h2 toc-link" data-title="How to Use">How to Use</a>
+                  </li>
+                  <li>
+                    <a href="#custom-domain-option" class="toc-h2 toc-link" data-title="Custom Domain Option">Custom Domain Option</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
@@ -735,28 +743,42 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='free-address-profile-images'>FREE Address profile images</h1>
-<p>You can show images for XRPL &amp; XAHAU addresses which includes:</p>
+<h1 id='free-address-profile-images'>Free Address Profile Images</h1>
+<p>You can easily display profile images for XRPL and Xahau addresses using the Bithomp avatar service. No registration is required.</p>
 
-<ul>
-<li>Bithomp avatars (anyone can set a gravatar on their page with warious different software and hardware XRPL and XAHAU wallets, just go to <a href="https://bithomp.com/account">https://bithomp.com/account</a> enter your address and press the button &quot;Set avatar&quot;</li>
-<li>X images (we keep them updated for the registered services)</li>
-<li>Xaman pro users profile pictures OR curated assets images</li>
-<li>GRAVATAR images </li>
-<li>hashicons (address unique icons)</li>
-</ul>
+<p>Supported Image Types:
+    • Bithomp Avatars
+Anyone can set a profile image via <a href="https://bithomp.com/account">https://bithomp.com/account</a>. Simply enter your address, open your account page and click “Set avatar”. Various hardware and software wallets are supported. 
+    • X Images
+Automatically updated profile images for <a href="https://bithomp.com/en/submit-account-information">registered projects</a>.
+    • Xaman Pro Profiles pictures AND Curated assets images
+Display the user’s profile images or issued token images
+    • Gravatar
+If an email hash (which is set on the address) is linked to a Gravatar image, it will be displayed.
+    • Hashicons
+Unique generated icons based on the address hash.</p>
+<h2 id='how-to-use'>How to Use</h2>
+<p>Simply embed the following image tag in your website or app:</p>
 
-<p>It is easy to use, no registartion needed, just use the following code to show address images:</p>
-<div class="highlight"><pre class="highlight plaintext"><code>&lt;img src="https://cdn.bithomp.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" /&gt;
-</code></pre></div>
-<ul>
-<li>for 10 EUR a month you can get images from your own domain (for example: pfp.mydomain.com), you will jsut need to add a DNS record.
-Then your links could be like this:</li>
-</ul>
-<div class="highlight"><pre class="highlight plaintext"><code>CNAME    pfp     cdn.bithomp.com
-</code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>&lt;img src="https://pfp.mydomain.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" /&gt;
-</code></pre></div>
-<p>Contact our support if you intersted to have it on your domain.</p>
+<p><code>
+&lt;img src=&quot;https://cdn.bithomp.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh&quot; alt=&quot;avatar&quot; /&gt;
+</code></p>
+<h2 id='custom-domain-option'>Custom Domain Option</h2>
+<p>For just €10/month, you can serve profile images from your own domain (e.g., pfp.mydomain.com).</p>
+
+<p>Set up with a DNS record:</p>
+
+<p><code>
+CNAME    pfp    cdn.bithomp.com
+</code></p>
+
+<p>Then use the avatar links like this:</p>
+
+<p><code>
+&lt;img src=&quot;https://pfp.mydomain.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh&quot; alt=&quot;avatar&quot; /&gt;
+</code></p>
+
+<p>Contact our support team if you’d like to enable image hosting on your custom domain.</p>
 <h1 id='changelog'>Changelog</h1><h3 id='30th-of-january-2025'>30th of January 2025</h3>
 <p>The new query parameter: <code>ids</code> was added to the <a href="#amms"><strong>AMMs</strong></a> API end-point.
 Now you can get a list of AMMs by their IDs. (Available for the Standard plan and higher).</p>
