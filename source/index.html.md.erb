@@ -79,6 +79,26 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 29th of April 2025
+
+4 new endpoints were added:
+
+<a href="#top-transactions-the-last-24-hours">**TOP transactions (The last 24 hours)**</a>
+
+Get the list of the most significant transactions for the last 24 hours (Available on paid plans only).
+
+<a href="#top-receivers-the-last-24-hours">**TOP receivers (The last 24 hours)**</a>
+
+Get the list of the Addresses that are receiving the most in the last 24 hours (Available on paid plans only).
+
+<a href="#top-senders-the-last-24-hours">**TOP senders (The last 24 hours)**</a>
+
+Get the list of the Addresses that are sending the most in the last 24 hours (Available on paid plans only).
+
+<a href="#top-submitters-the-last-24-hours">**TOP submitters (The last 24 hours)**</a>
+
+Get the list of the Addresses that submitting the most transactions in the last 24 hours (Available on paid plans only).
+
 ### 9th of April 2025
 
 The new query parameter: `obligations` was added to the <a href="#address">**Address**</a> API end-point.
@@ -158,27 +178,6 @@ A new endpoint was added:
 
 <a href="#tx-details">**Tx Details**</a>
 Get transaction details.
-
-### 25st of April 2024
-
-A new endpoint was added:
-
-<a href="#amms">**AMMs**</a>
-Get the ordered list of AMMs.
-
-Two new query parameters: `ledgerIndex` and `ledgerTimestamp` were added to the <a href="#amm-pool">**AMM Pool**</a> API end-point.
-Now you can get AMM data for a specific ledger index or timestamp.
-
-### 21st of April 2024
-
-A new endpoint was added:
-
-<a href="#amm-pool">**AMM Pool**</a>
-
-### 15th of April 2024
-
-The new query parameter: `order` was added to the <a href="#nft-distribution">**NFT Distribution**</a>
-Now you can order NFT owners by count of total, self-issued or non-self-issued NFTs.
 
 # Free Address Profile Images
 
@@ -4269,6 +4268,294 @@ Parameter | Description
 --------- | -----------
 id | (Optional) A calculated hash of the signed transaction
 signedTransaction | A blob of signed transaction to submit
+
+# Transactions (The last 24 hours)
+
+## TOP transactions (The last 24 hours)
+
+```shell
+curl "https://bithomp.com/api/v2/transactions/whale"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/transactions/whale", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/transactions/whale");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "type": "Payment",
+    "hash": "4DC91839C1DB6C9C88479260493745C77455C0D2223D1411332F2F351B99E815",
+    "timestamp": 1745843351,
+    "amount": "10000000000000",
+    "amountFiats": {
+      "aed": "85200000",
+      "ars": "27101300000",
+      "aud": "36200000",
+      "bch": "65729.4",
+      "bdt": "2818200000",
+      "bhd": "8737460",
+      "bmd": "23200000",
+      "bnb": "38217",
+      "brl": "131900000",
+      "btc": "243.6",
+      "cad": "32100000",
+      "chf": "19200000",
+      "clp": "21675600000",
+      "cny": "169000000",
+      "czk": "509400000",
+      "dkk": "152300000",
+      "dot": "5495705.5",
+      "eos": "33914790",
+      "eth": "12811",
+      "eur": "20415000",
+      "gbp": "17400000",
+      "hkd": "179900000",
+      "huf": "8259600000",
+      "idr": "389830000000",
+      "ils": "84200000",
+      "inr": "1971700000",
+      "jpy": "3321000000",
+      "krw": "33453300000",
+      "kwd": "7112070",
+      "lkr": "6946900000",
+      "ltc": "266036.4",
+      "mmk": "48649900000",
+      "mxn": "452200000",
+      "myr": "101200000",
+      "ngn": "37272600000",
+      "nok": "241600000",
+      "nzd": "38900000",
+      "php": "1307200000",
+      "pkr": "6517800000",
+      "pln": "87300000",
+      "rub": "1907300000",
+      "sar": "87000000",
+      "sek": "224000000",
+      "sgd": "30400000",
+      "thb": "778100000",
+      "try": "891500000",
+      "twd": "753400000",
+      "uah": "967000000",
+      "usd": "23206200",
+      "vef": "2321880",
+      "vnd": "602930000000",
+      "xag": "702030",
+      "xau": "7038.5",
+      "xdr": "16600000",
+      "xlm": "80389590",
+      "yfi": "3794.1",
+      "zar": "431700000",
+      "bits": "243300000",
+      "link": "1555299.8",
+      "sats": "24329300000"
+    },
+    "sourceAddress": "rrsSUzrT2mYAMiL46pm7cwn6MmMmxVkEWM",
+    "sourceTag": null,
+    "destinationAddress": "rPyCQm8E5j78PDbrfKF24fRC7qUAk1kDMZ",
+    "destinationTag": null,
+    "ledgerIndex": 95761070,
+    "status": "tesSUCCESS",
+    "fee": "8000",
+    "sourceAddressDetails": {
+      "username": null,
+      "service": "bithumb"
+    },
+    "destinationAddressDetails": {
+      "username": null,
+      "service": null
+    }
+  }
+]
+```
+
+This endpoint returns the list of the most significant transactions for the last 24 hours. That includes Payments, Checks, Escrows, Token (IOU) payments, etc. (Only available on paid API plans)
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/en/whales">https://bithomp.com/en/whales</a>.
+
+### HTTP Request
+
+`GET http://bithomp.com/api/v2/transactions/whale`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+currency | null | - to filter by currency, for example: `XRP`, `XAH`, IOU Tokens in the format `rIsssuer:HEXCURRENCY`, MPT `MPT-001A8DB597CD0B5C6BBC00EB450F9637C96632FA8E5971C5`
+transactionType | null | - to filter specific transaction types, for example `Payment`
+limit | 100 | The number of transactions to return. (More than 100 is available for the Standard plan and higher).
+
+## TOP receivers (The last 24 hours)
+
+```shell
+curl "https://bithomp.com/api/v2/transactions/whale/receivers"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/transactions/whale/receivers", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/transactions/whale/receivers");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "address": "rNxp4h8apvRis6mJf9Sh8C6iRxfrDWN7AV",
+    "addressDetails": {
+      "address": "rNxp4h8apvRis6mJf9Sh8C6iRxfrDWN7AV",
+      "username": null,
+      "service": "Binance"
+    },
+    "transactionsCount": 17075,
+    "amount": "32803888007632"
+  }
+]
+```
+
+This endpoint returns the list of the Addresses that are receiving the most in the last 24 hours. That includes Payments, Checks, Escrows, Token (IOU) payments, etc. (Only available on paid API plans)
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/en/whales/receivers">https://bithomp.com/en/whales/receivers</a>.
+
+### HTTP Request
+
+`GET http://bithomp.com/api/v2/transactions/whale/receivers`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+currency | null | - to filter by currency, for example: `XRP`, `XAH`, IOU Tokens in the format `rIsssuer:HEXCURRENCY`, MPT `MPT-001A8DB597CD0B5C6BBC00EB450F9637C96632FA8E5971C5`
+transactionType | null | - to filter specific transaction types, for example `Payment`
+limit | 100 | The number of transactions to return. (More than 100 is available for the Standard plan and higher).
+
+## TOP senders (The last 24 hours)
+
+```shell
+curl "https://bithomp.com/api/v2/transactions/whale/senders"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/transactions/whale/senders", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/transactions/whale/senders");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "address": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+    "addressDetails": {
+      "address": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+      "username": null,
+      "service": "Binance"
+    },
+    "transactionsCount": 1270,
+    "amount": "47274376966693"
+  }
+]
+```
+
+This endpoint returns the list of the Addresses that are sending the most in the last 24 hours. That includes Payments, Checks, Escrows, Token (IOU) payments, etc. (Only available on paid API plans)
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/en/whales/senders">https://bithomp.com/en/whales/senders</a>.
+
+### HTTP Request
+
+`GET http://bithomp.com/api/v2/transactions/whale/senders`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+currency | null | - to filter by currency, for example: `XRP`, `XAH`, IOU Tokens in the format `rIsssuer:HEXCURRENCY`, MPT `MPT-001A8DB597CD0B5C6BBC00EB450F9637C96632FA8E5971C5`
+transactionType | null | - to filter specific transaction types, for example `Payment`
+limit | 100 | The number of transactions to return. (More than 100 is available for the Standard plan and higher).
+
+## TOP submitters (The last 24 hours)
+
+```shell
+curl "https://bithomp.com/api/v2/transactions/whale/submitters"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/transactions/whale/submitters", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/transactions/whale/submitters");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "address": "rUg8ac5ikpTaWk5RPei8xuYkNEyUs53G1i",
+    "addressDetails": {
+      "address": "rUg8ac5ikpTaWk5RPei8xuYkNEyUs53G1i",
+      "username": null,
+      "service": null
+    },
+    "transactionsCount": 282561,
+    "amount": "1144667950",
+    "fee": "95409675"
+  }
+]
+```
+
+This endpoint returns the list of Addresses that submitted the most transactions in the last 24 hours. That includes Failed on Ledger transaction, all types. (Only available on paid API plans)
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/en/whales/submitters">https://bithomp.com/en/whales/submitters</a>.
+
+### HTTP Request
+
+`GET http://bithomp.com/api/v2/transactions/whale/submitters`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+currency | null | - to filter by currency, for example: `XRP`, `XAH`, IOU Tokens in the format `rIsssuer:HEXCURRENCY`, MPT `MPT-001A8DB597CD0B5C6BBC00EB450F9637C96632FA8E5971C5`
+transactionType | null | - to filter specific transaction types, for example `Payment`
+limit | 100 | The number of transactions to return. (More than 100 is available for the Standard plan and higher).
 
 # Historical data
 
