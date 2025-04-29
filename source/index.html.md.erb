@@ -83,19 +83,19 @@ Direct access to fast [resized and cached] images and videos:
 
 4 new endpoints were added:
 
-<a href="#top-transactions-the-last-24-hours">**TOP transactions (The last 24 hours)**</a>
+<a href="#top-transactions-24-h">**TOP transactions (24h)**</a>
 
 Get the list of the most significant transactions for the last 24 hours (Available on paid plans only).
 
-<a href="#top-receivers-the-last-24-hours">**TOP receivers (The last 24 hours)**</a>
+<a href="#top-receivers-24-h">**TOP receivers (24h)**</a>
 
 Get the list of the Addresses that are receiving the most in the last 24 hours (Available on paid plans only).
 
-<a href="#top-senders-the-last-24-hours">**TOP senders (The last 24 hours)**</a>
+<a href="#top-senders-24-h">**TOP senders (24h)**</a>
 
 Get the list of the Addresses that are sending the most in the last 24 hours (Available on paid plans only).
 
-<a href="#top-submitters-the-last-24-hours">**TOP submitters (The last 24 hours)**</a>
+<a href="#top-submitters-24-h">**TOP submitters (24h)**</a>
 
 Get the list of the Addresses that submitting the most transactions in the last 24 hours (Available on paid plans only).
 
@@ -4269,9 +4269,9 @@ Parameter | Description
 id | (Optional) A calculated hash of the signed transaction
 signedTransaction | A blob of signed transaction to submit
 
-# Transactions (The last 24 hours)
+# Transactions (24h)
 
-## TOP transactions (The last 24 hours)
+## TOP transactions (24h)
 
 ```shell
 curl "https://bithomp.com/api/v2/transactions/whale"
@@ -4397,7 +4397,7 @@ currency | null | - to filter by currency, for example: `XRP`, `XAH`, IOU Tokens
 transactionType | null | - to filter specific transaction types, for example `Payment`
 limit | 100 | The number of transactions to return. (More than 100 is available for the Standard plan and higher).
 
-## TOP receivers (The last 24 hours)
+## TOP receivers (24h)
 
 ```shell
 curl "https://bithomp.com/api/v2/transactions/whale/receivers"
@@ -4450,7 +4450,7 @@ currency | null | - to filter by currency, for example: `XRP`, `XAH`, IOU Tokens
 transactionType | null | - to filter specific transaction types, for example `Payment`
 limit | 100 | The number of transactions to return. (More than 100 is available for the Standard plan and higher).
 
-## TOP senders (The last 24 hours)
+## TOP senders (24h)
 
 ```shell
 curl "https://bithomp.com/api/v2/transactions/whale/senders"
@@ -4503,7 +4503,7 @@ currency | null | - to filter by currency, for example: `XRP`, `XAH`, IOU Tokens
 transactionType | null | - to filter specific transaction types, for example `Payment`
 limit | 100 | The number of transactions to return. (More than 100 is available for the Standard plan and higher).
 
-## TOP submitters (The last 24 hours)
+## TOP submitters (24h)
 
 ```shell
 curl "https://bithomp.com/api/v2/transactions/whale/submitters"
