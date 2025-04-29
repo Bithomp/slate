@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#29th-of-april-2025" class="toc-h2 toc-link" data-title="29th of April 2025">29th of April 2025</a>
+                  </li>
+                  <li>
                     <a href="#9th-of-april-2025" class="toc-h2 toc-link" data-title="9th of April 2025">9th of April 2025</a>
                   </li>
                   <li>
@@ -357,15 +360,6 @@
                   </li>
                   <li>
                     <a href="#23rd-of-june-2024" class="toc-h2 toc-link" data-title="23rd of June 2024">23rd of June 2024</a>
-                  </li>
-                  <li>
-                    <a href="#25st-of-april-2024" class="toc-h2 toc-link" data-title="25st of April 2024">25st of April 2024</a>
-                  </li>
-                  <li>
-                    <a href="#21st-of-april-2024" class="toc-h2 toc-link" data-title="21st of April 2024">21st of April 2024</a>
-                  </li>
-                  <li>
-                    <a href="#15th-of-april-2024" class="toc-h2 toc-link" data-title="15th of April 2024">15th of April 2024</a>
                   </li>
               </ul>
           </li>
@@ -561,6 +555,23 @@
               </ul>
           </li>
           <li>
+            <a href="#transactions-the-last-24-hours" class="toc-h1 toc-link" data-title="Transactions (The last 24 hours)">Transactions (The last 24 hours)</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#top-transactions-the-last-24-hours" class="toc-h2 toc-link" data-title="TOP transactions (The last 24 hours)">TOP transactions (The last 24 hours)</a>
+                  </li>
+                  <li>
+                    <a href="#top-receivers-the-last-24-hours" class="toc-h2 toc-link" data-title="TOP receivers (The last 24 hours)">TOP receivers (The last 24 hours)</a>
+                  </li>
+                  <li>
+                    <a href="#top-senders-the-last-24-hours" class="toc-h2 toc-link" data-title="TOP senders (The last 24 hours)">TOP senders (The last 24 hours)</a>
+                  </li>
+                  <li>
+                    <a href="#top-submitters-the-last-24-hours" class="toc-h2 toc-link" data-title="TOP submitters (The last 24 hours)">TOP submitters (The last 24 hours)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#historical-data" class="toc-h1 toc-link" data-title="Historical data">Historical data</a>
               <ul class="toc-list-h2">
                   <li>
@@ -737,7 +748,25 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='9th-of-april-2025'>9th of April 2025</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='29th-of-april-2025'>29th of April 2025</h3>
+<p>4 new endpoints were added:</p>
+
+<p><a href="#top-transactions-the-last-24-hours"><strong>TOP transactions (The last 24 hours)</strong></a></p>
+
+<p>Get the list of the most significant transactions for the last 24 hours (Available on paid plans only).</p>
+
+<p><a href="#top-receivers-the-last-24-hours"><strong>TOP receivers (The last 24 hours)</strong></a></p>
+
+<p>Get the list of the Addresses that are receiving the most in the last 24 hours (Available on paid plans only).</p>
+
+<p><a href="#top-senders-the-last-24-hours"><strong>TOP senders (The last 24 hours)</strong></a></p>
+
+<p>Get the list of the Addresses that are sending the most in the last 24 hours (Available on paid plans only).</p>
+
+<p><a href="#top-submitters-the-last-24-hours"><strong>TOP submitters (The last 24 hours)</strong></a></p>
+
+<p>Get the list of the Addresses that submitting the most transactions in the last 24 hours (Available on paid plans only).</p>
+<h3 id='9th-of-april-2025'>9th of April 2025</h3>
 <p>The new query parameter: <code>obligations</code> was added to the <a href="#address"><strong>Address</strong></a> API end-point.
 Now you can get obligations for an address. This includes the number of holders, tokens, and trustlines associated with the address. This feature is available only on paid API plans.</p>
 <h3 id='30th-of-january-2025'>30th of January 2025</h3>
@@ -793,21 +822,6 @@ You can get an extensive data for the list of NFTs in one request. (Available fo
 
 <p><a href="#tx-details"><strong>Tx Details</strong></a>
 Get transaction details.</p>
-<h3 id='25st-of-april-2024'>25st of April 2024</h3>
-<p>A new endpoint was added:</p>
-
-<p><a href="#amms"><strong>AMMs</strong></a>
-Get the ordered list of AMMs.</p>
-
-<p>Two new query parameters: <code>ledgerIndex</code> and <code>ledgerTimestamp</code> were added to the <a href="#amm-pool"><strong>AMM Pool</strong></a> API end-point.
-Now you can get AMM data for a specific ledger index or timestamp.</p>
-<h3 id='21st-of-april-2024'>21st of April 2024</h3>
-<p>A new endpoint was added:</p>
-
-<p><a href="#amm-pool"><strong>AMM Pool</strong></a></p>
-<h3 id='15th-of-april-2024'>15th of April 2024</h3>
-<p>The new query parameter: <code>order</code> was added to the <a href="#nft-distribution"><strong>NFT Distribution</strong></a>
-Now you can order NFT owners by count of total, self-issued or non-self-issued NFTs.</p>
 <h1 id='free-address-profile-images'>Free Address Profile Images</h1>
 <p>You can easily display profile images for XRPL and Xahau addresses using the Bithomp avatar service. No registration is required.</p>
 
@@ -5383,6 +5397,300 @@ Page where it used on bithomp:
 <td>A blob of signed transaction to submit</td>
 </tr>
 </tbody></table>
+<h1 id='transactions-the-last-24-hours'>Transactions (The last 24 hours)</h1><h2 id='top-transactions-the-last-24-hours'>TOP transactions (The last 24 hours)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/transactions/whale</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/transactions/whale"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Payment"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4DC91839C1DB6C9C88479260493745C77455C0D2223D1411332F2F351B99E815"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1745843351</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amountFiats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"aed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85200000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ars"</span><span class="p">:</span><span class="w"> </span><span class="s2">"27101300000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"aud"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36200000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65729.4"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bdt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2818200000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bhd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8737460"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bmd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23200000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bnb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38217"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"brl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"131900000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"btc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"243.6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cad"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32100000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"chf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19200000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"clp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21675600000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"cny"</span><span class="p">:</span><span class="w"> </span><span class="s2">"169000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"czk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"509400000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dkk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"152300000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5495705.5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"eos"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33914790"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"eth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12811"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"eur"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20415000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"gbp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17400000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"hkd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"179900000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"huf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8259600000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"idr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"389830000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ils"</span><span class="p">:</span><span class="w"> </span><span class="s2">"84200000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"inr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1971700000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"jpy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3321000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"krw"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33453300000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"kwd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7112070"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lkr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6946900000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ltc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"266036.4"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mmk"</span><span class="p">:</span><span class="w"> </span><span class="s2">"48649900000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mxn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"452200000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"myr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"101200000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ngn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"37272600000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"nok"</span><span class="p">:</span><span class="w"> </span><span class="s2">"241600000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"nzd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"38900000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"php"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1307200000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pkr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6517800000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"pln"</span><span class="p">:</span><span class="w"> </span><span class="s2">"87300000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1907300000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"87000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sek"</span><span class="p">:</span><span class="w"> </span><span class="s2">"224000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sgd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30400000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"thb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"778100000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"try"</span><span class="p">:</span><span class="w"> </span><span class="s2">"891500000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"twd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"753400000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uah"</span><span class="p">:</span><span class="w"> </span><span class="s2">"967000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23206200"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"vef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2321880"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"vnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602930000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"xag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"702030"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"xau"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7038.5"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"xdr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16600000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"xlm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80389590"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"yfi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3794.1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"zar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"431700000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"bits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"243300000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1555299.8"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sats"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24329300000"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"sourceAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrsSUzrT2mYAMiL46pm7cwn6MmMmxVkEWM"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sourceTag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rPyCQm8E5j78PDbrfKF24fRC7qUAk1kDMZ"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"destinationTag"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">95761070</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sourceAddressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bithumb"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"destinationAddressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns the list of the most significant transactions for the last 24 hours. That includes Payments, Checks, Escrows, Token (IOU) payments, etc. (Only available on paid API plans)
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/en/whales">https://bithomp.com/en/whales</a>.</p>
+<h3 id='http-request-36'>HTTP Request</h3>
+<p><code>GET http://bithomp.com/api/v2/transactions/whale</code></p>
+<h3 id='query-parameters-25'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>null</td>
+<td>- to filter by currency, for example: <code>XRP</code>, <code>XAH</code>, IOU Tokens in the format <code>rIsssuer:HEXCURRENCY</code>, MPT <code>MPT-001A8DB597CD0B5C6BBC00EB450F9637C96632FA8E5971C5</code></td>
+</tr>
+<tr>
+<td>transactionType</td>
+<td>null</td>
+<td>- to filter specific transaction types, for example <code>Payment</code></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The number of transactions to return. (More than 100 is available for the Standard plan and higher).</td>
+</tr>
+</tbody></table>
+<h2 id='top-receivers-the-last-24-hours'>TOP receivers (The last 24 hours)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale/receivers"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/transactions/whale/receivers</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/transactions/whale/receivers"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rNxp4h8apvRis6mJf9Sh8C6iRxfrDWN7AV"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rNxp4h8apvRis6mJf9Sh8C6iRxfrDWN7AV"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Binance"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"transactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">17075</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32803888007632"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns the list of the Addresses that are receiving the most in the last 24 hours. That includes Payments, Checks, Escrows, Token (IOU) payments, etc. (Only available on paid API plans)
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/en/whales/receivers">https://bithomp.com/en/whales/receivers</a>.</p>
+<h3 id='http-request-37'>HTTP Request</h3>
+<p><code>GET http://bithomp.com/api/v2/transactions/whale/receivers</code></p>
+<h3 id='query-parameters-26'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>null</td>
+<td>- to filter by currency, for example: <code>XRP</code>, <code>XAH</code>, IOU Tokens in the format <code>rIsssuer:HEXCURRENCY</code>, MPT <code>MPT-001A8DB597CD0B5C6BBC00EB450F9637C96632FA8E5971C5</code></td>
+</tr>
+<tr>
+<td>transactionType</td>
+<td>null</td>
+<td>- to filter specific transaction types, for example <code>Payment</code></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The number of transactions to return. (More than 100 is available for the Standard plan and higher).</td>
+</tr>
+</tbody></table>
+<h2 id='top-senders-the-last-24-hours'>TOP senders (The last 24 hours)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale/senders"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/transactions/whale/senders</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/transactions/whale/senders"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Binance"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"transactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1270</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47274376966693"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns the list of the Addresses that are sending the most in the last 24 hours. That includes Payments, Checks, Escrows, Token (IOU) payments, etc. (Only available on paid API plans)
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/en/whales/senders">https://bithomp.com/en/whales/senders</a>.</p>
+<h3 id='http-request-38'>HTTP Request</h3>
+<p><code>GET http://bithomp.com/api/v2/transactions/whale/senders</code></p>
+<h3 id='query-parameters-27'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>null</td>
+<td>- to filter by currency, for example: <code>XRP</code>, <code>XAH</code>, IOU Tokens in the format <code>rIsssuer:HEXCURRENCY</code>, MPT <code>MPT-001A8DB597CD0B5C6BBC00EB450F9637C96632FA8E5971C5</code></td>
+</tr>
+<tr>
+<td>transactionType</td>
+<td>null</td>
+<td>- to filter specific transaction types, for example <code>Payment</code></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The number of transactions to return. (More than 100 is available for the Standard plan and higher).</td>
+</tr>
+</tbody></table>
+<h2 id='top-submitters-the-last-24-hours'>TOP submitters (The last 24 hours)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale/submitters"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/transactions/whale/submitters</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/transactions/whale/submitters"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUg8ac5ikpTaWk5RPei8xuYkNEyUs53G1i"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUg8ac5ikpTaWk5RPei8xuYkNEyUs53G1i"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"transactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">282561</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1144667950"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95409675"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns the list of Addresses that submitted the most transactions in the last 24 hours. That includes Failed on Ledger transaction, all types. (Only available on paid API plans)
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/en/whales/submitters">https://bithomp.com/en/whales/submitters</a>.</p>
+<h3 id='http-request-39'>HTTP Request</h3>
+<p><code>GET http://bithomp.com/api/v2/transactions/whale/submitters</code></p>
+<h3 id='query-parameters-28'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>currency</td>
+<td>null</td>
+<td>- to filter by currency, for example: <code>XRP</code>, <code>XAH</code>, IOU Tokens in the format <code>rIsssuer:HEXCURRENCY</code>, MPT <code>MPT-001A8DB597CD0B5C6BBC00EB450F9637C96632FA8E5971C5</code></td>
+</tr>
+<tr>
+<td>transactionType</td>
+<td>null</td>
+<td>- to filter specific transaction types, for example <code>Payment</code></td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The number of transactions to return. (More than 100 is available for the Standard plan and higher).</td>
+</tr>
+</tbody></table>
 <h1 id='historical-data'>Historical data</h1><h2 id='account-activations'>Account Activations</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/account-chart?span=month&amp;period=year"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -5418,7 +5726,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.</p>
-<h3 id='http-request-36'>HTTP Request</h3>
+<h3 id='http-request-40'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/account-chart</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
@@ -5482,7 +5790,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-37'>HTTP Request</h3>
+<h3 id='http-request-41'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-7'>Response Format</h3>
 <table><thead>
@@ -5600,7 +5908,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-38'>HTTP Request</h3>
+<h3 id='http-request-42'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-8'>Response Format</h3>
 <table><thead>
