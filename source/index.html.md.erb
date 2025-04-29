@@ -4351,14 +4351,8 @@ print $data;
       "usd": "23206200",
       "vef": "2321880",
       "vnd": "602930000000",
-      "xag": "702030",
-      "xau": "7038.5",
-      "xdr": "16600000",
-      "xlm": "80389590",
-      "yfi": "3794.1",
       "zar": "431700000",
       "bits": "243300000",
-      "link": "1555299.8",
       "sats": "24329300000"
     },
     "sourceAddress": "rrsSUzrT2mYAMiL46pm7cwn6MmMmxVkEWM",
@@ -4419,18 +4413,25 @@ print $data;
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "address": "rNxp4h8apvRis6mJf9Sh8C6iRxfrDWN7AV",
-    "addressDetails": {
+{
+  addresses: [
+    {
       "address": "rNxp4h8apvRis6mJf9Sh8C6iRxfrDWN7AV",
-      "username": null,
-      "service": "Binance"
-    },
-    "transactionsCount": 17075,
-    "amount": "32803888007632"
+      "addressDetails": {
+        "address": "rNxp4h8apvRis6mJf9Sh8C6iRxfrDWN7AV",
+        "username": null,
+        "service": "Binance"
+      },
+      "transactionsCount": 17075,
+      "amount": "32803888007632"
+    }
+  ], 
+  summary: {
+    "totalTransactionsCount": 1847405,
+    "transactionsCount": 1028360,
+    "totalReceivers": 40175
   }
-]
+}
 ```
 
 This endpoint returns the list of the Addresses that are receiving the most in the last 24 hours. That includes Payments, Checks, Escrows, Token (IOU) payments, etc. (Only available on paid API plans)
@@ -4472,18 +4473,25 @@ print $data;
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "address": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
-    "addressDetails": {
+{
+  addresses: [
+    {
       "address": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
-      "username": null,
-      "service": "Binance"
-    },
-    "transactionsCount": 1270,
-    "amount": "47274376966693"
+      "addressDetails": {
+        "address": "rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr",
+        "username": null,
+        "service": "Binance"
+      },
+      "transactionsCount": 1270,
+      "amount": "47274376966693"
+    }
+  ],
+  summary: {
+    "totalTransactionsCount": 1846418,
+    "transactionsCount": 1027661,
+    "totalSenders": 19487
   }
-]
+}
 ```
 
 This endpoint returns the list of the Addresses that are sending the most in the last 24 hours. That includes Payments, Checks, Escrows, Token (IOU) payments, etc. (Only available on paid API plans)
@@ -4525,19 +4533,26 @@ print $data;
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "address": "rUg8ac5ikpTaWk5RPei8xuYkNEyUs53G1i",
-    "addressDetails": {
+{
+  addresses: [
+    {
       "address": "rUg8ac5ikpTaWk5RPei8xuYkNEyUs53G1i",
-      "username": null,
-      "service": null
-    },
-    "transactionsCount": 282561,
-    "amount": "1144667950",
-    "fee": "95409675"
+      "addressDetails": {
+        "address": "rUg8ac5ikpTaWk5RPei8xuYkNEyUs53G1i",
+        "username": null,
+        "service": null
+      },
+      "transactionsCount": 282561,
+      "amount": "1144667950",
+      "fee": "95409675"
+    }
+  ],
+  summary: {
+    "totalTransactionsCount": 1846240,
+    "transactionsCount": 1846240,
+    "totalSubmitters": 21995
   }
-]
+}
 ```
 
 This endpoint returns the list of Addresses that submitted the most transactions in the last 24 hours. That includes Failed on Ledger transaction, all types. (Only available on paid API plans)
