@@ -5467,14 +5467,8 @@ Page where it used on bithomp:
       </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23206200"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"vef"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2321880"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"vnd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"602930000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"xag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"702030"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"xau"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7038.5"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"xdr"</span><span class="p">:</span><span class="w"> </span><span class="s2">"16600000"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"xlm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"80389590"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"yfi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3794.1"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"zar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"431700000"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"bits"</span><span class="p">:</span><span class="w"> </span><span class="s2">"243300000"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1555299.8"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"sats"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24329300000"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="nl">"sourceAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrsSUzrT2mYAMiL46pm7cwn6MmMmxVkEWM"</span><span class="p">,</span><span class="w">
@@ -5537,18 +5531,25 @@ Page where it used on bithomp:
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rNxp4h8apvRis6mJf9Sh8C6iRxfrDWN7AV"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">addresses:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
       </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rNxp4h8apvRis6mJf9Sh8C6iRxfrDWN7AV"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Binance"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"transactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">17075</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32803888007632"</span><span class="w">
+      </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rNxp4h8apvRis6mJf9Sh8C6iRxfrDWN7AV"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Binance"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"transactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">17075</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32803888007632"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w"> 
+  </span><span class="err">summary:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalTransactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1847405</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1028360</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalReceivers"</span><span class="p">:</span><span class="w"> </span><span class="mi">40175</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the list of the Addresses that are receiving the most in the last 24 hours. That includes Payments, Checks, Escrows, Token (IOU) payments, etc. (Only available on paid API plans)
 <br>
@@ -5592,18 +5593,25 @@ Page where it used on bithomp:
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">addresses:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
       </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Binance"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"transactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1270</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47274376966693"</span><span class="w">
+      </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDAE53VfMvftPB4ogpWGWvzkQxfht6JPxr"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Binance"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"transactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1270</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47274376966693"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">summary:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalTransactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1846418</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1027661</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalSenders"</span><span class="p">:</span><span class="w"> </span><span class="mi">19487</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the list of the Addresses that are sending the most in the last 24 hours. That includes Payments, Checks, Escrows, Token (IOU) payments, etc. (Only available on paid API plans)
 <br>
@@ -5647,19 +5655,26 @@ Page where it used on bithomp:
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUg8ac5ikpTaWk5RPei8xuYkNEyUs53G1i"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">addresses:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
       </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUg8ac5ikpTaWk5RPei8xuYkNEyUs53G1i"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"transactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">282561</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1144667950"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95409675"</span><span class="w">
+      </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rUg8ac5ikpTaWk5RPei8xuYkNEyUs53G1i"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"transactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">282561</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1144667950"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"95409675"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="err">summary:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalTransactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1846240</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"transactionsCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1846240</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"totalSubmitters"</span><span class="p">:</span><span class="w"> </span><span class="mi">21995</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the list of Addresses that submitted the most transactions in the last 24 hours. That includes Failed on Ledger transaction, all types. (Only available on paid API plans)
 <br>
