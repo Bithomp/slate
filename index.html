@@ -555,19 +555,19 @@
               </ul>
           </li>
           <li>
-            <a href="#transactions-the-last-24-hours" class="toc-h1 toc-link" data-title="Transactions (The last 24 hours)">Transactions (The last 24 hours)</a>
+            <a href="#transactions-24h" class="toc-h1 toc-link" data-title="Transactions (24h)">Transactions (24h)</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#top-transactions-the-last-24-hours" class="toc-h2 toc-link" data-title="TOP transactions (The last 24 hours)">TOP transactions (The last 24 hours)</a>
+                    <a href="#top-transactions-24h" class="toc-h2 toc-link" data-title="TOP transactions (24h)">TOP transactions (24h)</a>
                   </li>
                   <li>
-                    <a href="#top-receivers-the-last-24-hours" class="toc-h2 toc-link" data-title="TOP receivers (The last 24 hours)">TOP receivers (The last 24 hours)</a>
+                    <a href="#top-receivers-24h" class="toc-h2 toc-link" data-title="TOP receivers (24h)">TOP receivers (24h)</a>
                   </li>
                   <li>
-                    <a href="#top-senders-the-last-24-hours" class="toc-h2 toc-link" data-title="TOP senders (The last 24 hours)">TOP senders (The last 24 hours)</a>
+                    <a href="#top-senders-24h" class="toc-h2 toc-link" data-title="TOP senders (24h)">TOP senders (24h)</a>
                   </li>
                   <li>
-                    <a href="#top-submitters-the-last-24-hours" class="toc-h2 toc-link" data-title="TOP submitters (The last 24 hours)">TOP submitters (The last 24 hours)</a>
+                    <a href="#top-submitters-24h" class="toc-h2 toc-link" data-title="TOP submitters (24h)">TOP submitters (24h)</a>
                   </li>
               </ul>
           </li>
@@ -751,19 +751,19 @@
 <h1 id='changelog'>Changelog</h1><h3 id='29th-of-april-2025'>29th of April 2025</h3>
 <p>4 new endpoints were added:</p>
 
-<p><a href="#top-transactions-the-last-24-hours"><strong>TOP transactions (The last 24 hours)</strong></a></p>
+<p><a href="#top-transactions-24-h"><strong>TOP transactions (24h)</strong></a></p>
 
 <p>Get the list of the most significant transactions for the last 24 hours (Available on paid plans only).</p>
 
-<p><a href="#top-receivers-the-last-24-hours"><strong>TOP receivers (The last 24 hours)</strong></a></p>
+<p><a href="#top-receivers-24-h"><strong>TOP receivers (24h)</strong></a></p>
 
 <p>Get the list of the Addresses that are receiving the most in the last 24 hours (Available on paid plans only).</p>
 
-<p><a href="#top-senders-the-last-24-hours"><strong>TOP senders (The last 24 hours)</strong></a></p>
+<p><a href="#top-senders-24-h"><strong>TOP senders (24h)</strong></a></p>
 
 <p>Get the list of the Addresses that are sending the most in the last 24 hours (Available on paid plans only).</p>
 
-<p><a href="#top-submitters-the-last-24-hours"><strong>TOP submitters (The last 24 hours)</strong></a></p>
+<p><a href="#top-submitters-24-h"><strong>TOP submitters (24h)</strong></a></p>
 
 <p>Get the list of the Addresses that submitting the most transactions in the last 24 hours (Available on paid plans only).</p>
 <h3 id='9th-of-april-2025'>9th of April 2025</h3>
@@ -5397,7 +5397,7 @@ Page where it used on bithomp:
 <td>A blob of signed transaction to submit</td>
 </tr>
 </tbody></table>
-<h1 id='transactions-the-last-24-hours'>Transactions (The last 24 hours)</h1><h2 id='top-transactions-the-last-24-hours'>TOP transactions (The last 24 hours)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale"</span>
+<h1 id='transactions-24h'>Transactions (24h)</h1><h2 id='top-transactions-24h'>TOP transactions (24h)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
@@ -5525,7 +5525,7 @@ Page where it used on bithomp:
 <td>The number of transactions to return. (More than 100 is available for the Standard plan and higher).</td>
 </tr>
 </tbody></table>
-<h2 id='top-receivers-the-last-24-hours'>TOP receivers (The last 24 hours)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale/receivers"</span>
+<h2 id='top-receivers-24h'>TOP receivers (24h)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale/receivers"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
@@ -5580,7 +5580,7 @@ Page where it used on bithomp:
 <td>The number of transactions to return. (More than 100 is available for the Standard plan and higher).</td>
 </tr>
 </tbody></table>
-<h2 id='top-senders-the-last-24-hours'>TOP senders (The last 24 hours)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale/senders"</span>
+<h2 id='top-senders-24h'>TOP senders (24h)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale/senders"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
@@ -5635,7 +5635,7 @@ Page where it used on bithomp:
 <td>The number of transactions to return. (More than 100 is available for the Standard plan and higher).</td>
 </tr>
 </tbody></table>
-<h2 id='top-submitters-the-last-24-hours'>TOP submitters (The last 24 hours)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale/submitters"</span>
+<h2 id='top-submitters-24h'>TOP submitters (24h)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale/submitters"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
