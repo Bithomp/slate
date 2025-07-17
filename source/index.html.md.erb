@@ -119,7 +119,7 @@ That will return avatar link for an address and a status of Bithomp Pro.
 
 A new endpoint was added:
 
-<a href="#token-balances">**Token Balances**</a>
+<a href="#address-token-balances">**Address Token Balances**</a>
 
 Get the list of token balances for a specific address. For Xahau it also includes locked balances (Token escrowed balances).
 
@@ -171,13 +171,6 @@ Now you can get the direct URLs to cached and resized images and videos inside N
 
 Five new query parameters: `sellOffers`, `buyOffers`, `history`, `offersValidate`,  and `offersHistory` were added to the <a href="#nfts">**NFTs**</a> API end-point.
 You can get an extensive data for the list of NFTs in one request. (Available for the Premium plan and higher).
-
-### 23rd of June 2024
-
-A new endpoint was added:
-
-<a href="#tx-details">**Tx Details**</a>
-Get transaction details.
 
 # Free Address Profile Images
 
@@ -3873,7 +3866,354 @@ currencyList  | A list of currencies separated by comma (HEX or XLS-14 NFT)
 
 # Tokens
 
-## Token Balances
+## List of tokens
+
+```shell
+curl "https://bithomp.com/api/v2/trustlines/tokens"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getTokens(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/trustlines/tokens", getTokens);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/tokens");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "order": "rating",
+  "tokens": [
+    {
+      "token": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De:524C555344000000000000000000000000000000",
+      "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+      "issuerDetails": {
+        "address": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+        "username": null,
+        "service": "Ripple"
+      },
+      "currency": "524C555344000000000000000000000000000000",
+      "supply": "65905296.29000022117233588647765754",
+      "name": null,
+      "description": null,
+      "icon": null,
+      "kyc": false,
+      "stablecoin": false,
+      "lp_token": false,
+      "trustlines": 62554,
+      "holders": 33895,
+      "rating": 7969,
+      "statistics": {
+        "activeHolders": 686,
+        "sellVolume": "2932523.83132207583227529652",
+        "buyVolume": "2422235.4252768335345238203",
+        "uniqueSellers": 277,
+        "uniqueBuyers": 548,
+        "dexes": 29430,
+        "dexTxs": 20982,
+        "mintVolume": "0.0000001202249182405597155",
+        "burnVolume": "115.0000001228786077038097155",
+        "transferVolume": "10310017.97273277191181315743037",
+        "ripplingVolume": null,
+        "mintTxs": 6459,
+        "burnTxs": 6400,
+        "transferTxs": 2182,
+        "ripplingTxs": 0,
+        "uniqueAccounts": 856,
+        "uniqueDexAccounts": 758,
+        "priceXrp": "0.32901318537719176101",
+        "marketcap": "21683711.4656005927508835685655209721205497189423045154"
+      }
+    },
+    {
+      "token": "rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz:534F4C4F00000000000000000000000000000000",
+      "issuer": "rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz",
+      "issuerDetails": {
+        "address": "rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz",
+        "username": "SOLO",
+        "service": "Sologenic"
+      },
+      "currency": "534F4C4F00000000000000000000000000000000",
+      "supply": "398779537.52465205993061971438379545",
+      "name": null,
+      "description": null,
+      "icon": null,
+      "kyc": false,
+      "stablecoin": false,
+      "lp_token": false,
+      "trustlines": 283399,
+      "holders": 218866,
+      "rating": 7689,
+      "statistics": {
+        "activeHolders": 731,
+        "sellVolume": "331157.0783937505172613",
+        "buyVolume": "326811.73689544498047364",
+        "uniqueSellers": 72,
+        "uniqueBuyers": 206,
+        "dexes": 4580,
+        "dexTxs": 3987,
+        "mintVolume": "0.000000008279129713590034",
+        "burnVolume": "198.691852369684534928202034",
+        "transferVolume": "1299971.150028574142284637388",
+        "ripplingVolume": null,
+        "mintTxs": 42,
+        "burnTxs": 4622,
+        "transferTxs": 1030,
+        "ripplingTxs": 0,
+        "uniqueAccounts": 819,
+        "uniqueDexAccounts": 261,
+        "priceXrp": "0.136084",
+        "marketcap": "54267516.4407128039443272303515958600178"
+      }
+    },
+    {
+      "token": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN:50484E4958000000000000000000000000000000",
+      "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
+      "issuerDetails": {
+        "address": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
+        "username": null,
+        "service": "Phoenix"
+      },
+      "currency": "50484E4958000000000000000000000000000000",
+      "supply": "587851190432.5453783335880574392606",
+      "name": "Phoenix",
+      "description": "$PHNIX is the ultimate symbol of XRP's resilience in the face of adversity, as well as its unofficial yet widely recognized mascot.",
+      "icon": "QmVgFtVxsBqBRRzJb1KmhEELmfBoVWcTwVPkGBG1hpPZo1",
+      "kyc": false,
+      "stablecoin": false,
+      "lp_token": false,
+      "trustlines": 24209,
+      "holders": 20901,
+      "rating": 7017,
+      "statistics": {
+        "activeHolders": 398,
+        "sellVolume": "6605425011.104586450512",
+        "buyVolume": "7603667672.530643365493",
+        "uniqueSellers": 59,
+        "uniqueBuyers": 403,
+        "dexes": 7682,
+        "dexTxs": 7098,
+        "mintVolume": "0.002733515995836061",
+        "burnVolume": "4881.345795342875596061",
+        "transferVolume": "2726243612.71598394783",
+        "ripplingVolume": null,
+        "mintTxs": 1769,
+        "burnTxs": 1862,
+        "transferTxs": 198,
+        "ripplingTxs": 0,
+        "uniqueAccounts": 490,
+        "uniqueDexAccounts": 452,
+        "priceXrp": "0.00000861895297418025",
+        "marketcap": "5066661.76615398759267198126969427038035645112315"
+      }
+    }
+  ]
+}
+```
+
+This endpoint retrieves a list of tokens (IOUs) on the Ledger.
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/trustlines/tokens`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`.
+issuer | null | If set, the response will only include tokens issued by the specified issuer address.
+currency | null | If set, the response will only include tokens with the specified currency code.
+currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
+limit | 100 | The maximum number of tokens to return in the response. (More than 100 is available for the Standard plan and higher).
+
+## Token Search
+
+```shell
+curl "https://bithomp.com/api/v2/trustlines/tokens/search/RLU"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function searchTokens(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/trustlines/tokens/search/RLU", searchTokens);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/tokens/search/RLU");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "tokens": [
+    {
+      "token": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De:524C555344000000000000000000000000000000",
+      "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+      "issuerDetails": {
+        "address": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+        "username": null,
+        "service": "Ripple"
+      },
+      "currency": "524C555344000000000000000000000000000000",
+      "supply": "65905296.29000021766444040647765754",
+      "name": null,
+      "description": null,
+      "icon": null,
+      "kyc": false,
+      "stablecoin": false,
+      "lp_token": false,
+      "trustlines": 62683,
+      "holders": 33945,
+      "rating": 7969
+    },
+    {
+      "token": "rLUR2xrdeP77xUKW3S93jaA8k5h4JAwkix:4241504553000000000000000000000000000000",
+      "issuer": "rLUR2xrdeP77xUKW3S93jaA8k5h4JAwkix",
+      "issuerDetails": {
+        "address": "rLUR2xrdeP77xUKW3S93jaA8k5h4JAwkix",
+        "username": null,
+        "service": null
+      },
+      "currency": "4241504553000000000000000000000000000000",
+      "supply": "964897792.8454757196876",
+      "name": "Bearded Ape Society",
+      "description": "Bearded Ape Society is a next-gen Token & NFT collection living on the XRP Ledger. The Bearded Ape Society isnt about hype its about building a gritty, creative, and value-driven NFT tribe on XRPL. Whether youre here for the art, the alpha, or just a damn good-looking ape youre home now.",
+      "icon": "QmNfcRRJ3DpueMERrZNhreZR56jmnY3LcKV46oAFiKA6oW",
+      "kyc": false,
+      "stablecoin": false,
+      "lp_token": false,
+      "trustlines": 313,
+      "holders": 159,
+      "rating": 3444
+    }
+  ]
+}
+```
+
+This endpoint searches for tokens (IOUs) on the Ledger by a given item or a part of it (issuer, currency, username, etc.).
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/trustlines/tokens/search/<item>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+item     | The item to search for. It can be part of an issuer address, currency code, or a username, or a full issuer address, currency, currency code, or a username, service name.
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
+
+## Token Issuer Search 
+
+```shell
+curl "https://bithomp.com/api/v2/trustlines/issuers/search/rMx"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function searchIssuers(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/trustlines/issuers/search/rMx", searchIssuers);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/issuers/search/rMx");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "issuers": [
+    {
+      "address": "rMxZjeMsHSFh7MfzEa8ZZNihW9vZVPo81v",
+      "username": null,
+      "service": null,
+      "verifiedDomain": "rmxzjemshsfh7mfzea8zznihw9vzvpo81v.toml.ledger.meme",
+      "balance": "1000000"
+    },
+    {
+      "address": "rNiPdZ1fPkwCQKqYE3h3NmRN8B4geiZcsA",
+      "username": null,
+      "service": null,
+      "verifiedDomain": "hfwkjmrmxxqqsqd2mtgm.toml.firstledger.net",
+      "balance": "1019931"
+    }
+  ]
+}
+```
+
+This endpoint searches for token issuers on the Ledger by a given item or a part of it (issuer address, username, service name, domain etc.).
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/trustlines/issuers/search/<item>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+item     | The item to search for. It can be part of an issuer address, username, service name, domain, or a full issuer address, username, service name, domain.
+
+## Currency Search
+
+```shell
+curl "https://bithomp.com/api/v2/trustlines/currencies/search/RLU"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function searchCurrencies(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/trustlines/currencies/search/RLU", searchCurrencies);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/currencies/search/RLU");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "currencies": [
+    "524C555344000000000000000000000000000000",
+    "03B245BE580EC4F4386A751C084489EC4B514A2F",
+    "03BE21EF9C4931D8212D7CB96A93ECB144ABD3A3"
+  ]
+}
+```
+
+This endpoint searches for currencies (HEX or 3-characters) on the Ledger by a given name or a part of it (currency code, currency name.).
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/trustlines/currencies/search/<item>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+item     | The item to search for. It can be part of a currency code, currency name, or a full currency code, currency name.
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure! 
+
+## Address Token Balances
 
 ```shell
 curl "https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"
