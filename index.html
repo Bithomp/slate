@@ -431,6 +431,9 @@
                     <a href="#nft-offer" class="toc-h2 toc-link" data-title="NFT Offer">NFT Offer</a>
                   </li>
                   <li>
+                    <a href="#validate-nft-offer" class="toc-h2 toc-link" data-title="Validate NFT Offer">Validate NFT Offer</a>
+                  </li>
+                  <li>
                     <a href="#nfts" class="toc-h2 toc-link" data-title="NFTS">NFTS</a>
                   </li>
                   <li>
@@ -473,6 +476,9 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#nft-2" class="toc-h2 toc-link" data-title="NFT">NFT</a>
+                  </li>
+                  <li>
+                    <a href="#validate-nft-offer-2" class="toc-h2 toc-link" data-title="Validate NFT Offer">Validate NFT Offer</a>
                   </li>
                   <li>
                     <a href="#nfts-2" class="toc-h2 toc-link" data-title="NFTS">NFTS</a>
@@ -771,7 +777,7 @@
 
 <p>Search for tokens by a part of currency, currencu code, issuer address, username, domain, service name.</p>
 
-<p><a href="#token-issuer-search"><strong>Token Issuers Search</strong></a></p>
+<p><a href="#token-issuer-search"><strong>Token Issuer Search</strong></a></p>
 
 <p>Search for token issuers by a part of address, username, domain, service name.</p>
 
@@ -1908,6 +1914,118 @@ Exclude unnecessary parameters to make your request faster.
 <td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
 </tr>
 </tbody></table>
+<h2 id='validate-nft-offer'>Validate NFT Offer</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+  <span class="nt">--request</span> POST
+  <span class="nt">--data</span> <span class="s1">'{"Account": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME", "Owner": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME", "NFTokenID": "0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011", "Amount": "1000000", "Flags": 0, "Destination": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME" }'</span>
+  https://bithomp.com/api/v2/nftoken-offer/validateOffer
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nftoken-offer/validateOffer</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">x-bithomp-token</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">abcd-abcd-0000-abcd-0123abcdabcd</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">Account</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">Owner</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">NFTokenID</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">Amount</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1000000</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">Flags</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">Destination</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+    <span class="p">},</span>
+    <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code>  <span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">"Account"</span> <span class="o">=&gt;</span> <span class="s2">"rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"</span><span class="p">,</span>
+    <span class="s2">"Owner"</span> <span class="o">=&gt;</span> <span class="s2">"rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"</span><span class="p">,</span>
+    <span class="s2">"NFTokenID"</span> <span class="o">=&gt;</span> <span class="s2">"0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011"</span><span class="p">,</span>
+    <span class="s2">"Amount"</span> <span class="o">=&gt;</span> <span class="s2">"1000000"</span><span class="p">,</span>
+    <span class="s2">"Flags"</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s2">"Destination"</span> <span class="o">=&gt;</span> <span class="s2">"rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"</span>
+  <span class="p">);</span>
+  <span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+  <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nftoken-offer/validateOffer"</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
+    <span class="s1">'x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd'</span>
+  <span class="p">));</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+  <span class="k">print</span> <span class="nv">$response</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">...</span><span class="w"> </span><span class="err">same</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">NFT</span><span class="w"> </span><span class="err">Offer</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w">
+  </span><span class="err">valid:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="err">validationErrors:</span><span class="w"> </span><span class="p">[</span><span class="s2">"Insufficient funds on the buyer account"</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint validates an NFT Offer, it checks if the offer is valid and returns <code>valid</code> as <code>true</code> or <code>false</code>, if <code>false</code> then it also includes <code>validationErrors</code> array.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>POST https://bithomp.com/api/v2/nftoken-offer/validateOffer</code></p>
+<h3 id='headers'>Headers</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-bithomp-token</td>
+<td>Your API token</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Account</td>
+<td>The account address of the offer creator</td>
+</tr>
+<tr>
+<td>Owner</td>
+<td>The owner of the NFT</td>
+</tr>
+<tr>
+<td>NFTokenID</td>
+<td>The NFT ID</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>The amount of the offer</td>
+</tr>
+<tr>
+<td>Flags</td>
+<td>The flags for the offer, can be 0 or 1 (0 - buy, 1 - sell)</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>The destination address for the offer</td>
+</tr>
+<tr>
+<td>Expiration</td>
+<td>Ripple epoch time</td>
+</tr>
+<tr>
+<td>expiration</td>
+<td>(lower case, instead of Expiration) in unixtime seconds</td>
+</tr>
+</tbody></table>
 <h2 id='nfts'>NFTS</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -1975,7 +2093,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a List of NFTs for specified parameters</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nfts</code></p>
 <h3 id='query-parameters-7'>Query Parameters</h3>
 <table><thead>
@@ -2247,7 +2365,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Offers created by an <code>address</code> or NFT Offers for all NFTs owned by that <code>address</code>.</p>
-<h3 id='http-request-8'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-offers/&lt;address&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
@@ -2380,7 +2498,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Collection details, including floor price, sale statistics, owner count etc.</p>
-<h3 id='http-request-9'>HTTP Request</h3>
+<h3 id='http-request-10'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-collection/&lt;collectionId&gt;</code></p>
 <h3 id='url-parameters-7'>URL Parameters</h3>
 <table><thead>
@@ -2504,7 +2622,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Collection list for your search creterias.</p>
-<h3 id='http-request-10'>HTTP Request</h3>
+<h3 id='http-request-11'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-collections</code></p>
 <h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
@@ -2599,7 +2717,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Owners list sorted by NFT count.</p>
-<h3 id='http-request-11'>HTTP Request</h3>
+<h3 id='http-request-12'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-owners</code></p>
 <h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
@@ -2755,7 +2873,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a List of NFT Sales for specified parameters</p>
-<h3 id='http-request-12'>HTTP Request</h3>
+<h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-sales</code></p>
 <h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
@@ -2910,7 +3028,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes for specified parameters</p>
-<h3 id='http-request-13'>HTTP Request</h3>
+<h3 id='http-request-14'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-volumes</code></p>
 <h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
@@ -3123,7 +3241,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves Extended NFT Sales Volumes for specified parameters (Only available on paid API plans)</p>
-<h3 id='http-request-14'>HTTP Request</h3>
+<h3 id='http-request-15'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-volumes-extended</code></p>
 <h3 id='query-parameters-14'>Query Parameters</h3>
 <table><thead>
@@ -3256,7 +3374,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT minters on XRPL for a specified period of time</p>
-<h3 id='http-request-15'>HTTP Request</h3>
+<h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-marketplaces</code></p>
 <h3 id='query-parameters-15'>Query Parameters</h3>
 <table><thead>
@@ -3300,7 +3418,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT mints count for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
-<h3 id='http-request-16'>HTTP Request</h3>
+<h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-chart</code></p>
 <h3 id='query-parameters-16'>Query Parameters</h3>
 <table><thead>
@@ -3361,7 +3479,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Sales Volumes Chart data for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
-<h3 id='http-request-17'>HTTP Request</h3>
+<h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-sales-chart</code></p>
 <h3 id='query-parameters-17'>Query Parameters</h3>
 <table><thead>
@@ -3430,7 +3548,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the last ledger which was crawled by our NFT crawler.</p>
-<h3 id='http-request-18'>HTTP Request</h3>
+<h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/statistics/nftokens/crawler</code></p>
 <h3 id='response-format'>Response Format</h3>
 <table><thead>
@@ -3620,7 +3738,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested NFT.</p>
-<h3 id='http-request-19'>HTTP Request</h3>
+<h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET https://xahauexplorer.com/api/v2/nft/&lt;uritokenID&gt;</code></p>
 <h3 id='url-parameters-8'>URL Parameters</h3>
 <table><thead>
@@ -3686,6 +3804,97 @@ Exclude unnecessary parameters to make your request faster.
 <td>collectionDetails</td>
 <td>false</td>
 <td>(Only available on paid API plans) If set to true, each nft will include <code>collectionDetails</code> with the collection details. if parameter <code>assets</code> is set as <code>true</code>, you will also get assets in the <code>collectionDetails</code>.</td>
+</tr>
+</tbody></table>
+<h2 id='validate-nft-offer-2'>Validate NFT Offer</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+  <span class="nt">--request</span> POST
+  <span class="nt">--data</span> <span class="s1">'{"Account": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME", "URITokenID": "0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011", "Amount": "1000000", "Destination": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME" }'</span>
+  https://bithomp.com/api/v2/uritoken-offer/validateOffer
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>  <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="na">url</span><span class="p">:</span> <span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/uritoken-offer/validateOffer</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">type</span><span class="p">:</span> <span class="dl">"</span><span class="s2">POST</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">contentType</span><span class="p">:</span> <span class="dl">"</span><span class="s2">application/json</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">x-bithomp-token</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">abcd-abcd-0000-abcd-0123abcdabcd</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="na">data</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">"</span><span class="s2">Account</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">URITokenID</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">Amount</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1000000</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">Destination</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="na">success</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+    <span class="p">},</span>
+    <span class="na">error</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">});</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code>  <span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">"Account"</span> <span class="o">=&gt;</span> <span class="s2">"rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"</span><span class="p">,</span>
+    <span class="s2">"URITokenID"</span> <span class="o">=&gt;</span> <span class="s2">"0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011"</span><span class="p">,</span>
+    <span class="s2">"Amount"</span> <span class="o">=&gt;</span> <span class="s2">"1000000"</span><span class="p">,</span>
+    <span class="s2">"Destination"</span> <span class="o">=&gt;</span> <span class="s2">"rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"</span>
+  <span class="p">);</span>
+  <span class="nv">$data</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+  <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/uritoken-offer/validateOffer"</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_RETURNTRANSFER</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POST</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_POSTFIELDS</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+  <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_HTTPHEADER</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Content-Type: application/json'</span><span class="p">,</span>
+    <span class="s1">'x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd'</span>
+  <span class="p">));</span>
+  <span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+  <span class="nb">curl_close</span><span class="p">(</span><span class="nv">$ch</span><span class="p">);</span>
+  <span class="k">print</span> <span class="nv">$response</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="err">...</span><span class="w"> </span><span class="err">same</span><span class="w"> </span><span class="err">as</span><span class="w"> </span><span class="err">NFT</span><span class="w"> </span><span class="err">Offer</span><span class="w"> </span><span class="err">response</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w">
+  </span><span class="err">valid:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint validates an NFT Offer, it checks if the offer is valid and returns <code>valid</code> as <code>true</code> or <code>false</code>, if <code>false</code> then it also includes <code>validationErrors</code> array.</p>
+<h3 id='http-request-21'>HTTP Request</h3>
+<p><code>POST https://bithomp.com/api/v2/uritoken-offer/validateOffer</code></p>
+<h3 id='headers-2'>Headers</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>x-bithomp-token</td>
+<td>Your API token</td>
+</tr>
+</tbody></table>
+<h3 id='body-parameters-2'>Body Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Account</td>
+<td>The account address of the offer creator</td>
+</tr>
+<tr>
+<td>URITokenID</td>
+<td>The NFT ID</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>The amount of the offer</td>
+</tr>
+<tr>
+<td>Destination</td>
+<td>The destination address for the offer</td>
 </tr>
 </tbody></table>
 <h2 id='nfts-2'>NFTS</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/uritokens?list=uritokens&amp;issuedAt=all&amp;order=mintedNew&amp;hasImage=true"</span>
@@ -3839,7 +4048,7 @@ Exclude unnecessary parameters to make your request faster.
         </span><span class="p">},</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a List of NFTs for specified parameters</p>
-<h3 id='http-request-20'>HTTP Request</h3>
+<h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET https://xahauexplorer.com/api/v2/uritokens</code></p>
 <h3 id='query-parameters-19'>Query Parameters</h3>
 <table><thead>
@@ -4070,7 +4279,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Offers created by an <code>address</code> or NFT Offers for all NFTs owned by that <code>address</code>.</p>
-<h3 id='http-request-21'>HTTP Request</h3>
+<h3 id='http-request-23'>HTTP Request</h3>
 <p><code>GET https://xahauexplorer.com/api/v2/uritoken-offers/&lt;address&gt;</code></p>
 <h3 id='url-parameters-9'>URL Parameters</h3>
 <table><thead>
@@ -4155,7 +4364,7 @@ Exclude unnecessary parameters to make your request faster.
         </span><span class="p">},</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves NFT Owners list sorted by NFT count.</p>
-<h3 id='http-request-22'>HTTP Request</h3>
+<h3 id='http-request-24'>HTTP Request</h3>
 <p><code>GET https://xahauexplorer.com/api/v2/uritoken-owners</code></p>
 <h3 id='query-parameters-21'>Query Parameters</h3>
 <table><thead>
@@ -4307,7 +4516,7 @@ Exclude unnecessary parameters to make your request faster.
         </span><span class="p">},</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a List of NFT Sales for specified parameters</p>
-<h3 id='http-request-23'>HTTP Request</h3>
+<h3 id='http-request-25'>HTTP Request</h3>
 <p><code>GET https://xahauexplorer.com/api/v2/uritoken-sales</code></p>
 <h3 id='query-parameters-22'>Query Parameters</h3>
 <table><thead>
@@ -4396,7 +4605,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the last ledger which was crawled by our NFT crawler.</p>
-<h3 id='http-request-24'>HTTP Request</h3>
+<h3 id='http-request-26'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/statistics/uritokens/crawler</code></p>
 <h3 id='response-format-2'>Response Format</h3>
 <table><thead>
@@ -4476,7 +4685,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of identified services.</p>
-<h3 id='http-request-25'>HTTP Request</h3>
+<h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services</code></p>
 <h3 id='response-format-3'>Response Format</h3>
 <table><thead>
@@ -4562,7 +4771,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of all identified service addresses.</p>
-<h3 id='http-request-26'>HTTP Request</h3>
+<h3 id='http-request-28'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/addresses</code></p>
 <h3 id='response-format-4'>Response Format</h3>
 <table><thead>
@@ -4626,7 +4835,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a timestamp of last DB update for services/addresses.</p>
-<h3 id='http-request-27'>HTTP Request</h3>
+<h3 id='http-request-29'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/services/lastUpdate</code></p>
 <h3 id='response-format-5'>Response Format</h3>
 <table><thead>
@@ -4753,7 +4962,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested address.</p>
-<h3 id='http-request-28'>HTTP Request</h3>
+<h3 id='http-request-30'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/address/&lt;address&gt;</code></p>
 <h3 id='url-parameters-10'>URL Parameters</h3>
 <table><thead>
@@ -4864,7 +5073,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves an address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
-<h3 id='http-request-29'>HTTP Request</h3>
+<h3 id='http-request-31'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
 <h3 id='url-parameters-11'>URL Parameters</h3>
 <table><thead>
@@ -4941,7 +5150,7 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-30'>HTTP Request</h3>
+<h3 id='http-request-32'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currency/&lt;currency&gt;</code></p>
 <h3 id='url-parameters-12'>URL Parameters</h3>
 <table><thead>
@@ -5048,7 +5257,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-31'>HTTP Request</h3>
+<h3 id='http-request-33'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currencies</code></p>
 <h3 id='query-parameters-24'>Query Parameters</h3>
 <table><thead>
@@ -5204,7 +5413,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of tokens (IOUs) on the Ledger.</p>
-<h3 id='http-request-32'>HTTP Request</h3>
+<h3 id='http-request-34'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/tokens</code></p>
 <h3 id='query-parameters-25'>Query Parameters</h3>
 <table><thead>
@@ -5298,7 +5507,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for tokens (IOUs) on the Ledger by a given item or a part of it (issuer, currency, username, etc.).</p>
-<h3 id='http-request-33'>HTTP Request</h3>
+<h3 id='http-request-35'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/tokens/search/&lt;item&gt;</code></p>
 <h3 id='url-parameters-13'>URL Parameters</h3>
 <table><thead>
@@ -5358,7 +5567,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for token issuers on the Ledger by a given item or a part of it (issuer address, username, service name, domain etc.).</p>
-<h3 id='http-request-34'>HTTP Request</h3>
+<h3 id='http-request-36'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/issuers/search/&lt;item&gt;</code></p>
 <h3 id='url-parameters-14'>URL Parameters</h3>
 <table><thead>
@@ -5393,7 +5602,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for currencies (HEX or 3-characters) on the Ledger by a given name or a part of it (currency code, currency name.).</p>
-<h3 id='http-request-35'>HTTP Request</h3>
+<h3 id='http-request-37'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/currencies/search/&lt;item&gt;</code></p>
 <h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
@@ -5466,7 +5675,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns trustlines (IOU/token balances), for XAHAU it is also returns the locked amounts for IOUs (in escrows) (Only available on paid API plans).</p>
-<h3 id='http-request-36'>HTTP Request</h3>
+<h3 id='http-request-38'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/&lt;address&gt;</code></p>
 <h3 id='url-parameters-16'>URL Parameters</h3>
 <table><thead>
@@ -5653,7 +5862,7 @@ Page on bithomp that displays it:
 <a href="https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
   https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
 </a>.</p>
-<h3 id='http-request-37'>HTTP Request</h3>
+<h3 id='http-request-39'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/&lt;hash&gt;</code></p>
 <h3 id='url-parameters-17'>URL Parameters</h3>
 <table><thead>
@@ -5708,7 +5917,7 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://bithomp.com/submit/">
   https://bithomp.com/submit/
 </a>.</p>
-<h3 id='http-request-38'>HTTP Request</h3>
+<h3 id='http-request-40'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
 <h3 id='url-parameters-18'>URL Parameters</h3>
 <table><thead>
@@ -5773,7 +5982,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/?hwlogin">
   https://bithomp.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-39'>HTTP Request</h3>
+<h3 id='http-request-41'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -5887,7 +6096,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales">https://bithomp.com/en/whales</a>.</p>
-<h3 id='http-request-40'>HTTP Request</h3>
+<h3 id='http-request-42'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale</code></p>
 <h3 id='query-parameters-28'>Query Parameters</h3>
 <table><thead>
@@ -5949,7 +6158,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/receivers">https://bithomp.com/en/whales/receivers</a>.</p>
-<h3 id='http-request-41'>HTTP Request</h3>
+<h3 id='http-request-43'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/receivers</code></p>
 <h3 id='query-parameters-29'>Query Parameters</h3>
 <table><thead>
@@ -6011,7 +6220,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/senders">https://bithomp.com/en/whales/senders</a>.</p>
-<h3 id='http-request-42'>HTTP Request</h3>
+<h3 id='http-request-44'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/senders</code></p>
 <h3 id='query-parameters-30'>Query Parameters</h3>
 <table><thead>
@@ -6074,7 +6283,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/submitters">https://bithomp.com/en/whales/submitters</a>.</p>
-<h3 id='http-request-43'>HTTP Request</h3>
+<h3 id='http-request-45'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/submitters</code></p>
 <h3 id='query-parameters-31'>Query Parameters</h3>
 <table><thead>
@@ -6135,7 +6344,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.</p>
-<h3 id='http-request-44'>HTTP Request</h3>
+<h3 id='http-request-46'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/account-chart</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
@@ -6199,7 +6408,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-45'>HTTP Request</h3>
+<h3 id='http-request-47'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-7'>Response Format</h3>
 <table><thead>
@@ -6317,7 +6526,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-46'>HTTP Request</h3>
+<h3 id='http-request-48'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-8'>Response Format</h3>
 <table><thead>
