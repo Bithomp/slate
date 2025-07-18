@@ -1186,6 +1186,97 @@ Parameter | Default | Description
 --------- | ------- | -----------
 assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 
+## Validate NFT Offer
+
+```shell
+curl -H "Content-Type: application/json"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+  --request POST
+  --data '{"Account": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME", "Owner": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME", "NFTokenID": "0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011", "Amount": "1000000", "Flags": 0, "Destination": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME" }'
+  https://bithomp.com/api/v2/nftoken-offer/validateOffer
+```
+
+```javascript
+  $.ajax({
+    url: "https://bithomp.com/api/v2/nftoken-offer/validateOffer",
+    type: "POST",
+    contentType: "application/json",
+    headers: {
+      "x-bithomp-token": "abcd-abcd-0000-abcd-0123abcdabcd"
+    },
+    data: {
+      "Account": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME",
+      "Owner": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME",
+      "NFTokenID": "0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011",
+      "Amount": "1000000",
+      "Flags": 0,
+      "Destination": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"
+    },
+    success: function(result) {
+      console.log(JSON.stringify(result, undefined, 2));
+    },
+    error: function(error) {
+      console.log(error);
+    }
+  });
+```
+
+```php
+  $data = array(
+    "Account" => "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME",
+    "Owner" => "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME",
+    "NFTokenID" => "0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011",
+    "Amount" => "1000000",
+    "Flags" => 0,
+    "Destination" => "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"
+  );
+  $data = json_encode($data);
+  $ch = curl_init("https://bithomp.com/api/v2/nftoken-offer/validateOffer");
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_POST, true);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd'
+  ));
+  $response = curl_exec($ch);
+  curl_close($ch);
+  print $response;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  ... same as NFT Offer response ...,
+  valid: false,
+  validationErrors: ["Insufficient funds on the buyer account"]
+}
+```
+
+This endpoint validates an NFT Offer, it checks if the offer is valid and returns `valid` as `true` or `false`, if `false` then it also includes `validationErrors` array.
+
+### HTTP Request
+
+`POST https://bithomp.com/api/v2/nftoken-offer/validateOffer`
+
+### Headers
+Parameter | Description
+--------- | -----------
+x-bithomp-token | Your API token
+
+### Body Parameters
+Parameter | Description
+--------- | -----------
+Account | The account address of the offer creator
+Owner | The owner of the NFT
+NFTokenID | The NFT ID
+Amount | The amount of the offer
+Flags | The flags for the offer, can be 0 or 1 (0 - buy, 1 - sell)
+Destination | The destination address for the offer
+Expiration | Ripple epoch time
+expiration | (lower case, instead of Expiration) in unixtime seconds
+
 ## NFTS
 
 ```shell
@@ -2687,6 +2778,88 @@ offersValidate | false | (Only available on paid API plans) If set to true, each
 offersHistory | false | (Only available on paid API plans) If set to true, each result will include historical offers which are already accepted or canceled.
 convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the for `history` response  will have an array `amountInConvertCurrencies`
 collectionDetails | false | (Only available on paid API plans) If set to true, each nft will include `collectionDetails` with the collection details. if parameter `assets` is set as `true`, you will also get assets in the `collectionDetails`.
+
+## Validate NFT Offer
+
+```shell
+curl -H "Content-Type: application/json"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+  --request POST
+  --data '{"Account": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME", "URITokenID": "0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011", "Amount": "1000000", "Destination": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME" }'
+  https://bithomp.com/api/v2/uritoken-offer/validateOffer
+```
+
+```javascript
+  $.ajax({
+    url: "https://bithomp.com/api/v2/uritoken-offer/validateOffer",
+    type: "POST",
+    contentType: "application/json",
+    headers: {
+      "x-bithomp-token": "abcd-abcd-0000-abcd-0123abcdabcd"
+    },
+    data: {
+      "Account": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME",
+      "URITokenID": "0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011",
+      "Amount": "1000000",
+      "Destination": "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"
+    },
+    success: function(result) {
+      console.log(JSON.stringify(result, undefined, 2));
+    },
+    error: function(error) {
+      console.log(error);
+    }
+  });
+```
+
+```php
+  $data = array(
+    "Account" => "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME",
+    "URITokenID" => "0008138874D997D20619837CF3C7E1050A785E9F9AC53D7E8542EAAC00000011",
+    "Amount" => "1000000",
+    "Destination" => "rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME"
+  );
+  $data = json_encode($data);
+  $ch = curl_init("https://bithomp.com/api/v2/uritoken-offer/validateOffer");
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_POST, true);
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    'Content-Type: application/json',
+    'x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd'
+  ));
+  $response = curl_exec($ch);
+  curl_close($ch);
+  print $response;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  ... same as NFT Offer response ...,
+  valid: true
+}
+```
+
+This endpoint validates an NFT Offer, it checks if the offer is valid and returns `valid` as `true` or `false`, if `false` then it also includes `validationErrors` array.
+
+### HTTP Request
+
+`POST https://bithomp.com/api/v2/uritoken-offer/validateOffer`
+
+### Headers
+Parameter | Description
+--------- | -----------
+x-bithomp-token | Your API token
+
+### Body Parameters
+Parameter | Description
+--------- | -----------
+Account | The account address of the offer creator
+URITokenID | The NFT ID
+Amount | The amount of the offer
+Destination | The destination address for the offer
 
 ## NFTS
 
