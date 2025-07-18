@@ -323,6 +323,12 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#19th-of-july-2025" class="toc-h2 toc-link" data-title="19th of July 2025">19th of July 2025</a>
+                  </li>
+                  <li>
+                    <a href="#18th-of-july-2025" class="toc-h2 toc-link" data-title="18th of July 2025">18th of July 2025</a>
+                  </li>
+                  <li>
                     <a href="#17th-of-july-2025" class="toc-h2 toc-link" data-title="17th of July 2025">17th of July 2025</a>
                   </li>
                   <li>
@@ -573,8 +579,11 @@
               </ul>
           </li>
           <li>
-            <a href="#transactions-24h" class="toc-h1 toc-link" data-title="Transactions (24h)">Transactions (24h)</a>
+            <a href="#transactions" class="toc-h1 toc-link" data-title="Transactions">Transactions</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#transactions-by-address" class="toc-h2 toc-link" data-title="Transactions by address">Transactions by address</a>
+                  </li>
                   <li>
                     <a href="#top-transactions-24h" class="toc-h2 toc-link" data-title="TOP transactions (24h)">TOP transactions (24h)</a>
                   </li>
@@ -766,7 +775,23 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='17th-of-july-2025'>17th of July 2025</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='19th-of-july-2025'>19th of July 2025</h3>
+<p>A new endpoint was added:</p>
+
+<p><a href="#transactions-by-address"><strong>Transactions by address</strong></a></p>
+
+<p>Get the list of transactions by an address. This endpoint is available on paid plans only.</p>
+<h3 id='18th-of-july-2025'>18th of July 2025</h3>
+<p>2 new endpoints were added:</p>
+
+<p><a href="#validate-nft-offer"><strong>Validate NFT Offer (For XRPL)</strong></a></p>
+
+<p>Validate an NFT offer on the XRPL. This endpoint is available on paid plans only.</p>
+
+<p><a href="#validate-nft-offer-2"><strong>Validate NFT Offer (For XAHAU)</strong></a></p>
+
+<p>Validate an NFT offer on the Xahau. This endpoint is available on paid plans only.</p>
+<h3 id='17th-of-july-2025'>17th of July 2025</h3>
 <p>4 new endpoints were added:</p>
 
 <p><a href="#list-of-tokens"><strong>List of tokens</strong></a></p>
@@ -6000,7 +6025,109 @@ Page where it used on bithomp:
 <td>A blob of signed transaction to submit</td>
 </tr>
 </tbody></table>
-<h1 id='transactions-24h'>Transactions (24h)</h1><h2 id='top-transactions-24h'>TOP transactions (24h)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale"</span>
+<h1 id='transactions'>Transactions</h1><h2 id='transactions-by-address'>Transactions by address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv?limit=1"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/transactions/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv?limit=1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/transactions/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv?limit=1"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"payment"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">3435035</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"925C805732914B366436B2C8D42E83B07C1C17B717604457D9919F5A5BE1EF4A"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ctid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C5D0B456001D0000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"specification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"maxAmount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"destination"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBP7HKSXMYTA5wZzV6UE9xrqPrAf73AhAf"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"signer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rBMFF7vhe2pxYS5wo3dpXMDrbbRudB7hGf"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"outcome"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tesSUCCESS"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-07-18T21:03:10.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balanceChanges"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"rBP7HKSXMYTA5wZzV6UE9xrqPrAf73AhAf"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nl">"rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"-10000.01"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">97563734</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ledgerVersion"</span><span class="p">:</span><span class="w"> </span><span class="mi">97563734</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"indexInLedger"</span><span class="p">:</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"deliveredAmount"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"rawTransaction"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{</span><span class="se">\"</span><span class="s2">Account</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">Amount</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">10000000000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">DeliverMax</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">10000000000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">Destination</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">rBP7HKSXMYTA5wZzV6UE9xrqPrAf73AhAf</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">Fee</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">10000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">LastLedgerSequence</span><span class="se">\"</span><span class="s2">:97563983,</span><span class="se">\"</span><span class="s2">Sequence</span><span class="se">\"</span><span class="s2">:3435035,</span><span class="se">\"</span><span class="s2">SigningPubKey</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">03511308215C16636E6605938C61D28B03345CFFEAA0D9EACCFA9386BAA1A55752</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">TransactionType</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">Payment</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">TxnSignature</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">304402200E2EF4A99257F7B4F99665429430F2ED6214AC4B15EA7408E36E1D9AA29DB10B02205D30DCF7EB9B2148FDF9E74C1ADCB5FA0E4F5D3032656E7A23A8965B350A65BE</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">ctid</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">C5D0B456001D0000</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">date</span><span class="se">\"</span><span class="s2">:806187790,</span><span class="se">\"</span><span class="s2">hash</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">925C805732914B366436B2C8D42E83B07C1C17B717604457D9919F5A5BE1EF4A</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">inLedger</span><span class="se">\"</span><span class="s2">:97563734,</span><span class="se">\"</span><span class="s2">ledger_index</span><span class="se">\"</span><span class="s2">:97563734,</span><span class="se">\"</span><span class="s2">meta</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">AffectedNodes</span><span class="se">\"</span><span class="s2">:[{</span><span class="se">\"</span><span class="s2">ModifiedNode</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">FinalFields</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">Account</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">rBP7HKSXMYTA5wZzV6UE9xrqPrAf73AhAf</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">Balance</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">19646903233</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">Flags</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">OwnerCount</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">Sequence</span><span class="se">\"</span><span class="s2">:88806189},</span><span class="se">\"</span><span class="s2">LedgerEntryType</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">AccountRoot</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">LedgerIndex</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">976A6886DDD5E81B6159EEA93032E3DE8EF35D556D817B0A5725B81E2FE767ED</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">PreviousFields</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">Balance</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">9646903233</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">PreviousTxnID</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">A7414DAC02358A56E56012772D736E9017A4FBE06AB98F59A776310CF620CB07</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">PreviousTxnLgrSeq</span><span class="se">\"</span><span class="s2">:97563546}},{</span><span class="se">\"</span><span class="s2">ModifiedNode</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">FinalFields</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">Account</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">Balance</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">23580872698742</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">Flags</span><span class="se">\"</span><span class="s2">:1179648,</span><span class="se">\"</span><span class="s2">OwnerCount</span><span class="se">\"</span><span class="s2">:0,</span><span class="se">\"</span><span class="s2">RegularKey</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">rBMFF7vhe2pxYS5wo3dpXMDrbbRudB7hGf</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">Sequence</span><span class="se">\"</span><span class="s2">:3435036},</span><span class="se">\"</span><span class="s2">LedgerEntryType</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">AccountRoot</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">LedgerIndex</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">C3B625B296E95A21D7BBBB7E3D343AF423B463B87B5D56EE7F79C8E16A47A6F5</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">PreviousFields</span><span class="se">\"</span><span class="s2">:{</span><span class="se">\"</span><span class="s2">Balance</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">23590872708742</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">Sequence</span><span class="se">\"</span><span class="s2">:3435035},</span><span class="se">\"</span><span class="s2">PreviousTxnID</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">2E71FDF56F4F893976ED407705CA1BBF62B795BE7CECF186C907CDCED882C6D3</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">PreviousTxnLgrSeq</span><span class="se">\"</span><span class="s2">:97563734}}],</span><span class="se">\"</span><span class="s2">TransactionIndex</span><span class="se">\"</span><span class="s2">:29,</span><span class="se">\"</span><span class="s2">TransactionResult</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">tesSUCCESS</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">delivered_amount</span><span class="se">\"</span><span class="s2">:</span><span class="se">\"</span><span class="s2">10000000000</span><span class="se">\"</span><span class="s2">},</span><span class="se">\"</span><span class="s2">validated</span><span class="se">\"</span><span class="s2">:true}"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns a list of transactions for a specific address.
+<br>
+Page on bithomp that displays it:
+<a href="https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv">
+  https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv
+</a>.</p>
+<h3 id='http-request-42'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/transactions/&lt;address&gt;</code></p>
+<h3 id='url-parameters-19'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>The address to get transactions for</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-28'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The number of transactions to return. (More than 100 is available for the Standard plan and higher).</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>for more parameters contact our support</li>
+</ul>
+<h2 id='top-transactions-24h'>TOP transactions (24h)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
@@ -6096,9 +6223,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales">https://bithomp.com/en/whales</a>.</p>
-<h3 id='http-request-42'>HTTP Request</h3>
+<h3 id='http-request-43'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale</code></p>
-<h3 id='query-parameters-28'>Query Parameters</h3>
+<h3 id='query-parameters-29'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6158,9 +6285,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/receivers">https://bithomp.com/en/whales/receivers</a>.</p>
-<h3 id='http-request-43'>HTTP Request</h3>
+<h3 id='http-request-44'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/receivers</code></p>
-<h3 id='query-parameters-29'>Query Parameters</h3>
+<h3 id='query-parameters-30'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6220,9 +6347,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/senders">https://bithomp.com/en/whales/senders</a>.</p>
-<h3 id='http-request-44'>HTTP Request</h3>
+<h3 id='http-request-45'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/senders</code></p>
-<h3 id='query-parameters-30'>Query Parameters</h3>
+<h3 id='query-parameters-31'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6283,9 +6410,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/submitters">https://bithomp.com/en/whales/submitters</a>.</p>
-<h3 id='http-request-45'>HTTP Request</h3>
+<h3 id='http-request-46'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/submitters</code></p>
-<h3 id='query-parameters-31'>Query Parameters</h3>
+<h3 id='query-parameters-32'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6344,7 +6471,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.</p>
-<h3 id='http-request-46'>HTTP Request</h3>
+<h3 id='http-request-47'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/account-chart</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
@@ -6408,7 +6535,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-47'>HTTP Request</h3>
+<h3 id='http-request-48'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-7'>Response Format</h3>
 <table><thead>
@@ -6526,7 +6653,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-48'>HTTP Request</h3>
+<h3 id='http-request-49'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-8'>Response Format</h3>
 <table><thead>
