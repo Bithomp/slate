@@ -79,6 +79,26 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 19th of July 2025
+
+A new endpoint was added:
+
+<a href="#transactions-by-address">**Transactions by address**</a>
+
+Get the list of transactions by an address. This endpoint is available on paid plans only.
+
+### 18th of July 2025
+
+2 new endpoints were added:
+
+<a href="#validate-nft-offer">**Validate NFT Offer (For XRPL)**</a>
+
+Validate an NFT offer on the XRPL. This endpoint is available on paid plans only.
+
+<a href="#validate-nft-offer-2">**Validate NFT Offer (For XAHAU)**</a>
+
+Validate an NFT offer on the Xahau. This endpoint is available on paid plans only.
+
 ### 17th of July 2025
 
 4 new endpoints were added:
@@ -4804,7 +4824,105 @@ Parameter | Description
 id | (Optional) A calculated hash of the signed transaction
 signedTransaction | A blob of signed transaction to submit
 
-# Transactions (24h)
+# Transactions
+
+## Transactions by address
+
+```shell
+curl "https://bithomp.com/api/v2/transactions/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv?limit=1"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/transactions/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv?limit=1", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/transactions/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv?limit=1");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "type": "payment",
+    "address": "rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv",
+    "sequence": 3435035,
+    "id": "925C805732914B366436B2C8D42E83B07C1C17B717604457D9919F5A5BE1EF4A",
+    "ctid": "C5D0B456001D0000",
+    "specification": {
+      "source": {
+        "address": "rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv",
+        "maxAmount": {
+          "currency": "XRP",
+          "value": "10000"
+        }
+      },
+      "destination": {
+        "address": "rBP7HKSXMYTA5wZzV6UE9xrqPrAf73AhAf"
+      },
+      "signer": {
+        "address": "rBMFF7vhe2pxYS5wo3dpXMDrbbRudB7hGf"
+      }
+    },
+    "outcome": {
+      "result": "tesSUCCESS",
+      "timestamp": "2025-07-18T21:03:10.000Z",
+      "fee": "0.01",
+      "balanceChanges": {
+        "rBP7HKSXMYTA5wZzV6UE9xrqPrAf73AhAf": [
+          {
+            "currency": "XRP",
+            "value": "10000"
+          }
+        ],
+        "rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv": [
+          {
+            "currency": "XRP",
+            "value": "-10000.01"
+          }
+        ]
+      },
+      "ledgerIndex": 97563734,
+      "ledgerVersion": 97563734,
+      "indexInLedger": 29,
+      "deliveredAmount": {
+        "currency": "XRP",
+        "value": "10000"
+      }
+    },
+    "rawTransaction": "{\"Account\":\"rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv\",\"Amount\":\"10000000000\",\"DeliverMax\":\"10000000000\",\"Destination\":\"rBP7HKSXMYTA5wZzV6UE9xrqPrAf73AhAf\",\"Fee\":\"10000\",\"LastLedgerSequence\":97563983,\"Sequence\":3435035,\"SigningPubKey\":\"03511308215C16636E6605938C61D28B03345CFFEAA0D9EACCFA9386BAA1A55752\",\"TransactionType\":\"Payment\",\"TxnSignature\":\"304402200E2EF4A99257F7B4F99665429430F2ED6214AC4B15EA7408E36E1D9AA29DB10B02205D30DCF7EB9B2148FDF9E74C1ADCB5FA0E4F5D3032656E7A23A8965B350A65BE\",\"ctid\":\"C5D0B456001D0000\",\"date\":806187790,\"hash\":\"925C805732914B366436B2C8D42E83B07C1C17B717604457D9919F5A5BE1EF4A\",\"inLedger\":97563734,\"ledger_index\":97563734,\"meta\":{\"AffectedNodes\":[{\"ModifiedNode\":{\"FinalFields\":{\"Account\":\"rBP7HKSXMYTA5wZzV6UE9xrqPrAf73AhAf\",\"Balance\":\"19646903233\",\"Flags\":0,\"OwnerCount\":0,\"Sequence\":88806189},\"LedgerEntryType\":\"AccountRoot\",\"LedgerIndex\":\"976A6886DDD5E81B6159EEA93032E3DE8EF35D556D817B0A5725B81E2FE767ED\",\"PreviousFields\":{\"Balance\":\"9646903233\"},\"PreviousTxnID\":\"A7414DAC02358A56E56012772D736E9017A4FBE06AB98F59A776310CF620CB07\",\"PreviousTxnLgrSeq\":97563546}},{\"ModifiedNode\":{\"FinalFields\":{\"Account\":\"rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv\",\"Balance\":\"23580872698742\",\"Flags\":1179648,\"OwnerCount\":0,\"RegularKey\":\"rBMFF7vhe2pxYS5wo3dpXMDrbbRudB7hGf\",\"Sequence\":3435036},\"LedgerEntryType\":\"AccountRoot\",\"LedgerIndex\":\"C3B625B296E95A21D7BBBB7E3D343AF423B463B87B5D56EE7F79C8E16A47A6F5\",\"PreviousFields\":{\"Balance\":\"23590872708742\",\"Sequence\":3435035},\"PreviousTxnID\":\"2E71FDF56F4F893976ED407705CA1BBF62B795BE7CECF186C907CDCED882C6D3\",\"PreviousTxnLgrSeq\":97563734}}],\"TransactionIndex\":29,\"TransactionResult\":\"tesSUCCESS\",\"delivered_amount\":\"10000000000\"},\"validated\":true}"
+  }
+]
+```
+
+This endpoint returns a list of transactions for a specific address.
+<br>
+Page on bithomp that displays it:
+<a href="https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv">
+  https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv
+</a>.
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/transactions/<address>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+address | The address to get transactions for
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+limit | 100 | The number of transactions to return. (More than 100 is available for the Standard plan and higher).
+
+* for more parameters contact our support
+
 
 ## TOP transactions (24h)
 
