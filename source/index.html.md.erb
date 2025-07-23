@@ -4920,10 +4920,21 @@ address | The address to get transactions for
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
+startTxHash | null | The hash of the transaction to start from. If not specified, the latest transactions will be returned.
+forward | false | If true, the transactions will be returned in ascending order (from oldest to newest). If false, they will be returned in descending order (from newest to oldest).
+type | null | The type of transactions to filter by. Possible values: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, etc. (case-insensitive). If not specified, all types will be returned.
+initiated | null | The address that initiated the transaction. If not specified, all transactions will be returned.
+counterparty | null | The address that is the counterparty in the transaction. If not specified, all transactions will be returned.
+excludeFailures | false | If true, transactions with a status other than `tesSUCCESS` will be excluded from the results.
+ledgerIndexMin | null | The minimum ledger index to filter transactions by. If not specified, all transactions will be returned.
+ledgerIndexMax | null | The maximum ledger index to filter transactions by. If not specified, all transactions will be returned.
+fromDate | null | The minimum date to filter transactions by. If not specified, all transactions will be returned.
+toDate | null | The maximum date to filter transactions by. If not specified, all transactions will be returned.
+sourceTag | null | The source tag to filter transactions by. If not specified, all transactions will be returned.
+destinationTag | null | The destination tag to filter transactions by. If not specified, all transactions will be returned.
+marker | null | A marker to paginate through the results. If not specified, the first page of results will be returned.
+includeRawTransactions | false | If true, the raw transaction data will be included in the results. This is useful for debugging or further processing of the transactions.
 limit | 100 | The number of transactions to return. (More than 100 is available for the Standard plan and higher).
-
-* for more parameters contact our support
-
 
 ## TOP transactions (24h)
 
