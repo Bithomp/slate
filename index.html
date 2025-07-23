@@ -6123,15 +6123,81 @@ Page on bithomp that displays it:
 </tr>
 </thead><tbody>
 <tr>
+<td>startTxHash</td>
+<td>null</td>
+<td>The hash of the transaction to start from. If not specified, the latest transactions will be returned.</td>
+</tr>
+<tr>
+<td>forward</td>
+<td>false</td>
+<td>If true, the transactions will be returned in ascending order (from oldest to newest). If false, they will be returned in descending order (from newest to oldest).</td>
+</tr>
+<tr>
+<td>type</td>
+<td>null</td>
+<td>The type of transactions to filter by. Possible values: <code>Payment</code>, <code>OfferCreate</code>, <code>OfferCancel</code>, <code>TrustSet</code>, <code>AccountSet</code>, etc. (case-insensitive). If not specified, all types will be returned.</td>
+</tr>
+<tr>
+<td>initiated</td>
+<td>null</td>
+<td>The address that initiated the transaction. If not specified, all transactions will be returned.</td>
+</tr>
+<tr>
+<td>counterparty</td>
+<td>null</td>
+<td>The address that is the counterparty in the transaction. If not specified, all transactions will be returned.</td>
+</tr>
+<tr>
+<td>excludeFailures</td>
+<td>false</td>
+<td>If true, transactions with a status other than <code>tesSUCCESS</code> will be excluded from the results.</td>
+</tr>
+<tr>
+<td>ledgerIndexMin</td>
+<td>null</td>
+<td>The minimum ledger index to filter transactions by. If not specified, all transactions will be returned.</td>
+</tr>
+<tr>
+<td>ledgerIndexMax</td>
+<td>null</td>
+<td>The maximum ledger index to filter transactions by. If not specified, all transactions will be returned.</td>
+</tr>
+<tr>
+<td>fromDate</td>
+<td>null</td>
+<td>The minimum date to filter transactions by. If not specified, all transactions will be returned.</td>
+</tr>
+<tr>
+<td>toDate</td>
+<td>null</td>
+<td>The maximum date to filter transactions by. If not specified, all transactions will be returned.</td>
+</tr>
+<tr>
+<td>sourceTag</td>
+<td>null</td>
+<td>The source tag to filter transactions by. If not specified, all transactions will be returned.</td>
+</tr>
+<tr>
+<td>destinationTag</td>
+<td>null</td>
+<td>The destination tag to filter transactions by. If not specified, all transactions will be returned.</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>null</td>
+<td>A marker to paginate through the results. If not specified, the first page of results will be returned.</td>
+</tr>
+<tr>
+<td>includeRawTransactions</td>
+<td>false</td>
+<td>If true, the raw transaction data will be included in the results. This is useful for debugging or further processing of the transactions.</td>
+</tr>
+<tr>
 <td>limit</td>
 <td>100</td>
 <td>The number of transactions to return. (More than 100 is available for the Standard plan and higher).</td>
 </tr>
 </tbody></table>
-
-<ul>
-<li>for more parameters contact our support</li>
-</ul>
 <h2 id='top-transactions-24h'>TOP transactions (24h)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transactions/whale"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
