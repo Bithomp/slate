@@ -5451,7 +5451,7 @@ You can retrieve information for MANY currencies in one request:
 <tr>
 <td>stattistics</td>
 <td>false</td>
-<td>If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.</td>
+<td>(Only available on Standard plan and higher) If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.</td>
 </tr>
 <tr>
 <td>order</td>
@@ -5481,7 +5481,7 @@ You can retrieve information for MANY currencies in one request:
 <tr>
 <td>marker</td>
 <td>null</td>
-<td>The marker to use for pagination. If set, the response will include tokens starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.</td>
+<td>(only available on paid api plans) The marker to use for pagination. If set, the response will include tokens starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.</td>
 </tr>
 </tbody></table>
 <h2 id='token-search'>Token Search</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/tokens/search/RLU"</span>
