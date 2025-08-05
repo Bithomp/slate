@@ -4239,13 +4239,13 @@ This endpoint retrieves a list of tokens (IOUs) on the Ledger.
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
-stattistics | false | If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.
+stattistics | false | (Only available on Standard plan and higher) If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.
 order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`.
 issuer | null | If set, the response will only include tokens issued by the specified issuer address.
 currency | null | If set, the response will only include tokens with the specified currency code.
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
 limit | 100 | The maximum number of tokens to return in the response. (More than 100 is available for the Standard plan and higher).
-marker | null | The marker to use for pagination. If set, the response will include tokens starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.
+marker | null | (only available on paid api plans) The marker to use for pagination. If set, the response will include tokens starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.
 
 ## Token Search
 
