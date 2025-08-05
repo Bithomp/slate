@@ -4082,7 +4082,7 @@ currencyList  | A list of currencies separated by comma (HEX or XLS-14 NFT)
 ## List of tokens
 
 ```shell
-curl "https://bithomp.com/api/v2/trustlines/tokens"
+curl "https://bithomp.com/api/v2/trustlines/tokens?statistics=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -4090,11 +4090,11 @@ curl "https://bithomp.com/api/v2/trustlines/tokens"
 function getTokens(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/trustlines/tokens", getTokens);
+bithompRequest("https://bithomp.com/api/v2/trustlines/tokens?statistics=true", getTokens);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/tokens");
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/tokens?statistics=true");
 print $data;
 ```
 
@@ -4239,6 +4239,7 @@ This endpoint retrieves a list of tokens (IOUs) on the Ledger.
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
+stattistics | false | If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.
 order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`.
 issuer | null | If set, the response will only include tokens issued by the specified issuer address.
 currency | null | If set, the response will only include tokens with the specified currency code.
