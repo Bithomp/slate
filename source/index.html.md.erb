@@ -33,9 +33,9 @@ XRPL MAINNET: `https://bithomp.com/api/v2/`, get your api key [here](https://bit
 
 XAHAU MAINNET: `https://xahauexplorer.com/api/v2/`, get your api key [here](https://xahauexplorer.com/admin)
 
-XRPL TESTNET: `https://test.xrplexplorer.com/api/v2/`, get your api key [here](https://test.xrplexplorer.com/admin)
+XRPL TESTNET: `https://test.bithomp.com/api/v2/`, get your api key [here](https://test.bithomp.com/admin)
 
-XRPL DEVNET: `https://dev.xrplexplorer.com/api/v2/`, get your api key [here](https://dev.xrplexplorer.com/admin)
+XRPL DEVNET: `https://dev.bithomp.com/api/v2/`, get your api key [here](https://dev.bithomp.com/admin)
 
 XAHAU TESTNET: `https://test.xahauexplorer.com/api/v2/`, get your api key [here](https://test.xahauexplorer.com/admin)
 
@@ -60,6 +60,10 @@ For the mainnets we have the following API plans:
 
 # NFT Content Plans
 
+Those are not API plans and can be purchased separately (contact our support team to get one).
+
+You only need this if you want to use our cached NFT images and videos from our CDN server.
+
 Direct access to fast [resized and cached] images and videos:
 
 - images (700px x 700px)
@@ -78,6 +82,18 @@ Direct access to fast [resized and cached] images and videos:
 - <a href="https://bithomp.com/admin">Request an API key</a>
 
 # Changelog
+
+### 8th of August 2025
+
+A new endpoint was added:
+
+<a href="#token">**Token**</a>
+
+Get information and statistics for a specific token issued on the XRPL or Xahau. Icon, description, holders count, 24h volumes, price chnages and much more.
+
+Free Images for Tokens and Addresses:
+
+You can now use our CDN to display token and address images for free. See the <a href="#free-token-images">Free Token Images</a> and <a href="#free-address-profile-images">Free Address Profile Images</a> sections below for more details.
 
 ### 19th of July 2025
 
@@ -211,6 +227,56 @@ Now you can get the direct URLs to cached and resized images and videos inside N
 
 Five new query parameters: `sellOffers`, `buyOffers`, `history`, `offersValidate`,  and `offersHistory` were added to the <a href="#nfts">**NFTs**</a> API end-point.
 You can get an extensive data for the list of NFTs in one request. (Available for the Premium plan and higher).
+
+# Free Token Images
+
+You can easily display token images for XRPL and Xahau tokens using the Bithomp token image service. No registration is required.
+
+Supported Image Types:
+
+- **Bithomp Logos**  
+  Set by token issuers on Bithomp (with verified signatures).
+
+- **TOML Files**  
+  From issuers with a verified domain, including FirstLedger TOMLs.
+
+- **X (Twitter) Images**  
+  For projects registered on Bithomp that have an X handle set.
+
+- **Xaman Curated Assets**  
+  Official curated token images.
+
+- **Gravatar**  
+  If an account’s email hash is linked to a Gravatar image.
+
+- **Xaman Pro User Profiles**  
+  Profile images for Pro users’ issued tokens.
+
+- **Hashicons**  
+  Unique generated icons based on the address hash.
+
+## How to Use
+
+Simply embed the following image tag in your website or app:
+
+```
+<img src="https://cdn.bithomp.com/issued-token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000" alt="token logo" />
+```
+
+## Custom Domain Option
+For just €10/month, you can serve token images from your own domain (e.g., tokens.mydomain.com).
+Set up with a DNS record:
+
+```
+CNAME    tokens    cdn.bithomp.com
+```
+
+Then use the token image links like this:
+
+```<img src="https://tokens.mydomain.com/issued-token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C5553440000000000000000000000000000" alt="token logo" />```
+
+Contact our support team if you’d like to enable image hosting on your custom domain.
+
 
 # Free Address Profile Images
 
@@ -4239,13 +4305,104 @@ This endpoint retrieves a list of tokens (IOUs) on the Ledger.
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
-stattistics | false | (Only available on Standard plan and higher) If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.
+statistics | false | (Only available on Standard plan and higher) If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.
 order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`.
 issuer | null | If set, the response will only include tokens issued by the specified issuer address.
 currency | null | If set, the response will only include tokens with the specified currency code.
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
 limit | 100 | The maximum number of tokens to return in the response. (More than 100 is available for the Standard plan and higher).
 marker | null | (only available on paid api plans) The marker to use for pagination. If set, the response will include tokens starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.
+
+## Token
+
+```shell
+curl "https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getTokenInfo(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true", getTokenInfo);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true");
+print $data;
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+  "token": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De:524C555344000000000000000000000000000000",
+  "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+  "issuerDetails": {
+    "address": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+    "username": null,
+    "service": "Ripple"
+  },
+  "currency": "524C555344000000000000000000000000000000",
+  "supply": "65905296.29000036796640958939465754",
+  "icon": "https://cdn.bithomp.com/issued-token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000",
+  "name": null,
+  "description": null,
+  "kyc": false,
+  "stablecoin": false,
+  "fiat": null,
+  "lp_token": false,
+  "trustlines": 65222,
+  "holders": 34739,
+  "rating": 7845,
+  "statistics": {
+    "sellVolume": "4579811.737474424591756848",
+    "buyVolume": "2989058.23338657597050277369",
+    "uniqueSellers": 301,
+    "uniqueBuyers": 536,
+    "dexes": 49201,
+    "dexTxs": 39620,
+    "mintVolume": "0.0000001738428431483099408",
+    "burnVolume": "0.0000001607635086192399408",
+    "transferVolume": "2331899.0438317189968043296351948",
+    "ripplingVolume": null,
+    "mintTxs": 12259,
+    "burnTxs": 12295,
+    "transferTxs": 5305,
+    "ripplingTxs": 0,
+    "uniqueAccounts": 816,
+    "uniqueDexAccounts": 748,
+    "priceXrp": "0.3008469570097322523",
+    "priceXrp5m": "0.30149723527035257087",
+    "priceXrp1h": "0.29871344120871406851",
+    "priceXrp24h": "0.33347950851790034632",
+    "priceXrp7d": "0.33071620369230287599",
+    "priceXrpSpot": "0.30060532893893183832",
+    "marketcap": "19827407.839671407202975140733144129015233991451377342",
+    "ammPools": 174,
+    "activeAmmPools": 152,
+    "activeOffers": 9306,
+    "activeCounters": 163,
+    "activeHolders": 587,
+    "timeAt": 1754632979
+  }
+}
+```
+
+This endpoint retrieves information and statistics for a specific token (IOU) on the Ledger.
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/trustlines/token/<issuer>/<currency>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+issuer   | The issuer address of the Token.
+currency | The currency code of the Token
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+statistics | false | (Only available on paid API plans) If set to true, the response will include additional statistics for the token, such as sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, market cap, AMM pools, active AMM pools, active offers, active counters, active holders. Also it will include `timeAt` which is a timestamp when the statistics were last updated.
 
 ## Token Search
 
