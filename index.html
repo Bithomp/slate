@@ -5291,7 +5291,7 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>order</td>
 <td>rating</td>
-<td>The order of the tokens in the response. Can be <code>rating</code>, <code>trustlinesHigh</code>, <code>holdersHigh</code>, <code>sellVolumeHigh</code>, <code>buyVolumeHigh</code>, <code>totalVolumeHigh</code>, <code>uniqueTradersHigh</code>, <code>uniqueSellersHigh</code>, <code>uniqueBuyersHigh</code>, <code>marketCapHigh</code>, <code>priceNativeCurrencyHigh</code>, <code>priceNativeCurrencyLow</code>.</td>
+<td>The order of the tokens in the response. Can be <code>rating</code>, <code>trustlinesHigh</code>, <code>holdersHigh</code>.</td>
 </tr>
 <tr>
 <td>issuer</td>
@@ -5482,6 +5482,16 @@ This request with ledger index could be extremely slow and in some cases return 
 </tr>
 </thead><tbody>
 <tr>
+<td>type</td>
+<td>null</td>
+<td>If set, the response will only include objects of the specified type. Can be <code>check</code>, <code>did</code>, <code>escrow</code>, <code>mpt_issuance</code>, <code>mptoken</code>, <code>offer</code>, <code>payment_channel</code>, <code>signer_list</code>, <code>ticket</code>. If not set, all types will be returned.</td>
+</tr>
+<tr>
+<td>types</td>
+<td>null</td>
+<td>The type of objects to return. Can be <code>check,did,escrow,mpt_issuance,mptoken,offer,payment_channel,signer_list,ticket</code>.</td>
+</tr>
+<tr>
 <td>ledgerIndex</td>
 <td>null</td>
 <td>If set, the response will include objects from the specified ledger index. If not set, the latest ledger will be used.</td>
@@ -5502,6 +5512,10 @@ This request with ledger index could be extremely slow and in some cases return 
 <td>The maximum number of objects to return in the response.</td>
 </tr>
 </tbody></table>
+
+<aside class="warning">
+`types` is not compatable with `limit`, `marker` and `type` parameters, they have to be removed from a query.
+</aside>
 <h1 id='validator'>Validator</h1><h2 id='get-wallet'>Get wallet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getValidatorAddress</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -5879,7 +5893,7 @@ You can retrieve information for MANY currencies in one request:
 <tr>
 <td>order</td>
 <td>rating</td>
-<td>The order of the tokens in the response. Can be <code>rating</code>, <code>trustlinesHigh</code>, <code>holdersHigh</code>, <code>sellVolumeHigh</code>, <code>buyVolumeHigh</code>, <code>totalVolumeHigh</code>, <code>uniqueTradersHigh</code>, <code>uniqueSellersHigh</code>, <code>uniqueBuyersHigh</code>, <code>marketCapHigh</code>, <code>priceNativeCurrencyHigh</code>, <code>priceNativeCurrencyLow</code>. Available with statistics=true only:</td>
+<td>The order of the tokens in the response. Can be <code>rating</code>, <code>trustlinesHigh</code>, <code>holdersHigh</code>, <code>sellVolumeHigh</code>, <code>buyVolumeHigh</code>, <code>totalVolumeHigh</code>, <code>uniqueTradersHigh</code>, <code>uniqueSellersHigh</code>, <code>uniqueBuyersHigh</code>, <code>marketCapHigh</code>, <code>priceNativeCurrencyHigh</code>, <code>priceNativeCurrencyLow</code>.</td>
 </tr>
 <tr>
 <td>issuer</td>
