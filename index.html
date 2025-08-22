@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#22nd-of-august-2025" class="toc-h2 toc-link" data-title="22nd of August 2025">22nd of August 2025</a>
+                  </li>
+                  <li>
                     <a href="#8th-of-august-2025" class="toc-h2 toc-link" data-title="8th of August 2025">8th of August 2025</a>
                   </li>
                   <li>
@@ -360,15 +363,6 @@
                   </li>
                   <li>
                     <a href="#26th-of-august-2024" class="toc-h2 toc-link" data-title="26th of August 2024">26th of August 2024</a>
-                  </li>
-                  <li>
-                    <a href="#16th-of-august-2024" class="toc-h2 toc-link" data-title="16th of August 2024">16th of August 2024</a>
-                  </li>
-                  <li>
-                    <a href="#15th-of-august-2024" class="toc-h2 toc-link" data-title="15th of August 2024">15th of August 2024</a>
-                  </li>
-                  <li>
-                    <a href="#10th-of-august-2024" class="toc-h2 toc-link" data-title="10th of August 2024">10th of August 2024</a>
                   </li>
               </ul>
           </li>
@@ -537,6 +531,18 @@
                   <li>
                     <a href="#get-information-for-an-address" class="toc-h2 toc-link" data-title="Get information for an address">Get information for an address</a>
                   </li>
+                  <li>
+                    <a href="#address-token-balances" class="toc-h2 toc-link" data-title="Address Token Balances">Address Token Balances</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-list-of-tokens-that-address-can-accept" class="toc-h2 toc-link" data-title="Get the list of tokens that address can accept">Get the list of tokens that address can accept</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-list-of-obligations-issued-tokens" class="toc-h2 toc-link" data-title="Get the list of obligations (issued tokens)">Get the list of obligations (issued tokens)</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-list-of-objects-owned-by-an-address" class="toc-h2 toc-link" data-title="Get the list of objects owned by an address">Get the list of objects owned by an address</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -576,9 +582,6 @@
                   <li>
                     <a href="#currency-search" class="toc-h2 toc-link" data-title="Currency Search">Currency Search</a>
                   </li>
-                  <li>
-                    <a href="#address-token-balances" class="toc-h2 toc-link" data-title="Address Token Balances">Address Token Balances</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -612,6 +615,14 @@
                   </li>
                   <li>
                     <a href="#top-submitters-24h" class="toc-h2 toc-link" data-title="TOP submitters (24h)">TOP submitters (24h)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#ledger-entry" class="toc-h1 toc-link" data-title="Ledger entry">Ledger entry</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#ledger-entry-by-index" class="toc-h2 toc-link" data-title="Ledger entry by index">Ledger entry by index</a>
                   </li>
               </ul>
           </li>
@@ -796,7 +807,21 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='8th-of-august-2025'>8th of August 2025</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='22nd-of-august-2025'>22nd of August 2025</h3>
+<p>4 new endpoints were added:</p>
+
+<p><a href="#get-the-list-of-obligations-issued-tokens"><strong>Get the list of obligations (issued tokens)</strong></a></p>
+
+<p><a href="#get-the-list-of-tokens-that-address-can-accept"><strong>Get the list of tokens that address can accept</strong></a></p>
+
+<p><a href="#get-the-list-of-objects-owned-by-an-address"><strong>Get the list of objects owned by an address</strong></a></p>
+
+<p><a href="#ledger-entry-by-index"><strong>Ledger entry by index</strong></a></p>
+
+<p>New order options were added to the <a href="#list-of-tokens"><strong>List of tokens</strong></a> endpoint:</p>
+
+<p>Now you can order by rating, trustlines count, holders count, sell volume, buy volume, total volume, unique traders count, unique sellers count, unique buyers count, market cap, price in native currency (XRP or XAH).</p>
+<h3 id='8th-of-august-2025'>8th of August 2025</h3>
 <p>A new endpoint was added:</p>
 
 <p><a href="#token"><strong>Token</strong></a></p>
@@ -897,18 +922,6 @@ Now you can get a list of AMMs by their IDs. (Available for the Standard plan an
 <h3 id='26th-of-august-2024'>26th of August 2024</h3>
 <p>The new list option: <code>collections</code> was added to the <a href="#nft-volumes-extended"><strong>NFT Volumes Extended</strong></a> API end-point.
 Now you can get a list of NFT collections with their extended data like <code>floorPrice</code>, <code>statistics</code> and <code>assets</code> (collection preview images).</p>
-<h3 id='16th-of-august-2024'>16th of August 2024</h3>
-<p>The new query parameter: <code>ids</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
-Now you can get a list of NFTs by their IDs. (Available for the Standard plan and higher).</p>
-<h3 id='15th-of-august-2024'>15th of August 2024</h3>
-<p>The new query parameter: <code>limit</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
-Now you can limit the number of NFTs returned and even return more than 100 NFTs in one request if you have a Standard plan or higher.</p>
-
-<p>The new query parameter: <code>assets</code> was added to the <a href="#nft-offer"><strong>NFT Offer</strong></a>, <a href="#nft-offers"><strong>NFT Offers</strong></a> and <a href="#nfts"><strong>NFTs</strong></a> API end-points.
-Now you can get the direct URLs to cached and resized images and videos inside NFT offers and NFT lists.</p>
-<h3 id='10th-of-august-2024'>10th of August 2024</h3>
-<p>Five new query parameters: <code>sellOffers</code>, <code>buyOffers</code>, <code>history</code>, <code>offersValidate</code>,  and <code>offersHistory</code> were added to the <a href="#nfts"><strong>NFTs</strong></a> API end-point.
-You can get an extensive data for the list of NFTs in one request. (Available for the Premium plan and higher).</p>
 <h1 id='free-token-images'>Free Token Images</h1>
 <p>You can easily display token images for XRPL and Xahau tokens using the Bithomp token image service. No registration is required.</p>
 
@@ -5144,6 +5157,351 @@ Before downloading the whole list again you can check if it was updated here: <a
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
 </aside>
+<h2 id='address-token-balances'>Address Token Balances</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"counterparty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7999.889334554484"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ripplingDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"peer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ripplingDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"counterparty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEvernodee8dJLaFsujS6q1EiXvZYmHXr8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000003153"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVR"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ripplingDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"peer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ripplingDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"lock"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1974"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns trustlines (IOU/token balances), for XAHAU it is also returns the locked amounts for IOUs (in escrows) (Only available on paid API plans).</p>
+<h3 id='http-request-31'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/trustlines/&lt;address&gt;</code></p>
+<h3 id='url-parameters-11'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>The address you want to get token balances for</td>
+</tr>
+</tbody></table>
+<h2 id='get-the-list-of-tokens-that-address-can-accept'>Get the list of tokens that address can accept</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/acceptedTokens"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getAcceptedTokens</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/acceptedTokens</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getAcceptedTokens</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$acceptedTokens</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/acceptedTokens"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$acceptedTokens</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rating"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tokens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRP"</span><span class="p">,</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B:BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"supply"</span><span class="p">:</span><span class="w"> </span><span class="s2">"338.4736292458294406355702888632461422"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/issued-token/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/BTC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lp_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trustlines"</span><span class="p">:</span><span class="w"> </span><span class="mi">17608</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">4361</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">4655</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"authorized"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>This endpoint retrieves a list of tokens that the address can accept (has trustlines for with limit over 0 and the user is authorised to hold, all the issued tokens by the address, native currency if no flag &quot;disallowXRP&quot;).</p>
+<h3 id='http-request-32'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/address/&lt;address&gt;/acceptedTokens</code></p>
+<h3 id='url-parameters-12'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>The address, can be old r-address or a new X-address</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-24'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order</td>
+<td>rating</td>
+<td>The order of the tokens in the response. Can be <code>rating</code>, <code>trustlinesHigh</code>, <code>holdersHigh</code>, <code>sellVolumeHigh</code>, <code>buyVolumeHigh</code>, <code>totalVolumeHigh</code>, <code>uniqueTradersHigh</code>, <code>uniqueSellersHigh</code>, <code>uniqueBuyersHigh</code>, <code>marketCapHigh</code>, <code>priceNativeCurrencyHigh</code>, <code>priceNativeCurrencyLow</code>.</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td>null</td>
+<td>If set, the response will only include tokens issued by the specified issuer address.</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>null</td>
+<td>If set, the response will only include tokens with the specified currency code.</td>
+</tr>
+<tr>
+<td>currencyDetails</td>
+<td>false</td>
+<td>If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The maximum number of tokens to return in the response. (More than 100 is available for the Standard plan and higher).</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>null</td>
+<td>(only available on paid api plans) The marker to use for pagination. If set, the response will include tokens starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.</td>
+</tr>
+</tbody></table>
+<h2 id='get-the-list-of-obligations-issued-tokens'>Get the list of obligations (issued tokens)</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/obligations/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?currencyDetails=true"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getObligations</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/obligations/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?currencyDetails=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getObligations</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$obligations</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/obligations/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?currencyDetails=true"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$obligations</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w">
+  </span><span class="err">obligations:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="err">token:</span><span class="w"> </span><span class="s2">"rBithomp3UNknnjo8HKNfyS5MN4kdPTZpW:BTH"</span><span class="p">,</span><span class="w">
+      </span><span class="err">issuer:</span><span class="w"> </span><span class="s2">"rBithomp3UNknnjo8HKNfyS5MN4kdPTZpW"</span><span class="p">,</span><span class="w">
+      </span><span class="err">issuerDetails:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="err">address:</span><span class="w"> </span><span class="s2">"rBithomp3UNknnjo8HKNfyS5MN4kdPTZpW"</span><span class="p">,</span><span class="w">
+        </span><span class="err">username:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="err">service:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="err">currency:</span><span class="w"> </span><span class="s2">"BTH"</span><span class="p">,</span><span class="w">
+      </span><span class="err">supply:</span><span class="w"> </span><span class="s2">"9999.99899999"</span><span class="p">,</span><span class="w">
+      </span><span class="err">currencyDetails:</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="p">},</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a list of obligations (issued tokens) by an address (Only available on paid API plans).</p>
+<h3 id='http-request-33'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/obligations/&lt;address&gt;</code></p>
+<h3 id='url-parameters-13'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>The address, can be old r-address or a new X-address</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-25'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ledgerIndex</td>
+<td>null</td>
+<td>If set, the response will include obligations from the specified ledger index. If not set, the latest ledger will be used.</td>
+</tr>
+<tr>
+<td>ledgerTimestamp</td>
+<td>null</td>
+<td>If set, the response will include obligations from the specified ledger timestamp (ISO or unix timestamp). If not set, the latest ledger will be used.</td>
+</tr>
+<tr>
+<td>currencyDetails</td>
+<td>false</td>
+<td>If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency. NOTE: This will change the response structure!</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+This request with ledger index could be extremely slow and in some cases return the timeout error { error: "timeout" }, repeat request, it eventually will respond with the cached data from a node.
+</aside>
+<h2 id='get-the-list-of-objects-owned-by-an-address'>Get the list of objects owned by an address</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/objects/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getOwnedObjects</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/objects/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getOwnedObjects</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$ownedObjects</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/objects/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$ownedObjects</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"objects"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">131072</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKUK9omZqVEnraCipKNFb5q4tuNTeqEDZS"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKUK9omZqVEnraCipKNFb5q4tuNTeqEDZS"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RippleState"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BTC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="p">,</span><span class="w">
+          </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bitstamp"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"87591A63051645F37B85D1FBA55EE69B1C96BFF16904F5C99F03FB93D42D0375"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">746872</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"000103996A3BAD918657F86E12A67D693E8FC8A814DA4B958A244B5F14D93E58"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"lowReserve"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"highReserve"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lowAuth"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"highAuth"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lowNoRipple"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"highNoRipple"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lowFreeze"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"highFreeze"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ammNode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"lowDeepFreeze"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"highDeepFreeze"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"previousTxAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1368696800</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a list of objects owned by an address, such as trustlines, escrows, offers, etc. (Only available on paid API plans).</p>
+<h3 id='http-request-34'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/objects/&lt;address&gt;</code></p>
+<h3 id='url-parameters-14'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>address</td>
+<td>The address, can be old r-address or a new X-address</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-26'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ledgerIndex</td>
+<td>null</td>
+<td>If set, the response will include objects from the specified ledger index. If not set, the latest ledger will be used.</td>
+</tr>
+<tr>
+<td>ledgerTimestamp</td>
+<td>null</td>
+<td>If set, the response will include objects from the specified ledger timestamp (ISO or unix timestamp). If not set, the latest ledger will be used.</td>
+</tr>
+<tr>
+<td>currencyDetails</td>
+<td>false</td>
+<td>If set to true, the response will include additional details for each currency, useful to get address details (usernames, service names) for each issuer of the currency. NOTE: This will change the response structure!</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The maximum number of objects to return in the response.</td>
+</tr>
+</tbody></table>
 <h1 id='validator'>Validator</h1><h2 id='get-wallet'>Get wallet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getValidatorAddress</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -5163,9 +5521,9 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves an address of a specific validator
 <a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
-<h3 id='http-request-31'>HTTP Request</h3>
+<h3 id='http-request-35'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
-<h3 id='url-parameters-11'>URL Parameters</h3>
+<h3 id='url-parameters-15'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5240,9 +5598,9 @@ Exclude unnecessary parameters to make your request faster.
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-32'>HTTP Request</h3>
+<h3 id='http-request-36'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currency/&lt;currency&gt;</code></p>
-<h3 id='url-parameters-12'>URL Parameters</h3>
+<h3 id='url-parameters-16'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5347,9 +5705,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-33'>HTTP Request</h3>
+<h3 id='http-request-37'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currencies</code></p>
-<h3 id='query-parameters-24'>Query Parameters</h3>
+<h3 id='query-parameters-27'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5503,9 +5861,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of tokens (IOUs) on the Ledger.</p>
-<h3 id='http-request-34'>HTTP Request</h3>
+<h3 id='http-request-38'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/tokens</code></p>
-<h3 id='query-parameters-25'>Query Parameters</h3>
+<h3 id='query-parameters-28'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5521,7 +5879,7 @@ You can retrieve information for MANY currencies in one request:
 <tr>
 <td>order</td>
 <td>rating</td>
-<td>The order of the tokens in the response. Can be <code>rating</code>, <code>trustlinesHigh</code>, <code>holdersHigh</code>.</td>
+<td>The order of the tokens in the response. Can be <code>rating</code>, <code>trustlinesHigh</code>, <code>holdersHigh</code>, <code>sellVolumeHigh</code>, <code>buyVolumeHigh</code>, <code>totalVolumeHigh</code>, <code>uniqueTradersHigh</code>, <code>uniqueSellersHigh</code>, <code>uniqueBuyersHigh</code>, <code>marketCapHigh</code>, <code>priceNativeCurrencyHigh</code>, <code>priceNativeCurrencyLow</code>. Available with statistics=true only:</td>
 </tr>
 <tr>
 <td>issuer</td>
@@ -5615,9 +5973,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information and statistics for a specific token (IOU) on the Ledger.</p>
-<h3 id='http-request-35'>HTTP Request</h3>
+<h3 id='http-request-39'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/token/&lt;issuer&gt;/&lt;currency&gt;</code></p>
-<h3 id='url-parameters-13'>URL Parameters</h3>
+<h3 id='url-parameters-17'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5633,7 +5991,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The currency code of the Token</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-26'>Query Parameters</h3>
+<h3 id='query-parameters-29'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5705,9 +6063,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for tokens (IOUs) on the Ledger by a given item or a part of it (issuer, currency, username, etc.).</p>
-<h3 id='http-request-36'>HTTP Request</h3>
+<h3 id='http-request-40'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/tokens/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-14'>URL Parameters</h3>
+<h3 id='url-parameters-18'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5719,7 +6077,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The item to search for. It can be part of an issuer address, currency code, or a username, or a full issuer address, currency, currency code, or a username, service name.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-27'>Query Parameters</h3>
+<h3 id='query-parameters-30'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5765,9 +6123,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for token issuers on the Ledger by a given item or a part of it (issuer address, username, service name, domain etc.).</p>
-<h3 id='http-request-37'>HTTP Request</h3>
+<h3 id='http-request-41'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/issuers/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-15'>URL Parameters</h3>
+<h3 id='url-parameters-19'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5800,9 +6158,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for currencies (HEX or 3-characters) on the Ledger by a given name or a part of it (currency code, currency name.).</p>
-<h3 id='http-request-38'>HTTP Request</h3>
+<h3 id='http-request-42'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/currencies/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-16'>URL Parameters</h3>
+<h3 id='url-parameters-20'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5814,7 +6172,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The item to search for. It can be part of a currency code, currency name, or a full currency code, currency name.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-28'>Query Parameters</h3>
+<h3 id='query-parameters-31'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5826,65 +6184,6 @@ You can retrieve information for MANY currencies in one request:
 <td>currencyDetails</td>
 <td>false</td>
 <td>If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!</td>
-</tr>
-</tbody></table>
-<h2 id='address-token-balances'>Address Token Balances</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"</span>
-  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
-<span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"</span><span class="p">);</span>
-<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"counterparty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7999.889334554484"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ripplingDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"peer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ripplingDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-
-</span><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"counterparty"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rEvernodee8dJLaFsujS6q1EiXvZYmHXr8"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000003153"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"EVR"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000000"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"ripplingDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"peer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ripplingDisabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"lock"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1974"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint returns trustlines (IOU/token balances), for XAHAU it is also returns the locked amounts for IOUs (in escrows) (Only available on paid API plans).</p>
-<h3 id='http-request-39'>HTTP Request</h3>
-<p><code>GET https://bithomp.com/api/v2/trustlines/&lt;address&gt;</code></p>
-<h3 id='url-parameters-17'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>address</td>
-<td>The address you want to get token balances for</td>
 </tr>
 </tbody></table>
 <h1 id='transaction'>Transaction</h1><h2 id='tx-details'>Tx Details</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F"</span>
@@ -6060,9 +6359,9 @@ Page on bithomp that displays it:
 <a href="https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
   https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
 </a>.</p>
-<h3 id='http-request-40'>HTTP Request</h3>
+<h3 id='http-request-43'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/&lt;hash&gt;</code></p>
-<h3 id='url-parameters-18'>URL Parameters</h3>
+<h3 id='url-parameters-21'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6115,9 +6414,9 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://bithomp.com/submit/">
   https://bithomp.com/submit/
 </a>.</p>
-<h3 id='http-request-41'>HTTP Request</h3>
+<h3 id='http-request-44'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
-<h3 id='url-parameters-19'>URL Parameters</h3>
+<h3 id='url-parameters-22'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6180,7 +6479,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/?hwlogin">
   https://bithomp.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-42'>HTTP Request</h3>
+<h3 id='http-request-45'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -6268,9 +6567,9 @@ Page on bithomp that displays it:
 <a href="https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv">
   https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv
 </a>.</p>
-<h3 id='http-request-43'>HTTP Request</h3>
+<h3 id='http-request-46'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transactions/&lt;address&gt;</code></p>
-<h3 id='url-parameters-20'>URL Parameters</h3>
+<h3 id='url-parameters-23'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6282,7 +6581,7 @@ Page on bithomp that displays it:
 <td>The address to get transactions for</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-29'>Query Parameters</h3>
+<h3 id='query-parameters-32'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6462,9 +6761,9 @@ Page on bithomp that displays it:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales">https://bithomp.com/en/whales</a>.</p>
-<h3 id='http-request-44'>HTTP Request</h3>
+<h3 id='http-request-47'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale</code></p>
-<h3 id='query-parameters-30'>Query Parameters</h3>
+<h3 id='query-parameters-33'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6524,9 +6823,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/receivers">https://bithomp.com/en/whales/receivers</a>.</p>
-<h3 id='http-request-45'>HTTP Request</h3>
+<h3 id='http-request-48'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/receivers</code></p>
-<h3 id='query-parameters-31'>Query Parameters</h3>
+<h3 id='query-parameters-34'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6586,9 +6885,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/senders">https://bithomp.com/en/whales/senders</a>.</p>
-<h3 id='http-request-46'>HTTP Request</h3>
+<h3 id='http-request-49'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/senders</code></p>
-<h3 id='query-parameters-32'>Query Parameters</h3>
+<h3 id='query-parameters-35'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6649,9 +6948,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/submitters">https://bithomp.com/en/whales/submitters</a>.</p>
-<h3 id='http-request-47'>HTTP Request</h3>
+<h3 id='http-request-50'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/submitters</code></p>
-<h3 id='query-parameters-33'>Query Parameters</h3>
+<h3 id='query-parameters-36'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6673,6 +6972,121 @@ Page where it used on bithomp:
 <td>limit</td>
 <td>100</td>
 <td>The number of transactions to return. (More than 100 is available for the Standard plan and higher).</td>
+</tr>
+</tbody></table>
+<h1 id='ledger-entry'>Ledger entry</h1><h2 id='ledger-entry-by-index'>Ledger entry by index</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/ledgerEntry/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/ledgerEntry/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8</span><span class="dl">"</span><span class="p">,</span> <span class="nx">printData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/ledgerEntry/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9F2EC75BC0E40D214447BC96FBE43B29A741ACA9B79B99120D8D1088678C274B"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ledger_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">98327878</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"node"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Balance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LCA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rrrrrrrrrrrrrrrrrrrrBZbvji"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"Flags"</span><span class="p">:</span><span class="w"> </span><span class="mi">3866624</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"HighLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LCA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rQGiUHkytmWPj7VFvy1NLGYm6nSvCHENCA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rQGiUHkytmWPj7VFvy1NLGYm6nSvCHENCA"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"HighNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"LedgerEntryType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RippleState"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"LowLimit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LCA"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rw1nGFn6rnH242H83bBUo5NwHtbQ8juSNC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rw1nGFn6rnH242H83bBUo5NwHtbQ8juSNC"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"LowNode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PreviousTxnID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5B37F9EE650016C27EF3DEC96159D1F4C4DB6E9AFFB6A0228A669B9AB4C0A30A"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"PreviousTxnLgrSeq"</span><span class="p">:</span><span class="w"> </span><span class="mi">7283774</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"index"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"lowReserve"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highReserve"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lowAuth"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highAuth"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lowNoRipple"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highNoRipple"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lowFreeze"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highFreeze"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ammNode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lowDeepFreeze"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"highDeepFreeze"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"previousTxAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1403186230</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"validated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"_nodepref"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nonfh"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns a specific ledger entry by its index.
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/en/object/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8" style="word-break:break-word;">https://bithomp.com/en/object/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8</a>.</p>
+<h3 id='http-request-51'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/ledgerEntry/&lt;index&gt;</code></p>
+<h3 id='url-parameters-24'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>index</td>
+<td>The index of the ledger entry to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-37'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ledgerIndex</td>
+<td>null</td>
+<td>The ledger index to retrieve the entry from. If not specified, the latest validated ledger will be used.</td>
+</tr>
+<tr>
+<td>date</td>
+<td>null</td>
+<td>The date to retrieve the entry from. If not specified, the latest validated ledger will be used.</td>
+</tr>
+<tr>
+<td>previousTxHash</td>
+<td>null</td>
+<td>The hash of the previous transaction to retrieve the entry from. If not specified, the latest validated ledger will be used.</td>
+</tr>
+<tr>
+<td>currencyDetails</td>
+<td>false</td>
+<td>If true, the currency details will be included in the response. This is useful for IOU tokens and MPTs.</td>
 </tr>
 </tbody></table>
 <h1 id='historical-data'>Historical data</h1><h2 id='account-activations'>Account Activations</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/account-chart?span=month&amp;period=year"</span>
@@ -6710,7 +7124,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.</p>
-<h3 id='http-request-48'>HTTP Request</h3>
+<h3 id='http-request-52'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/account-chart</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
@@ -6774,7 +7188,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-49'>HTTP Request</h3>
+<h3 id='http-request-53'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-7'>Response Format</h3>
 <table><thead>
@@ -6892,7 +7306,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-50'>HTTP Request</h3>
+<h3 id='http-request-54'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-8'>Response Format</h3>
 <table><thead>
