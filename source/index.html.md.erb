@@ -95,6 +95,10 @@ Direct access to fast [resized and cached] images and videos:
 
 <a href="#ledger-entry-by-index">**Ledger entry by index**</a>
 
+New order options were added to the <a href="#list-of-tokens">**List of tokens**</a> endpoint:
+
+Now you can order by rating, trustlines count, holders count, sell volume, buy volume, total volume, unique traders count, unique sellers count, unique buyers count, market cap, price in native currency (XRP or XAH).
+
 ### 8th of August 2025
 
 A new endpoint was added:
@@ -4032,7 +4036,7 @@ address | The address, can be old r-address or a new X-address
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
-order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`.
+order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`, `sellVolumeHigh`, `buyVolumeHigh`, `totalVolumeHigh`, `uniqueTradersHigh`, `uniqueSellersHigh`, `uniqueBuyersHigh`, `marketCapHigh`, `priceNativeCurrencyHigh`, `priceNativeCurrencyLow`.
 issuer | null | If set, the response will only include tokens issued by the specified issuer address.
 currency | null | If set, the response will only include tokens with the specified currency code.
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
@@ -4604,7 +4608,7 @@ This endpoint retrieves a list of tokens (IOUs) on the Ledger.
 Parameter | Default | Description
 --------- | ------- | -----------
 statistics | false | (Only available on Standard plan and higher) If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.
-order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`.
+order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`, `sellVolumeHigh`, `buyVolumeHigh`, `totalVolumeHigh`, `uniqueTradersHigh`, `uniqueSellersHigh`, `uniqueBuyersHigh`, `marketCapHigh`, `priceNativeCurrencyHigh`, `priceNativeCurrencyLow`. Available with statistics=true only:  
 issuer | null | If set, the response will only include tokens issued by the specified issuer address.
 currency | null | If set, the response will only include tokens with the specified currency code.
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
