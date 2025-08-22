@@ -83,6 +83,12 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 22nd of August 2025
+
+A new endpoint was added:
+
+<a href="#get-the-list-of-tokens-that-address-can-accept">**Get the list of tokens that address can accept**</a>
+
 ### 8th of August 2025
 
 A new endpoint was added:
@@ -209,24 +215,6 @@ Search for a specific collection by name, description, issuer or get an ordered 
 
 The new list option: `collections` was added to the <a href="#nft-volumes-extended">**NFT Volumes Extended**</a> API end-point.
 Now you can get a list of NFT collections with their extended data like `floorPrice`, `statistics` and `assets` (collection preview images).
-
-### 16th of August 2024
-
-The new query parameter: `ids` was added to the <a href="#nfts">**NFTs**</a> API end-point.
-Now you can get a list of NFTs by their IDs. (Available for the Standard plan and higher).
-
-### 15th of August 2024
-
-The new query parameter: `limit` was added to the <a href="#nfts">**NFTs**</a> API end-point.
-Now you can limit the number of NFTs returned and even return more than 100 NFTs in one request if you have a Standard plan or higher.
-
-The new query parameter: `assets` was added to the <a href="#nft-offer">**NFT Offer**</a>, <a href="#nft-offers">**NFT Offers**</a> and <a href="#nfts">**NFTs**</a> API end-points.
-Now you can get the direct URLs to cached and resized images and videos inside NFT offers and NFT lists.
-
-### 10th of August 2024
-
-Five new query parameters: `sellOffers`, `buyOffers`, `history`, `offersValidate`,  and `offersHistory` were added to the <a href="#nfts">**NFTs**</a> API end-point.
-You can get an extensive data for the list of NFTs in one request. (Available for the Premium plan and higher).
 
 # Free Token Images
 
@@ -3897,6 +3885,86 @@ obligations | false | Available only on paid API plans. if set to true, the resu
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
 </aside>
+
+## Get the list of tokens that address can accept
+
+```shell
+curl "https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/acceptedTokens"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getAcceptedTokens(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/acceptedTokens", getAcceptedTokens);
+```
+
+```php
+$acceptedTokens = curl_bithomp("https://bithomp.com/api/v2/address/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/acceptedTokens");
+print $acceptedTokens;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "address": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+  "addressDetails": {
+    "address": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+    "username": "Bitstamp",
+    "service": "Bitstamp"
+  },
+  "order": "rating",
+  "limit": 100,
+  "tokens": [
+    {
+        "token": "XRP",
+        "currency": "XRP",
+    },
+    {
+      "token": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B:BTC",
+      "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "issuerDetails": {
+        "address": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        "username": "Bitstamp",
+        "service": "Bitstamp"
+      },
+      "currency": "BTC",
+      "supply": "338.4736292458294406355702888632461422",
+      "icon": "https://cdn.bithomp.com/issued-token/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B/BTC",
+      "name": null,
+      "description": null,
+      "lp_token": false,
+      "trustlines": 17608,
+      "holders": 4361,
+      "rating": 4655,
+      "authorized": true
+    }
+  ]
+}
+  
+```
+
+This endpoint retrieves a list of tokens that the address can accept (has trustlines for with limit over 0 and the user is authorised to hold, all the issued tokens by the address, native currency if no flag "disallowXRP").
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/address/<address>/acceptedTokens`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+address | The address, can be old r-address or a new X-address
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`.
+issuer | null | If set, the response will only include tokens issued by the specified issuer address.
+currency | null | If set, the response will only include tokens with the specified currency code.
+currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
+limit | 100 | The maximum number of tokens to return in the response. (More than 100 is available for the Standard plan and higher).
+marker | null | (only available on paid api plans) The marker to use for pagination. If set, the response will include tokens starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.
 
 # Validator
 
