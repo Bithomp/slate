@@ -85,11 +85,13 @@ Direct access to fast [resized and cached] images and videos:
 
 ### 22nd of August 2025
 
-2 new endpoints were added:
+3 new endpoints were added:
 
 <a href="#get-the-list-of-tokens-that-address-can-accept">**Get the list of tokens that address can accept**</a>
 
 <a href="#get-the-list-of-objects-owned-by-an-address">**Get the list of objects owned by an address**</a>
+
+<a href="#ledger-entry-by-index">**Ledger entry by index**</a>
 
 ### 8th of August 2025
 
@@ -5559,6 +5561,107 @@ Parameter | Default | Description
 currency | null | - to filter by currency, for example: `XRP`, `XAH`, IOU Tokens in the format `rIsssuer:HEXCURRENCY`, MPT `MPT-001A8DB597CD0B5C6BBC00EB450F9637C96632FA8E5971C5`
 transactionType | null | - to filter specific transaction types, for example `Payment`
 limit | 100 | The number of transactions to return. (More than 100 is available for the Standard plan and higher).
+
+# Ledger entry
+
+## Ledger entry by index
+
+```shell
+curl "https://bithomp.com/api/v2/ledgerEntry/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/ledgerEntry/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/ledgerEntry/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8");
+print $data;
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+  "index": "0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8",
+  "ledger_hash": "9F2EC75BC0E40D214447BC96FBE43B29A741ACA9B79B99120D8D1088678C274B",
+  "ledger_index": 98327878,
+  "node": {
+    "Balance": {
+      "currency": "LCA",
+      "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+      "value": "0"
+    },
+    "Flags": 3866624,
+    "HighLimit": {
+      "currency": "LCA",
+      "issuer": "rQGiUHkytmWPj7VFvy1NLGYm6nSvCHENCA",
+      "value": "0.01",
+      "issuerDetails": {
+        "address": "rQGiUHkytmWPj7VFvy1NLGYm6nSvCHENCA",
+        "username": null,
+        "service": null
+      }
+    },
+    "HighNode": "0",
+    "LedgerEntryType": "RippleState",
+    "LowLimit": {
+      "currency": "LCA",
+      "issuer": "rw1nGFn6rnH242H83bBUo5NwHtbQ8juSNC",
+      "value": "100000000",
+      "issuerDetails": {
+        "address": "rw1nGFn6rnH242H83bBUo5NwHtbQ8juSNC",
+        "username": null,
+        "service": null
+      }
+    },
+    "LowNode": "0",
+    "PreviousTxnID": "5B37F9EE650016C27EF3DEC96159D1F4C4DB6E9AFFB6A0228A669B9AB4C0A30A",
+    "PreviousTxnLgrSeq": 7283774,
+    "index": "0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8",
+    "flags": {
+      "lowReserve": true,
+      "highReserve": true,
+      "lowAuth": false,
+      "highAuth": true,
+      "lowNoRipple": true,
+      "highNoRipple": true,
+      "lowFreeze": false,
+      "highFreeze": false,
+      "ammNode": false,
+      "lowDeepFreeze": false,
+      "highDeepFreeze": false
+    },
+    "previousTxAt": 1403186230
+  },
+  "validated": true,
+  "_nodepref": "nonfh"
+}
+```
+
+This endpoint returns a specific ledger entry by its index.
+<br>
+Page where it used on bithomp:
+<a href="https://bithomp.com/en/object/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8" style="word-break:break-word;">https://bithomp.com/en/object/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8</a>.
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/ledgerEntry/<index>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+index | The index of the ledger entry to retrieve
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+ledgerIndex | null | The ledger index to retrieve the entry from. If not specified, the latest validated ledger will be used.
+date | null | The date to retrieve the entry from. If not specified, the latest validated ledger will be used.
+previousTxHash | null | The hash of the previous transaction to retrieve the entry from. If not specified, the latest validated ledger will be used.
+currencyDetails | false | If true, the currency details will be included in the response. This is useful for IOU tokens and MPTs.
 
 # Historical data
 
