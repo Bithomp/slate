@@ -4036,7 +4036,7 @@ address | The address, can be old r-address or a new X-address
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
-order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`, `sellVolumeHigh`, `buyVolumeHigh`, `totalVolumeHigh`, `uniqueTradersHigh`, `uniqueSellersHigh`, `uniqueBuyersHigh`, `marketCapHigh`, `priceNativeCurrencyHigh`, `priceNativeCurrencyLow`.
+order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`.
 issuer | null | If set, the response will only include tokens issued by the specified issuer address.
 currency | null | If set, the response will only include tokens with the specified currency code.
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
@@ -4195,10 +4195,16 @@ address | The address, can be old r-address or a new X-address
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
+type | null | If set, the response will only include objects of the specified type. Can be `check`, `did`, `escrow`, `mpt_issuance`, `mptoken`, `offer`, `payment_channel`, `signer_list`, `ticket`. If not set, all types will be returned.
+types | null | The type of objects to return. Can be `check,did,escrow,mpt_issuance,mptoken,offer,payment_channel,signer_list,ticket`.
 ledgerIndex | null | If set, the response will include objects from the specified ledger index. If not set, the latest ledger will be used.
 ledgerTimestamp | null | If set, the response will include objects from the specified ledger timestamp (ISO or unix timestamp). If not set, the latest ledger will be used.
 currencyDetails | false | If set to true, the response will include additional details for each currency, useful to get address details (usernames, service names) for each issuer of the currency. NOTE: This will change the response structure!
 limit | 100 | The maximum number of objects to return in the response.
+
+<aside class="warning">
+`types` is not compatable with `limit`, `marker` and `type` parameters, they have to be removed from a query.
+</aside>
 
 # Validator
 
@@ -4608,7 +4614,7 @@ This endpoint retrieves a list of tokens (IOUs) on the Ledger.
 Parameter | Default | Description
 --------- | ------- | -----------
 statistics | false | (Only available on Standard plan and higher) If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.
-order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`, `sellVolumeHigh`, `buyVolumeHigh`, `totalVolumeHigh`, `uniqueTradersHigh`, `uniqueSellersHigh`, `uniqueBuyersHigh`, `marketCapHigh`, `priceNativeCurrencyHigh`, `priceNativeCurrencyLow`. Available with statistics=true only:  
+order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`, `sellVolumeHigh`, `buyVolumeHigh`, `totalVolumeHigh`, `uniqueTradersHigh`, `uniqueSellersHigh`, `uniqueBuyersHigh`, `marketCapHigh`, `priceNativeCurrencyHigh`, `priceNativeCurrencyLow`.
 issuer | null | If set, the response will only include tokens issued by the specified issuer address.
 currency | null | If set, the response will only include tokens with the specified currency code.
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
