@@ -85,7 +85,9 @@ Direct access to fast [resized and cached] images and videos:
 
 ### 22nd of August 2025
 
-3 new endpoints were added:
+4 new endpoints were added:
+
+<a href="#get-the-list-of-obligations-issued-tokens">**Get the list of obligations (issued tokens)**</a>
 
 <a href="#get-the-list-of-tokens-that-address-can-accept">**Get the list of tokens that address can accept**</a>
 
@@ -4036,6 +4038,68 @@ currency | null | If set, the response will only include tokens with the specifi
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
 limit | 100 | The maximum number of tokens to return in the response. (More than 100 is available for the Standard plan and higher).
 marker | null | (only available on paid api plans) The marker to use for pagination. If set, the response will include tokens starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.
+
+## Get the list of obligations (issued tokens)
+
+```shell
+curl "https://bithomp.com/api/v2/obligations/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?currencyDetails=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getObligations(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/obligations/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?currencyDetails=true", getObligations);
+```
+
+```php
+$obligations = curl_bithomp("https://bithomp.com/api/v2/obligations/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B?currencyDetails=true");
+print $obligations;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "address": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+  obligations: [
+    {
+      token: "rBithomp3UNknnjo8HKNfyS5MN4kdPTZpW:BTH",
+      issuer: "rBithomp3UNknnjo8HKNfyS5MN4kdPTZpW",
+      issuerDetails: {
+        address: "rBithomp3UNknnjo8HKNfyS5MN4kdPTZpW",
+        username: null,
+        service: null
+      },
+      currency: "BTH",
+      supply: "9999.99899999",
+      currencyDetails: {...},
+    }
+  ]
+}
+```
+
+This endpoint retrieves a list of obligations (issued tokens) by an address (Only available on paid API plans).
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/obligations/<address>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+address | The address, can be old r-address or a new X-address
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+ledgerIndex | null | If set, the response will include obligations from the specified ledger index. If not set, the latest ledger will be used.
+ledgerTimestamp | null | If set, the response will include obligations from the specified ledger timestamp (ISO or unix timestamp). If not set, the latest ledger will be used.
+currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency. NOTE: This will change the response structure!
+
+<aside class="notice">
+This request with ledger index could be extremely slow and in some cases return the timeout error, repeat request, it eventually will respond with the cached data from a node.
+</aside>
 
 ## Get the list of objects owned by an address
 
