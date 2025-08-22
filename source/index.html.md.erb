@@ -4098,7 +4098,7 @@ ledgerTimestamp | null | If set, the response will include obligations from the 
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency. NOTE: This will change the response structure!
 
 <aside class="notice">
-This request with ledger index could be extremely slow and in some cases return the timeout error, repeat request, it eventually will respond with the cached data from a node.
+This request with ledger index could be extremely slow and in some cases return the timeout error { error: "timeout" }, repeat request, it eventually will respond with the cached data from a node.
 </aside>
 
 ## Get the list of objects owned by an address
