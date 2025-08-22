@@ -3886,6 +3886,73 @@ obligations | false | Available only on paid API plans. if set to true, the resu
 Exclude unnecessary parameters to make your request faster.
 </aside>
 
+## Address Token Balances
+
+```shell
+curl "https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function printData(json) {
+  console.log(JSON.stringify(json, undefined, 2));
+}
+bithompRequest("https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J", printData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "counterparty": "r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd",
+    "balance": "7999.889334554484",
+    "currency": "GBP",
+    "limit": "1000000",
+    "ripplingDisabled": true,
+    "peer": {
+      "limit": "0",
+      "ripplingDisabled": true
+    }
+  }
+]
+
+[
+  {
+    "counterparty": "rEvernodee8dJLaFsujS6q1EiXvZYmHXr8",
+    "balance": "0.000000003153",
+    "currency": "EVR",
+    "limit": "1000000000",
+    "ripplingDisabled": true,
+    "peer": {
+      "limit": "0",
+      "ripplingDisabled": false
+    },
+    "lock": {
+      "balance": "1974",
+      "count": 1
+    }
+  }
+]
+```
+
+This endpoint returns trustlines (IOU/token balances), for XAHAU it is also returns the locked amounts for IOUs (in escrows) (Only available on paid API plans).
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/trustlines/<address>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+address | The address you want to get token balances for
+
 ## Get the list of tokens that address can accept
 
 ```shell
@@ -4652,73 +4719,6 @@ item     | The item to search for. It can be part of a currency code, currency n
 Parameter | Default | Description
 --------- | ------- | -----------
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure! 
-
-## Address Token Balances
-
-```shell
-curl "https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J"
-  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
-```
-
-```javascript
-function printData(json) {
-  console.log(JSON.stringify(json, undefined, 2));
-}
-bithompRequest("https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J", printData);
-```
-
-```php
-$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/raxq4QbVoAxFkWzggx54ZPjN98oLoqQF7J");
-print $data;
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "counterparty": "r4VzEm7Jbgg3QkPBgMscoppz6JuzK2Jkbd",
-    "balance": "7999.889334554484",
-    "currency": "GBP",
-    "limit": "1000000",
-    "ripplingDisabled": true,
-    "peer": {
-      "limit": "0",
-      "ripplingDisabled": true
-    }
-  }
-]
-
-[
-  {
-    "counterparty": "rEvernodee8dJLaFsujS6q1EiXvZYmHXr8",
-    "balance": "0.000000003153",
-    "currency": "EVR",
-    "limit": "1000000000",
-    "ripplingDisabled": true,
-    "peer": {
-      "limit": "0",
-      "ripplingDisabled": false
-    },
-    "lock": {
-      "balance": "1974",
-      "count": 1
-    }
-  }
-]
-```
-
-This endpoint returns trustlines (IOU/token balances), for XAHAU it is also returns the locked amounts for IOUs (in escrows) (Only available on paid API plans).
-
-### HTTP Request
-
-`GET https://bithomp.com/api/v2/trustlines/<address>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-address | The address you want to get token balances for
 
 # Transaction
 
