@@ -85,9 +85,11 @@ Direct access to fast [resized and cached] images and videos:
 
 ### 22nd of August 2025
 
-A new endpoint was added:
+2 new endpoints were added:
 
 <a href="#get-the-list-of-tokens-that-address-can-accept">**Get the list of tokens that address can accept**</a>
+
+<a href="#get-the-list-of-objects-owned-by-an-address">**Get the list of objects owned by an address**</a>
 
 ### 8th of August 2025
 
@@ -4032,6 +4034,101 @@ currency | null | If set, the response will only include tokens with the specifi
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
 limit | 100 | The maximum number of tokens to return in the response. (More than 100 is available for the Standard plan and higher).
 marker | null | (only available on paid api plans) The marker to use for pagination. If set, the response will include tokens starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.
+
+## Get the list of objects owned by an address
+
+```shell
+curl "https://bithomp.com/api/v2/objects/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getOwnedObjects(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/objects/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B", getOwnedObjects);
+```
+
+```php
+$ownedObjects = curl_bithomp("https://bithomp.com/api/v2/objects/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
+print $ownedObjects;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "address": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+  "objects": [
+    {
+      "Balance": {
+        "currency": "BTC",
+        "issuer": "rrrrrrrrrrrrrrrrrrrrBZbvji",
+        "value": "0"
+      },
+      "Flags": 131072,
+      "HighLimit": {
+        "currency": "BTC",
+        "issuer": "rKUK9omZqVEnraCipKNFb5q4tuNTeqEDZS",
+        "value": "10",
+        "issuerDetails": {
+          "address": "rKUK9omZqVEnraCipKNFb5q4tuNTeqEDZS",
+          "username": null,
+          "service": null
+        }
+      },
+      "HighNode": "0",
+      "LedgerEntryType": "RippleState",
+      "LowLimit": {
+        "currency": "BTC",
+        "issuer": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        "value": "0",
+        "issuerDetails": {
+          "address": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+          "username": "Bitstamp",
+          "service": "Bitstamp"
+        }
+      },
+      "LowNode": "0",
+      "PreviousTxnID": "87591A63051645F37B85D1FBA55EE69B1C96BFF16904F5C99F03FB93D42D0375",
+      "PreviousTxnLgrSeq": 746872,
+      "index": "000103996A3BAD918657F86E12A67D693E8FC8A814DA4B958A244B5F14D93E58",
+      "flags": {
+        "lowReserve": false,
+        "highReserve": true,
+        "lowAuth": false,
+        "highAuth": false,
+        "lowNoRipple": false,
+        "highNoRipple": false,
+        "lowFreeze": false,
+        "highFreeze": false,
+        "ammNode": false,
+        "lowDeepFreeze": false,
+        "highDeepFreeze": false
+      },
+      "previousTxAt": 1368696800
+    }
+  ]
+}
+```
+
+This endpoint retrieves a list of objects owned by an address, such as trustlines, escrows, offers, etc. (Only available on paid API plans).
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/objects/<address>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+address | The address, can be old r-address or a new X-address
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+ledgerIndex | null | If set, the response will include objects from the specified ledger index. If not set, the latest ledger will be used.
+ledgerTimestamp | null | If set, the response will include objects from the specified ledger timestamp (ISO or unix timestamp). If not set, the latest ledger will be used.
+currencyDetails | false | If set to true, the response will include additional details for each currency, useful to get address details (usernames, service names) for each issuer of the currency. NOTE: This will change the response structure!
+limit | 100 | The maximum number of objects to return in the response.
 
 # Validator
 
