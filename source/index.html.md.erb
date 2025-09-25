@@ -54,8 +54,8 @@ For the mainnets we have the following API plans:
 | Enterprise**                                 | 2000  | 600K  | Basic    | 500 EUR  |
 | Enterprise II**                              | 4000  | 1.2M  | Standard | 1000 EUR |
 | Enterprise III**                             | 8000  | 2.4M  | Premium  | 2000 EUR |
-| <a href="#on-demand">On-demand Basic</a>     | N/A   | N/A   | Start    | 0.0001 XRP or 0.003 XAH per request |
-| <a href="#on-demand">On-demand Premium**</a> | N/A   | N/A   | Start    | 0.001 XRP or 0.03 XAH per request   |
+| <a href="#on-demand-basic">On-demand Basic</a>     | N/A   | N/A   | Start    | 0.0001 XRP or 0.003 XAH per request |
+| <a href="#on-demand-premium">On-demand Premium**</a> | N/A   | N/A   | Start    | 0.001 XRP or 0.03 XAH per request   |
 
 ** On that plan the <a href="#nft">**NFT**</a>, <a href="#nfts">**NFTs**</a>, <a href="#nft-offers">**NFT offers**</a> endpoints returns `assets` with direct URLs to cached and resized images and videos. You can get over 100 results for tokens, transactions, whales in one request. You can get historical activations. List of AMMs by their IDs etc. 
 
@@ -414,7 +414,7 @@ print curl_bithomp("api_endpoint_here")
 
 > Make sure to replace `abcd-abcd-0000-abcd-0123abcdabcd` with your API key.
 
-Unless you are using our <a href="#on-demand">on-demand</a> option, in order to use our APIs you need to request an API key via [the partner portal](https://bithomp.com/admin).
+Unless you are using our <a href="#on-demand-basic">on-demand</a> option, in order to use our APIs you need to request an API key via [the partner portal](https://bithomp.com/admin).
 
 Bithomp expects for the API key to be included in all API requests to the server in a header that looks like the following:
 
@@ -424,12 +424,12 @@ Bithomp expects for the API key to be included in all API requests to the server
 You must replace <code>abcd-abcd-0000-abcd-0123abcdabcd</code> with your personal API key.
 </aside>
 
-## On-demand
+## On-demand-basic
 
-To use our on-demand option, no API key is required:
+To use our on-demand BASIC option, no API key is required:
 
-- For the XRPL Mainnet API, make requests using `https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/` as the base URL. 
-- For the Xahau Mainnet API, make requests using `https://run.api.dhali.io/56d61c4b-654f-4abc-8e5e-7fcb89ba13dd/` as the base URL.
+- For the XRPL Mainnet API, make requests using `https://run.api.dhali.io/48ebe903-82ec-4cea-9545-ac1e16169068/` as the base URL. 
+- For the Xahau Mainnet API, make requests using `https://run.api.dhali.io/6a1b8d84-2624-4963-8805-0224afd9f846/` as the base URL.
 
 All subsequent paths, query strings, etc, remain the same.
 In addition, add a payment claim with enough value using the following button. The XRPL API only supports XRP payments. The Xahau API only supports XAH payments.
@@ -438,7 +438,7 @@ After retrieving your payment claim (a json), embed it into request headers usin
 
 <script>
   function openDhaliPaymentDialog() {
-    var myWindow = window.open("https://pay.dhali.io/?uuids=d995db530-7e57-46d1-ac8a-76324794e0c9,56d61c4b-654f-4abc-8e5e-7fcb89ba13dd&exampleGetUrl=https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners", "MsgWindow", "width=500,height=700");
+    var myWindow = window.open("https://pay.dhali.io/?uuids=48ebe903-82ec-4cea-9545-ac1e16169068,6a1b8d84-2624-4963-8805-0224afd9f846&exampleGetUrl=https://run.api.dhali.io/48ebe903-82ec-4cea-9545-ac1e16169068/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E", "MsgWindow", "width=500,height=700");
     myWindow.focus();
   }
 </script>
@@ -473,7 +473,7 @@ After retrieving your payment claim (a json), embed it into request headers usin
 ```shell
 # Define a payment claim and submit it as part of your API request
 PAYMENT_CLAIM='{"account":"my-classic-address","destination_account":"rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR","authorized_to_claim":"94875","signature":"a-signature","channel_id":"a-channel-id"}'
-curl -H "Payment-Claim: $PAYMENT_CLAIM" https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners
+curl -H "Payment-Claim: $PAYMENT_CLAIM" https://run.api.dhali.io/48ebe903-82ec-4cea-9545-ac1e16169068/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E
 ```
 
 ```javascript
@@ -486,7 +486,7 @@ const PAYMENT_CLAIM = JSON.stringify({
   channel_id: "a-channel-id"
 });
 
-fetch('https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners', {
+fetch('https://run.api.dhali.io/48ebe903-82ec-4cea-9545-ac1e16169068/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E', {
   method: 'GET',
   headers: {
     'Payment-Claim': PAYMENT_CLAIM
@@ -508,7 +508,106 @@ $paymentClaim = json_encode([
 ]);
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, "https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft-count/xpunks?list=owners");
+curl_setopt($ch, CURLOPT_URL, "https://run.api.dhali.io/48ebe903-82ec-4cea-9545-ac1e16169068/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HTTPHEADER, [
+  "Payment-Claim: $paymentClaim"
+]);
+
+$response = curl_exec($ch);
+if (curl_errno($ch)) {
+  echo 'Error:' . curl_error($ch);
+} else {
+  echo $response;
+}
+curl_close($ch);
+```
+
+## On-demand-premium
+
+To use our on-demand PREMIUM option, no API key is required:
+
+- For the XRPL Mainnet API, make requests using `https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/` as the base URL. 
+- For the Xahau Mainnet API, make requests using `https://run.api.dhali.io/56d61c4b-654f-4abc-8e5e-7fcb89ba13dd/` as the base URL.
+
+All subsequent paths, query strings, etc, remain the same.
+In addition, add a payment claim with enough value using the following button. The XRPL API only supports XRP payments. The Xahau API only supports XAH payments.
+After retrieving your payment claim (a json), embed it into request headers using the header key: `Payment-Claim`. 
+<div class="dhali-button-container"><button  class="dhali-button" onclick="openDhaliPaymentDialog()">Create payment claim</button></div>
+
+<script>
+  function openDhaliPaymentDialog() {
+    var myWindow = window.open("https://pay.dhali.io/?uuids=d995db530-7e57-46d1-ac8a-76324794e0c9,56d61c4b-654f-4abc-8e5e-7fcb89ba13dd&exampleGetUrl=https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true", "MsgWindow", "width=500,height=700");
+    myWindow.focus();
+  }
+</script>
+<style>
+  .dhali-button {
+    background-color: #0000ff;
+    color: white;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 30px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+
+  .dhali-button:hover {
+    background-color: #6f6ffd;
+    color: rgb(255, 255, 255);
+  }
+  
+  .dhali-button-container {
+    text-align: left;
+  }
+</style>
+
+> After preparing your payment claim:
+
+```shell
+# Define a payment claim and submit it as part of your API request
+PAYMENT_CLAIM='{"account":"my-classic-address","destination_account":"rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR","authorized_to_claim":"94875","signature":"a-signature","channel_id":"a-channel-id"}'
+curl -H "Payment-Claim: $PAYMENT_CLAIM" https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true
+```
+
+```javascript
+
+const PAYMENT_CLAIM = JSON.stringify({
+  account: "my-classic-address",
+  destination_account: "rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR",
+  authorized_to_claim: "94875",
+  signature: "a-signature",
+  channel_id: "a-channel-id"
+});
+
+fetch('https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true', {
+  method: 'GET',
+  headers: {
+    'Payment-Claim': PAYMENT_CLAIM
+  }
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+
+```
+
+```php
+$paymentClaim = json_encode([
+  "account" => "my-classic-address",
+  "destination_account" => "rLggTEwmTe3eJgyQbCSk4wQazow2TeKrtR",
+  "authorized_to_claim" => "94875",
+  "signature" => "a-signature",
+  "channel_id" => "a-channel-id"
+]);
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "https://run.api.dhali.io/d995db530-7e57-46d1-ac8a-76324794e0c9/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&buyOffers=true&uri=true&history=true&assets=true");
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_HTTPHEADER, [
   "Payment-Claim: $paymentClaim"
