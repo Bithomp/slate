@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#30th-of-september-2025" class="toc-h2 toc-link" data-title="30th of September 2025">30th of September 2025</a>
+                  </li>
+                  <li>
                     <a href="#22nd-of-august-2025" class="toc-h2 toc-link" data-title="22nd of August 2025">22nd of August 2025</a>
                   </li>
                   <li>
@@ -351,18 +354,6 @@
                   </li>
                   <li>
                     <a href="#22nd-of-october-2024" class="toc-h2 toc-link" data-title="22nd of October 2024">22nd of October 2024</a>
-                  </li>
-                  <li>
-                    <a href="#27th-of-september-2024" class="toc-h2 toc-link" data-title="27th of September 2024">27th of September 2024</a>
-                  </li>
-                  <li>
-                    <a href="#23rd-of-september-2024" class="toc-h2 toc-link" data-title="23rd of September 2024">23rd of September 2024</a>
-                  </li>
-                  <li>
-                    <a href="#20th-of-september-2024" class="toc-h2 toc-link" data-title="20th of September 2024">20th of September 2024</a>
-                  </li>
-                  <li>
-                    <a href="#26th-of-august-2024" class="toc-h2 toc-link" data-title="26th of August 2024">26th of August 2024</a>
                   </li>
               </ul>
           </li>
@@ -817,7 +808,11 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='22nd-of-august-2025'>22nd of August 2025</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='30th-of-september-2025'>30th of September 2025</h3>
+<p>The new query parameter: <code>priceNativeCurrencySpot</code> was added to the <a href="#get-the-list-of-objects-owned-by-an-address"><strong>Get the list of objects owned by an address</strong></a> API end-point.</p>
+
+<p>Now you can get the spot price in the native currency (XRP or XAH) for each token that the address owns. (if token exist and in our system and has at list a positive rating we will return its price in the Native Currency). It supports historical spot price too (if you send <code>ledgerIndex</code> or <code>ledgerTimestamp</code>).</p>
+<h3 id='22nd-of-august-2025'>22nd of August 2025</h3>
 <p>4 new endpoints were added:</p>
 
 <p><a href="#get-the-list-of-obligations-issued-tokens"><strong>Get the list of obligations (issued tokens)</strong></a></p>
@@ -909,29 +904,6 @@ Now you can get a list of AMMs by their IDs. (Available for the Standard plan an
 <p><a href="#address-token-balances"><strong>Address Token Balances</strong></a></p>
 
 <p>Get the list of token balances for a specific address. For Xahau it also includes locked balances (Token escrowed balances).</p>
-<h3 id='27th-of-september-2024'>27th of September 2024</h3>
-<p>A new endpoint was added:</p>
-
-<p><a href="#nft-collection"><strong>NFT Collection</strong></a></p>
-
-<p>Get the latest information for a specific NFT collection, name, descriptions, when it was created and updated, get the floorPrice on the open market and NFT marketplaces in all available tokens. Get the statistics for the collection, like the current number of NFTs, owners, and count of buyers and traded NFTs for the last 24 hours, week, month, or year.</p>
-<h3 id='23rd-of-september-2024'>23rd of September 2024</h3>
-<p>A new query parameter: <code>collectionDetails</code> was added to the <a href="#nft"><strong>NFT</strong></a> and <a href="#nfts"><strong>NFTs</strong></a> API end-points.</p>
-
-<p>You can get detailed information about the collection of the NFT (including the <code>assets</code>).</p>
-
-<p>A new query parameter: <code>collection</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> and <a href="#nft-sales"><strong>NFT Sales</strong></a> API end-points.</p>
-
-<p>You can search for NFTs and NFT Sales by a specific collection (including Sologenic collections).</p>
-<h3 id='20th-of-september-2024'>20th of September 2024</h3>
-<p>A new endpoint was added:</p>
-
-<p><a href="#nft-collections"><strong>NFT Collections</strong></a></p>
-
-<p>Search for a specific collection by name, description, issuer or get an ordered list of NFT collections.</p>
-<h3 id='26th-of-august-2024'>26th of August 2024</h3>
-<p>The new list option: <code>collections</code> was added to the <a href="#nft-volumes-extended"><strong>NFT Volumes Extended</strong></a> API end-point.
-Now you can get a list of NFT collections with their extended data like <code>floorPrice</code>, <code>statistics</code> and <code>assets</code> (collection preview images).</p>
 <h1 id='free-token-images'>Free Token Images</h1>
 <p>You can easily display token images for XRPL and Xahau tokens using the Bithomp token image service. No registration is required.</p>
 
@@ -5609,6 +5581,11 @@ This request with ledger index could be extremely slow and in some cases return 
 <td>currencyDetails</td>
 <td>false</td>
 <td>If set to true, the response will include additional details for each currency, useful to get address details (usernames, service names) for each issuer of the currency. NOTE: This will change the response structure!</td>
+</tr>
+<tr>
+<td>priceNativeCurrencySpot</td>
+<td>false</td>
+<td>If set to true, the RippleState objects will include <code>priceNativeCurrencySpot</code>. (if token exist and in our system and has at list a positive rating we will return its price in the Native Currency XRP/XAH). It supports historical spot price too (if you send <code>ledgerIndex</code> or <code>ledgerTimestamp</code>).</td>
 </tr>
 <tr>
 <td>limit</td>
