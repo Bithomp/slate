@@ -84,6 +84,12 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 30th of September 2025
+
+The new query parameter: `priceNativeCurrencySpot` was added to the <a href="#get-the-list-of-objects-owned-by-an-address">**Get the list of objects owned by an address**</a> API end-point.
+
+Now you can get the spot price in the native currency (XRP or XAH) for each token that the address owns. (if token exist and in our system and has at list a positive rating we will return its price in the Native Currency). It supports historical spot price too (if you send `ledgerIndex` or `ledgerTimestamp`).
+
 ### 22nd of August 2025
 
 4 new endpoints were added:
@@ -195,37 +201,6 @@ A new endpoint was added:
 <a href="#address-token-balances">**Address Token Balances**</a>
 
 Get the list of token balances for a specific address. For Xahau it also includes locked balances (Token escrowed balances).
-
-### 27th of September 2024
-
-A new endpoint was added:
-
-<a href="#nft-collection">**NFT Collection**</a>
-
-Get the latest information for a specific NFT collection, name, descriptions, when it was created and updated, get the floorPrice on the open market and NFT marketplaces in all available tokens. Get the statistics for the collection, like the current number of NFTs, owners, and count of buyers and traded NFTs for the last 24 hours, week, month, or year.
-
-### 23rd of September 2024
-
-A new query parameter: `collectionDetails` was added to the <a href="#nft">**NFT**</a> and <a href="#nfts">**NFTs**</a> API end-points.
-
-You can get detailed information about the collection of the NFT (including the `assets`).
-
-A new query parameter: `collection` was added to the <a href="#nfts">**NFTs**</a> and <a href="#nft-sales">**NFT Sales**</a> API end-points.
-
-You can search for NFTs and NFT Sales by a specific collection (including Sologenic collections).
-
-### 20th of September 2024
-
-A new endpoint was added:
-
-<a href="#nft-collections">**NFT Collections**</a>
-
-Search for a specific collection by name, description, issuer or get an ordered list of NFT collections.
-
-### 26th of August 2024
-
-The new list option: `collections` was added to the <a href="#nft-volumes-extended">**NFT Volumes Extended**</a> API end-point.
-Now you can get a list of NFT collections with their extended data like `floorPrice`, `statistics` and `assets` (collection preview images).
 
 # Free Token Images
 
@@ -4300,6 +4275,7 @@ types | null | The type of objects to return. Can be `check,did,escrow,mpt_issua
 ledgerIndex | null | If set, the response will include objects from the specified ledger index. If not set, the latest ledger will be used.
 ledgerTimestamp | null | If set, the response will include objects from the specified ledger timestamp (ISO or unix timestamp). If not set, the latest ledger will be used.
 currencyDetails | false | If set to true, the response will include additional details for each currency, useful to get address details (usernames, service names) for each issuer of the currency. NOTE: This will change the response structure!
+priceNativeCurrencySpot | false | If set to true, the RippleState objects will include `priceNativeCurrencySpot`. (if token exist and in our system and has at list a positive rating we will return its price in the Native Currency XRP/XAH). It supports historical spot price too (if you send `ledgerIndex` or `ledgerTimestamp`).
 limit | 100 | The maximum number of objects to return in the response.
 
 <aside class="warning">
