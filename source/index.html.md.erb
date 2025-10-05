@@ -86,7 +86,7 @@ Direct access to fast [resized and cached] images and videos:
 
 ### 5th of October 2025
 
-A new query parameter: `convertCurrencies` was added to the <a href="#token">**Token**</a> API end-point.
+A new query parameter: `convertCurrencies` was added to the <a href="#token">**Token**</a> and <a href="#list-of-tokens">**List of tokens**</a> API end-points.
 
 Now you can get the price of a token in 40 fiat currencies. Just pass a fiat currency code (e.g., `usd`) to the `convertCurrencies` parameter.
 
@@ -4538,7 +4538,7 @@ currencyList  | A list of currencies separated by comma (HEX or XLS-14 NFT)
 ## List of tokens
 
 ```shell
-curl "https://bithomp.com/api/v2/trustlines/tokens?statistics=true"
+curl "https://bithomp.com/api/v2/trustlines/tokens?statistics=true&convertCurrencies=usd&currencyDetails=trueens&limit=100&order=rating"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -4546,11 +4546,11 @@ curl "https://bithomp.com/api/v2/trustlines/tokens?statistics=true"
 function getTokens(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/trustlines/tokens?statistics=true", getTokens);
+bithompRequest("https://bithomp.com/api/v2/trustlines/tokens?statistics=true&convertCurrencies=usd&currencyDetails=true&limit=100&order=rating", getTokens);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/tokens?statistics=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/tokens?statistics=true&convertCurrencies=usd&currencyDetails=true&limit=100&order=rating");
 print $data;
 ```
 
@@ -4558,7 +4558,10 @@ print $data;
 
 ```json
 {
+  "statistics": true,
   "order": "rating",
+  "limit": 100,
+  "convertCurrencies": ["usd"],
   "tokens": [
     {
       "token": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De:524C555344000000000000000000000000000000",
@@ -4569,36 +4572,76 @@ print $data;
         "service": "Ripple"
       },
       "currency": "524C555344000000000000000000000000000000",
-      "supply": "65905296.29000022117233588647765754",
+      "supply": "91205633.29000041500942040640676754",
+      "icon": "https://cdn.bithomp.com/issued-token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000",
       "name": null,
       "description": null,
-      "icon": null,
-      "kyc": false,
-      "stablecoin": false,
+      "kyc": true,
+      "stablecoin": true,
+      "fiat": null,
       "lp_token": false,
-      "trustlines": 62554,
-      "holders": 33895,
-      "rating": 7969,
+      "trustlines": 70378,
+      "holders": 35845,
+      "rating": 7588,
       "statistics": {
-        "activeHolders": 686,
-        "sellVolume": "2932523.83132207583227529652",
-        "buyVolume": "2422235.4252768335345238203",
-        "uniqueSellers": 277,
-        "uniqueBuyers": 548,
-        "dexes": 29430,
-        "dexTxs": 20982,
-        "mintVolume": "0.0000001202249182405597155",
-        "burnVolume": "115.0000001228786077038097155",
-        "transferVolume": "10310017.97273277191181315743037",
+        "sellVolume": "2559998.281041563219960605",
+        "buyVolume": "2909331.58844742357001378",
+        "uniqueSellers": 276,
+        "uniqueBuyers": 349,
+        "dexes": 30596,
+        "dexTxs": 24380,
+        "mintVolume": "0.00000005384867842707418252",
+        "burnVolume": "0.00000005201549328379207252",
+        "transferVolume": "113074.177268406715559549906128",
         "ripplingVolume": null,
-        "mintTxs": 6459,
-        "burnTxs": 6400,
-        "transferTxs": 2182,
+        "mintTxs": 6853,
+        "burnTxs": 6691,
+        "transferTxs": 2745,
         "ripplingTxs": 0,
-        "uniqueAccounts": 856,
-        "uniqueDexAccounts": 758,
-        "priceNativeCurrency": "0.32901318537719176101",
-        "marketcap": "21683711.4656005927508835685655209721205497189423045154"
+        "uniqueAccounts": 639,
+        "uniqueDexAccounts": 549,
+        "priceNativeCurrency": "0.33207696941626107529",
+        "priceNativeCurrency5m": "0.33203679451325939562",
+        "priceNativeCurrency1h": "0.33121454112696236815",
+        "priceNativeCurrency24h": "0.3346832999999999788",
+        "priceNativeCurrency7d": "0.35642084631372751024",
+        "priceNativeCurrencySpot": "0.332076975442907666",
+        "priceFiats": {
+          "usd": "1.0022"
+        },
+        "priceFiats5m": {
+          "usd": "1.0021"
+        },
+        "priceFiats1h": {
+          "usd": "1.0016"
+        },
+        "priceFiats24h": {
+          "usd": "1.0006"
+        },
+        "priceFiats7d": {
+          "usd": "0.9999"
+        },
+        "priceFiatsSpot": {
+          "usd": "1.0022"
+        },
+        "priceXrp": "0.33207696941626107529",
+        "priceXrp5m": "0.33203679451325939562",
+        "priceXrp1h": "0.33121454112696236815",
+        "priceXrp24h": "0.3346832999999999788",
+        "priceXrp7d": "0.35642084631372751024",
+        "priceXrpSpot": "0.332076975442907666",
+        "marketcap": "30287290.2966341908108714281626751396213361213334680866",
+        "ammPools": 193,
+        "activeAmmPools": 155,
+        "activeOffers": 6494,
+        "activeCounters": 161,
+        "activeHolders": 513,
+        "timeAt": 1759661820
+      },
+      "currencyDetails": {
+        "type": "hex",
+        "currencyCode": "524C555344000000000000000000000000000000",
+        "currency": "RLUSD"
       }
     },
     {
@@ -4610,77 +4653,76 @@ print $data;
         "service": "Sologenic"
       },
       "currency": "534F4C4F00000000000000000000000000000000",
-      "supply": "398779537.52465205993061971438379545",
+      "supply": "398768200.20251005116568414094586974000000",
+      "icon": "https://cdn.bithomp.com/issued-token/rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz/534F4C4F00000000000000000000000000000000",
       "name": null,
       "description": null,
-      "icon": null,
-      "kyc": false,
+      "kyc": true,
       "stablecoin": false,
+      "fiat": null,
       "lp_token": false,
-      "trustlines": 283399,
-      "holders": 218866,
-      "rating": 7689,
+      "trustlines": 284167,
+      "holders": 218078,
+      "rating": 7320,
       "statistics": {
-        "activeHolders": 731,
-        "sellVolume": "331157.0783937505172613",
-        "buyVolume": "326811.73689544498047364",
-        "uniqueSellers": 72,
-        "uniqueBuyers": 206,
-        "dexes": 4580,
-        "dexTxs": 3987,
-        "mintVolume": "0.000000008279129713590034",
-        "burnVolume": "198.691852369684534928202034",
-        "transferVolume": "1299971.150028574142284637388",
+        "sellVolume": "469023.46826343251002545",
+        "buyVolume": "336675.91292410508884761",
+        "uniqueSellers": 89,
+        "uniqueBuyers": 157,
+        "dexes": 9173,
+        "dexTxs": 8207,
+        "mintVolume": "0.000000003100990897524644",
+        "burnVolume": "210.380176619209595020784644",
+        "transferVolume": "1151310.79826388428162843674",
         "ripplingVolume": null,
-        "mintTxs": 42,
-        "burnTxs": 4622,
-        "transferTxs": 1030,
+        "mintTxs": 63,
+        "burnTxs": 8705,
+        "transferTxs": 1048,
         "ripplingTxs": 0,
-        "uniqueAccounts": 819,
-        "uniqueDexAccounts": 261,
-        "priceNativeCurrency": "0.136084",
-        "marketcap": "54267516.4407128039443272303515958600178"
-      }
-    },
-    {
-      "token": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN:50484E4958000000000000000000000000000000",
-      "issuer": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
-      "issuerDetails": {
-        "address": "rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN",
-        "username": null,
-        "service": "Phoenix"
+        "uniqueAccounts": 739,
+        "uniqueDexAccounts": 236,
+        "priceNativeCurrency": "0.08099099979844644125",
+        "priceNativeCurrency5m": "0.08099099979844644125",
+        "priceNativeCurrency1h": "0.08232500286447528042",
+        "priceNativeCurrency24h": "0.08848400004622194564",
+        "priceNativeCurrency7d": "0.09921600012464674909",
+        "priceNativeCurrencySpot": "0.08080000000002883203",
+        "priceFiats": {
+          "usd": "0.2446"
+        },
+        "priceFiats5m": {
+          "usd": "0.2446"
+        },
+        "priceFiats1h": {
+          "usd": "0.2489"
+        },
+        "priceFiats24h": {
+          "usd": "0.2645"
+        },
+        "priceFiats7d": {
+          "usd": "0.2783"
+        },
+        "priceFiatsSpot": {
+          "usd": "0.244"
+        },
+        "priceXrp": "0.08099099979844644125",
+        "priceXrp5m": "0.08099099979844644125",
+        "priceXrp1h": "0.08232500286447528042",
+        "priceXrp24h": "0.08848400004622194564",
+        "priceXrp7d": "0.09921600012464674909",
+        "priceXrpSpot": "0.08080000000002883203",
+        "marketcap": "32296635.222228341686811552764258711626263362789062775",
+        "ammPools": 65,
+        "activeAmmPools": 54,
+        "activeOffers": 362,
+        "activeCounters": 54,
+        "activeHolders": 670,
+        "timeAt": 1759661400
       },
-      "currency": "50484E4958000000000000000000000000000000",
-      "supply": "587851190432.5453783335880574392606",
-      "name": "Phoenix",
-      "description": "$PHNIX is the ultimate symbol of XRP's resilience in the face of adversity, as well as its unofficial yet widely recognized mascot.",
-      "icon": "QmVgFtVxsBqBRRzJb1KmhEELmfBoVWcTwVPkGBG1hpPZo1",
-      "kyc": false,
-      "stablecoin": false,
-      "lp_token": false,
-      "trustlines": 24209,
-      "holders": 20901,
-      "rating": 7017,
-      "statistics": {
-        "activeHolders": 398,
-        "sellVolume": "6605425011.104586450512",
-        "buyVolume": "7603667672.530643365493",
-        "uniqueSellers": 59,
-        "uniqueBuyers": 403,
-        "dexes": 7682,
-        "dexTxs": 7098,
-        "mintVolume": "0.002733515995836061",
-        "burnVolume": "4881.345795342875596061",
-        "transferVolume": "2726243612.71598394783",
-        "ripplingVolume": null,
-        "mintTxs": 1769,
-        "burnTxs": 1862,
-        "transferTxs": 198,
-        "ripplingTxs": 0,
-        "uniqueAccounts": 490,
-        "uniqueDexAccounts": 452,
-        "priceNativeCurrency": "0.00000861895297418025",
-        "marketcap": "5066661.76615398759267198126969427038035645112315"
+      "currencyDetails": {
+        "type": "hex",
+        "currencyCode": "534F4C4F00000000000000000000000000000000",
+        "currency": "SOLO"
       }
     }
   ]
@@ -4695,6 +4737,7 @@ This endpoint retrieves a list of tokens (IOUs) on the Ledger.
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
+convertCurrencies | null | (Only available on paid API plans) A single currency code to convert the token price into.  Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: `convertCurrencies=usd`
 statistics | false | (Only available on Standard plan and higher) If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.
 order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`, `sellVolumeHigh`, `buyVolumeHigh`, `totalVolumeHigh`, `uniqueTradersHigh`, `uniqueSellersHigh`, `uniqueBuyersHigh`, `marketCapHigh`, `priceNativeCurrencyHigh`, `priceNativeCurrencyLow`.
 issuer | null | If set, the response will only include tokens issued by the specified issuer address.
