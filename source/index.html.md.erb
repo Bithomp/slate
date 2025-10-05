@@ -84,6 +84,12 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 5th of October 2025
+
+A new query parameter: `convertCurrencies` was added to the <a href="#token">**Token**</a> API end-point.
+
+Now you can get the price of a token in 40 fiat currencies. Just pass a fiat currency code (e.g., `usd`) to the `convertCurrencies` parameter.
+
 ### 30th of September 2025
 
 The new query parameter: `priceNativeCurrencySpot` was added to the <a href="#get-the-list-of-objects-owned-by-an-address">**Get the list of objects owned by an address**</a> API end-point.
@@ -4700,7 +4706,7 @@ marker | null | (only available on paid api plans) The marker to use for paginat
 ## Token
 
 ```shell
-curl "https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true"
+curl "https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&convertCurrencies=usd"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -4708,11 +4714,11 @@ curl "https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8
 function getTokenInfo(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true", getTokenInfo);
+bithompRequest("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true&convertCurrencies=usd", getTokenInfo);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true&convertCurrencies=usd");
 print $data;
 ```
 > The above command returns JSON structured like this:
@@ -4761,6 +4767,12 @@ print $data;
     "priceNativeCurrency24h": "0.33347950851790034632",
     "priceNativeCurrency7d": "0.33071620369230287599",
     "priceNativeCurrencySpot": "0.30060532893893183832",
+    "priceFiats": {usd: '0.9988'},
+    "priceFiats1h": {usd: '0.998'},
+    "priceFiats5m": {usd: '0.9977'},
+    "priceFiats7d": {usd: '1.0002'},
+    "priceFiats24h": {usd: '0.997'},
+    "priceFiatsSpot": {usd: '0.9989'},
     "marketcap": "19827407.839671407202975140733144129015233991451377342",
     "ammPools": 174,
     "activeAmmPools": 152,
@@ -4781,11 +4793,12 @@ This endpoint retrieves information and statistics for a specific token (IOU) on
 Parameter | Description
 --------- | -----------
 issuer   | The issuer address of the Token.
-currency | The currency code of the Token
+currency | The currency code of the Token.
 
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
+convertCurrencies | null | (Only available on paid API plans) A single currency code to convert the token price into.  Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: `convertCurrencies=usd`
 statistics | false | (Only available on paid API plans) If set to true, the response will include additional statistics for the token, such as sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, market cap, AMM pools, active AMM pools, active offers, active counters, active holders. Also it will include `timeAt` which is a timestamp when the statistics were last updated.
 
 ## Token Search
