@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#5th-of-october-2025" class="toc-h2 toc-link" data-title="5th of October 2025">5th of October 2025</a>
+                  </li>
+                  <li>
                     <a href="#30th-of-september-2025" class="toc-h2 toc-link" data-title="30th of September 2025">30th of September 2025</a>
                   </li>
                   <li>
@@ -808,7 +811,11 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='30th-of-september-2025'>30th of September 2025</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='5th-of-october-2025'>5th of October 2025</h3>
+<p>A new query parameter: <code>convertCurrencies</code> was added to the <a href="#token"><strong>Token</strong></a> API end-point.</p>
+
+<p>Now you can get the price of a token in 40 fiat currencies. Just pass a fiat currency code (e.g., <code>usd</code>) to the <code>convertCurrencies</code> parameter.</p>
+<h3 id='30th-of-september-2025'>30th of September 2025</h3>
 <p>The new query parameter: <code>priceNativeCurrencySpot</code> was added to the <a href="#get-the-list-of-objects-owned-by-an-address"><strong>Get the list of objects owned by an address</strong></a> API end-point.</p>
 
 <p>Now you can get the spot price in the native currency (XRP or XAH) for each token that the address owns. (if token exist and in our system and has at list a positive rating we will return its price in the Native Currency). It supports historical spot price too (if you send <code>ledgerIndex</code> or <code>ledgerTimestamp</code>).</p>
@@ -6002,13 +6009,13 @@ You can retrieve information for MANY currencies in one request:
 <td>(only available on paid api plans) The marker to use for pagination. If set, the response will include tokens starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.</td>
 </tr>
 </tbody></table>
-<h2 id='token'>Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true"</span>
+<h2 id='token'>Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&amp;convertCurrencies=usd"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokenInfo</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenInfo</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true&amp;convertCurrencies=usd</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenInfo</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true&amp;convertCurrencies=usd"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -6057,6 +6064,12 @@ You can retrieve information for MANY currencies in one request:
     </span><span class="nl">"priceNativeCurrency24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.33347950851790034632"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"priceNativeCurrency7d"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.33071620369230287599"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"priceNativeCurrencySpot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.30060532893893183832"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"priceFiats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">usd:</span><span class="w"> </span><span class="err">'</span><span class="mf">0.9988</span><span class="err">'</span><span class="p">},</span><span class="w">
+    </span><span class="nl">"priceFiats1h"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">usd:</span><span class="w"> </span><span class="err">'</span><span class="mf">0.998</span><span class="err">'</span><span class="p">},</span><span class="w">
+    </span><span class="nl">"priceFiats5m"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">usd:</span><span class="w"> </span><span class="err">'</span><span class="mf">0.9977</span><span class="err">'</span><span class="p">},</span><span class="w">
+    </span><span class="nl">"priceFiats7d"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">usd:</span><span class="w"> </span><span class="err">'</span><span class="mf">1.0002</span><span class="err">'</span><span class="p">},</span><span class="w">
+    </span><span class="nl">"priceFiats24h"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">usd:</span><span class="w"> </span><span class="err">'</span><span class="mf">0.997</span><span class="err">'</span><span class="p">},</span><span class="w">
+    </span><span class="nl">"priceFiatsSpot"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="err">usd:</span><span class="w"> </span><span class="err">'</span><span class="mf">0.9989</span><span class="err">'</span><span class="p">},</span><span class="w">
     </span><span class="nl">"marketcap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19827407.839671407202975140733144129015233991451377342"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"ammPools"</span><span class="p">:</span><span class="w"> </span><span class="mi">174</span><span class="p">,</span><span class="w">
     </span><span class="nl">"activeAmmPools"</span><span class="p">:</span><span class="w"> </span><span class="mi">152</span><span class="p">,</span><span class="w">
@@ -6083,7 +6096,7 @@ You can retrieve information for MANY currencies in one request:
 </tr>
 <tr>
 <td>currency</td>
-<td>The currency code of the Token</td>
+<td>The currency code of the Token.</td>
 </tr>
 </tbody></table>
 <h3 id='query-parameters-29'>Query Parameters</h3>
@@ -6094,6 +6107,11 @@ You can retrieve information for MANY currencies in one request:
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>convertCurrencies</td>
+<td>null</td>
+<td>(Only available on paid API plans) A single currency code to convert the token price into.  Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: <code>convertCurrencies=usd</code></td>
+</tr>
 <tr>
 <td>statistics</td>
 <td>false</td>
