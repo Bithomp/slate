@@ -812,7 +812,7 @@
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
 <h1 id='changelog'>Changelog</h1><h3 id='5th-of-october-2025'>5th of October 2025</h3>
-<p>A new query parameter: <code>convertCurrencies</code> was added to the <a href="#token"><strong>Token</strong></a> API end-point.</p>
+<p>A new query parameter: <code>convertCurrencies</code> was added to the <a href="#token"><strong>Token</strong></a> and <a href="#list-of-tokens"><strong>List of tokens</strong></a> API end-points.</p>
 
 <p>Now you can get the price of a token in 40 fiat currencies. Just pass a fiat currency code (e.g., <code>usd</code>) to the <code>convertCurrencies</code> parameter.</p>
 <h3 id='30th-of-september-2025'>30th of September 2025</h3>
@@ -5821,20 +5821,23 @@ You can retrieve information for MANY currencies in one request:
 <td>A list of currencies separated by comma (HEX or XLS-14 NFT)</td>
 </tr>
 </tbody></table>
-<h1 id='tokens'>Tokens</h1><h2 id='list-of-tokens'>List of tokens</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/tokens?statistics=true"</span>
+<h1 id='tokens'>Tokens</h1><h2 id='list-of-tokens'>List of tokens</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/tokens?statistics=true&amp;convertCurrencies=usd&amp;currencyDetails=trueens&amp;limit=100&amp;order=rating"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokens</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/tokens?statistics=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokens</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/tokens?statistics=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/tokens?statistics=true&amp;convertCurrencies=usd&amp;currencyDetails=true&amp;limit=100&amp;order=rating</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokens</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/tokens?statistics=true&amp;convertCurrencies=usd&amp;currencyDetails=true&amp;limit=100&amp;order=rating"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rating"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"convertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"usd"</span><span class="p">],</span><span class="w">
   </span><span class="nl">"tokens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De:524C555344000000000000000000000000000000"</span><span class="p">,</span><span class="w">
@@ -5845,36 +5848,76 @@ You can retrieve information for MANY currencies in one request:
         </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ripple"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"524C555344000000000000000000000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"supply"</span><span class="p">:</span><span class="w"> </span><span class="s2">"65905296.29000022117233588647765754"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"supply"</span><span class="p">:</span><span class="w"> </span><span class="s2">"91205633.29000041500942040640676754"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/issued-token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"kyc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"stablecoin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"kyc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"stablecoin"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fiat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"lp_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"trustlines"</span><span class="p">:</span><span class="w"> </span><span class="mi">62554</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">33895</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">7969</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trustlines"</span><span class="p">:</span><span class="w"> </span><span class="mi">70378</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">35845</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">7588</span><span class="p">,</span><span class="w">
       </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"activeHolders"</span><span class="p">:</span><span class="w"> </span><span class="mi">686</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"sellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2932523.83132207583227529652"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"buyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2422235.4252768335345238203"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"uniqueSellers"</span><span class="p">:</span><span class="w"> </span><span class="mi">277</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"uniqueBuyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">548</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dexes"</span><span class="p">:</span><span class="w"> </span><span class="mi">29430</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dexTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">20982</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"mintVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.0000001202249182405597155"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"burnVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"115.0000001228786077038097155"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"transferVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10310017.97273277191181315743037"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2559998.281041563219960605"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"buyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2909331.58844742357001378"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uniqueSellers"</span><span class="p">:</span><span class="w"> </span><span class="mi">276</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uniqueBuyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">349</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dexes"</span><span class="p">:</span><span class="w"> </span><span class="mi">30596</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dexTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">24380</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mintVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000005384867842707418252"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"burnVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000005201549328379207252"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"113074.177268406715559549906128"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ripplingVolume"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"mintTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">6459</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"burnTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">6400</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"transferTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2182</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mintTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">6853</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"burnTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">6691</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2745</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ripplingTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"uniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">856</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"uniqueDexAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">758</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"priceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.32901318537719176101"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"marketcap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21683711.4656005927508835685655209721205497189423045154"</span><span class="w">
+        </span><span class="nl">"uniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">639</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uniqueDexAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">549</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.33207696941626107529"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceNativeCurrency5m"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.33203679451325939562"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceNativeCurrency1h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.33121454112696236815"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceNativeCurrency24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3346832999999999788"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceNativeCurrency7d"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.35642084631372751024"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceNativeCurrencySpot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.332076975442907666"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceFiats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0022"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"priceFiats5m"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0021"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"priceFiats1h"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0016"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"priceFiats24h"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0006"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"priceFiats7d"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9999"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"priceFiatsSpot"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0022"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"priceXrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.33207696941626107529"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceXrp5m"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.33203679451325939562"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceXrp1h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.33121454112696236815"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceXrp24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.3346832999999999788"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceXrp7d"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.35642084631372751024"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceXrpSpot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.332076975442907666"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marketcap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"30287290.2966341908108714281626751396213361213334680866"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ammPools"</span><span class="p">:</span><span class="w"> </span><span class="mi">193</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"activeAmmPools"</span><span class="p">:</span><span class="w"> </span><span class="mi">155</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"activeOffers"</span><span class="p">:</span><span class="w"> </span><span class="mi">6494</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"activeCounters"</span><span class="p">:</span><span class="w"> </span><span class="mi">161</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"activeHolders"</span><span class="p">:</span><span class="w"> </span><span class="mi">513</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timeAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759661820</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"currencyDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hex"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"524C555344000000000000000000000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"RLUSD"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -5886,77 +5929,76 @@ You can retrieve information for MANY currencies in one request:
         </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sologenic"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"534F4C4F00000000000000000000000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"supply"</span><span class="p">:</span><span class="w"> </span><span class="s2">"398779537.52465205993061971438379545"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"supply"</span><span class="p">:</span><span class="w"> </span><span class="s2">"398768200.20251005116568414094586974000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/issued-token/rsoLo2S1kiGeCcn6hCUXVrCpGMWLrRrLZz/534F4C4F00000000000000000000000000000000"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"kyc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"kyc"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nl">"stablecoin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fiat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"lp_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"trustlines"</span><span class="p">:</span><span class="w"> </span><span class="mi">283399</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">218866</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">7689</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trustlines"</span><span class="p">:</span><span class="w"> </span><span class="mi">284167</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">218078</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">7320</span><span class="p">,</span><span class="w">
       </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"activeHolders"</span><span class="p">:</span><span class="w"> </span><span class="mi">731</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"sellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"331157.0783937505172613"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"buyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"326811.73689544498047364"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"uniqueSellers"</span><span class="p">:</span><span class="w"> </span><span class="mi">72</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"uniqueBuyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">206</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dexes"</span><span class="p">:</span><span class="w"> </span><span class="mi">4580</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dexTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">3987</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"mintVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000008279129713590034"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"burnVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198.691852369684534928202034"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"transferVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1299971.150028574142284637388"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"sellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"469023.46826343251002545"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"buyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"336675.91292410508884761"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uniqueSellers"</span><span class="p">:</span><span class="w"> </span><span class="mi">89</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uniqueBuyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">157</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dexes"</span><span class="p">:</span><span class="w"> </span><span class="mi">9173</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"dexTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">8207</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mintVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000003100990897524644"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"burnVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"210.380176619209595020784644"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1151310.79826388428162843674"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ripplingVolume"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"mintTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"burnTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">4622</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"transferTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1030</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"mintTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">63</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"burnTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">8705</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"transferTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1048</span><span class="p">,</span><span class="w">
         </span><span class="nl">"ripplingTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"uniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">819</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"uniqueDexAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">261</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"priceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.136084"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"marketcap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"54267516.4407128039443272303515958600178"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN:50484E4958000000000000000000000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDFXbW2ZZCG5WgPtqwNiA2xZokLMm9ivmN"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Phoenix"</span><span class="w">
+        </span><span class="nl">"uniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">739</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"uniqueDexAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">236</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08099099979844644125"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceNativeCurrency5m"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08099099979844644125"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceNativeCurrency1h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08232500286447528042"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceNativeCurrency24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08848400004622194564"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceNativeCurrency7d"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.09921600012464674909"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceNativeCurrencySpot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08080000000002883203"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceFiats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2446"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"priceFiats5m"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2446"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"priceFiats1h"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2489"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"priceFiats24h"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2645"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"priceFiats7d"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.2783"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"priceFiatsSpot"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.244"</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="nl">"priceXrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08099099979844644125"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceXrp5m"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08099099979844644125"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceXrp1h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08232500286447528042"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceXrp24h"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08848400004622194564"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceXrp7d"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.09921600012464674909"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"priceXrpSpot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08080000000002883203"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"marketcap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"32296635.222228341686811552764258711626263362789062775"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"ammPools"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"activeAmmPools"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"activeOffers"</span><span class="p">:</span><span class="w"> </span><span class="mi">362</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"activeCounters"</span><span class="p">:</span><span class="w"> </span><span class="mi">54</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"activeHolders"</span><span class="p">:</span><span class="w"> </span><span class="mi">670</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"timeAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759661400</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50484E4958000000000000000000000000000000"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"supply"</span><span class="p">:</span><span class="w"> </span><span class="s2">"587851190432.5453783335880574392606"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Phoenix"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$PHNIX is the ultimate symbol of XRP's resilience in the face of adversity, as well as its unofficial yet widely recognized mascot."</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"QmVgFtVxsBqBRRzJb1KmhEELmfBoVWcTwVPkGBG1hpPZo1"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"kyc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"stablecoin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"lp_token"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"trustlines"</span><span class="p">:</span><span class="w"> </span><span class="mi">24209</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">20901</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">7017</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"activeHolders"</span><span class="p">:</span><span class="w"> </span><span class="mi">398</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"sellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6605425011.104586450512"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"buyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7603667672.530643365493"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"uniqueSellers"</span><span class="p">:</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"uniqueBuyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dexes"</span><span class="p">:</span><span class="w"> </span><span class="mi">7682</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"dexTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">7098</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"mintVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.002733515995836061"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"burnVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4881.345795342875596061"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"transferVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2726243612.71598394783"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ripplingVolume"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"mintTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1769</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"burnTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1862</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"transferTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">198</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"ripplingTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"uniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">490</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"uniqueDexAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">452</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"priceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.00000861895297418025"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"marketcap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5066661.76615398759267198126969427038035645112315"</span><span class="w">
+      </span><span class="nl">"currencyDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hex"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"534F4C4F00000000000000000000000000000000"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOLO"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -5973,6 +6015,11 @@ You can retrieve information for MANY currencies in one request:
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>convertCurrencies</td>
+<td>null</td>
+<td>(Only available on paid API plans) A single currency code to convert the token price into.  Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: <code>convertCurrencies=usd</code></td>
+</tr>
 <tr>
 <td>statistics</td>
 <td>false</td>
