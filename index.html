@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#6th-of-october-2025" class="toc-h2 toc-link" data-title="6th of October 2025">6th of October 2025</a>
+                  </li>
+                  <li>
                     <a href="#5th-of-october-2025" class="toc-h2 toc-link" data-title="5th of October 2025">5th of October 2025</a>
                   </li>
                   <li>
@@ -547,6 +550,54 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-wallet" class="toc-h2 toc-link" data-title="Get wallet">Get wallet</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#validators" class="toc-h1 toc-link" data-title="Validators">Validators</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-the-list-of-validators" class="toc-h2 toc-link" data-title="Get the list of validators">Get the list of validators</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#unl" class="toc-h1 toc-link" data-title="UNL">UNL</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-the-list-of-unl-validators" class="toc-h2 toc-link" data-title="Get the list of UNL validators">Get the list of UNL validators</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#unl-report" class="toc-h1 toc-link" data-title="UNL Report">UNL Report</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-request-38" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#amendment" class="toc-h1 toc-link" data-title="Amendment">Amendment</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-information-about-a-specific-amendment" class="toc-h2 toc-link" data-title="Get information about a specific amendment">Get information about a specific amendment</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#features" class="toc-h1 toc-link" data-title="Features">Features</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-the-list-of-amendments-and-their-voting-status" class="toc-h2 toc-link" data-title="Get the list of amendments and their voting status">Get the list of amendments and their voting status</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#amendments" class="toc-h1 toc-link" data-title="Amendments">Amendments</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-the-list-of-amendments" class="toc-h2 toc-link" data-title="Get the list of amendments">Get the list of amendments</a>
                   </li>
               </ul>
           </li>
@@ -811,7 +862,33 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='5th-of-october-2025'>5th of October 2025</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='6th-of-october-2025'>6th of October 2025</h3>
+<p>6 new endpoints were added:</p>
+
+<p><a href="#unl"><strong>UNL</strong></a></p>
+
+<p>Get the list of UNL validators. </p>
+
+<p><a href="#validators"><strong>Validators</strong></a></p>
+
+<p>Get the list of all validators.</p>
+
+<p><a href="#amendment"><strong>Amendment</strong></a></p>
+
+<p>Get information about a specific amendment.</p>
+
+<p><a href="#features"><strong>Features</a></strong></p>
+
+<p>Get the list of amendments and their voting statusus</p>
+
+<p><a href="#amendments"><strong>Amendments</strong></a></p>
+
+<p>Get the list of all amendments.</p>
+
+<p><a href="#unl-report"><strong>UNL Report (For XAHAU)</strong></a></p>
+
+<p>Get a report of the current UNL (Unique Node List) validators on XAHAU.</p>
+<h3 id='5th-of-october-2025'>5th of October 2025</h3>
 <p>A new query parameter: <code>convertCurrencies</code> was added to the <a href="#token"><strong>Token</strong></a> and <a href="#list-of-tokens"><strong>List of tokens</strong></a> API end-points.</p>
 
 <p>Now you can get the price of a token in 40 fiat currencies. Just pass a fiat currency code (e.g., <code>usd</code>) to the <code>convertCurrencies</code> parameter.</p>
@@ -5637,6 +5714,392 @@ This request with ledger index could be extremely slow and in some cases return 
 <td>The public key of the validator to retrieve</td>
 </tr>
 </tbody></table>
+<h1 id='validators'>Validators</h1><h2 id='get-the-list-of-validators'>Get the list of validators</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validators"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getValidatorsList</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/validators</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getValidatorsList</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$validatorsList</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/validators"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$validatorsList</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"signingKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n9Ks1JMzZu2bA9Ue2DsqRouYJHvN3eQecUd2xiBGLMMdMcyPw1L6"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"masterKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHDpm83xDGeY3GsrNoB8RTJneQHX5aogfJxGejc3RYi2jujgVJBA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHDpm83xDGeY3GsrNoB8RTJneQHX5aogfJxGejc3RYi2jujgVJBA"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnBQLbrx3CxDnjU5aXNJ9yvPbjQy1c3wNg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bazakanode.topnode.app"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">99336135</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ledgerHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E3DF6D16E3F8424A721C5BD34381BE7240947CC7B33218C1361BA55D3458BAD9"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"full"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759749563</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastSeenTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759749564</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"baseFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reserveBase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reserveIncrement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amendments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"networkID"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"manifest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JAAAAAFxIe3dAwWFsPg7lec+TPIWFFIWwNd9D1H1IeQ0yisn8dOnqnMhAkKv2acMlAEw4XtB93UcEc9IsnKAvDkv8X5gyKP7uiwtdkcwRQIhAMAo6WryAIggiMQI7R7CX/fVjxO4wLHSkzYGhW1XWBrFAiBB07GxOvT7XyJGAxGLm1ft6dfl2VTBbZm+PchUsY8aZ3cWYmF6YWthbm9kZS50b3Bub2RlLmFwcHASQNk430WGsx5RgHvHAN04h78UOlzpsslsBJV847A8z+ye9geHPGEA1a/ORIaA5/vqA8x324voh7p5HwgS/08vvwE="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"domainVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"verificationMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getaddrinfo ENOTFOUND bazakanode.topnode.app"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"signingKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n9MLGK3YiSFTVGGs8nhiyANMhNAxWJbhYrJ57CJhTMWZ4aPuM3RE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"masterKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHUdwCKijaKAD8NUUR8sKPV3Kj9F2EJW3E5Lsb62yod2T7kR2y9F"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHUdwCKijaKAD8NUUR8sKPV3Kj9F2EJW3E5Lsb62yod2T7kR2y9F"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"raReLguMmcSDbVMr9sNK7xXutqy7ZjtkTg"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joshuahamsa.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">99336135</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ledgerHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E3DF6D16E3F8424A721C5BD34381BE7240947CC7B33218C1361BA55D3458BAD9"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"full"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759749564</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastSeenTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759749564</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"baseFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reserveBase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reserveIncrement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amendments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"TokenEscrow"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fixXChainRewardRounding"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"PermissionedDEX"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Batch"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"PermissionedDomains"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"PermissionDelegation"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"XChainBridge"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"networkID"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"manifest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JAAAAAJxIe2naaXwp/lMaXtJA66gsQSLEpT8gsnCtXZga4WM7SbrNHMhA29PXDJIiPY8zg5yywtvFEu9pUwG7G6guos/eY1p5A0RdkcwRQIhAMjzwANTJ3T3z5vn1p5PLhaDlruaegf8rB8kkixfgrTUAiAC8ZhY/onOfaT3N438/UjxWC5lXYu5Bja7oDaXwU7+7HcPam9zaHVhaGFtc2EuY29tcBJA5rr1RHIcux/0n/lYBXtn4J2+NPX14eqwOXCHxy0Bgh6DX+ws1HW7JQezTccY4rTlvOrfxPnNfclRndxauNz0Ag=="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"domainVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ownerCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverLocation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"LFG HQ (Ventura, California)"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverCloud"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"networkASN"</span><span class="p">:</span><span class="w"> </span><span class="mi">20001</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"principals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Joshua Hamsa"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin@joshuahamsa.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joshuahamsa"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"github"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joshuahamsa"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://joshuahamsa.com"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"signingKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n9LU9Kdbu75MksS4MTWajXo8YqdcaTpUSe7g7XF5VSmtNqfZx8EG"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"masterKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHU7NkoTxBncNhLBf6M2rqL1Cc2iAj6TJfqdPcaDjLecWfrGsHNf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHU7NkoTxBncNhLBf6M2rqL1Cc2iAj6TJfqdPcaDjLecWfrGsHNf"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rDUy4B5zDbnwqSDT9eECVCmMnYb7Z66e2n"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrpl.digitaltrance.net"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">99336135</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ledgerHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E3DF6D16E3F8424A721C5BD34381BE7240947CC7B33218C1361BA55D3458BAD9"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"full"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759749563</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastSeenTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759749563</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"baseFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reserveBase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reserveIncrement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amendments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"networkID"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"manifest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JAAAAAJxIe2TIys2KvQxOt/NUN9CXQgKK/QX4XaGKAKN0Z4/Ar4WBnMhAtks23u6j2ad1AUubr25yzT+NNo/59E/xpWh63FU/NxjdkcwRQIhAPKW0Yv4PFz2Hf0O0BPwwDQhZQy+MFWSllSauZ/H7BvpAiBwX6EZWGBqTMP01FnkCv1ok5muuBrwXhoCxWWTUs8d/XcWeHJwbC5kaWdpdGFsdHJhbmNlLm5ldHASQIGRbaHB2yVriGQQAWKgF022y/8z0LH09heHIctK7Do3IlF03Qr21hd2czX7zCevqaK5+jU+Jso8AufkgWYwSww="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"domainVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ownerCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverLocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverCloud"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"networkASN"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"principals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Digitaltrance Productions"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@digitaltrance.net"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"signingKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n943ozDG74swHRmAjzY6A4KVFBhEirF4Sh1ACqvDePE3CZTgkMqn"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"masterKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHUq9tJvSyoXQKhRytuWeydpPjvTz3M9GfUpEqfsg9xsewM7KkkK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHUq9tJvSyoXQKhRytuWeydpPjvTz3M9GfUpEqfsg9xsewM7KkkK"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rJGaPD5VyYr4fBQ8JavJA4UgtgP2ARoMWq"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">99336135</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"ledgerHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E3DF6D16E3F8424A721C5BD34381BE7240947CC7B33218C1361BA55D3458BAD9"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"full"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"signingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759749563</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"lastSeenTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759749563</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"baseFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reserveBase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"reserveIncrement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2000000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"amendments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"fixXChainRewardRounding"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"PermissionedDomains"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"XChainBridge"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"networkID"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5.1"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"manifest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JAAAAAFxIe3CoTizdxwgiWVZbU03IzHBelR2vSzivHptPNJz3zMNmXMhA9j/pUGrPDYl63JdWVsqbHWDBdJ9H57NVL42LO6gLwo1dkcwRQIhAJeTyxdK1KYpxxI8kLvhzCz5OhGZ42lFCYMSwMmavI4pAiBsWsvxet4JBhZun9ZoZJpCZ/VuNIt10YlnrtcNcEBe53ASQHDJJeC4NJZlvm1WI5y/byOh4hvY8fqsmD0bXZsSN9G3TRALSLeCkdLRGbJZNMODXflcp+tHfU7FX4JOdRVMxQ0="</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"domainLegacy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"students.cs.ucl.ac.uk"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"domainLegacyVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"verificationMessage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Request failed with status code 404"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the list of validators that have been seen in the network recently.</p>
+<h3 id='http-request-36'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/validators</code></p>
+<h1 id='unl'>UNL</h1><h2 id='get-the-list-of-unl-validators'>Get the list of UNL validators</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/unl"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getUnlList</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/unl</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getUnlList</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$unlList</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/unl"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$unlList</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://vl.xrplf.org"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2025011701</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759751819</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="mi">1768694400</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"PublicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ED45D1840EE724BE327ABE9146503D5848EFD5F38B6D5FEDE71E80ACCE5E6E738B"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"manifest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JAAAAAFxIe1F0YQO5yS+Mnq+kUZQPVhI79Xzi21f7ecegKzOXm5zi3Mh7RiCXiUBmFIhZUbZfHHGCftCtcsPeSU01cwAt0hkhs0UdkAQnI9+pUYXskMF1Er1SPrem9zMEOxDx24aS+88WIgXpslXVyRPehFwtnTTb+LwUx7yUXoH3h31Qkruu2RZG70NcBJAy3pkPr9jhqyPvB7T4Nz8j/MjEaNa9ohMLztonxAAZDpcB+zX8QVvQ4GUiAePLCKF/fqTKfhUkSfobozPOi/bCQ=="</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"signature"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5FD1AC7FE7CE66695E80C1757E8957DC2922701B3A6F5950C9DF59820A3F503C5A1FB8FEC7D90ED70D245DE0B12CE0C528D53143FFDCE9A1F8BAC3BB9E2C060E"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"validators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"PublicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ED13AAFCB6A87BCB5D093C2EF37F04431C291126D674293305152D9776C6ABA4D6"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHBWa56Vr7csoFcCnEPzCCKVvnDQw3L28mATgHYQMGtbEfUjuYyB"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"r9Zwxiuv4GMLvEscjjuexTUsb8ttzJmUXV"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrp.vet"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"PublicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ED4246AA3AE9D29863944800CCA91829E4447498A20CD9C3973A6B59346C75AB95"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHBidG3pZK11zQD6kpNDoAhDxH6WLGui6ZxSbUx7LSqLHsgzMPec"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnecUwtMPhRzbEv2LSvoVNFjyNLyKjo4Yy"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"domainLegacy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bitso.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the list of validators in the UNL (Unique Node List).</p>
+<h3 id='http-request-37'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/unl</code></p>
+<h1 id='unl-report'>UNL Report</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/unl-report"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getUnlReport</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xahauexplorer.com/api/v2/unl-report</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getUnlReport</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$unlReport</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xahauexplorer.com/api/v2/unl-report"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$unlReport</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"ledgerEntry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"61E32E7A24A238F1C619D5F9DDCC41A94B33B66C0163F7EFCC8A19C9FD6F28DC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ledgerHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"E45CF2A86AB426447D99FEB24E5EBE0CAF68ED6ACB503A781BC9FD346D55FF0C"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">17592759</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"activeValidators"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rD74dUPRFNfgnY2NzrxxYRXN4BrfGSN6Mv"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"XRPL-Labs"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"PublicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ED02E3102D348B688CCDAF2D40FA9549E7C25EE926A15880E40D5BB0E2168A14DE"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHB45nBNgjKMssrRqaNVr2tpCq3t55J5APRRDD6ov1U41JfVFjr6"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rLHGUX9zeQMmVgZjMMymQEhFYJ2WyDS8E1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"onledger.net"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"PublicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ED0EA5543E538BE8C0D6A6E643678B5B3854BF423736E813502BEE6558BC0D5B1A"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHBTtSHyh8wweHqkWcVw16QYMA97n4voLFwfs7t7oSaTZmfPcmCz"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rwyypATD1dQxDbdQjMvrqnsHr2cQw5rjMh"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Xahau Projects Table"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"PublicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ED1369FC1E2A1D2B90FB05DBDF67054223638D585C00BE7B83FF42F082602E258B"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHBVzNWFu2yT373tTto5HT1Tybdq2GE8hsdhHdowUDdj9wBieNFo"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rN7XCq12KBvBLKad3wWsVUwmb3dNx1fx3e"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"accountDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Titanium"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"PublicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ED1E88D64F134456B4BCBBC5554FDE292CCF8585DED2CAADAF83A499B4276BE312"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHB2tHvDXE2GM3Cp9ivyAXU3NDLkf8mzYREQkcZ7wFJyBiaVLu24"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a report of the current UNL (Unique Node List) validators on XAHAU. </p>
+<h3 id='http-request-38'>HTTP Request</h3>
+<p><code>GET https://xahauexplorer.com/api/v2/unl-report</code></p>
+<h1 id='amendment'>Amendment</h1><h2 id='get-information-about-a-specific-amendment'>Get information about a specific amendment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amendment/A730EB18A9D4BB52502C898589558B4CCEB4BE10044500EE5581137A2E80E849"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getAmendmentInfo</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/amendment/A730EB18A9D4BB52502C898589558B4CCEB4BE10044500EE5581137A2E80E849</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getAmendmentInfo</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$amendmentInfo</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/amendment/A730EB18A9D4BB52502C898589558B4CCEB4BE10044500EE5581137A2E80E849"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$amendmentInfo</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"amendment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"950AE2EA4654E47F04AA8739C0B214E242097E802FD372D24047A89AB1F5EC38"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MPTokensV1"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"introduced"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.3.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14853FF2D09D198B576A531C50883C59D71474BA9072C1F5C0ED1DD57882B922"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enabledAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759324390</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"enabledLedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">99226369</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves information about a specific amendment. If activated returns the timestamp of actvation, ledger index when it was activated and the transaction hash. Make sure to use also /v2/features to get their voting status.</p>
+<h3 id='http-request-39'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/amendment/&lt;amendmentHash&gt;</code></p>
+<h1 id='features'>Features</h1><h2 id='get-the-list-of-amendments-and-their-voting-status'>Get the list of amendments and their voting status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/features"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getFeaturesList</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/features</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getFeaturesList</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$featuresList</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/features
+"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$featuresList</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"features"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixNFTokenDirV1"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"validations"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vetoed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Obsolete"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixNFTokenReserve"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"138B968F25822EFBF54C00F97031221C47B1EAB8321D93C7C2AEAF85F04EC5DF"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TokenEscrow"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"supported"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"threshold"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"validations"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"vetoed"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the list of amendments and their voting status.</p>
+<h3 id='http-request-40'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/features</code></p>
+<h1 id='amendments'>Amendments</h1><h2 id='get-the-list-of-amendments'>Get the list of amendments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amendments"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getAmendmentsList</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/amendments</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getAmendmentsList</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$amendmentsList</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/amendments"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$amendmentsList</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"amendment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AE6AB9028EEB7299EBB03C7CBCC3F2A4F5FBE00EA28B8223AA3118A0B436C1C5"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PermissionDelegation"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"introduced"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5.0"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"amendment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"D3456A862DC07E382827981CA02E21946E641877F19B8889031CC57FDCAC83E2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixPayChanCancelAfter"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"introduced"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21842CFFCD51428997C78056F2EB9B707E2CED45FEFD302084B08C35965D7DB8"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enabledAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1756479031</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enabledLedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">98491905</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"amendment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"677E401A423E3708363A36BA8B3A7D019D21AC5ABD00387BDBEA6BDE4C91247E"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PermissionedDEX"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"introduced"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5.0"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"amendment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"B32752F7DCC41FB86534118FC4EEC8F56E7BD0A7DB60FD73F93F257233C08E3A"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fixEnforceNFTokenTrustlineV2"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"introduced"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.5.0"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2532DC0E750FAA51CC11F58F742A1FB0CDC0F469DEA63EF903EC15D1E39667BE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enabledAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1756479031</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"enabledLedgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">98491905</span><span class="w">
+  </span><span class="p">}</span><span class="w"> 
+</span><span class="err">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves the list of amendments with the time of activation, if they are activated, ledgerIndex when they were activated and the transaction hash that activated them.</p>
+<h3 id='http-request-41'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/amendments</code></p>
 <h1 id='currency-hex-xls-14-nft'>Currency (HEX / XLS-14 NFT)</h1><h2 id='currency'>Currency</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -5700,7 +6163,7 @@ This request with ledger index could be extremely slow and in some cases return 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-36'>HTTP Request</h3>
+<h3 id='http-request-42'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currency/&lt;currency&gt;</code></p>
 <h3 id='url-parameters-16'>URL Parameters</h3>
 <table><thead>
@@ -5807,7 +6270,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-37'>HTTP Request</h3>
+<h3 id='http-request-43'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currencies</code></p>
 <h3 id='query-parameters-27'>Query Parameters</h3>
 <table><thead>
@@ -6005,7 +6468,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of tokens (IOUs) on the Ledger.</p>
-<h3 id='http-request-38'>HTTP Request</h3>
+<h3 id='http-request-44'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/tokens</code></p>
 <h3 id='query-parameters-28'>Query Parameters</h3>
 <table><thead>
@@ -6128,7 +6591,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information and statistics for a specific token (IOU) on the Ledger.</p>
-<h3 id='http-request-39'>HTTP Request</h3>
+<h3 id='http-request-45'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/token/&lt;issuer&gt;/&lt;currency&gt;</code></p>
 <h3 id='url-parameters-17'>URL Parameters</h3>
 <table><thead>
@@ -6223,7 +6686,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for tokens (IOUs) on the Ledger by a given item or a part of it (issuer, currency, username, etc.).</p>
-<h3 id='http-request-40'>HTTP Request</h3>
+<h3 id='http-request-46'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/tokens/search/&lt;item&gt;</code></p>
 <h3 id='url-parameters-18'>URL Parameters</h3>
 <table><thead>
@@ -6283,7 +6746,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for token issuers on the Ledger by a given item or a part of it (issuer address, username, service name, domain etc.).</p>
-<h3 id='http-request-41'>HTTP Request</h3>
+<h3 id='http-request-47'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/issuers/search/&lt;item&gt;</code></p>
 <h3 id='url-parameters-19'>URL Parameters</h3>
 <table><thead>
@@ -6318,7 +6781,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for currencies (HEX or 3-characters) on the Ledger by a given name or a part of it (currency code, currency name.).</p>
-<h3 id='http-request-42'>HTTP Request</h3>
+<h3 id='http-request-48'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/currencies/search/&lt;item&gt;</code></p>
 <h3 id='url-parameters-20'>URL Parameters</h3>
 <table><thead>
@@ -6519,7 +6982,7 @@ Page on bithomp that displays it:
 <a href="https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
   https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
 </a>.</p>
-<h3 id='http-request-43'>HTTP Request</h3>
+<h3 id='http-request-49'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/&lt;hash&gt;</code></p>
 <h3 id='url-parameters-21'>URL Parameters</h3>
 <table><thead>
@@ -6574,7 +7037,7 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://bithomp.com/submit/">
   https://bithomp.com/submit/
 </a>.</p>
-<h3 id='http-request-44'>HTTP Request</h3>
+<h3 id='http-request-50'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
 <h3 id='url-parameters-22'>URL Parameters</h3>
 <table><thead>
@@ -6639,7 +7102,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/?hwlogin">
   https://bithomp.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-45'>HTTP Request</h3>
+<h3 id='http-request-51'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -6727,7 +7190,7 @@ Page on bithomp that displays it:
 <a href="https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv">
   https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv
 </a>.</p>
-<h3 id='http-request-46'>HTTP Request</h3>
+<h3 id='http-request-52'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transactions/&lt;address&gt;</code></p>
 <h3 id='url-parameters-23'>URL Parameters</h3>
 <table><thead>
@@ -6921,7 +7384,7 @@ Page on bithomp that displays it:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales">https://bithomp.com/en/whales</a>.</p>
-<h3 id='http-request-47'>HTTP Request</h3>
+<h3 id='http-request-53'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale</code></p>
 <h3 id='query-parameters-33'>Query Parameters</h3>
 <table><thead>
@@ -6983,7 +7446,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/receivers">https://bithomp.com/en/whales/receivers</a>.</p>
-<h3 id='http-request-48'>HTTP Request</h3>
+<h3 id='http-request-54'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/receivers</code></p>
 <h3 id='query-parameters-34'>Query Parameters</h3>
 <table><thead>
@@ -7045,7 +7508,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/senders">https://bithomp.com/en/whales/senders</a>.</p>
-<h3 id='http-request-49'>HTTP Request</h3>
+<h3 id='http-request-55'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/senders</code></p>
 <h3 id='query-parameters-35'>Query Parameters</h3>
 <table><thead>
@@ -7108,7 +7571,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/submitters">https://bithomp.com/en/whales/submitters</a>.</p>
-<h3 id='http-request-50'>HTTP Request</h3>
+<h3 id='http-request-56'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/submitters</code></p>
 <h3 id='query-parameters-36'>Query Parameters</h3>
 <table><thead>
@@ -7206,7 +7669,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/object/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8" style="word-break:break-word;">https://bithomp.com/en/object/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8</a>.</p>
-<h3 id='http-request-51'>HTTP Request</h3>
+<h3 id='http-request-57'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/ledgerEntry/&lt;index&gt;</code></p>
 <h3 id='url-parameters-24'>URL Parameters</h3>
 <table><thead>
@@ -7284,7 +7747,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.</p>
-<h3 id='http-request-52'>HTTP Request</h3>
+<h3 id='http-request-58'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/account-chart</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
@@ -7348,7 +7811,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-53'>HTTP Request</h3>
+<h3 id='http-request-59'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-7'>Response Format</h3>
 <table><thead>
@@ -7466,7 +7929,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-54'>HTTP Request</h3>
+<h3 id='http-request-60'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-8'>Response Format</h3>
 <table><thead>
