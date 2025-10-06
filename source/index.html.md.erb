@@ -84,6 +84,34 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 6th of October 2025
+
+6 new endpoints were added:
+
+<a href="#unl">**UNL**</a>
+
+Get the list of UNL validators. 
+
+<a href="#validators">**Validators**</a>
+
+Get the list of all validators.
+
+<a href="#amendment">**Amendment**</a>
+
+Get information about a specific amendment.
+
+<a href="#features">**Features</a>**
+
+Get the list of amendments and their voting statusus
+
+<a href="#amendments">**Amendments**</a>
+
+Get the list of all amendments.
+
+<a href="#unl-report">**UNL Report (For XAHAU)**</a>
+
+Get a report of the current UNL (Unique Node List) validators on XAHAU.
+
 ### 5th of October 2025
 
 A new query parameter: `convertCurrencies` was added to the <a href="#token">**Token**</a> and <a href="#list-of-tokens">**List of tokens**</a> API end-points.
@@ -4330,6 +4358,481 @@ This endpoint retrieves an address of a specific validator
 Parameter | Description
 --------- | -----------
 validatorPublicKey | The public key of the validator to retrieve
+
+# Validators 
+
+## Get the list of validators
+
+```shell
+curl "https://bithomp.com/api/v2/validators"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+``` 
+
+```javascript
+function getValidatorsList(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/validators", getValidatorsList);
+``` 
+
+```php
+$validatorsList = curl_bithomp("https://bithomp.com/api/v2/validators");
+print $validatorsList;
+```
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "signingKey": "n9Ks1JMzZu2bA9Ue2DsqRouYJHvN3eQecUd2xiBGLMMdMcyPw1L6",
+    "masterKey": "nHDpm83xDGeY3GsrNoB8RTJneQHX5aogfJxGejc3RYi2jujgVJBA",
+    "publicKey": "nHDpm83xDGeY3GsrNoB8RTJneQHX5aogfJxGejc3RYi2jujgVJBA",
+    "address": "rnBQLbrx3CxDnjU5aXNJ9yvPbjQy1c3wNg",
+    "addressDetails": {
+      "username": null,
+      "service": null
+    },
+    "domain": "bazakanode.topnode.app",
+    "ledgerIndex": 99336135,
+    "ledgerHash": "E3DF6D16E3F8424A721C5BD34381BE7240947CC7B33218C1361BA55D3458BAD9",
+    "full": true,
+    "signingTime": 1759749563,
+    "lastSeenTime": 1759749564,
+    "baseFee": "10",
+    "reserveBase": "10000000",
+    "reserveIncrement": "2000000",
+    "amendments": null,
+    "networkID": 0,
+    "serverVersion": "2.5.0",
+    "manifest": "JAAAAAFxIe3dAwWFsPg7lec+TPIWFFIWwNd9D1H1IeQ0yisn8dOnqnMhAkKv2acMlAEw4XtB93UcEc9IsnKAvDkv8X5gyKP7uiwtdkcwRQIhAMAo6WryAIggiMQI7R7CX/fVjxO4wLHSkzYGhW1XWBrFAiBB07GxOvT7XyJGAxGLm1ft6dfl2VTBbZm+PchUsY8aZ3cWYmF6YWthbm9kZS50b3Bub2RlLmFwcHASQNk430WGsx5RgHvHAN04h78UOlzpsslsBJV847A8z+ye9geHPGEA1a/ORIaA5/vqA8x324voh7p5HwgS/08vvwE=",
+    "sequence": 1,
+    "domainVerified": false,
+    "verificationMessage": "getaddrinfo ENOTFOUND bazakanode.topnode.app"
+  },
+  {
+    "signingKey": "n9MLGK3YiSFTVGGs8nhiyANMhNAxWJbhYrJ57CJhTMWZ4aPuM3RE",
+    "masterKey": "nHUdwCKijaKAD8NUUR8sKPV3Kj9F2EJW3E5Lsb62yod2T7kR2y9F",
+    "publicKey": "nHUdwCKijaKAD8NUUR8sKPV3Kj9F2EJW3E5Lsb62yod2T7kR2y9F",
+    "address": "raReLguMmcSDbVMr9sNK7xXutqy7ZjtkTg",
+    "addressDetails": {
+      "username": null,
+      "service": null
+    },
+    "domain": "joshuahamsa.com",
+    "ledgerIndex": 99336135,
+    "ledgerHash": "E3DF6D16E3F8424A721C5BD34381BE7240947CC7B33218C1361BA55D3458BAD9",
+    "full": true,
+    "signingTime": 1759749564,
+    "lastSeenTime": 1759749564,
+    "baseFee": "1",
+    "reserveBase": "1000000",
+    "reserveIncrement": "200000",
+    "amendments": [
+      "TokenEscrow",
+      "fixXChainRewardRounding",
+      "PermissionedDEX",
+      "Batch",
+      "PermissionedDomains",
+      "PermissionDelegation",
+      "XChainBridge"
+    ],
+    "networkID": 0,
+    "serverVersion": "2.5.0",
+    "manifest": "JAAAAAJxIe2naaXwp/lMaXtJA66gsQSLEpT8gsnCtXZga4WM7SbrNHMhA29PXDJIiPY8zg5yywtvFEu9pUwG7G6guos/eY1p5A0RdkcwRQIhAMjzwANTJ3T3z5vn1p5PLhaDlruaegf8rB8kkixfgrTUAiAC8ZhY/onOfaT3N438/UjxWC5lXYu5Bja7oDaXwU7+7HcPam9zaHVhaGFtc2EuY29tcBJA5rr1RHIcux/0n/lYBXtn4J2+NPX14eqwOXCHxy0Bgh6DX+ws1HW7JQezTccY4rTlvOrfxPnNfclRndxauNz0Ag==",
+    "sequence": 2,
+    "domainVerified": true,
+    "ownerCountry": "US",
+    "serverCountry": "US",
+    "serverLocation": "LFG HQ (Ventura, California)",
+    "serverCloud": false,
+    "networkASN": 20001,
+    "principals": [
+      {
+        "name": "Joshua Hamsa",
+        "email": "admin@joshuahamsa.com",
+        "x": "joshuahamsa",
+        "github": "joshuahamsa",
+        "website": "https://joshuahamsa.com"
+      }
+    ]
+  },
+  {
+    "signingKey": "n9LU9Kdbu75MksS4MTWajXo8YqdcaTpUSe7g7XF5VSmtNqfZx8EG",
+    "masterKey": "nHU7NkoTxBncNhLBf6M2rqL1Cc2iAj6TJfqdPcaDjLecWfrGsHNf",
+    "publicKey": "nHU7NkoTxBncNhLBf6M2rqL1Cc2iAj6TJfqdPcaDjLecWfrGsHNf",
+    "address": "rDUy4B5zDbnwqSDT9eECVCmMnYb7Z66e2n",
+    "addressDetails": {
+      "username": null,
+      "service": null
+    },
+    "domain": "xrpl.digitaltrance.net",
+    "ledgerIndex": 99336135,
+    "ledgerHash": "E3DF6D16E3F8424A721C5BD34381BE7240947CC7B33218C1361BA55D3458BAD9",
+    "full": true,
+    "signingTime": 1759749563,
+    "lastSeenTime": 1759749563,
+    "baseFee": "10",
+    "reserveBase": "10000000",
+    "reserveIncrement": "2000000",
+    "amendments": null,
+    "networkID": 0,
+    "serverVersion": "2.5.0",
+    "manifest": "JAAAAAJxIe2TIys2KvQxOt/NUN9CXQgKK/QX4XaGKAKN0Z4/Ar4WBnMhAtks23u6j2ad1AUubr25yzT+NNo/59E/xpWh63FU/NxjdkcwRQIhAPKW0Yv4PFz2Hf0O0BPwwDQhZQy+MFWSllSauZ/H7BvpAiBwX6EZWGBqTMP01FnkCv1ok5muuBrwXhoCxWWTUs8d/XcWeHJwbC5kaWdpdGFsdHJhbmNlLm5ldHASQIGRbaHB2yVriGQQAWKgF022y/8z0LH09heHIctK7Do3IlF03Qr21hd2czX7zCevqaK5+jU+Jso8AufkgWYwSww=",
+    "sequence": 2,
+    "domainVerified": true,
+    "ownerCountry": "us",
+    "serverCountry": "us",
+    "serverLocation": null,
+    "serverCloud": null,
+    "networkASN": null,
+    "principals": [
+      {
+        "name": "Digitaltrance Productions",
+        "email": "info@digitaltrance.net"
+      }
+    ]
+  },
+  {
+    "signingKey": "n943ozDG74swHRmAjzY6A4KVFBhEirF4Sh1ACqvDePE3CZTgkMqn",
+    "masterKey": "nHUq9tJvSyoXQKhRytuWeydpPjvTz3M9GfUpEqfsg9xsewM7KkkK",
+    "publicKey": "nHUq9tJvSyoXQKhRytuWeydpPjvTz3M9GfUpEqfsg9xsewM7KkkK",
+    "address": "rJGaPD5VyYr4fBQ8JavJA4UgtgP2ARoMWq",
+    "addressDetails": {
+      "username": null,
+      "service": null
+    },
+    "domain": null,
+    "ledgerIndex": 99336135,
+    "ledgerHash": "E3DF6D16E3F8424A721C5BD34381BE7240947CC7B33218C1361BA55D3458BAD9",
+    "full": true,
+    "signingTime": 1759749563,
+    "lastSeenTime": 1759749563,
+    "baseFee": "10",
+    "reserveBase": "10000000",
+    "reserveIncrement": "2000000",
+    "amendments": [
+      "fixXChainRewardRounding",
+      "PermissionedDomains",
+      "XChainBridge"
+    ],
+    "networkID": 0,
+    "serverVersion": "2.5.1",
+    "manifest": "JAAAAAFxIe3CoTizdxwgiWVZbU03IzHBelR2vSzivHptPNJz3zMNmXMhA9j/pUGrPDYl63JdWVsqbHWDBdJ9H57NVL42LO6gLwo1dkcwRQIhAJeTyxdK1KYpxxI8kLvhzCz5OhGZ42lFCYMSwMmavI4pAiBsWsvxet4JBhZun9ZoZJpCZ/VuNIt10YlnrtcNcEBe53ASQHDJJeC4NJZlvm1WI5y/byOh4hvY8fqsmD0bXZsSN9G3TRALSLeCkdLRGbJZNMODXflcp+tHfU7FX4JOdRVMxQ0=",
+    "sequence": 1,
+    "domainLegacy": "students.cs.ucl.ac.uk",
+    "domainLegacyVerified": false,
+    "verificationMessage": "Request failed with status code 404"
+  }
+]
+```
+
+This endpoint retrieves the list of validators that have been seen in the network recently.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/validators`
+
+# UNL
+
+## Get the list of UNL validators
+
+```shell
+curl "https://bithomp.com/api/v2/unl"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getUnlList(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/unl", getUnlList);
+``` 
+
+```php
+$unlList = curl_bithomp("https://bithomp.com/api/v2/unl");
+print $unlList;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "url": "https://vl.xrplf.org",
+  "version": 1,
+  "sequence": 2025011701,
+  "updatedAt": 1759751819,
+  "expiration": 1768694400,
+  "PublicKey": "ED45D1840EE724BE327ABE9146503D5848EFD5F38B6D5FEDE71E80ACCE5E6E738B",
+  "manifest": "JAAAAAFxIe1F0YQO5yS+Mnq+kUZQPVhI79Xzi21f7ecegKzOXm5zi3Mh7RiCXiUBmFIhZUbZfHHGCftCtcsPeSU01cwAt0hkhs0UdkAQnI9+pUYXskMF1Er1SPrem9zMEOxDx24aS+88WIgXpslXVyRPehFwtnTTb+LwUx7yUXoH3h31Qkruu2RZG70NcBJAy3pkPr9jhqyPvB7T4Nz8j/MjEaNa9ohMLztonxAAZDpcB+zX8QVvQ4GUiAePLCKF/fqTKfhUkSfobozPOi/bCQ==",
+  "signature": "5FD1AC7FE7CE66695E80C1757E8957DC2922701B3A6F5950C9DF59820A3F503C5A1FB8FEC7D90ED70D245DE0B12CE0C528D53143FFDCE9A1F8BAC3BB9E2C060E",
+  "validators": [
+    {
+      "PublicKey": "ED13AAFCB6A87BCB5D093C2EF37F04431C291126D674293305152D9776C6ABA4D6",
+      "sequence": 1,
+      "publicKey": "nHBWa56Vr7csoFcCnEPzCCKVvnDQw3L28mATgHYQMGtbEfUjuYyB",
+      "address": "r9Zwxiuv4GMLvEscjjuexTUsb8ttzJmUXV",
+      "addressDetails": {
+        "username": null,
+        "service": null
+      },
+      "domain": "xrp.vet"
+    },
+    {
+      "PublicKey": "ED4246AA3AE9D29863944800CCA91829E4447498A20CD9C3973A6B59346C75AB95",
+      "sequence": 1,
+      "publicKey": "nHBidG3pZK11zQD6kpNDoAhDxH6WLGui6ZxSbUx7LSqLHsgzMPec",
+      "address": "rnecUwtMPhRzbEv2LSvoVNFjyNLyKjo4Yy",
+      "addressDetails": {
+        "username": null,
+        "service": null
+      },
+      "domainLegacy": "bitso.com"
+    }
+  ]
+}
+```
+
+This endpoint retrieves the list of validators in the UNL (Unique Node List).
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/unl`
+
+# UNL Report
+
+```shell 
+curl "https://xahauexplorer.com/api/v2/unl-report"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getUnlReport(json) {
+  console.log(json)
+}
+bithompRequest("https://xahauexplorer.com/api/v2/unl-report", getUnlReport);
+``` 
+
+```php
+$unlReport = curl_bithomp("https://xahauexplorer.com/api/v2/unl-report");
+print $unlReport;
+``` 
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "ledgerEntry": "61E32E7A24A238F1C619D5F9DDCC41A94B33B66C0163F7EFCC8A19C9FD6F28DC",
+  "ledgerHash": "E45CF2A86AB426447D99FEB24E5EBE0CAF68ED6ACB503A781BC9FD346D55FF0C",
+  "ledgerIndex": 17592759,
+  "activeValidators": [
+    {
+      "account": "rD74dUPRFNfgnY2NzrxxYRXN4BrfGSN6Mv",
+      "accountDetails": {
+        "username": null,
+        "service": "XRPL-Labs"
+      },
+      "PublicKey": "ED02E3102D348B688CCDAF2D40FA9549E7C25EE926A15880E40D5BB0E2168A14DE",
+      "publicKey": "nHB45nBNgjKMssrRqaNVr2tpCq3t55J5APRRDD6ov1U41JfVFjr6"
+    },
+    {
+      "account": "rLHGUX9zeQMmVgZjMMymQEhFYJ2WyDS8E1",
+      "accountDetails": {
+        "username": null,
+        "service": "onledger.net"
+      },
+      "PublicKey": "ED0EA5543E538BE8C0D6A6E643678B5B3854BF423736E813502BEE6558BC0D5B1A",
+      "publicKey": "nHBTtSHyh8wweHqkWcVw16QYMA97n4voLFwfs7t7oSaTZmfPcmCz"
+    },
+    {
+      "account": "rwyypATD1dQxDbdQjMvrqnsHr2cQw5rjMh",
+      "accountDetails": {
+        "username": null,
+        "service": "Xahau Projects Table"
+      },
+      "PublicKey": "ED1369FC1E2A1D2B90FB05DBDF67054223638D585C00BE7B83FF42F082602E258B",
+      "publicKey": "nHBVzNWFu2yT373tTto5HT1Tybdq2GE8hsdhHdowUDdj9wBieNFo"
+    },
+    {
+      "account": "rN7XCq12KBvBLKad3wWsVUwmb3dNx1fx3e",
+      "accountDetails": {
+        "username": null,
+        "service": "Titanium"
+      },
+      "PublicKey": "ED1E88D64F134456B4BCBBC5554FDE292CCF8585DED2CAADAF83A499B4276BE312",
+      "publicKey": "nHB2tHvDXE2GM3Cp9ivyAXU3NDLkf8mzYREQkcZ7wFJyBiaVLu24"
+    }
+  ],
+}
+```
+
+This endpoint retrieves a report of the current UNL (Unique Node List) validators on XAHAU. 
+
+### HTTP Request
+`GET https://xahauexplorer.com/api/v2/unl-report`
+
+# Amendment 
+
+## Get information about a specific amendment
+
+```shell
+curl "https://bithomp.com/api/v2/amendment/A730EB18A9D4BB52502C898589558B4CCEB4BE10044500EE5581137A2E80E849"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getAmendmentInfo(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/amendment/A730EB18A9D4BB52502C898589558B4CCEB4BE10044500EE5581137A2E80E849", getAmendmentInfo);
+```
+
+```php
+$amendmentInfo = curl_bithomp("https://bithomp.com/api/v2/amendment/A730EB18A9D4BB52502C898589558B4CCEB4BE10044500EE5581137A2E80E849");
+print $amendmentInfo;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "amendment": "950AE2EA4654E47F04AA8739C0B214E242097E802FD372D24047A89AB1F5EC38",
+  "name": "MPTokensV1",
+  "enabled": true,
+  "introduced": "2.3.0",
+  "txHash": "14853FF2D09D198B576A531C50883C59D71474BA9072C1F5C0ED1DD57882B922",
+  "enabledAt": 1759324390,
+  "enabledLedgerIndex": 99226369
+}
+```
+
+This endpoint retrieves information about a specific amendment. If activated returns the timestamp of actvation, ledger index when it was activated and the transaction hash. Make sure to use also /v2/features to get their voting status.
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/amendment/<amendmentHash>`
+
+# Features 
+
+## Get the list of amendments and their voting status
+
+```shell
+curl "https://bithomp.com/api/v2/features"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getFeaturesList(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/features", getFeaturesList);
+```
+
+```php
+$featuresList = curl_bithomp("https://bithomp.com/api/v2/features
+");
+print $featuresList;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "result": {
+    "features": {
+      "0285B7E5E08E1A8E4C15636F0591D87F73CB6A7B6452A932AD72BBC8E5D1CBE3": {
+        "count": 0,
+        "enabled": false,
+        "name": "fixNFTokenDirV1",
+        "supported": true,
+        "threshold": 28,
+        "validations": 35,
+        "vetoed": "Obsolete"
+      },
+      "03BDC0099C4E14163ADA272C1B6F6FABB448CC3E51F522F978041E4B57D9158C": {
+        "enabled": true,
+        "name": "fixNFTokenReserve",
+        "supported": true
+      },
+      "138B968F25822EFBF54C00F97031221C47B1EAB8321D93C7C2AEAF85F04EC5DF": {
+        "count": 14,
+        "enabled": false,
+        "name": "TokenEscrow",
+        "supported": true,
+        "threshold": 28,
+        "validations": 35,
+        "vetoed": false
+      }
+    }
+  }
+}
+```
+
+This endpoint retrieves the list of amendments and their voting status.
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/features`
+
+# Amendments
+
+## Get the list of amendments
+
+```shell
+curl "https://bithomp.com/api/v2/amendments"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getAmendmentsList(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/amendments", getAmendmentsList);
+``` 
+
+```php
+$amendmentsList = curl_bithomp("https://bithomp.com/api/v2/amendments");
+print $amendmentsList;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "amendment": "AE6AB9028EEB7299EBB03C7CBCC3F2A4F5FBE00EA28B8223AA3118A0B436C1C5",
+    "name": "PermissionDelegation",
+    "enabled": false,
+    "introduced": "2.5.0"
+  },
+  {
+    "amendment": "D3456A862DC07E382827981CA02E21946E641877F19B8889031CC57FDCAC83E2",
+    "name": "fixPayChanCancelAfter",
+    "enabled": true,
+    "introduced": "2.5.0",
+    "txHash": "21842CFFCD51428997C78056F2EB9B707E2CED45FEFD302084B08C35965D7DB8",
+    "enabledAt": 1756479031,
+    "enabledLedgerIndex": 98491905
+  },
+  {
+    "amendment": "677E401A423E3708363A36BA8B3A7D019D21AC5ABD00387BDBEA6BDE4C91247E",
+    "name": "PermissionedDEX",
+    "enabled": false,
+    "introduced": "2.5.0"
+  },
+  {
+    "amendment": "B32752F7DCC41FB86534118FC4EEC8F56E7BD0A7DB60FD73F93F257233C08E3A",
+    "name": "fixEnforceNFTokenTrustlineV2",
+    "enabled": true,
+    "introduced": "2.5.0",
+    "txHash": "2532DC0E750FAA51CC11F58F742A1FB0CDC0F469DEA63EF903EC15D1E39667BE",
+    "enabledAt": 1756479031,
+    "enabledLedgerIndex": 98491905
+  } 
+}
+```
+
+This endpoint retrieves the list of amendments with the time of activation, if they are activated, ledgerIndex when they were activated and the transaction hash that activated them.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/amendments`
 
 # Currency (HEX / XLS-14 NFT)
 
