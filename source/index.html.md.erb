@@ -84,6 +84,10 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 7th of October 2025
+
+Get Free icons for MP Tokens for your projects. See the <a href="#free-mp-token-images">Free MP Token Images</a> section below for more details.
+
 ### 6th of October 2025
 
 6 new endpoints were added:
@@ -335,6 +339,59 @@ Then use the avatar links like this:
 `
 <img src="https://pfp.mydomain.com/avatar/rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh" alt="avatar" />
 `
+
+Contact our support team if you’d like to enable image hosting on your custom domain.
+
+
+# Free MP Token Images
+
+You can easily display Multi Purpose token images using the Bithomp token image service. No registration is required.
+
+Supported Image Types:
+
+- **MPT images from MPT metadata**
+  Set by token issuers in the metadata of the token.
+
+- **Bithomp Logos**  
+  Set by token issuers on Bithomp (with verified signatures).
+
+- **TOML Files**  
+  From issuers with a verified domain, including FirstLedger TOMLs.
+
+- **X (Twitter) Images**  
+  For projects registered on Bithomp that have an X handle set.
+
+- **Xaman Curated Assets**  
+  Official curated token images.
+
+- **Gravatar**  
+  If an account’s email hash is linked to a Gravatar image.
+
+- **Xaman Pro User Profiles**  
+  Profile images for Pro users’ issued tokens.
+
+- **Hashicons**  
+  Unique generated icons based on the address hash.
+
+## How to Use
+
+Simply embed the following image tag in your website or app:
+
+```
+<img src="http://cdn.bithomp.com/mptoken/00000AE825B89F24B381CABA5921FF0B634DE9111D915B2A" alt="token logo" />
+```
+
+## Custom Domain Option
+For just €10/month, you can serve token images from your own domain (e.g., tokens.mydomain.com).
+Set up with a DNS record:
+
+```
+CNAME    tokens    cdn.bithomp.com
+```
+
+Then use the token image links like this:
+
+```<img src="https://tokens.mydomain.com/mptoken/00000AE825B89F24B381CABA5921FF0B634DE9111D915B2A" alt="token logo" />```
 
 Contact our support team if you’d like to enable image hosting on your custom domain.
 
