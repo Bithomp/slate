@@ -5499,6 +5499,9 @@ print $data;
 
 This endpoint retrieves a list of holders for a specific token (IOU) on the Ledger.
 
+<br>Page where it used on bithomp:
+<a href="https://bithomp.com/en/distribution">https://bithomp.com/en/distribution</a>.
+
 ### HTTP Request
 
 `GET https://bithomp.com/api/v2/trustlines/token/richlist/<issuer>/<currency>`
@@ -6444,7 +6447,7 @@ limit | 100 | The number of transactions to return. (More than 100 is available 
 
 # XRP/XAH
 
-### XRP/XAH distribution
+## XRP/XAH distribution
 
 ```shell
 curl "https://bithomp.com/api/v2/addresses/richlist?escrow=short"
@@ -6509,7 +6512,7 @@ This endpoint returns the Distribution of XRP/XAH addresses (TOP Holders / Rich 
 
 Parameter | Default | Description
 --------- | ------- | -----------
-escrow | null | If set to `short`, results will include also escrow balances that will likely be received from escrows by this account (this account = destination), if set to 'locked' - will include also locked balances that are held in escrows created by this account (this account = source). If not specified, only the actual balance will be returned.
+escrow | null | If set to `short`, results will include also escrow balances that will likely be received from escrows by this account (this account = destination), if set to `locked` - will include also locked balances that are held in escrows created by this account (this account = source). If not specified, only the actual balance will be returned.
 
 
 # Ledger entry
