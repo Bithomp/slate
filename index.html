@@ -692,12 +692,6 @@
                   <li>
                     <a href="#xrp-xah-distribution" class="toc-h2 toc-link" data-title="XRP/XAH distribution">XRP/XAH distribution</a>
                   </li>
-                  <li>
-                    <a href="#http-request-58" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
-                  </li>
-                  <li>
-                    <a href="#query-parameters-38" class="toc-h2 toc-link" data-title="Query Parameters">Query Parameters</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -6784,6 +6778,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of holders for a specific token (IOU) on the Ledger.</p>
+
+<p><br>Page where it used on bithomp:
+<a href="https://bithomp.com/en/distribution">https://bithomp.com/en/distribution</a>.</p>
 <h3 id='http-request-46'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/token/richlist/&lt;issuer&gt;/&lt;currency&gt;</code></p>
 <h3 id='url-parameters-18'>URL Parameters</h3>
@@ -7800,7 +7797,7 @@ Page where it used on bithomp:
 <td>The number of transactions to return. (More than 100 is available for the Standard plan and higher).</td>
 </tr>
 </tbody></table>
-<h1 id='xrp-xah'>XRP/XAH</h1><h3 id='xrp-xah-distribution'>XRP/XAH distribution</h3><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/addresses/richlist?escrow=short"</span>
+<h1 id='xrp-xah'>XRP/XAH</h1><h2 id='xrp-xah-distribution'>XRP/XAH distribution</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/addresses/richlist?escrow=short"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">json</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
@@ -7858,7 +7855,7 @@ Page where it used on bithomp:
 <tr>
 <td>escrow</td>
 <td>null</td>
-<td>If set to <code>short</code>, results will include also escrow balances that will likely be received from escrows by this account (this account = destination), if set to &#39;locked&#39; - will include also locked balances that are held in escrows created by this account (this account = source). If not specified, only the actual balance will be returned.</td>
+<td>If set to <code>short</code>, results will include also escrow balances that will likely be received from escrows by this account (this account = destination), if set to <code>locked</code> - will include also locked balances that are held in escrows created by this account (this account = source). If not specified, only the actual balance will be returned.</td>
 </tr>
 </tbody></table>
 <h1 id='ledger-entry'>Ledger entry</h1><h2 id='ledger-entry-by-index'>Ledger entry by index</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/ledgerEntry/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8"</span>
