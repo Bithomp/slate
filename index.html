@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#13th-of-october-2025" class="toc-h2 toc-link" data-title="13th of October 2025">13th of October 2025</a>
+                  </li>
+                  <li>
                     <a href="#8th-of-october-2025" class="toc-h2 toc-link" data-title="8th of October 2025">8th of October 2025</a>
                   </li>
                   <li>
@@ -653,6 +656,26 @@
               </ul>
           </li>
           <li>
+            <a href="#multi-purpose-token" class="toc-h1 toc-link" data-title="Multi Purpose Token">Multi Purpose Token</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#list-of-mpts" class="toc-h2 toc-link" data-title="List of MPTs">List of MPTs</a>
+                  </li>
+                  <li>
+                    <a href="#mp-token" class="toc-h2 toc-link" data-title="MP Token">MP Token</a>
+                  </li>
+                  <li>
+                    <a href="#mp-token-search" class="toc-h2 toc-link" data-title="MP Token Search">MP Token Search</a>
+                  </li>
+                  <li>
+                    <a href="#mp-token-issuer-search" class="toc-h2 toc-link" data-title="MP Token Issuer search">MP Token Issuer search</a>
+                  </li>
+                  <li>
+                    <a href="#mp-token-currency-search" class="toc-h2 toc-link" data-title="MP Token Currency search">MP Token Currency search</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#transaction" class="toc-h1 toc-link" data-title="Transaction">Transaction</a>
               <ul class="toc-list-h2">
                   <li>
@@ -890,7 +913,29 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='8th-of-october-2025'>8th of October 2025</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='13th-of-october-2025'>13th of October 2025</h3>
+<p>5 new endpoints were added:</p>
+
+<p><a href="#list-of-mpts"><strong>List of MPTs</strong></a></p>
+
+<p>Get the list of Multi Purpose Tokens (MPT) issued on the XRPL. You can filter by <code>issuer</code> or <code>currency</code>, sort by holders count etc.</p>
+
+<p><a href="#mp-token"><strong>MP Token</strong></a></p>
+
+<p>Get information for a specific Multi Purpose Token (MPT) issued on the XRPL. Icon, description, holders count, and more.</p>
+
+<p><a href="#mp-token-search"><strong>MP Token Search</strong></a></p>
+
+<p>Search for Multi Purpose Tokens (MPT) by a part of currency, currencu code, issuer address, username, domain, service name.</p>
+
+<p><a href="#mp-token-issuer-search"><strong>MP Token Issuer Search</strong></a></p>
+
+<p>Search for Multi Purpose Token (MPT) issuers by a part of address, username, domain, service name.</p>
+
+<p><a href="#mp-token-currency-search"><strong>MP Token Currency Search</strong></a></p>
+
+<p>Search for Multi Purpose Token (MPT) currencies by a part of currency, currency code, issuer address, username, domain, service name.</p>
+<h3 id='8th-of-october-2025'>8th of October 2025</h3>
 <p>2 new endpoints were added:</p>
 
 <p><a href="#xrp-xah-distribution"><strong>XRP/XAH distribution</strong></a></p>
@@ -7009,6 +7054,324 @@ You can retrieve information for MANY currencies in one request:
 <td>If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!</td>
 </tr>
 </tbody></table>
+<h1 id='multi-purpose-token'>Multi Purpose Token</h1><h2 id='list-of-mpts'>List of MPTs</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/mptokens"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">listMPTokens</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/mptokens</span><span class="dl">"</span><span class="p">,</span> <span class="nx">listMPTokens</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/mptokens"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rating"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"issuances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"objectID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43C88DE501AF7E1B9BAA25BFD5ECB5E73054CDDBE9893D54D44AD8AAADC74EBC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mptokenIssuanceID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"056762A93087A14B122055FA030F9EE6F74F87116559C83D"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759779190</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759779190</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lastUsedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759779190</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">90661545</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Precious MPT - undefined"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Precious MPT - undefined"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"weblinks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Metaprotocol Token representing precious metals portfolio for customer undefined"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"purchase_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29089"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"scale"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"transferFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"maximumAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"outstandingAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lockedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canLock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"requireAuth"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canEscrow"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canTrade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canTransfer"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canClawback"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Metaprotocol Token representing precious metals portfolio for customer undefined"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"kyc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"stablecoin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fiat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mptokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves a list of Multi Purpose Tokens (MPT) on the Ledger.</p>
+<h3 id='http-request-50'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/mptokens</code></p>
+<h3 id='query-parameters-33'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>order</td>
+<td>rating</td>
+<td>The order of the MPTs in the response. Can be <code>rating</code>, <code>holdersHigh</code>,<code>createdAtNew</code>, <code>createdAtOld</code>, <code>mptokensHigh</code>. <code>mptokensHigh</code> - how many users created MPT objects in order to hold the MPT.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The maximum number of MPTs to return in the response</td>
+</tr>
+<tr>
+<td>issuer</td>
+<td>null</td>
+<td>If set, the response will only include MPTs issued by the specified issuer address.</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>null</td>
+<td>If set, the response will only include MPTs with the specified currency code.</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>null</td>
+<td>(only available on paid api plans) The marker to use for pagination. If set, the response will include MPTs starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.</td>
+</tr>
+</tbody></table>
+<h2 id='mp-token'>MP Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/cors/v2/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getMPTokenInfo</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/cors/v2/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getMPTokenInfo</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/cors/v2/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"objectID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43C88DE501AF7E1B9BAA25BFD5ECB5E73054CDDBE9893D54D44AD8AAADC74EBC"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mptokenIssuanceID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"056762A93087A14B122055FA030F9EE6F74F87116559C83D"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759779190</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759779190</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastUsedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759779190</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">90661545</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Precious MPT - undefined"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Precious MPT - undefined"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"weblinks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Metaprotocol Token representing precious metals portfolio for customer undefined"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"purchase_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29089"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"scale"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transferFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"maximumAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"outstandingAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lockedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"canLock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"requireAuth"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"canEscrow"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"canTrade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"canTransfer"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"canClawback"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Metaprotocol Token representing precious metals portfolio for customer undefined"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"kyc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"stablecoin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"fiat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mptokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves information for a specific Multi Purpose Token (MPT) on the Ledger.</p>
+<h3 id='http-request-51'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/mptoken/&lt;mptokenIssuanceID&gt;</code></p>
+<h3 id='url-parameters-22'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>mptokenIssuanceID</td>
+<td>The issuance ID of the MPT.</td>
+</tr>
+</tbody></table>
+<h2 id='mp-token-search'>MP Token Search</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/mptokens/search/Precious"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">searchMPTokens</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/mptokens/search/Precious</span><span class="dl">"</span><span class="p">,</span> <span class="nx">searchMPTokens</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/mptokens/search/Precious"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"issuances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"objectID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"43C88DE501AF7E1B9BAA25BFD5ECB5E73054CDDBE9893D54D44AD8AAADC74EBC"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mptokenIssuanceID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"056762A93087A14B122055FA030F9EE6F74F87116559C83D"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759779190</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"updatedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759779190</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lastUsedAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759779190</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">90661545</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Precious MPT - undefined"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cdn.bithomp.com/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"metadata"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Precious MPT - undefined"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"weblinks"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Metaprotocol Token representing precious metals portfolio for customer undefined"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"purchase_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"29089"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"scale"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"transferFee"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"maximumAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"50000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"outstandingAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lockedAmount"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canLock"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"requireAuth"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canEscrow"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canTrade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canTransfer"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"canClawback"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Metaprotocol Token representing precious metals portfolio for customer undefined"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"kyc"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"stablecoin"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"fiat"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mptokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint searches for Multi Purpose Tokens (MPT) on the Ledger by a given item or a part of it (currency code, currency name, issuer address, username, service name, domain etc.).</p>
+<h3 id='http-request-52'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/mptokens/search/&lt;item&gt;</code></p>
+<h3 id='url-parameters-23'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>item</td>
+<td>The item to search for. It can be part of a currency code, currency name, issuer address, username, service name, domain, or a full currency code, currency name, issuer address, username, service name, domain.</td>
+</tr>
+</tbody></table>
+<h2 id='mp-token-issuer-search'>MP Token Issuer search</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/mptokens/issuers/search/rnR"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">searchMPTokenIssuers</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/mptokens/issuers/search/rnR</span><span class="dl">"</span><span class="p">,</span> <span class="nx">searchMPTokenIssuers</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/mptokens/issuers/search/rnR"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"issuers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"verifiedDomain"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11458365"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint searches for Multi Purpose Token (MPT) issuers on the Ledger by a given item or a part of it (issuer address, username, service name, domain etc.).</p>
+<h3 id='http-request-53'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/mptokens/issuers/search/&lt;item&gt;</code></p>
+<h3 id='url-parameters-24'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>item</td>
+<td>The item to search for. It can be part of an issuer address, username, service name, domain, or a full issuer address, username, service name, domain.</td>
+</tr>
+</tbody></table>
+<h2 id='mp-token-currency-search'>MP Token Currency search</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/mptokens/currencies/search/Precious"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">searchMPTCurrencies</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/mptokens/currencies/search/Precious</span><span class="dl">"</span><span class="p">,</span> <span class="nx">searchMPTCurrencies</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/mptokens/currencies/search/Precious"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"currencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Precious MPT - undefined"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint searches for Multi Purpose Token (MPT) currencies on the Ledger by a given name or a part of it (currency code, currency name.).</p>
+<h3 id='http-request-54'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/mptokens/currencies/search/&lt;item&gt;</code></p>
+<h3 id='url-parameters-25'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>item</td>
+<td>The item to search for. It can be part of a currency code, currency name, or a full currency code, currency name.</td>
+</tr>
+</tbody></table>
 <h1 id='transaction'>Transaction</h1><h2 id='tx-details'>Tx Details</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">printData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -7182,9 +7545,9 @@ Page on bithomp that displays it:
 <a href="https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
   https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
 </a>.</p>
-<h3 id='http-request-50'>HTTP Request</h3>
+<h3 id='http-request-55'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/&lt;hash&gt;</code></p>
-<h3 id='url-parameters-22'>URL Parameters</h3>
+<h3 id='url-parameters-26'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7237,9 +7600,9 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://bithomp.com/submit/">
   https://bithomp.com/submit/
 </a>.</p>
-<h3 id='http-request-51'>HTTP Request</h3>
+<h3 id='http-request-56'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
-<h3 id='url-parameters-23'>URL Parameters</h3>
+<h3 id='url-parameters-27'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7302,7 +7665,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/?hwlogin">
   https://bithomp.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-52'>HTTP Request</h3>
+<h3 id='http-request-57'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -7390,9 +7753,9 @@ Page on bithomp that displays it:
 <a href="https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv">
   https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv
 </a>.</p>
-<h3 id='http-request-53'>HTTP Request</h3>
+<h3 id='http-request-58'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transactions/&lt;address&gt;</code></p>
-<h3 id='url-parameters-24'>URL Parameters</h3>
+<h3 id='url-parameters-28'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7404,7 +7767,7 @@ Page on bithomp that displays it:
 <td>The address to get transactions for</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-33'>Query Parameters</h3>
+<h3 id='query-parameters-34'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7584,9 +7947,9 @@ Page on bithomp that displays it:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales">https://bithomp.com/en/whales</a>.</p>
-<h3 id='http-request-54'>HTTP Request</h3>
+<h3 id='http-request-59'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale</code></p>
-<h3 id='query-parameters-34'>Query Parameters</h3>
+<h3 id='query-parameters-35'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7646,9 +8009,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/receivers">https://bithomp.com/en/whales/receivers</a>.</p>
-<h3 id='http-request-55'>HTTP Request</h3>
+<h3 id='http-request-60'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/receivers</code></p>
-<h3 id='query-parameters-35'>Query Parameters</h3>
+<h3 id='query-parameters-36'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7708,9 +8071,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/senders">https://bithomp.com/en/whales/senders</a>.</p>
-<h3 id='http-request-56'>HTTP Request</h3>
+<h3 id='http-request-61'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/senders</code></p>
-<h3 id='query-parameters-36'>Query Parameters</h3>
+<h3 id='query-parameters-37'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7771,9 +8134,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/submitters">https://bithomp.com/en/whales/submitters</a>.</p>
-<h3 id='http-request-57'>HTTP Request</h3>
+<h3 id='http-request-62'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/submitters</code></p>
-<h3 id='query-parameters-37'>Query Parameters</h3>
+<h3 id='query-parameters-38'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7842,9 +8205,9 @@ Page where it used on bithomp:
 
 <p><br>Page where it used on bithomp:
 <a href="https://bithomp.com/en/distribution">https://bithomp.com/en/distribution</a>.</p>
-<h3 id='http-request-58'>HTTP Request</h3>
+<h3 id='http-request-63'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/addresses/richlist</code></p>
-<h3 id='query-parameters-38'>Query Parameters</h3>
+<h3 id='query-parameters-39'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7930,9 +8293,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/object/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8" style="word-break:break-word;">https://bithomp.com/en/object/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8</a>.</p>
-<h3 id='http-request-59'>HTTP Request</h3>
+<h3 id='http-request-64'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/ledgerEntry/&lt;index&gt;</code></p>
-<h3 id='url-parameters-25'>URL Parameters</h3>
+<h3 id='url-parameters-29'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7944,7 +8307,7 @@ Page where it used on bithomp:
 <td>The index of the ledger entry to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-39'>Query Parameters</h3>
+<h3 id='query-parameters-40'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8008,7 +8371,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.</p>
-<h3 id='http-request-60'>HTTP Request</h3>
+<h3 id='http-request-65'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/account-chart</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
@@ -8072,7 +8435,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-61'>HTTP Request</h3>
+<h3 id='http-request-66'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-7'>Response Format</h3>
 <table><thead>
@@ -8190,7 +8553,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-62'>HTTP Request</h3>
+<h3 id='http-request-67'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-8'>Response Format</h3>
 <table><thead>
