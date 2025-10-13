@@ -84,6 +84,30 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 13th of October 2025
+
+5 new endpoints were added:
+
+<a href="#list-of-mpts">**List of MPTs**</a>
+
+Get the list of Multi Purpose Tokens (MPT) issued on the XRPL. You can filter by `issuer` or `currency`, sort by holders count etc.
+
+<a href="#mp-token">**MP Token**</a>
+
+Get information for a specific Multi Purpose Token (MPT) issued on the XRPL. Icon, description, holders count, and more.
+
+<a href="#mp-token-search">**MP Token Search**</a>
+
+Search for Multi Purpose Tokens (MPT) by a part of currency, currencu code, issuer address, username, domain, service name.
+
+<a href="#mp-token-issuer-search">**MP Token Issuer Search**</a>
+
+Search for Multi Purpose Token (MPT) issuers by a part of address, username, domain, service name.
+
+<a href="#mp-token-currency-search">**MP Token Currency Search**</a>
+
+Search for Multi Purpose Token (MPT) currencies by a part of currency, currency code, issuer address, username, domain, service name.
+
 ### 8th of October 2025
 
 2 new endpoints were added:
@@ -5701,6 +5725,340 @@ item     | The item to search for. It can be part of a currency code, currency n
 Parameter | Default | Description
 --------- | ------- | -----------
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure! 
+
+# Multi Purpose Token
+
+## List of MPTs
+
+```shell
+curl "https://bithomp.com/api/v2/mptokens"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+``` 
+
+```javascript
+function listMPTokens(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/mptokens", listMPTokens);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/mptokens");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "order": "rating",
+  "issuances": [
+    {
+      "objectID": "43C88DE501AF7E1B9BAA25BFD5ECB5E73054CDDBE9893D54D44AD8AAADC74EBC",
+      "mptokenIssuanceID": "056762A93087A14B122055FA030F9EE6F74F87116559C83D",
+      "createdAt": 1759779190,
+      "updatedAt": 1759779190,
+      "lastUsedAt": 1759779190,
+      "issuer": "rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM",
+      "issuerDetails": {
+        "address": "rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM",
+        "username": null,
+        "service": null
+      },
+      "sequence": 90661545,
+      "currency": "Precious MPT - undefined",
+      "icon": "https://cdn.bithomp.com/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D",
+      "metadata": {
+        "name": "Precious MPT - undefined",
+        "weblinks": [],
+        "description": "Metaprotocol Token representing precious metals portfolio for customer undefined",
+        "purchase_id": "29089"
+      },
+      "scale": 2,
+      "transferFee": null,
+      "maximumAmount": "50000000",
+      "outstandingAmount": "0",
+      "lockedAmount": "0",
+      "flags": {
+        "locked": false,
+        "canLock": false,
+        "requireAuth": false,
+        "canEscrow": false,
+        "canTrade": false,
+        "canTransfer": false,
+        "canClawback": false
+      },
+      "description": "Metaprotocol Token representing precious metals portfolio for customer undefined",
+      "kyc": false,
+      "stablecoin": false,
+      "fiat": null,
+      "mptokens": 0,
+      "holders": 0,
+      "rating": 0
+    }
+  ]
+}
+```
+
+This endpoint retrieves a list of Multi Purpose Tokens (MPT) on the Ledger.
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/mptokens`
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+order | rating | The order of the MPTs in the response. Can be `rating`, `holdersHigh`,`createdAtNew`, `createdAtOld`, `mptokensHigh`. `mptokensHigh` - how many users created MPT objects in order to hold the MPT.
+limit | 100 | The maximum number of MPTs to return in the response
+issuer | null | If set, the response will only include MPTs issued by the specified issuer address.
+currency | null | If set, the response will only include MPTs with the specified currency code.
+marker | null | (only available on paid api plans) The marker to use for pagination. If set, the response will include MPTs starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.
+
+## MP Token
+
+```shell
+curl "https://bithomp.com/api/cors/v2/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getMPTokenInfo(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/cors/v2/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D", getMPTokenInfo);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/cors/v2/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "objectID": "43C88DE501AF7E1B9BAA25BFD5ECB5E73054CDDBE9893D54D44AD8AAADC74EBC",
+  "mptokenIssuanceID": "056762A93087A14B122055FA030F9EE6F74F87116559C83D",
+  "createdAt": 1759779190,
+  "updatedAt": 1759779190,
+  "lastUsedAt": 1759779190,
+  "issuer": "rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM",
+  "issuerDetails": {
+    "address": "rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM",
+    "username": null,
+    "service": null
+  },
+  "sequence": 90661545,
+  "currency": "Precious MPT - undefined",
+  "icon": "https://cdn.bithomp.com/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D",
+  "metadata": {
+    "name": "Precious MPT - undefined",
+    "weblinks": [],
+    "description": "Metaprotocol Token representing precious metals portfolio for customer undefined",
+    "purchase_id": "29089"
+  },
+  "scale": 2,
+  "transferFee": null,
+  "maximumAmount": "50000000",
+  "outstandingAmount": "0",
+  "lockedAmount": "0",
+  "flags": {
+    "locked": false,
+    "canLock": false,
+    "requireAuth": false,
+    "canEscrow": false,
+    "canTrade": false,
+    "canTransfer": false,
+    "canClawback": false
+  },
+  "description": "Metaprotocol Token representing precious metals portfolio for customer undefined",
+  "kyc": false,
+  "stablecoin": false,
+  "fiat": null,
+  "mptokens": 0,
+  "holders": 0,
+  "rating": 0
+}
+```
+
+This endpoint retrieves information for a specific Multi Purpose Token (MPT) on the Ledger.
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/mptoken/<mptokenIssuanceID>`
+
+### URL Parameters
+Parameter         | Description
+----------------- | -----------
+mptokenIssuanceID | The issuance ID of the MPT.
+
+## MP Token Search 
+
+```shell
+curl "https://bithomp.com/api/v2/mptokens/search/Precious"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+``` 
+
+```javascript
+function searchMPTokens(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/mptokens/search/Precious", searchMPTokens);
+``` 
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/mptokens/search/Precious");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "issuances": [
+    {
+      "objectID": "43C88DE501AF7E1B9BAA25BFD5ECB5E73054CDDBE9893D54D44AD8AAADC74EBC",
+      "mptokenIssuanceID": "056762A93087A14B122055FA030F9EE6F74F87116559C83D",
+      "createdAt": 1759779190,
+      "updatedAt": 1759779190,
+      "lastUsedAt": 1759779190,
+      "issuer": "rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM",
+      "issuerDetails": {
+        "address": "rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM",
+        "username": null,
+        "service": null
+      },
+      "sequence": 90661545,
+      "currency": "Precious MPT - undefined",
+      "icon": "https://cdn.bithomp.com/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D",
+      "metadata": {
+        "name": "Precious MPT - undefined",
+        "weblinks": [],
+        "description": "Metaprotocol Token representing precious metals portfolio for customer undefined",
+        "purchase_id": "29089"
+      },
+      "scale": 2,
+      "transferFee": null,
+      "maximumAmount": "50000000",
+      "outstandingAmount": "0",
+      "lockedAmount": "0",
+      "flags": {
+        "locked": false,
+        "canLock": false,
+        "requireAuth": false,
+        "canEscrow": false,
+        "canTrade": false,
+        "canTransfer": false,
+        "canClawback": false
+      },
+      "description": "Metaprotocol Token representing precious metals portfolio for customer undefined",
+      "kyc": false,
+      "stablecoin": false,
+      "fiat": null,
+      "mptokens": 0,
+      "holders": 0,
+      "rating": 0
+    }
+  ]
+}
+```
+
+This endpoint searches for Multi Purpose Tokens (MPT) on the Ledger by a given item or a part of it (currency code, currency name, issuer address, username, service name, domain etc.).
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/mptokens/search/<item>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+item     | The item to search for. It can be part of a currency code, currency name, issuer address, username, service name, domain, or a full currency code, currency name, issuer address, username, service name, domain.
+
+## MP Token Issuer search 
+
+```shell
+curl "https://bithomp.com/api/v2/mptokens/issuers/search/rnR"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function searchMPTokenIssuers(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/mptokens/issuers/search/rnR", searchMPTokenIssuers);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/mptokens/issuers/search/rnR");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "issuers": [
+    {
+      "address": "rnRbuxseqEHbxXgaBZJu7PAMQKmVAqp9RM",
+      "username": null,
+      "service": null,
+      "verifiedDomain": null,
+      "balance": "11458365"
+    }
+  ]
+}
+```
+
+This endpoint searches for Multi Purpose Token (MPT) issuers on the Ledger by a given item or a part of it (issuer address, username, service name, domain etc.).
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/mptokens/issuers/search/<item>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+item     | The item to search for. It can be part of an issuer address, username, service name, domain, or a full issuer address, username, service name, domain.
+
+## MP Token Currency search 
+
+```shell
+curl "https://bithomp.com/api/v2/mptokens/currencies/search/Precious"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function searchMPTCurrencies(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/mptokens/currencies/search/Precious", searchMPTCurrencies);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/mptokens/currencies/search/Precious");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "currencies": [
+    {
+      "currency": "Precious MPT - undefined"
+    }
+  ]
+}
+```
+
+This endpoint searches for Multi Purpose Token (MPT) currencies on the Ledger by a given name or a part of it (currency code, currency name.).
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/mptokens/currencies/search/<item>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+item     | The item to search for. It can be part of a currency code, currency name, or a full currency code, currency name.
+
+
 
 # Transaction
 
