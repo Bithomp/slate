@@ -7337,6 +7337,20 @@ You can retrieve information for MANY currencies in one request:
 <td>The item to search for. It can be part of an issuer address, username, service name, domain, or a full issuer address, username, service name, domain.</td>
 </tr>
 </tbody></table>
+<h3 id='query-parameters-34'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The maximum number of issuers to return in the response. (More than 100 is available for the Standard plan and higher).</td>
+</tr>
+</tbody></table>
 <h2 id='mp-token-currency-search'>MP Token Currency search</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/mptokens/currencies/search/Precious"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">searchMPTCurrencies</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -7370,6 +7384,20 @@ You can retrieve information for MANY currencies in one request:
 <tr>
 <td>item</td>
 <td>The item to search for. It can be part of a currency code, currency name, or a full currency code, currency name.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-35'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The maximum number of issuers to return in the response. (More than 100 is available for the Standard plan and higher).</td>
 </tr>
 </tbody></table>
 <h1 id='transaction'>Transaction</h1><h2 id='tx-details'>Tx Details</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/transaction/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F"</span>
@@ -7767,7 +7795,7 @@ Page on bithomp that displays it:
 <td>The address to get transactions for</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-34'>Query Parameters</h3>
+<h3 id='query-parameters-36'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7949,7 +7977,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales">https://bithomp.com/en/whales</a>.</p>
 <h3 id='http-request-59'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale</code></p>
-<h3 id='query-parameters-35'>Query Parameters</h3>
+<h3 id='query-parameters-37'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8011,7 +8039,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/receivers">https://bithomp.com/en/whales/receivers</a>.</p>
 <h3 id='http-request-60'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/receivers</code></p>
-<h3 id='query-parameters-36'>Query Parameters</h3>
+<h3 id='query-parameters-38'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8073,7 +8101,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/senders">https://bithomp.com/en/whales/senders</a>.</p>
 <h3 id='http-request-61'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/senders</code></p>
-<h3 id='query-parameters-37'>Query Parameters</h3>
+<h3 id='query-parameters-39'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8136,7 +8164,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/submitters">https://bithomp.com/en/whales/submitters</a>.</p>
 <h3 id='http-request-62'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/submitters</code></p>
-<h3 id='query-parameters-38'>Query Parameters</h3>
+<h3 id='query-parameters-40'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8207,7 +8235,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/en/distribution">https://bithomp.com/en/distribution</a>.</p>
 <h3 id='http-request-63'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/addresses/richlist</code></p>
-<h3 id='query-parameters-39'>Query Parameters</h3>
+<h3 id='query-parameters-41'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8307,7 +8335,7 @@ Page where it used on bithomp:
 <td>The index of the ledger entry to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-40'>Query Parameters</h3>
+<h3 id='query-parameters-42'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
