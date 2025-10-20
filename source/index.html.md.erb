@@ -84,7 +84,15 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
-### 25th of October 2025
+### 20th of October 2025
+
+A new endpoint was added:
+
+<a href="#get-amm-pool-data-by-asset-pair">**Get AMM Pool Data by Asset Pair**</a>
+
+Get AMM Pool data by asset pair (e.g., XRP/RLUSD(issued by Ripple)).
+
+### 15th of October 2025
 
 A new query parameter: `holders` was added to the <a href="#amm-pools">**AMM Pools**</a> and <a href="#amm-pool">**AMM Pool**</a> API end-points.
 
@@ -1184,7 +1192,92 @@ Parameter | Default | Description
 --------- | ------- | -----------
 ledgerIndex | null | ledger index (if set the request will return data for that ledger index)
 ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request will return data for that timestamp)
-holders | false | (available on paid plans only) If set to true, the result will also include a `holders` count. This is the number of unique LP token holders.
+holders | false | (available on paid plans only) If set to true, the result will also include a current `holders` count (not returned for historical request with `ledgerIndex`or `ledgerTimestamp`). This is the number of unique LP token holders.
+
+## Get AMM Pool data by Asset Pair
+
+```shell
+curl "https://bithomp.com/api/v2/amms/search?currency=XRP&currency2=43525950544F0000000000000000000000000000&issuer2=rRbiKwcueo6MchUpMFDce9XpDwHhRLPFo"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/amms/search?currency=XRP&currency2=43525950544F0000000000000000000000000000&issuer2=rRbiKwcueo6MchUpMFDce9XpDwHhRLPFo", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/amms/search?currency=XRP&currency2=43525950544F0000000000000000000000000000&issuer2=rRbiKwcueo6MchUpMFDce9XpDwHhRLPFo");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "amms": [
+    {
+      "ammID": "2858D58ECD99108CEB105A3D9F84D293E507701878EE25612F5BF6D4A93F3B69",
+      "createdAt": 1713278621,
+      "createdLedgerIndex": 87351197,
+      "createdTxHash": "8477FF5FF99BBF51505FD885866640CD0D224CF233A0C038586F53F7B34E747D",
+      "updatedAt": 1760968330,
+      "updatedLedgerIndex": 99650210,
+      "updatedTxHash": "5920101EE96D30164D02ECFF650C89E2631816B2B9835C9381F1C6DFA28A34B7",
+      "account": "rLjUKpwUVmz3vCTmFkXungxwzdoyrWRsFG",
+      "accountDetails": {
+        "username": null,
+        "service": null
+      },
+      "ownerNode": "0",
+      "amount": "3020100662272",
+      "amount2": {
+        "value": "1108865.292266609",
+        "currency": "43525950544F0000000000000000000000000000",
+        "issuer": "rRbiKwcueo6MchUpMFDce9XpDwHhRLPFo",
+        "issuerDetails": {
+          "username": null,
+          "service": "CryptoLand"
+        }
+      },
+      "tradingFee": 864,
+      "lpTokenBalance": {
+        "value": "1760575206.252741",
+        "currency": "03CE60C3DB22CF7F7157810936F27A5B485C8DB9",
+        "issuer": "rLjUKpwUVmz3vCTmFkXungxwzdoyrWRsFG",
+        "issuerDetails": {
+          "username": null,
+          "service": null
+        }
+      },
+      "voteSlotsCount": 8
+    }
+  ]
+}
+```
+
+This endpoint retrieves AMM pool data by asset pair.
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/amms/search?currency=<currency>&issuer=<issuer>&currency2=<currency2>&issuer2=<issuer2>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+currency | Asset 1 currency code (for XRP use `XRP`)
+issuer | Asset 1 issuer (not required for XRP)
+currency2 | Asset 2 currency code (for XRP use `XRP`)
+issuer2 | Asset 2 issuer (not required for XRP)
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+ledgerIndex | null | ledger index (if set the request will return data for that ledger index)
+ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request will return data for that timestamp)
+holders | false | (available on paid plans only) If set to true, the result will also include a current `holders` count (not returned for historical request with `ledgerIndex`or `ledgerTimestamp`). This is the number of unique LP token holders.
 
 # NFT (XLS-20)
 
