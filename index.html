@@ -1751,6 +1751,16 @@ Exclude unnecessary parameters to make your request faster.
 </tr>
 </thead><tbody>
 <tr>
+<td>currency</td>
+<td>null</td>
+<td>If set, only AMMs containing this currency (Asset1 or Asset2) will be returned. Format: <code>currency=XRP</code> or <code>currency=524C555344000000000000000000000000000000</code> (for RLUSD)</td>
+</tr>
+<tr>
+<td>currencyIssuer</td>
+<td>null</td>
+<td>currency issuer for <code>currency</code> in case of an IOU. Format: <code>currencyIssuer=rhub8VRN55s94qWKDv6jmDy1pUykJzF3wq</code></td>
+</tr>
+<tr>
 <td>order</td>
 <td><code>createdOld</code></td>
 <td>in which order the AMMs should be returned (<code>createdOld</code>, <code>createdNew</code>, <code>updatedOld</code>, <code>updatedNew</code>), <code>currencyHigh</code> - if you need to sort it by Asset1 or Asset2 balances, then specify also the <code>sortCurrency</code> parameter</td>
