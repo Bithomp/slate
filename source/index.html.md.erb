@@ -2525,11 +2525,11 @@ curl "https://bithomp.com/api/v2/nft-volumes-extended?list=collections&convertCu
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/nft-volumes-extended??list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-volumes-extended?list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/nft-volumes-extended??list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-volumes-extended?list=collections&convertCurrencies=usd&sortCurrency=usd&floorPrice=true&statistics=true&period=week&saleType=secondary&assets=true");
 print $data;
 ```
 
