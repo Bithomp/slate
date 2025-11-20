@@ -6610,8 +6610,8 @@ counterparty | null | The address that is the counterparty in the transaction. I
 excludeFailures | false | If true, transactions with a status other than `tesSUCCESS` will be excluded from the results.
 ledgerIndexMin | null | The minimum ledger index to filter transactions by. If not specified, all transactions will be returned.
 ledgerIndexMax | null | The maximum ledger index to filter transactions by. If not specified, all transactions will be returned.
-fromDate | null | The minimum date to filter transactions by. If not specified, all transactions will be returned.
-toDate | null | The maximum date to filter transactions by. If not specified, all transactions will be returned.
+fromDate | null | The minimum date to filter transactions by. If not specified, all transactions will be returned. ISO 8601 format (e.g., `2023-01-30T14:45:00Z`) or UNIX timestamp in seconds (e.g., `1675088700`).
+toDate | null | The maximum date to filter transactions by. If not specified, all transactions will be returned. ISO 8601 format (e.g., `2023-01-30T14:45:00Z`) or UNIX timestamp in seconds (e.g., `1675088700`).
 sourceTag | null | The source tag to filter transactions by. If not specified, all transactions will be returned.
 destinationTag | null | The destination tag to filter transactions by. If not specified, all transactions will be returned.
 marker | null | A marker to paginate through the results. If not specified, the first page of results will be returned.
