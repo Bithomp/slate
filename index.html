@@ -3276,9 +3276,19 @@ Exclude unnecessary parameters to make your request faster.
 <td>(optional) taxon for the <code>address</code> issuer, to see the NFT distribution of a collection identified by issuer and taxon.</td>
 </tr>
 <tr>
+<td>collection</td>
+<td>null</td>
+<td>The collection ID (optional, can be instead of <code>issuer</code> &amp; <code>taxon</code>), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using <code>issuer</code> and <code>taxon</code>, in the format: <code>issuer:taxon</code>.</td>
+</tr>
+<tr>
 <td>marker</td>
 <td>null</td>
 <td>(available on paid plans only) The marker from the previous request, if you need a next page of NFT owners.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The number of NFT owners to return. (More than 100 is available for the Standard plan and higher).</td>
 </tr>
 </tbody></table>
 <h2 id='nft-sales'>NFT Sales</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-sales?list=topSold&amp;currency=xrp&amp;convertCurrencies=usd,eur"</span>
@@ -3607,8 +3617,8 @@ Exclude unnecessary parameters to make your request faster.
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-volumes-extended??list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-volumes-extended??list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-volumes-extended?list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-volumes-extended?list=collections&amp;convertCurrencies=usd&amp;sortCurrency=usd&amp;floorPrice=true&amp;statistics=true&amp;period=week&amp;saleType=secondary&amp;assets=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -7981,7 +7991,7 @@ Page on bithomp that displays it:
 <tr>
 <td>initiated</td>
 <td>null</td>
-<td>The address that initiated the transaction. If not specified, all transactions will be returned.</td>
+<td>if <code>true</code> returns transactions that were initiated by <code>address</code>, if <code>false</code> returns non-initiated transactions. If not specified, all transactions will be returned.</td>
 </tr>
 <tr>
 <td>counterparty</td>
@@ -8006,12 +8016,12 @@ Page on bithomp that displays it:
 <tr>
 <td>fromDate</td>
 <td>null</td>
-<td>The minimum date to filter transactions by. If not specified, all transactions will be returned.</td>
+<td>The minimum date to filter transactions by. If not specified, all transactions will be returned. ISO 8601 format (e.g., <code>2023-01-30T14:45:00Z</code>) or UNIX timestamp in seconds (e.g., <code>1675088700</code>).</td>
 </tr>
 <tr>
 <td>toDate</td>
 <td>null</td>
-<td>The maximum date to filter transactions by. If not specified, all transactions will be returned.</td>
+<td>The maximum date to filter transactions by. If not specified, all transactions will be returned. ISO 8601 format (e.g., <code>2023-01-30T14:45:00Z</code>) or UNIX timestamp in seconds (e.g., <code>1675088700</code>).</td>
 </tr>
 <tr>
 <td>sourceTag</td>
