@@ -2251,7 +2251,9 @@ Parameter | Default | Description
 order | `total` | `nonSelfIssued`, `selfIssued`, `total` (order list by count of total owned NFTS, or only by self-issued NFTs, or only owned NFTs that issued by another address).
 issuer | null | (optional) NFT issuer `address`, to see the NFT distribution for a specific issuer.
 taxon | null | (optional) taxon for the `address` issuer, to see the NFT distribution of a collection identified by issuer and taxon.
+collection | null | The collection ID (optional, can be instead of `issuer` & `taxon`), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using `issuer` and `taxon`, in the format: `issuer:taxon`.
 marker | null | (available on paid plans only) The marker from the previous request, if you need a next page of NFT owners.
+limit | 100 | The number of NFT owners to return. (More than 100 is available for the Standard plan and higher).
 
 ## NFT Sales
 
