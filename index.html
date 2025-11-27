@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#27th-of-november-2025" class="toc-h2 toc-link" data-title="27th of November 2025">27th of November 2025</a>
+                  </li>
+                  <li>
                     <a href="#20th-of-october-2025" class="toc-h2 toc-link" data-title="20th of October 2025">20th of October 2025</a>
                   </li>
                   <li>
@@ -372,9 +375,6 @@
                   </li>
                   <li>
                     <a href="#28th-of-january-2025" class="toc-h2 toc-link" data-title="28th of January 2025">28th of January 2025</a>
-                  </li>
-                  <li>
-                    <a href="#22nd-of-october-2024" class="toc-h2 toc-link" data-title="22nd of October 2024">22nd of October 2024</a>
                   </li>
               </ul>
           </li>
@@ -778,6 +778,8 @@
 
 <p>XRPL DEVNET: <code>https://dev.bithomp.com/api/v2/</code>, get your api key <a href="https://dev.bithomp.com/admin">here</a></p>
 
+<p>XRPL ALPHANET: <code>https://alpha.bithomp.com/api/v2/</code>, get your api key <a href="https://alpha.bithomp.com/admin">here</a></p>
+
 <p>XAHAU TESTNET: <code>https://test.xahauexplorer.com/api/v2/</code>, get your api key <a href="https://test.xahauexplorer.com/admin">here</a></p>
 <h1 id='price-and-limits'>Price and Limits</h1>
 <p>Bithomp API is FREE on the test networks!</p>
@@ -922,7 +924,11 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='20th-of-october-2025'>20th of October 2025</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='27th-of-november-2025'>27th of November 2025</h3>
+<p>2 new query parameters: <code>filterSpam</code> and <code>relevantOnly</code> were added to the <a href="#transactions-by-address"><strong>Transactions by address</strong></a> API end-point.</p>
+
+<p>Now you can filter out known spam transactions and get only relevant transactions for an address.</p>
+<h3 id='20th-of-october-2025'>20th of October 2025</h3>
 <p>A new endpoint was added:</p>
 
 <p><a href="#get-amm-pool-data-by-asset-pair"><strong>Get AMM Pool Data by Asset Pair</strong></a></p>
@@ -997,7 +1003,7 @@
 
 <p>Now you can get the price of a token in 40 fiat currencies. Just pass a fiat currency code (e.g., <code>usd</code>) to the <code>convertCurrencies</code> parameter.</p>
 <h3 id='30th-of-september-2025'>30th of September 2025</h3>
-<p>The new query parameter: <code>priceNativeCurrencySpot</code> was added to the <a href="#get-the-list-of-objects-owned-by-an-address"><strong>Get the list of objects owned by an address</strong></a> API end-point.</p>
+<p>A new query parameter: <code>priceNativeCurrencySpot</code> was added to the <a href="#get-the-list-of-objects-owned-by-an-address"><strong>Get the list of objects owned by an address</strong></a> API end-point.</p>
 
 <p>Now you can get the spot price in the native currency (XRP or XAH) for each token that the address owns. (if token exist and in our system and has at list a positive rating we will return its price in the Native Currency). It supports historical spot price too (if you send <code>ledgerIndex</code> or <code>ledgerTimestamp</code>).</p>
 <h3 id='22nd-of-august-2025'>22nd of August 2025</h3>
@@ -1085,13 +1091,7 @@ Now you can get a list of AMMs by their IDs. (Available for the Standard plan an
 <h3 id='28th-of-january-2025'>28th of January 2025</h3>
 <p>A new query parameter: <code>bithomp</code> was added to the <a href="#address"><strong>Address</strong></a> API end-point.</p>
 
-<p>That will return avatar link for an address and a status of Bithomp Pro. </p>
-<h3 id='22nd-of-october-2024'>22nd of October 2024</h3>
-<p>A new endpoint was added:</p>
-
-<p><a href="#address-token-balances"><strong>Address Token Balances</strong></a></p>
-
-<p>Get the list of token balances for a specific address. For Xahau it also includes locked balances (Token escrowed balances).</p>
+<p>That will return avatar link for an address and a status of Bithomp Pro.</p>
 <h1 id='free-token-images'>Free Token Images</h1>
 <p>You can easily display token images for XRPL and Xahau tokens using the Bithomp token image service. No registration is required.</p>
 
@@ -7973,6 +7973,16 @@ Page on bithomp that displays it:
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>filterSpam</td>
+<td>false</td>
+<td>If true, known spam transactions will be filtered out from the results.</td>
+</tr>
+<tr>
+<td>relevantOnly</td>
+<td>false</td>
+<td>If true, only transactions relevant to the address will be returned. Relevant transactions are those where the address is either the source or destination, or where address\&#39;s balances were affected&#39;. If false, all transactions involving the address in the metadata will be returned. For example, transactions of another account, where address is NFTminter or a Regular key in the settings.</td>
+</tr>
 <tr>
 <td>startTxHash</td>
 <td>null</td>
