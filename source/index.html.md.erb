@@ -37,6 +37,8 @@ XRPL TESTNET: `https://test.bithomp.com/api/v2/`, get your api key [here](https:
 
 XRPL DEVNET: `https://dev.bithomp.com/api/v2/`, get your api key [here](https://dev.bithomp.com/admin)
 
+XRPL ALPHANET: `https://alpha.bithomp.com/api/v2/`, get your api key [here](https://alpha.bithomp.com/admin)
+
 XAHAU TESTNET: `https://test.xahauexplorer.com/api/v2/`, get your api key [here](https://test.xahauexplorer.com/admin)
 
 # Price and Limits
@@ -83,6 +85,12 @@ Direct access to fast [resized and cached] images and videos:
 - <a href="https://bithomp.com/admin">Request an API key</a>
 
 # Changelog
+
+### 27th of November 2025
+
+2 new query parameters: `filterSpam` and `relevantOnly` were added to the <a href="#transactions-by-address">**Transactions by address**</a> API end-point.
+
+Now you can filter out known spam transactions and get only relevant transactions for an address.
 
 ### 20th of October 2025
 
@@ -174,7 +182,7 @@ Now you can get the price of a token in 40 fiat currencies. Just pass a fiat cur
 
 ### 30th of September 2025
 
-The new query parameter: `priceNativeCurrencySpot` was added to the <a href="#get-the-list-of-objects-owned-by-an-address">**Get the list of objects owned by an address**</a> API end-point.
+A new query parameter: `priceNativeCurrencySpot` was added to the <a href="#get-the-list-of-objects-owned-by-an-address">**Get the list of objects owned by an address**</a> API end-point.
 
 Now you can get the spot price in the native currency (XRP or XAH) for each token that the address owns. (if token exist and in our system and has at list a positive rating we will return its price in the Native Currency). It supports historical spot price too (if you send `ledgerIndex` or `ledgerTimestamp`).
 
@@ -280,15 +288,7 @@ Now you can get a list of AMMs by their IDs. (Available for the Standard plan an
 
 A new query parameter: `bithomp` was added to the <a href="#address">**Address**</a> API end-point.
 
-That will return avatar link for an address and a status of Bithomp Pro. 
-
-### 22nd of October 2024
-
-A new endpoint was added:
-
-<a href="#address-token-balances">**Address Token Balances**</a>
-
-Get the list of token balances for a specific address. For Xahau it also includes locked balances (Token escrowed balances).
+That will return avatar link for an address and a status of Bithomp Pro.
 
 # Free Token Images
 
@@ -6604,6 +6604,8 @@ address | The address to get transactions for
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
+filterSpam | false | If true, known spam transactions will be filtered out from the results.
+relevantOnly | false | If true, only transactions relevant to the address will be returned. Relevant transactions are those where the address is either the source or destination, or where address\'s balances were affected'. If false, all transactions involving the address in the metadata will be returned. For example, transactions of another account, where address is NFTminter or a Regular key in the settings.
 startTxHash | null | The hash of the transaction to start from. If not specified, the latest transactions will be returned.
 forward | false | If true, the transactions will be returned in ascending order (from oldest to newest). If false, they will be returned in descending order (from newest to oldest).
 type | null | The type of transactions to filter by. Possible values: `Payment`, `OfferCreate`, `OfferCancel`, `TrustSet`, `AccountSet`, etc. (case-insensitive). If not specified, all types will be returned.
