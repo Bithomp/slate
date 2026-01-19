@@ -92,6 +92,11 @@ A new query parameter: `offset` was added to the <a href="#nfts">**NFTs**</a> an
 
 - `offset` — the number of items to skip (for pagination).
 
+Two new query parameters: `search` and `searchLocations` were added to the <a href="#nfts">**NFTs**</a> and <a href="#nfts-2">**URITOKENs**</a> API endpoints.
+
+- `search` — text to search for in NFTs.
+- `searchLocations` — comma-separated list of locations to search in.
+
 ### 27th of November 2025
 
 2 new query parameters: `filterSpam` and `relevantOnly` were added to the <a href="#transactions-by-address">**Transactions by address**</a> API end-point.
@@ -1789,6 +1794,8 @@ limit | 100 | The number of NFTs to return. (More than 100 is available for the 
 ids | null | (Available for the Standard plan and higher) A list of NFT IDs separated by commas (max 100), to get information about specific NFTs. Formats: `ids=abc,def`, `ids[]=abc&ids[]=def` or `ids=abc&ids=def`.
 offset | null | (Available for the Standard plan and higher) The number of items to skip (for pagination).
 collectionDetails | false | (Available for the Paid plans) If set to true, each nft will include `collectionDetails` with the collection details. if parameter `assets` is set as `true`, you will also get assets in the `collectionDetails`.
+search | null | (Available for the Standard plan and higher) Text to search for in NFTs.
+searchLocations | null | (Available for the Standard plan and higher) Comma-separated list of locations to search in. Possible values: `metadata.name`, `metadata.description`, `metadata.collection`. You can specify one or multiple locations, e.g. `searchLocations=metadata.name,metadata.description`.
 
 ## NFT Offers
 
@@ -3456,6 +3463,8 @@ offersHistory | false | (Available for the Premium plan and higher) If set to tr
 limit | 100 | The number of NFTs to return. (More than 100 is available for the Standard plan and higher).
 ids | null | (Available for the Standard plan and higher) A list of NFT IDs separated by commas (max 100), to get information about specific NFTs. Formats: `ids=abc,def`, `ids[]=abc&ids[]=def` or `ids=abc&ids=def`.
 offset | null | (Available for the Standard plan and higher) The number of items to skip (for pagination).
+search | null | (Available for the Standard plan and higher) Text to search for in NFTs.
+searchLocations | null | (Available for the Standard plan and higher) Comma-separated list of locations to search in. Possible values: `metadata.name`, `metadata.description`, `metadata.collection`. You can specify one or multiple locations, e.g. `searchLocations=metadata.name,metadata.description`.
 
 ## NFT Offers
 
