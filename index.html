@@ -321,6 +321,9 @@
           </li>
           <li>
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
+          </li>
+          <li>
+            <a href="#25th-of-january-2026" class="toc-h1 toc-link" data-title="25th of January 2026">25th of January 2026</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#19th-of-january-2026" class="toc-h2 toc-link" data-title="19th of January 2026">19th of January 2026</a>
@@ -927,7 +930,13 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='19th-of-january-2026'>19th of January 2026</h3>
+<h1 id='changelog'>Changelog</h1><h1 id='25th-of-january-2026'>25th of January 2026</h1>
+<p>A new query parameter: <code>sender</code> was added to the <a href="#get-the-list-of-tokens-that-address-can-accept"><strong>Accepted Tokens</strong></a> API endpoint.</p>
+
+<ul>
+<li><code>sender</code> — the address of the sender. Use this if the sender is known and you want to send (mint) a token that does not yet exist, i.e., sending to a wallet that has just created a trustline.</li>
+</ul>
+<h3 id='19th-of-january-2026'>19th of January 2026</h3>
 <p>A new query parameter: <code>offset</code> was added to the <a href="#nfts"><strong>NFTs</strong></a> and <a href="#nfts-2"><strong>URITOKENs</strong></a> API endpoints.</p>
 
 <ul>
@@ -5798,6 +5807,11 @@ Exclude unnecessary parameters to make your request faster.
 <td>limit</td>
 <td>100</td>
 <td>The maximum number of tokens to return in the response. (More than 100 is available for the Standard plan and higher).</td>
+</tr>
+<tr>
+<td>sender</td>
+<td>null</td>
+<td>(optional) The address of the sender. Use this if the sender is known and you want to send (mint) a token that does not yet exist, i.e., sending to a wallet that has just created a trustline.</td>
 </tr>
 <tr>
 <td>marker</td>
