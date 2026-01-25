@@ -85,6 +85,11 @@ Direct access to fast [resized and cached] images and videos:
 - <a href="https://bithomp.com/admin">Request an API key</a>
 
 # Changelog
+# 25th of January 2026
+
+A new query parameter: `sender` was added to the <a href="#get-the-list-of-tokens-that-address-can-accept">**Accepted Tokens**</a> API endpoint.
+
+- `sender` — the address of the sender. Use this if the sender is known and you want to send (mint) a token that does not yet exist, i.e., sending to a wallet that has just created a trustline.
 
 ### 19th of January 2026
 
@@ -4368,6 +4373,7 @@ issuer | null | If set, the response will only include tokens issued by the spec
 currency | null | If set, the response will only include tokens with the specified currency code.
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
 limit | 100 | The maximum number of tokens to return in the response. (More than 100 is available for the Standard plan and higher).
+sender | null | (optional) The address of the sender. Use this if the sender is known and you want to send (mint) a token that does not yet exist, i.e., sending to a wallet that has just created a trustline.
 marker | null | (only available on paid api plans) The marker to use for pagination. If set, the response will include tokens starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.
 
 ## Get the list of obligations (issued tokens)
