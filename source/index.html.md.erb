@@ -1435,6 +1435,10 @@ offersHistory | false | (Only available on paid API plans) If set to true, each 
 convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the for `history` response  will have an array `amountInConvertCurrencies`
 collectionDetails | false | (Only available on paid API plans) If set to true, each nft will include `collectionDetails` with the collection details. if parameter `assets` is set as `true`, you will also get assets in the `collectionDetails`.
 
+<aside class="notice">
+If you need the freshest ledger state (for example, right after a transaction), bypass cache by either sending the `Cache-Control: no-cache` header or adding `&timestamp=<Date.now()>` to the query string. In normal cases, omit it for faster responses. The timestamp value itself is not important; it just needs to be unique.
+</aside>
+
 ## NFT Offer
 
 ```shell
@@ -1594,6 +1598,10 @@ nftOfferID  | An NFT Offer ID
 Parameter | Default | Description
 --------- | ------- | -----------
 assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+
+<aside class="notice">
+If you need the freshest ledger state (for example, right after a transaction), bypass cache by either sending the `Cache-Control: no-cache` header or adding `&timestamp=<Date.now()>` to the query string. In normal cases, omit it for faster responses. The timestamp value itself is not important; it just needs to be unique.
+</aside>
 
 ## Validate NFT Offer
 
@@ -4227,6 +4235,10 @@ obligations | false | Available only on paid API plans. if set to true, the resu
 
 <aside class="notice">
 Exclude unnecessary parameters to make your request faster.
+</aside>
+
+<aside class="notice">
+If you need the freshest ledger state (for example, right after a transaction), bypass cache by either sending the `Cache-Control: no-cache` header or adding `&timestamp=<Date.now()>` to the query string. In normal cases, omit it for faster responses. The timestamp value itself is not important; it just needs to be unique.
 </aside>
 
 ## Address Token Balances
