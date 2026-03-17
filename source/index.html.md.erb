@@ -88,6 +88,10 @@ Direct access to fast [resized and cached] images and videos:
 
 ### 17th of March 2026
 
+A new query parameter option was added to the <a href="#nfts">**NFTS**</a> API endpoint.
+
+- `list=bids` — returns NFTs that currently have incoming buy offers (NFTs that someone wants to buy).
+
 2 new endpoints were added:
 
 <a href="#token-current-fiat-rate">**Token Current Fiat Rate**</a>
@@ -1793,9 +1797,9 @@ hasMedia | false | set to `true`, to list NFTs only with available media data:  
 includeDeleted | false | set to `true`, if you want result to include deleeted NFTs
 mintedByMarketplace | null | Here you can specify a minter from https://bithomp.com/nft-minters?period=all to filter your search by minter project.
 marker | null | The marker from the previous request, if you need a next page of NFTs
-list | `nfts` | (Only available on paid API plans) can be set to `onSale` to get the list of NFTs with active sell offers
+list | `nfts` | (Only available on paid API plans) can be set to `onSale` to get the list of NFTs with active sell offers, or `bids` to get NFTs with incoming buy offers
 destination | `all` | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be set as an address (to specify a particular MarketPlace), `public`, `knownBrokers`, `publicAndKnownBrokers`, `all`
-order | null | (Only available on paid API plans) used to order NFTs: 1. for `list=nfts`, can be `mintedNew` and `mintedOld`, 2. for `list=onSale`, can be `offerCreatedNew`, `offerCreatedOld`, `priceLow`, `priceHigh`
+order | null | (Only available on paid API plans) used to order NFTs: 1. for `list=nfts`, can be `mintedNew` and `mintedOld`, 2. for `list=onSale` and `list=bids`, can be `offerCreatedNew`, `offerCreatedOld`, `priceLow`, `priceHigh`
 currency | null | (Only available on paid API plans) used to filter NFTs for sale `list=onSale`, can be `XRP` or any other currency code.
 currencyIssuer | null | (Only available on paid API plans) A currency issuer for the `currency` if it is not an XRP.
 issuedAt | null | (Only available on paid API plans) It can be used to show NFTs which were minted during some period of time. A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year`, or `1671490800000..1671663600000` - period or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`, to show from specific date till now: `1671490800000..` or `2022-12-20T00:00:00.000Z..`
