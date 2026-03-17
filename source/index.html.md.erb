@@ -86,6 +86,18 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 17th of March 2026
+
+2 new endpoints were added:
+
+<a href="#token-current-fiat-rate">**Token Current Fiat Rate**</a>
+
+Get the current fiat conversion rate for a specific token by issuer and currency.
+
+<a href="#token-historical-fiat-rate">**Token Historical Fiat Rate**</a>
+
+Get the historical fiat conversion rate for a specific token by issuer and currency.
+
 ### 25th of January 2026
 
 A new query parameter: `sender` was added to the <a href="#get-the-list-of-tokens-that-address-can-accept">**Accepted Tokens**</a> API endpoint.
@@ -295,17 +307,6 @@ Get the list of the Addresses that submitting the most transactions in the last 
 
 The new query parameter: `obligations` was added to the <a href="#address">**Address**</a> API end-point.
 Now you can get obligations for an address. This includes the number of holders, tokens, and trustlines associated with the address. This feature is available only on paid API plans.
-
-### 30th of January 2025
-
-The new query parameter: `ids` was added to the <a href="#amms">**AMMs**</a> API end-point.
-Now you can get a list of AMMs by their IDs. (Available for the Standard plan and higher).
-
-### 28th of January 2025
-
-A new query parameter: `bithomp` was added to the <a href="#address">**Address**</a> API end-point.
-
-That will return avatar link for an address and a status of Bithomp Pro.
 
 # Free Token Images
 
@@ -5584,6 +5585,99 @@ Parameter | Default | Description
 --------- | ------- | -----------
 convertCurrencies | null | (Only available on paid API plans) A single currency code to convert the token price into.  Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: `convertCurrencies=usd`
 statistics | false | (Only available on paid API plans) If set to true, the response will include additional statistics for the token, such as sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, market cap, AMM pools, active AMM pools, active offers, active counters, active holders. Also it will include `timeAt` which is a timestamp when the statistics were last updated.
+
+## Token Current Fiat Rate
+
+```shell
+curl "https://bithomp.com/api/v2/trustlines/token/rate/current/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?convertCurrencies=usd"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getTokenCurrentRate(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/trustlines/token/rate/current/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?convertCurrencies=usd", getTokenCurrentRate);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/rate/current/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?convertCurrencies=usd");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "usd": "1.0022"
+}
+```
+
+This endpoint returns the latest available fiat conversion rate for a specific token.
+
+**This endpoint is available only on paid API plans.**
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/trustlines/token/rate/current/<issuer>/<currency>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+issuer   | The issuer address of the Token.
+currency | The currency code of the Token.
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+convertCurrencies | null | A single currency code to convert the token price into. Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: `convertCurrencies=usd`
+
+## Token Historical Fiat Rate
+
+```shell
+curl "https://bithomp.com/api/v2/trustlines/token/rate/history/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?date=2026-03-01T14:00:00Z&convertCurrencies=usd"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getTokenHistoricalRate(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/trustlines/token/rate/history/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?date=2026-03-01T14:00:00Z&convertCurrencies=usd", getTokenHistoricalRate);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/rate/history/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?date=2026-03-01T14:00:00Z&convertCurrencies=usd");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "usd": "1.0019"
+}
+```
+
+This endpoint returns a historical fiat conversion rate for a specific token and time.
+
+**This endpoint is available on Standard plan and higher.**
+
+If `date` is less than 24 hours from now, `convertCurrencies` rate will always be the latest available.
+
+### HTTP Request
+`GET https://bithomp.com/api/v2/trustlines/token/rate/history/<issuer>/<currency>`
+
+### URL Parameters
+Parameter | Description
+--------- | -----------
+issuer   | The issuer address of the Token.
+currency | The currency code of the Token.
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+date | null | Date/time to retrieve the historical rate for. ISO 8601 format (e.g., `2026-03-01T14:00:00Z`) or UNIX timestamp in seconds (e.g., `1772373600`). If `date` is less than 24 hours from now, `convertCurrencies` rate will always be the latest available.
+convertCurrencies | null | A single currency code to convert the token price into. Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: `convertCurrencies=usd`
 
 ## Token Holders
 
