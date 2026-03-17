@@ -934,6 +934,12 @@
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
 <h1 id='changelog'>Changelog</h1><h3 id='17th-of-march-2026'>17th of March 2026</h3>
+<p>A new query parameter option was added to the <a href="#nfts"><strong>NFTS</strong></a> API endpoint.</p>
+
+<ul>
+<li><code>list=bids</code> — returns NFTs that currently have incoming buy offers (NFTs that someone wants to buy).</li>
+</ul>
+
 <p>2 new endpoints were added:</p>
 
 <p><a href="#token-current-fiat-rate"><strong>Token Current Fiat Rate</strong></a></p>
@@ -2733,7 +2739,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>list</td>
 <td><code>nfts</code></td>
-<td>(Only available on paid API plans) can be set to <code>onSale</code> to get the list of NFTs with active sell offers</td>
+<td>(Only available on paid API plans) can be set to <code>onSale</code> to get the list of NFTs with active sell offers, or <code>bids</code> to get NFTs with incoming buy offers</td>
 </tr>
 <tr>
 <td>destination</td>
@@ -2743,7 +2749,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>order</td>
 <td>null</td>
-<td>(Only available on paid API plans) used to order NFTs: 1. for <code>list=nfts</code>, can be <code>mintedNew</code> and <code>mintedOld</code>, 2. for <code>list=onSale</code>, can be <code>offerCreatedNew</code>, <code>offerCreatedOld</code>, <code>priceLow</code>, <code>priceHigh</code></td>
+<td>(Only available on paid API plans) used to order NFTs: 1. for <code>list=nfts</code>, can be <code>mintedNew</code> and <code>mintedOld</code>, 2. for <code>list=onSale</code> and <code>list=bids</code>, can be <code>offerCreatedNew</code>, <code>offerCreatedOld</code>, <code>priceLow</code>, <code>priceHigh</code></td>
 </tr>
 <tr>
 <td>currency</td>
@@ -7004,7 +7010,8 @@ You can retrieve information for MANY currencies in one request:
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0022"</span><span class="w">
+  </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.7264168772729322459"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.008796909975239197848707"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the latest available fiat conversion rate for a specific token.</p>
@@ -7055,7 +7062,8 @@ You can retrieve information for MANY currencies in one request:
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0019"</span><span class="w">
+  </span><span class="nl">"xrp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.7264168772729322459"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.008796909975239197848707"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a historical fiat conversion rate for a specific token and time.</p>
