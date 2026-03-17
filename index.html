@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#17th-of-march-2026" class="toc-h2 toc-link" data-title="17th of March 2026">17th of March 2026</a>
+                  </li>
+                  <li>
                     <a href="#25th-of-january-2026" class="toc-h2 toc-link" data-title="25th of January 2026">25th of January 2026</a>
                   </li>
                   <li>
@@ -375,12 +378,6 @@
                   </li>
                   <li>
                     <a href="#9th-of-april-2025" class="toc-h2 toc-link" data-title="9th of April 2025">9th of April 2025</a>
-                  </li>
-                  <li>
-                    <a href="#30th-of-january-2025" class="toc-h2 toc-link" data-title="30th of January 2025">30th of January 2025</a>
-                  </li>
-                  <li>
-                    <a href="#28th-of-january-2025" class="toc-h2 toc-link" data-title="28th of January 2025">28th of January 2025</a>
                   </li>
               </ul>
           </li>
@@ -657,6 +654,12 @@
                     <a href="#token" class="toc-h2 toc-link" data-title="Token">Token</a>
                   </li>
                   <li>
+                    <a href="#token-current-fiat-rate" class="toc-h2 toc-link" data-title="Token Current Fiat Rate">Token Current Fiat Rate</a>
+                  </li>
+                  <li>
+                    <a href="#token-historical-fiat-rate" class="toc-h2 toc-link" data-title="Token Historical Fiat Rate">Token Historical Fiat Rate</a>
+                  </li>
+                  <li>
                     <a href="#token-holders" class="toc-h2 toc-link" data-title="Token Holders">Token Holders</a>
                   </li>
                   <li>
@@ -930,7 +933,17 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='25th-of-january-2026'>25th of January 2026</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='17th-of-march-2026'>17th of March 2026</h3>
+<p>2 new endpoints were added:</p>
+
+<p><a href="#token-current-fiat-rate"><strong>Token Current Fiat Rate</strong></a></p>
+
+<p>Get the current fiat conversion rate for a specific token by issuer and currency.</p>
+
+<p><a href="#token-historical-fiat-rate"><strong>Token Historical Fiat Rate</strong></a></p>
+
+<p>Get the historical fiat conversion rate for a specific token by issuer and currency.</p>
+<h3 id='25th-of-january-2026'>25th of January 2026</h3>
 <p>A new query parameter: <code>sender</code> was added to the <a href="#get-the-list-of-tokens-that-address-can-accept"><strong>Accepted Tokens</strong></a> API endpoint.</p>
 
 <ul>
@@ -1110,13 +1123,6 @@
 <h3 id='9th-of-april-2025'>9th of April 2025</h3>
 <p>The new query parameter: <code>obligations</code> was added to the <a href="#address"><strong>Address</strong></a> API end-point.
 Now you can get obligations for an address. This includes the number of holders, tokens, and trustlines associated with the address. This feature is available only on paid API plans.</p>
-<h3 id='30th-of-january-2025'>30th of January 2025</h3>
-<p>The new query parameter: <code>ids</code> was added to the <a href="#amms"><strong>AMMs</strong></a> API end-point.
-Now you can get a list of AMMs by their IDs. (Available for the Standard plan and higher).</p>
-<h3 id='28th-of-january-2025'>28th of January 2025</h3>
-<p>A new query parameter: <code>bithomp</code> was added to the <a href="#address"><strong>Address</strong></a> API end-point.</p>
-
-<p>That will return avatar link for an address and a status of Bithomp Pro.</p>
 <h1 id='free-token-images'>Free Token Images</h1>
 <p>You can easily display token images for XRPL and Xahau tokens using the Bithomp token image service. No registration is required.</p>
 
@@ -6985,6 +6991,115 @@ You can retrieve information for MANY currencies in one request:
 <td>(Only available on paid API plans) If set to true, the response will include additional statistics for the token, such as sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, market cap, AMM pools, active AMM pools, active offers, active counters, active holders. Also it will include <code>timeAt</code> which is a timestamp when the statistics were last updated.</td>
 </tr>
 </tbody></table>
+<h2 id='token-current-fiat-rate'>Token Current Fiat Rate</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/token/rate/current/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?convertCurrencies=usd"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokenCurrentRate</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/token/rate/current/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?convertCurrencies=usd</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenCurrentRate</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/token/rate/current/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?convertCurrencies=usd"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0022"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns the latest available fiat conversion rate for a specific token.</p>
+
+<p><strong>This endpoint is available only on paid API plans.</strong></p>
+<h3 id='http-request-47'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/trustlines/token/rate/current/&lt;issuer&gt;/&lt;currency&gt;</code></p>
+<h3 id='url-parameters-19'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>issuer</td>
+<td>The issuer address of the Token.</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>The currency code of the Token.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-31'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>convertCurrencies</td>
+<td>null</td>
+<td>A single currency code to convert the token price into. Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: <code>convertCurrencies=usd</code></td>
+</tr>
+</tbody></table>
+<h2 id='token-historical-fiat-rate'>Token Historical Fiat Rate</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/token/rate/history/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?date=2026-03-01T14:00:00Z&amp;convertCurrencies=usd"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokenHistoricalRate</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/token/rate/history/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?date=2026-03-01T14:00:00Z&amp;convertCurrencies=usd</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenHistoricalRate</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/token/rate/history/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?date=2026-03-01T14:00:00Z&amp;convertCurrencies=usd"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0019"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns a historical fiat conversion rate for a specific token and time.</p>
+
+<p><strong>This endpoint is available on Standard plan and higher.</strong></p>
+
+<p>If <code>date</code> is less than 24 hours from now, <code>convertCurrencies</code> rate will always be the latest available.</p>
+<h3 id='http-request-48'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/trustlines/token/rate/history/&lt;issuer&gt;/&lt;currency&gt;</code></p>
+<h3 id='url-parameters-20'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>issuer</td>
+<td>The issuer address of the Token.</td>
+</tr>
+<tr>
+<td>currency</td>
+<td>The currency code of the Token.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-32'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>date</td>
+<td>null</td>
+<td>Date/time to retrieve the historical rate for. ISO 8601 format (e.g., <code>2026-03-01T14:00:00Z</code>) or UNIX timestamp in seconds (e.g., <code>1772373600</code>). If <code>date</code> is less than 24 hours from now, <code>convertCurrencies</code> rate will always be the latest available.</td>
+</tr>
+<tr>
+<td>convertCurrencies</td>
+<td>null</td>
+<td>A single currency code to convert the token price into. Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: <code>convertCurrencies=usd</code></td>
+</tr>
+</tbody></table>
 <h2 id='token-holders'>Token Holders</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/cors/v2/trustlines/token/richlist/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?summary=true&amp;convertCurrencies=usd"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokenHolders</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -7058,9 +7173,9 @@ You can retrieve information for MANY currencies in one request:
 
 <p><br>Page where it used on bithomp:
 <a href="https://bithomp.com/en/distribution">https://bithomp.com/en/distribution</a>.</p>
-<h3 id='http-request-47'>HTTP Request</h3>
+<h3 id='http-request-49'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/token/richlist/&lt;issuer&gt;/&lt;currency&gt;</code></p>
-<h3 id='url-parameters-19'>URL Parameters</h3>
+<h3 id='url-parameters-21'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7076,7 +7191,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The currency code of the Token.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-31'>Query Parameters</h3>
+<h3 id='query-parameters-33'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7168,9 +7283,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for tokens (IOUs) on the Ledger by a given item or a part of it (issuer, currency, username, etc.).</p>
-<h3 id='http-request-48'>HTTP Request</h3>
+<h3 id='http-request-50'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/tokens/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-20'>URL Parameters</h3>
+<h3 id='url-parameters-22'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7182,7 +7297,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The item to search for. It can be part of an issuer address, currency code, or a username, or a full issuer address, currency, currency code, or a username, service name.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-32'>Query Parameters</h3>
+<h3 id='query-parameters-34'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7233,9 +7348,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for token issuers on the Ledger by a given item or a part of it (issuer address, username, service name, domain etc.).</p>
-<h3 id='http-request-49'>HTTP Request</h3>
+<h3 id='http-request-51'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/issuers/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-21'>URL Parameters</h3>
+<h3 id='url-parameters-23'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7268,9 +7383,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for currencies (HEX or 3-characters) on the Ledger by a given name or a part of it (currency code, currency name.).</p>
-<h3 id='http-request-50'>HTTP Request</h3>
+<h3 id='http-request-52'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/currencies/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-22'>URL Parameters</h3>
+<h3 id='url-parameters-24'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7282,7 +7397,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The item to search for. It can be part of a currency code, currency name, or a full currency code, currency name.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-33'>Query Parameters</h3>
+<h3 id='query-parameters-35'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7358,9 +7473,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of Multi Purpose Tokens (MPT) on the Ledger.</p>
-<h3 id='http-request-51'>HTTP Request</h3>
+<h3 id='http-request-53'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/mptokens</code></p>
-<h3 id='query-parameters-34'>Query Parameters</h3>
+<h3 id='query-parameters-36'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7451,9 +7566,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a specific Multi Purpose Token (MPT) on the Ledger.</p>
-<h3 id='http-request-52'>HTTP Request</h3>
+<h3 id='http-request-54'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/mptoken/&lt;mptokenIssuanceID&gt;</code></p>
-<h3 id='url-parameters-23'>URL Parameters</h3>
+<h3 id='url-parameters-25'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7526,9 +7641,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for Multi Purpose Tokens (MPT) on the Ledger by a given item or a part of it (currency code, currency name, issuer address, username, service name, domain etc.).</p>
-<h3 id='http-request-53'>HTTP Request</h3>
+<h3 id='http-request-55'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/mptokens/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-24'>URL Parameters</h3>
+<h3 id='url-parameters-26'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7565,9 +7680,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for Multi Purpose Token (MPT) issuers on the Ledger by a given item or a part of it (issuer address, username, service name, domain etc.).</p>
-<h3 id='http-request-54'>HTTP Request</h3>
+<h3 id='http-request-56'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/mptokens/issuers/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-25'>URL Parameters</h3>
+<h3 id='url-parameters-27'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7579,7 +7694,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The item to search for. It can be part of an issuer address, username, service name, domain, or a full issuer address, username, service name, domain.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-35'>Query Parameters</h3>
+<h3 id='query-parameters-37'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7614,9 +7729,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for Multi Purpose Token (MPT) currencies on the Ledger by a given name or a part of it (currency code, currency name.).</p>
-<h3 id='http-request-55'>HTTP Request</h3>
+<h3 id='http-request-57'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/mptokens/currencies/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-26'>URL Parameters</h3>
+<h3 id='url-parameters-28'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7628,7 +7743,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The item to search for. It can be part of a currency code, currency name, or a full currency code, currency name.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-36'>Query Parameters</h3>
+<h3 id='query-parameters-38'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7815,9 +7930,9 @@ Page on bithomp that displays it:
 <a href="https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
   https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
 </a>.</p>
-<h3 id='http-request-56'>HTTP Request</h3>
+<h3 id='http-request-58'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/&lt;hash&gt;</code></p>
-<h3 id='url-parameters-27'>URL Parameters</h3>
+<h3 id='url-parameters-29'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7870,9 +7985,9 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://bithomp.com/submit/">
   https://bithomp.com/submit/
 </a>.</p>
-<h3 id='http-request-57'>HTTP Request</h3>
+<h3 id='http-request-59'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
-<h3 id='url-parameters-28'>URL Parameters</h3>
+<h3 id='url-parameters-30'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7935,7 +8050,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/?hwlogin">
   https://bithomp.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-58'>HTTP Request</h3>
+<h3 id='http-request-60'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -8023,9 +8138,9 @@ Page on bithomp that displays it:
 <a href="https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv">
   https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv
 </a>.</p>
-<h3 id='http-request-59'>HTTP Request</h3>
+<h3 id='http-request-61'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transactions/&lt;address&gt;</code></p>
-<h3 id='url-parameters-29'>URL Parameters</h3>
+<h3 id='url-parameters-31'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8037,7 +8152,7 @@ Page on bithomp that displays it:
 <td>The address to get transactions for</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-37'>Query Parameters</h3>
+<h3 id='query-parameters-39'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8227,9 +8342,9 @@ Page on bithomp that displays it:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales">https://bithomp.com/en/whales</a>.</p>
-<h3 id='http-request-60'>HTTP Request</h3>
+<h3 id='http-request-62'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale</code></p>
-<h3 id='query-parameters-38'>Query Parameters</h3>
+<h3 id='query-parameters-40'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8289,9 +8404,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/receivers">https://bithomp.com/en/whales/receivers</a>.</p>
-<h3 id='http-request-61'>HTTP Request</h3>
+<h3 id='http-request-63'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/receivers</code></p>
-<h3 id='query-parameters-39'>Query Parameters</h3>
+<h3 id='query-parameters-41'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8351,9 +8466,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/senders">https://bithomp.com/en/whales/senders</a>.</p>
-<h3 id='http-request-62'>HTTP Request</h3>
+<h3 id='http-request-64'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/senders</code></p>
-<h3 id='query-parameters-40'>Query Parameters</h3>
+<h3 id='query-parameters-42'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8414,9 +8529,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/submitters">https://bithomp.com/en/whales/submitters</a>.</p>
-<h3 id='http-request-63'>HTTP Request</h3>
+<h3 id='http-request-65'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/submitters</code></p>
-<h3 id='query-parameters-41'>Query Parameters</h3>
+<h3 id='query-parameters-43'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8485,9 +8600,9 @@ Page where it used on bithomp:
 
 <p><br>Page where it used on bithomp:
 <a href="https://bithomp.com/en/distribution">https://bithomp.com/en/distribution</a>.</p>
-<h3 id='http-request-64'>HTTP Request</h3>
+<h3 id='http-request-66'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/addresses/richlist</code></p>
-<h3 id='query-parameters-42'>Query Parameters</h3>
+<h3 id='query-parameters-44'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8573,9 +8688,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/object/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8" style="word-break:break-word;">https://bithomp.com/en/object/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8</a>.</p>
-<h3 id='http-request-65'>HTTP Request</h3>
+<h3 id='http-request-67'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/ledgerEntry/&lt;index&gt;</code></p>
-<h3 id='url-parameters-30'>URL Parameters</h3>
+<h3 id='url-parameters-32'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8587,7 +8702,7 @@ Page where it used on bithomp:
 <td>The index of the ledger entry to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-43'>Query Parameters</h3>
+<h3 id='query-parameters-45'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8651,7 +8766,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.</p>
-<h3 id='http-request-66'>HTTP Request</h3>
+<h3 id='http-request-68'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/account-chart</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
@@ -8715,7 +8830,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-67'>HTTP Request</h3>
+<h3 id='http-request-69'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-7'>Response Format</h3>
 <table><thead>
@@ -8833,7 +8948,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-68'>HTTP Request</h3>
+<h3 id='http-request-70'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-8'>Response Format</h3>
 <table><thead>
