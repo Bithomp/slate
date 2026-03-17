@@ -5593,7 +5593,7 @@ statistics | false | (Only available on paid API plans) If set to true, the resp
 ## Token Current Fiat Rate
 
 ```shell
-curl "https://bithomp.com/api/v2/trustlines/token/rate/current/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?convertCurrencies=usd"
+curl "https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/rate/current?convertCurrencies=usd"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -5601,11 +5601,11 @@ curl "https://bithomp.com/api/v2/trustlines/token/rate/current/rMxCKbEDwqr76Quhe
 function getTokenCurrentRate(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/trustlines/token/rate/current/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?convertCurrencies=usd", getTokenCurrentRate);
+bithompRequest("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/rate/current?convertCurrencies=usd", getTokenCurrentRate);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/rate/current/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?convertCurrencies=usd");
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/rate/current?convertCurrencies=usd");
 print $data;
 ```
 
@@ -5623,7 +5623,7 @@ This endpoint returns the latest available fiat conversion rate for a specific t
 **This endpoint is available only on paid API plans.**
 
 ### HTTP Request
-`GET https://bithomp.com/api/v2/trustlines/token/rate/current/<issuer>/<currency>`
+`GET https://bithomp.com/api/v2/trustlines/token/<issuer>/<currency>/rate/current`
 
 ### URL Parameters
 Parameter | Description
@@ -5639,7 +5639,7 @@ convertCurrencies | null | A single currency code to convert the token price int
 ## Token Historical Fiat Rate
 
 ```shell
-curl "https://bithomp.com/api/v2/trustlines/token/rate/history/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?date=2026-03-01T14:00:00Z&convertCurrencies=usd"
+curl "https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/rate/history?date=2026-03-01T14:00:00Z&convertCurrencies=usd"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -5647,11 +5647,11 @@ curl "https://bithomp.com/api/v2/trustlines/token/rate/history/rMxCKbEDwqr76Quhe
 function getTokenHistoricalRate(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/trustlines/token/rate/history/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?date=2026-03-01T14:00:00Z&convertCurrencies=usd", getTokenHistoricalRate);
+bithompRequest("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/rate/history?date=2026-03-01T14:00:00Z&convertCurrencies=usd", getTokenHistoricalRate);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/rate/history/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?date=2026-03-01T14:00:00Z&convertCurrencies=usd");
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/rate/history?date=2026-03-01T14:00:00Z&convertCurrencies=usd");
 print $data;
 ```
 
@@ -5671,7 +5671,7 @@ This endpoint returns a historical fiat conversion rate for a specific token and
 If `date` is less than 24 hours from now, `convertCurrencies` rate will always be the latest available.
 
 ### HTTP Request
-`GET https://bithomp.com/api/v2/trustlines/token/rate/history/<issuer>/<currency>`
+`GET https://bithomp.com/api/v2/trustlines/token/<issuer>/<currency>/rate/history`
 
 ### URL Parameters
 Parameter | Description
