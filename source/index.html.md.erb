@@ -86,6 +86,12 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 19th of March 2026
+
+A new query parameter: `assets` was added to the <a href="#nft-sales">**NFT Sales**</a> API endpoint.
+
+- `assets` — if set to `true`, each sale item includes `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px.
+
 ### 17th of March 2026
 
 A new query parameter option was added to the <a href="#nfts">**NFTS**</a> API endpoint.
@@ -2442,6 +2448,7 @@ saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sa
 collection | null | The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using `issuer` and `taxon`, in the format: `issuer:taxon`
 issuer | null | The address of the NFT issuer (optional)
 taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 buyer | null | (Only available on paid API plans) The address of the Buyer (optional)
 seller | null | (Only available on paid API plans) The address of the Seller (optional)
 period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or a time period as timestamps from..to `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
@@ -3845,6 +3852,7 @@ currency | null | specify a currency to filter sales in a specific currency, for
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
 issuer | null | The address of the NFT issuer (optional)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 buyer | null | (Only available on paid API plans) The address of the Buyer (optional)
 seller | null | (Only available on paid API plans) The address of the Seller (optional)
 period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or a time period as timestamps from..to `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
