@@ -92,6 +92,10 @@ A new query parameter: `assets` was added to the <a href="#nft-sales">**NFT Sale
 
 - `assets` — if set to `true`, each sale item includes `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px.
 
+A new `summary` object was added to the response of the <a href="#nfts">**NFTs**</a> and <a href="#nfts-2">**URITOKENs**</a> API endpoints.
+
+- `summary.totalNfts` — the total number of NFTs matching the query (before pagination). Use together with `offset` and `limit` for efficient pagination.
+
 ### 17th of March 2026
 
 A new query parameter option was added to the <a href="#nfts">**NFTS**</a> API endpoint.
@@ -1708,7 +1712,7 @@ expiration | (lower case, instead of Expiration) in unixtime seconds
 ## NFTS
 
 ```shell
-curl "https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true"
+curl "https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true&limit=20&offset=0"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1716,11 +1720,11 @@ curl "https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&a
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true", getData);
+bithompRequest("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true&limit=20&offset=0", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&assets=true&limit=20&offset=0");
 print $data;
 ```
 
@@ -1732,6 +1736,9 @@ print $data;
   "ownerDetails": {
     "username": "Zerpmon",
     "service": "Zerpmon"
+  },
+  "summary": {
+    "totalNfts": 142
   },
   "nfts": [
     {
@@ -3298,7 +3305,7 @@ Destination | The destination address for the offer
 ## NFTS
 
 ```shell
-curl "https://xahauexplorer.com/api/v2/uritokens?list=uritokens&issuedAt=all&order=mintedNew&hasImage=true"
+curl "https://xahauexplorer.com/api/v2/uritokens?list=uritokens&issuedAt=all&order=mintedNew&hasImage=true&limit=20&offset=0"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3306,11 +3313,11 @@ curl "https://xahauexplorer.com/api/v2/uritokens?list=uritokens&issuedAt=all&ord
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xahauexplorer.com/api/v2/uritokens?list=uritokens&issuedAt=all&order=mintedNew&hasImage=true", getData);
+bithompRequest("https://xahauexplorer.com/api/v2/uritokens?list=uritokens&issuedAt=all&order=mintedNew&hasImage=true&limit=20&offset=0", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xahauexplorer.com/api/v2/uritokens?list=uritokens&issuedAt=all&order=mintedNew&hasImage=true");
+$data = curl_bithomp("https://xahauexplorer.com/api/v2/uritokens?list=uritokens&issuedAt=all&order=mintedNew&hasImage=true&limit=20&offset=0");
 print $data;
 ```
 
@@ -3324,6 +3331,9 @@ print $data;
     "hasMetadata": true,
     "hasImage": true,
     "issuedAt": "all",
+    "summary": {
+        "totalNfts": 87
+    },
     "uritokens": [
         {
             "type": "xls35",
