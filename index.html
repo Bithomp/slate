@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#19th-of-march-2026" class="toc-h2 toc-link" data-title="19th of March 2026">19th of March 2026</a>
+                  </li>
+                  <li>
                     <a href="#17th-of-march-2026" class="toc-h2 toc-link" data-title="17th of March 2026">17th of March 2026</a>
                   </li>
                   <li>
@@ -933,7 +936,13 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='17th-of-march-2026'>17th of March 2026</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='19th-of-march-2026'>19th of March 2026</h3>
+<p>A new query parameter: <code>assets</code> was added to the <a href="#nft-sales"><strong>NFT Sales</strong></a> API endpoint.</p>
+
+<ul>
+<li><code>assets</code> — if set to <code>true</code>, each sale item includes <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px.</li>
+</ul>
+<h3 id='17th-of-march-2026'>17th of March 2026</h3>
 <p>A new query parameter option was added to the <a href="#nfts"><strong>NFTS</strong></a> API endpoint.</p>
 
 <ul>
@@ -3532,6 +3541,11 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>Taxon for that Issuer (optional, will be ignored without an Issuer)</td>
 </tr>
 <tr>
+<td>assets</td>
+<td>false</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+</tr>
+<tr>
 <td>buyer</td>
 <td>null</td>
 <td>(Only available on paid API plans) The address of the Buyer (optional)</td>
@@ -5178,6 +5192,11 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>issuer</td>
 <td>null</td>
 <td>The address of the NFT issuer (optional)</td>
+</tr>
+<tr>
+<td>assets</td>
+<td>false</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
 </tr>
 <tr>
 <td>buyer</td>
