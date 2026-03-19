@@ -942,6 +942,12 @@
 <ul>
 <li><code>assets</code> — if set to <code>true</code>, each sale item includes <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px.</li>
 </ul>
+
+<p>A new <code>summary</code> object was added to the response of the <a href="#nfts"><strong>NFTs</strong></a> and <a href="#nfts-2"><strong>URITOKENs</strong></a> API endpoints.</p>
+
+<ul>
+<li><code>summary.totalNfts</code> — the total number of NFTs matching the query (before pagination). Use together with <code>offset</code> and <code>limit</code> for efficient pagination.</li>
+</ul>
 <h3 id='17th-of-march-2026'>17th of March 2026</h3>
 <p>A new query parameter option was added to the <a href="#nfts"><strong>NFTS</strong></a> API endpoint.</p>
 
@@ -2613,13 +2619,13 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>(lower case, instead of Expiration) in unixtime seconds</td>
 </tr>
 </tbody></table>
-<h2 id='nfts'>NFTS</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true"</span>
+<h2 id='nfts'>NFTS</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true&amp;limit=20&amp;offset=0"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true&amp;limit=20&amp;offset=0</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nfts?owner=rBeistBLWtUskF2YzzSwMSM2tgsK7ZD7ME&amp;assets=true&amp;limit=20&amp;offset=0"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -2630,6 +2636,9 @@ If you need the freshest ledger state (for example, right after a transaction), 
   </span><span class="nl">"ownerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zerpmon"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Zerpmon"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"totalNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">142</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"nfts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -4514,13 +4523,13 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>The destination address for the offer</td>
 </tr>
 </tbody></table>
-<h2 id='nfts-2'>NFTS</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/uritokens?list=uritokens&amp;issuedAt=all&amp;order=mintedNew&amp;hasImage=true"</span>
+<h2 id='nfts-2'>NFTS</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/uritokens?list=uritokens&amp;issuedAt=all&amp;order=mintedNew&amp;hasImage=true&amp;limit=20&amp;offset=0"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xahauexplorer.com/api/v2/uritokens?list=uritokens&amp;issuedAt=all&amp;order=mintedNew&amp;hasImage=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xahauexplorer.com/api/v2/uritokens?list=uritokens&amp;issuedAt=all&amp;order=mintedNew&amp;hasImage=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xahauexplorer.com/api/v2/uritokens?list=uritokens&amp;issuedAt=all&amp;order=mintedNew&amp;hasImage=true&amp;limit=20&amp;offset=0</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xahauexplorer.com/api/v2/uritokens?list=uritokens&amp;issuedAt=all&amp;order=mintedNew&amp;hasImage=true&amp;limit=20&amp;offset=0"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -4533,6 +4542,9 @@ If you need the freshest ledger state (for example, right after a transaction), 
     </span><span class="nl">"hasMetadata"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"hasImage"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nl">"issuedAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"all"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"summary"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"totalNfts"</span><span class="p">:</span><span class="w"> </span><span class="mi">87</span><span class="w">
+    </span><span class="p">},</span><span class="w">
     </span><span class="nl">"uritokens"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
             </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xls35"</span><span class="p">,</span><span class="w">
