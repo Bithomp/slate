@@ -86,6 +86,22 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 4th of April 2026
+
+3 new endpoints were added:
+
+<a href="#accounts">**Accounts**</a>
+
+Get a list of activated accounts from our local database with flexible filters (`regularKey`, `signer`, `regularKeyOrSigner`, `parent`, `ledgerIndex`, `inception`) and pagination (`limit`, `marker`, `offset`).
+
+<a href="#accounts-count">**Accounts count**</a>
+
+Get only the number of accounts matching the same filters as the Accounts endpoint.
+
+<a href="#account-local-db">**Account (local DB)**</a>
+
+Get one account record from our local database by address.
+
 ### 19th of March 2026
 
 A new query parameter: `assets` was added to the <a href="#nft-sales">**NFT Sales**</a> API endpoint.
@@ -4263,6 +4279,218 @@ Exclude unnecessary parameters to make your request faster.
 <aside class="notice">
 If you need the freshest ledger state (for example, right after a transaction), bypass cache by either sending the `Cache-Control: no-cache` header or adding `&amp;timestamp=&lt;Date.now()&gt;` to the query string. In normal cases, omit it for faster responses. The timestamp value itself is not important; it just needs to be unique.
 </aside>
+
+## Accounts
+
+```shell
+curl "https://bithomp.com/api/v2/accounts?regularKeyOrSigner=rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ&limit=2&order=DESC"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/accounts?regularKeyOrSigner=rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ&limit=2&order=DESC", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/accounts?regularKeyOrSigner=rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ&limit=2&order=DESC");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "summary": {
+    "total": 1
+  },
+  "accounts": [
+    {
+      "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "accountDetails": {
+        "address": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+        "username": "Bitstamp",
+        "service": "Bitstamp"
+      },
+      "parent": "r49nVgaYSDuU7GEQh4mF1nyjsXSVRcUHsr",
+      "parentDetails": {
+        "address": "r49nVgaYSDuU7GEQh4mF1nyjsXSVRcUHsr",
+        "username": "damijan",
+        "service": null
+      },
+      "regularKey": "rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ",
+      "regularKeyDetails": {
+        "address": "rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ",
+        "username": null,
+        "service": null
+      },
+      "inception": 1361216760,
+      "ledgerIndex": 242756,
+      "txHash": "F0BA44037CA7DEFED8F30C11F6F909039E415EF88946F84F2CEE1E85F660B074",
+      "initialBalance": 1500,
+      "balance": 412602.491952,
+      "disableMaster": true,
+      "requireDestTag": true,
+      "lastSubmittedAt": 1761726620,
+      "lastSubmittedLedgerIndex": 99845772,
+      "lastSubmittedTxHash": "C8C9D5D8B5B7448A05CB753A0AFB215BF3B8316AE06B8A274033635DE621B3F4",
+      "ownerCount": "378",
+      "defaultRipple": true,
+      "requireAuth": false,
+      "disallowXRP": true,
+      "transferRate": "1001500000",
+      "allowTrustlineLocking": false
+    }
+  ]
+}
+```
+
+This endpoint returns a list of accounts from our local database.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/accounts`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+regularKey | null | Filter accounts where this address is set as a regular key. Not compatible with `regularKeyOrSigner`.
+signer | null | Filter accounts where this address is present in a signer list. Not compatible with `regularKeyOrSigner`.
+regularKeyOrSigner | null | Filter accounts where this address is either a regular key or a signer. Not compatible with `regularKey` or `signer`.
+parent | null | Filter by parent (activated wallet) address.
+ledgerIndex | null | Filter by activation ledger index.
+inception | null | Filter by activation time. Supported formats: unix ms or ISO date; ranges `..date`, `date..`, `date1..date2`.
+limit | 200 | Number of records to return. Max `10000`.
+marker | null | Pagination marker (performance-friendly pagination). Not compatible with `offset`.
+offset | null | Number of records to skip. Not compatible with `marker`.
+order | DESC | Sort order: `ASC` or `DESC`.
+
+<aside class="notice">
+The first page includes `summary.total` with the total number of matching accounts.
+</aside>
+
+## Accounts count
+
+```shell
+curl "https://bithomp.com/api/v2/accounts/count?regularKeyOrSigner=rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/accounts/count?regularKeyOrSigner=rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/accounts/count?regularKeyOrSigner=rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "result": "success",
+  "count": 1
+}
+```
+
+This endpoint returns only the number of accounts matching your filters.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/accounts/count`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+regularKey | null | Filter accounts where this address is set as a regular key. Not compatible with `regularKeyOrSigner`.
+signer | null | Filter accounts where this address is present in a signer list. Not compatible with `regularKeyOrSigner`.
+regularKeyOrSigner | null | Filter accounts where this address is either a regular key or a signer. Not compatible with `regularKey` or `signer`.
+parent | null | Filter by parent (activated wallet) address.
+ledgerIndex | null | Filter by activation ledger index.
+inception | null | Filter by activation time. Supported formats: unix ms or ISO date; ranges `..date`, `date..`, `date1..date2`.
+
+## Account (local DB)
+
+```shell
+curl "https://bithomp.com/api/v2/account/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/account/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/account/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "account": {
+    "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+    "accountDetails": {
+      "address": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "username": "Bitstamp",
+      "service": "Bitstamp"
+    },
+    "parent": "r49nVgaYSDuU7GEQh4mF1nyjsXSVRcUHsr",
+    "parentDetails": {
+      "address": "r49nVgaYSDuU7GEQh4mF1nyjsXSVRcUHsr",
+      "username": "damijan",
+      "service": null
+    },
+    "regularKey": "rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ",
+    "regularKeyDetails": {
+      "address": "rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ",
+      "username": null,
+      "service": null
+    },
+    "inception": 1361216760,
+    "ledgerIndex": 242756,
+    "txHash": "F0BA44037CA7DEFED8F30C11F6F909039E415EF88946F84F2CEE1E85F660B074",
+    "initialBalance": 1500,
+    "balance": 412602.491952,
+    "disableMaster": true,
+    "requireDestTag": true,
+    "lastSubmittedAt": 1761726620,
+    "lastSubmittedLedgerIndex": 99845772,
+    "lastSubmittedTxHash": "C8C9D5D8B5B7448A05CB753A0AFB215BF3B8316AE06B8A274033635DE621B3F4",
+    "ownerCount": 378,
+    "defaultRipple": true,
+    "requireAuth": false,
+    "disallowXRP": true,
+    "transferRate": 1001500000,
+    "allowTrustlineLocking": false
+  }
+}
+```
+
+This endpoint returns account information for one address from our local database.
+It is similar to `/v2/address/<address>`, but `/v2/address` is mostly network-based, while `/v2/account/<address>` is local DB-based and usually faster.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/account/<address>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+address | The account address you want to look up.
 
 ## Address Token Balances
 
