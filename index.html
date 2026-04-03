@@ -5790,6 +5790,8 @@ If you need the freshest ledger state (for example, right after a transaction), 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns a list of accounts from our local database.</p>
+
+<p><strong>This endpoint is available on Standard plan and higher.</strong></p>
 <h3 id='http-request-32'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/accounts</code></p>
 <h3 id='query-parameters-25'>Query Parameters</h3>
@@ -5873,6 +5875,8 @@ The first page includes `summary.total` with the total number of matching accoun
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns only the number of accounts matching your filters.</p>
+
+<p><strong>This endpoint is available on Standard plan and higher.</strong></p>
 <h3 id='http-request-33'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/accounts/count</code></p>
 <h3 id='query-parameters-26'>Query Parameters</h3>
@@ -5967,6 +5971,8 @@ The first page includes `summary.total` with the total number of matching accoun
 </span></code></pre></div>
 <p>This endpoint returns account information for one address from our local database.
 It is similar to <code>/v2/address/&lt;address&gt;</code>, but <code>/v2/address</code> is mostly network-based, while <code>/v2/account/&lt;address&gt;</code> is local DB-based and usually faster.</p>
+
+<p><strong>This endpoint is available on Standard plan and higher.</strong></p>
 <h3 id='http-request-34'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/account/&lt;address&gt;</code></p>
 <h3 id='url-parameters-12'>URL Parameters</h3>
