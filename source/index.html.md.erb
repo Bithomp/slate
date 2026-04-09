@@ -86,6 +86,12 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 9th of April 2026
+
+A new query parameter: `order` was added to the <a href="#nft-volumes-extended">**NFT Volumes Extended**</a> API endpoint for `list=collections`.
+
+- `order=rating` — orders collections by their rating. **Not compatible with `sortCurrency`.**
+
 ### 4th of April 2026
 
 3 new endpoints were added:
@@ -2783,6 +2789,7 @@ floorPrice | false | Returns `floorPrice` for `collections` and `issuers`. The l
 statistics | false | Returns `statistics` for `collections` and `issuers` and `taxons`. Which includes: `buyers` - current buyers count, `tradedNfts` - current count of traded NFTS, `owners` - current count of owners, `nfts` - current count of NFTs
 marker | null | The marker from the previous request, if you need a next page
 assets | false | (For Standard plan and hire) For list `collections` returns collection previews, `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px.
+order | null | For list `collections`: `rating` — order by collection rating. **Not compatible with `sortCurrency`.**
 
 ## NFT Minters
 
