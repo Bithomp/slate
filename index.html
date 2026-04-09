@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#9th-of-april-2026" class="toc-h2 toc-link" data-title="9th of April 2026">9th of April 2026</a>
+                  </li>
+                  <li>
                     <a href="#4th-of-april-2026" class="toc-h2 toc-link" data-title="4th of April 2026">4th of April 2026</a>
                   </li>
                   <li>
@@ -948,7 +951,13 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='4th-of-april-2026'>4th of April 2026</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='9th-of-april-2026'>9th of April 2026</h3>
+<p>A new query parameter: <code>order</code> was added to the <a href="#nft-volumes-extended"><strong>NFT Volumes Extended</strong></a> API endpoint for <code>list=collections</code>.</p>
+
+<ul>
+<li><code>order=rating</code> — orders collections by their rating. <strong>Not compatible with <code>sortCurrency</code>.</strong></li>
+</ul>
+<h3 id='4th-of-april-2026'>4th of April 2026</h3>
 <p>3 new endpoints were added:</p>
 
 <p><a href="#accounts"><strong>Accounts</strong></a></p>
@@ -3962,6 +3971,11 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>assets</td>
 <td>false</td>
 <td>(For Standard plan and hire) For list <code>collections</code> returns collection previews, <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>null</td>
+<td>For list <code>collections</code>: <code>rating</code> — order by collection rating. <strong>Not compatible with <code>sortCurrency</code>.</strong></td>
 </tr>
 </tbody></table>
 <h2 id='nft-minters'>NFT Minters</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-marketplaces?period=week"</span>
