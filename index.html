@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#23rd-of-april-2026" class="toc-h2 toc-link" data-title="23rd of April 2026">23rd of April 2026</a>
+                  </li>
+                  <li>
                     <a href="#22nd-of-april-2026" class="toc-h2 toc-link" data-title="22nd of April 2026">22nd of April 2026</a>
                   </li>
                   <li>
@@ -387,9 +390,6 @@
                   </li>
                   <li>
                     <a href="#29th-of-april-2025" class="toc-h2 toc-link" data-title="29th of April 2025">29th of April 2025</a>
-                  </li>
-                  <li>
-                    <a href="#9th-of-april-2025" class="toc-h2 toc-link" data-title="9th of April 2025">9th of April 2025</a>
                   </li>
               </ul>
           </li>
@@ -610,7 +610,13 @@
             <a href="#validator" class="toc-h1 toc-link" data-title="Validator">Validator</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-wallet" class="toc-h2 toc-link" data-title="Get wallet">Get wallet</a>
+                    <a href="#get-validator" class="toc-h2 toc-link" data-title="Get Validator">Get Validator</a>
+                  </li>
+                  <li>
+                    <a href="#validator-metrics" class="toc-h2 toc-link" data-title="Validator Metrics">Validator Metrics</a>
+                  </li>
+                  <li>
+                    <a href="#validator-reports" class="toc-h2 toc-link" data-title="Validator Reports">Validator Reports</a>
                   </li>
               </ul>
           </li>
@@ -634,7 +640,7 @@
             <a href="#unl-report" class="toc-h1 toc-link" data-title="UNL Report">UNL Report</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#http-request-43" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
+                    <a href="#http-request-45" class="toc-h2 toc-link" data-title="HTTP Request">HTTP Request</a>
                   </li>
               </ul>
           </li>
@@ -962,7 +968,17 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='22nd-of-april-2026'>22nd of April 2026</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='23rd-of-april-2026'>23rd of April 2026</h3>
+<p>The <a href="#validator"><strong>Validator</strong></a> section was updated with full response data and two additional documented endpoints:</p>
+
+<p><a href="#validator-metrics"><strong>Validator Metrics</strong></a></p>
+
+<p>Get live performance metrics for a validator: agreement scores (1h, 24h, 30d), UNL membership, revocation status, and current fee/reserve settings.</p>
+
+<p><a href="#validator-reports"><strong>Validator Reports</strong></a></p>
+
+<p>Get daily agreement reports for a validator, including score, total validations, missed validations, and completeness flag per day.</p>
+<h3 id='22nd-of-april-2026'>22nd of April 2026</h3>
 <p>A new endpoint was added:</p>
 
 <p><a href="#dapps"><strong>Dapps</strong></a></p>
@@ -1193,9 +1209,6 @@
 <p><a href="#top-submitters-24h"><strong>TOP submitters (24h)</strong></a></p>
 
 <p>Get the list of the Addresses that submitting the most transactions in the last 24 hours (Available on paid plans only).</p>
-<h3 id='9th-of-april-2025'>9th of April 2025</h3>
-<p>The new query parameter: <code>obligations</code> was added to the <a href="#address"><strong>Address</strong></a> API end-point.
-Now you can get obligations for an address. This includes the number of holders, tokens, and trustlines associated with the address. This feature is available only on paid API plans.</p>
 <h1 id='free-token-images'>Free Token Images</h1>
 <p>You can easily display token images for XRPL and Xahau tokens using the Bithomp token image service. No registration is required.</p>
 
@@ -6563,25 +6576,57 @@ This request with ledger index could be extremely slow and in some cases return 
 <aside class="warning">
 `types` is not compatable with `limit`, `marker` and `type` parameters, they have to be removed from a query.
 </aside>
-<h1 id='validator'>Validator</h1><h2 id='get-wallet'>Get wallet</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span>
+<h1 id='validator'>Validator</h1><h2 id='get-validator'>Get Validator</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getValidatorAddress</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">.</span><span class="nx">publicKey</span> <span class="o">+</span> <span class="dl">"</span><span class="s2"> validator's XRPL address: </span><span class="dl">"</span><span class="p">,</span> <span class="nx">json</span><span class="p">.</span><span class="nx">address</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getValidatorAddress</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$validatorAddress</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span><span class="p">);</span>
-<span class="k">print</span> <span class="nv">$validatorAddress</span><span class="p">;</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe"</span><span class="w">
+  </span><span class="nl">"signingKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n9K6kjnk3m17gaMeHKxgCp7zkGsxrdpKTkuLXYp8jryDywnYXY8Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"masterKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publicKey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"raUz9sFtJ5tfcRMuo75bNPM65BxJsKEcuF"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addressDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrpl.to"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ledgerIndex"</span><span class="p">:</span><span class="w"> </span><span class="mi">103751301</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ledgerHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0DF74727837F3056674533318E116E79E137CE3DB0C467A61500E6A470572D94"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"full"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"signingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1776929411</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"lastSeenTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">1776929412</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"baseFee"</span><span class="p">:</span><span class="w"> </span><span class="s2">"200"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reserveBase"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reserveIncrement"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amendments"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"networkID"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"serverVersion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.1.2"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"manifest"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JAAAAAJxIe215EZDO96CThNAKmXcNG46QZ+meP1BITmkC5n/C0rVHXMhApi2lNBZ+HeWoDdzVbP0QBDm1fTv5A5/WYnYoOLp/S8JdkcwRQIhAIIEBnZltCEkKcQfjfEn4H625bML2mlFs8grm6V3SRCkAiB12eHPS3/FRX/shUEEpg8AAkUzHkEEp1MG+PIO+I87VXcHeHJwbC50b3ASQKlx2VCO4rHlMHV9ACSxwV+hs/Y+19knrjfxH1Z8j7IpOx+JAS/YUjiRjFm0yj2S7kjPFJmE4DvJKei0HmOBwws="</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sequence"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"domainVerified"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ownerCountry"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"serverCountry"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"serverLocation"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"serverCloud"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"networkASN"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"principals"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrpl.to"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hello@xrpl.to"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"social_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://x.com/xrplto"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves an address of a specific validator
-<a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a></p>
+<p>This endpoint returns detailed information about a specific validator, including its keys, domain, last seen ledger, manifest, geo/network metadata, and operator principals.</p>
 <h3 id='http-request-40'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;</code></p>
 <h3 id='url-parameters-17'>URL Parameters</h3>
@@ -6593,7 +6638,123 @@ This request with ledger index could be extremely slow and in some cases return 
 </thead><tbody>
 <tr>
 <td>validatorPublicKey</td>
-<td>The public key of the validator to retrieve</td>
+<td>The public key of the validator</td>
+</tr>
+</tbody></table>
+<h2 id='validator-metrics'>Validator Metrics</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK/metrics"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK/metrics</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK/metrics"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"validation_public_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"signing_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n9K6kjnk3m17gaMeHKxgCp7zkGsxrdpKTkuLXYp8jryDywnYXY8Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"master_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"xrpl.to"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"server_version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3.1.2"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"networks"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"current_index"</span><span class="p">:</span><span class="w"> </span><span class="mi">103751301</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ledger_hash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0DF74727837F3056674533318E116E79E137CE3DB0C467A61500E6A470572D94"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"agreement_1h"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"missed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">932</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"agreement_24h"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"missed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">22306</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00000"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"agreement_30day"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"missed"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">660384</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.99997"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"partial"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"unl"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"revoked"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"base_fee"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reserve_base"</span><span class="p">:</span><span class="w"> </span><span class="mi">100000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reserve_inc"</span><span class="p">:</span><span class="w"> </span><span class="mi">10000</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns live performance metrics for a specific validator, including agreement scores for the last 1h, 24h, and 30 days, UNL membership, revocation status, and current network fee/reserve settings.</p>
+<h3 id='http-request-41'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;/metrics</code></p>
+<h3 id='url-parameters-18'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>validatorPublicKey</td>
+<td>The public key of the validator</td>
+</tr>
+</tbody></table>
+<h2 id='validator-reports'>Validator Reports</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK/reports"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK/reports</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK/reports"</span><span class="p">);</span>
+<span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"count"</span><span class="p">:</span><span class="w"> </span><span class="mi">897</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"validation_public_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-10-29T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21753"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"missed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"validation_public_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2023-10-30T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"chain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"main"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"score"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.00000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21600"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"missed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"incomplete"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint returns daily agreement reports for a specific validator. Each report covers one calendar day and includes the score, total validations, missed validations, and whether the data for that day is incomplete.</p>
+<h3 id='http-request-42'>HTTP Request</h3>
+<p><code>GET https://bithomp.com/api/v2/validator/&lt;validatorPublicKey&gt;/reports</code></p>
+<h3 id='url-parameters-19'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>validatorPublicKey</td>
+<td>The public key of the validator</td>
 </tr>
 </tbody></table>
 <h1 id='validators'>Validators</h1><h2 id='get-the-list-of-validators'>Get the list of validators</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/validators"</span>
@@ -6752,7 +6913,7 @@ This request with ledger index could be extremely slow and in some cases return 
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves the list of validators that have been seen in the network recently.</p>
-<h3 id='http-request-41'>HTTP Request</h3>
+<h3 id='http-request-43'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/validators</code></p>
 <h1 id='unl'>UNL</h1><h2 id='get-the-list-of-unl-validators'>Get the list of UNL validators</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/unl"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
@@ -6802,7 +6963,7 @@ This request with ledger index could be extremely slow and in some cases return 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the list of validators from the specific UNL (Unique Node List) used by Bithomp. The response also indicates which UNL source the data was retrieved from.</p>
-<h3 id='http-request-42'>HTTP Request</h3>
+<h3 id='http-request-44'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/unl</code></p>
 <h1 id='unl-report'>UNL Report</h1><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/unl-report"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
@@ -6861,7 +7022,7 @@ This request with ledger index could be extremely slow and in some cases return 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a report of the current UNL (Unique Node List) validators on XAHAU. </p>
-<h3 id='http-request-43'>HTTP Request</h3>
+<h3 id='http-request-45'>HTTP Request</h3>
 <p><code>GET https://xahauexplorer.com/api/v2/unl-report</code></p>
 <h1 id='amendment'>Amendment</h1><h2 id='get-information-about-a-specific-amendment'>Get information about a specific amendment</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amendment/A730EB18A9D4BB52502C898589558B4CCEB4BE10044500EE5581137A2E80E849"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
@@ -6886,7 +7047,7 @@ This request with ledger index could be extremely slow and in some cases return 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information about a specific amendment. If activated returns the timestamp of actvation, ledger index when it was activated and the transaction hash. Make sure to use also /v2/features to get their voting status.</p>
-<h3 id='http-request-44'>HTTP Request</h3>
+<h3 id='http-request-46'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/amendment/&lt;amendmentHash&gt;</code></p>
 <h1 id='features'>Features</h1><h2 id='get-the-list-of-amendments-and-their-voting-status'>Get the list of amendments and their voting status</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/features"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
@@ -6932,7 +7093,7 @@ This request with ledger index could be extremely slow and in some cases return 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves the list of amendments and their voting status.</p>
-<h3 id='http-request-45'>HTTP Request</h3>
+<h3 id='http-request-47'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/features</code></p>
 <h1 id='amendments'>Amendments</h1><h2 id='get-the-list-of-amendments'>Get the list of amendments</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amendments"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
@@ -6980,7 +7141,7 @@ This request with ledger index could be extremely slow and in some cases return 
 </span><span class="err">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves the list of amendments with the time of activation, if they are activated, ledgerIndex when they were activated and the transaction hash that activated them.</p>
-<h3 id='http-request-46'>HTTP Request</h3>
+<h3 id='http-request-48'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/amendments</code></p>
 <h1 id='currency-hex-xls-14-nft'>Currency (HEX / XLS-14 NFT)</h1><h2 id='currency'>Currency</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/currency/02C7004B041A91880000526964776F726C643836"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
@@ -7045,9 +7206,9 @@ This request with ledger index could be extremely slow and in some cases return 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currency (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-47'>HTTP Request</h3>
+<h3 id='http-request-49'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currency/&lt;currency&gt;</code></p>
-<h3 id='url-parameters-18'>URL Parameters</h3>
+<h3 id='url-parameters-20'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7152,7 +7313,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
-<h3 id='http-request-48'>HTTP Request</h3>
+<h3 id='http-request-50'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currencies</code></p>
 <h3 id='query-parameters-31'>Query Parameters</h3>
 <table><thead>
@@ -7350,7 +7511,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of tokens (IOUs) on the Ledger.</p>
-<h3 id='http-request-49'>HTTP Request</h3>
+<h3 id='http-request-51'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/tokens</code></p>
 <h3 id='query-parameters-32'>Query Parameters</h3>
 <table><thead>
@@ -7478,9 +7639,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information and statistics for a specific token (IOU) on the Ledger.</p>
-<h3 id='http-request-50'>HTTP Request</h3>
+<h3 id='http-request-52'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/token/&lt;issuer&gt;/&lt;currency&gt;</code></p>
-<h3 id='url-parameters-19'>URL Parameters</h3>
+<h3 id='url-parameters-21'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7535,9 +7696,9 @@ You can retrieve information for MANY currencies in one request:
 <p>This endpoint returns the latest available fiat conversion rate for a specific token.</p>
 
 <p><strong>This endpoint is available only on paid API plans.</strong></p>
-<h3 id='http-request-51'>HTTP Request</h3>
+<h3 id='http-request-53'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/token/&lt;issuer&gt;/&lt;currency&gt;/rate/current</code></p>
-<h3 id='url-parameters-20'>URL Parameters</h3>
+<h3 id='url-parameters-22'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7589,9 +7750,9 @@ You can retrieve information for MANY currencies in one request:
 <p><strong>This endpoint is available on Standard plan and higher.</strong></p>
 
 <p>If <code>date</code> is less than 24 hours from now, <code>convertCurrencies</code> rate will always be the latest available.</p>
-<h3 id='http-request-52'>HTTP Request</h3>
+<h3 id='http-request-54'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/token/&lt;issuer&gt;/&lt;currency&gt;/rate/history</code></p>
-<h3 id='url-parameters-21'>URL Parameters</h3>
+<h3 id='url-parameters-23'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7699,9 +7860,9 @@ You can retrieve information for MANY currencies in one request:
 
 <p><br>Page where it used on bithomp:
 <a href="https://bithomp.com/en/distribution">https://bithomp.com/en/distribution</a>.</p>
-<h3 id='http-request-53'>HTTP Request</h3>
+<h3 id='http-request-55'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/token/richlist/&lt;issuer&gt;/&lt;currency&gt;</code></p>
-<h3 id='url-parameters-22'>URL Parameters</h3>
+<h3 id='url-parameters-24'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7809,9 +7970,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for tokens (IOUs) on the Ledger by a given item or a part of it (issuer, currency, username, etc.).</p>
-<h3 id='http-request-54'>HTTP Request</h3>
+<h3 id='http-request-56'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/tokens/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-23'>URL Parameters</h3>
+<h3 id='url-parameters-25'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7874,9 +8035,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for token issuers on the Ledger by a given item or a part of it (issuer address, username, service name, domain etc.).</p>
-<h3 id='http-request-55'>HTTP Request</h3>
+<h3 id='http-request-57'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/issuers/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-24'>URL Parameters</h3>
+<h3 id='url-parameters-26'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7909,9 +8070,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for currencies (HEX or 3-characters) on the Ledger by a given name or a part of it (currency code, currency name.).</p>
-<h3 id='http-request-56'>HTTP Request</h3>
+<h3 id='http-request-58'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/currencies/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-25'>URL Parameters</h3>
+<h3 id='url-parameters-27'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7999,7 +8160,7 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a list of Multi Purpose Tokens (MPT) on the Ledger.</p>
-<h3 id='http-request-57'>HTTP Request</h3>
+<h3 id='http-request-59'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/mptokens</code></p>
 <h3 id='query-parameters-39'>Query Parameters</h3>
 <table><thead>
@@ -8092,9 +8253,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a specific Multi Purpose Token (MPT) on the Ledger.</p>
-<h3 id='http-request-58'>HTTP Request</h3>
+<h3 id='http-request-60'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/mptoken/&lt;mptokenIssuanceID&gt;</code></p>
-<h3 id='url-parameters-26'>URL Parameters</h3>
+<h3 id='url-parameters-28'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8167,9 +8328,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for Multi Purpose Tokens (MPT) on the Ledger by a given item or a part of it (currency code, currency name, issuer address, username, service name, domain etc.).</p>
-<h3 id='http-request-59'>HTTP Request</h3>
+<h3 id='http-request-61'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/mptokens/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-27'>URL Parameters</h3>
+<h3 id='url-parameters-29'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8206,9 +8367,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for Multi Purpose Token (MPT) issuers on the Ledger by a given item or a part of it (issuer address, username, service name, domain etc.).</p>
-<h3 id='http-request-60'>HTTP Request</h3>
+<h3 id='http-request-62'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/mptokens/issuers/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-28'>URL Parameters</h3>
+<h3 id='url-parameters-30'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8255,9 +8416,9 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint searches for Multi Purpose Token (MPT) currencies on the Ledger by a given name or a part of it (currency code, currency name.).</p>
-<h3 id='http-request-61'>HTTP Request</h3>
+<h3 id='http-request-63'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/mptokens/currencies/search/&lt;item&gt;</code></p>
-<h3 id='url-parameters-29'>URL Parameters</h3>
+<h3 id='url-parameters-31'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8456,9 +8617,9 @@ Page on bithomp that displays it:
 <a href="https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
   https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
 </a>.</p>
-<h3 id='http-request-62'>HTTP Request</h3>
+<h3 id='http-request-64'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/&lt;hash&gt;</code></p>
-<h3 id='url-parameters-30'>URL Parameters</h3>
+<h3 id='url-parameters-32'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8511,9 +8672,9 @@ Page on bithomp with the same decode function, but client-side:
 <a href="https://bithomp.com/submit/">
   https://bithomp.com/submit/
 </a>.</p>
-<h3 id='http-request-63'>HTTP Request</h3>
+<h3 id='http-request-65'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/decode/&lt;blob&gt;</code></p>
-<h3 id='url-parameters-31'>URL Parameters</h3>
+<h3 id='url-parameters-33'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8576,7 +8737,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/explorer/?hwlogin">
   https://bithomp.com/explorer/?hwlogin
 </a>.</p>
-<h3 id='http-request-64'>HTTP Request</h3>
+<h3 id='http-request-66'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
 <h3 id='post-parameters'>POST Parameters</h3>
 <table><thead>
@@ -8664,9 +8825,9 @@ Page on bithomp that displays it:
 <a href="https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv">
   https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv
 </a>.</p>
-<h3 id='http-request-65'>HTTP Request</h3>
+<h3 id='http-request-67'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transactions/&lt;address&gt;</code></p>
-<h3 id='url-parameters-32'>URL Parameters</h3>
+<h3 id='url-parameters-34'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8868,7 +9029,7 @@ Page on bithomp that displays it:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales">https://bithomp.com/en/whales</a>.</p>
-<h3 id='http-request-66'>HTTP Request</h3>
+<h3 id='http-request-68'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale</code></p>
 <h3 id='query-parameters-43'>Query Parameters</h3>
 <table><thead>
@@ -8930,7 +9091,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/receivers">https://bithomp.com/en/whales/receivers</a>.</p>
-<h3 id='http-request-67'>HTTP Request</h3>
+<h3 id='http-request-69'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/receivers</code></p>
 <h3 id='query-parameters-44'>Query Parameters</h3>
 <table><thead>
@@ -8992,7 +9153,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/senders">https://bithomp.com/en/whales/senders</a>.</p>
-<h3 id='http-request-68'>HTTP Request</h3>
+<h3 id='http-request-70'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/senders</code></p>
 <h3 id='query-parameters-45'>Query Parameters</h3>
 <table><thead>
@@ -9055,7 +9216,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/submitters">https://bithomp.com/en/whales/submitters</a>.</p>
-<h3 id='http-request-69'>HTTP Request</h3>
+<h3 id='http-request-71'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/submitters</code></p>
 <h3 id='query-parameters-46'>Query Parameters</h3>
 <table><thead>
@@ -9126,7 +9287,7 @@ Page where it used on bithomp:
 
 <p><br>Page where it used on bithomp:
 <a href="https://bithomp.com/en/distribution">https://bithomp.com/en/distribution</a>.</p>
-<h3 id='http-request-70'>HTTP Request</h3>
+<h3 id='http-request-72'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/addresses/richlist</code></p>
 <h3 id='query-parameters-47'>Query Parameters</h3>
 <table><thead>
@@ -9214,9 +9375,9 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/en/object/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8" style="word-break:break-word;">https://bithomp.com/en/object/0802E4E7EACC17414747174474487E9DF24CFDB61DD12C58B09D9EFB42C7F8C8</a>.</p>
-<h3 id='http-request-71'>HTTP Request</h3>
+<h3 id='http-request-73'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/ledgerEntry/&lt;index&gt;</code></p>
-<h3 id='url-parameters-33'>URL Parameters</h3>
+<h3 id='url-parameters-35'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9292,7 +9453,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/activations">https://bithomp.com/activations</a>.</p>
-<h3 id='http-request-72'>HTTP Request</h3>
+<h3 id='http-request-74'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/account-chart</code></p>
 <h3 id='response-format-6'>Response Format</h3>
 <table><thead>
@@ -9356,7 +9517,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/genesis">https://bithomp.com/genesis</a>.</p>
-<h3 id='http-request-73'>HTTP Request</h3>
+<h3 id='http-request-75'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/genesis</code></p>
 <h3 id='response-format-7'>Response Format</h3>
 <table><thead>
@@ -9474,7 +9635,7 @@ Page where it used on bithomp:
 <br>
 Page where it used on bithomp:
 <a href="https://bithomp.com/alerts">https://bithomp.com/alerts</a>.</p>
-<h3 id='http-request-74'>HTTP Request</h3>
+<h3 id='http-request-76'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/price/xrp/alerts</code></p>
 <h3 id='response-format-8'>Response Format</h3>
 <table><thead>
