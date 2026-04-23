@@ -98,6 +98,10 @@ Get live performance metrics for a validator: agreement scores (1h, 24h, 30d), U
 
 Get daily agreement reports for a validator, including score, total validations, missed validations, and completeness flag per day.
 
+A new query parameter: `priceNativeCurrencySpot` was added to the <a href="#amms">**AMMs**</a> and <a href="#amm-pool">**AMM Pool**</a> API end-points.
+
+Now you can get the spot price in the native currency (XRP) for each asset in the AMM pool.
+
 ### 22nd of April 2026
 
 A new endpoint was added:
@@ -1072,6 +1076,7 @@ limit | 100 | The number of AMMs to return. (More than 100 is available for the 
 holders | false | (available on paid plans only) If set to true, the result will also include a `holders` count. This is the number of unique LP token holders.
 marker | null | (available on paid plans only) The marker from the previous request, if you need a next page of AMMs
 ids | null | (Available for the Standard plan and higher) A list of AMM IDs separated by commas (max 100), to get information about specific NFTs. Formats: `ids=abc,def`, `ids[]=abc&ids[]=def` or `ids=abc&ids=def`.
+priceNativeCurrencySpot | false | If set to true, each AMM's `amount` and `amount2` objects will include a `priceNativeCurrencySpot` field — the spot price of that asset in the native currency (XRP).
 
 ## AMM Pool
 
@@ -1264,6 +1269,7 @@ Parameter | Default | Description
 ledgerIndex | null | ledger index (if set the request will return data for that ledger index)
 ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request will return data for that timestamp)
 holders | false | (available on paid plans only) If set to true, the result will also include a current `holders` count (not returned for historical request with `ledgerIndex`or `ledgerTimestamp`). This is the number of unique LP token holders.
+priceNativeCurrencySpot | false | If set to true, the `amount` and `amount2` objects will include a `priceNativeCurrencySpot` field — the spot price of that asset in the native currency (XRP).
 
 ## Get AMM Pool data by Asset Pair
 
