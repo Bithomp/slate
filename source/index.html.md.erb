@@ -86,6 +86,18 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 23rd of April 2026
+
+The <a href="#validator">**Validator**</a> section was updated with full response data and two additional documented endpoints:
+
+<a href="#validator-metrics">**Validator Metrics**</a>
+
+Get live performance metrics for a validator: agreement scores (1h, 24h, 30d), UNL membership, revocation status, and current fee/reserve settings.
+
+<a href="#validator-reports">**Validator Reports**</a>
+
+Get daily agreement reports for a validator, including score, total validations, missed validations, and completeness flag per day.
+
 ### 22nd of April 2026
 
 A new endpoint was added:
@@ -346,11 +358,6 @@ Get the list of the Addresses that are sending the most in the last 24 hours (Av
 <a href="#top-submitters-24h">**TOP submitters (24h)**</a>
 
 Get the list of the Addresses that submitting the most transactions in the last 24 hours (Available on paid plans only).
-
-### 9th of April 2025
-
-The new query parameter: `obligations` was added to the <a href="#address">**Address**</a> API end-point.
-Now you can get obligations for an address. This includes the number of holders, tokens, and trustlines associated with the address. This feature is available only on paid API plans.
 
 # Free Token Images
 
@@ -5003,36 +5010,68 @@ limit | 100 | The maximum number of objects to return in the response.
 
 # Validator
 
-## Get wallet
+## Get Validator
 
 ```shell
-curl "https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA"
+curl "https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
 ```javascript
-function getValidatorAddress(json) {
-  console.log(json.publicKey + " validator's XRPL address: ", json.address);
+function getData(json) {
+  console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA", getValidatorAddress);
+bithompRequest("https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK", getData);
 ```
 
 ```php
-$validatorAddress = curl_bithomp("https://bithomp.com/api/v2/validator/nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA");
-print $validatorAddress;
+$data = curl_bithomp("https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK");
+print $data;
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "publicKey": "nHB8QMKGt9VB4Vg71VszjBVQnDW3v3QudM4DwFaJfy96bj4Pv9fA",
-  "address": "rKontEGtDju5MCEJCwtrvTWQQqVAw5juXe"
+  "signingKey": "n9K6kjnk3m17gaMeHKxgCp7zkGsxrdpKTkuLXYp8jryDywnYXY8Z",
+  "masterKey": "nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK",
+  "publicKey": "nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK",
+  "address": "raUz9sFtJ5tfcRMuo75bNPM65BxJsKEcuF",
+  "addressDetails": {
+    "username": null,
+    "service": null
+  },
+  "domain": "xrpl.to",
+  "ledgerIndex": 103751301,
+  "ledgerHash": "0DF74727837F3056674533318E116E79E137CE3DB0C467A61500E6A470572D94",
+  "full": true,
+  "signingTime": 1776929411,
+  "lastSeenTime": 1776929412,
+  "baseFee": "200",
+  "reserveBase": "100000",
+  "reserveIncrement": "10000",
+  "amendments": null,
+  "networkID": 0,
+  "serverVersion": "3.1.2",
+  "manifest": "JAAAAAJxIe215EZDO96CThNAKmXcNG46QZ+meP1BITmkC5n/C0rVHXMhApi2lNBZ+HeWoDdzVbP0QBDm1fTv5A5/WYnYoOLp/S8JdkcwRQIhAIIEBnZltCEkKcQfjfEn4H625bML2mlFs8grm6V3SRCkAiB12eHPS3/FRX/shUEEpg8AAkUzHkEEp1MG+PIO+I87VXcHeHJwbC50b3ASQKlx2VCO4rHlMHV9ACSxwV+hs/Y+19knrjfxH1Z8j7IpOx+JAS/YUjiRjFm0yj2S7kjPFJmE4DvJKei0HmOBwws=",
+  "sequence": 2,
+  "domainVerified": true,
+  "ownerCountry": "us",
+  "serverCountry": null,
+  "serverLocation": null,
+  "serverCloud": null,
+  "networkASN": null,
+  "principals": [
+    {
+      "name": "xrpl.to",
+      "email": "hello@xrpl.to",
+      "social_1": "https://x.com/xrplto"
+    }
+  ]
 }
 ```
 
-This endpoint retrieves an address of a specific validator
-<a href="https://github.com/codetsunami/xrpl-tools/blob/master/validator-address-tool/vatool.js">computed from the validator public key</a>
+This endpoint returns detailed information about a specific validator, including its keys, domain, last seen ledger, manifest, geo/network metadata, and operator principals.
 
 ### HTTP Request
 
@@ -5042,7 +5081,139 @@ This endpoint retrieves an address of a specific validator
 
 Parameter | Description
 --------- | -----------
-validatorPublicKey | The public key of the validator to retrieve
+validatorPublicKey | The public key of the validator
+
+## Validator Metrics
+
+```shell
+curl "https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK/metrics"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK/metrics", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK/metrics");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "validation_public_key": "nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK",
+  "signing_key": "n9K6kjnk3m17gaMeHKxgCp7zkGsxrdpKTkuLXYp8jryDywnYXY8Z",
+  "master_key": "nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK",
+  "domain": "xrpl.to",
+  "chain": "main",
+  "server_version": "3.1.2",
+  "networks": "main",
+  "current_index": 103751301,
+  "ledger_hash": "0DF74727837F3056674533318E116E79E137CE3DB0C467A61500E6A470572D94",
+  "agreement_1h": {
+    "missed": 0,
+    "total": 932,
+    "score": "1.00000",
+    "incomplete": false
+  },
+  "agreement_24h": {
+    "missed": 0,
+    "total": 22306,
+    "score": "1.00000",
+    "incomplete": false
+  },
+  "agreement_30day": {
+    "missed": 20,
+    "total": 660384,
+    "score": "0.99997",
+    "incomplete": true
+  },
+  "partial": false,
+  "unl": false,
+  "revoked": false,
+  "base_fee": 200,
+  "reserve_base": 100000,
+  "reserve_inc": 10000,
+  "result": "success"
+}
+```
+
+This endpoint returns live performance metrics for a specific validator, including agreement scores for the last 1h, 24h, and 30 days, UNL membership, revocation status, and current network fee/reserve settings.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/validator/<validatorPublicKey>/metrics`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+validatorPublicKey | The public key of the validator
+
+## Validator Reports
+
+```shell
+curl "https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK/reports"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getData(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK/reports", getData);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/validator/nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK/reports");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "result": "success",
+  "count": 897,
+  "reports": [
+    {
+      "validation_public_key": "nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK",
+      "date": "2023-10-29T00:00:00.000Z",
+      "chain": "main",
+      "score": "1.00000",
+      "total": "21753",
+      "missed": "0",
+      "incomplete": false
+    },
+    {
+      "validation_public_key": "nHUjYWSeiAepbkkrmwmQXFnohhr6Vy5oFK9Gk6TUF6MAT4qSiXSK",
+      "date": "2023-10-30T00:00:00.000Z",
+      "chain": "main",
+      "score": "1.00000",
+      "total": "21600",
+      "missed": "0",
+      "incomplete": false
+    }
+  ]
+}
+```
+
+This endpoint returns daily agreement reports for a specific validator. Each report covers one calendar day and includes the score, total validations, missed validations, and whether the data for that day is incomplete.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/validator/<validatorPublicKey>/reports`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+validatorPublicKey | The public key of the validator
 
 # Validators 
 
