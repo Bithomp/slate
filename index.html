@@ -977,6 +977,12 @@
 <ul>
 <li><code>nftokenMinter</code> - filter accounts where the specified address is set as the NFT minter.</li>
 </ul>
+
+<p>A new query parameter: <code>priceNativeCurrencySpot</code> was added to the <a href="#list-of-tokens"><strong>List of tokens</strong></a> API endpoint.</p>
+
+<ul>
+<li><code>priceNativeCurrencySpot</code> - if set to <code>true</code>, each token item includes <code>priceNativeCurrencySpot</code>, the spot price in the native currency (XRP/XAH).</li>
+</ul>
 <h3 id='23rd-of-april-2026'>23rd of April 2026</h3>
 <p>The <a href="#validator"><strong>Validator</strong></a> section was updated with full response data and two additional documented endpoints:</p>
 
@@ -7390,13 +7396,13 @@ You can retrieve information for MANY currencies in one request:
 <td>A list of currencies separated by comma (HEX or XLS-14 NFT)</td>
 </tr>
 </tbody></table>
-<h1 id='tokens'>Tokens</h1><h2 id='list-of-tokens'>List of tokens</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/tokens?statistics=true&amp;convertCurrencies=usd&amp;currencyDetails=trueens&amp;limit=100&amp;order=rating"</span>
+<h1 id='tokens'>Tokens</h1><h2 id='list-of-tokens'>List of tokens</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/tokens?statistics=true&amp;convertCurrencies=usd&amp;currencyDetails=true&amp;priceNativeCurrencySpot=true&amp;limit=100&amp;order=rating"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokens</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/tokens?statistics=true&amp;convertCurrencies=usd&amp;currencyDetails=true&amp;limit=100&amp;order=rating</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokens</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/tokens?statistics=true&amp;convertCurrencies=usd&amp;currencyDetails=true&amp;limit=100&amp;order=rating"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/tokens?statistics=true&amp;convertCurrencies=usd&amp;currencyDetails=true&amp;priceNativeCurrencySpot=true&amp;limit=100&amp;order=rating</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokens</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/tokens?statistics=true&amp;convertCurrencies=usd&amp;currencyDetails=true&amp;priceNativeCurrencySpot=true&amp;limit=100&amp;order=rating"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -7404,6 +7410,7 @@ You can retrieve information for MANY currencies in one request:
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"priceNativeCurrencySpot"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nl">"order"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rating"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nl">"convertCurrencies"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"usd"</span><span class="p">],</span><span class="w">
@@ -7483,6 +7490,7 @@ You can retrieve information for MANY currencies in one request:
         </span><span class="nl">"activeHolders"</span><span class="p">:</span><span class="w"> </span><span class="mi">513</span><span class="p">,</span><span class="w">
         </span><span class="nl">"timeAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759661820</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"priceNativeCurrencySpot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.332076975442907666"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currencyDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hex"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"524C555344000000000000000000000000000000"</span><span class="p">,</span><span class="w">
@@ -7564,6 +7572,7 @@ You can retrieve information for MANY currencies in one request:
         </span><span class="nl">"activeHolders"</span><span class="p">:</span><span class="w"> </span><span class="mi">670</span><span class="p">,</span><span class="w">
         </span><span class="nl">"timeAt"</span><span class="p">:</span><span class="w"> </span><span class="mi">1759661400</span><span class="w">
       </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"priceNativeCurrencySpot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.08080000000002883203"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currencyDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hex"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"currencyCode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"534F4C4F00000000000000000000000000000000"</span><span class="p">,</span><span class="w">
@@ -7593,6 +7602,11 @@ You can retrieve information for MANY currencies in one request:
 <td>statistics</td>
 <td>false</td>
 <td>(Only available on Standard plan and higher) If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.</td>
+</tr>
+<tr>
+<td>priceNativeCurrencySpot</td>
+<td>false</td>
+<td>If set to true, each token item will include <code>priceNativeCurrencySpot</code>, the spot price in the native currency (XRP/XAH).</td>
 </tr>
 <tr>
 <td>order</td>
