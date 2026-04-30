@@ -92,6 +92,10 @@ A new query parameter: `nftokenMinter` was added to the <a href="#accounts">**Ac
 
 - `nftokenMinter` - filter accounts where the specified address is set as the NFT minter.
 
+A new query parameter: `priceNativeCurrencySpot` was added to the <a href="#list-of-tokens">**List of tokens**</a> API endpoint.
+
+- `priceNativeCurrencySpot` - if set to `true`, each token item includes `priceNativeCurrencySpot`, the spot price in the native currency (XRP/XAH).
+
 ### 23rd of April 2026
 
 The <a href="#validator">**Validator**</a> section was updated with full response data and two additional documented endpoints:
@@ -5945,7 +5949,7 @@ currencyList  | A list of currencies separated by comma (HEX or XLS-14 NFT)
 ## List of tokens
 
 ```shell
-curl "https://bithomp.com/api/v2/trustlines/tokens?statistics=true&convertCurrencies=usd&currencyDetails=trueens&limit=100&order=rating"
+curl "https://bithomp.com/api/v2/trustlines/tokens?statistics=true&convertCurrencies=usd&currencyDetails=true&priceNativeCurrencySpot=true&limit=100&order=rating"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -5953,11 +5957,11 @@ curl "https://bithomp.com/api/v2/trustlines/tokens?statistics=true&convertCurren
 function getTokens(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/trustlines/tokens?statistics=true&convertCurrencies=usd&currencyDetails=true&limit=100&order=rating", getTokens);
+bithompRequest("https://bithomp.com/api/v2/trustlines/tokens?statistics=true&convertCurrencies=usd&currencyDetails=true&priceNativeCurrencySpot=true&limit=100&order=rating", getTokens);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/tokens?statistics=true&convertCurrencies=usd&currencyDetails=true&limit=100&order=rating");
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/tokens?statistics=true&convertCurrencies=usd&currencyDetails=true&priceNativeCurrencySpot=true&limit=100&order=rating");
 print $data;
 ```
 
@@ -5966,6 +5970,7 @@ print $data;
 ```json
 {
   "statistics": true,
+  "priceNativeCurrencySpot": true,
   "order": "rating",
   "limit": 100,
   "convertCurrencies": ["usd"],
@@ -6045,6 +6050,7 @@ print $data;
         "activeHolders": 513,
         "timeAt": 1759661820
       },
+      "priceNativeCurrencySpot": "0.332076975442907666",
       "currencyDetails": {
         "type": "hex",
         "currencyCode": "524C555344000000000000000000000000000000",
@@ -6126,6 +6132,7 @@ print $data;
         "activeHolders": 670,
         "timeAt": 1759661400
       },
+      "priceNativeCurrencySpot": "0.08080000000002883203",
       "currencyDetails": {
         "type": "hex",
         "currencyCode": "534F4C4F00000000000000000000000000000000",
@@ -6146,6 +6153,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 convertCurrencies | null | (Only available on paid API plans) A single currency code to convert the token price into.  Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: `convertCurrencies=usd`
 statistics | false | (Only available on Standard plan and higher) If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.
+priceNativeCurrencySpot | false | If set to true, each token item will include `priceNativeCurrencySpot`, the spot price in the native currency (XRP/XAH).
 order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`, `sellVolumeHigh`, `buyVolumeHigh`, `totalVolumeHigh`, `uniqueTradersHigh`, `uniqueSellersHigh`, `uniqueBuyersHigh`, `marketCapHigh`, `priceNativeCurrencyHigh`, `priceNativeCurrencyLow`.
 issuer | null | If set, the response will only include tokens issued by the specified issuer address.
 currency | null | If set, the response will only include tokens with the specified currency code.
