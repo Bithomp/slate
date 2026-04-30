@@ -86,6 +86,12 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 30th of April 2026
+
+A new query parameter: `nftokenMinter` was added to the <a href="#accounts">**Accounts**</a> API endpoint.
+
+- `nftokenMinter` - filter accounts where the specified address is set as the NFT minter.
+
 ### 23rd of April 2026
 
 The <a href="#validator">**Validator**</a> section was updated with full response data and two additional documented endpoints:
@@ -4487,7 +4493,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 ## Accounts
 
 ```shell
-curl "https://bithomp.com/api/v2/accounts?regularKeyOrSigner=rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ&limit=2&order=DESC"
+curl "https://bithomp.com/api/v2/accounts?nftokenMinter=rfx2mVhTZzc6bLXKeYyFKtpha2LHrkNZFT&limit=2&order=DESC"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -4495,11 +4501,11 @@ curl "https://bithomp.com/api/v2/accounts?regularKeyOrSigner=rUUs1jns6tdUQwAABDJ
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/accounts?regularKeyOrSigner=rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ&limit=2&order=DESC", getData);
+bithompRequest("https://bithomp.com/api/v2/accounts?nftokenMinter=rfx2mVhTZzc6bLXKeYyFKtpha2LHrkNZFT&limit=2&order=DESC", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/accounts?regularKeyOrSigner=rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ&limit=2&order=DESC");
+$data = curl_bithomp("https://bithomp.com/api/v2/accounts?nftokenMinter=rfx2mVhTZzc6bLXKeYyFKtpha2LHrkNZFT&limit=2&order=DESC");
 print $data;
 ```
 
@@ -4508,46 +4514,81 @@ print $data;
 ```json
 {
   "summary": {
-    "total": 1
+    "total": 8627081
   },
   "accounts": [
     {
-      "account": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
+      "account": "r35xyDLsYezLC5JdU9RRe9LERd5ezLHASA",
       "accountDetails": {
-        "address": "rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B",
-        "username": "Bitstamp",
-        "service": "Bitstamp"
-      },
-      "parent": "r49nVgaYSDuU7GEQh4mF1nyjsXSVRcUHsr",
-      "parentDetails": {
-        "address": "r49nVgaYSDuU7GEQh4mF1nyjsXSVRcUHsr",
-        "username": "damijan",
-        "service": null
-      },
-      "regularKey": "rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ",
-      "regularKeyDetails": {
-        "address": "rUUs1jns6tdUQwAABDJyHMUHvdGNvNADvJ",
+        "address": "r35xyDLsYezLC5JdU9RRe9LERd5ezLHASA",
         "username": null,
         "service": null
       },
-      "inception": 1361216760,
-      "ledgerIndex": 242756,
-      "txHash": "F0BA44037CA7DEFED8F30C11F6F909039E415EF88946F84F2CEE1E85F660B074",
-      "initialBalance": 1500,
-      "balance": 412602.491952,
-      "disableMaster": true,
-      "requireDestTag": true,
-      "lastSubmittedAt": 1761726620,
-      "lastSubmittedLedgerIndex": 99845772,
-      "lastSubmittedTxHash": "C8C9D5D8B5B7448A05CB753A0AFB215BF3B8316AE06B8A274033635DE621B3F4",
-      "ownerCount": "378",
-      "defaultRipple": true,
+      "parent": "rhxESuazFFqNmSnqpuFwTFpNRnmff3DoRs",
+      "parentDetails": {
+        "address": "rhxESuazFFqNmSnqpuFwTFpNRnmff3DoRs",
+        "username": null,
+        "service": null
+      },
+      "inception": 1723585551,
+      "ledgerIndex": 90037701,
+      "txHash": "E8572AC9E7A7C510953FA75D8385F481C8F87797EF5F9AE00039FF68EA0F7CAA",
+      "initialBalance": 500,
+      "balance": 10.293643,
+      "disableMaster": false,
+      "requireDestTag": false,
+      "lastSubmittedAt": 1752607721,
+      "lastSubmittedLedgerIndex": 97495937,
+      "lastSubmittedTxHash": "548AACE447D38C28D286A7E290A28DC49CFD3848051E24E1C5CF46212AA9B31F",
+      "ownerCount": "17",
+      "defaultRipple": false,
       "requireAuth": false,
-      "disallowXRP": true,
-      "transferRate": "1001500000",
-      "allowTrustlineLocking": false
+      "disallowXRP": false,
+      "allowTrustlineLocking": false,
+      "nftokenMinter": "rfx2mVhTZzc6bLXKeYyFKtpha2LHrkNZFT",
+      "nftokenMinterDetails": {
+        "address": "rfx2mVhTZzc6bLXKeYyFKtpha2LHrkNZFT",
+        "username": null,
+        "service": null
+      }
+    },
+    {
+      "account": "rDjvoRdtkcm4dyWNSWwtjDa184iZiJzun6",
+      "accountDetails": {
+        "address": "rDjvoRdtkcm4dyWNSWwtjDa184iZiJzun6",
+        "username": null,
+        "service": null
+      },
+      "parent": "r3BGDJbjuZQX5Aebsp7XPXj19B4CRQdvF3",
+      "parentDetails": {
+        "address": "r3BGDJbjuZQX5Aebsp7XPXj19B4CRQdvF3",
+        "username": null,
+        "service": null
+      },
+      "inception": 1715221360,
+      "ledgerIndex": 87859901,
+      "txHash": "85F567ACB283DCBFF29D2882680AD15F7D1ABA3301C2EB865F3D810EEF2FAA54",
+      "initialBalance": 20,
+      "balance": 17.599988,
+      "disableMaster": false,
+      "requireDestTag": false,
+      "lastSubmittedAt": 1768696170,
+      "lastSubmittedLedgerIndex": 101633471,
+      "lastSubmittedTxHash": "F918C3E8AEDBBCAA59EFB2268891701AE0FF30E520284AD4510EBAEB1EA01871",
+      "ownerCount": "83",
+      "defaultRipple": false,
+      "requireAuth": false,
+      "disallowXRP": false,
+      "allowTrustlineLocking": false,
+      "nftokenMinter": "rfx2mVhTZzc6bLXKeYyFKtpha2LHrkNZFT",
+      "nftokenMinterDetails": {
+        "address": "rfx2mVhTZzc6bLXKeYyFKtpha2LHrkNZFT",
+        "username": null,
+        "service": null
+      }
     }
-  ]
+  ],
+  "marker": "5669782"
 }
 ```
 
@@ -4567,6 +4608,7 @@ regularKey | null | Filter accounts where this address is set as a regular key. 
 signer | null | Filter accounts where this address is present in a signer list. Not compatible with `regularKeyOrSigner`.
 regularKeyOrSigner | null | Filter accounts where this address is either a regular key or a signer. Not compatible with `regularKey` or `signer`.
 parent | null | Filter by parent (activated wallet) address.
+nftokenMinter | null | Filter accounts where this address is set as the NFT minter.
 ledgerIndex | null | Filter by activation ledger index.
 inception | null | Filter by activation time. Supported formats: unix ms or ISO date; ranges `..date`, `date..`, `date1..date2`.
 limit | 200 | Number of records to return. Max `10000`.
