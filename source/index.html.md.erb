@@ -86,6 +86,18 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 1st of May 2026
+
+2 new endpoints were added:
+
+<a href="#account-descendants">**Account descendants**</a>
+
+Get the activation descendants tree for a parent account from the local database.
+
+<a href="#genesis-descendants">**Genesis descendants**</a>
+
+Get the activation descendants tree starting from genesis accounts.
+
 ### 30th of April 2026
 
 A new query parameter: `nftokenMinter` was added to the <a href="#accounts">**Accounts**</a> API endpoint.
@@ -4747,6 +4759,204 @@ It is similar to `/v2/address/<address>`, but `/v2/address` is mostly network-ba
 Parameter | Description
 --------- | -----------
 address | The account address you want to look up.
+
+## Account descendants
+
+```shell
+curl "https://bithomp.com/api/v2/account/rPcHbQ26o4Xrwb2bu5gLc3gWUsS52yx1pG/descendants"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getDescendants(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/account/rPcHbQ26o4Xrwb2bu5gLc3gWUsS52yx1pG/descendants", getDescendants);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/account/rPcHbQ26o4Xrwb2bu5gLc3gWUsS52yx1pG/descendants");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "parent": "rPcHbQ26o4Xrwb2bu5gLc3gWUsS52yx1pG",
+  "parentDetails": {
+    "address": "rPcHbQ26o4Xrwb2bu5gLc3gWUsS52yx1pG",
+    "username": "RealFat",
+    "service": null
+  },
+  "inception": 1357010470,
+  "genesisBalance": "10099.99999",
+  "balance": "85.951878",
+  "descendants": [
+    {
+      "account": "rUDDZpHZuLcjspdLxJCAHySTGJBMthiqso",
+      "accountDetails": {
+        "address": "rUDDZpHZuLcjspdLxJCAHySTGJBMthiqso",
+        "username": "KfK9MxvbCxuidrhvU8is",
+        "service": null
+      },
+      "inception": 1366051990,
+      "initialBalance": "300",
+      "balance": "30.0085",
+      "depth": 0,
+      "descendants": [
+        {
+          "account": "r4BCJ3RmWJdNi4ViTe3Jami9Bu6m3eS2k9",
+          "accountDetails": {
+            "address": "r4BCJ3RmWJdNi4ViTe3Jami9Bu6m3eS2k9",
+            "username": "LWqThshCmtFFbLQoJV7q",
+            "service": null
+          },
+          "inception": 1368037750,
+          "initialBalance": "110",
+          "balance": "28.930789",
+          "depth": 1,
+          "descendants": []
+        },
+        {
+          "account": "rn4X2TDT8RkVrC4oGiBvGfE2sCxRDPTUQY",
+          "accountDetails": {
+            "address": "rn4X2TDT8RkVrC4oGiBvGfE2sCxRDPTUQY",
+            "username": "pHACJetvmOMJmwl6bsfj",
+            "service": null
+          },
+          "inception": 1400844390,
+          "initialBalance": "30",
+          "balance": "512.649583",
+          "depth": 1,
+          "descendants": []
+        }
+      ]
+    },
+    {
+      "account": "rNg1bAdoSGqakvqM8jjkG7hL7SwPRP2ojo",
+      "accountDetails": {
+        "address": "rNg1bAdoSGqakvqM8jjkG7hL7SwPRP2ojo",
+        "username": "HostFat",
+        "service": null
+      },
+      "inception": 1399501950,
+      "initialBalance": "25",
+      "balance": "1164.643872",
+      "depth": 0,
+      "descendants": []
+    }
+  ]
+}
+```
+
+This endpoint returns the activation descendants tree for a parent account from our local database.
+
+**This endpoint is available on Standard plan and higher.**
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/account/<parent>/descendants`
+
+### Example Requests
+
+`GET https://bithomp.com/api/v2/account/rPcHbQ26o4Xrwb2bu5gLc3gWUsS52yx1pG/descendants`
+
+`GET https://bithomp.com/api/v2/account/rPcHbQ26o4Xrwb2bu5gLc3gWUsS52yx1pG/descendants?depth=10`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+parent | The parent account address.
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+depth | 10 | Recursion depth for the descendants tree. Min `1`, max `20`.
+
+## Genesis descendants
+
+```shell
+curl "https://bithomp.com/api/v2/account/genesis/descendants"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getGenesisDescendants(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/account/genesis/descendants", getGenesisDescendants);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/account/genesis/descendants");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "genesis": [
+    {
+      "account": "r2oU84CFuT4MgmrDejBaoyHNvovpMSPiA",
+      "accountDetails": {
+        "address": "r2oU84CFuT4MgmrDejBaoyHNvovpMSPiA",
+        "username": null,
+        "service": null
+      },
+      "inception": 1357010470,
+      "genesisBalance": "10000",
+      "balance": "311.967864",
+      "depth": 0,
+      "descendants": []
+    },
+    {
+      "account": "r3AthBf5eW4b9ujLoXNHFeeEJsK3PtJDea",
+      "accountDetails": {
+        "address": "r3AthBf5eW4b9ujLoXNHFeeEJsK3PtJDea",
+        "username": null,
+        "service": null
+      },
+      "inception": 1357010470,
+      "genesisBalance": "10000000",
+      "balance": "24.992094",
+      "depth": 0,
+      "descendants": [
+        {
+          "account": "rfWZBjSbraxZF8z6wGTWq8QQBooYdop7QJ",
+          "accountDetails": {
+            "address": "rfWZBjSbraxZF8z6wGTWq8QQBooYdop7QJ",
+            "username": null,
+            "service": null
+          },
+          "inception": 1559692922,
+          "initialBalance": "569.99",
+          "balance": "5219.991163",
+          "depth": 1,
+          "descendants": []
+        }
+      ]
+    }
+  ]
+}
+```
+
+This endpoint returns the activation descendants tree starting from genesis accounts.
+
+**This endpoint is available on Standard plan and higher.**
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/account/genesis/descendants`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+depth | 2 | Recursion depth for the genesis descendants tree. Min `1`, max `10`.
 
 ## Address Token Balances
 
