@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#9th-of-may-2026" class="toc-h2 toc-link" data-title="9th of May 2026">9th of May 2026</a>
+                  </li>
+                  <li>
                     <a href="#1st-of-may-2026" class="toc-h2 toc-link" data-title="1st of May 2026">1st of May 2026</a>
                   </li>
                   <li>
@@ -980,7 +983,15 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='1st-of-may-2026'>1st of May 2026</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='9th-of-may-2026'>9th of May 2026</h3>
+<p>The <a href="#dapps"><strong>Dapps</strong></a> API endpoint now supports <code>previousPeriodMode=calendar-1</code> together with <code>previousPeriod=true</code>.</p>
+
+<ul>
+<li><code>period=day</code> - last 24 hours vs previous full calendar day.</li>
+<li><code>period=week</code> - last 7 days vs previous full calendar week.</li>
+<li><code>period=month</code> - last month vs previous full calendar month.</li>
+</ul>
+<h3 id='1st-of-may-2026'>1st of May 2026</h3>
 <p>2 new endpoints were added:</p>
 
 <p><a href="#account-descendants"><strong>Account descendants</strong></a></p>
@@ -1021,7 +1032,7 @@
 
 <p><a href="#dapps"><strong>Dapps</strong></a></p>
 
-<p>Get dapps statistics for a specified period (<code>day</code>, <code>week</code>, <code>month</code>). Includes transaction counts, volume, fees, transaction type/result breakdowns, and swap counts per dapp (identified by source tag). Supports fiat conversion via <code>convertCurrencies</code> and comparison with the previous period via <code>previousPeriod</code>. <strong>Available for the Premium plan and higher.</strong></p>
+<p>Get dapps statistics for a specified period (<code>day</code>, <code>week</code>, <code>month</code>). Includes transaction counts, volume, fees, transaction type/result breakdowns, and swap counts per dapp (identified by source tag). Supports fiat conversion via <code>convertCurrencies</code> and comparison with the previous period via <code>previousPeriod</code>. Use <code>previousPeriodMode=calendar-1</code> to compare the selected period with the previous full calendar period. <strong>Available for the Premium plan and higher.</strong></p>
 <h3 id='9th-of-april-2026'>9th of April 2026</h3>
 <p>A new query parameter: <code>order</code> was added to the <a href="#nft-volumes-extended"><strong>NFT Volumes Extended</strong></a> API endpoint for <code>list=collections</code>.</p>
 
@@ -5628,13 +5639,13 @@ Before downloading the whole list again you can check if it was updated here: <a
 <td>The amount of identified addresses.</td>
 </tr>
 </tbody></table>
-<h1 id='dapps'>Dapps</h1><h2 id='dapps-2'>Dapps</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/dapps?convertCurrencies=usd&amp;previousPeriod=true&amp;period=day"</span>
+<h1 id='dapps'>Dapps</h1><h2 id='dapps-2'>Dapps</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/dapps?convertCurrencies=usd&amp;previousPeriod=true&amp;previousPeriodMode=calendar-1&amp;period=day"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/dapps?convertCurrencies=usd&amp;previousPeriod=true&amp;period=day</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/dapps?convertCurrencies=usd&amp;previousPeriod=true&amp;period=day"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/dapps?convertCurrencies=usd&amp;previousPeriod=true&amp;previousPeriodMode=calendar-1&amp;period=day</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/dapps?convertCurrencies=usd&amp;previousPeriod=true&amp;previousPeriodMode=calendar-1&amp;period=day"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -5777,7 +5788,13 @@ Before downloading the whole list again you can check if it was updated here: <a
 
 <p>Each entry in <code>dapps</code> corresponds to a dapp identified by its XRP Ledger source tag. The response includes transaction counts, volume sent (in drops), fees paid, breakdown by transaction type and result code, and swap count. When <code>convertCurrencies</code> is set, fiat equivalents are included in <code>totalSentInFiats</code> and <code>totalFeesInFiats</code>.</p>
 
-<p>When <code>previousPeriod</code> is included in the response, it contains the same dapps data for the comparison period. For <code>period=day</code> or <code>period=week</code>, this is the immediately preceding rolling window (previous 24h or previous 7 days). For <code>period=month</code> with <code>previousPeriod=calendar</code>, this is the previous full calendar month.</p>
+<p>When <code>previousPeriod</code> is included in the response, it contains the same dapps data for the comparison period. By default, this is the immediately preceding rolling period (previous 24h, 7 days, or 30 days). With <code>previousPeriod=true&amp;previousPeriodMode=calendar-1</code>, the comparison uses the previous full calendar period:</p>
+
+<ul>
+<li><code>period=day</code> - last 24 hours vs previous full calendar day.</li>
+<li><code>period=week</code> - last 7 days vs previous full calendar week.</li>
+<li><code>period=month</code> - last month vs previous full calendar month.</li>
+</ul>
 <h3 id='http-request-31'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/dapps</code></p>
 <h3 id='query-parameters-24'>Query Parameters</h3>
@@ -5796,7 +5813,12 @@ Before downloading the whole list again you can check if it was updated here: <a
 <tr>
 <td>previousPeriod</td>
 <td>null</td>
-<td>If set to <code>true</code>, includes comparison data for the previous rolling period (previous 24h, 7 days, or 30 days). For <code>period=month</code>, set to <code>calendar</code> to compare against the previous full calendar month instead.</td>
+<td>If set to <code>true</code>, includes comparison data for the previous period.</td>
+</tr>
+<tr>
+<td>previousPeriodMode</td>
+<td>null</td>
+<td>Sets the comparison mode when <code>previousPeriod=true</code>. Use <code>calendar-1</code> to compare <code>day</code> as last 24 hours vs previous full calendar day, <code>week</code> as last 7 days vs previous full calendar week, and <code>month</code> as last month vs previous full calendar month.</td>
 </tr>
 <tr>
 <td>convertCurrencies</td>
