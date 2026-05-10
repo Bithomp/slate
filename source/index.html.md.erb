@@ -88,7 +88,7 @@ Direct access to fast [resized and cached] images and videos:
 
 ### 9th of May 2026
 
-The <a href="#dapps">**Dapps**</a> API endpoint now supports `previousPeriodMode=calendar-1` together with `previousPeriod=true`.
+The <a href="#dapps">**Dapps**</a> API endpoint now supports previous period comparison modes directly in the `previousPeriod` query parameter: `rolling`, `calendar`, and `calendar-1`.
 
 - `period=day` - last 24 hours vs previous full calendar day.
 - `period=week` - last 7 days vs previous full calendar week.
@@ -138,7 +138,7 @@ A new endpoint was added:
 
 <a href="#dapps">**Dapps**</a>
 
-Get dapps statistics for a specified period (`day`, `week`, `month`). Includes transaction counts, volume, fees, transaction type/result breakdowns, and swap counts per dapp (identified by source tag). Supports fiat conversion via `convertCurrencies` and comparison with the previous period via `previousPeriod`. Use `previousPeriodMode=calendar-1` to compare the selected period with the previous full calendar period. **Available for the Premium plan and higher.**
+Get dapps statistics for a specified period (`day`, `week`, `month`). Includes transaction counts, volume, fees, transaction type/result breakdowns, and swap counts per dapp (identified by source tag). Supports fiat conversion via `convertCurrencies` and comparison with the previous period via `previousPeriod`. Use `previousPeriod=rolling`, `previousPeriod=calendar`, or `previousPeriod=calendar-1` to choose the comparison mode. **Available for the Premium plan and higher.**
 
 ### 9th of April 2026
 
@@ -4192,7 +4192,7 @@ totalAddresses | Integer | The amount of identified addresses.
 ## Dapps
 
 ```shell
-curl "https://bithomp.com/api/v2/dapps?convertCurrencies=usd&previousPeriod=true&previousPeriodMode=calendar-1&period=day"
+curl "https://bithomp.com/api/v2/dapps?convertCurrencies=usd&previousPeriod=calendar-1&period=day"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -4200,11 +4200,11 @@ curl "https://bithomp.com/api/v2/dapps?convertCurrencies=usd&previousPeriod=true
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/dapps?convertCurrencies=usd&previousPeriod=true&previousPeriodMode=calendar-1&period=day", getData);
+bithompRequest("https://bithomp.com/api/v2/dapps?convertCurrencies=usd&previousPeriod=calendar-1&period=day", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/dapps?convertCurrencies=usd&previousPeriod=true&previousPeriodMode=calendar-1&period=day");
+$data = curl_bithomp("https://bithomp.com/api/v2/dapps?convertCurrencies=usd&previousPeriod=calendar-1&period=day");
 print $data;
 ```
 
@@ -4349,7 +4349,11 @@ This endpoint returns dapps statistics for the specified period. **Available for
 
 Each entry in `dapps` corresponds to a dapp identified by its XRP Ledger source tag. The response includes transaction counts, volume sent (in drops), fees paid, breakdown by transaction type and result code, and swap count. When `convertCurrencies` is set, fiat equivalents are included in `totalSentInFiats` and `totalFeesInFiats`.
 
-When `previousPeriod` is included in the response, it contains the same dapps data for the comparison period. By default, this is the immediately preceding rolling period (previous 24h, 7 days, or 30 days). With `previousPeriod=true&previousPeriodMode=calendar-1`, the comparison uses the previous full calendar period:
+When `previousPeriod` is included in the response, it contains the same dapps data for the comparison period. Supported comparison modes are `rolling`, `calendar`, and `calendar-1`.
+
+Use `previousPeriod=rolling` to compare against the immediately preceding rolling period (previous 24h, 7 days, or 30 days).
+
+Use `previousPeriod=calendar-1` to compare against the previous full calendar period:
 
 - `period=day` - last 24 hours vs previous full calendar day.
 - `period=week` - last 7 days vs previous full calendar week.
@@ -4364,8 +4368,7 @@ When `previousPeriod` is included in the response, it contains the same dapps da
 Parameter | Default | Description
 --------- | ------- | -----------
 period | `day` | The time period for the statistics. Options: `day` (last 24 hours), `week` (last 7 days), `month` (last 30 days or calendar month).
-previousPeriod | null | If set to `true`, includes comparison data for the previous period.
-previousPeriodMode | null | Sets the comparison mode when `previousPeriod=true`. Use `calendar-1` to compare `day` as last 24 hours vs previous full calendar day, `week` as last 7 days vs previous full calendar week, and `month` as last month vs previous full calendar month.
+previousPeriod | null | Includes comparison data for the previous period. Supported modes: `rolling`, `calendar`, `calendar-1`. Use `rolling` for the previous rolling period. Use `calendar-1` to compare `day` as last 24 hours vs previous full calendar day, `week` as last 7 days vs previous full calendar week, and `month` as last month vs previous full calendar month.
 convertCurrencies | null | A currency code (e.g. `usd`, `eur`) to include fiat equivalents for `totalSent` and `totalFees` amounts in the response.
 
 # Address
