@@ -991,7 +991,7 @@
 
 <p><a href="#token-activity"><strong>Token Activity</strong></a></p>
 
-<p>Get recent token activity from the last 24 hours for IOU tokens, native tokens (<code>XRP</code>/<code>XAH</code>), and Multi Purpose Tokens (MPTs). Supports <code>dex</code>, <code>transfer</code>, <code>rippling</code>, <code>burn</code>, and <code>mint</code> filters, ordering by newest activity or amount, optional currency details, and marker-based pagination.</p>
+<p>Get recent token activity from the last 24 hours for IOU tokens, native tokens (<code>XRP</code>/<code>XAH</code>), and Multi Purpose Tokens (MPTs). Supports <code>dex</code>, <code>transfer</code>, <code>rippling</code>, <code>burn</code>, and <code>mint</code> filters, ordering by newest activity or amount, optional currency details, and marker-based pagination. <strong>Available on Standard plan and higher.</strong></p>
 <h3 id='9th-of-may-2026'>9th of May 2026</h3>
 <p>The <a href="#dapps"><strong>Dapps</strong></a> API endpoint now supports previous period comparison modes directly in the <code>previousPeriod</code> query parameter: <code>rolling</code>, <code>calendar</code>, and <code>calendar-1</code>.</p>
 
@@ -8033,7 +8033,7 @@ You can retrieve information for MANY currencies in one request:
   </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dex"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint retrieves recent token activity from up to the last 24 hours. Activity types include DEX swaps, transfers, rippling, burns, and mints. When no recent activity matches the request, the response contains an empty <code>swaps</code> array.</p>
+<p>This endpoint retrieves recent token activity from up to the last 24 hours. Activity types include DEX swaps, transfers, rippling, burns, and mints. <strong>Available on Standard plan and higher.</strong> When no recent activity matches the request, the response contains an empty <code>swaps</code> array.</p>
 
 <p>Native tokens can be requested with <code>XRP</code> or <code>XAH</code>. Multi Purpose Tokens can be requested with the MPT issuance ID.</p>
 
