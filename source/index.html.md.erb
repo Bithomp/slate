@@ -86,6 +86,14 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 17th of May 2026
+
+A new endpoint was added:
+
+<a href="#token-activity">**Token Activity**</a>
+
+Get recent token activity from the last 24 hours for IOU tokens, native tokens (`XRP`/`XAH`), and Multi Purpose Tokens (MPTs). Supports `dex`, `transfer`, `rippling`, `burn`, and `mint` filters, ordering by newest activity or amount, optional currency details, and marker-based pagination.
+
 ### 9th of May 2026
 
 The <a href="#dapps">**Dapps**</a> API endpoint now supports previous period comparison modes directly in the `previousPeriod` query parameter: `rolling`, `calendar`, and `calendar-1`.
@@ -372,26 +380,6 @@ Search for token issuers by a part of address, username, domain, service name.
 <a href="#currency-search">**Currency Search**</a>
 
 Search for currencies by a part of currency, currency code, issuer address, username, domain, service name.
-
-### 29th of April 2025
-
-4 new endpoints were added:
-
-<a href="#top-transactions-24h">**TOP transactions (24h)**</a>
-
-Get the list of the most significant transactions for the last 24 hours (Available on paid plans only).
-
-<a href="#top-receivers-24h">**TOP receivers (24h)**</a>
-
-Get the list of the Addresses that are receiving the most in the last 24 hours (Available on paid plans only).
-
-<a href="#top-senders-24h">**TOP senders (24h)**</a>
-
-Get the list of the Addresses that are sending the most in the last 24 hours (Available on paid plans only).
-
-<a href="#top-submitters-24h">**TOP submitters (24h)**</a>
-
-Get the list of the Addresses that submitting the most transactions in the last 24 hours (Available on paid plans only).
 
 # Free Token Images
 
@@ -6485,6 +6473,133 @@ Parameter | Default | Description
 --------- | ------- | -----------
 convertCurrencies | null | (Only available on paid API plans) A single currency code to convert the token price into.  Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: `convertCurrencies=usd`
 statistics | false | (Only available on paid API plans) If set to true, the response will include additional statistics for the token, such as sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, market cap, AMM pools, active AMM pools, active offers, active counters, active holders. Also it will include `timeAt` which is a timestamp when the statistics were last updated.
+
+## Token Activity
+
+```shell
+curl "https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/swaps?limit=1&type=dex&currencyDetails=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getTokenActivity(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/swaps?limit=1&type=dex&currencyDetails=true", getTokenActivity);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/swaps?limit=1&type=dex&currencyDetails=true");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "swaps": [
+    {
+      "timestamp": "1779011270",
+      "type": "dex",
+      "txHash": "CA3E01E97D8967428978A6B17BC38A264498D1DB1AB12BA161C68E7AA6182DDC",
+      "ammID": null,
+      "offerID": "5EAAACA6A732D1F90D1E980A2C747E68D5EB6E34CEEF20714B568BC7F6F4C047",
+      "address1": "rw7nJtEN2YuLt57AfAKdfyFMMLHhTMJKdu",
+      "address1Details": {
+        "username": null,
+        "service": null,
+        "address": "rw7nJtEN2YuLt57AfAKdfyFMMLHhTMJKdu"
+      },
+      "address2": "rNWQgWHtvvDySDvfHdgjhKRE985mY31Lsd",
+      "address2Details": {
+        "username": null,
+        "service": null,
+        "address": "rNWQgWHtvvDySDvfHdgjhKRE985mY31Lsd"
+      },
+      "amount1": {
+        "value": "1202.08912403889",
+        "currency": "4242524C00000000000000000000000000000000",
+        "issuer": "rH5CJsqvNqZGxrMyGaqLEoMWRYcVTAPZMt",
+        "currencyDetails": {
+          "type": "hex",
+          "currencyCode": "4242524C00000000000000000000000000000000",
+          "currency": "BBRL"
+        }
+      },
+      "amount2": {
+        "value": "237.44501324199",
+        "currency": "524C555344000000000000000000000000000000",
+        "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+        "currencyDetails": {
+          "type": "hex",
+          "currencyCode": "524C555344000000000000000000000000000000",
+          "currency": "RLUSD"
+        }
+      },
+      "price": "0.19752696243037315462"
+    }
+  ],
+  "marker": "0000092900000000",
+  "type": "dex"
+}
+```
+
+This endpoint retrieves recent token activity from up to the last 24 hours. Activity types include DEX swaps, transfers, rippling, burns, and mints. When no recent activity matches the request, the response contains an empty `swaps` array.
+
+Native tokens can be requested with `XRP` or `XAH`. Multi Purpose Tokens can be requested with the MPT issuance ID.
+
+Examples:
+
+- `GET https://bithomp.com/api/v2/token/XRP/swaps`
+- `GET https://bithomp.com/api/v2/token/XRP/swaps?type=transfer&limit=1`
+- `GET https://bithomp.com/api/v2/token/XRP/swaps?type=burn&limit=1`
+- `GET https://bithomp.com/api/v2/token/XRP/swaps?order=amountHigh&limit=1`
+- `GET https://xahauexplorer.com/api/v2/token/XAH/swaps`
+- `GET https://bithomp.com/api/v2/token/<issuer>/<currency>/swaps`
+- `GET https://bithomp.com/api/v2/token/<mptokenIssuanceID>/swaps`
+
+### HTTP Request
+
+- `GET https://bithomp.com/api/v2/token/<issuer>/<currency>/swaps`
+- `GET https://bithomp.com/api/v2/token/<nativeCurrency>/swaps`
+- `GET https://bithomp.com/api/v2/token/<mptokenIssuanceID>/swaps`
+
+### URL Parameters
+Parameter         | Description
+----------------- | -----------
+issuer            | The issuer address of the Token.
+currency          | The currency code of the Token.
+nativeCurrency    | The native token code: `XRP` on XRPL or `XAH` on Xahau.
+mptokenIssuanceID | The issuance ID of the MPT.
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+currencyDetails | false | If set to true, token amounts include decoded `currencyDetails`. This is useful for IOU tokens and MPTs.
+limit | 100 | The maximum number of activity records to return.
+marker | null | The marker from the previous request, if you need a next page of activity records.
+type | null | Filter activity by type. Can be `transfer`, `mint`, `burn`, `rippling`, `dex`.
+order | `new` | The order of the activity records in the response. Can be `new`, `amountHigh`, `amountLow`.
+
+### Response Format
+Field | Value | Description
+----- | ----- | -----------
+swaps | Array | List of recent activity records. The response field is named `swaps` to match the endpoint.
+marker | String | Pagination marker for the next page. Returned when more results are available.
+type | String | Included when a `type` filter is applied.
+order | String | Included when an `order` parameter is applied.
+swaps[].timestamp | String | UNIX timestamp of the activity record.
+swaps[].type | String | Activity type: `transfer`, `mint`, `burn`, `rippling`, or `dex`.
+swaps[].txHash | String | Transaction hash.
+swaps[].ammID | String or null | AMM ID, when the activity is related to an AMM.
+swaps[].offerID | String or null | Offer ID, when the activity is related to an offer.
+swaps[].address1 | String | First address involved in the activity.
+swaps[].address1Details | Object | Username, service, and address details for `address1`.
+swaps[].address2 | String or null | Second address involved in the activity, when available.
+swaps[].address2Details | Object | Username, service, and address details for `address2`.
+swaps[].amount1 | Object | First amount in the activity record.
+swaps[].amount2 | Object or null | Second amount in the activity record, when available.
+swaps[].price | String or null | Price, when available.
 
 ## Token Current Fiat Rate
 
