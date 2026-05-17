@@ -992,6 +992,18 @@
 <p><a href="#token-activity"><strong>Token Activity</strong></a></p>
 
 <p>Get recent token activity from the last 24 hours for IOU tokens, native tokens (<code>XRP</code>/<code>XAH</code>), and Multi Purpose Tokens (MPTs). Supports <code>dex</code>, <code>transfer</code>, <code>rippling</code>, <code>burn</code>, and <code>mint</code> filters, ordering by newest activity or amount, optional currency details, and marker-based pagination. <strong>Available on Standard plan and higher.</strong></p>
+
+<p>A new query parameter: <code>limit</code> was added to the <a href="#nft-offers"><strong>NFT Offers</strong></a> API endpoint.</p>
+
+<ul>
+<li><code>limit</code> - the number of NFT offers to return. Default: <code>100</code>. Max: <code>1000</code>. More than <code>100</code> is available on Premium plans only.</li>
+</ul>
+
+<p>A new query parameter: <code>marker</code> was added to the <a href="#nft-offers"><strong>NFT Offers</strong></a> API endpoint.</p>
+
+<ul>
+<li><code>marker</code> - the marker from the previous request, if you need a next page of NFT offers.</li>
+</ul>
 <h3 id='9th-of-may-2026'>9th of May 2026</h3>
 <p>The <a href="#dapps"><strong>Dapps</strong></a> API endpoint now supports previous period comparison modes directly in the <code>previousPeriod</code> query parameter: <code>rolling</code>, <code>calendar</code>, and <code>calendar-1</code>.</p>
 
@@ -2960,13 +2972,13 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>(Available for the Standard plan and higher) Comma-separated list of locations to search in. Possible values: <code>metadata.name</code>, <code>metadata.description</code>, <code>metadata.collection</code>. You can specify one or multiple locations, e.g. <code>searchLocations=metadata.name,metadata.description</code>.</td>
 </tr>
 </tbody></table>
-<h2 id='nft-offers'>NFT Offers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true"</span>
+<h2 id='nft-offers'>NFT Offers</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true&amp;limit=100"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true&amp;limit=100</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&amp;offersValidate=true&amp;nftoken=true&amp;limit=100"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -3127,6 +3139,16 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>offersValidate</td>
 <td>false</td>
 <td>(Only available on paid API plans) If set to true, each offer will include <code>valid</code> as <code>true</code> or <code>false</code>, if <code>false</code> then it also include <code>validationErrors</code> array.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The maximum number of NFT offers to return. Max <code>1000</code>. More than <code>100</code> is available on Premium plans only.</td>
+</tr>
+<tr>
+<td>marker</td>
+<td>null</td>
+<td>The marker from the previous request, if you need a next page of NFT offers.</td>
 </tr>
 <tr>
 <td>assets</td>
