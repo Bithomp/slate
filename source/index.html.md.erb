@@ -94,6 +94,14 @@ A new endpoint was added:
 
 Get recent token activity from the last 24 hours for IOU tokens, native tokens (`XRP`/`XAH`), and Multi Purpose Tokens (MPTs). Supports `dex`, `transfer`, `rippling`, `burn`, and `mint` filters, ordering by newest activity or amount, optional currency details, and marker-based pagination. **Available on Standard plan and higher.**
 
+A new query parameter: `limit` was added to the <a href="#nft-offers">**NFT Offers**</a> API endpoint.
+
+- `limit` - the number of NFT offers to return. Default: `100`. Max: `1000`. More than `100` is available on Premium plans only.
+
+A new query parameter: `marker` was added to the <a href="#nft-offers">**NFT Offers**</a> API endpoint.
+
+- `marker` - the marker from the previous request, if you need a next page of NFT offers.
+
 ### 9th of May 2026
 
 The <a href="#dapps">**Dapps**</a> API endpoint now supports previous period comparison modes directly in the `previousPeriod` query parameter: `rolling`, `calendar`, and `calendar-1`.
@@ -1893,7 +1901,7 @@ searchLocations | null | (Available for the Standard plan and higher) Comma-sepa
 ## NFT Offers
 
 ```shell
-curl "https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&offersValidate=true&nftoken=true"
+curl "https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&offersValidate=true&nftoken=true&limit=100"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1901,11 +1909,11 @@ curl "https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?l
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&offersValidate=true&nftoken=true", getData);
+bithompRequest("https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&offersValidate=true&nftoken=true&limit=100", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&offersValidate=true&nftoken=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/nft-offers/rDpLcKCi18ixgzJEseKbi2krRGTWZM69gX?list=counterOffers&offersValidate=true&nftoken=true&limit=100");
 print $data;
 ```
 
@@ -2050,6 +2058,8 @@ Parameter | Default | Description
 list | null | default - to list all owned NFT offers, `counterOffers` - to list NFT Offers for all NFTs owned by the `address`, `privatelyOfferedToAddress` - to list all NFT offers where the `address` is specified as destination (brokers, private offers, nft transfers).
 nftoken | false | If set to true, each offer will include `nftoken` data, including metadata.
 offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array.
+limit | 100 | The maximum number of NFT offers to return. Max `1000`. More than `100` is available on Premium plans only.
+marker | null | The marker from the previous request, if you need a next page of NFT offers.
 assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
 
 ## NFT Collection
