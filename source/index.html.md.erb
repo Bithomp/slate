@@ -2518,19 +2518,28 @@ This endpoint retrieves a List of NFT Sales for specified parameters
 Parameter | Default | Description
 --------- | ------- | -----------
 list | null | `topSold` or `lastSold` (for the list of NFTs sales of the highest price or the latest sell timestamp)
+order | null | Used to order NFT sales. Can be `priceHigh`, `priceLow`, `acceptedAtNew`, or `acceptedAtOld`.
 convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the response will have an array `amountInConvertCurrencies`
 sortCurrency | `xrp` / 'xah' | (Only available on paid API plans) one of the currencies from the `convertCurrencies` or `xrp` to sort the list by, for example: `usd` (optional)
 currency | null | specify a currency to filter sales in a specific currency, for example `xrp` (should be specified if there are no `convertCurrencies` and `sortCurrency`)
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
+price | null | Filter NFT sales by sale price. Supports exact values or ranges, for example `100..1000`, `100..`, or `..1000`.
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
 collection | null | The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using `issuer` and `taxon`, in the format: `issuer:taxon`
 issuer | null | The address of the NFT issuer (optional)
 taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
+owner | null | The address of the Owner
 assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+hasImage | false | set to `true`, to list NFT sales only for NFTs with available images
+hasMedia | false | set to `true`, to list NFT sales only for NFTs with available media data: audio, video, image
 buyer | null | (Only available on paid API plans) The address of the Buyer (optional)
 seller | null | (Only available on paid API plans) The address of the Seller (optional)
 period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or a time period as timestamps from..to `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
+acceptedLedgerIndex | null | The accepted ledger index of the sale (optional). Supports exact values or ranges, for example `70000000..71000000`.
 marketplace | null | You can specify a marketplace, to filter sales by a specific marketplace, for example `xrp.cafe`, the list of all marketplaces is <a href="https://bithomp.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)
+search | null | (Available for the Standard plan and higher) Text to search for in NFTs.
+searchLocations | null | (Available for the Standard plan and higher) Comma-separated list of locations to search in. Possible values: `metadata.name`, `metadata.description`, `metadata.collection`. You can specify one or multiple locations, e.g. `searchLocations=metadata.name,metadata.description`.
+limit | 100 | The number of NFT sales to return. (More than 100 is available for the Standard plan and higher).
 marker | null | The marker from the previous request, if you need a next page of NFTs
 
 ## NFT Volumes
@@ -3928,17 +3937,26 @@ This endpoint retrieves a List of NFT Sales for specified parameters
 Parameter | Default | Description
 --------- | ------- | -----------
 list | null | `topSold` or `lastSold` (for the list of NFTs sales of the highest price or the latest sell timestamp)
+order | null | Used to order NFT sales. Can be `priceHigh`, `priceLow`, `acceptedAtNew`, or `acceptedAtOld`.
 convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the response will have an array `amountInConvertCurrencies`
 sortCurrency | `xrp` / 'xah' | (Only available on paid API plans) one of the currencies from the `convertCurrencies` or `xrp` to sort the list by, for example: `usd` (optional)
 currency | null | specify a currency to filter sales in a specific currency, for example `xrp` (should be specified if there are no `convertCurrencies` and `sortCurrency`)
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
+price | null | Filter NFT sales by sale price. Supports exact values or ranges, for example `100..1000`, `100..`, or `..1000`.
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
 issuer | null | The address of the NFT issuer (optional)
+owner | null | The address of the Owner
 assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+hasImage | false | set to `true`, to list NFT sales only for NFTs with available images
+hasMedia | false | set to `true`, to list NFT sales only for NFTs with available media data: audio, video, image
 buyer | null | (Only available on paid API plans) The address of the Buyer (optional)
 seller | null | (Only available on paid API plans) The address of the Seller (optional)
 period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `week`, last 30 days `month`, last 365 days `year` or a time period as timestamps from..to `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
+acceptedLedgerIndex | null | The accepted ledger index of the sale (optional). Supports exact values or ranges, for example `70000000..71000000`.
 marketplace | null | You can specify a marketplace, to filter sales by a specific marketplace, for example `xrp.cafe`, the list of all marketplaces is <a href="https://bithomp.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)
+search | null | (Available for the Standard plan and higher) Text to search for in NFTs.
+searchLocations | null | (Available for the Standard plan and higher) Comma-separated list of locations to search in. Possible values: `metadata.name`, `metadata.description`, `metadata.collection`. You can specify one or multiple locations, e.g. `searchLocations=metadata.name,metadata.description`.
+limit | 100 | The number of NFT sales to return. (More than 100 is available for the Standard plan and higher).
 marker | null | The marker from the previous request, if you need a next page of NFTs
 
 ## NFT Crawler (Last update)
