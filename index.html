@@ -3647,6 +3647,11 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td><code>topSold</code> or <code>lastSold</code> (for the list of NFTs sales of the highest price or the latest sell timestamp)</td>
 </tr>
 <tr>
+<td>order</td>
+<td>null</td>
+<td>Used to order NFT sales. Can be <code>priceHigh</code>, <code>priceLow</code>, <code>acceptedAtNew</code>, or <code>acceptedAtOld</code>.</td>
+</tr>
+<tr>
 <td>convertCurrencies</td>
 <td>null</td>
 <td>(Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example <code>xrp,usd</code> (40 fiat currencies available), the response will have an array <code>amountInConvertCurrencies</code></td>
@@ -3665,6 +3670,11 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>currencyIssuer</td>
 <td>null</td>
 <td>if currency is specified and it is not &#39;xrp&#39;, then you must specify the currency issuer XRPL address (optional)</td>
+</tr>
+<tr>
+<td>price</td>
+<td>null</td>
+<td>Filter NFT sales by sale price. Supports exact values or ranges, for example <code>100..1000</code>, <code>100..</code>, or <code>..1000</code>.</td>
 </tr>
 <tr>
 <td>saleType</td>
@@ -3687,9 +3697,24 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>Taxon for that Issuer (optional, will be ignored without an Issuer)</td>
 </tr>
 <tr>
+<td>owner</td>
+<td>null</td>
+<td>The address of the Owner</td>
+</tr>
+<tr>
 <td>assets</td>
 <td>false</td>
 <td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+</tr>
+<tr>
+<td>hasImage</td>
+<td>false</td>
+<td>set to <code>true</code>, to list NFT sales only for NFTs with available images</td>
+</tr>
+<tr>
+<td>hasMedia</td>
+<td>false</td>
+<td>set to <code>true</code>, to list NFT sales only for NFTs with available media data: audio, video, image</td>
 </tr>
 <tr>
 <td>buyer</td>
@@ -3707,9 +3732,29 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code> or a time period as timestamps from..to <code>1671490800000..1671663600000</code> or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code></td>
 </tr>
 <tr>
+<td>acceptedLedgerIndex</td>
+<td>null</td>
+<td>The accepted ledger index of the sale (optional). Supports exact values or ranges, for example <code>70000000..71000000</code>.</td>
+</tr>
+<tr>
 <td>marketplace</td>
 <td>null</td>
 <td>You can specify a marketplace, to filter sales by a specific marketplace, for example <code>xrp.cafe</code>, the list of all marketplaces is <a href="https://bithomp.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)</td>
+</tr>
+<tr>
+<td>search</td>
+<td>null</td>
+<td>(Available for the Standard plan and higher) Text to search for in NFTs.</td>
+</tr>
+<tr>
+<td>searchLocations</td>
+<td>null</td>
+<td>(Available for the Standard plan and higher) Comma-separated list of locations to search in. Possible values: <code>metadata.name</code>, <code>metadata.description</code>, <code>metadata.collection</code>. You can specify one or multiple locations, e.g. <code>searchLocations=metadata.name,metadata.description</code>.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The number of NFT sales to return. (More than 100 is available for the Standard plan and higher).</td>
 </tr>
 <tr>
 <td>marker</td>
@@ -5318,6 +5363,11 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td><code>topSold</code> or <code>lastSold</code> (for the list of NFTs sales of the highest price or the latest sell timestamp)</td>
 </tr>
 <tr>
+<td>order</td>
+<td>null</td>
+<td>Used to order NFT sales. Can be <code>priceHigh</code>, <code>priceLow</code>, <code>acceptedAtNew</code>, or <code>acceptedAtOld</code>.</td>
+</tr>
+<tr>
 <td>convertCurrencies</td>
 <td>null</td>
 <td>(Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example <code>xrp,usd</code> (40 fiat currencies available), the response will have an array <code>amountInConvertCurrencies</code></td>
@@ -5338,6 +5388,11 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>if currency is specified and it is not &#39;xrp&#39;, then you must specify the currency issuer XRPL address (optional)</td>
 </tr>
 <tr>
+<td>price</td>
+<td>null</td>
+<td>Filter NFT sales by sale price. Supports exact values or ranges, for example <code>100..1000</code>, <code>100..</code>, or <code>..1000</code>.</td>
+</tr>
+<tr>
 <td>saleType</td>
 <td><code>all</code></td>
 <td>can be <code>primary</code> or <code>secondary</code> (optional, <code>primary</code> - the sales from the issuer address)</td>
@@ -5348,9 +5403,24 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>The address of the NFT issuer (optional)</td>
 </tr>
 <tr>
+<td>owner</td>
+<td>null</td>
+<td>The address of the Owner</td>
+</tr>
+<tr>
 <td>assets</td>
 <td>false</td>
 <td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+</tr>
+<tr>
+<td>hasImage</td>
+<td>false</td>
+<td>set to <code>true</code>, to list NFT sales only for NFTs with available images</td>
+</tr>
+<tr>
+<td>hasMedia</td>
+<td>false</td>
+<td>set to <code>true</code>, to list NFT sales only for NFTs with available media data: audio, video, image</td>
 </tr>
 <tr>
 <td>buyer</td>
@@ -5368,9 +5438,29 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>A time period, all time <code>all</code>, last 24h <code>day</code>, last 7 days <code>week</code>, last 30 days <code>month</code>, last 365 days <code>year</code> or a time period as timestamps from..to <code>1671490800000..1671663600000</code> or <code>2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z</code></td>
 </tr>
 <tr>
+<td>acceptedLedgerIndex</td>
+<td>null</td>
+<td>The accepted ledger index of the sale (optional). Supports exact values or ranges, for example <code>70000000..71000000</code>.</td>
+</tr>
+<tr>
 <td>marketplace</td>
 <td>null</td>
 <td>You can specify a marketplace, to filter sales by a specific marketplace, for example <code>xrp.cafe</code>, the list of all marketplaces is <a href="https://bithomp.com/nft-volumes?list=marketplaces&period=all&sale=all">here</a> (optional)</td>
+</tr>
+<tr>
+<td>search</td>
+<td>null</td>
+<td>(Available for the Standard plan and higher) Text to search for in NFTs.</td>
+</tr>
+<tr>
+<td>searchLocations</td>
+<td>null</td>
+<td>(Available for the Standard plan and higher) Comma-separated list of locations to search in. Possible values: <code>metadata.name</code>, <code>metadata.description</code>, <code>metadata.collection</code>. You can specify one or multiple locations, e.g. <code>searchLocations=metadata.name,metadata.description</code>.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>100</td>
+<td>The number of NFT sales to return. (More than 100 is available for the Standard plan and higher).</td>
 </tr>
 <tr>
 <td>marker</td>
