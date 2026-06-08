@@ -1318,7 +1318,7 @@ Set up with a DNS record:</p>
 </code></pre></div>
 <p>Then use the token image links like this:</p>
 
-<p><code>&lt;img src=&quot;https://tokens.mydomain.com/issued-token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C5553440000000000000000000000000000&quot; alt=&quot;token logo&quot; /&gt;</code></p>
+<p><code>&lt;img src=&quot;https://tokens.mydomain.com/issued-token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000&quot; alt=&quot;token logo&quot; /&gt;</code></p>
 
 <p>Contact our support team if you’d like to enable image hosting on your custom domain.</p>
 <h1 id='free-address-profile-images'>Free Address Profile Images</h1>
@@ -8014,8 +8014,8 @@ You can retrieve information for MANY currencies in one request:
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokenInfo</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true&amp;convertCurrencies=usd</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenInfo</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true&amp;convertCurrencies=usd"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&amp;convertCurrencies=usd</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenInfo</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&amp;convertCurrencies=usd"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -8673,7 +8673,7 @@ You can retrieve information for MANY currencies in one request:
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/cors/v2/trustlines/token/richlist/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?summary=true&amp;convertCurrencies=usd</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenHolders</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/cors/v2/trustlines/token/richlist/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000?summary=true&amp;convertCurrencies=usd"</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/cors/v2/trustlines/token/richlist/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?summary=true&amp;convertCurrencies=usd"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
