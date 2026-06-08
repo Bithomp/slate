@@ -1418,12 +1418,18 @@ Set up with a DNS record:</p>
 
 <p>Contact our support team if you’d like to enable image hosting on your custom domain.</p>
 <h1 id='direct-url-examples'>Direct URL examples</h1><h3 id='xrpl-explorer'>XRPL Explorer</h3>
+<p>Explorer links accept language and fiat overrides for localized display:
+* Add <code>?lang=&lt;language&gt;</code> to force language for this request regardless of user UI settings (<code>lang=zh</code> in Chinese).
+* Add <code>?fiat=&lt;fiatCode&gt;</code> to force displayed fiat values (<code>fiat=cad</code> for Canadian dollars).
+* Available fiat codes: 40 values in total.</p>
+
 <ul>
-<li><a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a></li>
-<li><a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a></li>
-<li><a href="https://bithomp.com/explorer/bitstamp">https://bithomp.com/explorer/{username}</a></li>
-<li><a href="https://bithomp.com/explorer/02C7004B041A91880000526964776F726C643836">https://bithomp.com/explorer/{NFT-XLS14 || HEXcurrency}</a></li>
-<li><a href="https://bithomp.com/explorer/rabbit$bithomp.com">https://bithomp.com/explorer/{payString}</a></li>
+<li><a href="https://bithomp.com/tx/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/tx/{txid}</a></li>
+<li><a href="https://bithomp.com/account/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/account/{address}</a></li>
+<li><a href="https://bithomp.com/account/bitstamp">https://bithomp.com/account/{username}</a></li>
+<li><a href="https://bithomp.com/token/rJ7cE6R3w5a6n4VQbN3q3fY8jQfN7Z9P2c/rlusd">https://bithomp.com/token/{currencyIssuer}/{currencyCode}</a></li>
+<li><a href="https://bithomp.com/account/rabbit$bithomp.com">https://bithomp.com/account/{payString}</a></li>
+<li><a href="https://bithomp.com/tx/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112?lang=zh&fiat=cad">https://bithomp.com/tx/{txid}?lang=zh&amp;fiat=cad</a></li>
 </ul>
 <h3 id='nft-explorer'>NFT explorer</h3>
 <ul>
@@ -9488,9 +9494,10 @@ You can retrieve information for MANY currencies in one request:
 <p>This endpoint returns transaction details, including specification, outcome and rawTransaction data (Only available on paid API plans).
 <br>
 Page on bithomp that displays it:
-<a href="https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
-  https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
-</a>.</p>
+<a href="https://bithomp.com/tx/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
+  https://bithomp.com/tx/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
+</a>.
+Add <code>?lang=&lt;language&gt;</code> (for example <code>?lang=zh</code>) to force the language and <code>?fiat=&lt;code&gt;</code> (for example <code>?fiat=cad</code>) to force fiat, without changing saved user preferences.</p>
 <h3 id='http-request-70'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transaction/&lt;hash&gt;</code></p>
 <h3 id='url-parameters-37'>URL Parameters</h3>
@@ -9608,8 +9615,8 @@ Page on bithomp with the same decode function, but client-side:
 <p>This endpoint returns a final status of a submitted transaction.
 <br>
 Page where it used on bithomp:
-<a href="https://bithomp.com/explorer/?hwlogin">
-  https://bithomp.com/explorer/?hwlogin
+<a href="https://bithomp.com/services/send">
+  https://bithomp.com/services/send
 </a>.</p>
 <h3 id='http-request-72'>HTTP Request</h3>
 <p><code>POST https://bithomp.com/api/v2/transaction/submit</code></p>
@@ -9696,9 +9703,10 @@ Page where it used on bithomp:
 <p>This endpoint returns a list of transactions for a specific address. (Only available on paid API plans)
 <br>
 Page on bithomp that displays it:
-<a href="https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv">
-  https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv
-</a>.</p>
+<a href="https://bithomp.com/account/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv">
+  https://bithomp.com/account/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv
+</a>.
+Add <code>?lang=&lt;language&gt;</code> (for example <code>?lang=zh</code>) to force the language and <code>?fiat=&lt;code&gt;</code> (for example <code>?fiat=cad</code>) to force fiat, without changing saved user preferences.</p>
 <h3 id='http-request-73'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/transactions/&lt;address&gt;</code></p>
 <h3 id='url-parameters-39'>URL Parameters</h3>
