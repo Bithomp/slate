@@ -92,15 +92,15 @@ Direct access to fast [resized and cached] images and videos:
 
 <a href="#current-rates">**Current Rates**</a>
 
-Get the latest available native currency fiat and crypto conversion rates (XRP on XRPL, XAH on Xahau). Request one currency with `/rates/current/:currency`, or omit the currency to get all rates.
+Get the latest available native currency fiat and crypto conversion rates (XRP on XRPL, XAH on Xahau). Request one currency with `/rates/current/:currency`, or omit the currency to get all rates. **Available on Standard plan and higher.**
 
 <a href="#nearest-historical-rates">**Nearest Historical Rates**</a>
 
-Get the nearest available historical rate for a date. Request one currency with `/rates/history/nearest/:currency`, or omit the currency to get all rates.
+Get the nearest available historical rate for a date. Request one currency with `/rates/history/nearest/:currency`, or omit the currency to get all rates. **Available on Standard plan and higher.**
 
 <a href="#historical-rates">**Historical Rates**</a>
 
-Get historical hourly rates for one currency over a fixed period or from a start date until the latest available point.
+Get historical hourly rates for one currency over a fixed period or from a start date until the latest available point. **Available on Standard plan and higher.**
 
 ### 17th of May 2026
 
@@ -6547,6 +6547,8 @@ print $data;
 
 This endpoint returns the latest available native currency conversion rate (XRP on XRPL, XAH on Xahau). If `currency` is provided, the response contains only that currency. If `currency` is omitted, the response contains all available rates.
 
+**This endpoint is available on Standard plan and higher.**
+
 ### HTTP Request
 
 - `GET https://bithomp.com/api/v2/rates/current`
@@ -6590,6 +6592,8 @@ print $data;
 ```
 
 This endpoint returns the nearest available historical native currency conversion rate for the requested date. If `currency` is provided, the response contains only that currency. If `currency` is omitted, the response contains all available rates.
+
+**This endpoint is available on Standard plan and higher.**
 
 ### HTTP Request
 
@@ -6660,6 +6664,8 @@ print $data;
 ```
 
 This endpoint returns historical hourly native currency conversion rates for one currency.
+
+**This endpoint is available on Standard plan and higher.**
 
 ### HTTP Request
 
