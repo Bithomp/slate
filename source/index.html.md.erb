@@ -450,7 +450,7 @@ CNAME    tokens    cdn.bithomp.com
 
 Then use the token image links like this:
 
-```<img src="https://tokens.mydomain.com/issued-token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C5553440000000000000000000000000000" alt="token logo" />```
+```<img src="https://tokens.mydomain.com/issued-token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000" alt="token logo" />```
 
 Contact our support team if you’d like to enable image hosting on your custom domain.
 
@@ -6437,11 +6437,11 @@ curl "https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8
 function getTokenInfo(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true&convertCurrencies=usd", getTokenInfo);
+bithompRequest("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&convertCurrencies=usd", getTokenInfo);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000?statistics=true&convertCurrencies=usd");
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&convertCurrencies=usd");
 print $data;
 ```
 > The above command returns JSON structured like this:
@@ -6932,7 +6932,7 @@ bithompRequest("https://bithomp.com/api/cors/v2/trustlines/token/richlist/rMxCKb
 ``` 
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/cors/v2/trustlines/token/richlist/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000?summary=true&convertCurrencies=usd");
+$data = curl_bithomp("https://bithomp.com/api/cors/v2/trustlines/token/richlist/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?summary=true&convertCurrencies=usd");
 print $data;
 ```
 
