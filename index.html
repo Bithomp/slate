@@ -1003,15 +1003,15 @@
 
 <p><a href="#current-rates"><strong>Current Rates</strong></a></p>
 
-<p>Get the latest available native currency fiat and crypto conversion rates (XRP on XRPL, XAH on Xahau). Request one currency with <code>/rates/current/:currency</code>, or omit the currency to get all rates.</p>
+<p>Get the latest available native currency fiat and crypto conversion rates (XRP on XRPL, XAH on Xahau). Request one currency with <code>/rates/current/:currency</code>, or omit the currency to get all rates. <strong>Available on Standard plan and higher.</strong></p>
 
 <p><a href="#nearest-historical-rates"><strong>Nearest Historical Rates</strong></a></p>
 
-<p>Get the nearest available historical rate for a date. Request one currency with <code>/rates/history/nearest/:currency</code>, or omit the currency to get all rates.</p>
+<p>Get the nearest available historical rate for a date. Request one currency with <code>/rates/history/nearest/:currency</code>, or omit the currency to get all rates. <strong>Available on Standard plan and higher.</strong></p>
 
 <p><a href="#historical-rates"><strong>Historical Rates</strong></a></p>
 
-<p>Get historical hourly rates for one currency over a fixed period or from a start date until the latest available point.</p>
+<p>Get historical hourly rates for one currency over a fixed period or from a start date until the latest available point. <strong>Available on Standard plan and higher.</strong></p>
 <h3 id='17th-of-may-2026'>17th of May 2026</h3>
 <p>A new endpoint was added:</p>
 
@@ -8129,6 +8129,8 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the latest available native currency conversion rate (XRP on XRPL, XAH on Xahau). If <code>currency</code> is provided, the response contains only that currency. If <code>currency</code> is omitted, the response contains all available rates.</p>
+
+<p><strong>This endpoint is available on Standard plan and higher.</strong></p>
 <h3 id='http-request-55'>HTTP Request</h3>
 <ul>
 <li><code>GET https://bithomp.com/api/v2/rates/current</code></li>
@@ -8177,6 +8179,8 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns the nearest available historical native currency conversion rate for the requested date. If <code>currency</code> is provided, the response contains only that currency. If <code>currency</code> is omitted, the response contains all available rates.</p>
+
+<p><strong>This endpoint is available on Standard plan and higher.</strong></p>
 <h3 id='http-request-56'>HTTP Request</h3>
 <ul>
 <li><code>GET https://bithomp.com/api/v2/rates/history/nearest</code></li>
@@ -8260,6 +8264,8 @@ You can retrieve information for MANY currencies in one request:
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint returns historical hourly native currency conversion rates for one currency.</p>
+
+<p><strong>This endpoint is available on Standard plan and higher.</strong></p>
 <h3 id='http-request-57'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/rates/history/&lt;currency&gt;</code></p>
 <h3 id='url-parameters-25'>URL Parameters</h3>
