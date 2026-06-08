@@ -565,11 +565,17 @@ Contact our support team if you’d like to enable image hosting on your custom 
 
 ### XRPL Explorer
 
-* <a href="https://bithomp.com/explorer/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/explorer/{txid}</a>
-* <a href="https://bithomp.com/explorer/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/explorer/{address}</a>
-* <a href="https://bithomp.com/explorer/bitstamp">https://bithomp.com/explorer/{username}</a>
-* <a href="https://bithomp.com/explorer/02C7004B041A91880000526964776F726C643836">https://bithomp.com/explorer/{NFT-XLS14 || HEXcurrency}</a>
-* <a href="https://bithomp.com/explorer/rabbit$bithomp.com">https://bithomp.com/explorer/{payString}</a>
+Explorer links accept language and fiat overrides for localized display:
+* Add `?lang=<language>` to force language for this request regardless of user UI settings (`lang=zh` in Chinese).
+* Add `?fiat=<fiatCode>` to force displayed fiat values (`fiat=cad` for Canadian dollars).
+* Available fiat codes: 40 values in total.
+
+* <a href="https://bithomp.com/tx/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112">https://bithomp.com/tx/{txid}</a>
+* <a href="https://bithomp.com/account/rvYAfWj5gh67oV6fW32ZzP3Aw4Eubs59B">https://bithomp.com/account/{address}</a>
+* <a href="https://bithomp.com/account/bitstamp">https://bithomp.com/account/{username}</a>
+* <a href="https://bithomp.com/token/rJ7cE6R3w5a6n4VQbN3q3fY8jQfN7Z9P2c/rlusd">https://bithomp.com/token/{currencyIssuer}/{currencyCode}</a>
+* <a href="https://bithomp.com/account/rabbit$bithomp.com">https://bithomp.com/account/{payString}</a>
+* <a href="https://bithomp.com/tx/F10AB598E3197342C8FE173FB3AB5408E30B00F7B4838FDA645BB01AADBD9112?lang=zh&fiat=cad">https://bithomp.com/tx/{txid}?lang=zh&fiat=cad</a>
 
 ### NFT explorer
 * <a href="https://bithomp.com/nft/00081388161A9F1B349F3D50596D02CCA65E97D9268A5AF529A955040000000D">https://bithomp.com/nft/{nftID}</a>
@@ -7723,9 +7729,10 @@ print $data;
 This endpoint returns transaction details, including specification, outcome and rawTransaction data (Only available on paid API plans).
 <br>
 Page on bithomp that displays it:
-<a href="https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
-  https://bithomp.com/explorer/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
+<a href="https://bithomp.com/tx/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F" style="word-break: break-word;">
+  https://bithomp.com/tx/277EE666435B4A5AB50FA7391E9D202D74EB29AEE56BA8E9D82E631BFD31F41F
 </a>.
+Add `?lang=<language>` (for example `?lang=zh`) to force the language and `?fiat=<code>` (for example `?fiat=cad`) to force fiat, without changing saved user preferences.
 
 ### HTTP Request
 
@@ -7856,8 +7863,8 @@ $.ajax({
 This endpoint returns a final status of a submitted transaction.
 <br>
 Page where it used on bithomp:
-<a href="https://bithomp.com/explorer/?hwlogin">
-  https://bithomp.com/explorer/?hwlogin
+<a href="https://bithomp.com/services/send">
+  https://bithomp.com/services/send
 </a>.
 
 ### HTTP Request
@@ -7951,9 +7958,10 @@ print $data;
 This endpoint returns a list of transactions for a specific address. (Only available on paid API plans)
 <br>
 Page on bithomp that displays it:
-<a href="https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv">
-  https://bithomp.com/explorer/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv
+<a href="https://bithomp.com/account/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv">
+  https://bithomp.com/account/rDsbeomae4FXwgQTJp9Rs64Qg9vDiTCdBv
 </a>.
+Add `?lang=<language>` (for example `?lang=zh`) to force the language and `?fiat=<code>` (for example `?fiat=cad`) to force fiat, without changing saved user preferences.
 
 ### HTTP Request
 `GET https://bithomp.com/api/v2/transactions/<address>`
