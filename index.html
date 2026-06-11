@@ -8568,16 +8568,20 @@ You can retrieve information for MANY currencies in one request:
 <td>Price, when available.</td>
 </tr>
 </tbody></table>
-<h2 id='token-chart'>Token Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/token/XRP/chart"</span>
-curl <span class="s2">"https://bithomp.com/api/v2/token/XAH/chart?convertCurrencies=usd"</span>
-curl <span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=eur"</span>
+<h2 id='token-chart'>Token Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/token/XRP/chart"</span> <span class="nt">-H</span> <span class="s2">"x-bithomp-token: &lt;YOUR_API_TOKEN&gt;"</span>
+curl <span class="s2">"https://bithomp.com/api/v2/token/XAH/chart?convertCurrencies=usd"</span> <span class="nt">-H</span> <span class="s2">"x-bithomp-token: &lt;YOUR_API_TOKEN&gt;"</span>
+curl <span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=eur"</span> <span class="nt">-H</span> <span class="s2">"x-bithomp-token: &lt;YOUR_API_TOKEN&gt;"</span>
 </code></pre></div>
-<p>Free example calls:</p>
+<p>Make your own API calls:</p>
 <div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokenChart</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/token/XRP/chart</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenChart</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/token/XRP/chart"</span><span class="p">);</span>
+<span class="kd">function</span> <span class="nx">getTokenChartWithApiKey</span><span class="p">(</span><span class="nx">currencyPath</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/token/</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">currencyPath</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/chart?convertCurrencies=usd</span><span class="dl">"</span>
+  <span class="k">return</span> <span class="nx">bithompRequest</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">getTokenChartWithApiKey</span><span class="p">(</span><span class="dl">"</span><span class="s2">XRP</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenChart</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/token/XRP/chart"</span><span class="p">,</span> <span class="s2">"&lt;YOUR_API_TOKEN&gt;"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -8640,7 +8644,7 @@ curl <span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint returns historical hourly chart points for a specific token (IOUs, XRP, XAH, and MPTs), with optional fiat-converted metrics.</p>
+<p>This endpoint returns historical hourly chart points for a specific token (IOUs, XRP, XAH, and MPTs), with optional fiat-converted metrics. Make your own API calls with any valid token and currency path.</p>
 
 <p>Examples:</p>
 
