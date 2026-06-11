@@ -1009,7 +1009,7 @@
 
 <p><a href="#token-chart"><strong>Token Chart</strong></a></p>
 
-<p>Get historical hourly token data (supply, holders, volumes, and prices), including optional fiat conversion values.</p>
+<p>Get historical hourly chart data for IOU tokens, native tokens (<code>XRP</code>/<code>XAH</code>), and Multi Purpose Tokens (MPTs), with optional fiat conversion values.</p>
 <h3 id='8th-of-june-2026'>8th of June 2026</h3>
 <p>3 new endpoints were added:</p>
 
@@ -8568,20 +8568,13 @@ You can retrieve information for MANY currencies in one request:
 <td>Price, when available.</td>
 </tr>
 </tbody></table>
-<h2 id='token-chart'>Token Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/token/XRP/chart"</span> <span class="nt">-H</span> <span class="s2">"x-bithomp-token: &lt;YOUR_API_TOKEN&gt;"</span>
-curl <span class="s2">"https://bithomp.com/api/v2/token/XAH/chart?convertCurrencies=usd"</span> <span class="nt">-H</span> <span class="s2">"x-bithomp-token: &lt;YOUR_API_TOKEN&gt;"</span>
-curl <span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=eur"</span> <span class="nt">-H</span> <span class="s2">"x-bithomp-token: &lt;YOUR_API_TOKEN&gt;"</span>
-</code></pre></div>
-<p>Make your own API calls:</p>
-<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokenChart</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+<h2 id='token-chart'>Token Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=usd"</span>
+  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokenChart</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="kd">function</span> <span class="nx">getTokenChartWithApiKey</span><span class="p">(</span><span class="nx">currencyPath</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/token/</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">currencyPath</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">/chart?convertCurrencies=usd</span><span class="dl">"</span>
-  <span class="k">return</span> <span class="nx">bithompRequest</span><span class="p">(</span><span class="nx">url</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="nx">getTokenChartWithApiKey</span><span class="p">(</span><span class="dl">"</span><span class="s2">XRP</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenChart</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/token/XRP/chart"</span><span class="p">,</span> <span class="s2">"&lt;YOUR_API_TOKEN&gt;"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=usd</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenChart</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=usd"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -8590,71 +8583,87 @@ curl <span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"chart"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1776470399</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"supply"</span><span class="p">:</span><span class="w"> </span><span class="s2">"353776823.35180847540231600568497"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"trustlines"</span><span class="p">:</span><span class="w"> </span><span class="mi">89944</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">44461</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"activeHolders"</span><span class="p">:</span><span class="w"> </span><span class="mi">931</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">2684</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"sellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4418099.544129178161359136779415"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"buyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4118921.281154608230592098562"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"uniqueSellers"</span><span class="p">:</span><span class="w"> </span><span class="mi">434</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"uniqueBuyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">519</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dexes"</span><span class="p">:</span><span class="w"> </span><span class="mi">38703</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"dexTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">29155</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"mintVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.6041163684307e-7"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"burnVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.4572505835129e-7"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"transferVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24395348.441544663999839680825415"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1778630399</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"supply"</span><span class="p">:</span><span class="w"> </span><span class="s2">"401257361.04180862186655502113397"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"trustlines"</span><span class="p">:</span><span class="w"> </span><span class="mi">93304</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">44994</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activeHolders"</span><span class="p">:</span><span class="w"> </span><span class="mi">561</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"rating"</span><span class="p">:</span><span class="w"> </span><span class="mi">2611</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1611046.69276441691846210901"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"buyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1863554.2302316193203333320499"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uniqueSellers"</span><span class="p">:</span><span class="w"> </span><span class="mi">272</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uniqueBuyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">331</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dexes"</span><span class="p">:</span><span class="w"> </span><span class="mi">15901</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dexTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">11230</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mintVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18938694.690000094625367776064"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"burnVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.000000082185681629657"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"transferVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"86372690.7612143099719608403449"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ripplingVolume"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"mintTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">6466</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"burnTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">6717</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"transferTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">7905</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mintTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2523</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"burnTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2644</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"transferTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">16720</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ripplingTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"uniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">1145</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"uniqueDexAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">834</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"priceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.67683354577043308674"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">818</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uniqueDexAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">522</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"priceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.69616554920595593014"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"priceFiats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0009285208271472659945816"</span><span class="w">
+        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0002785077210857186623576"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"marketcap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"239448021.7606046825996003600034980819234288251242978"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"swapRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">6143</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ammSellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192884.94312289771608118657"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ammBuyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"182531.22653081233512601206"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ammUniqueSellers"</span><span class="p">:</span><span class="w"> </span><span class="mi">257</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ammUniqueBuyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">220</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ammDexes"</span><span class="p">:</span><span class="w"> </span><span class="mi">9789</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ammTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">8467</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ammUniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">477</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"ammPriceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.67683354577043308674"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marketcap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"279341551.1226032442135511751708347099346641489008558"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapRating"</span><span class="p">:</span><span class="w"> </span><span class="mi">5691</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ammSellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"60431.34558924516237317"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ammBuyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89297.3042176949637813"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ammUniqueSellers"</span><span class="p">:</span><span class="w"> </span><span class="mi">146</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ammUniqueBuyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">125</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ammDexes"</span><span class="p">:</span><span class="w"> </span><span class="mi">3129</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ammTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">2518</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ammUniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">271</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"ammPriceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.69616554920595593014"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ammPriceFiats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0002381506104614242461068"</span><span class="w">
+        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.9994291857510544524275868"</span><span class="w">
       </span><span class="p">},</span><span class="w">
-      </span><span class="nl">"offerSellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4225214.601006280445277950209415"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"offerBuyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3936390.054623795895466086502"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"offerUniqueSellers"</span><span class="p">:</span><span class="w"> </span><span class="mi">177</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"offerUniqueBuyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">504</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"offerDexes"</span><span class="p">:</span><span class="w"> </span><span class="mi">28914</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"offerTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">22762</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"offerUniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">563</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"offerPriceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.67683354577043308674"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"offerSellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1550615.34717517175608893901"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"offerBuyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1774256.9260139243565520320499"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"offerUniqueSellers"</span><span class="p">:</span><span class="w"> </span><span class="mi">126</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"offerUniqueBuyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">320</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"offerDexes"</span><span class="p">:</span><span class="w"> </span><span class="mi">12772</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"offerTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">9392</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"offerUniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">366</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"offerPriceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.69616554920595593014"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"offerPriceFiats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0002719922877499459004438"</span><span class="w">
+        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.999310837607689439919463"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>This endpoint returns historical hourly chart points for a specific token (IOUs, XRP, XAH, and MPTs), with optional fiat-converted metrics. Make your own API calls with any valid token and currency path.</p>
+<p>This endpoint returns historical hourly chart points for a specific token. It supports IOU tokens, native tokens (<code>XRP</code>/<code>XAH</code>), and Multi Purpose Tokens (MPTs). <strong>Available on Standard plan and higher.</strong></p>
 
 <p>Examples:</p>
 
 <ul>
-<li><code>GET https://bithomp.com/api/v2/token/XRP/chart</code></li>
-<li><code>GET https://bithomp.com/api/v2/token/XAH/chart?convertCurrencies=usd</code></li>
-<li><code>GET https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=eur</code></li>
-<li><code>GET https://bithomp.com/api/v2/token/03DD35D1879DBE4FE3290B911A14875DE6534DFD/chart?convertCurrencies=usd</code></li>
+<li><code>GET https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=usd</code></li>
+<li><code>GET https://bithomp.com/api/v2/token/XRP/chart?convertCurrencies=usd</code></li>
+<li><code>GET https://xahauexplorer.com/api/v2/token/XAH/chart?convertCurrencies=usd</code></li>
+<li><code>GET https://bithomp.com/api/v2/token/0627B6859931344A3871ED63805BBF07DECBF03F9C2698BD/chart?convertCurrencies=usd</code></li>
 </ul>
-<h3 id='http-request-59'>HTTP Request</h3>
+
+<p>A real MPT chart point can look like this:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"chart"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1778630399</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"maximum"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10000000000000"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"outstanding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7513245116"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"amountLocked"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mptokens"</span><span class="p">:</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activeHolders"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"lockedHolders"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h3 id='http-request-59'>HTTP Request</h3>
 <ul>
 <li><code>GET https://bithomp.com/api/v2/token/&lt;issuer&gt;/&lt;currency&gt;/chart</code></li>
 <li><code>GET https://bithomp.com/api/v2/token/&lt;nativeCurrency&gt;/chart</code></li>
@@ -8669,11 +8678,11 @@ curl <span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf
 </thead><tbody>
 <tr>
 <td>issuer</td>
-<td>The issuer address of the Token (for IOU tokens).</td>
+<td>The issuer address of the Token.</td>
 </tr>
 <tr>
 <td>currency</td>
-<td>The currency code of the Token (for IOU tokens).</td>
+<td>The currency code of the Token.</td>
 </tr>
 <tr>
 <td>nativeCurrency</td>
