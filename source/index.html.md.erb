@@ -86,6 +86,14 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 11th of June 2026
+
+A new endpoint was added:
+
+<a href="#token-chart">**Token Chart**</a>
+
+Get historical hourly chart data for IOU tokens, native tokens (`XRP`/`XAH`), and Multi Purpose Tokens (MPTs), with optional fiat conversion values.
+
 ### 8th of June 2026
 
 3 new endpoints were added:
@@ -6821,6 +6829,133 @@ swaps[].address2Details | Object | Username, service, and address details for `a
 swaps[].amount1 | Object | First amount in the activity record.
 swaps[].amount2 | Object or null | Second amount in the activity record, when available.
 swaps[].price | String or null | Price, when available.
+
+## Token Chart
+
+```shell
+curl "https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=usd"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getTokenChart(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=usd", getTokenChart);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=usd");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "chart": [
+    {
+      "time": 1778630399,
+      "supply": "401257361.04180862186655502113397",
+      "trustlines": 93304,
+      "holders": 44994,
+      "activeHolders": 561,
+      "rating": 2611,
+      "sellVolume": "1611046.69276441691846210901",
+      "buyVolume": "1863554.2302316193203333320499",
+      "uniqueSellers": 272,
+      "uniqueBuyers": 331,
+      "dexes": 15901,
+      "dexTxs": 11230,
+      "mintVolume": "18938694.690000094625367776064",
+      "burnVolume": "0.000000082185681629657",
+      "transferVolume": "86372690.7612143099719608403449",
+      "ripplingVolume": null,
+      "mintTxs": 2523,
+      "burnTxs": 2644,
+      "transferTxs": 16720,
+      "ripplingTxs": 0,
+      "uniqueAccounts": 818,
+      "uniqueDexAccounts": 522,
+      "priceNativeCurrency": "0.69616554920595593014",
+      "priceFiats": {
+        "usd": "1.0002785077210857186623576"
+      },
+      "marketcap": "279341551.1226032442135511751708347099346641489008558",
+      "swapRating": 5691,
+      "ammSellVolume": "60431.34558924516237317",
+      "ammBuyVolume": "89297.3042176949637813",
+      "ammUniqueSellers": 146,
+      "ammUniqueBuyers": 125,
+      "ammDexes": 3129,
+      "ammTxs": 2518,
+      "ammUniqueAccounts": 271,
+      "ammPriceNativeCurrency": "0.69616554920595593014",
+      "ammPriceFiats": {
+        "usd": "0.9994291857510544524275868"
+      },
+      "offerSellVolume": "1550615.34717517175608893901",
+      "offerBuyVolume": "1774256.9260139243565520320499",
+      "offerUniqueSellers": 126,
+      "offerUniqueBuyers": 320,
+      "offerDexes": 12772,
+      "offerTxs": 9392,
+      "offerUniqueAccounts": 366,
+      "offerPriceNativeCurrency": "0.69616554920595593014",
+      "offerPriceFiats": {
+        "usd": "0.999310837607689439919463"
+      }
+    }
+  ]
+}
+```
+
+This endpoint returns historical hourly chart points for a specific token. It supports IOU tokens, native tokens (`XRP`/`XAH`), and Multi Purpose Tokens (MPTs). **Available on Standard plan and higher.**
+
+Examples:
+
+- `GET https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=usd`
+- `GET https://bithomp.com/api/v2/token/XRP/chart?convertCurrencies=usd`
+- `GET https://xahauexplorer.com/api/v2/token/XAH/chart?convertCurrencies=usd`
+- `GET https://bithomp.com/api/v2/token/0627B6859931344A3871ED63805BBF07DECBF03F9C2698BD/chart?convertCurrencies=usd`
+
+A real MPT chart point can look like this:
+
+```json
+{
+  "chart": [
+    {
+      "time": 1778630399,
+      "maximum": "10000000000000",
+      "outstanding": "7513245116",
+      "amountLocked": "0",
+      "mptokens": 17,
+      "holders": 13,
+      "activeHolders": 1,
+      "lockedHolders": 0
+    }
+  ]
+}
+```
+
+### HTTP Request
+
+- `GET https://bithomp.com/api/v2/token/<issuer>/<currency>/chart`
+- `GET https://bithomp.com/api/v2/token/<nativeCurrency>/chart`
+- `GET https://bithomp.com/api/v2/token/<mptokenIssuanceID>/chart`
+
+### URL Parameters
+Parameter         | Description
+----------------- | -----------
+issuer            | The issuer address of the Token.
+currency          | The currency code of the Token.
+nativeCurrency    | The native token code: `XRP` on XRPL or `XAH` on Xahau.
+mptokenIssuanceID | The issuance ID of the MPT.
+
+### Query Parameters
+Parameter | Default | Description
+--------- | ------- | -----------
+convertCurrencies | null | A single currency code to convert token values into. Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: `convertCurrencies=usd`.
 
 ## Token Current Fiat Rate
 
