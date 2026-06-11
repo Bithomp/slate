@@ -8568,13 +8568,16 @@ You can retrieve information for MANY currencies in one request:
 <td>Price, when available.</td>
 </tr>
 </tbody></table>
-<h2 id='token-chart'>Token Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=usd"</span>
-  <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokenChart</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
+<h2 id='token-chart'>Token Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/token/XRP/chart"</span>
+curl <span class="s2">"https://bithomp.com/api/v2/token/XAH/chart?convertCurrencies=usd"</span>
+curl <span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=eur"</span>
+</code></pre></div>
+<p>Free example calls:</p>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokenChart</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=usd</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenChart</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=usd"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/token/XRP/chart</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenChart</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/token/XRP/chart"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -8642,10 +8645,10 @@ You can retrieve information for MANY currencies in one request:
 <p>Examples:</p>
 
 <ul>
-<li><code>GET https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart</code></li>
 <li><code>GET https://bithomp.com/api/v2/token/XRP/chart</code></li>
-<li><code>GET https://bithomp.com/api/v2/token/XAH/chart</code></li>
-<li><code>GET https://bithomp.com/api/v2/token/03DD35D1879DBE4FE3290B911A14875DE6534DFD/chart</code></li>
+<li><code>GET https://bithomp.com/api/v2/token/XAH/chart?convertCurrencies=usd</code></li>
+<li><code>GET https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart?convertCurrencies=eur</code></li>
+<li><code>GET https://bithomp.com/api/v2/token/03DD35D1879DBE4FE3290B911A14875DE6534DFD/chart?convertCurrencies=usd</code></li>
 </ul>
 <h3 id='http-request-59'>HTTP Request</h3>
 <ul>
