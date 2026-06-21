@@ -88,6 +88,16 @@ Direct access to fast [resized and cached] images and videos:
 
 ### 21st of June 2026
 
+Two new endpoints were added:
+
+<a href="#amms-chart">**AMMs Chart**</a>
+
+Get recent historical chart data for all AMM pools, including total pools, created pools, active pools, total unique tokens, and created unique tokens. **Available on Standard plan and higher.**
+
+<a href="#amms-token-chart">**AMMs Token Chart**</a>
+
+Get recent historical AMM chart data for a token, including locked token amount, total pools, created pools, and active pools. Supports IOU token paths and the native token (`XRP`). **Available on Standard plan and higher.**
+
 A new endpoint was added:
 
 <a href="#amm-chart">**AMM Chart**</a>
@@ -1338,6 +1348,142 @@ ledgerIndex | null | ledger index (if set the request will return data for that 
 ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request will return data for that timestamp)
 holders | false | (available on paid plans only) If set to true, the result will also include a current `holders` count (not returned for historical request with `ledgerIndex`or `ledgerTimestamp`). This is the number of unique LP token holders.
 priceNativeCurrencySpot | false | If set to true, the `amount` and `amount2` objects will include a `priceNativeCurrencySpot` field — the spot price of that asset in the native currency (XRP).
+
+## AMMs Chart
+
+```shell
+curl "https://bithomp.com/api/v2/amms/chart"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getAMMsChart(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/amms/chart", getAMMsChart);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/amms/chart");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "chart": [
+    {
+      "time": 1779494399,
+      "totalPools": 29418,
+      "createdPools": 22,
+      "activePools": 3124,
+      "totalUniqueTokens": 23049,
+      "createdUniqueTokens": 8
+    },
+    {
+      "time": 1779580799,
+      "totalPools": 29450,
+      "createdPools": 32,
+      "activePools": 2713,
+      "totalUniqueTokens": 23061,
+      "createdUniqueTokens": 16
+    }
+  ]
+}
+```
+
+This endpoint returns recent historical chart data for all AMM pools. **Available on Standard plan and higher.**
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/amms/chart`
+
+### Response Fields
+
+Field | Type | Description
+----- | ---- | -----------
+chart[].time | Number | UNIX timestamp for the chart point.
+chart[].totalPools | Number | Total AMM pools at that chart point.
+chart[].createdPools | Number | AMM pools created during that chart point period.
+chart[].activePools | Number | AMM pools with activity during that chart point period.
+chart[].totalUniqueTokens | Number | Total unique tokens across AMM pools at that chart point.
+chart[].createdUniqueTokens | Number | Unique tokens first added to AMM pools during that chart point period.
+
+## AMMs Token Chart
+
+```shell
+curl "https://bithomp.com/api/v2/amms/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getAMMsTokenChart(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/amms/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart", getAMMsTokenChart);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/amms/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "chart": [
+    {
+      "time": 1779494399,
+      "token": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De:524C555344000000000000000000000000000000",
+      "lockedAmount": "2699173.2737155851775745550436",
+      "totalPools": 298,
+      "createdPools": 1,
+      "activePools": 128
+    },
+    {
+      "time": 1779580799,
+      "token": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De:524C555344000000000000000000000000000000",
+      "lockedAmount": "2691582.1632643620981010450436",
+      "totalPools": 298,
+      "createdPools": 0,
+      "activePools": 171
+    }
+  ]
+}
+```
+
+This endpoint returns recent historical AMM chart data for a requested token. It supports IOU tokens and the native token (`XRP`). **Available on Standard plan and higher.**
+
+Examples:
+
+- `GET https://bithomp.com/api/v2/amms/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/chart`
+- `GET https://bithomp.com/api/v2/amms/token/XRP/chart`
+
+### HTTP Request
+
+- `GET https://bithomp.com/api/v2/amms/token/<issuer>/<currency>/chart`
+- `GET https://bithomp.com/api/v2/amms/token/<nativeCurrency>/chart`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+issuer | The issuer address of the token.
+currency | The currency code of the token.
+nativeCurrency | The native token code: `XRP` on XRPL.
+
+### Response Fields
+
+Field | Type | Description
+----- | ---- | -----------
+chart[].time | Number | UNIX timestamp for the chart point.
+chart[].token | String | Token identifier. IOU tokens are returned as `issuer:currency`.
+chart[].lockedAmount | String | Token amount locked in AMM pools at that chart point.
+chart[].totalPools | Number | Total AMM pools for the token at that chart point.
+chart[].createdPools | Number | AMM pools created for the token during that chart point period.
+chart[].activePools | Number | AMM pools for the token with activity during that chart point period.
 
 ## AMM Chart
 
