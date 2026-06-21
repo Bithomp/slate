@@ -86,6 +86,14 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 21st of June 2026
+
+A new endpoint was added:
+
+<a href="#amm-chart">**AMM Chart**</a>
+
+Get historical chart data for an AMM pool, including pool values, LP token value, swap, deposit, and withdrawal activity.
+
 ### 11th of June 2026
 
 A new endpoint was added:
@@ -1326,6 +1334,85 @@ ledgerIndex | null | ledger index (if set the request will return data for that 
 ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request will return data for that timestamp)
 holders | false | (available on paid plans only) If set to true, the result will also include a current `holders` count (not returned for historical request with `ledgerIndex`or `ledgerTimestamp`). This is the number of unique LP token holders.
 priceNativeCurrencySpot | false | If set to true, the `amount` and `amount2` objects will include a `priceNativeCurrencySpot` field — the spot price of that asset in the native currency (XRP).
+
+## AMM Chart
+
+```shell
+curl "https://bithomp.com/api/v2/amm/160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767/chart"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getAMMChart(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/amm/160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767/chart", getAMMChart);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/amm/160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767/chart");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "chart": [
+    {
+      "time": 1779494399,
+      "amm_id": "160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767",
+      "value1": "1981403.239437",
+      "value2": "2641610.265620762",
+      "lpValue": "1985620660.156976",
+      "swapCount": 429,
+      "swapIntermediaryCountAccounts": 138,
+      "swapIntermediaryVolume1": "508148.324518",
+      "swapIntermediaryVolume2": "307340.834096495808827789576",
+      "depositCount": 10,
+      "depositCountAccounts": 7,
+      "depositVolume1": "8319.50854",
+      "depositVolume2": "9931.056924204",
+      "withdrawCount": 6,
+      "withdrawCountAccounts": 5,
+      "withdrawVolume1": "4380.271983",
+      "withdrawVolume2": "364.37804420234164"
+    },
+    {
+      "time": 1779580799,
+      "amm_id": "160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767",
+      "value1": "1939664.366759",
+      "value2": "2634035.843726063",
+      "lpValue": "1961638165.004439",
+      "swapCount": 907,
+      "swapIntermediaryCountAccounts": 169,
+      "swapIntermediaryVolume1": "367249.299783",
+      "swapIntermediaryVolume2": "557462.0052397496216140725",
+      "depositCount": 14,
+      "depositCountAccounts": 11,
+      "depositVolume1": "9590.518277",
+      "depositVolume2": "12213.8739738098043268",
+      "withdrawCount": 12,
+      "withdrawCountAccounts": 8,
+      "withdrawVolume1": "37033.643174",
+      "withdrawVolume2": "39435.665717496368145"
+    }
+  ],
+  "ammID": "160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767"
+}
+```
+
+This endpoint returns historical chart data for a requested AMM pool.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/amm/<ammID>/chart`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ammID | AMM ID
 
 ## Get AMM Pool data by Asset Pair
 
@@ -7055,7 +7142,7 @@ convertCurrencies | null | A single currency code to convert the token price int
 ## Token Holders
 
 ```shell
-curl "https://bithomp.com/api/cors/v2/trustlines/token/richlist/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?summary=true&convertCurrencies=usd"
+curl "https://bithomp.com/api/v2/trustlines/token/richlist/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?summary=true&convertCurrencies=usd"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -7063,11 +7150,11 @@ curl "https://bithomp.com/api/cors/v2/trustlines/token/richlist/rMxCKbEDwqr76Quh
 function getTokenHolders(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/cors/v2/trustlines/token/richlist/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?summary=true&convertCurrencies=usd", getTokenHolders);
+bithompRequest("https://bithomp.com/api/v2/trustlines/token/richlist/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?summary=true&convertCurrencies=usd", getTokenHolders);
 ``` 
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/cors/v2/trustlines/token/richlist/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?summary=true&convertCurrencies=usd");
+$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/richlist/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?summary=true&convertCurrencies=usd");
 print $data;
 ```
 
@@ -7430,7 +7517,7 @@ marker | null | (only available on paid api plans) The marker to use for paginat
 ## MP Token
 
 ```shell
-curl "https://bithomp.com/api/cors/v2/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D"
+curl "https://bithomp.com/api/v2/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -7438,11 +7525,11 @@ curl "https://bithomp.com/api/cors/v2/mptoken/056762A93087A14B122055FA030F9EE6F7
 function getMPTokenInfo(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/cors/v2/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D", getMPTokenInfo);
+bithompRequest("https://bithomp.com/api/v2/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D", getMPTokenInfo);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/cors/v2/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D");
+$data = curl_bithomp("https://bithomp.com/api/v2/mptoken/056762A93087A14B122055FA030F9EE6F74F87116559C83D");
 print $data;
 ```
 
