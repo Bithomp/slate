@@ -94,6 +94,10 @@ A new endpoint was added:
 
 Get historical chart data for an AMM pool, including pool values, LP token value, swap, deposit, and withdrawal activity.
 
+A new query parameter: `ammID` was added to the <a href="#token-activity">**Token Activity**</a> API endpoint.
+
+Use it with `type=dex` to get DEX swaps for a specific AMM pool. See <a href="#amm-swaps">**AMM Swaps**</a>.
+
 ### 11th of June 2026
 
 A new endpoint was added:
@@ -1413,6 +1417,86 @@ This endpoint returns historical chart data for a requested AMM pool.
 Parameter | Description
 --------- | -----------
 ammID | AMM ID
+
+## AMM Swaps
+
+```shell
+curl "https://bithomp.com/api/v2/token/XRP/swaps?limit=2&type=dex&ammID=160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getAMMSwaps(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/token/XRP/swaps?limit=2&type=dex&ammID=160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767", getAMMSwaps);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/token/XRP/swaps?limit=2&type=dex&ammID=160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "swaps": [
+    {
+      "timestamp": "1782021232",
+      "type": "dex",
+      "txHash": "5562DF397FF9D0F56BF25692C34A988435418DB71D39EEBE7969FC8BF4397776",
+      "ammID": "160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767",
+      "offerID": null,
+      "address1": "rhWTXC2m2gGGA9WozUaoMm6kLAVPb1tcS3",
+      "address1Details": {
+        "username": null,
+        "service": null,
+        "address": "rhWTXC2m2gGGA9WozUaoMm6kLAVPb1tcS3"
+      },
+      "address2": "r4xAnYRQcjf5kAuE3oLb7FDDvNHs2Vbvsz",
+      "address2Details": {
+        "username": null,
+        "service": null,
+        "address": "r4xAnYRQcjf5kAuE3oLb7FDDvNHs2Vbvsz"
+      },
+      "amount1": {
+        "currency": "XRP",
+        "value": "2.601353"
+      },
+      "amount2": {
+        "value": "2.970077",
+        "currency": "524C555344000000000000000000000000000000",
+        "issuer": "rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De"
+      },
+      "price": "1.14174316211602193166"
+    }
+  ],
+  "marker": "0000092A00000000",
+  "type": "dex",
+  "ammID": "160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767"
+}
+```
+
+Use the <a href="#token-activity">**Token Activity**</a> endpoint with `type=dex` and `ammID` to get swaps for a specific AMM pool.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/token/<tokenPath>/swaps?type=dex&ammID=<ammID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+tokenPath | Token path. Use `<issuer>/<currency>`, `<nativeCurrency>`, or `<mptokenIssuanceID>`.
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+ammID | null | AMM ID to filter DEX swaps by.
+limit | 100 | The maximum number of swap records to return.
+type | `dex` | Use `dex` to get DEX swaps.
 
 ## Get AMM Pool data by Asset Pair
 
@@ -6860,7 +6944,7 @@ print $data;
 }
 ```
 
-This endpoint retrieves recent token activity from up to the last 24 hours. Activity types include DEX swaps, transfers, rippling, burns, and mints. **Available on Standard plan and higher.** When no recent activity matches the request, the response contains an empty `swaps` array.
+This endpoint retrieves recent token activity from up to the last 24 hours. Activity types include DEX swaps, transfers, rippling, burns, and mints. For DEX swaps, use `ammID` to filter activity by AMM pool. **Available on Standard plan and higher.** When no recent activity matches the request, the response contains an empty `swaps` array.
 
 Native tokens can be requested with `XRP` or `XAH`. Multi Purpose Tokens can be requested with the MPT issuance ID.
 
@@ -6870,6 +6954,7 @@ Examples:
 - `GET https://bithomp.com/api/v2/token/XRP/swaps?type=transfer&limit=1`
 - `GET https://bithomp.com/api/v2/token/XRP/swaps?type=burn&limit=1`
 - `GET https://bithomp.com/api/v2/token/XRP/swaps?order=amountHigh&limit=1`
+- `GET https://bithomp.com/api/v2/token/XRP/swaps?limit=10&type=dex&ammID=160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767`
 - `GET https://xahauexplorer.com/api/v2/token/XAH/swaps`
 - `GET https://bithomp.com/api/v2/token/<issuer>/<currency>/swaps`
 - `GET https://bithomp.com/api/v2/token/<mptokenIssuanceID>/swaps`
@@ -6895,6 +6980,7 @@ currencyDetails | false | If set to true, token amounts include decoded `currenc
 limit | 100 | The maximum number of activity records to return.
 marker | null | The marker from the previous request, if you need a next page of activity records.
 type | null | Filter activity by type. Can be `transfer`, `mint`, `burn`, `rippling`, `dex`.
+ammID | null | Filter DEX swaps by AMM ID. Use with `type=dex` to get swaps for one AMM pool.
 order | `new` | The order of the activity records in the response. Can be `new`, `amountHigh`, `amountLow`.
 
 ### Response Format
