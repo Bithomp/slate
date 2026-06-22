@@ -620,7 +620,6 @@ Explorer links accept language and fiat overrides for localized display:
 ### AMM explorer
 * <a href="https://bithomp.com/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5">https://bithomp.com/amm/{ammID}</a>
 * <a href="https://bithomp.com/amm/rUGqgPbzKFVsSkTYUk4hdRoPwTaLv1iSDS">https://bithomp.com/amm/{address}</a>
-* <a href="https://bithomp.com/amm/03DD35D1879DBE4FE3290B911A14875DE6534DFD">https://bithomp.com/amm/{LPtoken}</a>
 
 ### Username registration
 * <a href="https://bithomp.com/username?username=Bithomp">https://bithomp.com/username?username={username}</a>
@@ -1330,14 +1329,13 @@ This endpoint retrieves information for a requested AMM pool.
 
 ### HTTP Request
 
-`GET https://bithomp.com/api/v2/amm/<ammID || LPtoken || address>`
+`GET https://bithomp.com/api/v2/amm/<ammID || address>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
 ammID | AMM ID 
-LPtoken | LP token currency code
 address | AMM account address
 
 ### Query Parameters
