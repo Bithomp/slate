@@ -86,6 +86,15 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 30th of June 2026
+
+New fields were added to native token chart points in the <a href="#token-chart">**Token Chart**</a> API endpoint:
+
+- `activations` - total accounts activated during the chart point period.
+- `deleted` - total accounts deleted during the chart point period.
+- `holders` - total accounts with a positive balance.
+- `total` - total accounts.
+
 ### 21st of June 2026
 
 Two new endpoints were added:
@@ -7236,6 +7245,65 @@ Examples:
 - `GET https://xahauexplorer.com/api/v2/token/XAH/chart?convertCurrencies=usd`
 - `GET https://bithomp.com/api/v2/token/0627B6859931344A3871ED63805BBF07DECBF03F9C2698BD/chart?convertCurrencies=usd`
 
+A native XRP chart point can look like this:
+
+```json
+{
+  "chart": [
+    {
+      "time": 1780271999,
+      "activations": 2407,
+      "deleted": 470,
+      "holders": 7882622,
+      "total": 7892027,
+      "sellVolume": "1542479.130707",
+      "buyVolume": "1130555.68149",
+      "uniqueSellers": 1537,
+      "uniqueBuyers": 2015,
+      "dexes": 125325,
+      "dexTxs": 117648,
+      "burnVolume": "384.872456",
+      "transferVolume": "192756694.29532",
+      "burnTxs": 1956708,
+      "transferTxs": 490768,
+      "uniqueAccounts": 38518,
+      "uniqueDexAccounts": 3350,
+      "priceNativeCurrency": "1",
+      "priceFiats": {
+        "usd": "1.33187"
+      },
+      "supply": "99985653166.531989",
+      "marketcap": "99985653166.531989"
+    }
+  ]
+}
+```
+
+A native XAH chart point can look like this:
+
+```json
+{
+  "chart": [
+    {
+      "time": 1780271999,
+      "activations": 68,
+      "deleted": 0,
+      "holders": 208114,
+      "total": 208137,
+      "sellVolume": "47673.316908",
+      "buyVolume": "47818.961643",
+      "uniqueAccounts": 11740,
+      "priceNativeCurrency": "1",
+      "priceFiats": {
+        "usd": "0.01956986"
+      },
+      "supply": "650153620.332455",
+      "marketcap": "650153620.332455"
+    }
+  ]
+}
+```
+
 A real MPT chart point can look like this:
 
 ```json
@@ -7273,6 +7341,15 @@ mptokenIssuanceID | The issuance ID of the MPT.
 Parameter | Default | Description
 --------- | ------- | -----------
 convertCurrencies | null | A single currency code to convert token values into. Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: `convertCurrencies=usd`.
+
+### Native Token Response Fields
+
+Field | Type | Description
+----- | ---- | -----------
+chart[].activations | Number | Total accounts activated during the chart point period.
+chart[].deleted | Number | Total accounts deleted during the chart point period.
+chart[].holders | Number | Total accounts with a positive balance. This can be approximate for old data because balances are counted when the account is restored.
+chart[].total | Number | Total accounts.
 
 ## Token Current Fiat Rate
 
