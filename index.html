@@ -1031,6 +1031,17 @@
 <li><code>holders</code> - total accounts with a positive balance.</li>
 <li><code>total</code> - total accounts.</li>
 </ul>
+
+<p>The <code>period</code> query parameter was added to chart endpoints:</p>
+
+<ul>
+<li><a href="#token-chart"><strong>Token Chart</strong></a></li>
+<li><a href="#amms-token-chart"><strong>AMMs Token Chart</strong></a></li>
+<li><a href="#amms-chart"><strong>AMMs Chart</strong></a></li>
+<li><a href="#amm-chart"><strong>AMM Chart</strong></a></li>
+</ul>
+
+<p>Supported values: <code>month</code>, <code>week</code>, <code>year</code>, <code>all</code>. Default: <code>month</code>.</p>
 <h3 id='21st-of-june-2026'>21st of June 2026</h3>
 <p>Two new endpoints were added:</p>
 
@@ -2313,6 +2324,20 @@ Exclude unnecessary parameters to make your request faster.
 <p>This endpoint returns recent historical chart data for all AMM pools. <strong>Available on Standard plan and higher.</strong></p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/amms/chart</code></p>
+<h3 id='query-parameters-5'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>period</td>
+<td><code>month</code></td>
+<td>Chart period. Supported values: <code>month</code>, <code>week</code>, <code>year</code>, <code>all</code>.</td>
+</tr>
+</tbody></table>
 <h3 id='response-fields'>Response Fields</h3>
 <table><thead>
 <tr>
@@ -2416,6 +2441,20 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>nativeCurrency</td>
 <td>The native token code: <code>XRP</code> on XRPL.</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-6'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>period</td>
+<td><code>month</code></td>
+<td>Chart period. Supported values: <code>month</code>, <code>week</code>, <code>year</code>, <code>all</code>.</td>
 </tr>
 </tbody></table>
 <h3 id='response-fields-2'>Response Fields</h3>
@@ -2528,6 +2567,20 @@ Exclude unnecessary parameters to make your request faster.
 <td>AMM ID</td>
 </tr>
 </tbody></table>
+<h3 id='query-parameters-7'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>period</td>
+<td><code>month</code></td>
+<td>Chart period. Supported values: <code>month</code>, <code>week</code>, <code>year</code>, <code>all</code>.</td>
+</tr>
+</tbody></table>
 <h2 id='amm-swaps'>AMM Swaps</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/token/XRP/swaps?limit=2&amp;type=dex&amp;ammID=160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getAMMSwaps</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
@@ -2592,7 +2645,7 @@ Exclude unnecessary parameters to make your request faster.
 <td>Token path. Use <code>&lt;issuer&gt;/&lt;currency&gt;</code>, <code>&lt;nativeCurrency&gt;</code>, or <code>&lt;mptokenIssuanceID&gt;</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-5'>Query Parameters</h3>
+<h3 id='query-parameters-8'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2696,7 +2749,7 @@ Exclude unnecessary parameters to make your request faster.
 <td>Asset 2 issuer (not required for XRP)</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-6'>Query Parameters</h3>
+<h3 id='query-parameters-9'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -2832,7 +2885,7 @@ Exclude unnecessary parameters to make your request faster.
 <td>An NFT ID</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-7'>Query Parameters</h3>
+<h3 id='query-parameters-10'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3041,7 +3094,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>An NFT Offer ID</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-8'>Query Parameters</h3>
+<h3 id='query-parameters-11'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3243,7 +3296,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves a List of NFTs for specified parameters</p>
 <h3 id='http-request-13'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nfts</code></p>
-<h3 id='query-parameters-9'>Query Parameters</h3>
+<h3 id='query-parameters-12'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3542,7 +3595,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>The XRPL address or a username.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-10'>Query Parameters</h3>
+<h3 id='query-parameters-13'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3685,7 +3738,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>The collectionId in the format <code>issuer:taxon</code> for Standard collections or <code>issuer</code> for Sologenic collections. (you can find collection ids in the NFT Collections endpoint)</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-11'>Query Parameters</h3>
+<h3 id='query-parameters-14'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3797,7 +3850,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves NFT Collection list for your search creterias.</p>
 <h3 id='http-request-16'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-collections</code></p>
-<h3 id='query-parameters-12'>Query Parameters</h3>
+<h3 id='query-parameters-15'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -3892,7 +3945,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves NFT Owners list sorted by NFT count.</p>
 <h3 id='http-request-17'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-owners</code></p>
-<h3 id='query-parameters-13'>Query Parameters</h3>
+<h3 id='query-parameters-16'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4058,7 +4111,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves a List of NFT Sales for specified parameters</p>
 <h3 id='http-request-18'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-sales</code></p>
-<h3 id='query-parameters-14'>Query Parameters</h3>
+<h3 id='query-parameters-17'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4263,7 +4316,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves NFT Sales Volumes for specified parameters</p>
 <h3 id='http-request-19'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-volumes</code></p>
-<h3 id='query-parameters-15'>Query Parameters</h3>
+<h3 id='query-parameters-18'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4476,7 +4529,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves Extended NFT Sales Volumes for specified parameters (Only available on paid API plans)</p>
 <h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-volumes-extended</code></p>
-<h3 id='query-parameters-16'>Query Parameters</h3>
+<h3 id='query-parameters-19'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4614,7 +4667,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves NFT minters on XRPL for a specified period of time</p>
 <h3 id='http-request-21'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-marketplaces</code></p>
-<h3 id='query-parameters-17'>Query Parameters</h3>
+<h3 id='query-parameters-20'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4658,7 +4711,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves NFT mints count for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
 <h3 id='http-request-22'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-chart</code></p>
-<h3 id='query-parameters-18'>Query Parameters</h3>
+<h3 id='query-parameters-21'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4719,7 +4772,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves NFT Sales Volumes Chart data for a specified period of time, with a specified span (available only on the Standard plan and higher)</p>
 <h3 id='http-request-23'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-sales-chart</code></p>
-<h3 id='query-parameters-19'>Query Parameters</h3>
+<h3 id='query-parameters-22'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -4990,7 +5043,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>An URI Token ID</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-20'>Query Parameters</h3>
+<h3 id='query-parameters-23'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5291,7 +5344,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves a List of NFTs for specified parameters</p>
 <h3 id='http-request-27'>HTTP Request</h3>
 <p><code>GET https://xahauexplorer.com/api/v2/uritokens</code></p>
-<h3 id='query-parameters-21'>Query Parameters</h3>
+<h3 id='query-parameters-24'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5549,7 +5602,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>An address or a username.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-22'>Query Parameters</h3>
+<h3 id='query-parameters-25'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5622,7 +5675,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves NFT Owners list sorted by NFT count.</p>
 <h3 id='http-request-29'>HTTP Request</h3>
 <p><code>GET https://xahauexplorer.com/api/v2/uritoken-owners</code></p>
-<h3 id='query-parameters-23'>Query Parameters</h3>
+<h3 id='query-parameters-26'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -5774,7 +5827,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves a List of NFT Sales for specified parameters</p>
 <h3 id='http-request-30'>HTTP Request</h3>
 <p><code>GET https://xahauexplorer.com/api/v2/uritoken-sales</code></p>
-<h3 id='query-parameters-24'>Query Parameters</h3>
+<h3 id='query-parameters-27'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6329,7 +6382,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 </ul>
 <h3 id='http-request-35'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/dapps</code></p>
-<h3 id='query-parameters-25'>Query Parameters</h3>
+<h3 id='query-parameters-28'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6468,7 +6521,7 @@ Before downloading the whole list again you can check if it was updated here: <a
 <td>The address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-26'>Query Parameters</h3>
+<h3 id='query-parameters-29'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6646,7 +6699,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p><strong>This endpoint is available on Standard plan and higher.</strong></p>
 <h3 id='http-request-37'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/accounts</code></p>
-<h3 id='query-parameters-27'>Query Parameters</h3>
+<h3 id='query-parameters-30'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6736,7 +6789,7 @@ The first page includes `summary.total` with the total number of matching accoun
 <p><strong>This endpoint is available on Standard plan and higher.</strong></p>
 <h3 id='http-request-38'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/accounts/count</code></p>
-<h3 id='query-parameters-28'>Query Parameters</h3>
+<h3 id='query-parameters-31'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -6944,7 +6997,7 @@ It is similar to <code>/v2/address/&lt;address&gt;</code>, but <code>/v2/address
 <td>The parent account address.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-29'>Query Parameters</h3>
+<h3 id='query-parameters-32'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7020,7 +7073,7 @@ It is similar to <code>/v2/address/&lt;address&gt;</code>, but <code>/v2/address
 <p><strong>This endpoint is available on Standard plan and higher.</strong></p>
 <h3 id='http-request-41'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/account/genesis/descendants</code></p>
-<h3 id='query-parameters-30'>Query Parameters</h3>
+<h3 id='query-parameters-33'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7157,7 +7210,7 @@ It is similar to <code>/v2/address/&lt;address&gt;</code>, but <code>/v2/address
 <td>The address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-31'>Query Parameters</h3>
+<h3 id='query-parameters-34'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7246,7 +7299,7 @@ It is similar to <code>/v2/address/&lt;address&gt;</code>, but <code>/v2/address
 <td>The address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-32'>Query Parameters</h3>
+<h3 id='query-parameters-35'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -7355,7 +7408,7 @@ This request with ledger index could be extremely slow and in some cases return 
 <td>The address, can be old r-address or a new X-address</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-33'>Query Parameters</h3>
+<h3 id='query-parameters-36'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8142,7 +8195,7 @@ You can retrieve information for MANY currencies in one request:
 <p>This endpoint retrieves information for a requested currencies (HEX or XLS-14 NFT).</p>
 <h3 id='http-request-56'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/currencies</code></p>
-<h3 id='query-parameters-34'>Query Parameters</h3>
+<h3 id='query-parameters-37'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8343,7 +8396,7 @@ You can retrieve information for MANY currencies in one request:
 <p>This endpoint retrieves a list of tokens (IOUs) on the Ledger.</p>
 <h3 id='http-request-57'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/trustlines/tokens</code></p>
-<h3 id='query-parameters-35'>Query Parameters</h3>
+<h3 id='query-parameters-38'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8492,7 +8545,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The currency code of the Token.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-36'>Query Parameters</h3>
+<h3 id='query-parameters-39'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8597,7 +8650,7 @@ You can retrieve information for MANY currencies in one request:
 <td>Optional currency code, for example <code>usd</code>, <code>eur</code>, <code>btc</code>, or <code>sats</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-37'>Query Parameters</h3>
+<h3 id='query-parameters-40'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8679,7 +8732,7 @@ You can retrieve information for MANY currencies in one request:
 <td>Currency code, for example <code>usd</code>, <code>eur</code>, <code>btc</code>, or <code>sats</code>.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-38'>Query Parameters</h3>
+<h3 id='query-parameters-41'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -8827,7 +8880,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The issuance ID of the MPT.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-39'>Query Parameters</h3>
+<h3 id='query-parameters-42'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9133,7 +9186,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The issuance ID of the MPT.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-40'>Query Parameters</h3>
+<h3 id='query-parameters-43'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9145,6 +9198,11 @@ You can retrieve information for MANY currencies in one request:
 <td>convertCurrencies</td>
 <td>null</td>
 <td>A single currency code to convert token values into. Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: <code>convertCurrencies=usd</code>.</td>
+</tr>
+<tr>
+<td>period</td>
+<td><code>month</code></td>
+<td>Chart period. Supported values: <code>month</code>, <code>week</code>, <code>year</code>, <code>all</code>.</td>
 </tr>
 </tbody></table>
 <h3 id='native-token-response-fields'>Native Token Response Fields</h3>
@@ -9214,7 +9272,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The currency code of the Token.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-41'>Query Parameters</h3>
+<h3 id='query-parameters-44'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9268,7 +9326,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The currency code of the Token.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-42'>Query Parameters</h3>
+<h3 id='query-parameters-45'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9378,7 +9436,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The currency code of the Token.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-43'>Query Parameters</h3>
+<h3 id='query-parameters-46'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9484,7 +9542,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The item to search for. It can be part of an issuer address, currency code, or a username, or a full issuer address, currency, currency code, or a username, service name.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-44'>Query Parameters</h3>
+<h3 id='query-parameters-47'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9584,7 +9642,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The item to search for. It can be part of a currency code, currency name, or a full currency code, currency name.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-45'>Query Parameters</h3>
+<h3 id='query-parameters-48'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9662,7 +9720,7 @@ You can retrieve information for MANY currencies in one request:
 <p>This endpoint retrieves a list of Multi Purpose Tokens (MPT) on the Ledger.</p>
 <h3 id='http-request-70'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/mptokens</code></p>
-<h3 id='query-parameters-46'>Query Parameters</h3>
+<h3 id='query-parameters-49'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9881,7 +9939,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The item to search for. It can be part of an issuer address, username, service name, domain, or a full issuer address, username, service name, domain.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-47'>Query Parameters</h3>
+<h3 id='query-parameters-50'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -9930,7 +9988,7 @@ You can retrieve information for MANY currencies in one request:
 <td>The item to search for. It can be part of a currency code, currency name, or a full currency code, currency name.</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-48'>Query Parameters</h3>
+<h3 id='query-parameters-51'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -10341,7 +10399,7 @@ Add <code>?lang=&lt;language&gt;</code> (for example <code>?lang=zh</code>) to f
 <td>The address to get transactions for</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-49'>Query Parameters</h3>
+<h3 id='query-parameters-52'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -10533,7 +10591,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales">https://bithomp.com/en/whales</a>.</p>
 <h3 id='http-request-79'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale</code></p>
-<h3 id='query-parameters-50'>Query Parameters</h3>
+<h3 id='query-parameters-53'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -10595,7 +10653,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/receivers">https://bithomp.com/en/whales/receivers</a>.</p>
 <h3 id='http-request-80'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/receivers</code></p>
-<h3 id='query-parameters-51'>Query Parameters</h3>
+<h3 id='query-parameters-54'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -10657,7 +10715,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/senders">https://bithomp.com/en/whales/senders</a>.</p>
 <h3 id='http-request-81'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/senders</code></p>
-<h3 id='query-parameters-52'>Query Parameters</h3>
+<h3 id='query-parameters-55'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -10720,7 +10778,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/en/whales/submitters">https://bithomp.com/en/whales/submitters</a>.</p>
 <h3 id='http-request-82'>HTTP Request</h3>
 <p><code>GET http://bithomp.com/api/v2/transactions/whale/submitters</code></p>
-<h3 id='query-parameters-53'>Query Parameters</h3>
+<h3 id='query-parameters-56'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -10791,7 +10849,7 @@ Page where it used on bithomp:
 <a href="https://bithomp.com/en/distribution">https://bithomp.com/en/distribution</a>.</p>
 <h3 id='http-request-83'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/addresses/richlist</code></p>
-<h3 id='query-parameters-54'>Query Parameters</h3>
+<h3 id='query-parameters-57'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -10891,7 +10949,7 @@ Page where it used on bithomp:
 <td>The index of the ledger entry to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='query-parameters-55'>Query Parameters</h3>
+<h3 id='query-parameters-58'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
