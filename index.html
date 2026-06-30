@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#30th-of-june-2026" class="toc-h2 toc-link" data-title="30th of June 2026">30th of June 2026</a>
+                  </li>
+                  <li>
                     <a href="#21st-of-june-2026" class="toc-h2 toc-link" data-title="21st of June 2026">21st of June 2026</a>
                   </li>
                   <li>
@@ -1019,7 +1022,16 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='21st-of-june-2026'>21st of June 2026</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='30th-of-june-2026'>30th of June 2026</h3>
+<p>New fields were added to native token chart points in the <a href="#token-chart"><strong>Token Chart</strong></a> API endpoint:</p>
+
+<ul>
+<li><code>activations</code> - total accounts activated during the chart point period.</li>
+<li><code>deleted</code> - total accounts deleted during the chart point period.</li>
+<li><code>holders</code> - total accounts with a positive balance.</li>
+<li><code>total</code> - total accounts.</li>
+</ul>
+<h3 id='21st-of-june-2026'>21st of June 2026</h3>
 <p>Two new endpoints were added:</p>
 
 <p><a href="#amms-chart"><strong>AMMs Chart</strong></a></p>
@@ -1493,7 +1505,6 @@ Set up with a DNS record:</p>
 <ul>
 <li><a href="https://bithomp.com/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5">https://bithomp.com/amm/{ammID}</a></li>
 <li><a href="https://bithomp.com/amm/rUGqgPbzKFVsSkTYUk4hdRoPwTaLv1iSDS">https://bithomp.com/amm/{address}</a></li>
-<li><a href="https://bithomp.com/amm/03DD35D1879DBE4FE3290B911A14875DE6534DFD">https://bithomp.com/amm/{LPtoken}</a></li>
 </ul>
 <h3 id='username-registration'>Username registration</h3>
 <ul>
@@ -2220,7 +2231,7 @@ Exclude unnecessary parameters to make your request faster.
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested AMM pool.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
-<p><code>GET https://bithomp.com/api/v2/amm/&lt;ammID || LPtoken || address&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/amm/&lt;ammID || address&gt;</code></p>
 <h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -2231,10 +2242,6 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>ammID</td>
 <td>AMM ID</td>
-</tr>
-<tr>
-<td>LPtoken</td>
-<td>LP token currency code</td>
 </tr>
 <tr>
 <td>address</td>
@@ -9028,6 +9035,59 @@ You can retrieve information for MANY currencies in one request:
 <li><code>GET https://bithomp.com/api/v2/token/0627B6859931344A3871ED63805BBF07DECBF03F9C2698BD/chart?convertCurrencies=usd</code></li>
 </ul>
 
+<p>A native XRP chart point can look like this:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"chart"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1780271999</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activations"</span><span class="p">:</span><span class="w"> </span><span class="mi">2407</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">470</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">7882622</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">7892027</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542479.130707"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"buyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1130555.68149"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uniqueSellers"</span><span class="p">:</span><span class="w"> </span><span class="mi">1537</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uniqueBuyers"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dexes"</span><span class="p">:</span><span class="w"> </span><span class="mi">125325</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dexTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">117648</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"burnVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"384.872456"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"transferVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"192756694.29532"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"burnTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">1956708</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"transferTxs"</span><span class="p">:</span><span class="w"> </span><span class="mi">490768</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">38518</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uniqueDexAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">3350</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"priceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"priceFiats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.33187"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"supply"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99985653166.531989"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marketcap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"99985653166.531989"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>A native XAH chart point can look like this:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"chart"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1780271999</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"activations"</span><span class="p">:</span><span class="w"> </span><span class="mi">68</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"holders"</span><span class="p">:</span><span class="w"> </span><span class="mi">208114</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">208137</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"sellVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47673.316908"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"buyVolume"</span><span class="p">:</span><span class="w"> </span><span class="s2">"47818.961643"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"uniqueAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">11740</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"priceNativeCurrency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"priceFiats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"usd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0.01956986"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"supply"</span><span class="p">:</span><span class="w"> </span><span class="s2">"650153620.332455"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"marketcap"</span><span class="p">:</span><span class="w"> </span><span class="s2">"650153620.332455"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>A real MPT chart point can look like this:</p>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"chart"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -9085,6 +9145,35 @@ You can retrieve information for MANY currencies in one request:
 <td>convertCurrencies</td>
 <td>null</td>
 <td>A single currency code to convert token values into. Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: <code>convertCurrencies=usd</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='native-token-response-fields'>Native Token Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chart[].activations</td>
+<td>Number</td>
+<td>Total accounts activated during the chart point period.</td>
+</tr>
+<tr>
+<td>chart[].deleted</td>
+<td>Number</td>
+<td>Total accounts deleted during the chart point period.</td>
+</tr>
+<tr>
+<td>chart[].holders</td>
+<td>Number</td>
+<td>Total accounts with a positive balance. This can be approximate for old data because balances are counted when the account is restored.</td>
+</tr>
+<tr>
+<td>chart[].total</td>
+<td>Number</td>
+<td>Total accounts.</td>
 </tr>
 </tbody></table>
 <h2 id='token-current-fiat-rate'>Token Current Fiat Rate</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000/rate/current?convertCurrencies=usd"</span>
