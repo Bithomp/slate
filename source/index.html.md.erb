@@ -95,6 +95,15 @@ New fields were added to native token chart points in the <a href="#token-chart"
 - `holders` - total accounts with a positive balance.
 - `total` - total accounts.
 
+The `period` query parameter was added to chart endpoints:
+
+- <a href="#token-chart">**Token Chart**</a>
+- <a href="#amms-token-chart">**AMMs Token Chart**</a>
+- <a href="#amms-chart">**AMMs Chart**</a>
+- <a href="#amm-chart">**AMM Chart**</a>
+
+Supported values: `month`, `week`, `year`, `all`. Default: `month`.
+
 ### 21st of June 2026
 
 Two new endpoints were added:
@@ -1406,6 +1415,12 @@ This endpoint returns recent historical chart data for all AMM pools. **Availabl
 
 `GET https://bithomp.com/api/v2/amms/chart`
 
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+period | `month` | Chart period. Supported values: `month`, `week`, `year`, `all`.
+
 ### Response Fields
 
 Field | Type | Description
@@ -1480,6 +1495,12 @@ Parameter | Description
 issuer | The issuer address of the token.
 currency | The currency code of the token.
 nativeCurrency | The native token code: `XRP` on XRPL.
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+period | `month` | Chart period. Supported values: `month`, `week`, `year`, `all`.
 
 ### Response Fields
 
@@ -1570,6 +1591,12 @@ This endpoint returns historical chart data for a requested AMM pool. **Availabl
 Parameter | Description
 --------- | -----------
 ammID | AMM ID
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+period | `month` | Chart period. Supported values: `month`, `week`, `year`, `all`.
 
 ## AMM Swaps
 
@@ -7341,6 +7368,7 @@ mptokenIssuanceID | The issuance ID of the MPT.
 Parameter | Default | Description
 --------- | ------- | -----------
 convertCurrencies | null | A single currency code to convert token values into. Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: `convertCurrencies=usd`.
+period | `month` | Chart period. Supported values: `month`, `week`, `year`, `all`.
 
 ### Native Token Response Fields
 
