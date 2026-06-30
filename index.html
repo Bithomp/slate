@@ -9088,7 +9088,9 @@ You can retrieve information for MANY currencies in one request:
 <li><code>GET https://bithomp.com/api/v2/token/0627B6859931344A3871ED63805BBF07DECBF03F9C2698BD/chart?convertCurrencies=usd</code></li>
 </ul>
 
-<p>A native XRP chart point can look like this:</p>
+<blockquote>
+<p>For <code>GET https://bithomp.com/api/v2/token/XRP/chart?convertCurrencies=usd</code>, a native XRP chart point can look like this:</p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"chart"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -9119,7 +9121,9 @@ You can retrieve information for MANY currencies in one request:
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>A native XAH chart point can look like this:</p>
+<blockquote>
+<p>For <code>GET https://xahauexplorer.com/api/v2/token/XAH/chart?convertCurrencies=usd</code>, a native XAH chart point can look like this:</p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"chart"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -9141,7 +9145,9 @@ You can retrieve information for MANY currencies in one request:
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>A real MPT chart point can look like this:</p>
+<blockquote>
+<p>For <code>GET https://bithomp.com/api/v2/token/0627B6859931344A3871ED63805BBF07DECBF03F9C2698BD/chart?convertCurrencies=usd</code>, a real MPT chart point can look like this:</p>
+</blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"chart"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
@@ -9156,7 +9162,11 @@ You can retrieve information for MANY currencies in one request:
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h3 id='http-request-63'>HTTP Request</h3>
+</span></code></pre></div>
+<blockquote>
+<p>The response fields depend on the token type. The example response above is for an IOU token. Native token-specific fields are listed below.</p>
+</blockquote>
+<h3 id='http-request-63'>HTTP Request</h3>
 <ul>
 <li><code>GET https://bithomp.com/api/v2/token/&lt;issuer&gt;/&lt;currency&gt;/chart</code></li>
 <li><code>GET https://bithomp.com/api/v2/token/&lt;nativeCurrency&gt;/chart</code></li>
