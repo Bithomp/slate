@@ -7272,7 +7272,7 @@ Examples:
 - `GET https://xahauexplorer.com/api/v2/token/XAH/chart?convertCurrencies=usd`
 - `GET https://bithomp.com/api/v2/token/0627B6859931344A3871ED63805BBF07DECBF03F9C2698BD/chart?convertCurrencies=usd`
 
-A native XRP chart point can look like this:
+> For `GET https://bithomp.com/api/v2/token/XRP/chart?convertCurrencies=usd`, a native XRP chart point can look like this:
 
 ```json
 {
@@ -7306,7 +7306,7 @@ A native XRP chart point can look like this:
 }
 ```
 
-A native XAH chart point can look like this:
+> For `GET https://xahauexplorer.com/api/v2/token/XAH/chart?convertCurrencies=usd`, a native XAH chart point can look like this:
 
 ```json
 {
@@ -7331,7 +7331,7 @@ A native XAH chart point can look like this:
 }
 ```
 
-A real MPT chart point can look like this:
+> For `GET https://bithomp.com/api/v2/token/0627B6859931344A3871ED63805BBF07DECBF03F9C2698BD/chart?convertCurrencies=usd`, a real MPT chart point can look like this:
 
 ```json
 {
@@ -7349,6 +7349,8 @@ A real MPT chart point can look like this:
   ]
 }
 ```
+
+> The response fields depend on the token type. The example response above is for an IOU token. Native token-specific fields are listed below.
 
 ### HTTP Request
 
