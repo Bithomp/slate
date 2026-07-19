@@ -86,6 +86,14 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 19th of July 2026
+
+A new query parameter: `toml` was added to the <a href="#token">**Token**</a> API endpoint:
+
+- `GET /v2/token/<issuer>/<currency>`
+
+Set `toml=true` to include the issuer's TOML data. The response includes parsed TOML data in `toml` and the original TOML document in `rawtoml`. If the TOML is unavailable on the issuer's domain or cannot be parsed, the response includes `tomlVerificationMessage`.
+
 ### 30th of June 2026
 
 New fields were added to native token chart points in the <a href="#token-chart">**Token Chart**</a> API endpoint:
@@ -420,38 +428,6 @@ A new endpoint was added:
 <a href="#transactions-by-address">**Transactions by address**</a>
 
 Get the list of transactions by an address. This endpoint is available on paid plans only.
-
-### 18th of July 2025
-
-2 new endpoints were added:
-
-<a href="#validate-nft-offer">**Validate NFT Offer (For XRPL)**</a>
-
-Validate an NFT offer on the XRPL. This endpoint is available on paid plans only.
-
-<a href="#validate-nft-offer-2">**Validate NFT Offer (For XAHAU)**</a>
-
-Validate an NFT offer on the Xahau. This endpoint is available on paid plans only.
-
-### 17th of July 2025
-
-4 new endpoints were added:
-
-<a href="#list-of-tokens">**List of tokens**</a>
-
-Get the list of tokens issued on the XRPL or Xahau. You can filter by `issuer` or `currency`, sort by holders count etc.
-
-<a href="#token-search">**Token Search**</a>
-
-Search for tokens by a part of currency, currencu code, issuer address, username, domain, service name.
-
-<a href="#token-issuer-search">**Token Issuer Search**</a>
-
-Search for token issuers by a part of address, username, domain, service name.
-
-<a href="#currency-search">**Currency Search**</a>
-
-Search for currencies by a part of currency, currency code, issuer address, username, domain, service name.
 
 # Free Token Images
 
@@ -6788,7 +6764,7 @@ marker | null | (only available on paid api plans) The marker to use for paginat
 ## Token
 
 ```shell
-curl "https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&convertCurrencies=usd"
+curl "https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&convertCurrencies=usd"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -6796,11 +6772,11 @@ curl "https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8
 function getTokenInfo(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&convertCurrencies=usd", getTokenInfo);
+bithompRequest("https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&convertCurrencies=usd", getTokenInfo);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&convertCurrencies=usd");
+$data = curl_bithomp("https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&convertCurrencies=usd");
 print $data;
 ```
 > The above command returns JSON structured like this:
@@ -6869,7 +6845,7 @@ print $data;
 This endpoint retrieves information and statistics for a specific token (IOU) on the Ledger.
 
 ### HTTP Request
-`GET https://bithomp.com/api/v2/trustlines/token/<issuer>/<currency>`
+`GET https://bithomp.com/api/v2/token/<issuer>/<currency>`
 
 ### URL Parameters
 Parameter | Description
@@ -6882,6 +6858,15 @@ Parameter | Default | Description
 --------- | ------- | -----------
 convertCurrencies | null | (Only available on paid API plans) A single currency code to convert the token price into.  Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: `convertCurrencies=usd`
 statistics | false | (Only available on paid API plans) If set to true, the response will include additional statistics for the token, such as sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, market cap, AMM pools, active AMM pools, active offers, active counters, active holders. Also it will include `timeAt` which is a timestamp when the statistics were last updated.
+toml | false | If set to true, the response will include TOML information published on the issuer's domain.
+
+### TOML Response Fields
+
+Field | Type | Description
+----- | ---- | -----------
+toml | JSON | The parsed TOML data.
+rawtoml | text | The original TOML document as raw text.
+tomlVerificationMessage | text | An explanation returned when the TOML is invalid or unavailable on the issuer's domain.
 
 ## Current Rates
 
