@@ -323,6 +323,9 @@
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#19th-of-july-2026" class="toc-h2 toc-link" data-title="19th of July 2026">19th of July 2026</a>
+                  </li>
+                  <li>
                     <a href="#30th-of-june-2026" class="toc-h2 toc-link" data-title="30th of June 2026">30th of June 2026</a>
                   </li>
                   <li>
@@ -405,12 +408,6 @@
                   </li>
                   <li>
                     <a href="#19th-of-july-2025" class="toc-h2 toc-link" data-title="19th of July 2025">19th of July 2025</a>
-                  </li>
-                  <li>
-                    <a href="#18th-of-july-2025" class="toc-h2 toc-link" data-title="18th of July 2025">18th of July 2025</a>
-                  </li>
-                  <li>
-                    <a href="#17th-of-july-2025" class="toc-h2 toc-link" data-title="17th of July 2025">17th of July 2025</a>
                   </li>
               </ul>
           </li>
@@ -1022,7 +1019,15 @@
 <ul>
 <li><a href="https://bithomp.com/admin">Request an API key</a></li>
 </ul>
-<h1 id='changelog'>Changelog</h1><h3 id='30th-of-june-2026'>30th of June 2026</h3>
+<h1 id='changelog'>Changelog</h1><h3 id='19th-of-july-2026'>19th of July 2026</h3>
+<p>A new query parameter: <code>toml</code> was added to the <a href="#token"><strong>Token</strong></a> API endpoint:</p>
+
+<ul>
+<li><code>GET /v2/token/&lt;issuer&gt;/&lt;currency&gt;</code></li>
+</ul>
+
+<p>Set <code>toml=true</code> to include the issuer&#39;s TOML data. The response includes parsed TOML data in <code>toml</code> and the original TOML document in <code>rawtoml</code>. If the TOML is unavailable on the issuer&#39;s domain or cannot be parsed, the response includes <code>tomlVerificationMessage</code>.</p>
+<h3 id='30th-of-june-2026'>30th of June 2026</h3>
 <p>New fields were added to native token chart points in the <a href="#token-chart"><strong>Token Chart</strong></a> API endpoint:</p>
 
 <ul>
@@ -1329,34 +1334,6 @@
 <p><a href="#transactions-by-address"><strong>Transactions by address</strong></a></p>
 
 <p>Get the list of transactions by an address. This endpoint is available on paid plans only.</p>
-<h3 id='18th-of-july-2025'>18th of July 2025</h3>
-<p>2 new endpoints were added:</p>
-
-<p><a href="#validate-nft-offer"><strong>Validate NFT Offer (For XRPL)</strong></a></p>
-
-<p>Validate an NFT offer on the XRPL. This endpoint is available on paid plans only.</p>
-
-<p><a href="#validate-nft-offer-2"><strong>Validate NFT Offer (For XAHAU)</strong></a></p>
-
-<p>Validate an NFT offer on the Xahau. This endpoint is available on paid plans only.</p>
-<h3 id='17th-of-july-2025'>17th of July 2025</h3>
-<p>4 new endpoints were added:</p>
-
-<p><a href="#list-of-tokens"><strong>List of tokens</strong></a></p>
-
-<p>Get the list of tokens issued on the XRPL or Xahau. You can filter by <code>issuer</code> or <code>currency</code>, sort by holders count etc.</p>
-
-<p><a href="#token-search"><strong>Token Search</strong></a></p>
-
-<p>Search for tokens by a part of currency, currencu code, issuer address, username, domain, service name.</p>
-
-<p><a href="#token-issuer-search"><strong>Token Issuer Search</strong></a></p>
-
-<p>Search for token issuers by a part of address, username, domain, service name.</p>
-
-<p><a href="#currency-search"><strong>Currency Search</strong></a></p>
-
-<p>Search for currencies by a part of currency, currency code, issuer address, username, domain, service name.</p>
 <h1 id='free-token-images'>Free Token Images</h1>
 <p>You can easily display token images for XRPL and Xahau tokens using the Bithomp token image service. No registration is required.</p>
 
@@ -8455,13 +8432,13 @@ You can retrieve information for MANY currencies in one request:
 <td>(only available on paid api plans) The marker to use for pagination. If set, the response will include tokens starting from the specified marker. The marker is a string that can be used to retrieve the next page of results.</td>
 </tr>
 </tbody></table>
-<h2 id='token'>Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&amp;convertCurrencies=usd"</span>
+<h2 id='token'>Token</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&amp;convertCurrencies=usd"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getTokenInfo</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&amp;convertCurrencies=usd</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenInfo</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/trustlines/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&amp;convertCurrencies=usd"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&amp;convertCurrencies=usd</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getTokenInfo</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/token/rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De/524C555344000000000000000000000000000000?statistics=true&amp;convertCurrencies=usd"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -8528,7 +8505,7 @@ You can retrieve information for MANY currencies in one request:
 </span></code></pre></div>
 <p>This endpoint retrieves information and statistics for a specific token (IOU) on the Ledger.</p>
 <h3 id='http-request-58'>HTTP Request</h3>
-<p><code>GET https://bithomp.com/api/v2/trustlines/token/&lt;issuer&gt;/&lt;currency&gt;</code></p>
+<p><code>GET https://bithomp.com/api/v2/token/&lt;issuer&gt;/&lt;currency&gt;</code></p>
 <h3 id='url-parameters-25'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -8562,6 +8539,35 @@ You can retrieve information for MANY currencies in one request:
 <td>statistics</td>
 <td>false</td>
 <td>(Only available on paid API plans) If set to true, the response will include additional statistics for the token, such as sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, market cap, AMM pools, active AMM pools, active offers, active counters, active holders. Also it will include <code>timeAt</code> which is a timestamp when the statistics were last updated.</td>
+</tr>
+<tr>
+<td>toml</td>
+<td>false</td>
+<td>If set to true, the response will include TOML information published on the issuer&#39;s domain.</td>
+</tr>
+</tbody></table>
+<h3 id='toml-response-fields'>TOML Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>toml</td>
+<td>JSON</td>
+<td>The parsed TOML data.</td>
+</tr>
+<tr>
+<td>rawtoml</td>
+<td>text</td>
+<td>The original TOML document as raw text.</td>
+</tr>
+<tr>
+<td>tomlVerificationMessage</td>
+<td>text</td>
+<td>An explanation returned when the TOML is invalid or unavailable on the issuer&#39;s domain.</td>
 </tr>
 </tbody></table>
 <h2 id='current-rates'>Current Rates</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/rates/current/usd"</span>
