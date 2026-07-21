@@ -86,6 +86,14 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 21st of July 2026
+
+A new endpoint was added:
+
+<a href="#dapp-chart">**DApp Chart**</a>
+
+Get historical activity statistics for a dapp identified by its source tag. Use `period` to select the chart range, `span` to group data points, and `convertCurrencies` to include converted totals. **Available on Premium plan and higher.**
+
 ### 19th of July 2026
 
 A new query parameter: `toml` was added to the <a href="#token">**Token**</a> API endpoint:
@@ -420,14 +428,6 @@ Get information and statistics for a specific token issued on the XRPL or Xahau.
 Free Images for Tokens and Addresses:
 
 You can now use our CDN to display token and address images for free. See the <a href="#free-token-images">Free Token Images</a> and <a href="#free-address-profile-images">Free Address Profile Images</a> sections below for more details.
-
-### 19th of July 2025
-
-A new endpoint was added:
-
-<a href="#transactions-by-address">**Transactions by address**</a>
-
-Get the list of transactions by an address. This endpoint is available on paid plans only.
 
 # Free Token Images
 
@@ -4791,6 +4791,157 @@ Parameter | Default | Description
 period | `day` | The time period for the statistics. Options: `day` (last 24 hours), `week` (last 7 days), `month` (last 30 days or calendar month).
 previousPeriod | null | Includes comparison data for the previous period. Supported modes: `rolling`, `calendar`, `calendar-1`. Use `rolling` for the previous rolling period. Use `calendar-1` to compare `day` as last 24 hours vs previous full calendar day, `week` as last 7 days vs previous full calendar week, and `month` as last month vs previous full calendar month.
 convertCurrencies | null | A currency code (e.g. `usd`, `eur`) to include fiat equivalents for `totalSent` and `totalFees` amounts in the response.
+
+## DApp Chart
+
+```shell
+curl "https://bithomp.com/api/v2/dapp/42697468/chart?period=week&span=day&convertCurrencies=usd"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getDAppChart(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/dapp/42697468/chart?period=week&span=day&convertCurrencies=usd", getDAppChart);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/dapp/42697468/chart?period=week&span=day&convertCurrencies=usd");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "chart": [
+    {
+      "time": 1784073599,
+      "totalTransactions": 143,
+      "successTransactions": 135,
+      "uniqueSourceAddresses": 15,
+      "uniqueInteractedAddresses": 70,
+      "totalSent": "21294695",
+      "totalFees": "2001802",
+      "transactionTypes": {
+        "AMMVote": 1,
+        "Payment": 86,
+        "TrustSet": 4,
+        "AMMCreate": 1,
+        "AccountSet": 14,
+        "NFTokenBurn": 10,
+        "TicketCreate": 9,
+        "MPTokenAuthorize": 2,
+        "NFTokenAcceptOffer": 3,
+        "NFTokenCancelOffer": 2,
+        "NFTokenCreateOffer": 11
+      },
+      "transactionResults": {
+        "tesSUCCESS": 135,
+        "tecNO_PERMISSION": 2,
+        "tecAMM_INVALID_TOKENS": 1,
+        "tecINSUFFICIENT_RESERVE": 3,
+        "tecNO_LINE_INSUF_RESERVE": 2
+      },
+      "transactionTypesResults": {
+        "AMMVote": {
+          "tecAMM_INVALID_TOKENS": 1
+        },
+        "Payment": {
+          "tesSUCCESS": 86
+        },
+        "TrustSet": {
+          "tesSUCCESS": 2,
+          "tecNO_LINE_INSUF_RESERVE": 2
+        },
+        "AMMCreate": {
+          "tesSUCCESS": 1
+        },
+        "AccountSet": {
+          "tesSUCCESS": 14
+        },
+        "NFTokenBurn": {
+          "tesSUCCESS": 10
+        },
+        "TicketCreate": {
+          "tesSUCCESS": 9
+        },
+        "MPTokenAuthorize": {
+          "tecINSUFFICIENT_RESERVE": 2
+        },
+        "NFTokenAcceptOffer": {
+          "tesSUCCESS": 1,
+          "tecNO_PERMISSION": 2
+        },
+        "NFTokenCancelOffer": {
+          "tesSUCCESS": 2
+        },
+        "NFTokenCreateOffer": {
+          "tesSUCCESS": 10,
+          "tecINSUFFICIENT_RESERVE": 1
+        }
+      },
+      "swaps": 0,
+      "totalSentInFiats": {
+        "usd": "23.5088"
+      },
+      "totalFeesInFiats": {
+        "usd": "2.1314"
+      }
+    }
+  ],
+  "sourceTag": 42697468,
+  "convertCurrencies": [
+    "usd"
+  ],
+  "period": "week",
+  "span": "day"
+}
+```
+
+This endpoint returns historical activity statistics for a dapp identified by its XRP Ledger source tag. Each chart point contains transaction counts, unique address counts, sent volume, fees, transaction type and result breakdowns, and swap count. When `convertCurrencies` is set, converted totals are included in `totalSentInFiats` and `totalFeesInFiats`. **Available on Premium plan and higher.**
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/dapp/<sourceTag>/chart`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+sourceTag | XRP Ledger source tag identifying the dapp.
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+period | `month` | Chart period. Supported values: `month`, `week`, `year`, `all`.
+span | `day` | Interval represented by each chart point. Supported values: `day`, `week`, `month`.
+convertCurrencies | null | Currency code (for example `usd` or `eur`) used to include converted sent and fee totals.
+
+### Response Fields
+
+Field | Type | Description
+----- | ---- | -----------
+chart | Array | Historical activity chart points.
+chart[].time | Number | UNIX timestamp for the end of the chart interval.
+chart[].totalTransactions | Number | Total transactions during the chart interval.
+chart[].successTransactions | Number | Successful transactions during the chart interval.
+chart[].uniqueSourceAddresses | Number | Unique source addresses during the chart interval.
+chart[].uniqueInteractedAddresses | Number | Unique addresses interacted with during the chart interval.
+chart[].totalSent | String | Total native currency sent, in the smallest native unit.
+chart[].totalFees | String | Total transaction fees, in the smallest native unit.
+chart[].transactionTypes | Object | Transaction counts grouped by transaction type.
+chart[].transactionResults | Object | Transaction counts grouped by result code.
+chart[].transactionTypesResults | Object | Result-code counts grouped by transaction type.
+chart[].swaps | Number | Total swaps during the chart interval.
+chart[].totalSentInFiats | Object | Converted sent totals, included when `convertCurrencies` is set.
+chart[].totalFeesInFiats | Object | Converted fee totals, included when `convertCurrencies` is set.
+sourceTag | Number | Source tag identifying the dapp.
+convertCurrencies | Array | Currency codes used for converted totals.
+period | String | Requested chart period.
+span | String | Requested chart-point interval.
 
 # Address
 
