@@ -2682,6 +2682,7 @@ Exclude unnecessary parameters to make your request faster.
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1782021232"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dex"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5562DF397FF9D0F56BF25692C34A988435418DB71D39EEBE7969FC8BF4397776"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ammID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"offerID"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -2714,7 +2715,7 @@ Exclude unnecessary parameters to make your request faster.
   </span><span class="nl">"ammID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Use the <a href="#token-activity"><strong>Token Activity</strong></a> endpoint with <code>type=dex</code> and <code>ammID</code> to get swaps for a specific AMM pool.</p>
+<p>Use the <a href="#token-activity"><strong>Token Activity</strong></a> endpoint with <code>ammID</code> to get swaps for a specific AMM pool. When <code>ammID</code> is set, the API always returns <code>type=dex</code> and <code>subtype=swap</code>, regardless of the supplied <code>type</code> or <code>subtype</code> filters.</p>
 <h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/token/&lt;tokenPath&gt;/swaps?type=dex&amp;ammID=&lt;ammID&gt;</code></p>
 <h3 id='url-parameters-6'>URL Parameters</h3>
@@ -2740,7 +2741,7 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>ammID</td>
 <td>null</td>
-<td>AMM ID to filter DEX swaps by.</td>
+<td>AMM ID to filter swaps by. When set, <code>type</code> is always <code>dex</code> and <code>subtype</code> is always <code>swap</code>.</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -2750,7 +2751,7 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>type</td>
 <td><code>dex</code></td>
-<td>Use <code>dex</code> to get DEX swaps.</td>
+<td>Activity type. When <code>ammID</code> is set, this is always <code>dex</code>.</td>
 </tr>
 </tbody></table>
 <h2 id='get-amm-pool-data-by-asset-pair'>Get AMM Pool data by Asset Pair</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amms/search?currency=XRP&amp;currency2=43525950544F0000000000000000000000000000&amp;issuer2=rRbiKwcueo6MchUpMFDce9XpDwHhRLPFo"</span>
@@ -8905,6 +8906,7 @@ You can retrieve information for MANY currencies in one request:
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1779011270"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dex"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"subtype"</span><span class="p">:</span><span class="w"> </span><span class="s2">"swap"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"txHash"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CA3E01E97D8967428978A6B17BC38A264498D1DB1AB12BA161C68E7AA6182DDC"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"ammID"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
       </span><span class="nl">"offerID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5EAAACA6A732D1F90D1E980A2C747E68D5EB6E34CEEF20714B568BC7F6F4C047"</span><span class="p">,</span><span class="w">
@@ -8957,8 +8959,10 @@ You can retrieve information for MANY currencies in one request:
 <li><code>GET https://bithomp.com/api/v2/token/XRP/swaps</code></li>
 <li><code>GET https://bithomp.com/api/v2/token/XRP/swaps?type=transfer&amp;limit=1</code></li>
 <li><code>GET https://bithomp.com/api/v2/token/XRP/swaps?type=burn&amp;limit=1</code></li>
+<li><code>GET https://bithomp.com/api/v2/token/XRP/swaps?subtype=swap&amp;limit=1</code></li>
 <li><code>GET https://bithomp.com/api/v2/token/XRP/swaps?order=amountHigh&amp;limit=1</code></li>
 <li><code>GET https://bithomp.com/api/v2/token/XRP/swaps?limit=10&amp;type=dex&amp;ammID=160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767</code></li>
+<li><code>GET https://bithomp.com/api/v2/token/&lt;issuer&gt;/&lt;currency&gt;/swaps?type=mint&amp;ignoreRounding=true</code></li>
 <li><code>GET https://xahauexplorer.com/api/v2/token/XAH/swaps</code></li>
 <li><code>GET https://bithomp.com/api/v2/token/&lt;issuer&gt;/&lt;currency&gt;/swaps</code></li>
 <li><code>GET https://bithomp.com/api/v2/token/&lt;mptokenIssuanceID&gt;/swaps</code></li>
@@ -9022,9 +9026,19 @@ You can retrieve information for MANY currencies in one request:
 <td>Filter activity by type. Can be <code>transfer</code>, <code>mint</code>, <code>burn</code>, <code>rippling</code>, <code>dex</code>.</td>
 </tr>
 <tr>
+<td>subtype</td>
+<td>null</td>
+<td>Filter activity by subtype. The available values depend on the main <code>type</code>; this parameter can also be used without <code>type</code>.</td>
+</tr>
+<tr>
+<td>ignoreRounding</td>
+<td>false</td>
+<td>For IOU tokens only. If set to true, mint and burn activity caused by rounding is excluded.</td>
+</tr>
+<tr>
 <td>ammID</td>
 <td>null</td>
-<td>Filter DEX swaps by AMM ID. Use with <code>type=dex</code> to get swaps for one AMM pool.</td>
+<td>Filter swaps by AMM ID. When set, the API always uses <code>type=dex</code> and <code>subtype=swap</code>, regardless of the supplied <code>type</code> or <code>subtype</code> filters.</td>
 </tr>
 <tr>
 <td>order</td>
@@ -9032,6 +9046,97 @@ You can retrieve information for MANY currencies in one request:
 <td>The order of the activity records in the response. Can be <code>new</code>, <code>amountHigh</code>, <code>amountLow</code>.</td>
 </tr>
 </tbody></table>
+<h3 id='types-and-subtypes'>Types and Subtypes</h3>
+<table><thead>
+<tr>
+<th>Type</th>
+<th>Subtype</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>dex</code></td>
+<td><code>swap</code></td>
+<td>DEX exchange through an AMM or an order book offer. AMM exchanges include <code>ammID</code>; order book exchanges include <code>offerID</code>.</td>
+</tr>
+<tr>
+<td><code>dex</code></td>
+<td><code>deposit</code></td>
+<td>Deposit into an AMM pool. In Token Activity, request the AMM LP token without <code>ammID</code>; alternatively use <code>/v2/amm/&lt;ammID&gt;/swaps?type=deposit</code>.</td>
+</tr>
+<tr>
+<td><code>dex</code></td>
+<td><code>withdraw</code></td>
+<td>Withdrawal from an AMM pool. In Token Activity, request the AMM LP token without <code>ammID</code>; alternatively use <code>/v2/amm/&lt;ammID&gt;/swaps?type=withdraw</code>.</td>
+</tr>
+<tr>
+<td><code>rippling</code></td>
+<td><code>swap</code></td>
+<td>Token exchange performed through rippling.</td>
+</tr>
+<tr>
+<td><code>transfer</code></td>
+<td>null</td>
+<td>Token transfer.</td>
+</tr>
+<tr>
+<td><code>burn</code></td>
+<td><code>rounding</code></td>
+<td>IOU amount burned by rounding. Can be excluded with <code>ignoreRounding=true</code>.</td>
+</tr>
+<tr>
+<td><code>burn</code></td>
+<td><code>fee</code></td>
+<td>Token amount burned as a fee.</td>
+</tr>
+<tr>
+<td><code>burn</code></td>
+<td><code>rippling</code></td>
+<td>Token amount burned through rippling.</td>
+</tr>
+<tr>
+<td><code>burn</code></td>
+<td><code>loan</code></td>
+<td>Token amount burned by loan activity.</td>
+</tr>
+<tr>
+<td><code>burn</code></td>
+<td><code>vault</code></td>
+<td>Token amount burned by vault activity.</td>
+</tr>
+<tr>
+<td><code>burn</code></td>
+<td>null</td>
+<td>Direct token burn.</td>
+</tr>
+<tr>
+<td><code>mint</code></td>
+<td><code>rounding</code></td>
+<td>IOU amount minted by rounding. Can be excluded with <code>ignoreRounding=true</code>.</td>
+</tr>
+<tr>
+<td><code>mint</code></td>
+<td><code>rippling</code></td>
+<td>Token amount minted through rippling.</td>
+</tr>
+<tr>
+<td><code>mint</code></td>
+<td><code>loan</code></td>
+<td>Token amount minted by loan activity.</td>
+</tr>
+<tr>
+<td><code>mint</code></td>
+<td><code>vault</code></td>
+<td>Token amount minted by vault activity.</td>
+</tr>
+<tr>
+<td><code>mint</code></td>
+<td>null</td>
+<td>Direct token mint.</td>
+</tr>
+</tbody></table>
+
+<p>For AMM deposits and withdrawals returned by Token Activity, <code>ammID</code> is null because the request is made by LP token. Supplying <code>ammID</code> selects AMM exchanges only and always forces the <code>dex</code> / <code>swap</code> combination.</p>
 <h3 id='response-format-9'>Response Format</h3>
 <table><thead>
 <tr>
@@ -9061,6 +9166,11 @@ You can retrieve information for MANY currencies in one request:
 <td>Included when an <code>order</code> parameter is applied.</td>
 </tr>
 <tr>
+<td>ignoreRounding</td>
+<td>Boolean</td>
+<td>Included when the <code>ignoreRounding</code> parameter is applied.</td>
+</tr>
+<tr>
 <td>swaps[].timestamp</td>
 <td>String</td>
 <td>UNIX timestamp of the activity record.</td>
@@ -9069,6 +9179,11 @@ You can retrieve information for MANY currencies in one request:
 <td>swaps[].type</td>
 <td>String</td>
 <td>Activity type: <code>transfer</code>, <code>mint</code>, <code>burn</code>, <code>rippling</code>, or <code>dex</code>.</td>
+</tr>
+<tr>
+<td>swaps[].subtype</td>
+<td>String (optional)</td>
+<td>Activity subtype. Available values depend on <code>swaps[].type</code>; the field is omitted for activity without a subtype, including transfers and direct mints or burns.</td>
 </tr>
 <tr>
 <td>swaps[].txHash</td>
