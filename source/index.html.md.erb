@@ -1648,6 +1648,7 @@ print $data;
     {
       "timestamp": "1782021232",
       "type": "dex",
+      "subtype": "swap",
       "txHash": "5562DF397FF9D0F56BF25692C34A988435418DB71D39EEBE7969FC8BF4397776",
       "ammID": "160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767",
       "offerID": null,
@@ -1681,7 +1682,7 @@ print $data;
 }
 ```
 
-Use the <a href="#token-activity">**Token Activity**</a> endpoint with `type=dex` and `ammID` to get swaps for a specific AMM pool.
+Use the <a href="#token-activity">**Token Activity**</a> endpoint with `ammID` to get swaps for a specific AMM pool. When `ammID` is set, the API always returns `type=dex` and `subtype=swap`, regardless of the supplied `type` or `subtype` filters.
 
 ### HTTP Request
 
@@ -1697,9 +1698,9 @@ tokenPath | Token path. Use `<issuer>/<currency>`, `<nativeCurrency>`, or `<mpto
 
 Parameter | Default | Description
 --------- | ------- | -----------
-ammID | null | AMM ID to filter DEX swaps by.
+ammID | null | AMM ID to filter swaps by. When set, `type` is always `dex` and `subtype` is always `swap`.
 limit | 100 | The maximum number of swap records to return.
-type | `dex` | Use `dex` to get DEX swaps.
+type | `dex` | Activity type. When `ammID` is set, this is always `dex`.
 
 ## Get AMM Pool data by Asset Pair
 
@@ -7113,6 +7114,7 @@ print $data;
     {
       "timestamp": "1779011270",
       "type": "dex",
+      "subtype": "swap",
       "txHash": "CA3E01E97D8967428978A6B17BC38A264498D1DB1AB12BA161C68E7AA6182DDC",
       "ammID": null,
       "offerID": "5EAAACA6A732D1F90D1E980A2C747E68D5EB6E34CEEF20714B568BC7F6F4C047",
@@ -7165,8 +7167,10 @@ Examples:
 - `GET https://bithomp.com/api/v2/token/XRP/swaps`
 - `GET https://bithomp.com/api/v2/token/XRP/swaps?type=transfer&limit=1`
 - `GET https://bithomp.com/api/v2/token/XRP/swaps?type=burn&limit=1`
+- `GET https://bithomp.com/api/v2/token/XRP/swaps?subtype=swap&limit=1`
 - `GET https://bithomp.com/api/v2/token/XRP/swaps?order=amountHigh&limit=1`
 - `GET https://bithomp.com/api/v2/token/XRP/swaps?limit=10&type=dex&ammID=160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767`
+- `GET https://bithomp.com/api/v2/token/<issuer>/<currency>/swaps?type=mint&ignoreRounding=true`
 - `GET https://xahauexplorer.com/api/v2/token/XAH/swaps`
 - `GET https://bithomp.com/api/v2/token/<issuer>/<currency>/swaps`
 - `GET https://bithomp.com/api/v2/token/<mptokenIssuanceID>/swaps`
@@ -7192,8 +7196,33 @@ currencyDetails | false | If set to true, token amounts include decoded `currenc
 limit | 100 | The maximum number of activity records to return.
 marker | null | The marker from the previous request, if you need a next page of activity records.
 type | null | Filter activity by type. Can be `transfer`, `mint`, `burn`, `rippling`, `dex`.
-ammID | null | Filter DEX swaps by AMM ID. Use with `type=dex` to get swaps for one AMM pool.
+subtype | null | Filter activity by subtype. The available values depend on the main `type`; this parameter can also be used without `type`.
+ignoreRounding | false | For IOU tokens only. If set to true, mint and burn activity caused by rounding is excluded.
+ammID | null | Filter swaps by AMM ID. When set, the API always uses `type=dex` and `subtype=swap`, regardless of the supplied `type` or `subtype` filters.
 order | `new` | The order of the activity records in the response. Can be `new`, `amountHigh`, `amountLow`.
+
+### Types and Subtypes
+
+Type | Subtype | Description
+---- | ------- | -----------
+`dex` | `swap` | DEX exchange through an AMM or an order book offer. AMM exchanges include `ammID`; order book exchanges include `offerID`.
+`dex` | `deposit` | Deposit into an AMM pool. In Token Activity, request the AMM LP token without `ammID`; alternatively use `/v2/amm/<ammID>/swaps?type=deposit`.
+`dex` | `withdraw` | Withdrawal from an AMM pool. In Token Activity, request the AMM LP token without `ammID`; alternatively use `/v2/amm/<ammID>/swaps?type=withdraw`.
+`rippling` | `swap` | Token exchange performed through rippling.
+`transfer` | null | Token transfer.
+`burn` | `rounding` | IOU amount burned by rounding. Can be excluded with `ignoreRounding=true`.
+`burn` | `fee` | Token amount burned as a fee.
+`burn` | `rippling` | Token amount burned through rippling.
+`burn` | `loan` | Token amount burned by loan activity.
+`burn` | `vault` | Token amount burned by vault activity.
+`burn` | null | Direct token burn.
+`mint` | `rounding` | IOU amount minted by rounding. Can be excluded with `ignoreRounding=true`.
+`mint` | `rippling` | Token amount minted through rippling.
+`mint` | `loan` | Token amount minted by loan activity.
+`mint` | `vault` | Token amount minted by vault activity.
+`mint` | null | Direct token mint.
+
+For AMM deposits and withdrawals returned by Token Activity, `ammID` is null because the request is made by LP token. Supplying `ammID` selects AMM exchanges only and always forces the `dex` / `swap` combination.
 
 ### Response Format
 Field | Value | Description
@@ -7202,8 +7231,10 @@ swaps | Array | List of recent activity records. The response field is named `sw
 marker | String | Pagination marker for the next page. Returned when more results are available.
 type | String | Included when a `type` filter is applied.
 order | String | Included when an `order` parameter is applied.
+ignoreRounding | Boolean | Included when the `ignoreRounding` parameter is applied.
 swaps[].timestamp | String | UNIX timestamp of the activity record.
 swaps[].type | String | Activity type: `transfer`, `mint`, `burn`, `rippling`, or `dex`.
+swaps[].subtype | String (optional) | Activity subtype. Available values depend on `swaps[].type`; the field is omitted for activity without a subtype, including transfers and direct mints or burns.
 swaps[].txHash | String | Transaction hash.
 swaps[].ammID | String or null | AMM ID, when the activity is related to an AMM.
 swaps[].offerID | String or null | Offer ID, when the activity is related to an offer.
