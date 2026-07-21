@@ -86,6 +86,16 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 22nd of July 2026
+
+A new endpoint was added:
+
+<a href="#dapp-transactions">**DApp Transactions**</a>
+
+Get transactions for one dapp identified by its source tag, with transaction type filtering, ordering, marker-based pagination, currency details, and fiat conversion. **Available on Premium plan and higher.**
+
+The <a href="#dapp-chart">**DApp Chart**</a> and <a href="#dapps">**DApps**</a> endpoints are also available on Premium plan and higher.
+
 ### 21st of July 2026
 
 A new endpoint was added:
@@ -4766,7 +4776,7 @@ print $data;
 }
 ```
 
-This endpoint returns dapps statistics for the specified period. **Available for the Premium plan and higher.**
+This endpoint returns statistics across all dapps for the specified period. **Available for the Premium plan and higher.**
 
 Each entry in `dapps` corresponds to a dapp identified by its XRP Ledger source tag. The response includes transaction counts, volume sent (in drops), fees paid, breakdown by transaction type and result code, and swap count. When `convertCurrencies` is set, fiat equivalents are included in `totalSentInFiats` and `totalFeesInFiats`.
 
@@ -4942,6 +4952,166 @@ sourceTag | Number | Source tag identifying the dapp.
 convertCurrencies | Array | Currency codes used for converted totals.
 period | String | Requested chart period.
 span | String | Requested chart-point interval.
+
+## DApp Transactions
+
+```shell
+curl "https://bithomp.com/api/v2/dapp/42697468/transactions?limit=1&convertCurrencies=usd&currencyDetails=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getDAppTransactions(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/dapp/42697468/transactions?limit=1&convertCurrencies=usd&currencyDetails=true", getDAppTransactions);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/dapp/42697468/transactions?limit=1&convertCurrencies=usd&currencyDetails=true");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "transactions": [
+    {
+      "txHash": "9334BEA3416A8B96E3A689E3F1A92CA51DF8C8AAEF7ED5BC61889AAB73481C9B",
+      "tx": {
+        "Account": "rpj9Rjgv8JXHa9xg6eaBxS4W5sFNgbuT41",
+        "Fee": "13",
+        "SourceTag": 42697468,
+        "Destination": "r9sBrHEQGDXLuxr5kY5i1C9RtW7u9vAxiV",
+        "DestinationTag": null,
+        "TransactionType": "Payment",
+        "date": 837977602,
+        "hash": "9334BEA3416A8B96E3A689E3F1A92CA51DF8C8AAEF7ED5BC61889AAB73481C9B",
+        "in_ledger": 105757212,
+        "ledger_index": 105757212,
+        "Amount": "14903"
+      },
+      "specification": {
+        "source": {
+          "address": "rpj9Rjgv8JXHa9xg6eaBxS4W5sFNgbuT41",
+          "addressDetails": {
+            "username": "testPayment",
+            "service": "Bithomp Faucet",
+            "address": "rpj9Rjgv8JXHa9xg6eaBxS4W5sFNgbuT41"
+          },
+          "tag": 42697468,
+          "maxAmount": {
+            "currency": "XRP",
+            "value": "0.014903"
+          }
+        },
+        "destination": {
+          "address": "r9sBrHEQGDXLuxr5kY5i1C9RtW7u9vAxiV",
+          "addressDetails": {
+            "username": null,
+            "service": null,
+            "address": "r9sBrHEQGDXLuxr5kY5i1C9RtW7u9vAxiV"
+          },
+          "tag": null
+        }
+      },
+      "outcome": {
+        "fee": "0.000013",
+        "result": "tesSUCCESS",
+        "ledgerIndex": 105757212,
+        "timestamp": "2026-07-21T19:33:22.000Z",
+        "deliveredAmount": {
+          "currency": "XRP",
+          "value": "0.014903"
+        },
+        "feeInFiats": {
+          "usd": "0"
+        }
+      },
+      "meta": {
+        "TransactionResult": "tesSUCCESS"
+      },
+      "service": {
+        "isSwap": false,
+        "receivedAmount": {
+          "currency": "XRP",
+          "value": "0.014903"
+        },
+        "receivedAddress": "r9sBrHEQGDXLuxr5kY5i1C9RtW7u9vAxiV",
+        "receivedAddressDetails": {
+          "username": null,
+          "service": null,
+          "address": "r9sBrHEQGDXLuxr5kY5i1C9RtW7u9vAxiV"
+        },
+        "sentAmount": {
+          "currency": "XRP",
+          "value": "0.014903"
+        },
+        "sentAddress": "rpj9Rjgv8JXHa9xg6eaBxS4W5sFNgbuT41",
+        "sentAddressDetails": {
+          "username": "testPayment",
+          "service": "Bithomp Faucet",
+          "address": "rpj9Rjgv8JXHa9xg6eaBxS4W5sFNgbuT41"
+        }
+      },
+      "nativeRates": {},
+      "fiatRates": {
+        "usd": "1.16084009930886398712"
+      }
+    }
+  ],
+  "marker": "0000092900000000",
+  "sourceTag": 42697468,
+  "convertCurrencies": [
+    "usd"
+  ]
+}
+```
+
+This endpoint returns transactions for one dapp identified by its XRP Ledger source tag. It supports transaction type filtering, marker-based pagination, optional currency details, and fiat conversion. **Available on Premium plan and higher.**
+
+Example without optional parameters:
+
+`GET https://bithomp.com/api/v2/dapp/42697468/transactions`
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/dapp/<sourceTag>/transactions`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+sourceTag | XRP Ledger source tag identifying the dapp.
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+type | null | Filter by XRPL transaction type (`TransactionType`), for example `Payment`, `TrustSet`, or `NFTokenMint`.
+order | `new` | Transaction ordering mode.
+limit | 100 | Maximum number of transactions to return.
+marker | null | Marker from the previous response used to request the next page.
+convertCurrencies | null | Currency code (for example `usd` or `eur`) used to include converted transaction values and rates.
+currencyDetails | false | If set to true, token amounts include decoded currency details where available.
+
+### Response Fields
+
+Field | Type | Description
+----- | ---- | -----------
+transactions | Array | Transactions associated with the requested dapp source tag.
+transactions[].txHash | String | Transaction hash.
+transactions[].tx | Object | Raw decoded XRPL transaction fields.
+transactions[].specification | Object | Parsed transaction source, destination, amounts, and other specification fields.
+transactions[].outcome | Object | Transaction result, ledger, timestamp, fee, and delivered amount.
+transactions[].meta | Object | XRPL transaction metadata.
+transactions[].service | Object | Parsed transfer or swap details when available.
+transactions[].nativeRates | Object | Native currency rates associated with the transaction.
+transactions[].fiatRates | Object | Requested fiat or crypto conversion rates.
+marker | String | Pagination marker for the next page, returned when more results are available.
+sourceTag | Number | Source tag identifying the dapp.
+convertCurrencies | Array | Currency codes used for converted values.
 
 # Address
 
