@@ -1152,7 +1152,7 @@ priceNativeCurrencySpot | false | If set to true, each AMM's `amount` and `amoun
 ## AMM Pool
 
 ```shell
-curl "https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5?holders=true"
+curl "https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5?holders=true&statistics=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -1160,11 +1160,11 @@ curl "https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A89
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5?holders=true", getData);
+bithompRequest("https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5?holders=true&statistics=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5?holders=true");
+$data = curl_bithomp("https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5?holders=true&statistics=true");
 print $data;
 ```
 
@@ -1315,7 +1315,19 @@ print $data;
       "tradingFee": 500,
       "voteWeight": 5
     }
-  ]
+  ],
+  "statistics": {
+    "swapDexCount": 101,
+    "swapDexCountAccounts": 28,
+    "swapDexSellVolume1": "300.88506",
+    "swapDexBuyVolume1": "361.223323",
+    "swapDexSellVolume2": "109216.012096382",
+    "swapDexBuyVolume2": "89620.379901775",
+    "swapCount": 101,
+    "swapIntermediaryCountAccounts": 48,
+    "swapIntermediaryVolume1": "662.460501",
+    "swapIntermediaryVolume2": "198836.3919981505588"
+  }
 }
 ```
 
@@ -1339,7 +1351,19 @@ Parameter | Default | Description
 ledgerIndex | null | ledger index (if set the request will return data for that ledger index)
 ledgerTimestamp | null | ISO timestamp or unix timestamp (if set the request will return data for that timestamp)
 holders | false | (available on paid plans only) If set to true, the result will also include a current `holders` count (not returned for historical request with `ledgerIndex`or `ledgerTimestamp`). This is the number of unique LP token holders.
+statistics | false | If set to true, the result will include a `statistics` object with AMM activity statistics, including direct DEX swap counts and buy/sell volumes for Asset1 and Asset2.
 priceNativeCurrencySpot | false | If set to true, the `amount` and `amount2` objects will include a `priceNativeCurrencySpot` field — the spot price of that asset in the native currency (XRP).
+
+### Statistics Fields
+
+Field | Type | Description
+----- | ---- | -----------
+statistics.swapDexCount | Number | Number of direct DEX swaps between Asset1 and Asset2.
+statistics.swapDexCountAccounts | Number | Number of unique accounts that made direct DEX swaps.
+statistics.swapDexSellVolume1 | String | Amount of Asset1 sold in direct DEX swaps.
+statistics.swapDexBuyVolume1 | String | Amount of Asset1 bought in direct DEX swaps.
+statistics.swapDexSellVolume2 | String | Amount of Asset2 sold in direct DEX swaps.
+statistics.swapDexBuyVolume2 | String | Amount of Asset2 bought in direct DEX swaps.
 
 ## AMMs Chart
 
@@ -1519,6 +1543,12 @@ print $data;
       "value1": "1981403.239437",
       "value2": "2641610.265620762",
       "lpValue": "1985620660.156976",
+      "swapDexCount": 1207,
+      "swapDexCountAccounts": 97,
+      "swapDexSellVolume1": "33279.570664",
+      "swapDexBuyVolume1": "72319.088293",
+      "swapDexSellVolume2": "79180.893263374",
+      "swapDexBuyVolume2": "36509.88891773",
       "swapCount": 429,
       "swapIntermediaryCountAccounts": 138,
       "swapIntermediaryVolume1": "508148.324518",
@@ -1538,6 +1568,12 @@ print $data;
       "value1": "1939664.366759",
       "value2": "2634035.843726063",
       "lpValue": "1961638165.004439",
+      "swapDexCount": 1090,
+      "swapDexCountAccounts": 106,
+      "swapDexSellVolume1": "53395.049006",
+      "swapDexBuyVolume1": "56134.368579",
+      "swapDexSellVolume2": "62649.09645065",
+      "swapDexBuyVolume2": "59349.998757161",
       "swapCount": 907,
       "swapIntermediaryCountAccounts": 169,
       "swapIntermediaryVolume1": "367249.299783",
@@ -1573,6 +1609,17 @@ ammID | AMM ID
 Parameter | Default | Description
 --------- | ------- | -----------
 period | `month` | Chart period. Supported values: `month`, `week`, `year`, `all`.
+
+### Response Fields
+
+Field | Type | Description
+----- | ---- | -----------
+chart[].swapDexCount | Number | Number of direct DEX swaps between Asset1 and Asset2 during the chart interval.
+chart[].swapDexCountAccounts | Number | Number of unique accounts that made direct DEX swaps during the chart interval.
+chart[].swapDexSellVolume1 | String | Amount of Asset1 sold in direct DEX swaps during the chart interval.
+chart[].swapDexBuyVolume1 | String | Amount of Asset1 bought in direct DEX swaps during the chart interval.
+chart[].swapDexSellVolume2 | String | Amount of Asset2 sold in direct DEX swaps during the chart interval.
+chart[].swapDexBuyVolume2 | String | Amount of Asset2 bought in direct DEX swaps during the chart interval.
 
 ## AMM Swaps
 
