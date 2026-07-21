@@ -2058,13 +2058,13 @@ Exclude unnecessary parameters to make your request faster.
 <td>If set to true, each AMM&#39;s <code>amount</code> and <code>amount2</code> objects will include a <code>priceNativeCurrencySpot</code> field — the spot price of that asset in the native currency (XRP).</td>
 </tr>
 </tbody></table>
-<h2 id='amm-pool'>AMM Pool</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5?holders=true"</span>
+<h2 id='amm-pool'>AMM Pool</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5?holders=true&amp;statistics=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5?holders=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5?holders=true"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5?holders=true&amp;statistics=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://bithomp.com/api/v2/amm/C55741BDA5F2590DD0F0EF7F620F133C0B73C382A8987068CA2DD886D99FD3B5?holders=true&amp;statistics=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -2214,7 +2214,19 @@ Exclude unnecessary parameters to make your request faster.
       </span><span class="nl">"tradingFee"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
       </span><span class="nl">"voteWeight"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"swapDexCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"swapDexCountAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">28</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"swapDexSellVolume1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"300.88506"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"swapDexBuyVolume1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"361.223323"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"swapDexSellVolume2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"109216.012096382"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"swapDexBuyVolume2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89620.379901775"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"swapCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"swapIntermediaryCountAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"swapIntermediaryVolume1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"662.460501"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"swapIntermediaryVolume2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"198836.3919981505588"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested AMM pool.</p>
@@ -2260,9 +2272,53 @@ Exclude unnecessary parameters to make your request faster.
 <td>(available on paid plans only) If set to true, the result will also include a current <code>holders</code> count (not returned for historical request with <code>ledgerIndex</code>or <code>ledgerTimestamp</code>). This is the number of unique LP token holders.</td>
 </tr>
 <tr>
+<td>statistics</td>
+<td>false</td>
+<td>If set to true, the result will include a <code>statistics</code> object with AMM activity statistics, including direct DEX swap counts and buy/sell volumes for Asset1 and Asset2.</td>
+</tr>
+<tr>
 <td>priceNativeCurrencySpot</td>
 <td>false</td>
 <td>If set to true, the <code>amount</code> and <code>amount2</code> objects will include a <code>priceNativeCurrencySpot</code> field — the spot price of that asset in the native currency (XRP).</td>
+</tr>
+</tbody></table>
+<h3 id='statistics-fields'>Statistics Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>statistics.swapDexCount</td>
+<td>Number</td>
+<td>Number of direct DEX swaps between Asset1 and Asset2.</td>
+</tr>
+<tr>
+<td>statistics.swapDexCountAccounts</td>
+<td>Number</td>
+<td>Number of unique accounts that made direct DEX swaps.</td>
+</tr>
+<tr>
+<td>statistics.swapDexSellVolume1</td>
+<td>String</td>
+<td>Amount of Asset1 sold in direct DEX swaps.</td>
+</tr>
+<tr>
+<td>statistics.swapDexBuyVolume1</td>
+<td>String</td>
+<td>Amount of Asset1 bought in direct DEX swaps.</td>
+</tr>
+<tr>
+<td>statistics.swapDexSellVolume2</td>
+<td>String</td>
+<td>Amount of Asset2 sold in direct DEX swaps.</td>
+</tr>
+<tr>
+<td>statistics.swapDexBuyVolume2</td>
+<td>String</td>
+<td>Amount of Asset2 bought in direct DEX swaps.</td>
 </tr>
 </tbody></table>
 <h2 id='amms-chart'>AMMs Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/amms/chart"</span>
@@ -2493,6 +2549,12 @@ Exclude unnecessary parameters to make your request faster.
       </span><span class="nl">"value1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1981403.239437"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"value2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2641610.265620762"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"lpValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1985620660.156976"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapDexCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1207</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapDexCountAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">97</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapDexSellVolume1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"33279.570664"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapDexBuyVolume1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"72319.088293"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapDexSellVolume2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"79180.893263374"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapDexBuyVolume2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"36509.88891773"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"swapCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">429</span><span class="p">,</span><span class="w">
       </span><span class="nl">"swapIntermediaryCountAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">138</span><span class="p">,</span><span class="w">
       </span><span class="nl">"swapIntermediaryVolume1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"508148.324518"</span><span class="p">,</span><span class="w">
@@ -2512,6 +2574,12 @@ Exclude unnecessary parameters to make your request faster.
       </span><span class="nl">"value1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1939664.366759"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"value2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2634035.843726063"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"lpValue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1961638165.004439"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapDexCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1090</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapDexCountAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">106</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapDexSellVolume1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"53395.049006"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapDexBuyVolume1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"56134.368579"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapDexSellVolume2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"62649.09645065"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"swapDexBuyVolume2"</span><span class="p">:</span><span class="w"> </span><span class="s2">"59349.998757161"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"swapCount"</span><span class="p">:</span><span class="w"> </span><span class="mi">907</span><span class="p">,</span><span class="w">
       </span><span class="nl">"swapIntermediaryCountAccounts"</span><span class="p">:</span><span class="w"> </span><span class="mi">169</span><span class="p">,</span><span class="w">
       </span><span class="nl">"swapIntermediaryVolume1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"367249.299783"</span><span class="p">,</span><span class="w">
@@ -2556,6 +2624,45 @@ Exclude unnecessary parameters to make your request faster.
 <td>period</td>
 <td><code>month</code></td>
 <td>Chart period. Supported values: <code>month</code>, <code>week</code>, <code>year</code>, <code>all</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields-3'>Response Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>chart[].swapDexCount</td>
+<td>Number</td>
+<td>Number of direct DEX swaps between Asset1 and Asset2 during the chart interval.</td>
+</tr>
+<tr>
+<td>chart[].swapDexCountAccounts</td>
+<td>Number</td>
+<td>Number of unique accounts that made direct DEX swaps during the chart interval.</td>
+</tr>
+<tr>
+<td>chart[].swapDexSellVolume1</td>
+<td>String</td>
+<td>Amount of Asset1 sold in direct DEX swaps during the chart interval.</td>
+</tr>
+<tr>
+<td>chart[].swapDexBuyVolume1</td>
+<td>String</td>
+<td>Amount of Asset1 bought in direct DEX swaps during the chart interval.</td>
+</tr>
+<tr>
+<td>chart[].swapDexSellVolume2</td>
+<td>String</td>
+<td>Amount of Asset2 sold in direct DEX swaps during the chart interval.</td>
+</tr>
+<tr>
+<td>chart[].swapDexBuyVolume2</td>
+<td>String</td>
+<td>Amount of Asset2 bought in direct DEX swaps during the chart interval.</td>
 </tr>
 </tbody></table>
 <h2 id='amm-swaps'>AMM Swaps</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/token/XRP/swaps?limit=2&amp;type=dex&amp;ammID=160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767"</span>
