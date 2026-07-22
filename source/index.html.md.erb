@@ -94,6 +94,8 @@ A new endpoint was added:
 
 Get transactions for one dapp identified by its source tag, with transaction type filtering, ordering, marker-based pagination, currency details, and fiat conversion. **Available on Premium plan and higher.**
 
+Use the `status` query parameter to filter transactions by an exact XRPL transaction result code, for example `status=tecINSUFFICIENT_RESERVE`.
+
 The <a href="#dapp-chart">**DApp Chart**</a> and <a href="#dapps">**DApps**</a> endpoints are also available on Premium plan and higher.
 
 ### 21st of July 2026
@@ -5075,6 +5077,10 @@ Example without optional parameters:
 
 `GET https://bithomp.com/api/v2/dapp/42697468/transactions`
 
+Example filtering by transaction result:
+
+`GET https://bithomp.com/api/v2/dapp/42697468/transactions?status=tecINSUFFICIENT_RESERVE`
+
 ### HTTP Request
 
 `GET https://bithomp.com/api/v2/dapp/<sourceTag>/transactions`
@@ -5090,6 +5096,7 @@ sourceTag | XRP Ledger source tag identifying the dapp.
 Parameter | Default | Description
 --------- | ------- | -----------
 type | null | Filter by XRPL transaction type (`TransactionType`), for example `Payment`, `TrustSet`, or `NFTokenMint`.
+status | null | Filter by an exact XRPL transaction result code, for example `tecINSUFFICIENT_RESERVE` or `tesSUCCESS`.
 order | `new` | Transaction ordering mode.
 limit | 100 | Maximum number of transactions to return.
 marker | null | Marker from the previous response used to request the next page.
@@ -5111,6 +5118,7 @@ transactions[].nativeRates | Object | Native currency rates associated with the 
 transactions[].fiatRates | Object | Requested fiat or crypto conversion rates.
 marker | String | Pagination marker for the next page, returned when more results are available.
 sourceTag | Number | Source tag identifying the dapp.
+status | String | Transaction result filter applied to the request. Included when `status` is set.
 convertCurrencies | Array | Currency codes used for converted values.
 
 # Address
