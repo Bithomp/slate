@@ -1038,6 +1038,14 @@
 <p>Use the <code>status</code> query parameter to filter transactions by an exact XRPL transaction result code, for example <code>status=tecINSUFFICIENT_RESERVE</code>.</p>
 
 <p>The <a href="#dapp-chart"><strong>DApp Chart</strong></a> and <a href="#dapps"><strong>DApps</strong></a> endpoints are also available on Premium plan and higher.</p>
+
+<p>A new query parameter, <code>remarks</code>, was added to the single <a href="#nft-2"><strong>URI Token</strong></a> endpoint on Xahau:</p>
+
+<ul>
+<li><code>GET /v2/nft/&lt;uritokenID&gt;?remarks=true</code></li>
+</ul>
+
+<p>Set <code>remarks=true</code> to include URI Token remarks. <strong>Only available when requesting a single token.</strong></p>
 <h3 id='21st-of-july-2026'>21st of July 2026</h3>
 <p>A new endpoint was added:</p>
 
@@ -4964,13 +4972,13 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>UNIX timestamp of the last crawled ledger.</td>
 </tr>
 </tbody></table>
-<h1 id='uri-tokens-nft-xls-35'>URI-TOKENS (NFT, XLS-35)</h1><h2 id='nft-2'>NFT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&amp;metadata=true&amp;history=true&amp;sellOffers=true&amp;offersValidate=true&amp;offersHistory=true&amp;convertCurrencies=usd"</span>
+<h1 id='uri-tokens-nft-xls-35'>URI-TOKENS (NFT, XLS-35)</h1><h2 id='nft-2'>NFT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&amp;metadata=true&amp;history=true&amp;sellOffers=true&amp;offersValidate=true&amp;offersHistory=true&amp;convertCurrencies=usd&amp;remarks=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
 <span class="p">}</span>
-<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&amp;metadata=true&amp;history=true&amp;sellOffers=true&amp;offersValidate=true&amp;offersHistory=true&amp;convertCurrencies=usd</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
-</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&amp;metadata=true&amp;history=true&amp;sellOffers=true&amp;offersValidate=true&amp;offersHistory=true&amp;convertCurrencies=usd"</span><span class="p">);</span>
+<span class="nx">bithompRequest</span><span class="p">(</span><span class="dl">"</span><span class="s2">https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&amp;metadata=true&amp;history=true&amp;sellOffers=true&amp;offersValidate=true&amp;offersHistory=true&amp;convertCurrencies=usd&amp;remarks=true</span><span class="dl">"</span><span class="p">,</span> <span class="nx">getData</span><span class="p">);</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="nv">$data</span> <span class="o">=</span> <span class="nf">curl_bithomp</span><span class="p">(</span><span class="s2">"https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&amp;metadata=true&amp;history=true&amp;sellOffers=true&amp;offersValidate=true&amp;offersHistory=true&amp;convertCurrencies=usd&amp;remarks=true"</span><span class="p">);</span>
 <span class="k">print</span> <span class="nv">$data</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -5122,6 +5130,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
         </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="nl">"sellOffers"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"remarks"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="nl">"issuerDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"service"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
@@ -5133,6 +5142,34 @@ If you need the freshest ledger state (for example, right after a transaction), 
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves information for a requested NFT.</p>
+
+<p>Use <code>remarks=true</code> to include remarks for the requested URI Token.</p>
+
+<p>Example:</p>
+
+<p><code>GET https://xahauexplorer.com/api/v2/nft/&lt;uritokenID&gt;?remarks=true</code></p>
+
+<p>When remarks are available, the response includes:</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"remarks"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"immutable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image_ipfs_sha512h_base16"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://f01551320ae43f1953c46549bc09a90c83930e1646d7d6ca31e2b14a18adab0aba07c1f77"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"flags"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"immutable"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"image_ipfs_sha512h_base32"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ipfs://bafkrgifoipyzkpcgksn4bguqza4tbylenv6wziy6fmkkdcw2wcv2a7a7o4"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p><strong>Note:</strong> <code>remarks</code> is only available for a single URI Token request. It is not available on URI Token list endpoints.</p>
 <h3 id='http-request-25'>HTTP Request</h3>
 <p><code>GET https://xahauexplorer.com/api/v2/nft/&lt;uritokenID&gt;</code></p>
 <h3 id='url-parameters-12'>URL Parameters</h3>
@@ -5199,6 +5236,45 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>collectionDetails</td>
 <td>false</td>
 <td>(Only available on paid API plans) If set to true, each nft will include <code>collectionDetails</code> with the collection details. if parameter <code>assets</code> is set as <code>true</code>, you will also get assets in the <code>collectionDetails</code>.</td>
+</tr>
+<tr>
+<td>remarks</td>
+<td>false</td>
+<td>Xahau only. If set to true, the result includes the URI Token <code>remarks</code> array when available. Only supported for a single token request.</td>
+</tr>
+</tbody></table>
+<h3 id='remarks-fields'>Remarks Fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>remarks</td>
+<td>Array or null</td>
+<td>URI Token remarks. Returned when <code>remarks=true</code>; null when the token has no remarks.</td>
+</tr>
+<tr>
+<td>remarks[].flags</td>
+<td>Object</td>
+<td>Flags associated with the remark.</td>
+</tr>
+<tr>
+<td>remarks[].flags.immutable</td>
+<td>Boolean</td>
+<td>Whether the remark is immutable.</td>
+</tr>
+<tr>
+<td>remarks[].name</td>
+<td>String</td>
+<td>Remark name.</td>
+</tr>
+<tr>
+<td>remarks[].value</td>
+<td>String</td>
+<td>Remark value.</td>
 </tr>
 </tbody></table>
 <h2 id='validate-nft-offer-2'>Validate NFT Offer</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span>
