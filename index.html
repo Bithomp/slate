@@ -1035,6 +1035,8 @@
 
 <p>Get transactions for one dapp identified by its source tag, with transaction type filtering, ordering, marker-based pagination, currency details, and fiat conversion. <strong>Available on Premium plan and higher.</strong></p>
 
+<p>Use the <code>status</code> query parameter to filter transactions by an exact XRPL transaction result code, for example <code>status=tecINSUFFICIENT_RESERVE</code>.</p>
+
 <p>The <a href="#dapp-chart"><strong>DApp Chart</strong></a> and <a href="#dapps"><strong>DApps</strong></a> endpoints are also available on Premium plan and higher.</p>
 <h3 id='21st-of-july-2026'>21st of July 2026</h3>
 <p>A new endpoint was added:</p>
@@ -6853,6 +6855,10 @@ Before downloading the whole list again you can check if it was updated here: <a
 <p>Example without optional parameters:</p>
 
 <p><code>GET https://bithomp.com/api/v2/dapp/42697468/transactions</code></p>
+
+<p>Example filtering by transaction result:</p>
+
+<p><code>GET https://bithomp.com/api/v2/dapp/42697468/transactions?status=tecINSUFFICIENT_RESERVE</code></p>
 <h3 id='http-request-37'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/dapp/&lt;sourceTag&gt;/transactions</code></p>
 <h3 id='url-parameters-15'>URL Parameters</h3>
@@ -6879,6 +6885,11 @@ Before downloading the whole list again you can check if it was updated here: <a
 <td>type</td>
 <td>null</td>
 <td>Filter by XRPL transaction type (<code>TransactionType</code>), for example <code>Payment</code>, <code>TrustSet</code>, or <code>NFTokenMint</code>.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>null</td>
+<td>Filter by an exact XRPL transaction result code, for example <code>tecINSUFFICIENT_RESERVE</code> or <code>tesSUCCESS</code>.</td>
 </tr>
 <tr>
 <td>order</td>
@@ -6968,6 +6979,11 @@ Before downloading the whole list again you can check if it was updated here: <a
 <td>sourceTag</td>
 <td>Number</td>
 <td>Source tag identifying the dapp.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>String</td>
+<td>Transaction result filter applied to the request. Included when <code>status</code> is set.</td>
 </tr>
 <tr>
 <td>convertCurrencies</td>
