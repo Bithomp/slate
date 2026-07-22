@@ -98,6 +98,12 @@ Use the `status` query parameter to filter transactions by an exact XRPL transac
 
 The <a href="#dapp-chart">**DApp Chart**</a> and <a href="#dapps">**DApps**</a> endpoints are also available on Premium plan and higher.
 
+A new query parameter, `remarks`, was added to the single <a href="#nft-2">**URI Token**</a> endpoint on Xahau:
+
+- `GET /v2/nft/<uritokenID>?remarks=true`
+
+Set `remarks=true` to include URI Token remarks. **Only available when requesting a single token.**
+
 ### 21st of July 2026
 
 A new endpoint was added:
@@ -3516,7 +3522,7 @@ ledgerTime | Integer	| UNIX timestamp of the last crawled ledger.
 ## NFT
 
 ```shell
-curl "https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&metadata=true&history=true&sellOffers=true&offersValidate=true&offersHistory=true&convertCurrencies=usd"
+curl "https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&metadata=true&history=true&sellOffers=true&offersValidate=true&offersHistory=true&convertCurrencies=usd&remarks=true"
   -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
 ```
 
@@ -3524,11 +3530,11 @@ curl "https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9
 function getData(json) {
   console.log(json)
 }
-bithompRequest("https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&metadata=true&history=true&sellOffers=true&offersValidate=true&offersHistory=true&convertCurrencies=usd", getData);
+bithompRequest("https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&metadata=true&history=true&sellOffers=true&offersValidate=true&offersHistory=true&convertCurrencies=usd&remarks=true", getData);
 ```
 
 ```php
-$data = curl_bithomp("https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&metadata=true&history=true&sellOffers=true&offersValidate=true&offersHistory=true&convertCurrencies=usd");
+$data = curl_bithomp("https://xahauexplorer.com/api/v2/nft/850D545622313337B41728F7C380729E173D9197FA858493374084BBE75FF18D?uri=true&metadata=true&history=true&sellOffers=true&offersValidate=true&offersHistory=true&convertCurrencies=usd&remarks=true");
 print $data;
 ```
 
@@ -3681,6 +3687,7 @@ print $data;
         }
     ],
     "sellOffers": null,
+    "remarks": null,
     "issuerDetails": {
         "username": null,
         "service": null
@@ -3693,6 +3700,37 @@ print $data;
 ```
 
 This endpoint retrieves information for a requested NFT.
+
+Use `remarks=true` to include remarks for the requested URI Token.
+
+Example:
+
+`GET https://xahauexplorer.com/api/v2/nft/<uritokenID>?remarks=true`
+
+When remarks are available, the response includes:
+
+```json
+{
+  "remarks": [
+    {
+      "flags": {
+        "immutable": true
+      },
+      "name": "image_ipfs_sha512h_base16",
+      "value": "ipfs://f01551320ae43f1953c46549bc09a90c83930e1646d7d6ca31e2b14a18adab0aba07c1f77"
+    },
+    {
+      "flags": {
+        "immutable": true
+      },
+      "name": "image_ipfs_sha512h_base32",
+      "value": "ipfs://bafkrgifoipyzkpcgksn4bguqza4tbylenv6wziy6fmkkdcw2wcv2a7a7o4"
+    }
+  ]
+}
+```
+
+**Note:** `remarks` is only available for a single URI Token request. It is not available on URI Token list endpoints.
 
 ### HTTP Request
 
@@ -3717,6 +3755,17 @@ offersValidate | false | (Only available on paid API plans) If set to true, each
 offersHistory | false | (Only available on paid API plans) If set to true, each result will include historical offers which are already accepted or canceled.
 convertCurrencies | null | (Only available on paid API plans) the list of currencies to convert amount to, splitted by comma, for example `xrp,usd` (40 fiat currencies available), the for `history` response  will have an array `amountInConvertCurrencies`
 collectionDetails | false | (Only available on paid API plans) If set to true, each nft will include `collectionDetails` with the collection details. if parameter `assets` is set as `true`, you will also get assets in the `collectionDetails`.
+remarks | false | Xahau only. If set to true, the result includes the URI Token `remarks` array when available. Only supported for a single token request.
+
+### Remarks Fields
+
+Field | Type | Description
+----- | ---- | -----------
+remarks | Array or null | URI Token remarks. Returned when `remarks=true`; null when the token has no remarks.
+remarks[].flags | Object | Flags associated with the remark.
+remarks[].flags.immutable | Boolean | Whether the remark is immutable.
+remarks[].name | String | Remark name.
+remarks[].value | String | Remark value.
 
 ## Validate NFT Offer
 
