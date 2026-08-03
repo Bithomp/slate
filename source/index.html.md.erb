@@ -63,9 +63,11 @@ For the mainnets we have the following API plans:
 
 # NFT Content Plans
 
-Those are not API plans and can be purchased separately (contact our support team to get one).
+NFT Content Plans are separate from API plans. An API plan controls whether an endpoint can return the `assets` object; an NFT Content Plan controls how many times the image, video, preview, and thumbnail URLs in that object can be served from the Bithomp CDN.
 
-You only need this if you want to use our cached NFT images and videos from our CDN server.
+The returned CDN URLs are not unlimited-download links. Every time your website, app, user, or backend loads one of these URLs, that CDN delivery counts toward the daily and monthly allowance for its content type. Repeating the API request does not grant a new content allowance.
+
+Each API tier includes the NFT Content Plan shown in the API pricing table above. If your application needs more CDN deliveries than the included allowance, purchase a higher NFT Content Plan separately by contacting our support team. API request limits and NFT CDN delivery limits are measured separately.
 
 Direct access to fast [resized and cached] images and videos:
 
@@ -1807,6 +1809,10 @@ holders | false | (available on paid plans only) If set to true, the result will
 
 # NFT (XLS-20)
 
+<aside class="warning">
+The URLs returned in `assets` are hosted by the Bithomp CDN and are not unlimited-download links. Loading an image, video, preview, or thumbnail is a CDN delivery counted separately from API requests against the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>. Your API tier includes the content plan listed in <a href="#price-and-limits">Price and Limits</a>; if you need more CDN traffic, contact our support team to purchase a higher NFT Content Plan.
+</aside>
+
 ## NFT
 
 ```shell
@@ -1932,7 +1938,7 @@ nftID  | An NFT ID
 Parameter | Default | Description
 --------- | ------- | -----------
 uri | false | If set to true, the result will include `uri` and `url`.
-assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.
 sellOffers | false | If set true, the result will include `sellOffers`.
 buyOffers | false | If set to true, the result will include `buyOffers`.
 history | false | If set to true, the result will include `history`.
@@ -2104,7 +2110,7 @@ nftOfferID  | An NFT Offer ID
 
 Parameter | Default | Description
 --------- | ------- | -----------
-assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.
 
 <aside class="notice">
 If you need the freshest ledger state (for example, right after a transaction), bypass cache by either sending the `Cache-Control: no-cache` header or adding `&amp;timestamp=&lt;Date.now()&gt;` to the query string. In normal cases, omit it for faster responses. The timestamp value itself is not important; it just needs to be unique.
@@ -2295,7 +2301,7 @@ owner | null | The address of the Owner
 collection | null | The collection ID (optional), can be used for Sologenic collections (specify an issuer), and for standard collections instead of using `issuer` and `taxon`, in the format: `issuer:taxon`, if specified you will get also `collectionDetails` in the root with the collection details.
 issuer | null | The address of the Issuer
 taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
-assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.
 hasMetadata | false | set to `true`, to list NFTs only with available metadata
 hasImage | false | set to `true`, to list NFTs only with available images
 hasMedia | false | set to `true`, to list NFTs only with available media data:  audio, video, image
@@ -2483,7 +2489,7 @@ nftoken | false | If set to true, each offer will include `nftoken` data, includ
 offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array.
 limit | 100 | The maximum number of NFT offers to return. Max `1000`. More than `100` is available on Premium plans only.
 marker | null | The marker from the previous request, if you need a next page of NFT offers.
-assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.
 
 ## NFT Collection
 
@@ -2603,7 +2609,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 statistics | false | (Only available on paid API plans) If set to true, returns `statistics` with owner count and NFT count for the present time, it also includes count of buyers and traded NFTs for the last 24 hours, 7 days, 30 days, or 365 days.
 floorPrice | false | (Only available on paid API plans) If set to true, returns `floorPrices` with the lowest price for the NFT collection.
-assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with Bithomp CDN URLs for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.
 
 ## NFT Collections
 
@@ -2713,7 +2719,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 order | `createdNew` | (optional) `createdNew`, `createdOld`, `updatedNew`, `updatedOld` (order list by the date when the first or last NFT was issued).
 search | null | (optional) search by NFT Collection Name and Description.
-assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with Bithomp CDN URLs for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.
 floorPrice | false | (Only available on paid API plans) If set to true, returns `floorPrices` with the lowest price for the NFT collection.
 issuer | null | (optional) The address of the NFT Collection issuer (also works for Sologenic issuers).
 marker | null | The marker from the previous request, if you need a next page of NFT collections
@@ -2952,7 +2958,7 @@ collection | null | The collection ID (optional), can be used for Sologenic coll
 issuer | null | The address of the NFT issuer (optional)
 taxon | null | Taxon for that Issuer (optional, will be ignored without an Issuer)
 owner | null | The address of the Owner
-assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.
 hasImage | false | set to `true`, to list NFT sales only for NFTs with available images
 hasMedia | false | set to `true`, to list NFT sales only for NFTs with available media data: audio, video, image
 buyer | null | (Only available on paid API plans) The address of the Buyer (optional)
@@ -3269,7 +3275,7 @@ period | `all` | A time period, all time `all`, last 24h `day`, last 7 days `wee
 floorPrice | false | Returns `floorPrice` for `collections` and `issuers`. The lowest VALID sell offers for an NFT from that collection, the lowest on the open market and the lowest on one of the identified market places.
 statistics | false | Returns `statistics` for `collections` and `issuers` and `taxons`. Which includes: `buyers` - current buyers count, `tradedNfts` - current count of traded NFTS, `owners` - current count of owners, `nfts` - current count of NFTs
 marker | null | The marker from the previous request, if you need a next page
-assets | false | (For Standard plan and hire) For list `collections` returns collection previews, `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px.
+assets | false | (For the Standard plan and higher) For `list=collections`, returns collection previews in `assets` with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.
 order | null | For list `collections`: `rating` — order by collection rating. **Not compatible with `sortCurrency`.**
 
 ## NFT Minters
@@ -3747,7 +3753,7 @@ uritokenID  | An URI Token ID
 Parameter | Default | Description
 --------- | ------- | -----------
 uri | false | If set to true, the result will include `uri` and `url`.
-assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.
 sellOffers | false | If set true, the result will include `sellOffers`.
 history | false | If set to true, the result will include `history`.
 metadata | false | If set to true, the result will include `metadata`.
@@ -4025,7 +4031,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 owner | null | The address of the Owner
 issuer | null | The address of the Issuer
-assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.
 hasMetadata | false | set to `true`, to list NFTs only with available metadata
 hasImage | false | set to `true`, to list NFTs only with available images
 hasMedia | false | set to `true`, to list NFTs only with available media data:  audio, video, image
@@ -4188,7 +4194,7 @@ Parameter | Default | Description
 list | null | default - to list all owned NFT offers, `privatelyOfferedToAddress` - to list all NFT offers where the `address` is specified as destination (brokers, private offers, nft transfers).
 nftoken | false | If set to true, each offer will include `nftoken` data, including metadata.
 offersValidate | false | (Only available on paid API plans) If set to true, each offer will include `valid` as `true` or `false`, if `false` then it also include `validationErrors` array.
-assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.
 
 ## NFT Distribution
 
@@ -4412,7 +4418,7 @@ price | null | Filter NFT sales by sale price. Supports exact values or ranges, 
 saleType | `all` | can be `primary` or `secondary` (optional, `primary` - the sales from the issuer address)
 issuer | null | The address of the NFT issuer (optional)
 owner | null | The address of the Owner
-assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)
+assets | false | (Only available on the Standard API plan or greater) If set to true, returns `assets` with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.
 hasImage | false | set to `true`, to list NFT sales only for NFTs with available images
 hasMedia | false | set to `true`, to list NFT sales only for NFTs with available media data: audio, video, image
 buyer | null | (Only available on paid API plans) The address of the Buyer (optional)
