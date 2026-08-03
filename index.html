@@ -966,9 +966,11 @@
 
 <p>** On that plan the <a href="#nft"><strong>NFT</strong></a>, <a href="#nfts"><strong>NFTs</strong></a>, <a href="#nft-offers"><strong>NFT offers</strong></a> endpoints returns <code>assets</code> with direct URLs to cached and resized images and videos. You can get over 100 results for tokens, transactions, whales in one request. You can get historical activations. List of AMMs by their IDs etc. </p>
 <h1 id='nft-content-plans'>NFT Content Plans</h1>
-<p>Those are not API plans and can be purchased separately (contact our support team to get one).</p>
+<p>NFT Content Plans are separate from API plans. An API plan controls whether an endpoint can return the <code>assets</code> object; an NFT Content Plan controls how many times the image, video, preview, and thumbnail URLs in that object can be served from the Bithomp CDN.</p>
 
-<p>You only need this if you want to use our cached NFT images and videos from our CDN server.</p>
+<p>The returned CDN URLs are not unlimited-download links. Every time your website, app, user, or backend loads one of these URLs, that CDN delivery counts toward the daily and monthly allowance for its content type. Repeating the API request does not grant a new content allowance.</p>
+
+<p>Each API tier includes the NFT Content Plan shown in the API pricing table above. If your application needs more CDN deliveries than the included allowance, purchase a higher NFT Content Plan separately by contacting our support team. API request limits and NFT CDN delivery limits are measured separately.</p>
 
 <p>Direct access to fast [resized and cached] images and videos:</p>
 
@@ -2885,7 +2887,11 @@ Exclude unnecessary parameters to make your request faster.
 <td>(available on paid plans only) If set to true, the result will also include a current <code>holders</code> count (not returned for historical request with <code>ledgerIndex</code>or <code>ledgerTimestamp</code>). This is the number of unique LP token holders.</td>
 </tr>
 </tbody></table>
-<h1 id='nft-xls-20'>NFT (XLS-20)</h1><h2 id='nft'>NFT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true&amp;assets=true"</span>
+<h1 id='nft-xls-20'>NFT (XLS-20)</h1>
+<aside class="warning">
+The URLs returned in `assets` are hosted by the Bithomp CDN and are not unlimited-download links. Loading an image, video, preview, or thumbnail is a CDN delivery counted separately from API requests against the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>. Your API tier includes the content plan listed in <a href="#price-and-limits">Price and Limits</a>; if you need more CDN traffic, contact our support team to purchase a higher NFT Content Plan.
+</aside>
+<h2 id='nft'>NFT</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft/000861A8BB208DE9CB0384F2D46901203CA958EEA4C0AF286862C7F90000005E?sellOffers=true&amp;buyOffers=true&amp;uri=true&amp;history=true&amp;assets=true"</span>
   <span class="nt">-H</span> <span class="s2">"x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"</span>
 </code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">function</span> <span class="nx">getData</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">json</span><span class="p">)</span>
@@ -3013,7 +3019,7 @@ Exclude unnecessary parameters to make your request faster.
 <tr>
 <td>assets</td>
 <td>false</td>
-<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.</td>
 </tr>
 <tr>
 <td>sellOffers</td>
@@ -3217,7 +3223,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>assets</td>
 <td>false</td>
-<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.</td>
 </tr>
 </tbody></table>
 
@@ -3439,7 +3445,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>assets</td>
 <td>false</td>
-<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.</td>
 </tr>
 <tr>
 <td>hasMetadata</td>
@@ -3743,7 +3749,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>assets</td>
 <td>false</td>
-<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.</td>
 </tr>
 </tbody></table>
 <h2 id='nft-collection'>NFT Collection</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-collection/ra59pDJcuqKJcQws7Xpuu1S8UYKmKnpUkW:1?floorPrice=true&amp;statistics=true&amp;assets=true"</span>
@@ -3871,7 +3877,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>assets</td>
 <td>false</td>
-<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with Bithomp CDN URLs for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.</td>
 </tr>
 </tbody></table>
 <h2 id='nft-collections'>NFT Collections</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/nft-collections?search=zerpmon&amp;assets=true&amp;floorPrice=true"</span>
@@ -3983,7 +3989,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>assets</td>
 <td>false</td>
-<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with Bithomp CDN URLs for NFT collection image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.</td>
 </tr>
 <tr>
 <td>floorPrice</td>
@@ -4294,7 +4300,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>assets</td>
 <td>false</td>
-<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.</td>
 </tr>
 <tr>
 <td>hasImage</td>
@@ -4707,7 +4713,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>assets</td>
 <td>false</td>
-<td>(For Standard plan and hire) For list <code>collections</code> returns collection previews, <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px.</td>
+<td>(For the Standard plan and higher) For <code>list=collections</code>, returns collection previews in <code>assets</code> with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.</td>
 </tr>
 <tr>
 <td>order</td>
@@ -5200,7 +5206,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>assets</td>
 <td>false</td>
-<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.</td>
 </tr>
 <tr>
 <td>sellOffers</td>
@@ -5545,7 +5551,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>assets</td>
 <td>false</td>
-<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.</td>
 </tr>
 <tr>
 <td>hasMetadata</td>
@@ -5808,7 +5814,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>assets</td>
 <td>false</td>
-<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.</td>
 </tr>
 </tbody></table>
 <h2 id='nft-distribution-2'>NFT Distribution</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://xahauexplorer.com/api/v2/uritoken-owners?order=nonSelfIssued"</span>
@@ -6068,7 +6074,7 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <tr>
 <td>assets</td>
 <td>false</td>
-<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with direct urls for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame) and thumbnail 64px x 64px. (See plans for NFT contents for more details or contact us)</td>
+<td>(Only available on the Standard API plan or greater) If set to true, returns <code>assets</code> with Bithomp CDN URLs for image 700px x 700px, video 15s, preview 360px x 360px (image, otherwise video frame), and thumbnail 64px x 64px. Access to these URLs is metered separately from API requests and is subject to the daily and monthly limits of your <a href="#nft-content-plans">NFT Content Plan</a>.</td>
 </tr>
 <tr>
 <td>hasImage</td>
