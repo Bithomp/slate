@@ -88,6 +88,18 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 1st of September 2026
+
+A new query parameter, `counterToken`, was added to the <a href="#token-activity">**Token Activity**</a> API endpoint.
+
+Use it to filter token swaps by the counter token. The value uses a universal token format:
+
+- `issuer:currency` for an IOU token.
+- `XRP` or `XAH` for a native token.
+- `MPT-<mptokenIssuanceID>` for a Multi Purpose Token (MPT).
+
+The `counterToken` parameter does not affect `transfer`, `mint`, or `burn` activity.
+
 ### 22nd of July 2026
 
 A new endpoint was added:
@@ -420,34 +432,6 @@ Now you can get the price of a token in 40 fiat currencies. Just pass a fiat cur
 A new query parameter: `priceNativeCurrencySpot` was added to the <a href="#get-the-list-of-objects-owned-by-an-address">**Get the list of objects owned by an address**</a> API end-point.
 
 Now you can get the spot price in the native currency (XRP or XAH) for each token that the address owns. (if token exist and in our system and has at list a positive rating we will return its price in the Native Currency). It supports historical spot price too (if you send `ledgerIndex` or `ledgerTimestamp`).
-
-### 22nd of August 2025
-
-4 new endpoints were added:
-
-<a href="#get-the-list-of-obligations-issued-tokens">**Get the list of obligations (issued tokens)**</a>
-
-<a href="#get-the-list-of-tokens-that-address-can-accept">**Get the list of tokens that address can accept**</a>
-
-<a href="#get-the-list-of-objects-owned-by-an-address">**Get the list of objects owned by an address**</a>
-
-<a href="#ledger-entry-by-index">**Ledger entry by index**</a>
-
-New order options were added to the <a href="#list-of-tokens">**List of tokens**</a> endpoint:
-
-Now you can order by rating, trustlines count, holders count, sell volume, buy volume, total volume, unique traders count, unique sellers count, unique buyers count, market cap, price in native currency (XRP or XAH).
-
-### 8th of August 2025
-
-A new endpoint was added:
-
-<a href="#token">**Token**</a>
-
-Get information and statistics for a specific token issued on the XRPL or Xahau. Icon, description, holders count, 24h volumes, price chnages and much more.
-
-Free Images for Tokens and Addresses:
-
-You can now use our CDN to display token and address images for free. See the <a href="#free-token-images">Free Token Images</a> and <a href="#free-address-profile-images">Free Address Profile Images</a> sections below for more details.
 
 # Free Token Images
 
@@ -7553,6 +7537,9 @@ Examples:
 - `GET https://bithomp.com/api/v2/token/XRP/swaps?type=burn&limit=1`
 - `GET https://bithomp.com/api/v2/token/XRP/swaps?subtype=swap&limit=1`
 - `GET https://bithomp.com/api/v2/token/XRP/swaps?order=amountHigh&limit=1`
+- `GET https://bithomp.com/api/v2/token/XRP/swaps?type=dex&counterToken=rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De:RLUSD`
+- `GET https://bithomp.com/api/v2/token/<issuer>/<currency>/swaps?type=dex&counterToken=XRP`
+- `GET https://bithomp.com/api/v2/token/<mptokenIssuanceID>/swaps?type=dex&counterToken=MPT-<mptokenIssuanceID>`
 - `GET https://bithomp.com/api/v2/token/XRP/swaps?limit=10&type=dex&ammID=160C6649399D6AF625ED94A66812944BDA1D8993445A503F6B5730DECC7D3767`
 - `GET https://bithomp.com/api/v2/token/<issuer>/<currency>/swaps?type=mint&ignoreRounding=true`
 - `GET https://xahauexplorer.com/api/v2/token/XAH/swaps`
@@ -7582,6 +7569,7 @@ marker | null | The marker from the previous request, if you need a next page of
 type | null | Filter activity by type. Can be `transfer`, `mint`, `burn`, `rippling`, `dex`.
 subtype | null | Filter activity by subtype. The available values depend on the main `type`; this parameter can also be used without `type`.
 ignoreRounding | false | For IOU tokens only. If set to true, mint and burn activity caused by rounding is excluded.
+counterToken | null | Filter swaps by the counter token. Use the universal token format: `issuer:currency` for an IOU token, `XRP` or `XAH` for a native token, or `MPT-<mptokenIssuanceID>` for an MPT. This parameter does not affect `transfer`, `mint`, or `burn` activity.
 ammID | null | Filter swaps by AMM ID. When set, the API always uses `type=dex` and `subtype=swap`, regardless of the supplied `type` or `subtype` filters.
 order | `new` | The order of the activity records in the response. Can be `new`, `amountHigh`, `amountLow`.
 
