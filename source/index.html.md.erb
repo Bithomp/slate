@@ -100,6 +100,12 @@ Use it to filter token swaps by the counter token. The value uses a universal to
 
 The `counterToken` parameter does not affect `transfer`, `mint`, or `burn` activity.
 
+New query parameters were added to the <a href="#dapps">**DApps**</a> API endpoint:
+
+- `order` sorts dapps by performing addresses, volume, interacting addresses, transactions, or success rate.
+- `limit` limits the number of returned dapps. By default, all dapps are returned.
+- `externalSigning=true` returns dapps that support external signing.
+
 ### 22nd of July 2026
 
 A new endpoint was added:
@@ -4835,6 +4841,11 @@ Use `previousPeriod=calendar-1` to compare against the previous full calendar pe
 
 `GET https://bithomp.com/api/v2/dapps`
 
+Examples:
+
+- `GET https://bithomp.com/api/v2/dapps?order=transactionsHigh&limit=10`
+- `GET https://bithomp.com/api/v2/dapps?externalSigning=true`
+
 ### Query Parameters
 
 Parameter | Default | Description
@@ -4842,6 +4853,9 @@ Parameter | Default | Description
 period | `day` | The time period for the statistics. Options: `day` (last 24 hours), `week` (last 7 days), `month` (last 30 days or calendar month).
 previousPeriod | null | Includes comparison data for the previous period. Supported modes: `rolling`, `calendar`, `calendar-1`. Use `rolling` for the previous rolling period. Use `calendar-1` to compare `day` as last 24 hours vs previous full calendar day, `week` as last 7 days vs previous full calendar week, and `month` as last month vs previous full calendar month.
 convertCurrencies | null | A currency code (e.g. `usd`, `eur`) to include fiat equivalents for `totalSent` and `totalFees` amounts in the response.
+order | null | Sort the returned dapps. Options: `performingAddressHigh`, `volumeHigh`, `interactingAddressHigh`, `transactionsHigh`, `successRateHigh`.
+limit | null | The maximum number of dapps to return. By default, all dapps are returned.
+externalSigning | null | Set to `true` to return dapps that support external signing.
 
 ## DApp Chart
 
