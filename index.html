@@ -1047,6 +1047,15 @@
 <li><code>limit</code> limits the number of returned dapps. By default, all dapps are returned.</li>
 <li><code>externalSigning=true</code> returns dapps that support external signing.</li>
 </ul>
+
+<p>A new query parameter, <code>marketplaceDetails</code>, was added to the extended volumes endpoints for <code>list=marketplaces</code>:</p>
+
+<ul>
+<li><code>GET /v2/nft-volumes-extended?list=marketplaces&amp;marketplaceDetails=true</code></li>
+<li><code>GET /v2/uritoken-volumes-extended?list=marketplaces&amp;marketplaceDetails=true</code></li>
+</ul>
+
+<p>Set <code>marketplaceDetails=true</code> to include <code>marketplaceDetails</code> next to <code>marketplace</code> in each marketplace item.</p>
 <h3 id='22nd-of-july-2026'>22nd of July 2026</h3>
 <p>A new endpoint was added:</p>
 
@@ -4640,6 +4649,8 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <p>This endpoint retrieves Extended NFT Sales Volumes for specified parameters (Only available on paid API plans)</p>
 <h3 id='http-request-20'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/nft-volumes-extended</code></p>
+
+<p><code>GET https://xahauexplorer.com/api/v2/uritoken-volumes-extended</code></p>
 <h3 id='query-parameters-19'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -4652,6 +4663,11 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <td>list</td>
 <td>null</td>
 <td><code>collections</code>, <code>marketplaces</code>, <code>issuers</code>, <code>taxons</code>, <code>currencies</code> or <code>brokers</code></td>
+</tr>
+<tr>
+<td>marketplaceDetails</td>
+<td>false</td>
+<td>For <code>list=marketplaces</code>, if set to <code>true</code>, each marketplace item includes <code>marketplaceDetails</code> next to <code>marketplace</code>.</td>
 </tr>
 <tr>
 <td>issuer</td>
