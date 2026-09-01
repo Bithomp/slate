@@ -106,6 +106,13 @@ New query parameters were added to the <a href="#dapps">**DApps**</a> API endpoi
 - `limit` limits the number of returned dapps. By default, all dapps are returned.
 - `externalSigning=true` returns dapps that support external signing.
 
+A new query parameter, `marketplaceDetails`, was added to the extended volumes endpoints for `list=marketplaces`:
+
+- `GET /v2/nft-volumes-extended?list=marketplaces&marketplaceDetails=true`
+- `GET /v2/uritoken-volumes-extended?list=marketplaces&marketplaceDetails=true`
+
+Set `marketplaceDetails=true` to include `marketplaceDetails` next to `marketplace` in each marketplace item.
+
 ### 22nd of July 2026
 
 A new endpoint was added:
@@ -3250,11 +3257,14 @@ This endpoint retrieves Extended NFT Sales Volumes for specified parameters (Onl
 
 `GET https://bithomp.com/api/v2/nft-volumes-extended`
 
+`GET https://xahauexplorer.com/api/v2/uritoken-volumes-extended`
+
 ### Query Parameters
 
 Parameter | Default | Description
 --------- | ------- | -----------
 list | null | `collections`, `marketplaces`, `issuers`, `taxons`, `currencies` or `brokers`
+marketplaceDetails | false | For `list=marketplaces`, if set to `true`, each marketplace item includes `marketplaceDetails` next to `marketplace`.
 issuer | null | An XRPL address or username of the NFT issuer, must be specified for list `taxons`, to receive separate volumes for each taxon of the issuer
 currency | null | By default returns for all currencies, you can set any XRPL currency for example `xrp` (optional)
 currencyIssuer | null | if currency is specified and it is not 'xrp', then you must specify the currency issuer XRPL address (optional)
