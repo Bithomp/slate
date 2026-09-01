@@ -1039,6 +1039,14 @@
 </ul>
 
 <p>The <code>counterToken</code> parameter does not affect <code>transfer</code>, <code>mint</code>, or <code>burn</code> activity.</p>
+
+<p>New query parameters were added to the <a href="#dapps"><strong>DApps</strong></a> API endpoint:</p>
+
+<ul>
+<li><code>order</code> sorts dapps by performing addresses, volume, interacting addresses, transactions, or success rate.</li>
+<li><code>limit</code> limits the number of returned dapps. By default, all dapps are returned.</li>
+<li><code>externalSigning=true</code> returns dapps that support external signing.</li>
+</ul>
 <h3 id='22nd-of-july-2026'>22nd of July 2026</h3>
 <p>A new endpoint was added:</p>
 
@@ -6553,6 +6561,13 @@ Before downloading the whole list again you can check if it was updated here: <a
 </ul>
 <h3 id='http-request-35'>HTTP Request</h3>
 <p><code>GET https://bithomp.com/api/v2/dapps</code></p>
+
+<p>Examples:</p>
+
+<ul>
+<li><code>GET https://bithomp.com/api/v2/dapps?order=transactionsHigh&amp;limit=10</code></li>
+<li><code>GET https://bithomp.com/api/v2/dapps?externalSigning=true</code></li>
+</ul>
 <h3 id='query-parameters-28'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -6575,6 +6590,21 @@ Before downloading the whole list again you can check if it was updated here: <a
 <td>convertCurrencies</td>
 <td>null</td>
 <td>A currency code (e.g. <code>usd</code>, <code>eur</code>) to include fiat equivalents for <code>totalSent</code> and <code>totalFees</code> amounts in the response.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>null</td>
+<td>Sort the returned dapps. Options: <code>performingAddressHigh</code>, <code>volumeHigh</code>, <code>interactingAddressHigh</code>, <code>transactionsHigh</code>, <code>successRateHigh</code>.</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>null</td>
+<td>The maximum number of dapps to return. By default, all dapps are returned.</td>
+</tr>
+<tr>
+<td>externalSigning</td>
+<td>null</td>
+<td>Set to <code>true</code> to return dapps that support external signing.</td>
 </tr>
 </tbody></table>
 <h2 id='dapp-chart'>DApp Chart</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://bithomp.com/api/v2/dapp/42697468/chart?period=week&amp;span=day&amp;convertCurrencies=usd"</span>
