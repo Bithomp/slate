@@ -88,6 +88,15 @@ Direct access to fast [resized and cached] images and videos:
 
 # Changelog
 
+### 3rd of September 2026
+
+Two new DApp endpoints were added:
+
+- <a href="#dapp-search">**DApp Search**</a> searches DApp metadata by a partial search string. **Available on all plans.**
+- <a href="#dapp">**DApp**</a> returns statistics for one DApp identified by its source tag. **Available on Standard plan and higher.**
+
+The single DApp endpoint supports period comparison, fiat conversion, and `dappDetails=true` to include DApp metadata in the response.
+
 ### 1st of September 2026
 
 A new query parameter, `counterToken`, was added to the <a href="#token-activity">**Token Activity**</a> API endpoint.
@@ -980,7 +989,7 @@ print $data;
     "name": "XRP Tip Bot",
     "domain": "xrptipbot.com",
     "socialAccounts": {
-      "twitter": "xrptipbot"
+      "twitter": "xrptipbot",
       "facebook": null,
       "youtube": null,
       "instagram": null,
@@ -1010,7 +1019,7 @@ print $data;
         "steemit": null,
         "telegram": null
       }
-    },
+    }
   }
 }
 ```
@@ -4677,6 +4686,88 @@ totalAddresses | Integer | The amount of identified addresses.
 
 # Dapps
 
+## DApp Search
+
+```shell
+curl "https://bithomp.com/api/v2/dapps/search/bit?limit=10"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function searchDApps(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/dapps/search/bit?limit=10", searchDApps);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/dapps/search/bit?limit=10");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "dapps": [
+    {
+      "sourceTag": 2606210014,
+      "name": "Bithomp DeFi",
+      "url": "bithomp.com",
+      "domain": "bithomp.com",
+      "logo": "https://cdn.bithomp.com/image/upload/d7ed5c8e9a893d2bc62a23da6eea7e202fdd670093c08fc2151c6a9a021564b1",
+      "wallets": [
+        "xaman",
+        "ledger",
+        "dcent",
+        "xyra",
+        "crossmark",
+        "gemwallet",
+        "metamask"
+      ],
+      "walletconnect": [
+        "joey",
+        "bifrost",
+        "girin"
+      ],
+      "twitter": "bithomp",
+      "discord": "invite/ZahGJ29WEs",
+      "facebook": "xrpexplorer",
+      "instagram": "bithomp",
+      "linkedin": "company/bithomp",
+      "x": "bithomp"
+    },
+    {
+      "sourceTag": 100010010,
+      "name": "Static Bit",
+      "url": "staticbit.io",
+      "domain": "staticbit.io",
+      "logo": "https://cdn.bithomp.com/image/upload/68263658365481848cc145c088602f7ee74f23faeb37f7e9e8871db4df79dc89",
+      "twitter": "StaticBit_io",
+      "x": "StaticBit_io"
+    }
+  ]
+}
+```
+
+This endpoint searches DApp metadata by a partial search string and returns matching DApps as objects in the `dapps` array. **Available on all plans.**
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/dapps/search/<item>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+item | A partial search string.
+
+### Query Parameters
+
+Parameter | Description
+--------- | -----------
+limit | The maximum number of matching DApps to return.
+
 ## Dapps
 
 ```shell
@@ -4866,6 +4957,203 @@ convertCurrencies | null | A currency code (e.g. `usd`, `eur`) to include fiat e
 order | null | Sort the returned dapps. Options: `performingAddressHigh`, `volumeHigh`, `interactingAddressHigh`, `transactionsHigh`, `successRateHigh`.
 limit | null | The maximum number of dapps to return. By default, all dapps are returned.
 externalSigning | null | Set to `true` to return dapps that support external signing.
+
+## DApp
+
+```shell
+curl "https://bithomp.com/api/v2/dapp/2606210014?previousPeriod=true&period=day&dappDetails=true"
+  -H "x-bithomp-token: abcd-abcd-0000-abcd-0123abcdabcd"
+```
+
+```javascript
+function getDApp(json) {
+  console.log(json)
+}
+bithompRequest("https://bithomp.com/api/v2/dapp/2606210014?previousPeriod=true&period=day&dappDetails=true", getDApp);
+```
+
+```php
+$data = curl_bithomp("https://bithomp.com/api/v2/dapp/2606210014?previousPeriod=true&period=day&dappDetails=true");
+print $data;
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "sourceTag": 2606210014,
+  "totalTransactions": 34,
+  "successTransactions": 29,
+  "uniqueSourceAddresses": 10,
+  "uniqueInteractedAddresses": 11,
+  "totalSent": "100000",
+  "totalFees": "4000386",
+  "transactionTypes": {
+    "AccountSet": 5,
+    "AMMCreate": 2,
+    "NFTokenAcceptOffer": 1,
+    "NFTokenCreateOffer": 2,
+    "Payment": 1,
+    "TrustSet": 23
+  },
+  "transactionResults": {
+    "tecDUPLICATE": 2,
+    "tecNO_LINE_INSUF_RESERVE": 3,
+    "tesSUCCESS": 29
+  },
+  "transactionTypesResults": {
+    "AccountSet": {
+      "tesSUCCESS": 5
+    },
+    "AMMCreate": {
+      "tecDUPLICATE": 2
+    },
+    "NFTokenAcceptOffer": {
+      "tesSUCCESS": 1
+    },
+    "NFTokenCreateOffer": {
+      "tesSUCCESS": 2
+    },
+    "Payment": {
+      "tesSUCCESS": 1
+    },
+    "TrustSet": {
+      "tecNO_LINE_INSUF_RESERVE": 3,
+      "tesSUCCESS": 20
+    }
+  },
+  "swaps": 0,
+  "dappDetails": {
+    "sourceTag": 2606210014,
+    "name": "Bithomp DeFi",
+    "url": "bithomp.com",
+    "domain": "bithomp.com",
+    "logo": "https://cdn.bithomp.com/image/upload/d7ed5c8e9a893d2bc62a23da6eea7e202fdd670093c08fc2151c6a9a021564b1",
+    "wallets": [
+      "xaman",
+      "ledger",
+      "dcent",
+      "xyra",
+      "crossmark",
+      "gemwallet",
+      "metamask"
+    ],
+    "walletconnect": [
+      "joey",
+      "bifrost",
+      "girin"
+    ],
+    "twitter": "bithomp",
+    "discord": "invite/ZahGJ29WEs",
+    "facebook": "xrpexplorer",
+    "instagram": "bithomp",
+    "linkedin": "company/bithomp",
+    "x": "bithomp"
+  },
+  "updatedAt": 1788354000,
+  "period": "day",
+  "previousPeriodMode": "rolling",
+  "previousPeriod": {
+    "sourceTag": 2606210014,
+    "totalTransactions": 54,
+    "successTransactions": 40,
+    "uniqueSourceAddresses": 18,
+    "uniqueInteractedAddresses": 26,
+    "totalSent": "3504343039",
+    "totalFees": "10000616",
+    "transactionTypes": {
+      "AccountSet": 10,
+      "AMMCreate": 5,
+      "AMMDeposit": 1,
+      "AMMVote": 1,
+      "AMMWithdraw": 3,
+      "CheckCancel": 1,
+      "EscrowFinish": 1,
+      "NFTokenAcceptOffer": 7,
+      "NFTokenCancelOffer": 2,
+      "NFTokenCreateOffer": 2,
+      "Payment": 11,
+      "TrustSet": 10
+    },
+    "transactionResults": {
+      "tecAMM_INVALID_TOKENS": 3,
+      "tecDUPLICATE": 5,
+      "tecNO_LINE_INSUF_RESERVE": 1,
+      "tecNO_PERMISSION": 5,
+      "tesSUCCESS": 40
+    },
+    "transactionTypesResults": {
+      "AccountSet": {
+        "tesSUCCESS": 10
+      },
+      "AMMCreate": {
+        "tecDUPLICATE": 5
+      },
+      "AMMDeposit": {
+        "tesSUCCESS": 1
+      },
+      "AMMVote": {
+        "tecAMM_INVALID_TOKENS": 1
+      },
+      "AMMWithdraw": {
+        "tecAMM_INVALID_TOKENS": 2,
+        "tesSUCCESS": 1
+      },
+      "CheckCancel": {
+        "tesSUCCESS": 1
+      },
+      "EscrowFinish": {
+        "tesSUCCESS": 1
+      },
+      "NFTokenAcceptOffer": {
+        "tecNO_PERMISSION": 5,
+        "tesSUCCESS": 2
+      },
+      "NFTokenCancelOffer": {
+        "tesSUCCESS": 2
+      },
+      "NFTokenCreateOffer": {
+        "tesSUCCESS": 2
+      },
+      "Payment": {
+        "tesSUCCESS": 11
+      },
+      "TrustSet": {
+        "tecNO_LINE_INSUF_RESERVE": 1,
+        "tesSUCCESS": 9
+      }
+    },
+    "swaps": 4,
+    "updatedAt": 1788267599
+  }
+}
+```
+
+This endpoint returns statistics for one DApp identified by its XRP Ledger source tag. **Available for the Standard plan and higher.**
+
+Unlike the <a href="#dapps">DApps</a> response, the current period fields are returned at the top level. When comparison data is requested, `previousPeriod` contains the previous period statistics, while `period` and `previousPeriodMode` remain at the top level.
+
+Set `dappDetails=true` to include the DApp metadata in `dappDetails`. When `convertCurrencies` is set, fiat equivalents are included in `totalSentInFiats` and `totalFeesInFiats` for the current and previous periods.
+
+### HTTP Request
+
+`GET https://bithomp.com/api/v2/dapp/<sourceTag>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+sourceTag | The DApp source tag.
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+period | `day` | The time period for the statistics. Options: `day` (last 24 hours), `week` (last 7 days), `month` (last 30 days or calendar month).
+previousPeriod | null | Includes comparison data for the previous period. Set to `true`, or use a comparison mode: `rolling`, `calendar`, or `calendar-1`.
+previousPeriodMode | `rolling` | The comparison mode used when `previousPeriod=true`. Options: `rolling`, `calendar`, `calendar-1`.
+convertCurrencies | null | A currency code (e.g. `usd`, `eur`) to include fiat equivalents for `totalSent` and `totalFees` amounts in the response.
+dappDetails | `false` | Set to `true` to include DApp metadata in `dappDetails`.
 
 ## DApp Chart
 
