@@ -6161,6 +6161,7 @@ address | The address, can be old r-address or a new X-address
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
+kyc | false | If set to `true`, returns only tokens trusted by the community. If `false` or omitted, no KYC filter is applied.
 order | rating | The order of the tokens in the response. Can be `rating`, `trustlinesHigh`, `holdersHigh`.
 issuer | null | If set, the response will only include tokens issued by the specified issuer address.
 currency | null | If set, the response will only include tokens with the specified currency code.
@@ -7424,6 +7425,7 @@ This endpoint retrieves a list of tokens (IOUs) on the Ledger.
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
+kyc | false | If set to `true`, returns only tokens trusted by the community. If `false` or omitted, no KYC filter is applied.
 convertCurrencies | null | (Only available on paid API plans) A single currency code to convert the token price into.  Supported currencies: usd, eur, jpy, gbp, aud, cad, chf, cny, hkd, nzd, sek, krw, sgd, nok, mxn, inr, rub, zar, try, brl, twd, dkk, pln, thb, idr, huf, czk, ils, clp, php, aed, sar, myr, ars, bdt, bhd, kwd, ngn, uah, vnd. Example: `convertCurrencies=usd`
 statistics | false | (Only available on Standard plan and higher) If set to true, the response will include additional statistics for each token, such as active holders, sell and buy volume, unique sellers and buyers, DEXes, DEX transactions, mint and burn volumes, transfer volumes, rippling volumes, mint and burn transactions, transfer transactions, unique accounts, unique DEX accounts, price in XRP, and market cap.
 priceNativeCurrencySpot | false | If set to true, each token item will include `priceNativeCurrencySpot`, the spot price in the native currency (XRP/XAH).
@@ -8355,6 +8357,7 @@ item     | The item to search for. It can be part of an issuer address, currency
 ### Query Parameters
 Parameter | Default | Description
 --------- | ------- | -----------
+kyc | false | If set to `true`, returns only tokens trusted by the community. If `false` or omitted, no KYC filter is applied.
 lptokens | true | If set to false, the response will exclude LP tokens. By default, LP tokens are included in the response.
 currencyDetails | false | If set to true, the response will include additional details for each currency, usefull to get address details (usernames, service names) for each issuer of the currency and for LP token details. NOTE: This will change the response structure!
 
