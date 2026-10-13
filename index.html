@@ -397,21 +397,6 @@
                   <li>
                     <a href="#13th-of-october-2025" class="toc-h2 toc-link" data-title="13th of October 2025">13th of October 2025</a>
                   </li>
-                  <li>
-                    <a href="#8th-of-october-2025" class="toc-h2 toc-link" data-title="8th of October 2025">8th of October 2025</a>
-                  </li>
-                  <li>
-                    <a href="#7th-of-october-2025" class="toc-h2 toc-link" data-title="7th of October 2025">7th of October 2025</a>
-                  </li>
-                  <li>
-                    <a href="#6th-of-october-2025" class="toc-h2 toc-link" data-title="6th of October 2025">6th of October 2025</a>
-                  </li>
-                  <li>
-                    <a href="#5th-of-october-2025" class="toc-h2 toc-link" data-title="5th of October 2025">5th of October 2025</a>
-                  </li>
-                  <li>
-                    <a href="#30th-of-september-2025" class="toc-h2 toc-link" data-title="30th of September 2025">30th of September 2025</a>
-                  </li>
               </ul>
           </li>
           <li>
@@ -1337,52 +1322,6 @@
 <p><a href="#mp-token-currency-search"><strong>MP Token Currency Search</strong></a></p>
 
 <p>Search for Multi Purpose Token (MPT) currencies by a part of currency, currency code, issuer address, username, domain, service name.</p>
-<h3 id='8th-of-october-2025'>8th of October 2025</h3>
-<p>2 new endpoints were added:</p>
-
-<p><a href="#xrp-xah-distribution"><strong>XRP/XAH distribution</strong></a></p>
-
-<p>Get the distribution of XRP or XAH. Top Holders / Rich list.</p>
-
-<p><a href="#token-holders"><strong>Token Holders</strong></a></p>
-
-<p>Get the list of TOP holders for a specific issued token.</p>
-<h3 id='7th-of-october-2025'>7th of October 2025</h3>
-<p>Get Free icons for MP Tokens for your projects. See the <a href="#free-mp-token-images">Free MP Token Images</a> section below for more details.</p>
-<h3 id='6th-of-october-2025'>6th of October 2025</h3>
-<p>6 new endpoints were added:</p>
-
-<p><a href="#unl"><strong>UNL</strong></a></p>
-
-<p>Get the list of UNL validators. </p>
-
-<p><a href="#validators"><strong>Validators</strong></a></p>
-
-<p>Get the list of all validators.</p>
-
-<p><a href="#amendment"><strong>Amendment</strong></a></p>
-
-<p>Get information about a specific amendment.</p>
-
-<p><a href="#features"><strong>Features</a></strong></p>
-
-<p>Get the list of amendments and their voting statusus</p>
-
-<p><a href="#amendments"><strong>Amendments</strong></a></p>
-
-<p>Get the list of all amendments.</p>
-
-<p><a href="#unl-report"><strong>UNL Report (For XAHAU)</strong></a></p>
-
-<p>Get a report of the current UNL (Unique Node List) validators on XAHAU.</p>
-<h3 id='5th-of-october-2025'>5th of October 2025</h3>
-<p>A new query parameter: <code>convertCurrencies</code> was added to the <a href="#token"><strong>Token</strong></a> and <a href="#list-of-tokens"><strong>List of tokens</strong></a> API end-points.</p>
-
-<p>Now you can get the price of a token in 40 fiat currencies. Just pass a fiat currency code (e.g., <code>usd</code>) to the <code>convertCurrencies</code> parameter.</p>
-<h3 id='30th-of-september-2025'>30th of September 2025</h3>
-<p>A new query parameter: <code>priceNativeCurrencySpot</code> was added to the <a href="#get-the-list-of-objects-owned-by-an-address"><strong>Get the list of objects owned by an address</strong></a> API end-point.</p>
-
-<p>Now you can get the spot price in the native currency (XRP or XAH) for each token that the address owns. (if token exist and in our system and has at list a positive rating we will return its price in the Native Currency). It supports historical spot price too (if you send <code>ledgerIndex</code> or <code>ledgerTimestamp</code>).</p>
 <h1 id='free-token-images'>Free Token Images</h1>
 <p>You can easily display token images for XRPL and Xahau tokens using the Bithomp token image service. No registration is required.</p>
 
@@ -4820,6 +4759,16 @@ If you need the freshest ledger state (for example, right after a transaction), 
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>list</td>
+<td><code>all</code></td>
+<td>Marketplace list to return: <code>all</code> or <code>minted</code>.</td>
+</tr>
+<tr>
+<td>summary</td>
+<td>true</td>
+<td>Whether to include the <code>summary</code> object in the response. Can be <code>true</code> or <code>false</code>.</td>
+</tr>
 <tr>
 <td>period</td>
 <td><code>all</code></td>
