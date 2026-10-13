@@ -399,62 +399,6 @@ Search for Multi Purpose Token (MPT) issuers by a part of address, username, dom
 
 Search for Multi Purpose Token (MPT) currencies by a part of currency, currency code, issuer address, username, domain, service name.
 
-### 8th of October 2025
-
-2 new endpoints were added:
-
-<a href="#xrp-xah-distribution">**XRP/XAH distribution**</a>
-
-Get the distribution of XRP or XAH. Top Holders / Rich list.
-
-<a href="#token-holders">**Token Holders**</a>
-
-Get the list of TOP holders for a specific issued token.
-
-### 7th of October 2025
-
-Get Free icons for MP Tokens for your projects. See the <a href="#free-mp-token-images">Free MP Token Images</a> section below for more details.
-
-### 6th of October 2025
-
-6 new endpoints were added:
-
-<a href="#unl">**UNL**</a>
-
-Get the list of UNL validators. 
-
-<a href="#validators">**Validators**</a>
-
-Get the list of all validators.
-
-<a href="#amendment">**Amendment**</a>
-
-Get information about a specific amendment.
-
-<a href="#features">**Features</a>**
-
-Get the list of amendments and their voting statusus
-
-<a href="#amendments">**Amendments**</a>
-
-Get the list of all amendments.
-
-<a href="#unl-report">**UNL Report (For XAHAU)**</a>
-
-Get a report of the current UNL (Unique Node List) validators on XAHAU.
-
-### 5th of October 2025
-
-A new query parameter: `convertCurrencies` was added to the <a href="#token">**Token**</a> and <a href="#list-of-tokens">**List of tokens**</a> API end-points.
-
-Now you can get the price of a token in 40 fiat currencies. Just pass a fiat currency code (e.g., `usd`) to the `convertCurrencies` parameter.
-
-### 30th of September 2025
-
-A new query parameter: `priceNativeCurrencySpot` was added to the <a href="#get-the-list-of-objects-owned-by-an-address">**Get the list of objects owned by an address**</a> API end-point.
-
-Now you can get the spot price in the native currency (XRP or XAH) for each token that the address owns. (if token exist and in our system and has at list a positive rating we will return its price in the Native Currency). It supports historical spot price too (if you send `ledgerIndex` or `ledgerTimestamp`).
-
 # Free Token Images
 
 You can easily display token images for XRPL and Xahau tokens using the Bithomp token image service. No registration is required.
@@ -3369,6 +3313,8 @@ This endpoint retrieves NFT minters on XRPL for a specified period of time
 
 Parameter | Default | Description
 --------- | ------- | -----------
+list | `all` | Marketplace list to return: `all` or `minted`.
+summary | true | Whether to include the `summary` object in the response. Can be `true` or `false`.
 period | `all` | A time period, all time all, last 24h day, last 7 days week, last 30 days month, last 365 days year or as timestamps from..to, examples: `1671490800000..1671663600000` or `2022-12-20T00:00:00.000Z..2022-12-22T00:00:00.000Z`
 
 ## NFT Mint Chart
