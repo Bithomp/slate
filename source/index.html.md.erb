@@ -49,7 +49,7 @@ For the mainnets we have the following API plans:
 
 | Tier                                         | Max requests / minute | Max request / 24h | NFT content plan | Price / month |
 |----------------------------------------------|------:|-------|----------|----------|
-| Free (non-comercial use)                     | 10    | 2K    | Free     | 0        |
+| Free (non-comercial use)                     | 5     | 500   | Free     | 0        |
 | Basic                                        | 100   | 30K   | Start    | 30 EUR   |
 | Standard**                                   | 400   | 120K  | Basic    | 100 EUR  |
 | Premium**                                    | 1000  | 300K  | Basic    | 250 EUR  |
@@ -360,44 +360,6 @@ Two new query parameters: `search` and `searchLocations` were added to the <a hr
 2 new query parameters: `filterSpam` and `relevantOnly` were added to the <a href="#transactions-by-address">**Transactions by address**</a> API end-point.
 
 Now you can filter out known spam transactions and get only relevant transactions for an address.
-
-### 20th of October 2025
-
-A new endpoint was added:
-
-<a href="#get-amm-pool-data-by-asset-pair">**Get AMM Pool Data by Asset Pair**</a>
-
-Get AMM Pool data by asset pair (e.g., XRP/RLUSD(issued by Ripple)).
-
-### 15th of October 2025
-
-A new query parameter: `holders` was added to the <a href="#amm-pools">**AMM Pools**</a> and <a href="#amm-pool">**AMM Pool**</a> API end-points.
-
-Now you can get the number of unique LP token holders for each AMM.
-
-### 13th of October 2025
-
-5 new endpoints were added:
-
-<a href="#list-of-mpts">**List of MPTs**</a>
-
-Get the list of Multi Purpose Tokens (MPT) issued on the XRPL. You can filter by `issuer` or `currency`, sort by holders count etc.
-
-<a href="#mp-token">**MP Token**</a>
-
-Get information for a specific Multi Purpose Token (MPT) issued on the XRPL. Icon, description, holders count, and more.
-
-<a href="#mp-token-search">**MP Token Search**</a>
-
-Search for Multi Purpose Tokens (MPT) by a part of currency, currencu code, issuer address, username, domain, service name.
-
-<a href="#mp-token-issuer-search">**MP Token Issuer Search**</a>
-
-Search for Multi Purpose Token (MPT) issuers by a part of address, username, domain, service name.
-
-<a href="#mp-token-currency-search">**MP Token Currency Search**</a>
-
-Search for Multi Purpose Token (MPT) currencies by a part of currency, currency code, issuer address, username, domain, service name.
 
 # Free Token Images
 
